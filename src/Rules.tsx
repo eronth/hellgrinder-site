@@ -1,4 +1,5 @@
 import Story from "./story-section/Story";
+import HowToPlay from "./rules-section/HowToPlay";
 
 function Rules() {
   return (
@@ -7,6 +8,7 @@ function Rules() {
         <h1>Hellgrinder</h1>
       </div>
       <Story />
+      <HowToPlay />
     </div>
   );
 }

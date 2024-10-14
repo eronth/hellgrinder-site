@@ -8,19 +8,19 @@ function Story() {
     <h2>Story</h2>
 
     <div className='col-handler'>
-      <ColumnEntry column={1}
+      <ColumnEntry
         title={{ hx: 'h3', text: 'Hell\'s Invasion' }}>
         <p>{Tools.getLoremIpsum()}</p>
       </ColumnEntry>
 
-      <ColumnEntry column={2}
+      <ColumnEntry
         title={{ hx: 'h3', text: 'The War on Hell' }}>
         <p>{Tools.getLoremIpsum()}</p>
       </ColumnEntry>
       
       <br />
 
-      <ColumnEntry column={2}
+      <ColumnEntry
         title={{ hx: 'h3', text: 'Demon Clans' }}>
         <p>{Tools.getLoremIpsum()}</p>
       </ColumnEntry>

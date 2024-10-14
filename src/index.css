@@ -67,11 +67,7 @@ button:focus-visible {
   }
 }
 
-@media(max-width:540px){
-  .parent {
-     grid-template-columns: repeat(3, 1fr);
-  }
-}
+
 
 .col-handler {
   display: grid;
@@ -79,6 +75,22 @@ button:focus-visible {
   justify-content: center;
   gap: 1em;
   max-height: 1000px;
+}
+
+/* @media(max-width:740px){
+  .parent {
+     grid-template-columns: repeat(3, 1fr);
+  }
+} */
+@media(max-width: 1140px) {
+  .col-handler {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media(max-width: 850px) {
+  .col-handler {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 /* .col-handler p {

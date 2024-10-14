@@ -1,37 +1,27 @@
 import ColumnEntry from "../../common-design/ColumnEntry";
-import Tools from "../../Tools";
 import AshbornLegion from "./AshbornLegion";
+import StoneveinedOrder from "./StoneveinedOrder";
+import StormwingHorde from "./StormwingHorde";
+import ThornwraithConclave from "./ThornwraithConclave";
+import UmbralNexus from "./UmbralNexus";
+import VastfathomDominion from "./VastfathomDominion";
 
-function DemonClans() {
+export default function DemonClans() {
+  const factionHxLevel = 'h4';
+
   return (<>
     <ColumnEntry
       title={{ hx: 'h3', text: 'Demon Clans' }}>
-      <p>{Tools.getLoremIpsum()}</p>
+      <p>The infernal depths of Hell teem with countless demon clans, but seven (six?) stand above all others in power and influence. These formidable factions, each aligned with a primordial force, have shaped the very essence of the underworld. Known collectively as the Sovereign Sextet, these clans vie for supremacy in an eternal power struggle that has begun to spill into the mortal realm.</p>
     </ColumnEntry>
 
     {/* Individual Clans */}
-    <AshbornLegion hx='4'/>
-    <ColumnEntry
-      title={{ hx: 'h4', text: "Vastfathom Dominion" }}>
-      <p>{Tools.getLoremIpsum()}</p>
-    </ColumnEntry>
-    <ColumnEntry
-      title={{ hx: 'h4', text: "Thornwraith Conclave/Covenant" }}>
-      <p>{Tools.getLoremIpsum()}</p>
-    </ColumnEntry>
-    <ColumnEntry
-      title={{ hx: 'h4', text: "Stoneveined Order" }}>
-      <p>{Tools.getLoremIpsum()}</p>
-    </ColumnEntry>
-    <ColumnEntry
-      title={{ hx: 'h4', text: "Stormwing/Nethercurrent Horde" }}>
-      <p>{Tools.getLoremIpsum()}</p>
-    </ColumnEntry>
-    <ColumnEntry
-      title={{ hx: 'h4', text: "Umbral Nexus" }}>
-      <p>{Tools.getLoremIpsum()}</p>
-    </ColumnEntry>
+    <AshbornLegion hx={factionHxLevel} />
+    <StoneveinedOrder hx={factionHxLevel} />
+    <StormwingHorde hx={factionHxLevel} />
+    <ThornwraithConclave hx={factionHxLevel} />
+    <UmbralNexus hx={factionHxLevel} />
+    <VastfathomDominion hx={factionHxLevel} />
+    
   </>);
 }
-
-export default DemonClans;

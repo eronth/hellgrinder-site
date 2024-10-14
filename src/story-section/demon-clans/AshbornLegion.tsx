@@ -5,7 +5,7 @@ import { HeaderSizeType } from "../../ts-types/types";
 type Props = {
   hx: HeaderSizeType;
 };
-function AshbornLegion ({ hx }: Props) {
+export default function AshbornLegion ({ hx }: Props) {
   return (
     <ColumnEntry title={{ hx: hx, text: "Ashborn Legion" }}>
       <p>The <Faction>Ashbron Legion</Faction> are infernal-aligned demons forged in the fires of hell, their very bodies wreathed in ash and embers. Though roughly humanoid in shape, the winged-beasts’ flesh is blackened and cracked like scorched earth, with molten veins glowing just beneath the surface. Eyes burn like smoldering coals, and their breath carries the heat of a furnace.</p>
@@ -13,5 +13,3 @@ function AshbornLegion ({ hx }: Props) {
     </ColumnEntry>
   )
 }
-
-export default AshbornLegion;

@@ -1,6 +1,6 @@
-import Story from "./story-section/Story";
-import HowToPlay from "./rules-section/HowToPlay";
-import CharacterCreation from "./rules-section/CharacterCreation";
+import Story from "./rules-components/story-section/Story";
+import HowToPlay from "./rules-components/rules-section/HowToPlay";
+import CharacterCreation from "./rules-components/character-creation-section/CharacterCreation";
 
 export default function Rules() {
   return (

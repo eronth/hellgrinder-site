@@ -10,7 +10,7 @@ function DemonClans() {
     </ColumnEntry>
 
     {/* Individual Clans */}
-    <AshbornLegion />
+    <AshbornLegion hx='4'/>
     <ColumnEntry
       title={{ hx: 'h4', text: "Vastfathom Dominion" }}>
       <p>{Tools.getLoremIpsum()}</p>

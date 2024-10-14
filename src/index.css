@@ -66,3 +66,39 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+@media(max-width:540px){
+  .parent {
+     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.col-handler {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  gap: 1em;
+  max-height: 1000px;
+}
+
+/* .col-handler p {
+  max-width: 33%;
+} */
+
+
+.main-title {
+  display: grid;
+  text-align: center;
+}
+h2 {
+  display: grid;
+  text-align: center;
+}
+h3 {
+  text-decoration: underline;
+}
+h4 {
+  font-style: italic;
+  color: hsl(238, 100%, 87%);
+}
+

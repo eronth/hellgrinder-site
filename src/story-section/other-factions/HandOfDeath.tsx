@@ -1,0 +1,14 @@
+import ColumnEntry from "../../common-design/ColumnEntry";
+import Tools from "../../Tools";
+import { HeaderSizeType } from "../../ts-types/types";
+
+type Props = {
+  hx: HeaderSizeType;
+};
+export default function HandOfDeath ({ hx }: Props) {
+  return (
+    <ColumnEntry title={{ hx: hx, text: "Hand of Death" }}>
+      <p>{Tools.getLoremIpsum()}</p>
+    </ColumnEntry>
+  )
+}

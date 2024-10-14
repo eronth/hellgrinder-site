@@ -1,10 +1,10 @@
+import { HeaderSizeType } from "../ts-types/types";
+
 type Props = {
   column?: number;
   cssClass?: string;
   title: {
-    hx: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-      | '1' | '2' | '3' | '4' | '5' | '6'
-      | 1 | 2 | 3 | 4 | 5 | 6,
+    hx: HeaderSizeType,
     text: string
   } | undefined;
   children: string | JSX.Element | JSX.Element[] | undefined;

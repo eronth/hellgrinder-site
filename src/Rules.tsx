@@ -1,7 +1,8 @@
 import Story from "./story-section/Story";
 import HowToPlay from "./rules-section/HowToPlay";
+import CharacterCreation from "./rules-section/CharacterCreation";
 
-function Rules() {
+export default function Rules() {
   return (
     <div>
       <div className="main-title">
@@ -9,8 +10,7 @@ function Rules() {
       </div>
       <Story />
       <HowToPlay />
+      <CharacterCreation />
     </div>
   );
 }
-
-export default Rules;

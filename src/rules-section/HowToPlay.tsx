@@ -47,16 +47,15 @@ export default function HowToPlay() {
         <p>Various Attack Checks: (shooting, melee, arcane, thrown),</p>
         <p>Various Skill Checks: Recovery, Endurance, Stealth, Agility, {"<add more here>"}</p>
       </ColumnEntry>
-
-      <RestAndRecover />
-      <Combat />
-
-      <ColumnEntry title={{ hx: 'h2', text: 'A Deal with the Devil' }}>
-        <p>Occasionally, you are presented with a moment where you can make a deal (or deals) with the Devil. A powerful entity, one which does not seem to fully align with the demonic forces, can grant you a powerful boon, but it comes with a cost.</p>
-        <p>[INSERT TABLE HERE]</p>
-      </ColumnEntry>
-
-
     </div>
+
+    <RestAndRecover />
+    <Combat />
+
+    <ColumnEntry title={{ hx: 'h2', text: 'A Deal with the Devil' }}>
+      <p>Occasionally, you are presented with a moment where you can make a deal (or deals) with the Devil. A powerful entity, one which does not seem to fully align with the demonic forces, can grant you a powerful boon, but it comes with a cost.</p>
+      <p>[INSERT TABLE HERE]</p>
+    </ColumnEntry>
+
   </>);
 }

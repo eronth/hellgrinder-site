@@ -6,7 +6,7 @@ import Locations from './locations/Locations';
 
 function Story() {
 
-  return (<div>
+  return (<>
 
     <h2>Story</h2>
 
@@ -28,7 +28,7 @@ function Story() {
 
       <Locations />
     </div>
-  </div>);
+  </>);
 }
 
 export default Story;

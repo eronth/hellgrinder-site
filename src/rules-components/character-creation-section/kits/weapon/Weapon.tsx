@@ -1,17 +1,14 @@
 import WeaponName from './weapon-components/WeaponName';
 import WeaponSpecialNotes from './weapon-components/WeaponSpecialNotes';
 import Tags from '../../../../common-design/Tags';
-import type { WeaponType, AttackModeType, KitType } from '../../../../ts-types/types';
+import type { WeaponType, AttackModeType } from '../../../../ts-types/types';
 
 type Props = {
-  kit: KitType;
-  weaponIndex: number;
   weapon: WeaponType;
 };
 
-export default function Weapon({ kit, weaponIndex, weapon }: Props) {
+export default function Weapon({ weapon }: Props) {
   const w = weapon;
-  const wi = weaponIndex;
 
   function hasMultipleAttackModes(weapon: WeaponType) {
     return weapon.attackModes.length > 1;
@@ -35,14 +32,14 @@ export default function Weapon({ kit, weaponIndex, weapon }: Props) {
   }
 
   return (<>
-    <WeaponName key={`kit-${kit.name}-weapon-${wi}-name`} weapon={w} />
-    {w.attackModes.map((a, ai) => <div key={`kit-${kit.name}-weapon-${wi}-attack-mode-${ai}`}>
+    <WeaponName weapon={w} />
+    {w.attackModes.map((a, ai) => <div key={`attack-mode-${ai}`}>
 
       {/* Tags Section */}
-      {getPerAttackModeTags(w, `kit-${kit.name}-weapon-${wi}-attack-mode-${ai}-tags`, a)}
+      {getPerAttackModeTags(w, `attack-mode-${ai}-tags`, a)}
 
-      <div key={`kit-${kit.name}-weapon-${wi}-attack-mode-${ai}-damage`}>&nbsp;{makeAttackDamageText(a)}</div>
-      <WeaponSpecialNotes key={`kit-${kit.name}-weapon-${wi}-attack-mode-${ai}-weapon-notes`} effects={a.effects} />
+      <div key={`attack-mode-${ai}-damage`}>&nbsp;{makeAttackDamageText(a)}</div>
+      <WeaponSpecialNotes key={`attack-mode-${ai}-weapon-notes`} effects={a.effects} />
 
     </div>)}
 

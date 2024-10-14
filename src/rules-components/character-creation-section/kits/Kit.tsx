@@ -15,7 +15,7 @@ export default function Kit({ kit }: Props) {
 
       {kit.weapons.map((w, wi) => <div className="weapon" key={`kit-${kit.name}-weapon-${wi}`}>
 
-        <Weapon kit={kit} weaponIndex={wi} weapon={w} key={`kit-${kit.name}-weapon-${wi}`} />
+        <Weapon weapon={w} key={`kit-${kit.name}-weapon-${wi}`} />
 
       </div>)}
 

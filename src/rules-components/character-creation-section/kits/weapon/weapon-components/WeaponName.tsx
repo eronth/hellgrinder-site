@@ -2,7 +2,6 @@ import { WeaponType } from "../../../../../ts-types/types.tsx";
 import Tags from '../../../../../common-design/Tags';
 
 type Props = {
-  key: string;
   weapon: WeaponType;
 };
 

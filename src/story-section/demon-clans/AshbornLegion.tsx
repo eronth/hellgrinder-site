@@ -1,5 +1,5 @@
 import ColumnEntry from "../../common-design/ColumnEntry";
-import Faction from "../story-references/Faction";
+import Faction from "../../common-design/story-references/Faction";
 
 function AshbornLegion () {
   return (

@@ -1,7 +1,41 @@
-import type { Kit } from '../../../ts-types/types';
+import type { KitType } from '../../../ts-types/types';
 
-const sniper: Kit = {
+const sniper: KitType = {
   name: 'Sniper',
+  description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",
+  weapons: [{
+    name: 'Sniper Rifle',
+    tags: ['Heavy', 'Two-Handed'],
+    attackModes: [{
+      tags: ['Single Shot', 'Long Range', 'Shooting Attack'],
+      damage: {
+        l: { value: 2, type: 'Metal' },
+        m: { value: 9, type: 'Metal' },
+        h: { value: 3, type: 'Metal' },
+      },
+      effects: ['After firing, you need to use an Action or Maneuver to reload before you can fire this weapon again.'],
+    }],
+  }],
+  items: [{
+    name: 'Ghillie Suit',
+    tags: ['Stealth'],
+    description: 'A suit that helps you blend in with your surroundings.',
+    effects: ['+1 to Stealth checks'],
+  },
+  {
+    name:'"Sniping Scope',
+    tags: [],
+    description: 'A scope that helps you see further and more clearly.',
+    effects: [''],
+  }],
+  trainings: [{
+    name: 'Long Range Training',
+    effect: ['+2 to Hit Checks for [Long Range] attacks'],
+  }],
+};
+
+const grenadier: KitType = {
+  name: 'Sniper2',
   description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",
   weapons: [{
     name: 'Sniper Rifle',
@@ -32,8 +66,8 @@ const sniper: Kit = {
   }],
 };
 
-const grenadier: Kit = {
-  name: 'Sniper',
+const flamethrower: KitType = {
+  name: 'Sniper3',
   description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",
   weapons: [{
     name: 'Sniper Rifle',
@@ -64,8 +98,51 @@ const grenadier: Kit = {
   }],
 };
 
-const flamethrower: Kit = {
-  name: 'Sniper',
+const breachAndClear: KitType = {
+  name: 'Breach and Clear',
+  description: "",
+  weapons: [{
+    name: 'Breach Shotgun',
+    tags: [],
+    attackModes: [{
+      name: 'Close Encounter',
+      tags: ['Short Range', 'Shooting Attack'],
+      damage: {
+        l: { value: 2, type: 'Metal' },
+        m: { value: 8, type: 'Metal' },
+        h: { value: 9, type: 'Metal' },
+      },
+    },
+    {
+      name: 'Crowd Control',
+      tags: ['Medium Range', 'Shooting Attack'],
+      damage: {
+        l: { value: 1, type: 'Metal' },
+        m: { value: 4, type: 'Metal' },
+        h: { value: 6, type: 'Metal' },
+      },
+    }],
+  }],
+  items: [{
+    name: 'Ghillie Suit',
+    tags: ['Stealth'],
+    description: 'A suit that helps you blend in with your surroundings.',
+    effects: ['+1 to Stealth checks'],
+  },
+  {
+    name:'"Sniping Scope',
+    tags: [],
+    description: 'A scope that helps you see further and more clearly.',
+    effects: [''],
+  }],
+  trainings: [{
+    name: 'Long Range Training',
+    effect: ['+2 to Hit Checks for [Long Range] attacks'],
+  }],
+};
+
+const soldier: KitType = {
+  name: 'Sniper5',
   description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",
   weapons: [{
     name: 'Sniper Rifle',
@@ -96,8 +173,8 @@ const flamethrower: Kit = {
   }],
 };
 
-const breachAndClear: Kit = {
-  name: 'Sniper',
+const demonHunter: KitType = {
+  name: 'Sniper6',
   description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",
   weapons: [{
     name: 'Sniper Rifle',
@@ -128,8 +205,8 @@ const breachAndClear: Kit = {
   }],
 };
 
-const soldier: Kit = {
-  name: 'Sniper',
+const perky: KitType = {
+  name: 'Sniper7',
   description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",
   weapons: [{
     name: 'Sniper Rifle',
@@ -160,8 +237,8 @@ const soldier: Kit = {
   }],
 };
 
-const demonHunter: Kit = {
-  name: 'Sniper',
+const riot: KitType = {
+  name: 'Sniper8',
   description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",
   weapons: [{
     name: 'Sniper Rifle',
@@ -192,8 +269,8 @@ const demonHunter: Kit = {
   }],
 };
 
-const perky: Kit = {
-  name: 'Sniper',
+const helltouched: KitType = {
+  name: 'Sniper9',
   description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",
   weapons: [{
     name: 'Sniper Rifle',
@@ -224,72 +301,8 @@ const perky: Kit = {
   }],
 };
 
-const riot: Kit = {
-  name: 'Sniper',
-  description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",
-  weapons: [{
-    name: 'Sniper Rifle',
-    attackModes: [{
-      tags: ['Single Shot', 'Long Range', 'Shooting Attack'],
-      damage: {
-        l: { value: 2, type: 'Metal' },
-        m: { value: 9, type: 'Metal' },
-        h: { value: 3, type: 'Metal' },
-      },
-    }],
-  }],
-  items: [{
-    name: 'Ghillie Suit',
-    tags: ['Stealth'],
-    description: 'A suit that helps you blend in with your surroundings.',
-    effects: ['+1 to Stealth checks'],
-  },
-  {
-    name:'"Sniping Scope',
-    tags: [],
-    description: 'A scope that helps you see further and more clearly.',
-    effects: [''],
-  }],
-  trainings: [{
-    name: 'Long Range Training',
-    effect: ['+2 to Hit Checks for [Long Range] attacks'],
-  }],
-};
-
-const helltouched: Kit = {
-  name: 'Sniper',
-  description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",
-  weapons: [{
-    name: 'Sniper Rifle',
-    attackModes: [{
-      tags: ['Single Shot', 'Long Range', 'Shooting Attack'],
-      damage: {
-        l: { value: 2, type: 'Metal' },
-        m: { value: 9, type: 'Metal' },
-        h: { value: 3, type: 'Metal' },
-      },
-    }],
-  }],
-  items: [{
-    name: 'Ghillie Suit',
-    tags: ['Stealth'],
-    description: 'A suit that helps you blend in with your surroundings.',
-    effects: ['+1 to Stealth checks'],
-  },
-  {
-    name:'"Sniping Scope',
-    tags: [],
-    description: 'A scope that helps you see further and more clearly.',
-    effects: [''],
-  }],
-  trainings: [{
-    name: 'Long Range Training',
-    effect: ['+2 to Hit Checks for [Long Range] attacks'],
-  }],
-};
-
-const relicworker: Kit = {
-  name: 'Sniper',
+const relicworker: KitType = {
+  name: 'Sniper10',
   description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",
   weapons: [{
     name: 'Sniper Rifle',

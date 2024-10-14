@@ -3,48 +3,47 @@ type HeaderSizeType =
   | '1' | '2' | '3' | '4' | '5' | '6'
   | 1 | 2 | 3 | 4 | 5 | 6;
 
-
-
-
-type Kit = {
+type KitType = {
   name: string;
   description: string;
-  weapons: Weapon[];
-  items: Item[];
-  trainings: KitTraining[];
+  weapons: WeaponType[];
+  items: ItemType[];
+  trainings: KitTrainingType[];
 }
 
 
-type Weapon = {
+type WeaponType = {
   name: string;
-  attackModes: AttackMode[];
+  attackModes: AttackModeType[];
+  tags: string[];
 }
 
-type AttackMode = {
+type AttackModeType = {
+  name?: string;
   tags: string[];
   damage: {
-    l: Damage;
-    m: Damage;
-    h: Damage;
+    l: DamageType;
+    m: DamageType;
+    h: DamageType;
   };
   effects?: string[];
 }
 
-type Damage = {
+type DamageType = {
   value: number,
   type: string,
 }
 
-type Item = {
+type ItemType = {
   name: string;
   tags: string[];
   description: string;
   effects: string[];
 }
 
-type KitTraining = {
+type KitTrainingType = {
   name: string;
   effect: string[];
 }
 
-export type { HeaderSizeType, Kit };
+export type { HeaderSizeType, KitType, WeaponType, AttackModeType };

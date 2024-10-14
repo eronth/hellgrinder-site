@@ -4,7 +4,7 @@ type Props = {
   column?: number;
   cssClass?: string;
   title: {
-    hx: HeaderSizeType,
+    hx?: HeaderSizeType,
     text: string
   } | undefined;
   children: string | JSX.Element | JSX.Element[] | undefined;
@@ -21,7 +21,7 @@ function ColumnEntry({cssClass, column, title, children}: Props) {
     if (!title) { return null; }
 
     // Convert hx value to the 'hx' format if it is a number
-    let hx: number | string = title.hx;
+    let hx: number | string = title.hx ? title.hx : 'defaults';
     if (typeof hx === 'number') { hx = hx.toString(); }
     if (hx[0] !== 'h') { hx = 'h' + hx; }
 
@@ -39,7 +39,7 @@ function ColumnEntry({cssClass, column, title, children}: Props) {
       case 'h6':
         return <h6>{title.text}</h6>;
       default:
-        return <h2>{title.text}</h2>;
+        return <div className="simple-header">{title.text}</div>;
     }
   }
 

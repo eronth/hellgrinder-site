@@ -124,3 +124,6 @@ h4 {
 ul {
   list-style-type: "- ";
 }
+ol.roman {
+  list-style-type: upper-roman;
+}

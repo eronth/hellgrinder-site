@@ -31,17 +31,19 @@ export default function Weapon({ weapon }: Props) {
     return `${dmg.l.value} ${dmg.l.type}/${dmg.m.value} ${dmg.l.type}/${dmg.h.value} ${dmg.l.type} Damage`;
   }
 
-  return (<>
+  return (<div className='weapon'>
     <WeaponName weapon={w} />
     {w.attackModes.map((a, ai) => <div key={`attack-mode-${ai}`}>
 
       {/* Tags Section */}
-      {getPerAttackModeTags(w, `attack-mode-${ai}-tags`, a)}
+      <div className='details-indent'>
+        {getPerAttackModeTags(w, `attack-mode-${ai}-tags`, a)}
 
-      <div key={`attack-mode-${ai}-damage`}>&nbsp;{makeAttackDamageText(a)}</div>
-      <WeaponSpecialNotes key={`attack-mode-${ai}-weapon-notes`} effects={a.effects} />
+        <div className={hasMultipleAttackModes(w) ? 'details-indent':''} key={`attack-mode-${ai}-damage`}>{makeAttackDamageText(a)}</div>
+        <WeaponSpecialNotes className={hasMultipleAttackModes(w) ? 'details-indent':''}key={`attack-mode-${ai}-weapon-notes`} effects={a.effects} />
+      </div>
 
     </div>)}
 
-  </>);
+  </div>);
 }

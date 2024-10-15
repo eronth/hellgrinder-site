@@ -15,6 +15,7 @@
   padding-left: 1em;
   padding-right: 1em;
   background-color: rgb(1, 26, 49);
+  padding: 1em;
 }
 
 .kit .tags {
@@ -27,4 +28,16 @@
   background-color: rgb(6, 58, 107);
   color: white;
   border-radius: 5px;
+}
+
+.kit .weapon .weapon-name {
+  text-decoration: underline;
+}
+
+.kit .details-indent {
+  margin-left: 1em;
+}
+
+.kit .tags {
+  margin-left: 1.5em;
 }

@@ -10,7 +10,8 @@ export default function Maneuvers() {
       <ColumnEntry title={{ hx: 'h4', text: 'Move' }}>
         <p>You gain a number of Movement Points equal to your Move Speed. You can spend these points to move a number of hexes equal to the points spent.</p>
         <p>Additionally, you can take any of the following actions as part of a move using your movement points.
-          In some cases, you must spend additional Movement Points and/or pass the associated Skill Check.</p>
+          In some cases, you must spend additional Movement Points and/or pass the associated Skill Check.
+        </p>
         <ul>
           <div className='col-handler'>
             <ColumnEntry title={{ text: 'Change Facing' }}>

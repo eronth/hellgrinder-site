@@ -20,12 +20,12 @@ export default function Combat() {
       <ColumnEntry title={{ hx: 'h3', text: 'Facing' }}>
         <p>
           On the grid, you have a facing.
-          <ul>
-            <li>Front Arc - The three hexes hex directly in front of you make your Front arc.</li>
-            <li>Peripheral Flank Arc - The two hexes to either side of your Front Arc are your Left and Right Peripheral Arcs.</li>
-            <li>Rear Flank Arc - The hex directly behind you is your Rear Arc.</li>
-          </ul>
         </p>
+        <ul>
+          <li>Front Arc - The three hexes hex directly in front of you make your Front arc.</li>
+          <li>Peripheral Flank Arc - The two hexes to either side of your Front Arc are your Left and Right Peripheral Arcs.</li>
+          <li>Rear Flank Arc - The hex directly behind you is your Rear Arc.</li>
+        </ul>
         <ul>
           <li>[Range Attacks] that pass through your [Peripheral Arc] and [Melee Attacks] that originate from your [Peripheral Arc] get +1 on Hit Checks and Damage against you.</li>
           <li>[Range Attacks] that pass through your [Rear Rear] and [Melee Attacks] that originate from your [Rear Arc] get +3 on Hit Checks and +1 to Damage against you.</li>

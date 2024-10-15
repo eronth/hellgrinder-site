@@ -1,5 +1,5 @@
-import type { KitType } from '../../../ts-types/types';
-import { deepCopyWeapon, pistol, knife } from './weapon/WeaponDetails.tsx';
+import type { KitType } from '../../ts-types/types.tsx';
+import { deepCopyWeapon, pistol, knife } from './weapons.tsx';
 
 const exObj: {
   cardMystic: KitType,

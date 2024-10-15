@@ -1,7 +1,7 @@
 import ColumnEntry from "../../common-design/ColumnEntry";
 import Kit from "./kits/Kit";
-import CombatKitDetails from "./kits/CombatKitDetails.tsx";
-import SupportKitDetails from "./kits/SupportKitDetails.tsx";
+import CombatKitDetails from "../../common-design/equipment/combat-kits.tsx";
+import SupportKitDetails from "../../common-design/equipment/support-kits.tsx";
 
 export default function CharacterCreation() {
   

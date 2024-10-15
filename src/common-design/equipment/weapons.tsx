@@ -1,4 +1,4 @@
-import { WeaponType } from '../../../../ts-types/types';
+import { WeaponType } from '../../ts-types/types';
 
 const pistol: WeaponType = {
   name: 'Pistol',

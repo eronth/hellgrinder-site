@@ -1,5 +1,5 @@
-import type { KitType } from '../../../ts-types/types';
-import { deepCopyWeapon, combatRifle, pistol, sword } from './weapon/WeaponDetails.tsx';
+import type { KitType } from '../../ts-types/types.tsx';
+import { deepCopyWeapon, combatRifle, pistol, sword } from './weapons.tsx';
 
 const exObj: {
   sniper: KitType,

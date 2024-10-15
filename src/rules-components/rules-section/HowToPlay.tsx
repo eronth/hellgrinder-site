@@ -7,6 +7,7 @@ export default function HowToPlay() {
 
   return (<>
 
+    <hr />
     <h2>How to Play</h2>
 
     <div className='col-handler'>
@@ -83,9 +84,12 @@ export default function HowToPlay() {
       </div>
     </div>
 
+    <hr />
     <RestAndRecover />
+    <hr />
     <Combat />
 
+    <hr />
     <ColumnEntry title={{ hx: 'h2', text: 'A Deal with the Devil' }}>
       <p>Occasionally, you are presented with a moment where you can make a deal (or deals) with the Devil. A powerful entity, one which does not seem to fully align with the demonic forces, can grant you a powerful boon, but it comes with a cost.</p>
       <DevilDealTable />

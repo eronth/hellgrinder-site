@@ -56,4 +56,10 @@ type TrainingType = {
   effects: string[];
 }
 
-export type { HeaderSizeType, KitType, WeaponType, AttackModeType, TrainingType, ItemType };
+type PerkType = {
+  name: string;
+  description: string;
+  cost: number;
+}
+
+export type { HeaderSizeType, KitType, WeaponType, AttackModeType, TrainingType, ItemType, PerkType };

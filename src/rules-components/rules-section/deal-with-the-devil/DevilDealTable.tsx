@@ -11,59 +11,59 @@ export default function DevilDealTable() {
       cost: "You are unable to gain or lose corruption, as the idea loses all meaning. You never fully connect with the denizens of your demonic army."
     }, {
       result: 2,
-      name: "The Devil's Due",
-      boon: "The Devil will take one of your items.",
-      cost: "1d6 Sanity"
+      name: "Knowledge of Beyond",
+      boon: "Gain +2 to all Skill Checks.",
+      cost: "Gain 2 Corruption. Gain -1 to all [Melee] Damage rolls."
     }, {
       result: 3,
-      name: "The Devil's Due",
-      boon: "The Devil will take one of your items.",
-      cost: "1d6 Sanity"
+      name: "Infernal Insight",
+      boon: "Gain the ability to see the weaknesses of enemies you face, granting +3 damage against all foes for the next three encounters.",
+      cost: "Gain 5 Corruption."
     }, {
       result: 4,
-      name: "The Devil's Due",
-      boon: "The Devil will take one of your items.",
-      cost: "1d6 Sanity"
+      name: "Voice of Damnation",
+      boon: "You can command the demonic minions of hell. As an action, you can select a demon minion and command them to fight for you.",
+      cost: "Gain 2 Corruption. Each minion you command gives you 1 corruption. If you complete a Rest or Recovery with a minion under your command, you gain 2^x corruption, where x is the number of minions you command."
     }, {
       result: 5,
-      name: "The Devil's Due",
-      boon: "The Devil will take one of your items.",
-      cost: "1d6 Sanity"
+      name: "",
+      boon: "",
+      cost: ""
     }, {
       result: 6,
-      name: "The Devil's Due",
-      boon: "The Devil will take one of your items.",
-      cost: "1d6 Sanity"
+      name: "Cult Mask",
+      boon: "Choose one demonic faction. You gain +2 to [Communicate] Skill Checks with that faction. Creatures of that faction get -1 to Hit Checks against you.",
+      cost: "Madness creeps ever closer. "
     }, {
       result: 7,
-      name: "The Devil's Due",
-      boon: "The Devil will take one of your items.",
-      cost: "1d6 Sanity"
+      name: "Unholy Lifeforce",
+      boon: "Gain any amount of health back, up to your max health. Remove any number of Injuries. You may transfer Injuries removed this way to another creature within [Long Range].",
+      cost: "Gain 1 Corruption per health point healed. Gain 5 corruption per Injury removed."
     }, {
       result: 8,
-      name: "The Devil's Due",
-      boon: "The Devil will take one of your items.",
-      cost: "1d6 Sanity"
+      name: "Unholy Pact",
+      boon: "Make a pact with a demon. Choose a damage type, and gain Absorb <type> 2.",
+      cost: "You gain Weak 3 of a type of the GM's choice. Gain 1 Corruption."
     }, {
       result: 9,
-      name: "The Devil's Due",
-      boon: "The Devil will take one of your items.",
-      cost: "1d6 Sanity"
+      name: "",
+      boon: "",
+      cost: ""
     }, {
       result: 10,
-      name: "The Devil's Due",
-      boon: "The Devil will take one of your items.",
-      cost: "1d6 Sanity"
+      name: "Cleanse Weakness",
+      boon: "Remove any conditions from yourself. Gain a perminant +1 to [Melee] Damage.",
+      cost: ""
     }, {
       result: 11,
-      name: "The Devil's Due",
-      boon: "The Devil will take one of your items.",
-      cost: "1d6 Sanity"
+      name: "Rite of the Phoenix Warped",
+      boon: "The next time you are incapacitated, you are prevented from dying. On your next turn, you erupt in a fiery explosion dealing 4 Infernal damage to all around you. You then resurrect, healing to max health and removing all Injuries from yourself.",
+      cost: "When you resurrect, gain 7 corruption."
     }, {
       result: 12,
-      name: "The Devil's Due",
-      boon: "The Devil will take one of your items.",
-      cost: "1d6 Sanity"
+      name: "Hellfire's Wrath",
+      boon: "",
+      cost: ""
     }
   ];
 

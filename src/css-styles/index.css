@@ -104,16 +104,23 @@ button:focus-visible {
   display: grid;
   text-align: center;
 }
+h1 {
+  font-size: 5em;
+}
 h2 {
+  font-size: 2.5em;
   display: grid;
   text-align: center;
 }
 h3 {
+  font-size: 1.75em;
   text-decoration: underline;
 }
 h4 {
+  font-size: 1.5em;
   font-style: italic;
   color: hsl(238, 100%, 87%);
+  margin-bottom: .5em;
 }
 .simple-header {
   font-weight: bold;

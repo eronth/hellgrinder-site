@@ -28,7 +28,7 @@ export default function Weapon({ weapon }: Props) {
       return `${dmg.l.value}/${dmg.m.value}/${dmg.h.value} ${dmg.l.type} Damage`;
     }
 
-    return `${dmg.l.value} ${dmg.l.type}/${dmg.m.value} ${dmg.l.type}/${dmg.h.value} ${dmg.l.type} Damage`;
+    return `${dmg.l.value} ${dmg.l.type}/${dmg.m.value} ${dmg.m.type}/${dmg.h.value} ${dmg.h.type} Damage`;
   }
 
   return (<div className='weapon'>

@@ -80,8 +80,13 @@
   color: hsl(0, 0%, 70%);
 }
 
+.kit .weapon .name,
 .kit .item .name,
 .kit .training .name {
   font-size: 1em;
   font-weight: bold;
+}
+
+.kit ul {
+  margin-block-start: 0;
 }

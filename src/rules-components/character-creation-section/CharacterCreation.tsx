@@ -42,14 +42,16 @@ export default function CharacterCreation() {
 
       <ColumnEntry title={{ hx: 'h4', text: 'Combat Kits' }}>
         <Kit kit={KitDetails.breachAndClear}></Kit>
-        <Kit kit={KitDetails.demonHunter}></Kit>
-        {/* <Kit kit={KitDetails.flamethrower}></Kit>
+        {/* <Kit kit={KitDetails.demonHunter}></Kit> */}
+        <Kit kit={KitDetails.flamethrower}></Kit>
         <Kit kit={KitDetails.grenadier}></Kit>
         <Kit kit={KitDetails.helltouched}></Kit>
         <Kit kit={KitDetails.perky}></Kit>
+
+        {/*
         <Kit kit={KitDetails.relicworker}></Kit>
-        <Kit kit={KitDetails.riot}></Kit>
         */}
+        <Kit kit={KitDetails.riot}></Kit>
         <Kit kit={KitDetails.sniper}></Kit>
         <Kit kit={KitDetails.soldier}></Kit> 
       </ColumnEntry>

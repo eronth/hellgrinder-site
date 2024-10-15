@@ -13,14 +13,37 @@ export default function Maneuvers() {
           In some cases, you must spend additional Movement Points and/or pass the associated Skill Check.</p>
         <ul>
           <div className='col-handler'>
-            <li>Leap - </li>
-            <li>Crawl - Move 1 hex while Prone. Costs 2 Movement Points</li>
-            <li>Stand Up - Swap from Prone to Standing. Costs 2 Movement Points.</li>
-            <li>Climb - Move 1 hex up a vertical surface. Costs 1 Movement Point. In some cases, a Skill Check may be needed to keep from falling off (such as if the surface is particularly smooth or slipery) or to avoid taking damage (such as when a surface is sharp or covered in thorny brambles).</li>
-            <li>Trudge - </li>
-            <li>Step - </li>
-            <li>Change Facing - Change what direction you're facing, to adjust your Front, Peripheral, and Rear Arcs. The first Change Facing you make on your turn is free, each after the first costs 1 Movement Point.</li>
-            <li>Dive - Move 1 hex and drop prone. On a Skill Check you can move 2 hexes and drop prone.</li>
+            <ColumnEntry title={{ text: 'Change Facing' }}>
+              <p>Change what direction you're facing, to adjust your Front, Peripheral, and Rear Arcs. The first Change Facing you make on your turn is free, each after the first costs 1 Movement Point.</p>
+            </ColumnEntry>
+
+            <ColumnEntry title={{ text: 'Climb' }}>
+              <p>Move 1 hex up a vertical surface. Costs 1 Movement Point. In some cases, a Skill Check may be needed to keep from falling off (such as if the surface is particularly smooth or slipery) or to avoid taking damage (such as when a surface is sharp or covered in thorny brambles).</p>
+            </ColumnEntry>
+
+            <ColumnEntry title={{ text: 'Crawl' }}>
+              <p>Move 1 hex while Prone. Costs 2 Movement Points.</p>
+            </ColumnEntry>
+
+            <ColumnEntry title={{ text: 'Dive' }}>
+              <p>Move 1 hex and drop prone. On a Skill Check you can move 2 hexes and drop prone.</p>
+            </ColumnEntry>
+
+            <ColumnEntry title={{ text: 'Leap' }}>
+              <p>Make an [Agility Skill Check]. You jump over one hex per success tier above Failure. On a Failure, you move one hex and fall prone.</p>
+            </ColumnEntry>
+
+            <ColumnEntry title={{ text: 'Stand Up' }}>
+              <p>Swap from Prone to Standing. Costs 3 Movement Points.</p>
+            </ColumnEntry>
+
+            <ColumnEntry title={{ text: 'Step' }}>
+              <p>Move 2 step without triggering opportunity attacks. Costs 5 Movement Points.</p>
+            </ColumnEntry>
+            
+            <ColumnEntry title={{ text: 'Trudge' }}>
+              <p></p>
+            </ColumnEntry>
           </div>
         </ul>
       </ColumnEntry>

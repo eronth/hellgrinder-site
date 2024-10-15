@@ -9,7 +9,9 @@ type DamageElementType = 'Metal' | 'Infernal' | 'Abyssal' | 'Verdant' | 'Chthoni
 
 type AttackCheckType = 'Shooting' | 'Melee' | 'Arcane' | 'Thrown';
 
-type SkillCheckType = 'Recovery' | 'Endurance' | 'Stealth' | 'Agility' | 'Observation';
+type SkillCheckType = 'Recovery' | 'Endurance' | 'Stealth' | 'Agility' | 'Observation' | 'Stoic';
+
+type StatusTypes = 'Burning' | 'Frozen' | 'Poisoned' | 'Stunned' | 'Prone' | 'Blinded' | 'Silenced' | 'Confused' | 'Charmed' | 'Frightened' | 'Enraged' | 'Invisible' | 'Incorporeal' | 'Insubstantial' | 'Incapacitated' | 'Restrained' | 'Grappled' | 'Paralyzed' | 'Petrified' | 'Unconscious' | 'Dead';
 
 type KitType = {
   name: string;

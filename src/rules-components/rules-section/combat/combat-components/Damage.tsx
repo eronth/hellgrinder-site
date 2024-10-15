@@ -1,4 +1,5 @@
 import ColumnEntry from "../../../../common-design/ColumnEntry";
+import InjuryTable from "./InjuryTable";
 
 export default function Damage() {
 
@@ -35,11 +36,15 @@ export default function Damage() {
         <ul>
           <li>Light Injury: -1 to all rolls or -2 to all rolls of a specific category. Light injuries can be recovered in downtime.</li>
           <li>Serious Injury: -2 to all rolls, or major penalties to specific skills/rolls/mobility. More difficult to recover, though can be reduced to a light injury of the same roll result.</li>
-          <li>Critical Wound: Almost impossible to recover without lucky rolls or the intervention of Heroic Medals. Maybe an extremely small chance to get a second serious injury instead of dying.</li>
+          <li>Critical Injury: Almost impossible to recover without lucky rolls or the intervention of Heroic Medals. Maybe an extremely small chance to get a second serious injury instead of dying.</li>
         </ul>
       </ColumnEntry>
 
-      [INSERT TABLE OF INJURIES]
     </div>
+
+    {/* Table Showing injuries */}
+    <ColumnEntry title={{ hx: 'h4', text: 'Table of Injuries' }}>
+      <InjuryTable />
+    </ColumnEntry>
   </>);
 }

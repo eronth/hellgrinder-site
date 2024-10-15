@@ -127,3 +127,18 @@ ul {
 ol.roman {
   list-style-type: upper-roman;
 }
+
+.injuries-table {
+  width: 100%;
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+.injuries-table th {
+  background-color: #646cff;
+  color: white;
+  padding: 0.5em;
+}
+.injuries-table td {
+  border: 1px solid white;
+  padding: 0.25em;
+}

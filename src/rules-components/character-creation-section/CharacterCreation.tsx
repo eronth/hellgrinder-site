@@ -1,7 +1,7 @@
 import ColumnEntry from "../../common-design/ColumnEntry";
 import Kit from "./kits/Kit";
-import * as CombatKitDetails from "./kits/CombatKitDetails.tsx";
-import * as SupportKitDetails from "./kits/SupportKitDetails.tsx";
+import CombatKitDetails from "./kits/CombatKitDetails.tsx";
+import SupportKitDetails from "./kits/SupportKitDetails.tsx";
 
 export default function CharacterCreation() {
   
@@ -61,6 +61,7 @@ export default function CharacterCreation() {
 
       <ColumnEntry title={{ hx: 'h4', text: 'Support Kits' }}>
         <div className='col-handler'>
+          <Kit kit={SupportKitDetails.cardMystic}></Kit>
           <Kit kit={SupportKitDetails.grenadeStash}></Kit>
           <Kit kit={SupportKitDetails.medic}></Kit>
           <Kit kit={SupportKitDetails.recon}></Kit>

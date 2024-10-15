@@ -1,8 +1,75 @@
 import InjuryTableRow from "./InjuryTableRow";
+import { InjuryRow } from "../../../../ts-types/table-types";
 
 export default function InjuryTable() {
+  const rowData: InjuryRow[] = [
+    {
+      result: { min: 1, max: 2 },
+      injury: {
+        light: { name: 'Broken Foot', description: '-2 to [Agility Skill Checks].' },
+        serious: { name: 'Shattered Leg', description: '-2 Move Speed.' },
+        critical: { name: 'Bruised: -2 to all rolls', description: 'Bruised: -2 to all rolls' }
+      }
+    }, {
+      result: { min: 3, max: 4 },
+      injury: {
+        light: { name: 'Concussion', description: '-2 to all rolls' },
+        serious: { name: 'Concussion', description: '-2 to all rolls' },
+        critical: { name: 'Concussion', description: '-2 to all rolls' }
+      }
+    }, {
+      result: { min: 5, max: 6 },
+      injury: {
+        light: { name: 'Deep Gash', description: '-2 to all rolls' },
+        serious: { name: 'Deep Gash', description: '-2 to all rolls' },
+        critical: { name: 'Deep Gash', description: '-2 to all rolls' }
+      }
+    }, {
+      result: { min: 7, max: 8 },
+      injury: {
+        light: { name: 'Internal Bleeding', description: '-2 to all rolls' },
+        serious: { name: 'Internal Bleeding', description: '-2 to all rolls' },
+        critical: { name: 'Internal Bleeding', description: '-2 to all rolls' }
+      }
+    }, {
+      result: { min: 9, max: 10 },
+      injury: {
+        light: { name: 'Broken Ribs', description: '-2 to all rolls' },
+        serious: { name: 'Punctured Lung', description: '-2 to all rolls' },
+        critical: { name: 'Punctured Lung', description: '-2 to all rolls' }
+      }
+    }, {
+      result: { min: 11, max: 12 },
+      injury: {
+        light: { name: 'Broken Arm', description: '-2 to all rolls' },
+        serious: { name: 'Broken Arm', description: '-2 to all rolls' },
+        critical: { name: 'Broken Arm', description: '-2 to all rolls' }
+      }
+    }, {
+      result: { min: 13, max: 14 },
+      injury: {
+        light: { name: 'Broken Hand', description: '-2 to all rolls' },
+        serious: { name: 'Broken Hand', description: '-2 to all rolls' },
+        critical: { name: 'Broken Hand', description: '-2 to all rolls' }
+      }
+    }, {
+      result: { min: 15, max: 16 },
+      injury: {
+        light: { name: 'Broken Jaw', description: '-2 to all rolls' },
+        serious: { name: 'Broken Jaw', description: '-2 to all rolls' },
+        critical: { name: 'Broken Jaw', description: '-2 to all rolls' }
+      }
+    }, {
+      result: { min: 17, max: 18 },
+      injury: {
+        light: { name: 'Broken Nose', description: '-2 to all rolls' },
+        serious: { name: 'Broken Nose', description: '-2 to all rolls' },
+        critical: { name: 'Broken Nose', description: '-2 to all rolls' }
+      }
+    }
+  ];
 
-  return (<>
+  return (
   <table className="injuries-table">
     <thead>
       <tr>
@@ -13,56 +80,10 @@ export default function InjuryTable() {
       </tr>
     </thead>
     <tbody>
-      <InjuryTableRow />
-      <tr>
-        <td>3-4</td>
-        <td colSpan={3}>Concussion: -2 to all rolls</td>
-        <td colSpan={3}>Concussion: -2 to all rolls</td>
-        <td colSpan={3}>Concussion: -2 to all rolls</td>
-      </tr>
-      <tr>
-        <td>5-6</td>
-        <td colSpan={3}>Deep Gash: -2 to all rolls</td>
-        <td colSpan={3}>Deep Gash: -2 to all rolls</td>
-        <td colSpan={3}>Deep Gash: -2 to all rolls</td>
-      </tr>
-      <tr>
-        <td>7-8</td>
-        <td colSpan={3}>Internal Bleeding: -2 to all rolls</td>
-        <td colSpan={3}>Internal Bleeding: -2 to all rolls</td>
-        <td colSpan={3}>Internal Bleeding: -2 to all rolls</td>
-      </tr>
-      <tr>
-        <td>9-10</td>
-        <td colSpan={3}>Fractured Skull: -2 to all rolls</td>
-        <td colSpan={3}>Fractured Skull: -2 to all rolls</td>
-        <td colSpan={3}>Fractured Skull: -2 to all rolls</td>
-      </tr>
-      <tr>
-        <td>11-12</td>
-        <td colSpan={3}>Severed Limb: -2 to all rolls</td>
-        <td colSpan={3}>Severed Limb: -2 to all rolls</td>
-        <td colSpan={3}>Severed Limb: -2 to all rolls</td>
-      </tr>
-      <tr>
-        <td>13-14</td>
-        <td colSpan={3}>Internal Organ Damage: -2 to all rolls</td>
-        <td colSpan={3}>Internal Organ Damage: -2 to all rolls</td>
-        <td colSpan={3}>Internal Organ Damage: -2 to all rolls</td>
-      </tr>
-      <tr>
-        <td>15-16</td>
-        <td colSpan={3}>Blinded: -2 to all rolls</td>
-        <td colSpan={3}>Blinded: -2 to all rolls</td>
-        <td colSpan={3}>Blinded: -2 to all rolls</td>
-      </tr>
-      <tr>
-        <td>17-18</td>
-        <td colSpan={3}>Deafened: -2 to all rolls</td>
-        <td colSpan={3}>Deafened: -2 to all rolls</td>
-        <td colSpan={3}>Deafened: -2 to all rolls</td>
-      </tr>
+      {
+        rowData.map((row, i) => 
+          <InjuryTableRow key={`injury-table-row-${i}`} data={row} />)
+      }
     </tbody>
-  </table>
-  </>);
+  </table>);
 }

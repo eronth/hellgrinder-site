@@ -128,17 +128,23 @@ ol.roman {
   list-style-type: upper-roman;
 }
 
+.devil-deal-table,
 .injuries-table {
   width: 100%;
   border: 1px solid white;
   border-collapse: collapse;
 }
+.devil-deal-table th,
 .injuries-table th {
-  background-color: #646cff;
+  background-color: #1e2157;
   color: white;
   padding: 0.5em;
 }
+.devil-deal-table td,
 .injuries-table td {
   border: 1px solid white;
   padding: 0.25em;
+}
+td.center-num {
+  text-align: center;
 }

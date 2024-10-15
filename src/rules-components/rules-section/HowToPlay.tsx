@@ -1,6 +1,7 @@
 import ColumnEntry from "../../common-design/ColumnEntry";
 import RestAndRecover from "./rest-and-recover/RestAndRecover";
 import Combat from "./combat/Combat";
+import DevilDealTable from "./deal-with-the-devil/DevilDealTable";
 
 export default function HowToPlay() {
 
@@ -54,7 +55,7 @@ export default function HowToPlay() {
 
     <ColumnEntry title={{ hx: 'h2', text: 'A Deal with the Devil' }}>
       <p>Occasionally, you are presented with a moment where you can make a deal (or deals) with the Devil. A powerful entity, one which does not seem to fully align with the demonic forces, can grant you a powerful boon, but it comes with a cost.</p>
-      <p>[INSERT TABLE HERE]</p>
+      <DevilDealTable />
     </ColumnEntry>
 
   </>);

@@ -11,16 +11,38 @@
   margin-top: .5em;
 }
 
+.kit .benefits-label {
+  font-weight: bold;
+  margin-top: .5em;
+}
+
 .kit .benefits {
   padding-left: 1em;
   padding-right: 1em;
-  background-color: rgb(1, 26, 49);
-  padding: 1em;
+  padding: .25em;
+}
+
+.kit .weapon,
+.kit .item,
+.kit .training {
+  margin-bottom: .5em;
+  padding: .5em;
+  border-radius: 5px;
+}
+.kit .weapon {
+  background-color: hsl(27, 91%, 17%);
+}
+.kit .item {
+  background-color: hsl(162, 90%, 11%);
+}
+.kit .training {
+  background-color: hsl(209, 89%, 22%);
 }
 
 .kit .tags {
   font-size: .8em;
 }
+
 .kit .tags .tag {
   display: inline-block;
   margin: .1em;
@@ -29,6 +51,16 @@
   color: white;
   border-radius: 5px;
 }
+.kit .weapon .tag {
+  background-color: hsl(27, 91%, 27%);
+}
+.kit .item .tag {
+  background-color: hsl(162, 90%, 21%);
+}
+.kit .training .tag {
+  background-color: hsl(209, 89%, 32%);
+}
+
 
 .kit .weapon .weapon-name {
   text-decoration: underline;
@@ -40,4 +72,16 @@
 
 .kit .tags {
   margin-left: 1.5em;
+}
+
+.kit .description {
+  font-style: italic;
+  font-size: .9em;
+  color: hsl(0, 0%, 70%);
+}
+
+.kit .item .name,
+.kit .training .name {
+  font-size: 1em;
+  font-weight: bold;
 }

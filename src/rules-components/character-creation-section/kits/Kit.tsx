@@ -1,5 +1,8 @@
 import type { KitType } from '../../../ts-types/types';
 import Weapon from './weapon/Weapon';
+import Item from './item/Item';
+import Training from './training/Training';
+
 type Props = {
   kit: KitType;
 };
@@ -13,11 +16,20 @@ export default function Kit({ kit }: Props) {
     <div className='benefits-label'>Kit Benefits:</div>
     <div className="benefits">
 
-      {kit.weapons.map((w, wi) => <div className="weapon" key={`kit-${kit.name}-weapon-${wi}`}>
-
+      {/* List the weapons */}
+      {kit.weapons.map((w, wi) => 
         <Weapon weapon={w} key={`kit-${kit.name}-weapon-${wi}`} />
+      )}
 
-      </div>)}
+      {/* List the additional items */}
+      {kit.items.map((i, ii) => 
+        <Item item={i} key={`kit-${kit.name}-item-${ii}`} />
+      )}
+      
+      {/* List the trainings */}
+      {kit.trainings.map((t, ti) => 
+        <Training training={t} key={`kit-${kit.name}-training-${ti}`} />
+      )}
 
     </div>
 

@@ -3,14 +3,19 @@ type HeaderSizeType =
   | '1' | '2' | '3' | '4' | '5' | '6'
   | 1 | 2 | 3 | 4 | 5 | 6;
 
+type DamageElementType = 'Metal' | 'Infernal' | 'Abyssal' | 'Verdant' | 'Chthonic' | 'Nethercurrent' | 'Voidyr'
+
+type AttackCheckType = 'Shooting' | 'Melee' | 'Arcane' | 'Thrown';
+
+type SkillCheckType = 'Recovery' | 'Endurance' | 'Stealth' | 'Agility';
+
 type KitType = {
   name: string;
   description: string;
   weapons: WeaponType[];
   items: ItemType[];
-  trainings: KitTrainingType[];
+  trainings: TrainingType[];
 }
-
 
 type WeaponType = {
   name: string;
@@ -31,7 +36,7 @@ type AttackModeType = {
 
 type DamageType = {
   value: number,
-  type: string,
+  type: DamageElementType,
 }
 
 type ItemType = {
@@ -41,9 +46,10 @@ type ItemType = {
   effects: string[];
 }
 
-type KitTrainingType = {
+type TrainingType = {
   name: string;
-  effect: string[];
+  tags: string[];
+  effects: string[];
 }
 
-export type { HeaderSizeType, KitType, WeaponType, AttackModeType };
+export type { HeaderSizeType, KitType, WeaponType, AttackModeType, TrainingType, ItemType };

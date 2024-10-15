@@ -20,17 +20,18 @@ const sniper: KitType = {
     name: 'Ghillie Suit',
     tags: ['Stealth'],
     description: 'A suit that helps you blend in with your surroundings.',
-    effects: ['+1 to Stealth checks'],
+    effects: ['Gain +1 to Stealth checks'],
   },
   {
     name:'"Sniping Scope',
-    tags: [],
+    tags: ['Gadget'],
     description: 'A scope that helps you see further and more clearly.',
-    effects: [''],
+    effects: ['Gain'],
   }],
   trainings: [{
     name: 'Long Range Training',
-    effect: ['+2 to Hit Checks for [Long Range] attacks'],
+    tags: ['Attack'],
+    effects: ['Gain +2 to [Long Range] Hit Checks.'],
   }],
 };
 
@@ -137,72 +138,45 @@ const breachAndClear: KitType = {
   }],
   trainings: [{
     name: 'Long Range Training',
-    effect: ['+2 to Hit Checks for [Long Range] attacks'],
+    tags: [],
+    effects: ['+2 to Hit Checks for [Long Range] attacks'],
   }],
 };
 
 const soldier: KitType = {
-  name: 'Sniper5',
-  description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",
+  name: 'Soldier',
+  description: "",
   weapons: [{
-    name: 'Sniper Rifle',
+    name: 'Combat Rifle',
+    tags: ['Two-Handed'],
     attackModes: [{
-      tags: ['Single Shot', 'Long Range', 'Shooting Attack'],
+      tags: ['Medium Range', 'Shooting Attack'],
       damage: {
-        l: { value: 2, type: 'Metal' },
-        m: { value: 9, type: 'Metal' },
-        h: { value: 3, type: 'Metal' },
+        l: { value: 3, type: 'Metal' },
+        m: { value: 6, type: 'Metal' },
+        h: { value: 9, type: 'Metal' },
       },
     }],
   }],
-  items: [{
-    name: 'Ghillie Suit',
-    tags: ['Stealth'],
-    description: 'A suit that helps you blend in with your surroundings.',
-    effects: ['+1 to Stealth checks'],
+  items: [],
+  trainings: [{
+    name: 'Rounded',
+    tags: [],
+    effects: ['Choose an additional Support Kit.', 'Start with 1 additional Perk Point.'],
   },
   {
-    name:'"Sniping Scope',
+    name: 'Move! Move!',
     tags: [],
-    description: 'A scope that helps you see further and more clearly.',
-    effects: [''],
-  }],
-  trainings: [{
-    name: 'Long Range Training',
-    effect: ['+2 to Hit Checks for [Long Range] attacks'],
+    effects: ['Gain +1 Move Speed.']
   }],
 };
 
 const demonHunter: KitType = {
-  name: 'Sniper6',
-  description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",
-  weapons: [{
-    name: 'Sniper Rifle',
-    attackModes: [{
-      tags: ['Single Shot', 'Long Range', 'Shooting Attack'],
-      damage: {
-        l: { value: 2, type: 'Metal' },
-        m: { value: 9, type: 'Metal' },
-        h: { value: 3, type: 'Metal' },
-      },
-    }],
-  }],
-  items: [{
-    name: 'Ghillie Suit',
-    tags: ['Stealth'],
-    description: 'A suit that helps you blend in with your surroundings.',
-    effects: ['+1 to Stealth checks'],
-  },
-  {
-    name:'"Sniping Scope',
-    tags: [],
-    description: 'A scope that helps you see further and more clearly.',
-    effects: [''],
-  }],
-  trainings: [{
-    name: 'Long Range Training',
-    effect: ['+2 to Hit Checks for [Long Range] attacks'],
-  }],
+  name: 'Demon Hunter',
+  description: "",
+  weapons: [],
+  items: [],
+  trainings: [],
 };
 
 const perky: KitType = {

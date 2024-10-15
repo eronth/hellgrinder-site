@@ -4,6 +4,8 @@ type HeaderSizeType =
   | 1 | 2 | 3 | 4 | 5 | 6;
 
 type DamageElementType = 'Metal' | 'Infernal' | 'Abyssal' | 'Verdant' | 'Chthonic' | 'Nethercurrent' | 'Voidyr' | 'Chosen Type';
+// Overcoming: Metal > Wood > Earth > Water > Fire > Metal
+// Generating: Metal > Water > Wood > Fire > Earth > Metal
 
 type AttackCheckType = 'Shooting' | 'Melee' | 'Arcane' | 'Thrown';
 

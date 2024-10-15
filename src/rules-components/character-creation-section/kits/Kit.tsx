@@ -4,18 +4,22 @@ import Item from './item/Item';
 import Training from './training/Training';
 
 type Props = {
+  needsCols?: boolean;
   kit: KitType;
 };
 
-export default function Kit({ kit }: Props) {
-
+export default function Kit({ needsCols, kit }: Props) {
   
-  return (<div className='kit'>
-    <div className='name'>{kit.name}</div>
-    <div className='description'>{kit.description}</div>
-    <div className='benefits-label'>Kit Benefits:</div>
-    <div className="benefits">
+  function getKitBenefitsLayedOut() {
+    if (needsCols) {
+      return (<div className='col-handler'>{getKitBenefitPieces()}</div>);
+    } else {
+      return (<>{getKitBenefitPieces()}</>);
+    }
+  }
 
+  function getKitBenefitPieces() {
+    return (<>
       {/* List the weapons */}
       {kit.weapons.map((w, wi) => 
         <Weapon weapon={w} key={`kit-${kit.name}-weapon-${wi}`} />
@@ -30,7 +34,18 @@ export default function Kit({ kit }: Props) {
       {kit.trainings.map((t, ti) => 
         <Training training={t} key={`kit-${kit.name}-training-${ti}`} />
       )}
+    </>);
+  }
 
+  
+  return (<div className='kit'>
+    <div className='name'>{kit.name}</div>
+    
+    <div className='description'>{kit.description}</div>
+
+    <div className='benefits-label'>Kit Benefits:</div>
+    <div className="benefits">
+      {getKitBenefitsLayedOut()}
     </div>
 
   </div>);

@@ -1,6 +1,7 @@
 import ColumnEntry from "../../common-design/ColumnEntry";
 import Kit from "./kits/Kit";
-import * as KitDetails from "./kits/KitDetails.tsx";
+import * as CombatKitDetails from "./kits/CombatKitDetails.tsx";
+import * as SupportKitDetails from "./kits/SupportKitDetails.tsx";
 
 export default function CharacterCreation() {
   
@@ -35,31 +36,39 @@ export default function CharacterCreation() {
           <li>???</li>
         </ul>
       </ColumnEntry>
+    </div>
 
       <ColumnEntry title={{ hx: 'h3', text: 'Tatical Kit' }}>
         <p>Your tactical kit choices determine the starting skills and equipment your character has. To start, choose one Combat Kit and one Support Kit for your character to use.</p>
       </ColumnEntry>
 
       <ColumnEntry title={{ hx: 'h4', text: 'Combat Kits' }}>
-        <Kit kit={KitDetails.breachAndClear}></Kit>
-        {/* <Kit kit={KitDetails.demonHunter}></Kit> */}
-        <Kit kit={KitDetails.flamethrower}></Kit>
-        <Kit kit={KitDetails.grenadier}></Kit>
-        <Kit kit={KitDetails.helltouched}></Kit>
-        <Kit kit={KitDetails.perky}></Kit>
-
-        {/*
-        <Kit kit={KitDetails.relicworker}></Kit>
-        */}
-        <Kit kit={KitDetails.riot}></Kit>
-        <Kit kit={KitDetails.sniper}></Kit>
-        <Kit kit={KitDetails.soldier}></Kit> 
+        <div className='col-handler'>
+          <Kit kit={CombatKitDetails.breachAndClear}></Kit>
+          <Kit kit={CombatKitDetails.demonHunter}></Kit>
+          <Kit kit={CombatKitDetails.flamethrower}></Kit>
+          <Kit kit={CombatKitDetails.grenadier}></Kit>
+          <Kit kit={CombatKitDetails.helltouched}></Kit>
+          <Kit kit={CombatKitDetails.perky}></Kit>
+          <Kit kit={CombatKitDetails.prototype}></Kit>
+          <Kit kit={CombatKitDetails.riot}></Kit>
+          <Kit kit={CombatKitDetails.sniper}></Kit>
+          <Kit kit={CombatKitDetails.soldier}></Kit>
+          <Kit kit={CombatKitDetails.warrior}></Kit>
+        </div>
+        <Kit needsCols={true} kit={CombatKitDetails.relicworker}></Kit>
       </ColumnEntry>
 
       <ColumnEntry title={{ hx: 'h4', text: 'Support Kits' }}>
-      <p></p>
+        <div className='col-handler'>
+          <Kit kit={SupportKitDetails.grenadeStash}></Kit>
+          <Kit kit={SupportKitDetails.medic}></Kit>
+          <Kit kit={SupportKitDetails.recon}></Kit>
+          <Kit kit={SupportKitDetails.shadowOp}></Kit>
+          <Kit kit={SupportKitDetails.sigilBearer}></Kit>
+        </div>
       </ColumnEntry>
-    </div>
+    
 
   </>);
 }

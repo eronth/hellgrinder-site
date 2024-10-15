@@ -22,10 +22,11 @@ export default function Damage() {
     </ol>
   </ColumnEntry>
 
-  <ColumnEntry title={{ hx: 'h4', text: 'Weakness and Resistance' }}>
-    <p>Many creatures have Weakness or Resistance to damage types, and some Kits, Perks, or other gear might grant player characters Weakness or Resistance as well. These effects change how much damage you take from attack, and are often shorthanded.</p>
+  <ColumnEntry title={{ hx: 'h4', text: 'Weakness, Resistance, and Absorbance' }}>
+    <p>Many creatures have Weakness, Resistance, or Absorbance to damage types, and some Kits, Perks, or other gear might grant player characters Weakness or Resistance as well. These effects change how much damage you take from attack, and are often shorthanded.</p>
     <p>Weakness {"<type>"} X - Shorthand: “Weak {"<type>"} X” - Increase damage taken of the listed type by X.</p>
     <p>Resistance {"<type>"} X - Shorthand “Resist {"<type>"} X” - Reduce damage taken of the listed type by X.</p>
+    <p>Absorbance {"<type>"} X - Shorthand “Absorb {"<type>"} X” - Reduce damage take by listed type by X and gain health equal to the damage reduced.</p>
   </ColumnEntry>
   
   <ColumnEntry title={{ hx: 'h4', text: 'Injuries' }}>

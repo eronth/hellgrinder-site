@@ -16,7 +16,7 @@ export default function Weapon({ weapon }: Props) {
 
   function getPerAttackModeTags(weapon: WeaponType, key: string, attackMode: AttackModeType) {
     if (hasMultipleAttackModes(weapon)) {
-      return <span><span>{attackMode.name}</span><Tags key={key} tags={attackMode.tags} /></span>;
+      return <span><span className="name">{attackMode.name}</span><Tags key={key} tags={attackMode.tags} /></span>;
     } else {
       return null;
     }

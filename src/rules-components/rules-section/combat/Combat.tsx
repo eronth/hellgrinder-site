@@ -9,7 +9,6 @@ export default function Combat() {
   return (<>
     <h2>Combat</h2>
     
-    <div className='col-handler'>
       <p>Combat takes place on a hex-based grid. You can perform one maneuver and one action per turn. Some actions are available to all characters, regardless of kit.</p>
 
       <ColumnEntry title={{ hx: 'h3', text: 'Turn Order/Initiative' }}>
@@ -19,10 +18,17 @@ export default function Combat() {
       </ColumnEntry>
 
       <ColumnEntry title={{ hx: 'h3', text: 'Facing' }}>
-        <p>On the grid, you have a facing. The three hexes in front of you are your front arc, the 2 to your sides (that aren’t part of the front arc) are your flank arcs, and behind you is your rear arc.</p>
+        <p>
+          On the grid, you have a facing.
+          <ul>
+            <li>Front Arc - The three hexes hex directly in front of you make your Front arc.</li>
+            <li>Peripheral Flank Arc - The two hexes to either side of your Front Arc are your Left and Right Peripheral Arcs.</li>
+            <li>Rear Flank Arc - The hex directly behind you is your Rear Arc.</li>
+          </ul>
+        </p>
         <ul>
-          <li>Range Attacks that pass through your flank and Melee Attacks that originate from your flank get +1 to hit and damage against you.</li>
-          <li>Attacks that pass through your rear and Melee Attacks that originate from your rear get +3 to hit and +1 to damage against you.</li>
+          <li>[Range Attacks] that pass through your [Peripheral Arc] and [Melee Attacks] that originate from your [Peripheral Arc] get +1 on Hit Checks and Damage against you.</li>
+          <li>[Range Attacks] that pass through your [Rear Rear] and [Melee Attacks] that originate from your [Rear Arc] get +3 on Hit Checks and +1 to Damage against you.</li>
         </ul>
         <p>Actions with the [Adjust Position] tag allow you to change facing.</p>
       </ColumnEntry>
@@ -39,7 +45,6 @@ export default function Combat() {
       <ColumnEntry title={{ hx: 'h3', text: 'Status Effects' }}>
         <p>Slowed X - Reduce move speed by X. Can't reduce below 1.</p>
       </ColumnEntry>
-    </div>
 
   </>);
 }

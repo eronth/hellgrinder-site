@@ -89,7 +89,7 @@ const shadowOp: KitType = {
   }, {
     name: 'Assassin',
     tags: ['Attack'],
-    effects: ['Rear flank attacks made with your Knife get and +5 to damage.'], 
+    effects: ['Rear Arc attacks made with your Knife get and +5 to damage.'], 
   }],
 };
 

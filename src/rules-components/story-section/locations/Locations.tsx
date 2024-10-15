@@ -20,14 +20,16 @@ export default function OtherFactions() {
       <p>{Tools.getLoremIpsum()}</p>
     </ColumnEntry>
 
-    {/* Various individual realms */}
-    <DeepblindCaverns hx={factionHxLevel} />
-    <GhastcursedVillages hx={factionHxLevel} />
-    <InfernalLocation hx={factionHxLevel} />
-    <ShoalpockedExpanse hx={factionHxLevel} />
-    <TwistedWilds hx={factionHxLevel} />
-    <ZephyrianSpires hx={factionHxLevel} />
-    <WarpwindingPathways hx={factionHxLevel} />
+    <div className='col-handler'>
+      {/* Various individual realms */}
+      <DeepblindCaverns hx={factionHxLevel} />
+      <GhastcursedVillages hx={factionHxLevel} />
+      <InfernalLocation hx={factionHxLevel} />
+      <ShoalpockedExpanse hx={factionHxLevel} />
+      <TwistedWilds hx={factionHxLevel} />
+      <ZephyrianSpires hx={factionHxLevel} />
+      <WarpwindingPathways hx={factionHxLevel} />
+    </div>
 
   </>);
 }

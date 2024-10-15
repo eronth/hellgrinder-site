@@ -95,9 +95,9 @@ button:focus-visible {
   }
 }
 
-/* .col-handler p {
-  max-width: 33%;
-} */
+.rules {
+  margin: 10em 3em;
+}
 
 
 .main-title {

@@ -4,7 +4,7 @@ import CharacterCreation from "./rules-components/character-creation-section/Cha
 
 export default function Rules() {
   return (
-    <div>
+    <div className="rules">
       <div className="main-title">
         <h1>Hellgrinder</h1>
       </div>

@@ -17,12 +17,14 @@ export default function OtherFactions() {
       <p>{Tools.getLoremIpsum()}</p>
     </ColumnEntry>
 
-    {/* Individual Factions */}
-    <ForgefiendSyndicate hx={factionHxLevel} />
-    <HandOfDeath hx={factionHxLevel} />
-    <HeavensHost hx={factionHxLevel} />
-    <VoidfireConclave hx={factionHxLevel} />
-    <WitchCovens hx={factionHxLevel} />
+    <div className='col-handler'>
+      {/* Individual Factions */}
+      <ForgefiendSyndicate hx={factionHxLevel} />
+      <HandOfDeath hx={factionHxLevel} />
+      <HeavensHost hx={factionHxLevel} />
+      <VoidfireConclave hx={factionHxLevel} />
+      <WitchCovens hx={factionHxLevel} />
+    </div>
 
   </>);
 }

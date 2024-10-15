@@ -20,14 +20,12 @@ function Story() {
         title={{ hx: 'h3', text: 'The War on Hell' }}>
         <p>{Tools.getLoremIpsum()}</p>
       </ColumnEntry>
-      
-      <br />
-
-      <DemonClans />
-      <OtherFactions />
-
-      <Locations />
     </div>
+    
+    <DemonClans />
+    <OtherFactions />
+    <Locations />
+
   </>);
 }
 

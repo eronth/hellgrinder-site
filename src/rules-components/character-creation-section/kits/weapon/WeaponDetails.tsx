@@ -10,7 +10,7 @@ const pistol: WeaponType = {
       m: { value: 6, type: 'Metal' },
       h: { value: 9, type: 'Metal' },
     },
-    effects: ['You can make an attack with this weapon targeting an enemy in your flank arc with a -3 penalty to the Hit Check.'],
+    effects: ['You can make an attack with this weapon targeting an enemy in your [Peripheral Arc] with a -3 penalty to the Hit Check.'],
   }],
 };
 

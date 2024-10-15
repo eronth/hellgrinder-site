@@ -14,14 +14,15 @@ export default function DemonClans() {
       title={{ hx: 'h3', text: 'Demon Clans' }}>
       <p>The infernal depths of Hell teem with countless demon clans, but seven (six?) stand above all others in power and influence. These formidable factions, each aligned with a primordial force, have shaped the very essence of the underworld. Known collectively as the Sovereign Sextet, these clans vie for supremacy in an eternal power struggle that has begun to spill into the mortal realm.</p>
     </ColumnEntry>
-
-    {/* Individual Clans */}
-    <AshbornLegion hx={factionHxLevel} />
-    <StoneveinedOrder hx={factionHxLevel} />
-    <StormwingHorde hx={factionHxLevel} />
-    <ThornwraithConclave hx={factionHxLevel} />
-    <UmbralNexus hx={factionHxLevel} />
-    <VastfathomDominion hx={factionHxLevel} />
     
+    <div className='col-handler'>
+      {/* Individual Clans */}
+      <AshbornLegion hx={factionHxLevel} />
+      <StoneveinedOrder hx={factionHxLevel} />
+      <StormwingHorde hx={factionHxLevel} />
+      <ThornwraithConclave hx={factionHxLevel} />
+      <UmbralNexus hx={factionHxLevel} />
+      <VastfathomDominion hx={factionHxLevel} />
+    </div>
   </>);
 }

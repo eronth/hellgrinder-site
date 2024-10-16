@@ -47,9 +47,9 @@ export default function GameTitle() {
   }
 
   const titlesDesigns: JSX.Element[] = [
-    // title('lancelot', {pre: 'The Tales of', above: true}, null),
+    title('lancelot', {pre: 'The Tales of', above: true}, null),
+    //title('lancelot', {pre:'A'}, {post:'Story'}, "Hellgrinder's"),
     // title('eagle-lake', {pre: 'The', over: true}, {post:'Saga', below: true}),
-    // title('lancelot', {pre:'A'}, {post:'Story'}, "Hellgrinder's"),
     // title('girassol', {pre:'The'}, {post:'Chronicles'}),
     // title('rye'),
     // title('cutive-mono-regular', null, {post: 'Files.'}, ),
@@ -85,8 +85,15 @@ export default function GameTitle() {
     //     + 'thou shalt, henceforth and in kind, '
     //     + 'grind hell beneath thine own heel.', below: true},
     //   'Hellgrinder'),
-    //title('federant-regular', {pre: 'To'}, {post: 'and Back'}),
-    title('gideon-roman-regular', {pre: 'The Depths of'}),
+    // title('federant-regular', {pre: 'To'}, {post: 'and Back'}),
+    // title('gideon-roman-regular', {pre: 'The Depths of'}),
+    // title('anton-sc-regular', null, null, 'HellgrindeR'),
+    // title('almendra-display-regular', {pre: 'Musings on'}),
+    // title('chonburi-regular', null, null, 'Hellgrinder.'),
+    // title('almendra-sc-regular', {pre: 'A Companion Guide on how to survive your dive into', above: true}, null, 'The Hellgrinder'),
+    // title('bebas-neue-regular', null, null, 'Hellgrinder'),
+    // title('merriweather-light', {pre: 'How to'}, null, 'Grind your Hell'),
+
   ];
 
   return (<span className='title-region'>{getRandElement(titlesDesigns)}</span>);

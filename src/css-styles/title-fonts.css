@@ -1,11 +1,360 @@
 
-
+h1 {
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+}
 .lancelot {
   font-family: "Lancelot", serif;
 }
+.lancelot .before-title {
+  font-size: .6em;
+  margin-right: 5em;
+  margin-bottom: -.25em;
+}
+.lancelot .title {
+  font-size: 1.1em;
+}
 
-/*Noto Serif Oriya, Kalina Glaze, Amiri Quran, Merriweather, 
-Lancelot, Castoro Titling, Diplomata, Federant, Gideon Roman, 
-Bebas Neue, Anton,
-Almendra Display
-Elsie Swash Caps*/
+.girassol {
+  font-family: "Girassol", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.eagle-lake {
+  font-family: "Eagle Lake", serif;
+}
+.eagle-lake .before-title {
+  font-size: .5em;
+  margin-right: 11em;
+}
+.eagle-lake .after-title {
+  font-size: .5em;
+  margin-left: 11em;
+}
+
+.rye {
+  font-family: "Rye", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.cutive-mono-regular {
+  font-family: "Cutive Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+h1.cutive-mono-regular {
+  margin-top: 4.5em;
+  margin-bottom: 6em;
+}
+.goblin-one-regular {
+  font-family: "Goblin One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.goblin-one-regular .before-title {
+  font-size: .7em;
+  margin-right: 6em;
+}
+
+.noto-serif-oriya-100 {
+  font-family: "Noto Serif Oriya", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.emilys-candy-regular {
+  font-family: "Emilys Candy", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.life-savers-regular {
+  font-family: "Life Savers", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.life-savers-bold {
+  font-family: "Life Savers", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.life-savers-extrabold {
+  font-family: "Life Savers", serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.spicy-rice-regular {
+  font-family: "Spicy Rice", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.spicy-rice-regular .before-title {
+  font-size: .8em;
+  margin-right: 4.25em;
+}
+.spicy-rice-regular .after-title {
+  font-size: .8em;
+  margin-left: 4em;
+}
+
+.cinzel-400 {
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.cinzel-400 .before-title {
+  font-size: .6em;
+}
+
+.quintessential-regular {
+  font-family: "Quintessential", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.quintessential-regular .before-title {
+  font-size: .4em;
+  margin-right: 9em;
+}
+
+.eater-regular {
+  font-family: "Eater", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #990000;
+}
+.eater-regular .before-title {
+  font-size: .9em;
+}
+
+.fontdiner-swanky-regular {
+  font-family: "Fontdiner Swanky", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.risque-regular {
+  font-family: "Risque", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.risque-regular .before-title {
+  font-size: .9em;
+}
+.risque-regular .after-title {
+  font-size: .9em;
+}
+
+.kalnia-100 {
+  font-family: "Kalnia", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 112.5;
+}
+
+.croissant-one-regular {
+  font-family: "Croissant One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.cinzel-decorative-regular {
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.cinzel-decorative-regular .before-title {
+  font-size: .7em;
+}
+
+.cinzel-decorative-regular2 {
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+.cinzel-decorative-regular2 .first-letter {
+  font-size: 1.4em;
+}
+.cinzel-decorative-regular2 .final-letter {
+  font-size: 1.3em;
+}
+
+.cinzel-decorative-bold {
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.cinzel-decorative-black {
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.metamorphous-regular {
+  font-family: "Metamorphous", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.shrikhand-regular {
+  font-family: "Shrikhand", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.shrikhand-regular .title {
+  font-size: 1.25em;
+}
+
+.cormorant-sc-light {
+  font-family: "Cormorant SC", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+.cormorant-sc-regular {
+  font-family: "Cormorant SC", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.cormorant-sc-medium {
+  font-family: "Cormorant SC", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+.cormorant-sc-semibold {
+  font-family: "Cormorant SC", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+.cormorant-sc-bold {
+  font-family: "Cormorant SC", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.cormorant-unicase-light {
+  font-family: "Cormorant Unicase", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+.cormorant-unicase-regular {
+  font-family: "Cormorant Unicase", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.cormorant-unicase-medium {
+  font-family: "Cormorant Unicase", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+.cormorant-unicase-semibold {
+  font-family: "Cormorant Unicase", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+.cormorant-unicase-bold {
+  font-family: "Cormorant Unicase", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.della-respira-regular {
+  font-family: "Della Respira", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.della-respira-regular .title {
+  font-size: 1.25em;
+}
+.della-respira-regular .before-title {
+  font-size: .5em;
+  margin-right: 1.5em;
+}
+
+.sedan-sc-regular {
+  font-family: "Sedan SC", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.sedan-sc-regular .before-title {
+  font-size: .75em;
+  margin-bottom: -.25em;
+}
+
+.castoro-titling-regular {
+  font-family: "Castoro Titling", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.kranky-regular {
+  font-family: "Kranky", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.diplomata-sc-regular {
+  font-family: "Diplomata SC", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.elsie-swash-caps-regular {
+  font-family: "Elsie Swash Caps", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.elsie-swash-caps-black {
+  font-family: "Elsie Swash Caps", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.almendra-regular {
+  font-family: "Almendra", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.almendra-regular .after-title {
+  font-size: .4em;
+  margin: 0 5em;
+}
+.almendra-bold {
+  font-family: "Almendra", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.almendra-regular-italic {
+  font-family: "Almendra", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+.almendra-bold-italic {
+  font-family: "Almendra", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.federant-regular {
+  font-family: "Federant", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.gideon-roman-regular {
+  font-family: "Gideon Roman", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.gideon-roman-regular .before-title {
+  font-size: .8em;
+}
+

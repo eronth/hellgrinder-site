@@ -8,11 +8,18 @@ h1 {
 }
 .lancelot .before-title {
   font-size: .6em;
-  margin-right: 5em;
+  margin-right: 6em;
   margin-bottom: -.25em;
 }
 .lancelot .title {
   font-size: 1.1em;
+}
+
+.lancelot2 {
+  font-family: "Lancelot", serif;
+}
+.lancelot2 .title {
+  font-size: 1.3em;
 }
 
 .girassol {
@@ -437,4 +444,10 @@ h1.cutive-mono-regular {
   font-family: "Merriweather", serif;
   font-weight: 900;
   font-style: italic;
+}
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }

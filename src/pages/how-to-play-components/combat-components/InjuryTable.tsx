@@ -1,5 +1,5 @@
 import InjuryTableRow from "./InjuryTableRow";
-import { InjuryRow } from "../../../../ts-types/table-types";
+import { InjuryRow } from "../../../ts-types/table-types";
 
 export default function InjuryTable() {
   const rowData: InjuryRow[] = [

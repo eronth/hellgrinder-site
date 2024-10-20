@@ -1,4 +1,4 @@
-import { InjuryRow } from "../../../../ts-types/table-types";
+import { InjuryRow } from "../../../ts-types/table-types";
 
 type Props = {
   data: InjuryRow;

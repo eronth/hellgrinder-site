@@ -1,4 +1,4 @@
-import ColumnEntry from "../../../../common-design/ColumnEntry";
+import ColumnEntry from "../../../common-design/ColumnEntry";
 
 export default function Actions() {
 
@@ -41,6 +41,14 @@ export default function Actions() {
         </ColumnEntry>
 
         <ColumnEntry title={{ hx: 'h4', text: 'Covering Fire' }}>
+          <p></p>
+        </ColumnEntry>
+
+        <ColumnEntry title={{ hx: 'h4', text: 'Restrain' }}>
+          <p></p>
+        </ColumnEntry>
+
+        <ColumnEntry title={{ hx: 'h4', text: 'Shove' }}>
           <p></p>
         </ColumnEntry>
       </div>

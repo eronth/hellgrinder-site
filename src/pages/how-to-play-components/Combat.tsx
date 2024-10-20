@@ -1,8 +1,8 @@
-import ColumnEntry from "../../../common-design/ColumnEntry";
-import Tools from "../../../common-design/Tools";
-import Actions from "./combat-components/Actions";
-import Damage from "./combat-components/Damage";
-import Maneuvers from "./combat-components/Maneuvers";
+import ColumnEntry from "../../common-design/ColumnEntry";
+import Tools from "../../common-design/Tools";
+import Actions from "../../pages/how-to-play-components/combat-components/Actions";
+import Damage from "../../pages/how-to-play-components/combat-components/Damage";
+import Maneuvers from "../../pages/how-to-play-components/combat-components/Maneuvers";
 
 
 export default function Combat() {

@@ -13,7 +13,7 @@ type Posttext = {
 } | null;
 
 type Props = {
-  isIndnex?: boolean;
+  isIndex?: boolean;
 }
 
 export default function GameTitle({isIndex}: Props) {

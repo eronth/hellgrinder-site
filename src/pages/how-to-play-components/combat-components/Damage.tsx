@@ -1,4 +1,4 @@
-import ColumnEntry from "../../../../common-design/ColumnEntry";
+import ColumnEntry from "../../../common-design/ColumnEntry";
 import InjuryTable from "./InjuryTable";
 
 export default function Damage() {

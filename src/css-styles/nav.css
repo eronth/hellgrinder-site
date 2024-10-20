@@ -28,16 +28,27 @@ nav.navtabs {
   margin: 1em 0;
 }
 nav.navtabs div {
+  --selectedColor: white;
+  --unselectedColor: #b1b1b1;
+  
+  --color: var(--selectedColor);
+  --backing-color: inherit;
+  background-color: var(--backing-color);
   display: grid;
   justify-content: center;
   padding: 1em 0;
-  border: 1px solid white;
+  border: 1px solid var(--color);
   border-bottom: 0;
   --border-rad: 10px;
   border-radius: var(--border-rad) var(--border-rad) 0 0;
 }
 nav.navtabs a {
-  color: white;
+  color: var(--color);
+}
+nav.navtabs div.unselected-tab {
+  --color: var(--unselectedColor);
+  --backing-color: #333;
+  border-bottom: 1px solid var(--selectedColor);
 }
 
 @media(max-width: 1600px) {

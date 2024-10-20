@@ -4,6 +4,6 @@ import NavTabs from "./common-design/nav/NavTabs";
 export default function FancyIndexPage() {
   return (<div className='fancy-index'>
     <GameTitle />
-    <NavTabs />
+    <NavTabs selectedTab="home" />
   </div>);
 }

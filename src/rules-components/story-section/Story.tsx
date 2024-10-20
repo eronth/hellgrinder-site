@@ -1,8 +1,5 @@
 import Tools from '../../common-design/Tools';
 import ColumnEntry from '../../common-design/ColumnEntry';
-import DemonClans from './demon-clans/DemonClans';
-import OtherFactions from './other-factions/OtherFactions';
-import Locations from './locations/Locations';
 
 function Story() {
 
@@ -22,9 +19,7 @@ function Story() {
       </ColumnEntry>
     </div>
     
-    <DemonClans />
-    <OtherFactions />
-    <Locations />
+    
 
   </>);
 }

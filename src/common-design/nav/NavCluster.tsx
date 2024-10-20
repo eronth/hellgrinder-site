@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const NavCluster = () => {
   return (
-    <nav className="navbar">
+    <nav className="navbar navcluster">
       <div><Link to="/story">Story</Link></div>
       <div><Link to="/setting">Setting</Link></div>
       <div><Link to="/how-to-play">How to Play</Link></div>

@@ -1,9 +1,9 @@
 import GameTitle from "./GameTitle";
-import NavCluster from "./common-design/nav/NavCluster";
+import NavTabs from "./common-design/nav/NavTabs";
 
 export default function FancyIndexPage() {
   return (<div className='fancy-index'>
     <GameTitle />
-    <NavCluster />
+    <NavTabs />
   </div>);
 }

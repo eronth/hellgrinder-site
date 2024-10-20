@@ -1,19 +1,18 @@
-
-nav {
+nav.navcluster {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1em;
   justify-content: center;
   margin: 1em 0;
 }
-nav div {
+nav.navcluster div {
   display: grid;
   justify-content: center;
   padding: 1em 0;
   border: 1px solid white;
   border-radius: 8px;
 }
-nav a {
+nav.navcluster a {
   text-align: center;
   padding: 0.5em;
   color: white;
@@ -21,27 +20,47 @@ nav a {
   transition: background-color 0.25s;
   width: 23em;
 }
+
+nav.navtabs {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  justify-content: center;
+  margin: 1em 0;
+}
+nav.navtabs div {
+  display: grid;
+  justify-content: center;
+  padding: 1em 0;
+  border: 1px solid white;
+  border-bottom: 0;
+  --border-rad: 10px;
+  border-radius: var(--border-rad) var(--border-rad) 0 0;
+}
+nav.navtabs a {
+  color: white;
+}
+
 @media(max-width: 1600px) {
-  nav {
+  nav.navcluster {
     grid-template-columns: repeat(3, 1fr);
   }
-  nav a {
+  nav.navcluster a {
     width: 20em;
   }
 }
 @media(max-width: 1100px) {
-  nav {
+  nav.navcluster {
     grid-template-columns: repeat(2, 1fr);
   }
-  nav a {
+  nav.navcluster a {
     width: 23em;
   }
 }
 @media(max-width: 800px) {
-  nav {
+  nav.navcluster {
     grid-template-columns: repeat(1, 1fr);
   }
-  nav a {
+  nav.navcluster a {
     width: 23em;
   }
 }
@@ -49,10 +68,10 @@ nav a {
   h1 {
     font-size: 3.5em;
   }
-  nav div {
+  nav.navcluster div {
     padding: 1.5em 0;
   }
-  nav a {
+  nav.navcluster a {
     width: 13em;
   }
 }

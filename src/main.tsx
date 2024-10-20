@@ -5,10 +5,13 @@ import Rules from './Rules.tsx'
 import './css-styles/index.css'
 import './css-styles/kit.css'
 import './css-styles/title-fonts.css'
+import { BrowserRouter } from 'react-router-dom'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {/* <App /> */}
-    <Rules />
+    <BrowserRouter>
+      {/* <App /> */}
+      <Rules />
+    </BrowserRouter>
   </StrictMode>,
 )

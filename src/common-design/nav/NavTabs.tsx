@@ -16,30 +16,30 @@ const NavTabs = ({selectedTab}: Props) => {
 
   return (
     <nav className="navbar navtabs">
-      <div className={getClassForTab('home')}>
-        <Link to="/">Home</Link>
-      </div>
-      <div className={getClassForTab('story')}>
-        <Link to="/story">Story</Link>
-      </div>
-      <div className={getClassForTab('setting')}>
-        <Link to="/setting">Setting</Link>
-      </div>
-      <div className={getClassForTab('how-to-play')}>
-        <Link to="/how-to-play">How to Play</Link>
-      </div>
-      <div className={getClassForTab('character-creation')}>
-        <Link to="/character-creation">Character Creation</Link>
-      </div>
-      <div className={getClassForTab('additional-equipment')}>
-        <Link to="/additional-equipment">Additional Equipment</Link>
-      </div>
-      <div className={getClassForTab('advanced-perks')}>
-        <Link to="/advanced-perks">Advanced Perks</Link>
-      </div>
-      <div className={getClassForTab('items')}>
-        <Link to="/items">Items</Link>
-      </div>
+      <Link to="/" className={getClassForTab('home')}>
+        <div>Home</div>
+      </Link>
+      <Link to="/story" className={getClassForTab('story')}>
+        <div>Story</div>
+      </Link>
+      <Link to="/setting" className={getClassForTab('setting')}>
+        <div>Setting</div>
+      </Link>
+      <Link to="/how-to-play" className={getClassForTab('how-to-play')}>
+        <div>How to Play</div>
+      </Link>
+      <Link to="/character-creation" className={getClassForTab('character-creation')}>
+        <div>Character Creation</div>
+      </Link>
+      <Link to="/additional-equipment" className={getClassForTab('additional-equipment')}>
+        <div>Additional Equipment</div>
+      </Link>
+      <Link to="/advanced-perks" className={getClassForTab('advanced-perks')}>
+        <div>Advanced Perks</div>
+      </Link>
+      <Link to="/items" className={getClassForTab('items')}>
+        <div>Items</div>
+      </Link>
     </nav>
   );
 }

@@ -7,7 +7,7 @@ import NavTabs from "../common-design/nav/NavTabs";
 export default function SettingPage() {
   return (<div className='setting'>
     <GameTitle />
-    <NavTabs selectedTab="story"/>
+    <NavTabs selectedTab="setting"/>
     <DemonClans />
     <hr />
     <OtherFactions />

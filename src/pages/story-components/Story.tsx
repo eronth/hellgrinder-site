@@ -4,9 +4,6 @@ import ColumnEntry from '../../common-design/ColumnEntry';
 function Story() {
 
   return (<>
-
-    <h2>Story</h2>
-
     <div className='col-handler'>
       <ColumnEntry
         title={{ hx: 'h3', text: 'Hell\'s Invasion' }}>
@@ -18,9 +15,6 @@ function Story() {
         <p>{Tools.getLoremIpsum()}</p>
       </ColumnEntry>
     </div>
-    
-    
-
   </>);
 }
 

@@ -3,7 +3,7 @@ import NavCluster from "./common-design/nav/NavCluster";
 
 export default function FancyIndexPage() {
   return (<div className='fancy-index'>
-    <GameTitle />
+    <GameTitle isIndex={true} />
     <NavCluster />
   </div>);
 }

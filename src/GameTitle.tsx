@@ -12,7 +12,11 @@ type Posttext = {
   under?: boolean
 } | null;
 
-export default function GameTitle() {
+type Props = {
+  isIndnex?: boolean;
+}
+
+export default function GameTitle({isIndex}: Props) {
 
   const getRandInt = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;
   function getRandElement<T>(arr: T[]): T { return arr[getRandInt(0, arr.length - 1)]; }
@@ -27,6 +31,8 @@ export default function GameTitle() {
     const firstLetter = name[0];
     const finalLetter = name[name.length - 1];
     const middleLetters = name.slice(1, name.length - 1);
+
+    css = css + (isIndex ? ' index-title' : '');
 
     return (
       <Link to="/" className='title-link'>

@@ -9,7 +9,6 @@ const NavCluster = () => {
       <div><Link to="/character-creation">Character Creation</Link></div>
       <div><Link to="/additional-equipment">Additional Equipment</Link></div>
       <div><Link to="/advanced-perks">Advanced Perks</Link></div>
-      <div><Link to="/items">Items</Link></div>
       <div><Link to="/magic">Magic</Link></div>
     </nav>
   );

@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
+import { TabType } from '../../ts-types/types';
 
-type Tabs = "home" | "story" | "setting" | "how-to-play" | "character-creation" | "additional-equipment" | "advanced-perks" | "items";
 
 type Props = {
-  selectedTab: Tabs;
+  selectedTab: TabType;
 }
 
 const NavTabs = ({selectedTab}: Props) => {
   
-  function getClassForTab(tab: Tabs) {
+  function getClassForTab(tab: TabType) {
     const sel = 'selected-tab';
     const unsel = 'unselected-tab';
     return tab == selectedTab ? sel : unsel;
@@ -37,8 +37,8 @@ const NavTabs = ({selectedTab}: Props) => {
       <Link to="/advanced-perks" className={getClassForTab('advanced-perks')}>
         <div>Advanced Perks</div>
       </Link>
-      <Link to="/items" className={getClassForTab('items')}>
-        <div>Items</div>
+      <Link to="/magic" className={getClassForTab('magic')}>
+        <div>Magic</div>
       </Link>
     </nav>
   );

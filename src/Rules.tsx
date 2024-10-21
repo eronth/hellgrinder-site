@@ -7,6 +7,7 @@ import CharacterCreationPage from "./pages/CharacterCreationPage";
 import AdditionalEquipmentPage from "./pages/AdditionalEquipmentPage";
 import AdvancedPerksPage from "./pages/AdvancedPerksPage";
 import MagicPage from "./pages/MagicPage";
+import CreaturesPage from "./pages/CreaturesPage";
 
 export default function Rules() {
   return (
@@ -22,6 +23,7 @@ export default function Rules() {
         <Route path="/additional-equipment" element={<AdditionalEquipmentPage />} />
         <Route path="/advanced-perks" element={<AdvancedPerksPage />} />
         <Route path="/magic" element={<MagicPage />} />
+        <Route path="/creatures" element={<CreaturesPage />} />
       </Routes>
     </div>
   );

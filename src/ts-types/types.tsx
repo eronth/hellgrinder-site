@@ -62,7 +62,7 @@ type PerkType = {
   cost: number;
 }
 
-type TabType = "home" | "story" | "setting" | "how-to-play" | "character-creation" | "additional-equipment" | "advanced-perks" | "items" | "magic";
+type TabType = "home" | "story" | "setting" | "how-to-play" | "character-creation" | "additional-equipment" | "advanced-perks" | "items" | "magic" | "creatures";
 
 
 export type { HeaderSizeType, KitType, WeaponType, AttackModeType, TrainingType, ItemType, PerkType, TabType };

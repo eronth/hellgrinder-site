@@ -8,6 +8,7 @@ const exObj: {
   nimble: PerkType,
   sinister: PerkType,
   stoic: PerkType,
+  veteran: PerkType,
 } = {
   durable: {
     name: 'Durable', cost: 1,
@@ -37,6 +38,10 @@ const exObj: {
     name: 'Stoic', cost: 1,
     description: 'You stand firm in the face of danger. You regain +1 Health on a Recovery Check. When terrified, make a [Endurance Skill Check] to end the status early.',
   },
+  veteran: {
+    name: 'Veteran', cost: 2,
+    description: 'You have seen many battles. Start with a random Light Injury, this counts as a Perminant Injury instead, and cannot be removed by normal means. You gain +3 to all [Shooting], [Melee], [Arcane], or [Thrown] Hit Checks.',
+  }
 };
 
 export default exObj;

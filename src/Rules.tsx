@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import FancyIndexPage from "./FancyIndexPage";
+import FancyIndexPage from "./pages/FancyIndexPage";
 import StoryPage from "./pages/StoryPage";
 import SettingPage from "./pages/SettingPage";
 import HowToPlayPage from "./pages/HowToPlayPage";

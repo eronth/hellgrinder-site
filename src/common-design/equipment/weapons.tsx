@@ -1,6 +1,6 @@
-import { WeaponType } from '../../ts-types/types';
+import { Weapon } from '../../ts-types/types';
 
-const pistol: WeaponType = {
+const pistol: Weapon = {
   name: 'Pistol',
   tags: ['One-Handed'],
   attackModes: [{
@@ -14,7 +14,7 @@ const pistol: WeaponType = {
   }],
 };
 
-const combatRifle: WeaponType = {
+const combatRifle: Weapon = {
   name: 'Combat Rifle',
   tags: ['Two-Handed'],
   attackModes: [{
@@ -27,7 +27,7 @@ const combatRifle: WeaponType = {
   }],
 };
 
-const sword: WeaponType = {
+const sword: Weapon = {
   name: 'Sword',
   tags: ['One-Handed'],
   attackModes: [{
@@ -40,7 +40,7 @@ const sword: WeaponType = {
   }],
 };
 
-const knife: WeaponType = {
+const knife: Weapon = {
   name: 'Knife',
   tags: ['One-Handed'],
   attackModes: [{
@@ -54,7 +54,7 @@ const knife: WeaponType = {
   }],
 };
 
-function deepCopyWeapon(weapon: WeaponType): WeaponType {
+function deepCopyWeapon(weapon: Weapon): Weapon {
   return JSON.parse(JSON.stringify(weapon));
 }
 

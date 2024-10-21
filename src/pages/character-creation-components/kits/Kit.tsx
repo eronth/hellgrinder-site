@@ -1,11 +1,11 @@
-import type { KitType } from '../../../ts-types/types';
+import type { Kit } from '../../../ts-types/types';
 import Weapon from './weapon/Weapon';
 import Item from './item/Item';
-import Training from './training/Training';
+import Training from './training/TrainingComponent';
 
 type Props = {
   needsCols?: boolean;
-  kit: KitType;
+  kit: Kit;
 };
 
 export default function Kit({ needsCols, kit }: Props) {

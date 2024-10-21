@@ -1,20 +1,20 @@
 import WeaponName from './weapon-components/WeaponName';
 import WeaponSpecialNotes from './weapon-components/WeaponSpecialNotes';
 import Tags from '../../../../common-design/Tags';
-import type { WeaponType, AttackModeType } from '../../../../ts-types/types';
+import type { Weapon, AttackMode } from '../../../../ts-types/types';
 
 type Props = {
-  weapon: WeaponType;
+  weapon: Weapon;
 };
 
 export default function Weapon({ weapon }: Props) {
   const w = weapon;
 
-  function hasMultipleAttackModes(weapon: WeaponType) {
+  function hasMultipleAttackModes(weapon: Weapon) {
     return weapon.attackModes.length > 1;
   }
 
-  function getPerAttackModeTags(weapon: WeaponType, key: string, attackMode: AttackModeType) {
+  function getPerAttackModeTags(weapon: Weapon, key: string, attackMode: AttackMode) {
     if (hasMultipleAttackModes(weapon)) {
       return <span><span className="name">{attackMode.name}</span><Tags key={key} tags={attackMode.tags} /></span>;
     } else {
@@ -22,7 +22,7 @@ export default function Weapon({ weapon }: Props) {
     }
   }
 
-  function makeAttackDamageText(attackMode: AttackModeType) {
+  function makeAttackDamageText(attackMode: AttackMode) {
     const dmg = attackMode.damage;
     if (dmg.l.type === dmg.m.type && dmg.m.type === dmg.h.type) {
       return `${dmg.l.value}/${dmg.m.value}/${dmg.h.value} ${dmg.l.type} Damage`;

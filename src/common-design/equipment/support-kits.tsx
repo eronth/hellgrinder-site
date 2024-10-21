@@ -1,13 +1,13 @@
-import type { KitType } from '../../ts-types/types.tsx';
+import type { Kit } from '../../ts-types/types.tsx';
 import { deepCopyWeapon, pistol, knife } from './weapons.tsx';
 
 const exObj: {
-  cardMystic: KitType,
-  grenadeStash: KitType,
-  medic: KitType,
-  recon: KitType,
-  shadowOp: KitType,
-  sigilBearer: KitType,
+  cardMystic: Kit,
+  grenadeStash: Kit,
+  medic: Kit,
+  recon: Kit,
+  shadowOp: Kit,
+  sigilBearer: Kit,
 } = {
   medic: {
     name: 'Medic',

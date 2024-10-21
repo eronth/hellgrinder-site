@@ -1,11 +1,11 @@
-import { TrainingType } from '../../../../ts-types/types.tsx';
-import Tags from '../../../../common-design/Tags';
+import { Training } from '../../../../ts-types/types.tsx';
+import Tags from '../../../../common-design/Tags.tsx';
 
 type Props = {
-  training: TrainingType;
+  training: Training;
 };
 
-export default function Training({ training }: Props) {
+export default function TrainingComponent({ training }: Props) {
   return (<div className='training'>
     <div><span className='name'>{training.name}</span><Tags tags={training.tags} /></div>
     <div className='effect details-indent'>

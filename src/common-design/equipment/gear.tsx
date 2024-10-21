@@ -1,7 +1,7 @@
-import type { ItemType } from '../../ts-types/types';
+import type { Item } from '../../ts-types/types';
 
 const exObj: {
-  ritualKnife: ItemType,
+  ritualKnife: Item,
 } = {
   ritualKnife: {
     name: 'Ritual Knife',

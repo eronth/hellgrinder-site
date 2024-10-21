@@ -1,8 +1,8 @@
-import { WeaponType } from "../../../../../ts-types/types.tsx";
+import { Weapon } from "../../../../../ts-types/types.tsx";
 import Tags from '../../../../../common-design/Tags';
 
 type Props = {
-  weapon: WeaponType;
+  weapon: Weapon;
 };
 
 export default function WeaponName({ weapon }: Props) {

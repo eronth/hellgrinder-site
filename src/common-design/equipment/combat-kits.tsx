@@ -1,21 +1,20 @@
-import type { KitType } from '../../ts-types/types.tsx';
+import type { Kit } from '../../ts-types/types.tsx';
 import { deepCopyWeapon, combatRifle, pistol, sword } from './weapons.tsx';
 
 const exObj: {
-  sniper: KitType,
-  grenadier: KitType,
-  flamethrower: KitType,
-  breachAndClear: KitType,
-  soldier: KitType,
-  demonHunter: KitType,
-  perky: KitType,
-  riot: KitType,
-  helltouched: KitType,
-  relicworker: KitType,
-  warrior: KitType,
-  prototype: KitType,
-} =
-{
+  sniper: Kit,
+  grenadier: Kit,
+  flamethrower: Kit,
+  breachAndClear: Kit,
+  soldier: Kit,
+  demonHunter: Kit,
+  perky: Kit,
+  riot: Kit,
+  helltouched: Kit,
+  relicworker: Kit,
+  warrior: Kit,
+  prototype: Kit,
+} = {
   sniper: {
     name: 'Sniper',
     description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",

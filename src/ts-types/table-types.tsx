@@ -1,4 +1,4 @@
-type InjuryType = {
+type Injury = {
   name: string;
   description: string;
 }
@@ -9,9 +9,9 @@ type InjuryRow = {
     max: number;
   },
   injury: {
-    light: InjuryType;
-    serious: InjuryType;
-    critical: InjuryType;
+    light: Injury;
+    serious: Injury;
+    critical: Injury;
   }
 };
 
@@ -22,4 +22,4 @@ type DealWithTheDevilRow = {
   cost: string;
 }
 
-export type { InjuryType, InjuryRow, DealWithTheDevilRow };
+export type { Injury, InjuryRow, DealWithTheDevilRow };

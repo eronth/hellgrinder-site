@@ -1,9 +1,9 @@
-type HeaderSizeType = 
+type HeaderSize = 
   'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   | '1' | '2' | '3' | '4' | '5' | '6'
   | 1 | 2 | 3 | 4 | 5 | 6;
 
-type DamageElementType = 'Metal' | 'Infernal' | 'Abyssal' | 'Verdant' | 'Chthonic' | 'Nethercurrent' | 'Voidyr' | 'Chosen Type';
+type DamageElement = 'Metal' | 'Infernal' | 'Abyssal' | 'Verdant' | 'Chthonic' | 'Nethercurrent' | 'Voidyr' | 'Chosen Type';
 // Overcoming: Metal > Wood > Earth > Water > Fire > Metal
 // Generating: Metal > Water > Wood > Fire > Earth > Metal
 
@@ -13,50 +13,50 @@ type SkillCheckType = 'Recovery' | 'Endurance' | 'Stealth' | 'Agility' | 'Observ
 
 type StatusTypes = 'Burning' | 'Frozen' | 'Poisoned' | 'Stunned' | 'Prone' | 'Blinded' | 'Silenced' | 'Confused' | 'Charmed' | 'Frightened' | 'Enraged' | 'Invisible' | 'Incorporeal' | 'Insubstantial' | 'Incapacitated' | 'Restrained' | 'Grappled' | 'Paralyzed' | 'Petrified' | 'Unconscious' | 'Dead';
 
-type KitType = {
+type Kit = {
   name: string;
   description: string;
-  weapons: WeaponType[];
+  weapons: Weapon[];
   items: ItemType[];
-  trainings: TrainingType[];
+  trainings: Training[];
 }
 
-type WeaponType = {
+type Weapon = {
   name: string;
-  attackModes: AttackModeType[];
+  attackModes: AttackMode[];
   tags: string[];
 }
 
-type AttackModeType = {
+type AttackMode = {
   name?: string;
   tags: string[];
   damage: {
-    l: DamageType;
-    m: DamageType;
-    h: DamageType;
+    l: Damage;
+    m: Damage;
+    h: Damage;
   };
   effects?: string[];
 }
 
-type DamageType = {
+type Damage = {
   value: number,
-  type: DamageElementType,
+  type: DamageElement,
 }
 
-type ItemType = {
+type Item = {
   name: string;
   tags: string[];
   description: string;
   effects: string[];
 }
 
-type TrainingType = {
+type Training = {
   name: string;
   tags: string[];
   effects: string[];
 }
 
-type PerkType = {
+type Perk = {
   name: string;
   description: string;
   cost: number;
@@ -65,4 +65,4 @@ type PerkType = {
 type TabType = "home" | "story" | "setting" | "how-to-play" | "character-creation" | "additional-equipment" | "advanced-perks" | "items" | "magic" | "creatures";
 
 
-export type { HeaderSizeType, KitType, WeaponType, AttackModeType, TrainingType, ItemType, PerkType, TabType };
+export type { HeaderSize, Kit, Weapon, AttackMode, Training, Item, Perk, TabType, DamageElement };

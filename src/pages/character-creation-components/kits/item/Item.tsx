@@ -1,8 +1,8 @@
-import { ItemType } from '../../../../ts-types/types.tsx';
+import { Item } from '../../../../ts-types/types.tsx';
 import Tags from '../../../../common-design/Tags';
 
 type Props = {
-  item: ItemType;
+  item: Item;
 };
 
 export default function Training({ item }: Props) {

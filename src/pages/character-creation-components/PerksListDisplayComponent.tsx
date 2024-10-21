@@ -1,5 +1,5 @@
 import ColumnEntry from "../../common-design/ColumnEntry.tsx";
-import Perk from "./perks/Perk.tsx";
+import Perk from "./perks/PerkComponent.tsx";
 import Perks from "../../common-design/equipment/perks.tsx";
 
 export default function PerksListDisplayComponent() {

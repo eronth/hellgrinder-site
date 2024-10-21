@@ -1,10 +1,10 @@
-import { PerkType } from "../../../ts-types/types";
+import { Perk } from "../../../ts-types/types";
 
 type Props = {
-  perk: PerkType;
+  perk: Perk;
 };
 
-export default function Perk({ perk }: Props) {
+export default function PerkComponent({ perk }: Props) {
   return (<>
     <div className='perk'>
       <div className='headrow'>

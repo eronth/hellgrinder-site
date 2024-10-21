@@ -1,9 +1,9 @@
 import ColumnEntry from "../../../common-design/ColumnEntry";
 import Tools from "../../../common-design/Tools";
-import { HeaderSizeType } from "../../../ts-types/types";
+import { HeaderSize } from "../../../ts-types/types";
 
 type Props = {
-  hx: HeaderSizeType;
+  hx: HeaderSize;
 };
 export default function DeepblindCaverns ({ hx }: Props) {
   return (

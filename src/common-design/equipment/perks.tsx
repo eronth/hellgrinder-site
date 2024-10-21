@@ -1,14 +1,14 @@
-import type { PerkType } from '../../ts-types/types';
+import type { Perk } from '../../ts-types/types';
 
 const exObj: {
-  durable: PerkType,
-  evil: PerkType,
-  hellspawn: PerkType,
-  mindful: PerkType,
-  nimble: PerkType,
-  sinister: PerkType,
-  stoic: PerkType,
-  veteran: PerkType,
+  durable: Perk,
+  evil: Perk,
+  hellspawn: Perk,
+  mindful: Perk,
+  nimble: Perk,
+  sinister: Perk,
+  stoic: Perk,
+  veteran: Perk,
 } = {
   durable: {
     name: 'Durable', cost: 1,

@@ -1,11 +1,11 @@
 import { DamageElement, AttackMode } from './types';
 
 
-type CoreResist = { modification: 'Resist', type: 'Core', mod: number };
-type CoreAbsorb = { modification: 'Absorb', type: 'Core', mod: number };
-type PromoteAborb = { modification: 'Absorb', type: 'Promote', mod: number };
-type PrimaryWeakness = { modification: 'Weak', type: 'Primary', mod: number };
-type SecondaryWeakness = { modification: 'Weak', type: 'Secondary', mod: number };
+type CoreResist = { modification: 'Resist', type: 'CORE', mod: number };
+type CoreAbsorb = { modification: 'Absorb', type: 'CORE', mod: number };
+type PromoteAborb = { modification: 'Absorb', type: 'PROMOTE', mod: number };
+type PrimaryWeakness = { modification: 'Weak', type: 'REJECT', mod: number };
+type SecondaryWeakness = { modification: 'Weak', type: 'DISRUPT', mod: number };
 
 
 type DamageTakenMod = {

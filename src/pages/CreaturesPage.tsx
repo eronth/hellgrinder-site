@@ -51,7 +51,15 @@ export default function CreaturesPage() {
     <div className='col-handler'>
       <CreatureCard data={GenCreatures.imp} />
       <CreatureCard data={GenCreatures.swarmer} />
+      <CreatureCard data={GenCreatures.spitter} />
       <CreatureCard data={GenCreatures.lansperker} />
+      <CreatureCard data={GenCreatures.lasherator} />
+      <CreatureCard data={GenCreatures.hellhound} />
+      <CreatureCard data={GenCreatures.tenebros} />
+      <CreatureCard data={GenCreatures.wreislander} />
+      <CreatureCard data={GenCreatures.hellspawn} />
+      <CreatureCard data={GenCreatures.archanistStudent} />
+      <CreatureCard data={GenCreatures.allSeeingEyespawn} />
     </div>
     <hr />
   </div>);

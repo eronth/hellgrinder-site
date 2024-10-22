@@ -18,7 +18,7 @@ export default function GenericToNongenericTable({ data }: Props) {
       {data.tags.map((tag, i) => <span key={`creature-${data.name}-tag-${i}`}>{tag}</span>)}
     </div>
     <div className='stats'>
-      <span>{data.health} Health</span>
+      <span>Health: {data.health}⛨</span>
       <span>Speed: {data.speed}{hexIcon}
         {data.dash ? ` (+${data.dash}${hexIcon})` : null}
       </span>

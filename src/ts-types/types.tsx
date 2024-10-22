@@ -31,6 +31,7 @@ type Weapon = {
 
 type AttackMode = {
   name?: string;
+  charges?: number;
   tags: string[];
   damage: {
     l: Damage;

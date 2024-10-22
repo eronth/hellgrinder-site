@@ -9,11 +9,8 @@ type DamageElement =
 // Overcoming: Metal > Wood > Earth > Water > Fire > Metal
 // Generating: Metal > Water > Wood > Fire > Earth > Metal
 
-type AttackCheckType = 'Shooting' | 'Melee' | 'Arcane' | 'Thrown';
-
-type SkillCheckType = 'Recovery' | 'Endurance' | 'Stealth' | 'Agility' | 'Observation' | 'Stoic';
-
-type StatusTypes = 'Burning' | 'Frozen' | 'Poisoned' | 'Stunned' | 'Prone' | 'Blinded' | 'Silenced' | 'Confused' | 'Charmed' | 'Frightened' | 'Enraged' | 'Invisible' | 'Incorporeal' | 'Insubstantial' | 'Incapacitated' | 'Restrained' | 'Grappled' | 'Paralyzed' | 'Petrified' | 'Unconscious' | 'Dead';
+type StatusTypes = 
+  'Burning' | 'Frozen' | 'Poisoned' | 'Stunned' | 'Prone' | 'Blinded' | 'Silenced' | 'Confused' | 'Charmed' | 'Frightened' | 'Enraged' | 'Invisible' | 'Incorporeal' | 'Insubstantial' | 'Incapacitated' | 'Restrained' | 'Grappled' | 'Paralyzed' | 'Petrified' | 'Unconscious' | 'Dead';
 
 type Kit = {
   name: string;

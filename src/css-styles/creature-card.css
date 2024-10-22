@@ -18,8 +18,43 @@
   display: flex;
   justify-content: space-between;
 }
+.creature-card .title-row .name {
+  font-size: 1.2em;
+  font-weight: bold;
+}
 .creature-card .stats {
   display: flex;
   justify-content: space-between;
   margin: 0 0;
+}
+
+.creature-card .creature-description {
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+
+.damage-modifiers {
+  display: flex;
+  margin: 0 .5em;
+}
+
+.damage-modifier {
+  display: flex;
+  justify-content: space-between;
+  margin: .25em;
+  padding: 0 .5em;
+  border: 1px solid #fff8;
+  background-color: #fff4;
+  border-radius: 4px;
+  font-size: .9em;
+}
+.damage-modifier .damage-type {
+  margin: 0 .5em;
+}
+
+.creature-card .creature-abilities {
+  padding-top: .5em;
+}
+.creature-card .creature-abilities .details-indentation {
+  margin-left: 1em;
 }

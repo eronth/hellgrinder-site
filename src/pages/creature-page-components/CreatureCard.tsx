@@ -1,17 +1,17 @@
 import AttackModeComponent from '../../common-design/AttackModeComponent';
 import { Creature } from '../../ts-types/creature-types';
+import DamageModComponent from './DamageModComponent';
 
 type Props = {
   data: Creature;
 };
 
 export default function GenericToNongenericTable({ data }: Props) {
-  const pluralizeHex = (num: number) => num > 1 ? '⬡' : '⬡';
-
+  const hexIcon = '⬣';
 
   return (<div className='creature-card'>
     <div className='title-row'>
-      <span>{data.name}</span>
+      <span className='name'>{data.name}</span>
       <span>{data.type}</span>
     </div>
     <div className='tags'>
@@ -19,22 +19,21 @@ export default function GenericToNongenericTable({ data }: Props) {
     </div>
     <div className='stats'>
       <span>{data.health} Health</span>
-      <span>Speed: {data.speed} {pluralizeHex(data.speed)}</span>
-      <span>Size: {data.size} {pluralizeHex(data.size)}</span>
+      <span>Speed: {data.speed}{hexIcon}
+        {data.dash ? ` (+${data.dash}${hexIcon})` : null}
+      </span>
+      <span>Size: {data.size}{hexIcon}</span>
       <span>Grab: +5</span>
       <span>Shove: 3</span>
     </div>
 
-    <div>
-      {data.damageTakenMods.map((mod, i) => <span>
-        <span key={`creature-${data.name}-damage-taken-mod-${i}`}>{mod.modification}</span>
-        <span key={`creature-${data.name}-damage-taken-type-${i}`}>{mod.type}</span>
-        <span key={`creature-${data.name}-damage-taken-mod-${i}`}>{mod.mod}</span>
-      </span>)}
+    <div className='damage-modifiers'>
+      {data.damageTakenMods.map((mod, i) => 
+        <DamageModComponent key={`creature-${data.name}-damage-taken-mod-${i}`} mod={mod} />)}
     </div>
 
     <div>
-      {data.attacks.map((attack, i) => <div key={`creature-${data.name}-attack-${i}`} style={{border: "1px solid white"}}>
+      {data.attacks.map((attack, i) => <div key={`creature-${data.name}-attack-${i}`}>
         <AttackModeComponent attackMode = {attack} />
       </div>)}
     </div>
@@ -42,10 +41,15 @@ export default function GenericToNongenericTable({ data }: Props) {
       {data.attacks.map((attack, i) => <span key={`creature-${data.name}-attack-${i}`}>{attack.name}</span>)}
     </div> */}
 
-    <div>
-      {data.abilities.map((ability, i) => <span key={`creature-${data.name}-ability-${i}`}>{ability}</span>)}
-    </div>
+      {
+        (data.abilities.length > 0)
+        ? <div className='creature-abilities'>
+          <div><b>Abilities</b>:</div>
+          {data.abilities.map((ability, i) => <span key={`creature-${data.name}-ability-${i}`} className='details-indentation'>{ability}</span>)}
+        </div>
+        : null
+      }
 
-    <div>{data.description}</div>
+    <div className='creature-description'><i>{data.description}</i></div>
   </div>);
 }

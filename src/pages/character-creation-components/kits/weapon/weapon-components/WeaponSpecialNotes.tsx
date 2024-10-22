@@ -6,7 +6,7 @@ type Props = {
 export default function WeaponSpecialNotes({ className, effects }: Props) {
 
   function getWeaponNotesList() {
-    if (!effects) {
+    if (!effects || effects.length === 0) {
       return null;
     } else if (effects.length === 1) {
       return <>

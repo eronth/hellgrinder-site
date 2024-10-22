@@ -3,6 +3,7 @@ import NavTabs from "../common-design/nav/NavTabs";
 import { TabType } from "../ts-types/types";
 import GenericToNongenericTable from "./creature-page-components/GenericToNongenericTable";
 import CreatureCard from "./creature-page-components/CreatureCard";
+import GenCreatures from "../common-design/creatures/generic-creatures";
 
 export default function CreaturesPage() {
   const page: TabType = 'creatures';
@@ -48,27 +49,9 @@ export default function CreaturesPage() {
 
     */}
     <div className='col-handler'>
-      <CreatureCard data={{
-        name: 'Imp',
-        type: 'Minion',
-        tags: [],
-        health: 15,
-        size: 1,
-        speed: 5,
-        damageTakenMods: [],
-        attacks: [{
-          name: 'Strike',
-          damage: {
-            l: { value: 1, type: 'Core' },
-            m: { value: 2, type: 'Core' },
-            h: { value: 3, type: 'Core' },
-          },
-          tags: ['Melee'],
-          effects: ["dies on 0 health"],
-        }],
-        abilities: [],
-        description: 'A small, weak demon. They are quick and can be hard to hit.',
-      }} />
+      <CreatureCard data={GenCreatures.imp} />
+      <CreatureCard data={GenCreatures.swarmer} />
+      <CreatureCard data={GenCreatures.lansperker} />
     </div>
     <hr />
   </div>);

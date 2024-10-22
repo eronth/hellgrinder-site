@@ -5,7 +5,7 @@ type HeaderSize =
 
 type DamageElement = 
   'Metal' | 'Infernal' | 'Abyssal' | 'Verdant' | 'Chthonic' | 'Nethercurrent' | 'Voidyr' 
-  | 'Chosen Type' | 'Core' | 'Primary' | 'Secondary';
+  | 'Chosen Type' | 'Core';
 // Overcoming: Metal > Wood > Earth > Water > Fire > Metal
 // Generating: Metal > Water > Wood > Fire > Earth > Metal
 
@@ -19,7 +19,7 @@ type Kit = {
   name: string;
   description: string;
   weapons: Weapon[];
-  items: ItemType[];
+  items: Item[];
   trainings: Training[];
 }
 

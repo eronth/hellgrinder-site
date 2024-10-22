@@ -35,19 +35,18 @@ const secondaryWeakness: DamageTakenMod = {
   mod: 1,
 };
 
-const exObj: {
-  imp: Creature,
-  swarmer: Creature,
-  spitter: Creature,
-  lansperker: Creature,
-  lasherator: Creature,
-  hellhound: Creature,
-  tenebros: Creature,
-  wreislander: Creature,
-  hellspawn: Creature,
-  archanistStudent: Creature,
-  allSeeingEyespawn: Creature,
-} = {
+// imp: Creature,
+// swarmer: Creature,
+// spitter: Creature,
+// lansperker: Creature,
+// lasherator: Creature,
+// hellhound: Creature,
+// tenebros: Creature,
+// wreislander: Creature,
+// hellspawn: Creature,
+// archanistStudent: Creature,
+// allSeeingEyespawn: Creature,
+const exObj: { [key: string]: Creature } = {
   imp: {
     name: 'Imp',
     type: ct0,
@@ -129,7 +128,7 @@ const exObj: {
   },
   lansperker: {
     name: 'Lansperker',
-    type: ct0,
+    type: ct1,
     tags: [],
     health: 20,
     size: 1,
@@ -311,6 +310,7 @@ const exObj: {
     health: 10,
     size: 1,
     speed: 4,
+    dash: -1,
     damageTakenMods: [ { ...coreResist, mod: 2 }, { ...promoteAborb }, {...primaryWeakness}, {...secondaryWeakness} ],
     attacks: [{
       name: 'Eye Beam',

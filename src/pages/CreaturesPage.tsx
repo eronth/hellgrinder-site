@@ -3,6 +3,7 @@ import NavTabs from "../common-design/nav/NavTabs";
 import { TabType } from "../ts-types/types";
 import GenericToNongenericTable from "./creature-page-components/GenericToNongenericTable";
 import CreatureCard from "./creature-page-components/CreatureCard";
+import CreatureTools from "../common-design/creatures/creature-tools";
 import GenCreatures from "../common-design/creatures/generic-creatures";
 
 export default function CreaturesPage() {
@@ -49,17 +50,11 @@ export default function CreaturesPage() {
 
     */}
     <div className='col-handler'>
-      <CreatureCard data={GenCreatures.imp} />
-      <CreatureCard data={GenCreatures.swarmer} />
-      <CreatureCard data={GenCreatures.spitter} />
-      <CreatureCard data={GenCreatures.lansperker} />
-      <CreatureCard data={GenCreatures.lasherator} />
-      <CreatureCard data={GenCreatures.hellhound} />
-      <CreatureCard data={GenCreatures.tenebros} />
-      <CreatureCard data={GenCreatures.wreislander} />
-      <CreatureCard data={GenCreatures.hellspawn} />
-      <CreatureCard data={GenCreatures.archanistStudent} />
-      <CreatureCard data={GenCreatures.allSeeingEyespawn} />
+      {CreatureTools
+        .sortCreatures(GenCreatures)
+        .map((creature, i) => 
+          <CreatureCard key={`creature-${creature.name}-${i}`} data={creature} />
+      )}
     </div>
     <hr />
   </div>);

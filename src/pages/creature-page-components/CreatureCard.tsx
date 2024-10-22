@@ -20,7 +20,7 @@ export default function GenericToNongenericTable({ data }: Props) {
     <div className='stats'>
       <span>Health: {data.health}⛨</span>
       <span>Speed: {data.speed}{hexIcon}
-        {data.dash ? ` (+${data.dash}${hexIcon})` : null}
+        {data.dash ? ` (${data.dash >= 0 ? '+' : ''}${data.dash}${hexIcon})` : null}
       </span>
       <span>Size: {data.size}{hexIcon}</span>
       <span>Grab: +5</span>

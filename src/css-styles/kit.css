@@ -39,25 +39,13 @@
   background-color: hsl(209, 89%, 22%);
 }
 
-.kit .tags {
-  font-size: .8em;
-}
-
-.kit .tags .tag {
-  display: inline-block;
-  margin: .1em;
-  padding: .1em .5em;
-  background-color: rgb(6, 58, 107);
-  color: white;
-  border-radius: 5px;
-}
-.kit .weapon .tag {
+.kit .weapon .tags .tag {
   background-color: hsl(27, 91%, 27%);
 }
-.kit .item .tag {
+.kit .item .tags .tag {
   background-color: hsl(162, 90%, 21%);
 }
-.kit .training .tag {
+.kit .training .tags .tag {
   background-color: hsl(209, 89%, 32%);
 }
 

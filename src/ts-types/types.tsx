@@ -3,7 +3,9 @@ type HeaderSize =
   | '1' | '2' | '3' | '4' | '5' | '6'
   | 1 | 2 | 3 | 4 | 5 | 6;
 
-type DamageElement = 'Metal' | 'Infernal' | 'Abyssal' | 'Verdant' | 'Chthonic' | 'Nethercurrent' | 'Voidyr' | 'Chosen Type';
+type DamageElement = 
+  'Metal' | 'Infernal' | 'Abyssal' | 'Verdant' | 'Chthonic' | 'Nethercurrent' | 'Voidyr' 
+  | 'Chosen Type' | 'Core' | 'Primary' | 'Secondary';
 // Overcoming: Metal > Wood > Earth > Water > Fire > Metal
 // Generating: Metal > Water > Wood > Fire > Earth > Metal
 

@@ -6,6 +6,8 @@ import './css-styles/index.css'
 import './css-styles/kit.css'
 import './css-styles/title-fonts.css'
 import './css-styles/nav.css'
+import './css-styles/creature-card.css'
+import './css-styles/attack-mode.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

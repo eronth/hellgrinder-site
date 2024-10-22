@@ -1,0 +1,16 @@
+span.attack-option .name-row {
+
+}
+
+span.attack-option .tags {
+  margin-left: 1.5em;
+}
+
+span.attack-option .name-row .name {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+span.attack-option .details-indentation {
+  margin-left: 1em;
+}

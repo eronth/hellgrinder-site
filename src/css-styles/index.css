@@ -211,3 +211,32 @@ hr::after {
   top: -.9em;
 }
 
+
+
+table {
+  width: 100%;
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+th {
+  background-color: #1e2157;
+  color: white;
+  padding: 0.5em;
+}
+td {
+  border: 1px solid white;
+  padding: 0.25em;
+}
+
+.tags {
+  font-size: .8em;
+}
+
+.tags .tag {
+  display: inline-block;
+  margin: .1em;
+  padding: .1em .5em;
+  background-color: rgb(6, 58, 107);
+  color: white;
+  border-radius: 5px;
+}

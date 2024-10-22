@@ -1,6 +1,6 @@
-import { DamageElement } from './types';
+import { DamageElement, AttackMode } from './types';
 
-type DamageMod = {
+type DamageTakenMod = {
   modification: 'Resist' | 'Weak' | 'Absorb';
   type: DamageElement;
   mod: number;
@@ -8,10 +8,20 @@ type DamageMod = {
 
 type Creature = {
   name: string;
-  description: string;
-  damageMods: DamageMod[];
+  type: "Minion" | "Spawn" | "Elite" | "Tormentor" | "Arhfiend" 
+  | "Lord" | "Overlord";
+  
   tags: string[];
-
+  
+  health: number;
+  speed: number;
+  size: number;
+  
+  damageTakenMods: DamageTakenMod[];
+  attacks: AttackMode[];
+  abilities: string[];
+  
+  description: string;
 };
 
 export type { Creature };

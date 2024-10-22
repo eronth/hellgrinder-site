@@ -1,0 +1,25 @@
+.creature-card {
+  border: 1px solid white;
+  --border-radius: 10px;
+  border-radius: var(--border-radius);
+}
+.creature-card > * {
+  padding: 0 .5em;
+}
+
+.creature-card .title-row {
+  padding-top: .25em;
+  padding-bottom: .25em;
+  background-color: #fff4;
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+}
+.creature-card .title-row {
+  display: flex;
+  justify-content: space-between;
+}
+.creature-card .stats {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0;
+}

@@ -1,3 +1,5 @@
+import { DamageElement } from "./types";
+
 type Injury = {
   name: string;
   description: string;
@@ -22,4 +24,12 @@ type DealWithTheDevilRow = {
   cost: string;
 }
 
-export type { Injury, InjuryRow, DealWithTheDevilRow };
+type FactionEffectsRow = {
+  name: string;
+  primary: DamageElement;
+  absorb: DamageElement;
+  weaknesses: DamageElement[];
+  special: JSX.Element;
+}
+
+export type { Injury, InjuryRow, DealWithTheDevilRow, FactionEffectsRow };

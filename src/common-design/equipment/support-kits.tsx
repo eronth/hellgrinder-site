@@ -37,7 +37,7 @@ const exObj: {
       name: 'Fragmentation Grenade',
       tags: ['Grenade'],
       attackModes: [{
-        tags: ['Short Range', 'Medium Range', 'Thrown', 'Area: 1'],
+        tags: ['Short Range', 'Medium Range', 'Thrown', { tag: 'Area', value: 1 }],
         damage: {
           l: { value: 9, type: 'Metal' },
           m: { value: 9, type: 'Metal' },
@@ -48,7 +48,7 @@ const exObj: {
       name: 'Incendiary Grenade',
       tags: ['Grenade'],
       attackModes: [{
-        tags: ['Short Range', 'Medium Range', 'Thrown', 'Area: 1'],
+        tags: ['Short Range', 'Medium Range', 'Thrown', { tag: 'Area', value: 1 }],
         damage: {
           l: { value: 5, type: 'Infernal' },
           m: { value: 5, type: 'Infernal' },

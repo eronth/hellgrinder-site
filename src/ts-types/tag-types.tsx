@@ -5,12 +5,19 @@ type TagWithValue = {
 
 type AttackTypes = 'Attack' | 'Melee' | 'Shooting' | 'Arcane' | 'Thrown' | 'Special';
 
-type Range = 'Adjacent Range' | 'Short Range' | 'Medium Range' | 'Long Range' | 'Extreme Range';
+type Range = 'Adjacent Range' | 'Short Range' | 'Medium Range' | 'Long Range' | 'Extreme Range'
+  | {tag: 'Range', value: number};
 
 type EquipmentTags = 'One-Handed' | 'Grenade' | 'Two-Handed' | 'Armor' | 'Gadget'
-| 'Lightweight' | 'Heavy' | 'Illuminate' | 'Concealable' | 'Consumable';
+| 'Lightweight' | 'Heavy' | 'Illuminate' | 'Concealable' | 'Consumable'
+| 'Breach' | 'Shield' | 'Relic';
 
-type ActionTags = 'Attack' | 'Defend' | 'Move' | 'Action' | 'Maneuver'  | 'Opportunity Strike' | 'Special';
+type ActionTags = 'Attack' | 'Defend' | 'Movement' 
+  | 'Action' | 'Maneuver' | 'Reaction' | 'Free Action' 
+  //| 'Adjust Position' | 'Adjust Facing'
+  | 'Opportunity Strike' | 'Special';
+
+type OtherTagsForNow = 'Single-Shot' | 'Safelight';
 
 type CreatureEffectTags = 'Flying' 
   | {tag: 'Hover', value: number } 
@@ -31,7 +38,8 @@ type SkillChecks =
 
 type AllValidTags 
   = AttackTypes | Range | SkillChecks | EquipmentTags | CreatureEffectTags 
-  | AttackEffectTags | ActionTags;
+  | AttackEffectTags | ActionTags
+  | OtherTagsForNow;
 ;
 
 export type { AttackTypes, Range, SkillChecks, AllValidTags, TagWithValue};

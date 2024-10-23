@@ -1,3 +1,4 @@
+import { AllValidTags } from './tag-types';
 import { DamageElement, AttackMode } from './types';
 
 
@@ -19,7 +20,7 @@ type Creature = {
   type: "Minion" | "Spawn" | "Elite" | "Tormentor" | "Arhfiend" 
   | "Lord" | "Overlord";
   
-  tags: string[];
+  tags: AllValidTags[];
   
   health: number;
   speed: number;

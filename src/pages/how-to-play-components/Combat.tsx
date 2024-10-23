@@ -30,7 +30,7 @@ export default function Combat() {
           <li>[Range Attacks] that pass through your [Peripheral Arc] and [Melee Attacks] that originate from your [Peripheral Arc] get +1 on Hit Checks and Damage against you.</li>
           <li>[Range Attacks] that pass through your [Rear Rear] and [Melee Attacks] that originate from your [Rear Arc] get +3 on Hit Checks and +1 to Damage against you.</li>
         </ul>
-        <p>Actions with the [Adjust Position] tag allow you to change facing.</p>
+        <p><s>Actions with the [Adjust Position] tag allow you to change facing.</s></p>
       </ColumnEntry>
 
       <ColumnEntry title={{ hx: 'h3', text: 'Opportunity Strike' }}>

@@ -22,7 +22,7 @@ const exObj: {
       name: 'Sniper Rifle',
       tags: ['Heavy', 'Two-Handed'],
       attackModes: [{
-        tags: ['Single Shot', 'Long Range', 'Shooting Attack'],
+        tags: ['Attack', 'Shooting', 'Single-Shot', 'Long Range'],
         damage: {
           l: { value: 2, type: 'Metal' },
           m: { value: 9, type: 'Metal' },
@@ -57,7 +57,7 @@ const exObj: {
       name: 'Grenade Launcher',
       tags: ['Heavy', 'Two-Handed'],
       attackModes: [{
-        tags: ['Medium Range', 'Long Range', 'Shooting Attack'],
+        tags: ['Attack', 'Shooting', 'Medium Range', 'Long Range'],
         damage: {
           l: { value: 1, type: 'Metal' },
           m: { value: 1, type: 'Metal' },
@@ -81,7 +81,7 @@ const exObj: {
       name: 'Flame Thrower',
       tags: ['Heavy', 'Two-Handed'],
       attackModes: [{
-        tags: ['Short Range', 'Shooting Attack'],
+        tags: ['Attack', 'Shooting', 'Short Range'],
         damage: {
           l: { value: 1, type: 'Infernal' },
           m: { value: 4, type: 'Infernal' },
@@ -107,7 +107,7 @@ const exObj: {
       tags: [],
       attackModes: [{
         name: 'Close Encounter',
-        tags: ['Short Range', 'Shooting Attack'],
+        tags: ['Attack', 'Shooting', 'Short Range'],
         damage: {
           l: { value: 2, type: 'Metal' },
           m: { value: 8, type: 'Metal' },
@@ -116,7 +116,7 @@ const exObj: {
       },
       {
         name: 'Crowd Control',
-        tags: ['Medium Range', 'Shooting Attack'],
+        tags: ['Attack', 'Shooting', 'Medium Range'],
         damage: {
           l: { value: 1, type: 'Metal' },
           m: { value: 3, type: 'Metal' },
@@ -133,7 +133,7 @@ const exObj: {
     },
     {
       name:'Door Peek',
-      tags: ['Sneak', 'Action'],
+      tags: ['Observation', 'Stealth', 'Action'],
       description: 'A tool that can be planted on a door to give you a peek at what\'s on the other side.',
       effects: ['You may use an Action to place this tool on a door you are next to. While adjacent to the door, you can see through the door as if it wasn\'t as a Free Interaction, though others cannot see you. You may only deploy one Door Peek per encounter.'],
     }],
@@ -146,7 +146,7 @@ const exObj: {
     weapons: [{...combatRifle}],
     items: [{
       name: 'Flashlight',
-      tags: ['Light'],
+      tags: ['Illuminate'],
       description: 'A flashlight that helps you see in the dark. You never know when you might need it.',
       effects: ['Produce bright light in your front arc out to [Medium Range] and dim light in your front arc out to [Long Range]. Cannot penetrate arcane abyssal or voidyr darkness.' ],
     }],
@@ -171,7 +171,7 @@ const exObj: {
       tags: ['One-Handed'],
       attackModes: [{
         name: 'Rip and Raze',
-        tags: ['Melee Range', 'Melee Attack'],
+        tags: ['Attack', 'Melee', 'Adjacent Range'],
         damage: {
           l: { value: sword.attackModes[0].damage.l.value, type: 'Chthonic' },
           m: { value: sword.attackModes[0].damage.m.value, type: 'Chthonic' },
@@ -180,7 +180,7 @@ const exObj: {
       },
       {
         name: 'Sunder and Strike',
-        tags: ['Melee Range', 'Melee Attack'],
+        tags: ['Attack', 'Melee', 'Adjacent Range'],
         damage: {
           l: { value: sword.attackModes[0].damage.l.value+1, type: 'Voidyr' },
           m: { value: sword.attackModes[0].damage.m.value+2, type: 'Voidyr' },
@@ -242,7 +242,7 @@ const exObj: {
       name: 'Rune Blast',
       tags: ['One-Handed'],
       attackModes: [{
-        tags: ['Medium Range', 'Arcane Attack'],
+        tags: ['Attack', 'Arcane', 'Medium Range'],
         damage: {
           l: { value: 3, type: 'Chosen Type' },
           m: { value: 6, type: 'Chosen Type' },
@@ -259,7 +259,7 @@ const exObj: {
     },
     {
       name: 'Power Infusion',
-      tags: ['Arcane', 'Damage'],
+      tags: ['Arcane'],
       effects: ['Gain +1 Damage for every 6 Corruption you have.'],
     }],
   },
@@ -270,7 +270,7 @@ const exObj: {
     weapons: [{...pistol}],
     items: [{
       name: 'Chosen Relics',
-      tags: ['Relic', 'Arcane'],
+      tags: ['Arcane', 'Relic'],
       description: 'When you pick Relic Worker, choose three of the following relics. When combat begins, choose a relic to start as equipped. Swapping Relics is a Maneuver.',
       effects: [''],
     },
@@ -282,7 +282,7 @@ const exObj: {
     },
     {
       name: 'Drowner Discus',
-      tags: ['Arcane', 'Relic', 'Medium Range', 'Thrown', 'Area: 1'],
+      tags: ['Arcane', 'Relic', 'Medium Range', 'Thrown', {tag: 'Area', value: 1}],
       description: '',
       effects: ['Create a Drownpit Pool in the affected area.'],
     },
@@ -348,7 +348,7 @@ const exObj: {
       name: 'Entangle Vine',
       tags: ['Arcane'],
       attackModes: [{
-        tags: ['Short Range', 'Thrown Attack'],
+        tags: ['Attack', 'Thrown', 'Short Range'],
         damage: {
           l: { value: 1, type: 'Verdant' },
           m: { value: 2, type: 'Verdant' },
@@ -384,7 +384,7 @@ const exObj: {
       attackModes: [
         {
           name: 'Beam',
-          tags: ['Medium Range', 'Long Range', 'Shooting Attack'],
+          tags: ['Attack', 'Shooting', 'Medium Range', 'Long Range'],
           damage: {
             l: { value: 3, type: 'Infernal' },
             m: { value: 6, type: 'Infernal' },
@@ -394,7 +394,7 @@ const exObj: {
         },
         {
           name: 'Erupt',
-          tags: ['Short Range', 'Shooting Attack'],
+          tags: ['Attack', 'Shooting', 'Short Range'],
           damage: {
             l: { value: 1, type: 'Infernal' },
             m: { value: 3, type: 'Infernal' },
@@ -404,7 +404,7 @@ const exObj: {
         },
         {
           name: 'Overcharge',
-          tags: ['Long Range', 'Shooting Attack'],
+          tags: ['Attack', 'Shooting', 'Long Range'],
           damage: {
             l: { value: 12, type: 'Infernal' },
             m: { value: 12, type: 'Infernal' },

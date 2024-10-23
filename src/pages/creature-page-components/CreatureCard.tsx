@@ -15,7 +15,12 @@ export default function GenericToNongenericTable({ data }: Props) {
       <span>{data.type}</span>
     </div>
     <div className='tags'>
-      {data.tags.map((tag, i) => <span key={`creature-${data.name}-tag-${i}`}>{tag}</span>)}
+      {data.tags.map((tag, i) => <span key={`creature-${data.name}-tag-${i}`}>
+        {(typeof tag === 'string')
+          ? tag
+          : `${tag.tag}: ${tag.value}`
+        }
+      </span>)}
     </div>
     <div className='stats'>
       <span>Health: {data.health}⛨</span>

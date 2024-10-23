@@ -1,3 +1,5 @@
+import { AllValidTags } from "./tag-types";
+
 type HeaderSize = 
   'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   | '1' | '2' | '3' | '4' | '5' | '6'
@@ -11,6 +13,8 @@ type DamageElement =
 
 type StatusTypes = 
   'Burning' | 'Frozen' | 'Poisoned' | 'Stunned' | 'Prone' | 'Blinded' | 'Silenced' | 'Confused' | 'Charmed' | 'Frightened' | 'Enraged' | 'Invisible' | 'Incorporeal' | 'Insubstantial' | 'Incapacitated' | 'Restrained' | 'Grappled' | 'Paralyzed' | 'Petrified' | 'Unconscious' | 'Dead';
+  // Blinded X, Brittle X, Doomed X, Enfeebled X, Envigorated, Frenzied, Imolated X for Y,
+  // Lost X, Shaken, Silenced X, Slowed X, Terrified
 
 type Kit = {
   name: string;
@@ -23,13 +27,13 @@ type Kit = {
 type Weapon = {
   name: string;
   attackModes: AttackMode[];
-  tags: string[];
+  tags: AllValidTags[];
 }
 
 type AttackMode = {
   name?: string;
   charges?: number;
-  tags: string[];
+  tags: AllValidTags[];
   damage: {
     l: Damage;
     m: Damage;
@@ -45,14 +49,14 @@ type Damage = {
 
 type Item = {
   name: string;
-  tags: string[];
+  tags: AllValidTags[];
   description: string;
   effects: string[];
 }
 
 type Training = {
   name: string;
-  tags: string[];
+  tags: AllValidTags[];
   effects: string[];
 }
 

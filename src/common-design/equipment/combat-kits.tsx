@@ -1,20 +1,8 @@
 import type { Kit } from '../../ts-types/types.tsx';
-import { deepCopyWeapon, combatRifle, pistol, sword } from './weapons.tsx';
+import { combatRifle, pistol, sword } from './weapons.tsx';
+import Tools from '../../common-design/Tools';
 
-const exObj: {
-  sniper: Kit,
-  grenadier: Kit,
-  flamethrower: Kit,
-  breachAndClear: Kit,
-  soldier: Kit,
-  demonHunter: Kit,
-  perky: Kit,
-  riot: Kit,
-  helltouched: Kit,
-  relicworker: Kit,
-  warrior: Kit,
-  prototype: Kit,
-} = {
+const exObj: { [key: string]: Kit } = {
   sniper: {
     name: 'Sniper',
     description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",
@@ -154,19 +142,20 @@ const exObj: {
       name: 'Rounded',
       tags: [],
       effects: ['Start with an additional Support Kit of your choice.', 'Start with 1 additional Perk Point.'],
-    },
-    {
+    }, {
       name: 'Move! Move!',
       tags: [],
       effects: ['Gain +1 Move Speed.']
     }],
+    extraPerkPoints: 1,
+    extraSupportKits: 1,
   },
 
   demonHunter: {
     name: 'Demon Hunter',
     description: "The demon hunter craves the destruction of all hellish creatures. They have trained in the art of combat, seeking up-close and personal assaults.",
     weapons: [{
-      ...deepCopyWeapon(sword),
+      ...Tools.deepCopyWeapon(sword),
       name: 'Hellforged Blade',
       tags: ['One-Handed'],
       attackModes: [{
@@ -177,8 +166,7 @@ const exObj: {
           m: { value: sword.attackModes[0].damage.m.value, type: 'Chthonic' },
           h: { value: sword.attackModes[0].damage.h.value, type: 'Chthonic' },
         },
-      },
-      {
+      }, {
         name: 'Sunder and Strike',
         tags: ['Attack', 'Melee', 'Adjacent Range'],
         damage: {
@@ -188,9 +176,8 @@ const exObj: {
         },
         effects: ['Gain 3 Corruption.'],
       }],
-    },
-    {
-      ...deepCopyWeapon(pistol),
+    }, {
+      ...Tools.deepCopyWeapon(pistol),
       name: 'Hellforged Pistol',
     }],
     items: [],
@@ -212,6 +199,7 @@ const exObj: {
       tags: [],
       effects: ['Start with 3 additional Perk Points.'],
     }],
+    extraPerkPoints: 3,
   },
 
   riot: {
@@ -225,8 +213,7 @@ const exObj: {
       effects: ['Maneuver to deploy or retract the shield.',
         'While held, gain [Resist All 1].',
         'When you deploy the shield, pick two edges or your hex that share a corner. Those edges now have heavy cover.',],
-    },
-    {
+    }, {
       name:'Heavy Armor',
       tags: ['Armor'],
       description: 'Extra plating to protect yourself on the battlefield.',
@@ -248,7 +235,7 @@ const exObj: {
           m: { value: 6, type: 'Chosen Type' },
           h: { value: 9, type: 'Chosen Type' },
         },
-        effects: ['When you hit an enemy that has Resist against your chosen element, you can forgo damage to instead reduce their Resist value against that element by 1.'],
+        effects: ['When you hit an enemy that has Resist against your chosen element, you can forgo damage to instead reduce their Resist value against that element by 1 for the rest of the encounter.'],
       }],
     }],
     items: [],
@@ -341,8 +328,8 @@ const exObj: {
     name: 'Warrior',
     description: "The warrior hears the primal call of battle. They take of their weapon and armor, and charge into the fray, ready to take on any foe.",
     weapons: [{
-      ...deepCopyWeapon(sword),
-      name: 'Wildcall Sword',
+      ...Tools.deepCopyWeapon(sword),
+      name: 'Wildcaller Sword',
     },
     {
       name: 'Entangle Vine',

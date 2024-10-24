@@ -1,14 +1,8 @@
 import type { Kit } from '../../ts-types/types.tsx';
-import { deepCopyWeapon, pistol, knife } from './weapons.tsx';
+import { pistol, knife } from './weapons.tsx';
+import Tools from '../../common-design/Tools';
 
-const exObj: {
-  cardMystic: Kit,
-  grenadeStash: Kit,
-  medic: Kit,
-  recon: Kit,
-  shadowOp: Kit,
-  sigilBearer: Kit,
-} = {
+const exObj: { [key: string]: Kit } = {
   medic: {
     name: 'Medic',
     description: "",
@@ -85,9 +79,9 @@ const exObj: {
     name: 'Shadow Op',
     description: "The Shadow Op kit is for the soldier who prefers to strike from the shadows.",
     weapons: [{
-      ...deepCopyWeapon(pistol),
+      ...Tools.deepCopyWeapon(pistol),
     }, {
-      ...deepCopyWeapon(knife),
+      ...Tools.deepCopyWeapon(knife),
     }],
     items: [],
     trainings: [{

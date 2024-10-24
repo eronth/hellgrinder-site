@@ -54,8 +54,4 @@ const knife: Weapon = {
   }],
 };
 
-function deepCopyWeapon(weapon: Weapon): Weapon {
-  return JSON.parse(JSON.stringify(weapon));
-}
-
-export { deepCopyWeapon, pistol, combatRifle, sword, knife };
+export { pistol, combatRifle, sword, knife };

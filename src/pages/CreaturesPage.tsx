@@ -3,7 +3,7 @@ import NavTabs from "../common-design/nav/NavTabs";
 import { TabType } from "../ts-types/types";
 import GenericToNongenericTable from "./creature-page-components/GenericToNongenericTable";
 import CreatureCard from "./creature-page-components/CreatureCard";
-import CreatureTools from "../common-design/creatures/creature-tools";
+import Tools from "../common-design/Tools";
 import GenCreatures from "../common-design/creatures/generic-creatures";
 
 export default function CreaturesPage() {
@@ -50,7 +50,7 @@ export default function CreaturesPage() {
 
     */}
     <div className='col-handler'>
-      {CreatureTools
+      {Tools
         .sortCreatures(GenCreatures)
         .map((creature, i) => 
           <CreatureCard key={`creature-${creature.name}-${i}`} data={creature} />

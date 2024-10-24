@@ -1,0 +1,162 @@
+import React from "react";
+import GameTitle from "../GameTitle";
+import NavTabs from "../common-design/nav/NavTabs";
+import { TabType, Kit, Perk, DamageElement } from "../ts-types/types";
+import { SkillChecks } from "../ts-types/tag-types";
+
+import KitComponent from "./character-creation-components/kits/Kit";
+import PerkComponent from "./character-creation-components/perks/PerkComponent";
+
+import Tools from "../common-design/Tools";
+
+import CombatKits from "../common-design/equipment/combat-kits";
+import SupportKits from "../common-design/equipment/support-kits";
+import Perks from "../common-design/equipment/perks";
+import CharacterStartingStatsTable from "./character-creation-components/CharacterStartingStatsTable";
+
+type CharDesign = {
+  health: number, injuries: number, speed: number,
+  corruption: number, safelightShards: number,
+  startingPerkPoints: number,
+  startingCombatKits: number, startingSupportKits: number,
+  kits: Kit[], perks: Perk[], bonuses: string[],
+  specializationBonus: string, specializationPenalty: string,
+};
+
+export default function CharacterCreationPage() {
+  
+  const page: TabType = 'character-generator';
+  const [char, setChar] = React.useState(null as CharDesign | null);
+
+  const characterDefaults: CharDesign = {
+    health: 6, injuries: 0, speed: 5,
+    corruption: 0, safelightShards: 2,
+    startingPerkPoints: 2,
+    startingCombatKits: 1, startingSupportKits: 1,
+    kits: [], perks: [], bonuses: [],
+    specializationBonus: '', specializationPenalty: '',
+  };
+  const specializationOptions: SkillChecks[] = [
+  'Might', 'Endurance', 'Agility', 'Stealth' , 'Observation' ,
+  'Communication', 'Stoic',
+  'Recovery' , 'Corruption',
+  ];
+
+  function generateCharacter() {
+    // Generate a character
+    let rand: number;
+    const combatKitsArr = Tools.sortKits(CombatKits);
+    const supportKitsArr = Tools.sortKits(SupportKits);
+
+    // Start with default values.
+    const newChar = JSON.parse(JSON.stringify(characterDefaults));
+
+    // Determine specialization bonus and penalty
+    const so = [...specializationOptions]
+    rand = Math.floor(Math.random() * so.length);
+    newChar.specializationBonus = so[rand];
+    so.splice(rand, 1);
+    rand = Math.floor(Math.random() * so.length);
+    newChar.specializationPenalty = so[rand];
+
+    // Determine starting combat kit
+    rand = Math.floor(Math.random() * combatKitsArr.length);
+    const chosenCombatKit = Tools.deepCopyKit(combatKitsArr[rand]);
+    newChar.startingSupportKits += chosenCombatKit.extraSupportKits ?? 0;
+    newChar.startingPerkPoints += chosenCombatKit.extraPerkPoints ?? 0;
+    specialKitLogic(chosenCombatKit);
+    newChar.kits.push(chosenCombatKit);
+
+    for (let i = 0; i < newChar.startingSupportKits; i++) {
+      let rand = Math.floor(Math.random() * supportKitsArr.length);
+      while (newChar.kits.includes(supportKitsArr[rand])) {
+        rand = Math.floor(Math.random() * supportKitsArr.length);
+      }
+      const chosenSupportKit = Tools.deepCopyKit(supportKitsArr[rand]);
+      specialKitLogic(chosenSupportKit);
+      newChar.kits.push(chosenSupportKit);
+    }
+
+    newChar.perks = getPerks(newChar.startingPerkPoints);
+    let perksCost = 0;
+    newChar.perks.forEach((p: Perk) => perksCost += p.cost);
+    newChar.startingPerkPoints -= perksCost;
+
+    setChar(newChar);
+  }
+
+  function getPerks(perkPoints: number) {
+    const perksArr: Perk[] = [...Tools.sortPerks(Perks)];
+
+    const perks: Perk[] = [];
+    let spentPoints = 0;
+    while(spentPoints < perkPoints) {
+      let retries = 100;
+      let rand = Math.floor(Math.random() * perksArr.length);
+      while ((perks.includes(perksArr[rand]) || spentPoints + perksArr[rand].cost > perkPoints) && retries > 0) {
+        rand = Math.floor(Math.random() * perksArr.length);
+        retries--;
+      }
+      
+      if (retries <= 0) { break; }
+      const chosenPerk = Tools.deepCopyPerk(perksArr[rand]);
+
+      spentPoints += chosenPerk.cost;
+      perks.push(chosenPerk);
+      perksArr.splice(rand, 1);
+    }
+
+    return perks;
+  }
+
+  function specialKitLogic(kit: Kit) {
+    if (kit.name === "Helltouched") {
+      const damageTypes: DamageElement[] = ['Metal', 'Infernal', 'Abyssal', 'Verdant', 'Chthonic', 'Nethercurrent', 'Voidyr'];
+      const rand = Math.floor(Math.random() * damageTypes.length);
+      kit.weapons[0].attackModes[0].damage.l.type = damageTypes[rand];
+      kit.weapons[0].attackModes[0].damage.m.type = damageTypes[rand];
+      kit.weapons[0].attackModes[0].damage.h.type = damageTypes[rand];
+      kit.weapons[0].attackModes[0].effects = [`When you hit an anemy that has Resist ${damageTypes[rand]} to ${damageTypes[rand]} Damage, you can forgo damage to reduce their Resist ${damageTypes[rand]} by 1 for the rest of the encounter.`];
+    } else if (kit.name === "Relic Worker") {
+      // Randomly remove all but 3 relics
+      while (kit.items.length > 4) { // Do 4 to keep the description chunk.
+        const rand = Math.floor(Math.random() * kit.items.length-1) + 1;
+        kit.items.splice(rand, 1);
+      }
+    }
+  }
+
+
+  return (<div className={page}>
+    <GameTitle />
+    <NavTabs selectedTab={page} />
+    <button onClick={generateCharacter}>Generate Character</button>
+    {(char != null)
+      ? <div className="generated-character-display">
+        <h2>Character</h2>
+        <div className="col-handler">
+          <div>
+            <div className="name">name</div>
+            <CharacterStartingStatsTable perkPoints={char.startingPerkPoints}/>
+            <div>
+              <div>Specialization</div>
+              <div>+3 [{char.specializationBonus}] (bonus)</div>
+              <div>-5 [{char.specializationPenalty}] (penalty)</div>
+            </div>
+            {char.perks.map((p, i) =>
+              <PerkComponent key={`perk-${i}`} perk={p} />
+            )}
+          </div>
+          
+          {char.kits.map((k, i) => 
+            <KitComponent key={`kit-${i}`} kit={k} />
+          )}
+
+          
+        </div>
+      </div>
+      : <div className="generated-character-display"></div>
+    }
+    <hr />
+  </div>);
+}

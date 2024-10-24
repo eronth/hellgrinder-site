@@ -1,8 +1,13 @@
 import ColumnEntry from "../../common-design/ColumnEntry.tsx";
-import Perk from "./perks/PerkComponent.tsx";
+import PerkComponent from "./perks/PerkComponent.tsx";
 import Perks from "../../common-design/equipment/perks.tsx";
+import Tools from "../../common-design/Tools.tsx";
 
 export default function PerksListDisplayComponent() {
+  
+
+  const sortedPerks = Tools.sortPerks(Perks);
+
   return (<>
     <ColumnEntry title={{ hx: 'h3', text: 'Perks' }}>
       <p>You can use Perk Points to gain Perks of your choice. Perks will give you minor benefits to help round out your character.</p>
@@ -10,14 +15,7 @@ export default function PerksListDisplayComponent() {
 
     <ColumnEntry title={{ hx: 'h4', text: 'Perk Options' }}>
       <div className='col-handler'>
-        <Perk perk={Perks.durable} />
-        <Perk perk={Perks.evil} />
-        <Perk perk={Perks.hellspawn} />
-        <Perk perk={Perks.mindful} />
-        <Perk perk={Perks.nimble} />
-        <Perk perk={Perks.sinister} />
-        <Perk perk={Perks.stoic} />
-        <Perk perk={Perks.veteran} />
+        {sortedPerks.map((p, i) => <PerkComponent key={`perk-${i}`} perk={p} />)}
       </div>
     </ColumnEntry>
   </>);

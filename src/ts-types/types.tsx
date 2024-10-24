@@ -22,6 +22,8 @@ type Kit = {
   weapons: Weapon[];
   items: Item[];
   trainings: Training[];
+  extraPerkPoints?: number;
+  extraSupportKits?: number;
 }
 
 type Weapon = {
@@ -66,7 +68,9 @@ type Perk = {
   cost: number;
 }
 
-type TabType = "home" | "story" | "setting" | "how-to-play" | "character-creation" | "additional-equipment" | "advanced-perks" | "items" | "magic" | "creatures";
+type TabType = "home" | "story" | "setting" | "how-to-play" | "character-creation" 
+  | "character-generator" | "creatures"
+  | "additional-equipment" | "advanced-perks" | "items" | "magic";
 
 
 export type { HeaderSize, Kit, Weapon, AttackMode, Training, Item, Perk, TabType, DamageElement };

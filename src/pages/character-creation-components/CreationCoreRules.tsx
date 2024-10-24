@@ -1,4 +1,5 @@
 import ColumnEntry from "../../common-design/ColumnEntry";
+import CharacterStartingStatsTable from "./CharacterStartingStatsTable";
 
 export default function CreationCoreRules() {
   return (<>
@@ -16,25 +17,7 @@ export default function CreationCoreRules() {
       <div>
         <ColumnEntry title={{ hx: 'h3', text: 'Starting Stats' }}>
           <p>Characters in Hellgrinder have little choice when it comes to starting stats. Most of the customization comes from Kit and Perk choices, instead. Therefore, starting stats for all characters are as follows:</p>
-          <table>
-            <tbody>
-              <tr>
-                <td colSpan={3}>6 Max Health</td>
-                <td colSpan={3}>0 Injuries</td>
-                <td colSpan={3}>5 Move Speed</td>
-              </tr>
-              <tr>
-                <td colSpan={3}>0 Corruption</td>
-                <td colSpan={3}>2 Perk Points</td>
-                <td colSpan={3}>2 Safelight Shards</td>
-              </tr>
-              <tr>
-                <td colSpan={9}>
-                  +1 to your choice of [Short Range], [Medium Range], [Long Range], or Melee attacks (can be chosen at the end of character creation).
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <CharacterStartingStatsTable />
         </ColumnEntry>
 
         <ColumnEntry title={{ hx: 'h3', text: 'Optional: Specialization' }}>

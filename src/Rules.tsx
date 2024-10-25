@@ -12,7 +12,7 @@ import CreaturesPage from "./pages/CreaturesPage";
 import MagicSpellPage from "./pages/MagicSpellPage";
 
 export default function Rules() {
-  return (
+  return (<>
     <div className="rules">
       <Routes>
         <Route path="/" element={<FancyIndexPage />} />
@@ -26,8 +26,12 @@ export default function Rules() {
         <Route path="/advanced-perks" element={<AdvancedPerksPage />} />
         <Route path="/magic" element={<MagicPage />} />
         <Route path="/creatures" element={<CreaturesPage />} />
-        <Route path="/magic-spell" element={<MagicSpellPage />} />
       </Routes>
     </div>
-  );
+    <div>
+      <Routes>
+          <Route path="/magic-spell" element={<MagicSpellPage />} />
+      </Routes>
+    </div>
+  </>);
 }

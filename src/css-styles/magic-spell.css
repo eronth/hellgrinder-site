@@ -1,0 +1,86 @@
+div.msb {
+  --height: 8.5in;
+  --width: 11in;
+  --sheetMarginTB: .25in;
+  --sheetMarginLR: .25in;
+  /* padding-top: var(--sheetMarginTB);
+  padding-bottom: var(--sheetMarginTB);
+  padding-left: var(--sheetMarginLR);
+  padding-right: var(--sheetMarginLR); */
+  /*.25in;*/
+  /* --margins: 0; 
+  --topNbotPad: .25in;
+  padding-top: var(--topNbotPad);
+  padding-bottom: var(--topNbotPad); */
+  /* --fullPadding: .25in; */
+  --pageBG: #fdfcf0;
+  margin: 0;
+  /* padding-inline: var(--fullPadding); */
+  background-color: var(--pageBG);
+  width: var(--width);
+  height: var(--height);
+  color: black;
+  /* Make a grid of pages */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.msb .spell-page {
+  padding: .25in;
+  position: relative;
+  background-color: var(--pageBG);
+  /* mask: radial-gradient(20px at 40px 40px, transparent 98%, black) -40px -40px; */
+}
+.msb .spell-page.first {
+  /* margin-right: calc(.25in/2); */
+  border-right: 1px solid black;
+}
+.msb .spell-page.second {
+  /* margin-left: calc(.25in/2); */
+  border-left: 1px solid black;
+}
+
+
+.spell-page .how-to-cast-title,
+.spell-page .spell-effects-title,
+.spell-page .backfire-title {
+  margin-top: 1em;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+}
+.spell-page .spell-name,
+.spell-page .how-to-cast,
+.spell-page .spell-effects,
+.spell-page .backfire {
+  border: 2px solid black;
+  height: 15%;
+}
+.spell-page .spell-name {
+  height: .75in;
+}
+.spell-page .spell-effects {
+  height: 40%;
+}
+
+div.spell-name,
+div.how-to-cast,
+div.spell-effects,
+div.backfire {
+  position: relative;
+  /* width: 200px;
+  height: 80px; */
+  background-color: #000;
+  mask: radial-gradient(20px at 40px 40px, transparent 98%, black) -40px -40px;
+}
+
+.spell-name-inner,
+.how-to-cast-inner,
+.spell-effects-inner,
+.backfire-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--pageBG);
+  mask: radial-gradient(20px at 40px 40px, transparent 98%, black) -40px -40px;
+}

@@ -3,6 +3,7 @@ import Tools from "../../../common-design/Tools";
 import ForgefiendSyndicate from "./ForgefiendSyndicate";
 import HandOfDeath from "./HandOfDeath";
 import HeavensHost from "./HeavensHost";
+import Sinners from "./Sinners";
 import VoidfireConclave from "./VoidfireConclave";
 import WitchCovens from "./WitchCovens";
 
@@ -22,6 +23,7 @@ export default function OtherFactions() {
       <ForgefiendSyndicate hx={factionHxLevel} />
       <HandOfDeath hx={factionHxLevel} />
       <HeavensHost hx={factionHxLevel} />
+      <Sinners hx={factionHxLevel}/>
       <VoidfireConclave hx={factionHxLevel} />
       <WitchCovens hx={factionHxLevel} />
     </div>

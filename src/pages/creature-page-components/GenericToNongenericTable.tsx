@@ -40,7 +40,7 @@ export default function GenericToNongenericTable() {
           absorb: "Metal",
           weaknesses: ["Chthonic", "Nethercurrent"],
           special: <>
-
+            {/* TODO add special bonus */}
           </>,
         }} />
         <GenericToNongenericRow data={{
@@ -49,20 +49,20 @@ export default function GenericToNongenericTable() {
           absorb: "Verdant",
           weaknesses: ["Abyssal", "Chthonic"],
           special: <>
-
+            {/* TODO add special bonus */}
           </>,
         }} />
         <GenericToNongenericRow data={{
-          name: "Wanderlost Clans",
+          name: "Wanderlost Clans", //TODO add story elements for them
           primary: "Metal",
           absorb: "Chthonic",
           weaknesses: ["Infernal", "Nethercurrent"],
           special: <>
-          
+            {/* TODO add special bonus */}
           </>,
         }} />
         <GenericToNongenericRow data={{
-          name: "Zephpter Horde",
+          name: "Zephpter Horde", // TODO officially make this rename happen
           primary: "Nethercurrent",
           absorb: "Voidyr",
           weaknesses: ["Chthonic", "Metal"],

@@ -19,6 +19,8 @@ export default function CreaturesPage() {
     <p>There are many types of creatures in the Underworld.</p>
     <>
       <h3>Enemy Tiers</h3>
+      {/* TODO Pull this in dynamically. */}
+      {/* TODO Add descriptions to each tier. */}
       <p>Enemy Types: Minion, Hellspawn, Tormentor, Archfiend, Lord, Overlord</p>
       <p>Enemies should be tough. Archfiends should be a hell of a battle, Lords and Overlords should be virtually unbeatable. Probably not worth even statting out.</p>
       <h3>Generic Demons</h3>
@@ -32,7 +34,9 @@ export default function CreaturesPage() {
       </p>
       <GenericToNongenericTable />
     </>
-    {/* <li>Imp</li>
+    {/*
+    TODO create these creatures
+    <li>Imp</li>
     <li>Fiend</li>
     // Imp, Gremlin, Fiend, Abomination, Devil, Bloodsworn
     <li>Abomination</li>
@@ -49,6 +53,7 @@ export default function CreaturesPage() {
     Sloth - Stoneveined
 
     */}
+    {/* TODO Fix column widths. */}
     <div className='col-handler'>
       {Tools
         .sortCreatures(GenCreatures)

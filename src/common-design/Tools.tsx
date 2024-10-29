@@ -1,4 +1,4 @@
-import { Creature } from '../ts-types/creature-types';
+import { Creature, CreatureTierList } from '../ts-types/creature-types';
 import { DamageElement, Weapon, AttackMode } from '../ts-types/types';
 import { Kit } from '../ts-types/types';
 import { Perk } from '../ts-types/types';
@@ -134,23 +134,25 @@ const deepCopyAttackMode = (attackMode: AttackMode, options?: deepCopyAttackMode
 const getLoremIpsum = () =>
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
-const ct0 = 'Minion';
-const ct1 = 'Spawn';
-const ct2 = 'Elite';
-const ct3 = 'Tormentor';
-const ct4 = 'Arhfiend';
-const ct5 = 'Lord';
-const ct6 = 'Overlord';
+const creatureTiers: CreatureTierList = {
+  t0: 'Minion',
+  t1: 'Spawn',
+  t2: 'Elite',
+  t3: 'Tormentor',
+  t4: 'Archfiend',
+  t5: 'Lord',
+  t6: 'Overlord',
+};
 
 function sortCreatures(creatures: { [key: string]: Creature }): Creature[] {
   // First, separate creatures by type/tier
-  let ct0Creatures = Object.values(creatures).filter(c => c.type === ct0);
-  let ct1Creatures = Object.values(creatures).filter(c => c.type === ct1);
-  let ct2Creatures = Object.values(creatures).filter(c => c.type === ct2);
-  let ct3Creatures = Object.values(creatures).filter(c => c.type === ct3);
-  let ct4Creatures = Object.values(creatures).filter(c => c.type === ct4);
-  let ct5Creatures = Object.values(creatures).filter(c => c.type === ct5);
-  let ct6Creatures = Object.values(creatures).filter(c => c.type === ct6);
+  let ct0Creatures = Object.values(creatures).filter(c => c.tier === creatureTiers.t0);
+  let ct1Creatures = Object.values(creatures).filter(c => c.tier === creatureTiers.t1);
+  let ct2Creatures = Object.values(creatures).filter(c => c.tier === creatureTiers.t2);
+  let ct3Creatures = Object.values(creatures).filter(c => c.tier === creatureTiers.t3);
+  let ct4Creatures = Object.values(creatures).filter(c => c.tier === creatureTiers.t4);
+  let ct5Creatures = Object.values(creatures).filter(c => c.tier === creatureTiers.t5);
+  let ct6Creatures = Object.values(creatures).filter(c => c.tier === creatureTiers.t6);
 
   // Next, sort each tier by name
   ct0Creatures = ct0Creatures.sort((a, b) => a.name.localeCompare(b.name));
@@ -196,4 +198,5 @@ export default {
   sortCreatures,
   deepCopyWeapon,
   deepCopyAttackMode,
+  creatureTiers,
 };

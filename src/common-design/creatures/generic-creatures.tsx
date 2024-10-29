@@ -1,13 +1,6 @@
 import { Creature } from '../../ts-types/creature-types';
 import { DamageTakenMod } from '../../ts-types/creature-types';
-
-const ct0 = 'Minion';
-const ct1 = 'Spawn';
-const ct2 = 'Elite';
-const ct3 = 'Tormentor';
-const ct4 = 'Arhfiend';
-const ct5 = 'Lord';
-const ct6 = 'Overlord';
+import Tools from '../../common-design/Tools';
 
 const coreResist: DamageTakenMod = {
   modification: 'Resist',
@@ -19,7 +12,7 @@ const coreAbsorb: DamageTakenMod = {
   type: 'CORE',
   mod: 1,
 };
-const promoteAborb: DamageTakenMod = {
+const promoteAbsorb: DamageTakenMod = {
   modification: 'Absorb',
   type: 'PROMOTE',
   mod: 1,
@@ -49,15 +42,15 @@ const secondaryWeakness: DamageTakenMod = {
 const exObj: { [key: string]: Creature } = {
   imp: {
     name: 'Imp',
-    type: ct0,
+    tier: Tools.creatureTiers.t0,
     tags: [],
-    health: 15,
+    health: 12,
     size: 1,
     speed: 4,
     dash: 2,
     damageTakenMods: [
       { ...coreResist, mod: 2 },
-      { ...promoteAborb, mod: 1 },
+      { ...promoteAbsorb, mod: 1 },
       {...primaryWeakness, mod: 3},
       {...secondaryWeakness, mod: 3}
     ],
@@ -85,7 +78,7 @@ const exObj: { [key: string]: Creature } = {
   },
   swarmer: {
     name: 'Swarmer',
-    type: ct0,
+    tier: Tools.creatureTiers.t0,
     tags: [],
     health: 12,
     size: 1,
@@ -107,7 +100,7 @@ const exObj: { [key: string]: Creature } = {
   },
   spitter: {
     name: 'Spitter',
-    type: ct0,
+    tier: Tools.creatureTiers.t0,
     tags: [],
     health: 8,
     size: 1,
@@ -128,12 +121,12 @@ const exObj: { [key: string]: Creature } = {
   },
   lansperker: {
     name: 'Lansperker',
-    type: ct1,
+    tier: Tools.creatureTiers.t1,
     tags: [],
     health: 20,
     size: 1,
     speed: 5,
-    damageTakenMods: [ { ...coreResist }, { ...promoteAborb, mod: 2 }, {...primaryWeakness}, {...secondaryWeakness} ],
+    damageTakenMods: [ { ...coreResist }, { ...promoteAbsorb, mod: 2 }, {...primaryWeakness}, {...secondaryWeakness} ],
     attacks: [{
       name: 'Lance Thrust',
       damage: {
@@ -149,13 +142,13 @@ const exObj: { [key: string]: Creature } = {
   },
   lasherator: {
     name: 'Lasherator',
-    type: ct1,
+    tier: Tools.creatureTiers.t1,
     tags: [],
     health: 15,
     size: 1,
     speed: 4,
     dash: 1,
-    damageTakenMods: [ { ...coreResist, mod: 3 }, { ...promoteAborb }, {...primaryWeakness}, {...secondaryWeakness} ],
+    damageTakenMods: [ { ...coreResist, mod: 3 }, { ...promoteAbsorb }, {...primaryWeakness}, {...secondaryWeakness} ],
     attacks: [{
       name: 'Lash',
       damage: {
@@ -171,13 +164,13 @@ const exObj: { [key: string]: Creature } = {
   },
   hellhound: {
     name: 'Hellhound',
-    type: ct0,
+    tier: Tools.creatureTiers.t0,
     tags: [],
     health: 8,
     size: 1,
     speed: 6,
     dash: 2,
-    damageTakenMods: [ { ...coreResist }, { ...promoteAborb }, {...primaryWeakness, mod: 1},],
+    damageTakenMods: [ { ...coreResist }, { ...promoteAbsorb }, {...primaryWeakness, mod: 1},],
     attacks: [{
       name: 'Bite',
       damage: {
@@ -193,7 +186,7 @@ const exObj: { [key: string]: Creature } = {
   },
   tenebros: {
     name: 'Tenebros',
-    type: ct1,
+    tier: Tools.creatureTiers.t1,
     tags: [],
     health: 10,
     size: 1,
@@ -201,7 +194,7 @@ const exObj: { [key: string]: Creature } = {
     damageTakenMods: [
       { ...coreResist, mod: 4 },
       { ...coreAbsorb, mod: 3 },
-      { ...promoteAborb, mod: 5 },
+      { ...promoteAbsorb, mod: 5 },
       {...primaryWeakness},
       {...secondaryWeakness}
     ],
@@ -222,12 +215,12 @@ const exObj: { [key: string]: Creature } = {
   },
   wreislander: {
     name: 'Wreislander',
-    type: ct2,
+    tier: Tools.creatureTiers.t2,
     tags: [],
     health: 20,
     size: 3,
     speed: 4,
-    damageTakenMods: [ { ...coreResist, mod: 2 }, { ...promoteAborb, mod: 2 }, {...primaryWeakness}, {...secondaryWeakness} ],
+    damageTakenMods: [ { ...coreResist, mod: 2 }, { ...promoteAbsorb, mod: 2 }, {...primaryWeakness}, {...secondaryWeakness} ],
     attacks: [{
       name: 'Crushing Blow',
       damage: {
@@ -243,12 +236,12 @@ const exObj: { [key: string]: Creature } = {
   },
   hellspawn: {
     name: 'Aggressor Hellspawn',
-    type: ct1,
+    tier: Tools.creatureTiers.t1,
     tags: [],
     health: 16,
     size: 1,
     speed: 6,
-    damageTakenMods: [ { ...coreResist, mod: 2 }, { ...promoteAborb, mod: 2 }, {...primaryWeakness}, {...secondaryWeakness} ],
+    damageTakenMods: [ { ...coreResist, mod: 2 }, { ...promoteAbsorb, mod: 2 }, {...primaryWeakness}, {...secondaryWeakness} ],
     attacks: [{
       name: 'Rending Gash',
       damage: {
@@ -284,12 +277,12 @@ const exObj: { [key: string]: Creature } = {
   },
   archanistStudent: {
     name: 'Anarchist Student',
-    type: ct1,
+    tier: Tools.creatureTiers.t1,
     tags: [],
     health: 10,
     size: 1,
     speed: 4,
-    damageTakenMods: [ { ...coreResist, mod: 2 }, { ...promoteAborb, mod: 4 }, {...primaryWeakness, mod: 3}, {...secondaryWeakness, mod: 2} ],
+    damageTakenMods: [ { ...coreResist, mod: 2 }, { ...promoteAbsorb, mod: 4 }, {...primaryWeakness, mod: 3}, {...secondaryWeakness, mod: 2} ],
     attacks: [{
       name: 'Arcane Bolt',
       damage: {
@@ -305,13 +298,13 @@ const exObj: { [key: string]: Creature } = {
   },
   allSeeingEyespawn: {
     name: 'All-Seeing Eyespawn',
-    type: ct1,
+    tier: Tools.creatureTiers.t1,
     tags: [],
     health: 10,
     size: 1,
     speed: 4,
     dash: -1,
-    damageTakenMods: [ { ...coreResist, mod: 2 }, { ...promoteAborb }, {...primaryWeakness}, {...secondaryWeakness} ],
+    damageTakenMods: [ { ...coreResist, mod: 2 }, { ...promoteAbsorb }, {...primaryWeakness}, {...secondaryWeakness} ],
     attacks: [{
       name: 'Eye Beam',
       damage: {
@@ -327,6 +320,8 @@ const exObj: { [key: string]: Creature } = {
   },
 };
 
+
+// Todo create these creatures
   // malorix: Creature,
   //entombed: Creature,
   // Imps

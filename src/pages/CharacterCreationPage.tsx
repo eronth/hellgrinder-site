@@ -5,6 +5,8 @@ import KitsListDisplayComponent from "./character-creation-components/KitsListDi
 import PerksListDisplayComponent from "./character-creation-components/PerksListDisplayComponent";
 import CreationCoreRules from "./character-creation-components/CreationCoreRules.tsx";
 
+// Todo merge into Character Creation Page as a sub-tab/toggle.
+
 export default function CharacterCreationPage() {
   const page: TabType = 'character-creation';
 

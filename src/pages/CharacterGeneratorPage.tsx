@@ -162,7 +162,6 @@ export default function CharacterCreationPage() {
         <div className="character-name">name(TODO: Generate or remove)</div>
         <div className="col-handler">
           <div>
-            
             <CharacterStartingStatsTable corruption={char.corruption} perkPoints={char.startingPerkPoints}/>
             <div className="specialization-block">
               <div className="title">Specializations</div>

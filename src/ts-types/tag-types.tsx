@@ -35,10 +35,20 @@ type SkillChecks =
   | 'Recovery' 
   | 'Corruption'
 
+type DemonFactionTags =
+  'Ashborn Legion' | 'Stoneveined Order' | 'Vastfathom Dominion'
+  | 'Thornwraith Conclave' | 'Wanderlost Clan'
+  | 'Zephpter Horde' | 'Umbral Nexus';
+
+type OtherFactionTags =
+  'Forgefiend Syndicate' | 'Hand of Death' | "Heaven's Host"
+  | 'Voidfire Conclave' | 'Witch Coven' | 'Sinner';
+
 
 type AllValidTags 
   = AttackTypes | Range | SkillChecks | EquipmentTags | CreatureEffectTags 
   | AttackEffectTags | ActionTags
+  | DemonFactionTags | OtherFactionTags
   | OtherTagsForNow;
 ;
 

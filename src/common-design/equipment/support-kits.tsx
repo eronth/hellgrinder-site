@@ -2,6 +2,8 @@ import type { Kit } from '../../ts-types/types.tsx';
 import Weapons from './weapons.tsx';
 import Tools from '../../common-design/Tools';
 
+// Todo - Add descriptions to all kits.
+
 const exObj: { [key: string]: Kit } = {
   medic: {
     name: 'Medic',

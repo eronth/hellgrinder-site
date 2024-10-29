@@ -13,7 +13,8 @@ div.msb {
   padding-top: var(--topNbotPad);
   padding-bottom: var(--topNbotPad); */
   /* --fullPadding: .25in; */
-  --pageBG: #fdfcf0;
+  /*--pageBG: #fdfcf0;*/
+  --pageBG: white;
   margin: 0;
   /* padding-inline: var(--fullPadding); */
   background-color: var(--pageBG);
@@ -26,7 +27,9 @@ div.msb {
 }
 
 .msb .spell-page {
-  padding: .25in;
+  --perPageSidePadding: .6in;
+  padding-inline: var(--perPageSidePadding);
+  padding-top: .25in;
   position: relative;
   background-color: var(--pageBG);
   /* mask: radial-gradient(20px at 40px 40px, transparent 98%, black) -40px -40px; */

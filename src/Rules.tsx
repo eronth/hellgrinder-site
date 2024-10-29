@@ -16,7 +16,6 @@ export default function Rules() {
     <div className="rules">
       <Routes>
         <Route path="/" element={<FancyIndexPage />} />
-        
         <Route path="/story" element={<StoryPage />} />
         <Route path="/setting" element={<SettingPage />} />
         <Route path="/how-to-play" element={<HowToPlayPage />} />
@@ -30,7 +29,7 @@ export default function Rules() {
     </div>
     <div>
       <Routes>
-          <Route path="/magic-spell" element={<MagicSpellPage />} />
+        <Route path="/magic-spell" element={<MagicSpellPage />} />
       </Routes>
     </div>
   </>);

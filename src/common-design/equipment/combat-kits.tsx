@@ -1,24 +1,14 @@
 import type { Kit } from '../../ts-types/types.tsx';
-import { combatRifle, pistol, sword } from './weapons.tsx';
+import Weapons from './weapons.tsx';
 import Tools from '../../common-design/Tools';
 
 const exObj: { [key: string]: Kit } = {
   sniper: {
     name: 'Sniper',
     description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",
-    weapons: [{
-      name: 'Sniper Rifle',
-      tags: ['Heavy', 'Two-Handed'],
-      attackModes: [{
-        tags: ['Attack', 'Shooting', 'Single-Shot', 'Long Range'],
-        damage: {
-          l: { value: 2, type: 'Metal' },
-          m: { value: 9, type: 'Metal' },
-          h: { value: 12, type: 'Metal' },
-        },
-        effects: ['After firing, you must to use an Action or Maneuver to reload before you can fire this weapon again.'],
-      }],
-    }],
+    weapons: [
+      { ...Tools.deepCopyWeapon(Weapons.sniper) },
+    ],
     items: [{
       name: 'Ghillie Suit',
       tags: ['Stealth'],
@@ -41,22 +31,9 @@ const exObj: { [key: string]: Kit } = {
   grenadier: {
     name: 'Grenadier',
     description: "The Grenadier Kit is all about explosives. You're able to to use your grenade launcher to send explosives to the far side of the room, ensuring none are safe from your wrath.",
-    weapons: [{
-      name: 'Grenade Launcher',
-      tags: ['Heavy', 'Two-Handed'],
-      attackModes: [{
-        tags: ['Attack', 'Shooting', 'Medium Range', 'Long Range'],
-        damage: {
-          l: { value: 1, type: 'Metal' },
-          m: { value: 1, type: 'Metal' },
-          h: { value: 3, type: 'Metal' },
-        },
-        effects: ['Launch a Grenade by making a shooting attack instead of a Thrown Attack. After the attack hits, the grenade detonates on your target\'s hex dealing any damage or effects of the grenade in addition to this attack\'s damage. The attack loses the [Thrown] property.',
-          'Grenades launched by this weapon get +1 to their Area.'
-        ],
-      }],
-    },
-    {...pistol},
+    weapons: [
+      { ...Tools.deepCopyWeapon(Weapons.grenadeLauncher) },
+      { ...Tools.deepCopyWeapon(Weapons.pistol) },
     ],
     items: [],
     trainings: [],
@@ -65,19 +42,9 @@ const exObj: { [key: string]: Kit } = {
   flamethrower: {
     name: 'Flamethrower',
     description: "Bring the heat with the Flamethrower kit. Scorch any who dare get close to you with a burning front arc attack.",
-    weapons: [{
-      name: 'Flame Thrower',
-      tags: ['Heavy', 'Two-Handed'],
-      attackModes: [{
-        tags: ['Attack', 'Shooting', 'Short Range'],
-        damage: {
-          l: { value: 1, type: 'Infernal' },
-          m: { value: 4, type: 'Infernal' },
-          h: { value: 6, type: 'Infernal' },
-        },
-        effects: ['This attack targets all creatures in [Short Range] of your front arc.', 'This attack cannot be used beyond [Short Range].'],
-      }],
-    }],
+    weapons: [
+      { ...Tools.deepCopyWeapon(Weapons.flameThrower) },
+    ],
     items: [{
       name: 'Heat Resistance Suit',
       tags: [],
@@ -90,29 +57,9 @@ const exObj: { [key: string]: Kit } = {
   breachAndClear: {
     name: 'Breach and Clear',
     description: "",
-    weapons: [{
-      name: 'Breach Shotgun',
-      tags: [],
-      attackModes: [{
-        name: 'Close Encounter',
-        tags: ['Attack', 'Shooting', 'Short Range'],
-        damage: {
-          l: { value: 2, type: 'Metal' },
-          m: { value: 8, type: 'Metal' },
-          h: { value: 9, type: 'Metal' },
-        },
-      },
-      {
-        name: 'Crowd Control',
-        tags: ['Attack', 'Shooting', 'Medium Range'],
-        damage: {
-          l: { value: 1, type: 'Metal' },
-          m: { value: 3, type: 'Metal' },
-          h: { value: 6, type: 'Metal' },
-        },
-        effects: ['This attack can target up to 3 enemies in your front arc within, so long as all targets are within [Short Range] of each other.'],
-      }],
-    }],
+    weapons: [
+      { ...Tools.deepCopyWeapon(Weapons.breachShotgun) },
+    ],
     items: [{
       name: 'Door Buster',
       tags: ['Breach'],
@@ -131,7 +78,9 @@ const exObj: { [key: string]: Kit } = {
   soldier: {
     name: 'Soldier',
     description: "",
-    weapons: [{...combatRifle}],
+    weapons: [
+      {...Tools.deepCopyWeapon(Weapons.combatRifle)}
+    ],
     items: [{
       name: 'Flashlight',
       tags: ['Illuminate'],
@@ -154,32 +103,24 @@ const exObj: { [key: string]: Kit } = {
   demonHunter: {
     name: 'Demon Hunter',
     description: "The demon hunter craves the destruction of all hellish creatures. They have trained in the art of combat, seeking up-close and personal assaults.",
-    weapons: [{
-      ...Tools.deepCopyWeapon(sword),
-      name: 'Hellforged Blade',
-      tags: ['One-Handed'],
-      attackModes: [{
-        name: 'Rip and Raze',
-        tags: ['Attack', 'Melee', 'Adjacent Range'],
-        damage: {
-          l: { value: sword.attackModes[0].damage.l.value, type: 'Chthonic' },
-          m: { value: sword.attackModes[0].damage.m.value, type: 'Chthonic' },
-          h: { value: sword.attackModes[0].damage.h.value, type: 'Chthonic' },
-        },
-      }, {
-        name: 'Sunder and Strike',
-        tags: ['Attack', 'Melee', 'Adjacent Range'],
-        damage: {
-          l: { value: sword.attackModes[0].damage.l.value+1, type: 'Voidyr' },
-          m: { value: sword.attackModes[0].damage.m.value+2, type: 'Voidyr' },
-          h: { value: sword.attackModes[0].damage.h.value+3, type: 'Voidyr' },
-        },
-        effects: ['Gain 3 Corruption.'],
-      }],
-    }, {
-      ...Tools.deepCopyWeapon(pistol),
-      name: 'Hellforged Pistol',
-    }],
+    weapons: [
+      { ...Tools.deepCopyWeapon(Weapons.sword, { name: 'Hellforged Blade' }),
+        attackModes: [
+          { ...Tools.deepCopyAttackMode(Weapons.sword.attackModes[0], {
+              name: 'Rip and Raze',
+              damage: { baseType : 'Chthonic', },
+            })
+          },
+          { ...Tools.deepCopyAttackMode(Weapons.sword.attackModes[0], {
+              name: 'Sunder and Strike',
+              damage: { baseType : 'Voidyr', },
+              effects: ['Gain 3 Corruption.'],
+            })
+          },
+        ],
+      },
+      { ...Tools.deepCopyWeapon(Weapons.pistol, { damageType: 'Nethercurrent', name: 'Hellfroged Pistol' }) }
+    ],
     items: [],
     trainings: [],
   },
@@ -187,7 +128,10 @@ const exObj: { [key: string]: Kit } = {
   perky: {
     name: 'Perky',
     description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",
-    weapons: [{...combatRifle}, {...pistol}],
+    weapons: [
+      {...Tools.deepCopyWeapon(Weapons.combatRifle)},
+      {...Tools.deepCopyWeapon(Weapons.pistol)}
+    ],
     items: [{
       name: 'Coffee Kit',
       tags: [],
@@ -205,7 +149,9 @@ const exObj: { [key: string]: Kit } = {
   riot: {
     name: 'Riot',
     description: "The riot kit is for ",
-    weapons: [{...pistol}],
+    weapons: [
+      {...Tools.deepCopyWeapon(Weapons.pistol)}
+    ],
     items: [{
       name: 'Deployable Shield',
       tags: ['Armor', 'Maneuver'],
@@ -254,7 +200,7 @@ const exObj: { [key: string]: Kit } = {
   relicworker: {
     name: 'Relic Worker',
     description: "",
-    weapons: [{...pistol}],
+    weapons: [{...Tools.deepCopyWeapon(Weapons.pistol)}],
     items: [{
       name: 'Chosen Relics',
       tags: ['Arcane', 'Relic'],
@@ -328,10 +274,11 @@ const exObj: { [key: string]: Kit } = {
     name: 'Warrior',
     description: "The warrior hears the primal call of battle. They take of their weapon and armor, and charge into the fray, ready to take on any foe.",
     weapons: [{
-      ...Tools.deepCopyWeapon(sword),
-      name: 'Wildcaller Sword',
-    },
-    {
+      ...Tools.deepCopyWeapon(Weapons.sword, {
+        name: 'Wildcaller Sword',
+        damageType: 'Verdant',
+      }),
+    }, {
       name: 'Entangle Vine',
       tags: ['Arcane'],
       attackModes: [{
@@ -401,7 +348,7 @@ const exObj: { [key: string]: Kit } = {
         }
       ],
     },
-    {...pistol}],
+    {...Tools.deepCopyWeapon(Weapons.pistol)}],
     items: [{
       name: 'Prototype Teleporter',
       tags: ['Maneuver'],
@@ -412,19 +359,14 @@ const exObj: { [key: string]: Kit } = {
   },
 };
 
-exObj.demonHunter.weapons[1].attackModes[0].damage.l.type = 'Nethercurrent';
-exObj.demonHunter.weapons[1].attackModes[0].damage.m.type = 'Nethercurrent';
-exObj.demonHunter.weapons[1].attackModes[0].damage.h.type = 'Nethercurrent';
+
 exObj.demonHunter.weapons[1].attackModes[0].effects = [
-  ...(pistol.attackModes[0]?.effects ?? []),
+  ...(Weapons.pistol.attackModes[0]?.effects ?? []),
   'When you hit a creature with this attack, you may move 1 hex towards them.'
 ];
 
-exObj.warrior.weapons[0].attackModes[0].damage.l.type = 'Verdant';
-exObj.warrior.weapons[0].attackModes[0].damage.m.type = 'Verdant';
-exObj.warrior.weapons[0].attackModes[0].damage.h.type = 'Verdant';
 exObj.warrior.weapons[0].attackModes[0].effects = [
-  ...(sword.attackModes[0]?.effects ?? []),
+  ...(Weapons.sword.attackModes[0]?.effects ?? []),
   '?????'
 ];
 

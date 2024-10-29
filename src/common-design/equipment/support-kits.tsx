@@ -1,5 +1,5 @@
 import type { Kit } from '../../ts-types/types.tsx';
-import { pistol, knife } from './weapons.tsx';
+import Weapons from './weapons.tsx';
 import Tools from '../../common-design/Tools';
 
 const exObj: { [key: string]: Kit } = {
@@ -27,30 +27,10 @@ const exObj: { [key: string]: Kit } = {
   grenadeStash: {
     name: 'Grenade Stash',
     description: "The Grenade Stash kit is for the soldier who just needs a little extra boom.",
-    weapons: [{
-      name: 'Fragmentation Grenade',
-      tags: ['Grenade'],
-      attackModes: [{
-        tags: ['Short Range', 'Medium Range', 'Thrown', { tag: 'Area', value: 1 }],
-        damage: {
-          l: { value: 9, type: 'Metal' },
-          m: { value: 9, type: 'Metal' },
-          h: { value: 9, type: 'Metal' },
-        },
-      }],
-    }, {
-      name: 'Incendiary Grenade',
-      tags: ['Grenade'],
-      attackModes: [{
-        tags: ['Short Range', 'Medium Range', 'Thrown', { tag: 'Area', value: 1 }],
-        damage: {
-          l: { value: 5, type: 'Infernal' },
-          m: { value: 5, type: 'Infernal' },
-          h: { value: 5, type: 'Infernal' },
-        },
-        effects: [ 'The area hit by an incendiary grenade is Burning for 1/2/3 turns. Creatures that enter a Burning area or end their turn in a Burning area if they started there (and did not leave) take the grenade’s Infernal Damage again.'],
-      }],
-    }],
+    weapons: [
+      { ...Tools.deepCopyWeapon(Weapons.fragmentationGrenade) },
+      { ...Tools.deepCopyWeapon(Weapons.incendiaryGrenade) }
+    ],
     items: [],
     trainings: [{
       name: 'Supply Stash',
@@ -78,11 +58,10 @@ const exObj: { [key: string]: Kit } = {
   shadowOp: {
     name: 'Shadow Op',
     description: "The Shadow Op kit is for the soldier who prefers to strike from the shadows.",
-    weapons: [{
-      ...Tools.deepCopyWeapon(pistol),
-    }, {
-      ...Tools.deepCopyWeapon(knife),
-    }],
+    weapons: [
+      { ...Tools.deepCopyWeapon(Weapons.pistol) },
+      { ...Tools.deepCopyWeapon(Weapons.knife) }
+    ],
     items: [],
     trainings: [{
       name: 'Stealth Training',

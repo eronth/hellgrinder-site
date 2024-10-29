@@ -1,9 +1,136 @@
 import { Creature } from '../ts-types/creature-types';
-import { Weapon } from '../ts-types/types';
+import { DamageElement, Weapon, AttackMode } from '../ts-types/types';
 import { Kit } from '../ts-types/types';
 import { Perk } from '../ts-types/types';
+import {AllValidTags} from "../ts-types/tag-types.tsx";
 
-const deepCopyWeapon = (obj: Weapon): Weapon => JSON.parse(JSON.stringify(obj));
+type deepCopyWeaponOptions = {
+  name?: string,
+  tags?: AllValidTags[],
+  replaceTags?: boolean,
+  damageType?: DamageElement | {
+    l?: DamageElement,
+    m?: DamageElement,
+    h?: DamageElement,
+  }
+};
+const deepCopyWeapon = (weapon: Weapon, options?: deepCopyWeaponOptions): Weapon => {
+  const weaponCopy = structuredClone(weapon);
+  
+  if (!options) { return weaponCopy; }
+  
+  weaponCopy.name = options.name ?? weaponCopy.name;
+  
+  if (options.tags) {
+    if (options.replaceTags) {
+      weaponCopy.tags = options.tags;
+    } else {
+      weaponCopy.tags = [...weaponCopy.tags, ...options.tags];
+    }
+  }
+  
+  // Add new damage types if chosen.
+  if (options.damageType) {
+    if (typeof options.damageType === 'string') {
+      weaponCopy.attackModes.forEach(am => {
+        // We already know it's not null due to earlier checks!
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        am.damage.l.type = options.damageType;
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        am.damage.m.type = options.damageType;
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        am.damage.h.type = options.damageType;
+      });
+    } else { // In this case, we know it's an object with up-to l, m, h
+      weaponCopy.attackModes.forEach(am => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        if (options.damageType.l) { am.damage.l.type = options.damageType.l; }
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        if (options.damageType.m) { am.damage.m.type = options.damageType.m; }
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        if (options.damageType.h) { am.damage.h.type = options.damageType.h; }
+      });
+    }
+  }
+  
+  return weaponCopy;
+}
+
+type deepCopyAttackModeOptions = {
+  name?: string,
+  tags?: AllValidTags[],
+  replaceTags?: boolean,
+  effects?: string[],
+  replaceEffects?: boolean,
+  damage?: {
+    l?: {
+      value?: number,
+      offset?: number,
+      type?: DamageElement
+    },
+    m?: {
+      value?: number,
+      offset?: number,
+      type?: DamageElement
+    },
+    h?: {
+      value?: number,
+      offset?: number,
+      type?: DamageElement
+    },
+    baseType?: DamageElement,
+  },
+};
+const deepCopyAttackMode = (attackMode: AttackMode, options?: deepCopyAttackModeOptions): AttackMode => {
+  const attackModeCopy = structuredClone(attackMode);
+  
+  if (!options) { return attackModeCopy; }
+  
+  attackModeCopy.name = options.name ?? attackModeCopy.name;
+  
+  if (options.tags) {
+    if (options.replaceTags) {
+      attackModeCopy.tags = options.tags;
+    } else {
+      attackModeCopy.tags = [...attackModeCopy.tags, ...options.tags];
+    }
+  }
+  
+  if (options.effects) {
+    if (options.replaceEffects) {
+      attackModeCopy.effects = options.effects;
+    } else {
+      attackModeCopy.effects = [...(attackModeCopy.effects ?? []), ...options.effects];
+    }
+  }
+  
+  // Add new damage types if chosen.
+  attackModeCopy.damage = {
+    l: {
+      value: (options.damage?.l?.value ?? attackModeCopy.damage.l.value) + (options.damage?.l?.offset ?? 0),
+      type: options.damage?.l?.type ?? options.damage?.baseType ?? attackModeCopy.damage.l.type,
+    },
+    m: {
+      value: (options.damage?.m?.value ?? attackModeCopy.damage.m.value) + (options.damage?.m?.offset ?? 0),
+      type: options.damage?.m?.type ?? options.damage?.baseType ?? attackModeCopy.damage.m.type,
+    },
+    h: {
+      value: (options.damage?.h?.value ?? attackModeCopy.damage.h.value) + (options.damage?.h?.offset ?? 0),
+      type: options.damage?.h?.type ?? options.damage?.baseType ?? attackModeCopy.damage.h.type,
+    },
+  }
+  
+  
+  
+  return attackModeCopy;
+}
+
 const deepCopyKit = (obj: Kit): Kit => JSON.parse(JSON.stringify(obj));
 const deepCopyPerk = (obj: Perk): Perk => JSON.parse(JSON.stringify(obj));
 
@@ -71,6 +198,7 @@ export default {
   sortPerks,
   sortCreatures,
   deepCopyWeapon,
+  deepCopyAttackMode,
   deepCopyKit,
   deepCopyPerk,
 };

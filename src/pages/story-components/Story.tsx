@@ -1,4 +1,3 @@
-import Tools from '../../common-design/Tools';
 import TM from '../../common-design/TM';
 
 function Story() {

@@ -13,10 +13,14 @@ const exObj: { [key: string]: Perk } =
   evil: {
     name: 'Evil', cost: -1,
     description: 'You start with 4 Corruption.',
+    startingCorruption: 4,
   },
   hellspawn: {
     name: 'Hellspawn', cost: 2,
-    description: 'You are a creature of the nether realms, or at least partially. Choose a Damage Type. Your melee attacks can deal that type of damage. You also gain Absorb <type> 1.',
+    description: 'You are a creature of the nether realms, or at least partially. '
+      + 'Choose a Damage Type from Infernal, Abyssal, Verdant, Chthonic, Nethercurrent, and Voidyr. '
+      + 'Your melee attacks can deal damage of the Chosen Type instead of their default type. '
+      + 'You also gain Absorb 1 of the Chosen Type.',
   },
   mindful: {
     name: 'Mindful', cost: 1,

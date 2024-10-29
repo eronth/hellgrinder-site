@@ -239,3 +239,22 @@ td {
   color: white;
   border-radius: 5px;
 }
+
+.generated-character-display {
+  min-height: 52em;
+}
+.generated-character-display .character-name {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: .5em;
+}
+.generated-character-display .specialization-block {
+  margin: 1em .5em;
+}
+.generated-character-display .specialization-block .title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.generated-character-display .perk {
+  margin-top: 1em;
+}

@@ -66,6 +66,7 @@ type Perk = {
   name: string;
   description: string;
   cost: number;
+  startingCorruption?: number;
 }
 
 type TabType = "home" | "story" | "setting" | "how-to-play" | "character-creation" 

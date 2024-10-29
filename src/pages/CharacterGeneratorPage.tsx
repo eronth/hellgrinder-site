@@ -23,6 +23,8 @@ type CharDesign = {
   specializationBonus: string, specializationPenalty: string,
 };
 
+
+
 export default function CharacterCreationPage() {
   
   const page: TabType = 'character-generator';
@@ -61,7 +63,7 @@ export default function CharacterCreationPage() {
 
     // Determine starting combat kit
     rand = Math.floor(Math.random() * combatKitsArr.length);
-    const chosenCombatKit = Tools.deepCopyKit(combatKitsArr[rand]);
+    const chosenCombatKit = structuredClone(combatKitsArr[rand]);
     newChar.startingSupportKits += chosenCombatKit.extraSupportKits ?? 0;
     newChar.startingPerkPoints += chosenCombatKit.extraPerkPoints ?? 0;
     specialKitLogic(chosenCombatKit);
@@ -72,19 +74,18 @@ export default function CharacterCreationPage() {
       while (newChar.kits.includes(supportKitsArr[rand])) {
         rand = Math.floor(Math.random() * supportKitsArr.length);
       }
-      const chosenSupportKit = Tools.deepCopyKit(supportKitsArr[rand]);
+      const chosenSupportKit = structuredClone(supportKitsArr[rand]);
       specialKitLogic(chosenSupportKit);
       newChar.kits.push(chosenSupportKit);
     }
 
     newChar.perks = getPerks(newChar.startingPerkPoints);
-    let perksCost = 0;
-    newChar.perks.forEach((p: Perk) => perksCost += p.cost);
-    newChar.startingPerkPoints -= perksCost;
+    handleSelectedPerksLogic({ character: newChar });
 
     setChar(newChar);
   }
 
+  
   function getPerks(perkPoints: number) {
     const perksArr: Perk[] = [...Tools.sortPerks(Perks)];
 
@@ -99,7 +100,7 @@ export default function CharacterCreationPage() {
       }
       
       if (retries <= 0) { break; }
-      const chosenPerk = Tools.deepCopyPerk(perksArr[rand]);
+      const chosenPerk = structuredClone(perksArr[rand]);
 
       spentPoints += chosenPerk.cost;
       perks.push(chosenPerk);
@@ -108,7 +109,20 @@ export default function CharacterCreationPage() {
 
     return perks;
   }
-
+  
+  function handleSelectedPerksLogic({ character }: { character: CharDesign }) {
+    let perksCost = 0;
+    character.perks.forEach((p: Perk) => {
+      specialPerkLogic(p);
+      perksCost += p.cost
+      character.corruption += p.startingCorruption ?? 0;
+    });
+    character.startingPerkPoints -= perksCost;
+    
+  }
+  
+  
+  
   function specialKitLogic(kit: Kit) {
     if (kit.name === "Helltouched") {
       const damageTypes: DamageElement[] = ['Metal', 'Infernal', 'Abyssal', 'Verdant', 'Chthonic', 'Nethercurrent', 'Voidyr'];
@@ -116,17 +130,28 @@ export default function CharacterCreationPage() {
       kit.weapons[0].attackModes[0].damage.l.type = damageTypes[rand];
       kit.weapons[0].attackModes[0].damage.m.type = damageTypes[rand];
       kit.weapons[0].attackModes[0].damage.h.type = damageTypes[rand];
-      kit.weapons[0].attackModes[0].effects = [`When you hit an anemy that has Resist ${damageTypes[rand]} to ${damageTypes[rand]} Damage, you can forgo damage to reduce their Resist ${damageTypes[rand]} by 1 for the rest of the encounter.`];
+      kit.weapons[0].attackModes[0].effects = [`When you hit an an enemy that has Resist ${damageTypes[rand]} to ${damageTypes[rand]} Damage, you can forgo damage to reduce their Resist ${damageTypes[rand]} by 1 for the rest of the encounter.`];
     } else if (kit.name === "Relic Worker") {
       // Randomly remove all but 3 relics
       while (kit.items.length > 4) { // Do 4 to keep the description chunk.
-        const rand = Math.floor(Math.random() * kit.items.length-1) + 1;
+        // Randomly choose any item NOT INCLUDING the description block to remove.
+        const rand = Math.floor(Math.random() * (kit.items.length-1)) + 1;
         kit.items.splice(rand, 1);
       }
     }
   }
-
-
+  
+  function specialPerkLogic(perk: Perk) {
+    if (perk.name === "Hellspawn") {
+      const damageTypes: DamageElement[] = ['Infernal', 'Abyssal', 'Verdant', 'Chthonic', 'Nethercurrent', 'Voidyr'];
+      const rand = Math.floor(Math.random() * damageTypes.length);
+      perk.description = `You are a creature of the nether realms, or at least partially. `
+        + `You are aligned with ${damageTypes[rand]}. `
+        + `Your melee attacks can deal ${damageTypes[rand]} instead of their default type. `
+        + `You also gain Absorb ${damageTypes[rand]} 1.`;
+    }
+  }
+  
   return (<div className={page}>
     <GameTitle />
     <NavTabs selectedTab={page} />
@@ -134,25 +159,25 @@ export default function CharacterCreationPage() {
     {(char != null)
       ? <div className="generated-character-display">
         <h2>Character</h2>
+        <div className="character-name">name(TODO: Generate or remove)</div>
         <div className="col-handler">
           <div>
-            <div className="name">name</div>
-            <CharacterStartingStatsTable perkPoints={char.startingPerkPoints}/>
-            <div>
-              <div>Specialization</div>
-              <div>+3 [{char.specializationBonus}] (bonus)</div>
-              <div>-5 [{char.specializationPenalty}] (penalty)</div>
+            
+            <CharacterStartingStatsTable corruption={char.corruption} perkPoints={char.startingPerkPoints}/>
+            <div className="specialization-block">
+              <div className="title">Specializations</div>
+              <div>+3 [{char.specializationBonus} Checks] (bonus)</div>
+              <div>-5 [{char.specializationPenalty} Checks] (penalty)</div>
             </div>
             {char.perks.map((p, i) =>
-              <PerkComponent key={`perk-${i}`} perk={p} />
+              <PerkComponent key={`perk-${i}`} perk={p}/>
             )}
           </div>
           
-          {char.kits.map((k, i) => 
-            <KitComponent key={`kit-${i}`} kit={k} />
+          {char.kits.map((k, i) =>
+            <KitComponent key={`kit-${i}`} kit={k}/>
           )}
-
-          
+        
         </div>
       </div>
       : <div className="generated-character-display"></div>

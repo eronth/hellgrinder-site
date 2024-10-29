@@ -116,6 +116,8 @@ export default function GameTitle({isIndex}: Props) {
     // The Amazing Hellgrinder!
     // The Invincible Hellgrinder!
     // The Beginning of the End: Hellgrinder
+    // Spirit Hellgrinder
+    // Brought to you by: Hellgrinder
   ];
 
   return (<span className='title-region'>{getRandElement(titlesDesigns)}</span>);

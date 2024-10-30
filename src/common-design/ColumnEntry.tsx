@@ -3,6 +3,7 @@ import { HeaderSize } from "../ts-types/types";
 type Props = {
   column?: number;
   cssClass?: string;
+  colSpan?: number;
   title: {
     hx?: HeaderSize,
     text: string
@@ -10,10 +11,17 @@ type Props = {
   children: string | JSX.Element | JSX.Element[] | undefined;
 };
 
-function ColumnEntry({cssClass, column, title, children}: Props) {
-
+function ColumnEntry({cssClass, column, colSpan, title, children}: Props) {
+  
+  let finalCol: number | string | undefined = column;
+  if (column && colSpan) {
+    finalCol = `${column} / span ${colSpan}`;
+  } else if (colSpan) {
+    finalCol = `span ${colSpan}`;
+  }
+  
   const setStyle = {
-    gridColumn: column
+    gridColumn: finalCol
   };
 
   function getHeaderSetup() {

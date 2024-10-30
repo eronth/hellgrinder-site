@@ -19,20 +19,50 @@ export default function BasicRules() {
           <p>Here are some ways Heroic Medals can be spent:</p>
           <div className="simple-header">Hero Time!</div>
           <ul>
-            <li>Spend 1 Heroic Medal: Change the result of one dice up or down by 1.</li>
-            <li>Spend 3 Heroic Medal: Set the value of any dice.</li>
+            <li>
+              <b>Spend 1 Heroic Medal</b>: Change the result of one dice up or down by 1.
+            </li>
+            <li>
+              <b>Spend 3 Heroic Medal</b>: Set the value of any dice.
+            </li>
           </ul>
           <div className="simple-header">Calling Reinforcement!</div>
           <ul>
-            <li>Spend 1 Heroic Medal: If one of your player allies is dead or otherwise non-playable, you may call for a reinforcement. The player creates a new character (if they haven’t yet), and arrives as a reinforcement at the end of the next round. The cost of this ability increases by 1 for each time it’s been used this combat.</li>
+            <li>
+              <b>Spend 1 Heroic Medal</b>: If one of your player allies is dead or otherwise non-playable, you may call for a
+              reinforcement. The player creates a new character (if they haven’t yet), and arrives as a reinforcement at
+              the end of the current round. The cost of this ability increases by 1 for each time it’s been used this combat.
+            </li>
+          </ul>
+          <div className={"simple-header"}>Quick Thinking</div>
+          <ul>
+            <li>
+              <b>Spend 1 Heroic Medal after a turn ends</b>: Take an extra action, right now, even if it is not your turn.
+            </li>
+            <li>
+              <b>Spend 2 Heroic Medals after a turn ends</b>: Take your turn early, skipping the next turn you would have had. This does
+              not affect the back-and-forth turn order.
+            </li>
+            <li>
+              <b>Spend 4 Heroic Medals after a turn ends</b>: Take a turn immediately, but you do not need to skip a turn. This does
+              not affect the back-and-forth turn order.
+            </li>
           </ul>
         </ColumnEntry>
       </div>
 
       <ColumnEntry
         title = {{ hx: 'h3', text: 'Skill Checks' }}>
-        <p>A skill check is performed by rolling 3d6. A result of all 1s triggers a Hell’s Wrath event, which changes depending on your current enemy/environment. Rolling all 6s triggers a Hellish Triumph, and you get +1 to rolls for a bit (tbd). When you roll a Hell’s Wrath or Hellish Triumph, you trigger a Deal with the Devil moment. Roll on the deal table X times, and you are presented each result as an offer.</p>
-        <p>[INSERT TABLE]</p>
+        <p>
+          A Skill Check is performed by rolling 3d6. Most skill checks will have Tags associated with them. When you make
+          Skill Check, add any bonuses you have that match Tags on the check to the final result.
+        </p>
+        <p>
+          A result of all 1s triggers a Hell’s Wrath event, which can change depending on your current enemies and environment.
+          Rolling all 6s triggers a Hellish Triumph, and you get +1 to rolls for a bit (tbd). When you roll a Hell’s Wrath or
+          Hellish Triumph, you trigger a Deal with the Devil moment. Roll on the deal table X times, and you are presented
+          each result as an offer. You can choose to accept or decline any or all of the offers.
+        </p>
         <div className="simple-header">Difficulty</div>
         <div>Depending on the difficulty of the action, a Skill Check result can be modified from -4 to +2.</div>
         <ul>
@@ -41,22 +71,25 @@ export default function BasicRules() {
           <li>Hard: -2</li>
           <li>Very Hard: -4</li>
         </ul>
-        <p>The types of skill checks and attack checks can be as varied as needed, but generally should stick to a handful of types. Here is a list of common checks supported by the game.</p>
-        <p>Common Checks:</p>
-        <p>Various Attack Checks: (shooting, melee, arcane, thrown),</p>
-        <p>Various Skill Checks: Recovery, Endurance, Stealth, Agility, {"<add more here>"}</p>
+        <div className="simple-header">Common Tags</div>
+        <p>
+          The types of skill checks and attack checks can be as varied as needed, but generally should stick to a handful
+          of types. Characters can earn bonuses in skills outside of the following lists, and any action can have whatever tags
+          seem suitable. However, here is a list of common check tags already supported by the game's rules.
+        </p>
+        <p>Various Attack Checks: Melee, Shooting, Arcane, Thrown</p>
+        <p>Various Skill Checks: Might, Endurance, Agility, Stealth, Observation, Communication, Stoic, Recovery, Corruption</p>
       </ColumnEntry>
 
       <div>
-        <ColumnEntry
-          title={{ hx: 'h3', text: 'Corruption' }}>
-            <p>
-              Corruption is a measure of how much the demonic forces have influenced you. It can be gained through various means, such as making a deal
-              with the devil, or being exposed to the demonic forces for too long. The more corruption you have, the more likely you are to be influenced
-              by the demonic forces.
-            </p>
-            <p></p>
-        </ColumnEntry>
+        <div>
+          <h3>Corruption</h3>
+          <p>
+            Corruption is a measure of how much the demonic forces have influenced you. It can be gained through various means, such as making a deal
+            with the devil, or being exposed to the demonic forces for too long. The more corruption you have, the more likely you are to be influenced
+            by the demonic forces.
+          </p>
+        </div>
 
         <ColumnEntry
           title={{ text: 'Corrupt Powers' }}>

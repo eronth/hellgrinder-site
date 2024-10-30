@@ -3,9 +3,12 @@ import Tools from "../../common-design/Tools";
 import Actions from "../../pages/how-to-play-components/combat-components/Actions";
 import Damage from "../../pages/how-to-play-components/combat-components/Damage";
 import Maneuvers from "../../pages/how-to-play-components/combat-components/Maneuvers";
-
+import StatusEffectComponent from "../../common-design/game-terms/StatusEffectComponent";
+import StatusEffects from "../../common-design/game-terms/status-effects.tsx"
 
 export default function Combat() {
+  const sortedStatusEffects = Tools.sortStatusEffects(StatusEffects);
+  
   return (<>
     <h2>Combat</h2>
     
@@ -48,55 +51,9 @@ export default function Combat() {
 
       <ColumnEntry title={{ hx: 'h3', text: 'Status Effects' }}>
         <div className='col-handler'>
-          <ColumnEntry title={{ text: 'Blinded X' }}>
-            <p>You have reduced visibility. You have -X to [Observation Skill Checks] and -X to [Range Attack Hit Checks]. For every 3 levels of Blinded you have, your ranges get shortened.</p>
-          </ColumnEntry>
-
-          <ColumnEntry title={{ text: 'Brittle X' }}>
-            <p>Any time you take damage, you take an additional X damage.</p>
-          </ColumnEntry>
-
-          <ColumnEntry title={{ text: 'Doomed X' }}>
-            <p>Any time you get an Injury, get a X additional Injuries of the same tier. When you regain health for any reason (including getting Injuries), you gain X less health.</p>
-          </ColumnEntry>
-
-          <ColumnEntry title={{ text: 'Enfeebled X' }}>
-            <p>You feel weak, as if your strength is sapped. You gain -X to [Endurance Skill Checks] and -X to [Melee Attack Hit Checks] and Damage.</p>
-          </ColumnEntry>
-
-          <ColumnEntry title={{ text: 'Envigorated' }}>
-            <p>You get an extra Maneuver each turn. Healing gives you an additional +2 Health.</p>
-          </ColumnEntry>
-
-          <ColumnEntry title={{ text: 'Frenzied' }}>
-            <p>You must make an Attack on each of your turns. If you don't make an Attack during one of your turns, you gain 4 Corruption</p>
-          </ColumnEntry>
-
-          <ColumnEntry title={{ text: 'Imolated X for Y' }}>
-            <p>You have been set on fire. You burn for Y turns, taking damage each turn. You take X Infernal Damage at the end of your turn, then roll an [Endurance Skill Check]. On a major success, the burning ends early.</p>
-          </ColumnEntry>
-
-          <ColumnEntry title={{ text: 'Lost X' }}>
-            <p>Any time you gain Corruption, gain X additional corruption.</p>
-          </ColumnEntry>
-
-          <ColumnEntry title={{ text: 'Shaken' }}>
-            <p>You can either take an Action or a Maneuver, but not both.</p>
-          </ColumnEntry>
-
-          <ColumnEntry title={{ text: 'Silenced X' }}>
-            <p>You have -X to [Arcane Attack Hit Checks] and [Arcane Attack] Damage. </p>
-          </ColumnEntry>
-
-          <ColumnEntry title={{ text: 'Slowed X' }}>
-            <p>You're struggling to move. Reduce move speed by X. Can't reduce below 1.</p>
-          </ColumnEntry>
-
-          <ColumnEntry title={{ text: 'Terrified' }}>
-            <p>Trying to do any Maneuver requires an extra [Stoic Skill Check]. On a failure, your Maneuver is used without any benefit.</p>
-            <p>All [Hit Checks] get a -3 penalty.</p>
-          </ColumnEntry>
-
+          {sortedStatusEffects.map((se, i) =>
+            <StatusEffectComponent key={`status-effect-${i}`} name={se.name} description={se.description} x={se.x} y={se.y}/>
+          )}
         </div>
       </ColumnEntry>
 

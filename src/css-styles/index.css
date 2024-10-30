@@ -258,3 +258,17 @@ td {
 .generated-character-display .perk {
   margin-top: 1em;
 }
+
+.reminder-text {
+    font-size: .8em;
+    font-style: italic;
+}
+
+.status-effect .x-display {
+  font-weight: bold;
+  color: #95f4ec;
+}
+.status-effect .y-display {
+  font-weight: bold;
+  color: #ead04e;
+}

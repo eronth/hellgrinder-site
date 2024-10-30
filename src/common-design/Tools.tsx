@@ -1,7 +1,6 @@
 import { Creature, CreatureTierList } from '../ts-types/creature-types';
 import { DamageElement, Weapon, AttackMode } from '../ts-types/types';
-import { Kit } from '../ts-types/types';
-import { Perk } from '../ts-types/types';
+import { Kit, Perk, StatusEffect } from '../ts-types/types';
 import {AllValidTags} from "../ts-types/tag-types.tsx";
 
 type deepCopyWeaponOptions = {
@@ -174,6 +173,10 @@ const sortKits = (kits: { [key: string]: Kit }): Kit[] =>
 const sortPerks = (perks: { [key: string]: Perk }): Perk[] => 
   Object.values(perks)
     .sort((a, b) => a.name.localeCompare(b.name));
+
+const sortStatusEffects = (statusEffects: { [key: string]: StatusEffect }): StatusEffect[] =>
+  Object.values(statusEffects)
+    .sort((a, b) => a.name.localeCompare(b.name));
   // Object.keys(perks)
   //   .sort((a, b) => perks[a].name.localeCompare(perks[b].name))
   //   .map((k) => perks[k]);
@@ -196,6 +199,7 @@ export default {
   sortKits,
   sortPerks,
   sortCreatures,
+  sortStatusEffects,
   deepCopyWeapon,
   deepCopyAttackMode,
   creatureTiers,

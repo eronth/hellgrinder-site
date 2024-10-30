@@ -50,6 +50,8 @@ type AllValidTags
   | AttackEffectTags | ActionTags
   | DemonFactionTags | OtherFactionTags
   | OtherTagsForNow;
-;
 
-export type { AttackTypes, Range, SkillChecks, AllValidTags, TagWithValue};
+
+
+
+export type { AttackTypes, Range, SkillChecks, AllValidTags, TagWithValue };

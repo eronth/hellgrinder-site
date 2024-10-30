@@ -80,5 +80,11 @@ type TabType = "home" | "story" | "setting" | "how-to-play" | "character-creatio
   | "character-generator" | "creatures"
   | "additional-equipment" | "advanced-perks" | "items" | "magic";
 
+type StatusEffect = {
+  name: string;
+  description: string[];
+  x?: number | "X";
+  y?: number | "Y";
+};
 
-export type { HeaderSize, Kit, Weapon, AttackMode, Training, Item, Perk, TabType, DamageElement };
+export type { HeaderSize, Kit, Weapon, AttackMode, Training, Item, Perk, TabType, DamageElement, StatusEffect };

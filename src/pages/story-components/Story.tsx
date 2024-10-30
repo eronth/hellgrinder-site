@@ -105,21 +105,80 @@ function Story() {
       </div>
 
       {/*<!-- The Hellgrinder -->*/}
+
+    </div>
+    <div>
+      <h3>The Hellgrinder</h3>
+      <p>
+        The Hellgrinder was the next invention by Afterworld Research Corp under the Safelight Project. The Hellgrinder
+        was a specialized drill, imbued with tiny flecks of Safelight<TM /> that allowed it to bore through the toughest
+        walls of Hell and create passageways that resisted the warping of Hell's pathways. Though slow to operate, the
+        Hellgrinder was a massive success, and the military quickly began to use it to create new predictable paths
+        between Safelight Havens and forward operations.
+      </p>
+      <p>
+        The Hellgrinder was developed in a number of sizes and designs for a a variety of vehicle options.
+      </p>
+    </div>
+    <div className={'col-handler'}>
       <div>
-        <h3>The Hellgrinder</h3>
+        <h4>Hellshaper</h4>
         <p>
-          The Hellgrinder was the next invention by Afterworld Research Corp under the Safelight Project. The Hellgrinder
-          was a specialized drill, imbued with tiny flecks of Safelight<TM /> that allowed it to bore through the toughest
-          walls of Hell and create passageways that resisted the warping of Hell's pathways. Though slow to operate, the
-          Hellgrinder was a massive success, and the military quickly began to use it to create new predictable paths
-          between Safelight Havens and forward operations.
+          Hellshapers are large boring machines, capable of making pathways large enough for heavy tanks and artillery to
+          pass through. Hellshapers move exceedingly slow, meaning each one needs to be allocated to a carefully planned
+          operation.
         </p>
         <p>
-          The Hellgrinder was developed in a number of sizes for a number of vehicles. Hellshapers are large boring machines,
-          capable of making pathways large enough for heavy tanks and artillery to pass through.
+          Hellshapers are also the most expensive to operate, requiring a large crew and a large amount of resources
+          to keep running. Generally, operations not deploying from Safelight Havens might deploy from a Hellshaper instead, as
+          it acts as a barely mobile base of its own.
         </p>
       </div>
-
+      <div>
+        <h4>ARC Grinder</h4>
+        <p>
+          Arc Grinders are medium sized boring machines, capable of making pathways large enough for light tanks and
+          armored personnel carriers to pass through. Arc Grinders move at a moderate pace, and can be deployed in a variety
+          of operations.</p>
+        <p>
+          One of the most common uses of an Arc Grinder is establishing a new Safelight Haven, as it can
+          be equipped a larger Safelight Gemstone on to act as a small pocket of safety wherever it deploys. The mechanism
+          is designed to be broken down and reassembled into more permanent shelter.
+        </p>
+      </div>
+      <div>
+        <h4>Squad Transport</h4>
+        <p>
+          The simply named Squad Transport is aptly named. It is a small-ish boring machine, with enough room for a
+          squad of soldiers inside. It can be deployed to quickly move soldiers to their next operation or objective,
+          and provides enough space for a squad to rest and recover between operations.
+        </p>
+        <p>
+          Squad Transports are equipped with small to medium sized Safelight Gemstones, a precaution for the soldiers
+          now isolated from their larger division.
+        </p>
+      </div>
+      <div>
+        <h4>Tactical Insertion Strike Craft (TISC)</h4>
+        <p>
+          A squad can use 1-3 TISCs to quickly deploy to a designated location. Each TISC is capable of holding up to 3 soldiers
+          and their gear. All TISCs sport extra armor in key locations, allowing it to act as cover for soldiers as they exit
+          the craft, usually into combat.
+        </p>
+      </div>
+      <div>
+        <h4>Scouter Pod</h4>
+        <p>
+          A Scouter Pod is a small, single person boring machine. It is used to scout ahead of the main force, looking for
+          advantageous positions or weaknesses in enemy defenses. A Scouter Pod can often be deployed with more precision
+          than a TISC, allowing for advantageous positioning of a single soldier.
+        </p>
+        <p>
+          Scouter Pods are less commonly produced, and not all squads are equipped with them. Those that find them in their
+          equipment list enjoy more robust tactics when deploying to new operations, and can sometimes employ one for a
+          mid-operation repositioning. A squad might only have one, or two if they are lucky.
+        </p>
+      </div>
     </div>
   </>);
 }

@@ -23,7 +23,7 @@ export default function StatusEffectComponent({name, description, x, y}: StatusE
       <div className={'simple-header'} dangerouslySetInnerHTML={{ __html:formatValue(name) }}></div>
       {description.map((desc, index) => {
         return (
-          <p dangerouslySetInnerHTML={{ __html:formatValue(desc) }}></p>
+          <p key={`status-effect-description-${index}`} dangerouslySetInnerHTML={{ __html:formatValue(desc) }}></p>
         );
       })}
     </div>

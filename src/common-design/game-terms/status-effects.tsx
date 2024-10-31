@@ -173,6 +173,14 @@ const exObj: { [key: string]: StatusEffect } = {
       'Your insides are on your outside. Allies within [Short Range] that witness this transformation gain Dread. ' +
       ' You take +1 damage from all attacks, and you take 1 at the start of your turn.',
     ],
+  },
+  staggered: {
+    name: 'Staggered',
+    description: [
+      'Your sense of balance has been thrown off. The GM publicly assigns each hex adjacent to you a number, 1 through 6. ' +
+      'Each time you try to move to a hex, roll three d6 dice and choose one of the results. You move to the hex matching ' +
+      'the number chosen.',
+    ],
   }
 }
 

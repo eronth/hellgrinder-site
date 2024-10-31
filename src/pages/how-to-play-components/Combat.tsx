@@ -37,7 +37,7 @@ export default function Combat() {
       </ColumnEntry>
 
       <ColumnEntry title={{ hx: 'h3', text: 'Opportunity Strike' }}>
-        <p>When you move within [Melee Range] of a creature's [Front Arc] or [Peripheral Arc], they can make a free attack against you. Demons are quick, and typically have an infinite number of these attacks. Humans, however, can't make another Opportunity Strike until the start of their turn.</p>
+        <p>When you move within [Adjacent Range] of a creature's [Front Arc] or [Peripheral Arc], they can make a free attack against you. Demons are quick, and typically have an infinite number of these attacks. Humans, however, can't make another Opportunity Strike until the start of their turn.</p>
       </ColumnEntry>
     
       <Maneuvers />

@@ -50,30 +50,34 @@ export default function Maneuvers() {
       </ColumnEntry>
 
     <div className='col-handler'>
-      <ColumnEntry title={{ hx: 'h4', text: 'Take Aim' }}>
+      <div>
+        <h4>Call Out</h4>
+        <p>
+          Grants all valid allies +1 to the next Medium or Long Range attack they make against foes within Long Range of your front-arc.
+        </p>
+
+        <h4>Guard</h4>
+        <p>Attacks against your front get -2 to their Hit Check and Damage.</p>
+      </div>
+      
+      <div>
+        <h4>Take Aim</h4>
         <div>Choose one of the following effects:</div>
         <ul>
           <li>Gain +1 to the next [Melee Attack] Hit Check you make and get +1 to that attack's Damage.</li>
           <li>Gain +3 to the next [Shooting Attack] or [Arcane Attack] Hit Check you make.</li>
         </ul>
-      </ColumnEntry>
+      </div>
 
-      <ColumnEntry title={{ hx: 'h4', text: 'Call Out' }}>
-        <p>Grants all valid allies +1 to the next Medium or Long Range attack they make against foes within Long Range of your front-arc.</p>
-      </ColumnEntry>
-
-      <ColumnEntry title={{ hx: 'h4', text: 'Guard' }}>
-        <p>Attacks against your front get -2 to their Hit Check and Damage.</p>
-      </ColumnEntry>
-
-      <ColumnEntry title={{ hx: 'h4', text: 'Swap Weapons' }}>
+      <div>
+        <h4>Swap Weapons</h4>
         <p>Roll an Agility Check.</p>
         <ul>
           <li>Minor Success: Nothing special, but the Maneuver is still used.</li>
           <li>Moderate Success: Your Maneuver is not used up to complete the swap. You may not use “Swap Weapons” Maneuver again this turn.</li>
           <li>Full Success: Your Maneuver is not used up to complete the swap. You may choose  use “Swap Weapons” again this turn as a Maneuver.</li>
         </ul>
-      </ColumnEntry>
+      </div>
     
     </div>
   </>);

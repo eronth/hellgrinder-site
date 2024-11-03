@@ -9,9 +9,17 @@ export default function Actions() {
       <div>
         <h4>Attack</h4>
         <p>Make an attack check.</p>
-        <p>Roll 3d6 dice to make a Hit Check for your attack. You will deal damage and effects as described by the weapon.</p>
-        <p>If you hit, you deal the weapon’s damage to your target, detailed in the weapon as X/Y/Z, where X is damage dealt on a Minor Success, Y is the damage dealt on a Moderate Success, and Z is damage dealt on a Full Success.</p>
-        <p>Range: Weapons have different ranges. Some weapons have multiple ranges. Use whichever range is least punishing when determining penalties for attacking outside your range.</p>
+        <p>
+          Roll 3d6 dice to make a Hit Check for your attack. You will deal damage and effects as described by the weapon.
+        </p>
+        <p>
+          If you hit, you deal the weapon’s damage to your target, detailed in the weapon as X/Y/Z, where X is damage
+          dealt on a Minor Success, Y is the damage dealt on a Moderate Success, and Z is damage dealt on a Full Success.
+        </p>
+        <p>
+          Range: Weapons have different ranges. Some weapons have multiple ranges. Use whichever range is least punishing
+          when determining penalties for attacking outside your range.
+        </p>
         <ul>
           <li>
             Short Range is 1-3 hexes.

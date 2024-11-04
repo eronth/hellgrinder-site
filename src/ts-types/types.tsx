@@ -23,6 +23,13 @@ type StatusTypes =
   // Blinded X, Brittle X, Doomed X, Enfeebled X, Envigorated, Frenzied, Imolated X for Y,
   // Lost X, Shaken, Silenced X, Slowed X, Terrified
 
+type ItemDef = {
+  name: string;
+  tags: AllValidTags[];
+  description?: string;
+  isAdvancedItem: boolean;
+}
+
 type Kit = {
   name: string;
   description: string;
@@ -33,10 +40,8 @@ type Kit = {
   extraSupportKits?: number;
 }
 
-type Weapon = {
-  name: string;
+type Weapon = ItemDef & {
   attackModes: AttackMode[];
-  tags: AllValidTags[];
 }
 
 type AttackMode = {
@@ -69,9 +74,7 @@ type Training = {
   effects: string[];
 }
 
-type Perk = {
-  name: string;
-  description: string;
+type Perk = ItemDef & {
   cost: number;
   startingCorruption?: number;
 }

@@ -237,13 +237,14 @@ const exObj: { [key: string]: StatusEffect } = {
   afferlized: {
     name: 'Afferlized',
     description: [
-      'You are afferlized. You are immune to all damage, but you cannot take any actions.',
+      'Your skin hardens and shines with a brilliant light — you have become afferlized. You are immune to all damage, but you cannot take any actions.',
     ],
   },
   endarvolism: {
     name: 'Endarvolism',
     description: [
-      'You are endarvolized. You are immune to all damage, but you cannot take any actions.',
+      'Your skin turns ashen grey, your limbs elongate and controt — you are afflicted with endarvolism. ' +
+      'You are immune to all damage, but you cannot take any actions.',
     ],
   },
   antipathism: {

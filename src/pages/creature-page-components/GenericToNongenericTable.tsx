@@ -6,10 +6,10 @@ export default function GenericToNongenericTable() {
       <tbody>
         <tr>
           <th>Faction</th>
-          <th>Resist Primary<br />Absorb Primary</th>
-          <th>Absorb Secondary</th>
-          <th>Weak Primary</th>
-          <th>Weak Secondary</th>
+          <th>Core Type</th>
+          <th>Promoting Type</th>
+          <th>Rejecting Type</th>
+          <th>Disrupting Type</th>
           <th>Special Bonus</th>
         </tr>
         <GenericToNongenericRow data={{
@@ -67,7 +67,9 @@ export default function GenericToNongenericTable() {
           absorb: "Voidyr",
           weaknesses: ["Chthonic", "Metal"],
           special: <>
-            Randomly either gain [Hover] or increase Move Speed by +1.
+            Randomly either gain [Hover] or increase Move Speed by +2.
+            <br />Creatures that are CT2 or greater, they gain [Flying] instead of [Hover]
+            <br />(If the creature already has [Hover] or [Flying], they gain +2 Move Speed.).
             <br />25% chance for attacks to deal Abyssal instead of Nethercurrent.
           </>,
         }} />

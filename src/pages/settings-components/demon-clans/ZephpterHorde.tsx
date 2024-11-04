@@ -4,9 +4,9 @@ import { HeaderSize } from "../../../ts-types/types";
 type Props = {
   hx: HeaderSize;
 };
-export default function StormwingHorde ({ hx }: Props) {
+export default function ZephpterHorde ({ hx }: Props) {
   return (
-    <ColumnEntry title={{ hx: hx, text: "Stormwing/Nethercurrent Horde" }}>
+    <ColumnEntry title={{ hx: hx, text: "Zephpter Horde" }}>
       <p>Zephyr/Nethercurrent</p>
     </ColumnEntry>
   )

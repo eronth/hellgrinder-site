@@ -1,5 +1,7 @@
 import type { Kit } from '../../ts-types/types.tsx';
-import Weapons from './weapons.tsx';
+import MeleeWeapons from "./weapons/melee-weapons.tsx";
+import ShootingWeapons from "./weapons/shooting-weapons.tsx";
+import ArcaneWeapons from "./weapons/arcane-weapons.tsx";
 import Tools from '../../common-design/Tools';
 
 // Todo - Add descriptions to all kits.
@@ -9,7 +11,7 @@ const exObj: { [key: string]: Kit } = {
     name: 'Sniper',
     description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",
     weapons: [
-      { ...Tools.deepCopyWeapon(Weapons.sniper) },
+      { ...Tools.deepCopyWeapon(ShootingWeapons.sniper) },
     ],
     items: [{
       name: 'Ghillie Suit',
@@ -34,8 +36,8 @@ const exObj: { [key: string]: Kit } = {
     name: 'Grenadier',
     description: "The Grenadier Kit is all about explosives. You're able to to use your grenade launcher to send explosives to the far side of the room, ensuring none are safe from your wrath.",
     weapons: [
-      { ...Tools.deepCopyWeapon(Weapons.grenadeLauncher) },
-      { ...Tools.deepCopyWeapon(Weapons.pistol) },
+      { ...Tools.deepCopyWeapon(ShootingWeapons.grenadeLauncher) },
+      { ...Tools.deepCopyWeapon(ShootingWeapons.pistol) },
     ],
     items: [],
     trainings: [],
@@ -45,7 +47,7 @@ const exObj: { [key: string]: Kit } = {
     name: 'Flamethrower',
     description: "Bring the heat with the Flamethrower kit. Scorch any who dare get close to you with a burning front arc attack.",
     weapons: [
-      { ...Tools.deepCopyWeapon(Weapons.flameThrower) },
+      { ...Tools.deepCopyWeapon(ShootingWeapons.flameThrower) },
     ],
     items: [{
       name: 'Heat Resistance Suit',
@@ -60,7 +62,7 @@ const exObj: { [key: string]: Kit } = {
     name: 'Breach and Clear',
     description: "",
     weapons: [
-      { ...Tools.deepCopyWeapon(Weapons.breachShotgun) },
+      { ...Tools.deepCopyWeapon(ShootingWeapons.breachShotgun) },
     ],
     items: [{
       name: 'Door Buster',
@@ -81,7 +83,7 @@ const exObj: { [key: string]: Kit } = {
     name: 'Soldier',
     description: "",
     weapons: [
-      {...Tools.deepCopyWeapon(Weapons.combatRifle)}
+      {...Tools.deepCopyWeapon(ShootingWeapons.combatRifle)}
     ],
     items: [{
       name: 'Flashlight',
@@ -106,14 +108,14 @@ const exObj: { [key: string]: Kit } = {
     name: 'Demon Hunter',
     description: "The demon hunter craves the destruction of all hellish creatures. They have trained in the art of combat, seeking up-close and personal assaults.",
     weapons: [
-      { ...Tools.deepCopyWeapon(Weapons.sword, { name: 'Hellforged Blade' }),
+      { ...Tools.deepCopyWeapon(ShootingWeapons.sword, { name: 'Hellforged Blade' }),
         attackModes: [
-          { ...Tools.deepCopyAttackMode(Weapons.sword.attackModes[0], {
+          { ...Tools.deepCopyAttackMode(ShootingWeapons.sword.attackModes[0], {
               name: 'Rip and Raze',
               damage: { baseType : 'Chthonic', },
             })
           },
-          { ...Tools.deepCopyAttackMode(Weapons.sword.attackModes[0], {
+          { ...Tools.deepCopyAttackMode(ShootingWeapons.sword.attackModes[0], {
               name: 'Sunder and Strike',
               damage: { baseType : 'Voidyr', },
               effects: ['Gain 3 Corruption.'],
@@ -121,7 +123,7 @@ const exObj: { [key: string]: Kit } = {
           },
         ],
       },
-      { ...Tools.deepCopyWeapon(Weapons.pistol, { damageType: 'Nethercurrent', name: 'Hellfroged Pistol' }) }
+      { ...Tools.deepCopyWeapon(ShootingWeapons.pistol, { damageType: 'Nethercurrent', name: 'Hellfroged Pistol' }) }
     ],
     items: [],
     trainings: [],
@@ -131,8 +133,8 @@ const exObj: { [key: string]: Kit } = {
     name: 'Perky',
     description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",
     weapons: [
-      {...Tools.deepCopyWeapon(Weapons.combatRifle)},
-      {...Tools.deepCopyWeapon(Weapons.pistol)}
+      {...Tools.deepCopyWeapon(ShootingWeapons.combatRifle)},
+      {...Tools.deepCopyWeapon(ShootingWeapons.pistol)}
     ],
     items: [{
       name: 'Coffee Kit',
@@ -152,7 +154,7 @@ const exObj: { [key: string]: Kit } = {
     name: 'Riot',
     description: "The riot kit is for ",
     weapons: [
-      {...Tools.deepCopyWeapon(Weapons.pistol)}
+      {...Tools.deepCopyWeapon(ShootingWeapons.pistol)}
     ],
     items: [{
       name: 'Deployable Shield',
@@ -173,19 +175,7 @@ const exObj: { [key: string]: Kit } = {
   helltouched: {
     name: 'Helltouched',
     description: "The helltouched operator is one who has been too close to the hellish denizens. Perminently marked by the experience, they are attuned to demonic powers, able to call upon them for aid in combat.",
-    weapons: [{
-      name: 'Rune Blast',
-      tags: ['One-Handed'],
-      attackModes: [{
-        tags: ['Attack', 'Arcane', 'Medium Range'],
-        damage: {
-          l: { value: 3, type: 'Chosen Type' },
-          m: { value: 6, type: 'Chosen Type' },
-          h: { value: 9, type: 'Chosen Type' },
-        },
-        effects: ['When you hit an enemy that has Resist against your chosen element, you can forgo damage to instead reduce their Resist value against that element by 1 for the rest of the encounter.'],
-      }],
-    }],
+    weapons: [ {...Tools.deepCopyWeapon(ArcaneWeapons.runeBlast)} ],
     items: [],
     trainings: [{
       name: 'Inhuman Speed',
@@ -202,72 +192,73 @@ const exObj: { [key: string]: Kit } = {
   relicworker: {
     name: 'Relic Worker',
     description: "",
-    weapons: [{...Tools.deepCopyWeapon(Weapons.pistol)}],
-    items: [{
-      name: 'Chosen Relics',
-      tags: ['Arcane', 'Relic'],
-      description: 'When you pick Relic Worker, choose three of the following relics. When combat begins, choose a relic to start as equipped. Swapping Relics is a Maneuver.',
-      effects: [''],
-    },
-    {
-      name: 'Dual Scorchsashes',
-      tags: ['Arcane', 'Relic'],
-      description: '',
-      effects: ['At the start of your turn, creatures in [Melee Range] of you take 2 Infernal Damage and creatures in [Short Range] of you take 1 Infernal Damage.'],
-    },
-    {
-      name: 'Drowner Discus',
-      tags: ['Arcane', 'Relic', 'Medium Range', 'Thrown', {tag: 'Area', value: 1}],
-      description: '',
-      effects: ['Create a Drownpit Pool in the affected area.'],
-    },
-    
-    {
-      name: 'Slowing Viewfinder',
-      tags: ['Arcane', 'Relic'],
-      description: '',
-      effects: ['Creatures in your front arc at [Medium Range] make an [Endurance] Skill Check when they attempt to move. On a Minor Success or less, they are [Slowed 1].',
-        'Creatures in your front arc at [Short Range] are [Slowed 1].'
-      ],
-    },
-    {
-      name: 'Innersoul Stabilizing Field Generator',
-      tags: ['Arcane', 'Relic'],
-      description: '',
-      effects: ['At the start of your turn, you and allies in [Short Range] of you gain +1 Health.', 'You and allies in [Short Range] of you gain [Resist Soulrend 1].'],
-    },
-    {
-      name: 'Soulbinder Darts',
-      tags: ['Arcane', 'Relic', 'One-Handed', 'Action', 'Maneuver'],
-      description: 'You have 2 Soulbinder Darts.',
-      effects: [
-        'As an Action or Maneuver, you can stick a Soulbinder Dart in a target within [Medium Range].',
-        'As a Free Interaction, you may retrieve a Soulbinder Dart within [Medium Range].',
-        'Whenever a creature stuck with one Soulbinder Dart takes damage, another creature within [Short Range] of them takes half (rounded up) of the damage as Nethercurrent Damage.',
-      ],
-    },
-    {
-      name: 'Quickrot Ring',
-      tags: ['Arcane', 'Relic', 'Action'],
-      description: '',
-      effects: [
-        'As an action, mark a target in Short Range. You may only have one target marked this way. At the start of each of your turns, the target gains one stack of Quickrot and loses 1 health. If the target becomes un-marked, it instantly cures all stacks of Quickrot.',
-        'For each stack of Quickrot: Target gets -1 to Attack Rolls at [Medium Range] or [Long Range].',
-        'For every 2 Stacks of Quickrot: Target gets -1 to Attack Rolls at [Short Range].',
-        'For every 2 Stacks of Quickrot: Target gets a stack of [Slow 1].',
-        'Target Gains “Weak Metal X”, where X is the number of stacks of Quickrot divided by 4.',
-      ],
-    },
-    {
-      name: 'Lifesap Coil',
-      tags: ['Arcane', 'Relic', 'One-Handed', 'Maneuver'],
-      description: '',
-      effects: [
-        'As a Maneuver, you may attach the Lifesap Coil to a creature within [Melee Range].',
-        'You may retrieve the Lifesap Coil within [Short Range] as a Free Interaction.',
-        'Whenever a creature with the Lifesap Coil is dealt damage, you heal half of that damage unless it is Soulrend Damage. You then gain Corruption equal to half of the healing.',
-      ],
-    },
+    weapons: [{...Tools.deepCopyWeapon(ShootingWeapons.pistol)}],
+    items: [
+      {
+        name: 'Chosen Relics',
+        tags: ['Arcane', 'Relic'],
+        description: 'When you pick Relic Worker, choose three of the following relics. When combat begins, choose a ' +
+          'relic to start as equipped. Swapping Relics is a Maneuver.',
+        effects: [''],
+      }, {
+        name: 'Dual Scorchsashes',
+        tags: ['Arcane', 'Relic'],
+        description: '',
+        effects: ['At the start of your turn, creatures in [Melee Range] of you take 2 Infernal Damage and creatures ' +
+          'in [Short Range] of you take 1 Infernal Damage.'],
+      }, {
+        name: 'Drowner Discus',
+        tags: ['Arcane', 'Relic', 'Medium Range', 'Thrown', {tag: 'Area', value: 1}],
+        description: '',
+        effects: ['Create a Drownpit Pool in the affected area.'],
+      }, {
+        name: 'Slowing Viewfinder',
+        tags: ['Arcane', 'Relic'],
+        description: '',
+        effects: ['Creatures in your front arc at [Medium Range] make an [Endurance] Skill Check when they attempt to ' +
+          'move. On a Minor Success or less, they are [Slowed 1].',
+          'Creatures in your front arc at [Short Range] are [Slowed 1].'
+        ],
+      }, {
+        name: 'Innersoul Stabilizing Field Generator',
+        tags: ['Arcane', 'Relic'],
+        description: '',
+        effects: ['At the start of your turn, you and allies in [Short Range] of you gain +1 Health.', 'You and allies ' +
+          'in [Short Range] of you gain [Resist Soulrend 1].'],
+      }, {
+        name: 'Soulbinder Darts',
+        tags: ['Arcane', 'Relic', 'One-Handed', 'Action', 'Maneuver'],
+        description: 'You have 2 Soulbinder Darts.',
+        effects: [
+          'As an Action or Maneuver, you can stick a Soulbinder Dart in a target within [Medium Range].',
+          'As a Free Interaction, you may retrieve a Soulbinder Dart within [Medium Range].',
+          'Whenever a creature stuck with one Soulbinder Dart takes damage, another creature within [Short Range] of ' +
+            'them takes half (rounded up) of the damage as Nethercurrent Damage.',
+        ],
+      }, {
+        name: 'Quickrot Ring',
+        tags: ['Arcane', 'Relic', 'Action'],
+        description: '',
+        effects: [
+          'As an action, mark a target in Short Range. You may only have one target marked this way. At the start of ' +
+            'each of your turns, the target gains one stack of Quickrot and loses 1 health. If the target becomes ' +
+            'un-marked, it instantly cures all stacks of Quickrot.',
+          'For each stack of Quickrot: Target gets -1 to Attack Rolls at [Medium Range] or [Long Range].',
+          'For every 2 Stacks of Quickrot: Target gets -1 to Attack Rolls at [Short Range].',
+          'For every 2 Stacks of Quickrot: Target gets a stack of [Slow 1].',
+          'Target Gains “Weak Metal X”, where X is the number of stacks of Quickrot divided by 4.',
+        ],
+      }, {
+        name: 'Lifesap Coil',
+        tags: ['Arcane', 'Relic', 'One-Handed', 'Maneuver'],
+        description: '',
+        effects: [
+          'As a Maneuver, you may attach the Lifesap Coil to a creature within [Melee Range].',
+          'You may retrieve the Lifesap Coil within [Short Range] as a Free Interaction.',
+          'Whenever a creature with the Lifesap Coil is dealt damage, you heal half of that damage unless it is Soulrend ' +
+            'Damage. You then gain Corruption equal to half of the healing.',
+        ],
+      },
     ],
     trainings: [],
   },
@@ -276,13 +267,14 @@ const exObj: { [key: string]: Kit } = {
     name: 'Warrior',
     description: "The warrior hears the primal call of battle. They take of their weapon and armor, and charge into the fray, ready to take on any foe.",
     weapons: [{
-      ...Tools.deepCopyWeapon(Weapons.sword, {
+      ...Tools.deepCopyWeapon(MeleeWeapons.sword, {
         name: 'Wildcaller Sword',
         damageType: 'Verdant',
       }),
     }, {
       name: 'Entangle Vine',
       tags: ['Arcane'],
+      isAdvancedItem: false,
       attackModes: [{
         tags: ['Attack', 'Thrown', 'Short Range'],
         damage: {
@@ -317,6 +309,7 @@ const exObj: { [key: string]: Kit } = {
     weapons: [{
       name: 'Prototype Beam Rifle',
       tags: ['Heavy', 'Two-Handed'],
+      isAdvancedItem: true,
       attackModes: [
         {
           name: 'Beam',
@@ -350,7 +343,7 @@ const exObj: { [key: string]: Kit } = {
         }
       ],
     },
-    {...Tools.deepCopyWeapon(Weapons.pistol)}],
+    {...Tools.deepCopyWeapon(ShootingWeapons.pistol)}],
     items: [{
       name: 'Prototype Teleporter',
       tags: ['Maneuver'],
@@ -363,12 +356,12 @@ const exObj: { [key: string]: Kit } = {
 
 
 exObj.demonHunter.weapons[1].attackModes[0].effects = [
-  ...(Weapons.pistol.attackModes[0]?.effects ?? []),
+  ...(ShootingWeapons.pistol.attackModes[0]?.effects ?? []),
   'When you hit a creature with this attack, you may move 1 hex towards them.'
 ];
 
 exObj.warrior.weapons[0].attackModes[0].effects = [
-  ...(Weapons.sword.attackModes[0]?.effects ?? []),
+  ...(MeleeWeapons.sword.attackModes[0]?.effects ?? []),
   '?????'
 ];
 

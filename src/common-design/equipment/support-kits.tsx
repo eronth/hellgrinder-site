@@ -1,5 +1,8 @@
 import type { Kit } from '../../ts-types/types.tsx';
-import Weapons from './weapons.tsx';
+import MeleeWeapons from './weapons/melee-weapons.tsx';
+import ShootingWeapons from './weapons/shooting-weapons.tsx';
+import ThrownWeapons from './weapons/thrown-weapons.tsx';
+
 import Tools from '../../common-design/Tools';
 
 // Todo - Add descriptions to all kits.
@@ -30,8 +33,8 @@ const exObj: { [key: string]: Kit } = {
     name: 'Grenade Stash',
     description: "The Grenade Stash kit is for the soldier who just needs a little extra boom.",
     weapons: [
-      { ...Tools.deepCopyWeapon(Weapons.fragmentationGrenade) },
-      { ...Tools.deepCopyWeapon(Weapons.incendiaryGrenade) }
+      { ...Tools.deepCopyWeapon(ThrownWeapons.fragmentationGrenade) },
+      { ...Tools.deepCopyWeapon(ThrownWeapons.incendiaryGrenade) }
     ],
     items: [],
     trainings: [{
@@ -61,8 +64,8 @@ const exObj: { [key: string]: Kit } = {
     name: 'Shadow Op',
     description: "The Shadow Op kit is for the soldier who prefers to strike from the shadows.",
     weapons: [
-      { ...Tools.deepCopyWeapon(Weapons.pistol) },
-      { ...Tools.deepCopyWeapon(Weapons.knife) }
+      { ...Tools.deepCopyWeapon(ShootingWeapons.pistol) },
+      { ...Tools.deepCopyWeapon(MeleeWeapons.knife) }
     ],
     items: [],
     trainings: [{

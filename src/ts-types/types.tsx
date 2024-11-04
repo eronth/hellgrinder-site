@@ -1,5 +1,18 @@
 import { AllValidTags } from "./tag-types";
 
+// Weapon damage dice
+// Crit attacks do what?
+// Clean up Rank success
+// Display advanced items/weapons/perks/trainings?/etc
+// I'm a GM toggle
+// Clean up tabs
+// Clean up homepage tabs?
+// Prone?
+// Talk about special tags (area, knockback, hover, flying, soulrend).
+// Status rework for duration/stack info.
+// Maybe lock status name to status types
+// Remove all ColumnEntry
+
 type HeaderSize = 
   'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   | '1' | '2' | '3' | '4' | '5' | '6'

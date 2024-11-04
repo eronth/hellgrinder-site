@@ -13,8 +13,8 @@ export default function Actions() {
           Roll 3d6 dice to make a Hit Check for your attack. You will deal damage and effects as described by the weapon.
         </p>
         <p>
-          If you hit, you deal the weapon’s damage to your target, detailed in the weapon as X/Y/Z, where X is damage
-          dealt on a Minor Success, Y is the damage dealt on a Moderate Success, and Z is damage dealt on a Full Success.
+          If you hit, you deal the weapon’s damage to your target, detailed in the weapon as X/Y/Z, where X is damage dealt
+          on a Rank 1 Success, Y is the damage dealt on a Rank 2 Success, and Z is damage dealt on a Rank 3 Success.
         </p>
         <p>
           Range: Weapons have different ranges. Some weapons have multiple ranges. Use whichever range is least punishing
@@ -48,11 +48,9 @@ export default function Actions() {
         
         <h4>Covering Fire</h4>
         <p>
-          Chose a 2 hex cone in your front arc of a range listed on your weapon. Make a [Shooting] Check, [Arcane]
-          Check,
-          or [Throwing] Check, so long as you have an equipped weapon with the same tag. Moderate Success grants -2 to
-          Hit Checks
-          for the attacks made by creatures in that cone until the start of your next turn.
+          Choose a 2 hex cone in your front arc of a range listed on your weapon. Make a [Shooting] Skill Check, [Arcane]
+          Skill Check, or [Throwing] Skill Check, so long as you have an equipped weapon with the same tag. Rank 2+ Success
+          grants -2 to Hit Checks for the attacks made by creatures in that cone until the start of your next turn.
         </p>
         
         <h4>Hunker Down</h4>

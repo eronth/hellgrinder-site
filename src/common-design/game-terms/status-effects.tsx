@@ -54,7 +54,7 @@ const exObj: { [key: string]: StatusEffect } = {
     name: 'Poisoned (Toxicity [[X]], Linger [[Y]])',
     description: [
       'You are poisoned. You take [[X]] Verdant Damage at the end of your turn.',
-      'Then roll an [Endurance] Skill Check with -[[Y]]. On a major success, the poison ends early.'
+      'Then roll an [Endurance] Skill Check with -[[Y]]. On a Rank 2+ Success, the poison ends early.'
     ],
     x: 'X',
     y: 'Y',
@@ -62,7 +62,8 @@ const exObj: { [key: string]: StatusEffect } = {
   immolated: {
     name: 'Immolated [[X]] for [[Y]]',
     description: [
-      'You have been set on fire. You burn for [[Y]] turns, taking damage each turn. You take [[X]] Infernal Damage at the end of your turn, then roll an [Endurance] Skill Check. On a major success, the burning ends early.',
+      'You have been set on fire. You burn for [[Y]] turns, taking damage each turn. You take [[X]] Infernal Damage at ' +
+      'the end of your turn, then roll an [Endurance] Skill Check. On a Rank 2+ Success, the burning ends early.',
     ],
     x: 'X',
     y: 'Y',
@@ -175,7 +176,8 @@ const exObj: { [key: string]: StatusEffect } = {
   unremarkable: {
     name: 'Unremarkable',
     description: [
-      'You are unremarkable. Gain +4 to [Stealth] Skill Checks, but all Full Success or Critical Success results are knocked down by 1.',
+      'You are unremarkable. Gain +4 to [Stealth] Skill Checks, but all Rank 2 and Rank 3 Successes ' +
+      'have their Rank reduced by 1.',
     ],
   },
   unmistakable: {

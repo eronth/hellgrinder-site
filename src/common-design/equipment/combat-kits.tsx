@@ -216,7 +216,7 @@ const exObj: { [key: string]: Kit } = {
         tags: ['Arcane', 'Relic'],
         description: '',
         effects: ['Creatures in your front arc at [Medium Range] make an [Endurance] Skill Check when they attempt to ' +
-          'move. On a Minor Success or less, they are [Slowed 1].',
+          'move. On a Rank 1 Success or less, they are [Slowed 1].',
           'Creatures in your front arc at [Short Range] are [Slowed 1].'
         ],
       }, {
@@ -299,7 +299,9 @@ const exObj: { [key: string]: Kit } = {
     {
       name: 'Feral Cry',
       tags: [],
-      effects: ['As an Action, you let out a feral cry. All enemies in your front arc at [Short Range] must make an [Endurance] Skill Check. On a Minor Success or less, they begin to focus you instead of your allies. Each target moves away 2 hexes or towards 2 hexes, your choice.'],
+      effects: ['As an Action, you let out a feral cry. All enemies in your front arc at [Short Range] must make an ' +
+      '[Endurance] Skill Check. On a Rank 2 Success or less, they begin to focus you instead of your allies. Each target ' +
+      'moves away 2 hexes or towards 2 hexes, your choice.'],
     }],
   },
   

@@ -39,7 +39,7 @@ const exObj: { [key: string]: Weapon } = {
         h: { value: 0, type: 'Metal' },
       },
       effects: ['All creatures in the area hit by a flashbang grenade are Blinded for a number of turns' +
-      ' equal to the success Rank.'],
+      ' equal to the Success Rank.'],
     }],
   },
   incendiaryGrenade: {

@@ -115,7 +115,7 @@ const exObj: { [key: string]: Kit } = {
     trainings: [{
       name: 'Tarot Reader',
       tags: ['Arcane', 'Maneuver'],
-      effects: ['When you perform the [Study Creature] Maneuver, as long as you don\'t get a Failure, you treat your result as once Success Tier higher.'],
+      effects: ['When you perform the [Study Creature] Maneuver, as long as you don\'t get a Failure, you treat your Success Rank as once Rank higher.'],
     }, {
       name: 'Fate Shaper',
       tags: ['Arcane', 'Reaction'],

@@ -31,7 +31,10 @@ export default function Maneuvers() {
             </ColumnEntry>
 
             <ColumnEntry title={{ text: 'Leap' }}>
-              <p>Make an [Agility Skill Check]. You jump over one hex per success tier above Failure. On a Failure, you move one hex and fall prone.</p>
+              <p>
+                Make an [Agility Skill Check]. You move a number of hexes equal to your Success Rank, jumping over all hexes
+                between your starting and ending hex. On a Failure, you move one hex and fall prone.
+              </p>
             </ColumnEntry>
 
             <ColumnEntry title={{ text: 'Stand Up' }}>
@@ -73,9 +76,9 @@ export default function Maneuvers() {
         <h4>Swap Weapons</h4>
         <p>Roll an Agility Check.</p>
         <ul>
-          <li>Minor Success: Nothing special, but the Maneuver is still used.</li>
-          <li>Moderate Success: Your Maneuver is not used up to complete the swap. You may not use “Swap Weapons” Maneuver again this turn.</li>
-          <li>Full Success: Your Maneuver is not used up to complete the swap. You may choose  use “Swap Weapons” again this turn as a Maneuver.</li>
+          <li>Rank 1: Nothing special, but the Maneuver is still used.</li>
+          <li>Rank 2: Your Maneuver is not used up to complete the swap. You may not use “Swap Weapons” Maneuver again this turn.</li>
+          <li>Rank 3: Your Maneuver is not used up to complete the swap. You may choose  use “Swap Weapons” again this turn as a Maneuver.</li>
         </ul>
       </div>
     

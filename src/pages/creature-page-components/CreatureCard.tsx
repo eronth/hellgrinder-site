@@ -12,7 +12,7 @@ export default function GenericToNongenericTable({ data }: Props) {
   return (<div className='creature-card'>
     <div className='title-row'>
       <span className='name'>{data.name}</span>
-      <span>{data.type}</span>
+      <span className='tier'>{data.tier}</span>
     </div>
     <div className='tags'>
       {data.tags.map((tag, i) => <span key={`creature-${data.name}-tag-${i}`}>

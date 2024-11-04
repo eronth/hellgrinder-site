@@ -5,6 +5,7 @@ import GenericToNongenericTable from "./creature-page-components/GenericToNongen
 import CreatureCard from "./creature-page-components/CreatureCard";
 import Tools from "../common-design/Tools";
 import GenCreatures from "../common-design/creatures/generic-creatures";
+import Sinners from "../common-design/creatures/sinner-creatures";
 
 export default function CreaturesPage() {
   const page: TabType = 'creatures';
@@ -58,9 +59,26 @@ export default function CreaturesPage() {
       {Tools
         .sortCreatures(GenCreatures)
         .map((creature, i) => 
-          <CreatureCard key={`creature-${creature.name}-${i}`} data={creature} />
+          <CreatureCard key={`generic-creature-${creature.name}-${i}`} data={creature} />
       )}
     </div>
+    
     <hr />
+    
+    <h3>Sinners</h3>
+    <p>
+      Sinners are often thought to be the damned, compelled to eternal punishment for their sins. Though this is unconfirmed.
+      Sinners are default passive and often willing to help, though their compelled punishment often leads them to be
+      incapable of providing much help beyond information. Should a sinner be prevented from completing its task, it will
+      become extremely aggressive towards the ones who interrupt.
+    </p>
+    <div className={'col-handler'}>
+      {Tools
+        .sortCreatures(Sinners)
+        .map((creature, i) =>
+          <CreatureCard key={`sinner-creature-${creature.name}-${i}`} data={creature} />
+      )}
+    </div>
+    
   </div>);
 }

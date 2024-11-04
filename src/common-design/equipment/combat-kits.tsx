@@ -108,14 +108,14 @@ const exObj: { [key: string]: Kit } = {
     name: 'Demon Hunter',
     description: "The demon hunter craves the destruction of all hellish creatures. They have trained in the art of combat, seeking up-close and personal assaults.",
     weapons: [
-      { ...Tools.deepCopyWeapon(ShootingWeapons.sword, { name: 'Hellforged Blade' }),
+      { ...Tools.deepCopyWeapon(MeleeWeapons.sword, { name: 'Hellforged Blade' }),
         attackModes: [
-          { ...Tools.deepCopyAttackMode(ShootingWeapons.sword.attackModes[0], {
+          { ...Tools.deepCopyAttackMode(MeleeWeapons.sword.attackModes[0], {
               name: 'Rip and Raze',
               damage: { baseType : 'Chthonic', },
             })
           },
-          { ...Tools.deepCopyAttackMode(ShootingWeapons.sword.attackModes[0], {
+          { ...Tools.deepCopyAttackMode(MeleeWeapons.sword.attackModes[0], {
               name: 'Sunder and Strike',
               damage: { baseType : 'Voidyr', },
               effects: ['Gain 3 Corruption.'],

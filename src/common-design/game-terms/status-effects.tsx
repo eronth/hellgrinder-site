@@ -145,6 +145,15 @@ const exObj: { [key: string]: StatusEffect } = {
       ', you may choose to take a Serious Injury instead. Treat it as a Final Injury.',
     ],
   },
+  determinism: {
+    name: 'Determinism',
+    description: [
+      'At the beginning of your turn, you must decide on all actions and maneuvers you will take that turn (including ' +
+      'targets of actions and paths for movement). ' +
+      'You cannot change these decisions once your turn begins. If anything interrupts your pre-planned actions or maneuvers, ' +
+      'you lose the remainder of that action or maneuver and take 2 Damage.',
+    ],
+  },
   hivemind: {
     name: 'Hivemind',
     description: [
@@ -153,6 +162,27 @@ const exObj: { [key: string]: StatusEffect } = {
       'Checks and Hit Checks until the start of your next turn, where X is the number of creatures with Hivemind within Long Range.',
       'Whenever you take damage, up to X of that damage is also dealt to other members of the Hivemind, where X is the number of ' +
       'other members of the Hivemind within [Long Range] of you.',
+    ],
+  },
+  grimUncertainty: {
+    name: 'Grim Uncertainty',
+    description: [
+      'You are unsure of yourself and your future. The GM secretly rolls a d4 and notes the result. You lose this much life,' +
+      ' but are not told exactly how much you lost. Any time you would gain an Injury, the GM informs you. The next time you' +
+      ' heal, you regain the health lost from Grim Uncertainty and end the effect.',
+    ],
+  },
+  unremarkable: {
+    name: 'Unremarkable',
+    description: [
+      'You are unremarkable. Gain +4 to [Stealth] Skill Checks, but all Full Success or Critical Success results are knocked down by 1.',
+    ],
+  },
+  unmistakable: {
+    name: 'Unmistakable',
+    description: [
+      'You are unmistakable. You gain -4 to [Stealth] Skill Checks. Enemies who have seen you before will remember you, no' +
+      ' check needed.',
     ],
   },
   expired: {
@@ -180,6 +210,46 @@ const exObj: { [key: string]: StatusEffect } = {
       'Your sense of balance has been thrown off. The GM publicly assigns each hex adjacent to you a number, 1 through 6. ' +
       'Each time you try to move to a hex, roll three d6 dice and choose one of the results. You move to the hex matching ' +
       'the number chosen.',
+    ],
+  },
+  decoherence: {
+    name: 'Decoherence',
+    description: [
+      'Your reality is breaking down. All checks targeting you must make two checks and take the lower result. ' +
+      'All checks you make must make two checks and take the lower result.',
+    ],
+  },
+  unending: {
+    name: 'Unending',
+    description: [
+      'You are unending. You cannot die. You can still take Injuries and be incapacitated, but you will not die.',
+    ],
+  },
+  enslumbered: {
+    name: 'Enslumbered for [[X]]',
+    description: [
+      'You are unconscious for [[X]] rounds. At the end of your turn, remove one stack of Enslumbered. If you take damage ' +
+      'or are shaken awake with an Action, immediately remove all remaining stacks of Enslumbered and take 1 damage for ' +
+      'each stack removed this way..',
+    ],
+    x: 'X',
+  },
+  afferlized: {
+    name: 'Afferlized',
+    description: [
+      'You are afferlized. You are immune to all damage, but you cannot take any actions.',
+    ],
+  },
+  endarvolism: {
+    name: 'Endarvolism',
+    description: [
+      'You are endarvolized. You are immune to all damage, but you cannot take any actions.',
+    ],
+  },
+  antipathism: {
+    name: 'Antipathism',
+    description: [
+      'You are antipathized. You are immune to all damage, but you cannot take any actions.',
     ],
   }
 }

@@ -1,8 +1,6 @@
 import { AllValidTags } from "./tag-types";
 
-// Weapon damage dice
 // Crit attacks do what?
-// Clean up Rank success
 // Display advanced items/weapons/perks/trainings?/etc
 // I'm a GM toggle
 // Clean up tabs
@@ -70,8 +68,14 @@ type AttackMode = {
 }
 
 type Damage = {
-  value: number,
+  value: number | Dice | Dice[],
   type: DamageElement,
+}
+
+type Dice = {
+  amount?: number;
+  sides: number;
+  modifier?: number;
 }
 
 type Item = {
@@ -103,4 +107,4 @@ type StatusEffect = {
   y?: number | "Y";
 };
 
-export type { HeaderSize, Kit, Weapon, AttackMode, Training, Item, Perk, TabType, DamageElement, StatusEffect };
+export type { HeaderSize, Kit, Weapon, AttackMode, Training, Item, Perk, TabType, DamageElement, StatusEffect, Dice};

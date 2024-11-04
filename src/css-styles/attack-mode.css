@@ -1,5 +1,5 @@
 span.attack-option .name-row {
-
+  font-size: .95em
 }
 
 span.attack-option .tags {
@@ -13,4 +13,14 @@ span.attack-option .name-row .name {
 
 span.attack-option .details-indentation {
   margin-left: 1em;
+}
+
+.weapon-damage {
+  font-size: .9em;
+}
+
+.weapon-damage .damage-bloc {
+  background-color: rgba(9, 3, 3, 0.2);
+  padding-inline: .5em;
+  border-radius: .25em;
 }

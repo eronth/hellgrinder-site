@@ -1,5 +1,5 @@
 import type { Kit } from '../../../ts-types/types';
-import Weapon from './weapon/Weapon';
+import WeaponComponent from './weapon/WeaponComponent';
 import Item from './item/Item';
 import Training from './training/TrainingComponent';
 
@@ -22,7 +22,7 @@ export default function Kit({ needsCols, kit }: Props) {
     return (<>
       {/* List the weapons */}
       {kit.weapons.map((w, wi) => 
-        <Weapon weapon={w} key={`kit-${kit.name}-weapon-${wi}`} />
+        <WeaponComponent weapon={w} key={`kit-${kit.name}-weapon-${wi}`} />
       )}
 
       {/* List the additional items */}

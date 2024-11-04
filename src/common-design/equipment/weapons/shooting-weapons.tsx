@@ -1,4 +1,5 @@
 import { Weapon } from '../../../ts-types/types';
+import DiceTools from '../../../common-design/dice-handling';
 
 const exObj: { [key: string]: Weapon } = {
   pistol: {
@@ -8,9 +9,9 @@ const exObj: { [key: string]: Weapon } = {
     attackModes: [{
       tags: ['Attack', 'Shooting', 'Short Range'],
       damage: {
-        l: { value: 3, type: 'Metal' },
-        m: { value: 6, type: 'Metal' },
-        h: { value: 9, type: 'Metal' },
+        l: { value: DiceTools.get2d2(), type: 'Metal' },
+        m: { value: DiceTools.get2d6(), type: 'Metal' },
+        h: { value: [DiceTools.get2d6(), DiceTools.get2d4()], type: 'Metal' },
       },
       effects: ['You can make an attack with this weapon targeting an enemy in your [Peripheral Arc] with a -3 penalty to the Hit Check.'],
     }],
@@ -22,9 +23,9 @@ const exObj: { [key: string]: Weapon } = {
     attackModes: [{
       tags: ['Attack', 'Shooting', 'Medium Range'],
       damage: {
-        l: { value: 3, type: 'Metal' },
-        m: { value: 6, type: 'Metal' },
-        h: { value: 9, type: 'Metal' },
+        l: { value: DiceTools.get2d4(), type: 'Metal' },
+        m: { value: DiceTools.get2d6(), type: 'Metal' },
+        h: { value: [DiceTools.get2d6(), DiceTools.get2d4()], type: 'Metal' },
       },
     }],
   },
@@ -36,17 +37,17 @@ const exObj: { [key: string]: Weapon } = {
       name: 'Close Encounter',
       tags: ['Attack', 'Shooting', 'Short Range'],
       damage: {
-        l: { value: 2, type: 'Metal' },
-        m: { value: 8, type: 'Metal' },
-        h: { value: 9, type: 'Metal' },
+        l: { value: DiceTools.get1d2(), type: 'Metal' },
+        m: { value: DiceTools.get2d4(4), type: 'Metal' },
+        h: { value: DiceTools.get2d4(5), type: 'Metal' },
       },
     }, {
       name: 'Crowd Control',
       tags: ['Attack', 'Shooting', 'Medium Range'],
       damage: {
-        l: { value: 1, type: 'Metal' },
-        m: { value: 3, type: 'Metal' },
-        h: { value: 6, type: 'Metal' },
+        l: { value: DiceTools.get1d2(-1), type: 'Metal' },
+        m: { value: DiceTools.get1d4(1), type: 'Metal' },
+        h: { value: DiceTools.get1d4(3), type: 'Metal' },
       },
       effects: ['This attack can target up to 3 enemies in your front arc within, so long as all targets are within [Short Range] of each other.'],
     }],
@@ -59,8 +60,8 @@ const exObj: { [key: string]: Weapon } = {
       tags: ['Attack', 'Shooting', 'Short Range'],
       damage: {
         l: { value: 1, type: 'Infernal' },
-        m: { value: 4, type: 'Infernal' },
-        h: { value: 6, type: 'Infernal' },
+        m: { value: DiceTools.get1d2(2), type: 'Infernal' },
+        h: { value: DiceTools.get1d2(4), type: 'Infernal' },
       },
       effects: ['This attack targets all creatures in [Short Range] of your front arc.', 'This attack cannot be used beyond [Short Range].'],
     }],
@@ -89,8 +90,8 @@ const exObj: { [key: string]: Weapon } = {
       tags: ['Attack', 'Shooting', 'Single-Shot', 'Long Range'],
       damage: {
         l: { value: 2, type: 'Metal' },
-        m: { value: 9, type: 'Metal' },
-        h: { value: 12, type: 'Metal' },
+        m: { value: DiceTools.get2d8(), type: 'Metal' },
+        h: { value: [DiceTools.get1d12(), DiceTools.get1d8(2)], type: 'Metal' },
       },
       effects: ['After firing, you must to use an Action or Maneuver to reload before you can fire this weapon again.'],
     }],

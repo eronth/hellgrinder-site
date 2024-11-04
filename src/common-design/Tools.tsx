@@ -1,5 +1,5 @@
 import { Creature, CreatureTierList } from '../ts-types/creature-types';
-import { DamageElement, Weapon, AttackMode } from '../ts-types/types';
+import { DamageElement, Weapon, AttackMode, Dice } from '../ts-types/types';
 import { Kit, Perk, StatusEffect } from '../ts-types/types';
 import {AllValidTags} from "../ts-types/tag-types.tsx";
 
@@ -112,22 +112,55 @@ const deepCopyAttackMode = (attackMode: AttackMode, options?: deepCopyAttackMode
   // Add new damage types if chosen.
   attackModeCopy.damage = {
     l: {
-      value: (options.damage?.l?.value ?? attackModeCopy.damage.l.value) + (options.damage?.l?.offset ?? 0),
+      value: addOffsetToDamage({
+        damage: (options.damage?.l?.value ?? attackModeCopy.damage.l.value),
+        offset: (options.damage?.l?.offset ?? 0),
+      }),
       type: options.damage?.l?.type ?? options.damage?.baseType ?? attackModeCopy.damage.l.type,
     },
     m: {
-      value: (options.damage?.m?.value ?? attackModeCopy.damage.m.value) + (options.damage?.m?.offset ?? 0),
+      value: addOffsetToDamage({
+        damage: (options.damage?.m?.value ?? attackModeCopy.damage.m.value),
+        offset: (options.damage?.m?.offset ?? 0),
+      }),
       type: options.damage?.m?.type ?? options.damage?.baseType ?? attackModeCopy.damage.m.type,
     },
     h: {
-      value: (options.damage?.h?.value ?? attackModeCopy.damage.h.value) + (options.damage?.h?.offset ?? 0),
+      value: addOffsetToDamage({
+        damage: (options.damage?.h?.value ?? attackModeCopy.damage.h.value),
+        offset: (options.damage?.h?.offset ?? 0),
+      }),
       type: options.damage?.h?.type ?? options.damage?.baseType ?? attackModeCopy.damage.h.type,
     },
   }
   
-  
+  console.log('amc damage:', attackModeCopy.damage);
   
   return attackModeCopy;
+}
+
+
+
+type addOffsetToDamageParams = {
+  damage: number | Dice | Dice[],
+  offset: number,
+}
+const addOffsetToDamage =
+  ({damage, offset}: addOffsetToDamageParams): number | Dice | Dice[] => {
+  if (typeof damage === 'number') {
+    return damage + offset;
+  } else if (damage.constructor == Array) {
+    return (damage as Dice[]).map(d => addOffsetToDice(d, offset));
+  } else {
+    return addOffsetToDice(damage as Dice, offset);
+  }
+}
+const addOffsetToDice = (dice: Dice, offset: number): Dice => {
+  return {
+    amount: dice.amount,
+    sides: dice.sides,
+    modifier: (dice?.modifier ?? 0)+ offset,
+  };
 }
 
 const getLoremIpsum = () =>

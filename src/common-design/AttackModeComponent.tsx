@@ -2,31 +2,33 @@
 import { AttackMode } from "../ts-types/types";
 import Tags from './Tags';
 import WeaponSpecialNotes from '../pages/character-creation-components/kits/weapon/weapon-components/WeaponSpecialNotes';
+import WeaponDamage from "../pages/character-creation-components/kits/weapon/weapon-components/WeaponDamage.tsx";
+
 
 type Props = {
   attackMode: AttackMode;
+  showTags?: boolean;
 };
 
-export default function AttackModeComponent({ attackMode }: Props) {
+export default function AttackModeComponent({ attackMode, showTags }: Props) {
   function getPerAttackModeTags(attackMode: AttackMode) {
-      return <span className="name-row">
-        <span className="name">{attackMode.name}</span>
-        <Tags tags={attackMode.tags} />
-      </span>;
-  }
-
-  function makeAttackDamageText(attackMode: AttackMode) {
-    const dmg = attackMode.damage;
-    if (dmg.l.type === dmg.m.type && dmg.m.type === dmg.h.type) {
-      return `${dmg.l.value}/${dmg.m.value}/${dmg.h.value} ${dmg.l.type} Damage`;
-    }
-
-    return `${dmg.l.value} ${dmg.l.type}/${dmg.m.value} ${dmg.m.type}/${dmg.h.value} ${dmg.h.type} Damage`;
+    return (attackMode.name
+      ?
+      (<span className="name-row">
+        <span className="name">- {attackMode.name}</span>
+        {showTags ? <Tags tags={attackMode.tags} /> : null}
+      </span>)
+      : (<></>)
+      );
   }
 
   return (<span className="attack-option">
-    {getPerAttackModeTags(attackMode)}
-    <div className="details-indentation">{makeAttackDamageText(attackMode)}</div>
+    <div className={'details-indent'}>
+      {getPerAttackModeTags(attackMode)}
+    </div>
+    <div className="details-indentation">
+      <WeaponDamage attackMode={attackMode} />
+    </div>
     <WeaponSpecialNotes className={'details-indentation'} effects={attackMode.effects} />
   </span>);
 }

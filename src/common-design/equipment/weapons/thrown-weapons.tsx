@@ -1,4 +1,5 @@
 import { Weapon } from '../../../ts-types/types';
+import DiceTools from "../../dice-handling.tsx";
 
 const exObj: { [key: string]: Weapon } = {
   throwingDarts: {
@@ -9,8 +10,8 @@ const exObj: { [key: string]: Weapon } = {
       tags: ['Short Range', 'Medium Range', 'Thrown'],
       damage: {
         l: { value: 1, type: 'Metal' },
-        m: { value: 6, type: 'Metal' },
-        h: { value: 6, type: 'Metal' },
+        m: { value: DiceTools.get1d4(4), type: 'Metal' },
+        h: { value: DiceTools.get1d4(4), type: 'Metal' },
       },
     }],
   },
@@ -21,9 +22,9 @@ const exObj: { [key: string]: Weapon } = {
     attackModes: [{
       tags: ['Short Range', 'Medium Range', 'Thrown', { tag: 'Area', value: 1 }],
       damage: {
-        l: { value: 9, type: 'Metal' },
-        m: { value: 9, type: 'Metal' },
-        h: { value: 9, type: 'Metal' },
+        l: { value: DiceTools.get2d4(4), type: 'Metal' },
+        m: { value: DiceTools.get2d4(4), type: 'Metal' },
+        h: { value: DiceTools.get2d4(4), type: 'Metal' },
       },
     }],
   },
@@ -49,9 +50,9 @@ const exObj: { [key: string]: Weapon } = {
     attackModes: [{
       tags: ['Short Range', 'Medium Range', 'Thrown', { tag: 'Area', value: 1 }],
       damage: {
-        l: { value: 5, type: 'Infernal' },
-        m: { value: 5, type: 'Infernal' },
-        h: { value: 5, type: 'Infernal' },
+        l: { value: DiceTools.get1d4(3), type: 'Infernal' },
+        m: { value: DiceTools.get1d4(3), type: 'Infernal' },
+        h: { value: DiceTools.get1d4(3), type: 'Infernal' },
       },
       effects: [
         'The area hit by an incendiary grenade is Burning for 1/2/3 turns. Creatures that enter a Burning area ' +

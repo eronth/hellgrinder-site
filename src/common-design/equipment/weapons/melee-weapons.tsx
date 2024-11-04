@@ -1,4 +1,5 @@
 import { Weapon } from '../../../ts-types/types';
+import DiceTools from '../../../common-design/dice-handling';
 
 const exObj: { [key: string]: Weapon } = {
   sword: {
@@ -8,9 +9,9 @@ const exObj: { [key: string]: Weapon } = {
     attackModes: [{
       tags: ['Attack', 'Melee', 'Adjacent Range'],
       damage: {
-        l: { value: 5, type: 'Metal' },
-        m: { value: 5, type: 'Metal' },
-        h: { value: 10, type: 'Metal' },
+        l: { value: DiceTools.get2d4(1), type: 'Metal' },
+        m: { value: DiceTools.get2d4(1), type: 'Metal' },
+        h: { value: DiceTools.get3d4(3), type: 'Metal' },
       },
     }],
   },
@@ -21,9 +22,9 @@ const exObj: { [key: string]: Weapon } = {
     attackModes: [{
       tags: ['Attack', 'Melee', 'Adjacent Range'],
       damage: {
-        l: { value: 3, type: 'Metal' },
-        m: { value: 3, type: 'Metal' },
-        h: { value: 6, type: 'Metal' },
+        l: { value: DiceTools.get1d4(1), type: 'Metal' },
+        m: { value: DiceTools.get1d4(1), type: 'Metal' },
+        h: { value: DiceTools.get2d6(1), type: 'Metal' },
       },
       effects: ['If you move adjacent to an enemy before making this attack, you gain 1 Movement Point.'],
     }],
@@ -35,9 +36,9 @@ const exObj: { [key: string]: Weapon } = {
     attackModes: [{
       tags: ['Attack', 'Melee', 'Adjacent Range'],
       damage: {
-        l: { value: 7, type: 'Metal' },
-        m: { value: 7, type: 'Metal' },
-        h: { value: 10, type: 'Metal' },
+        l: { value: DiceTools.get3d4(), type: 'Metal' },
+        m: { value: DiceTools.get3d4(), type: 'Metal' },
+        h: { value: DiceTools.get4d4(2), type: 'Metal' },
       },
     }],
   },
@@ -48,9 +49,9 @@ const exObj: { [key: string]: Weapon } = {
     attackModes: [{
       tags: ['Attack', 'Melee', 'Adjacent Range'],
       damage: {
-        l: { value: 5, type: 'Metal' },
-        m: { value: 5, type: 'Metal' },
-        h: { value: 8, type: 'Metal' },
+        l: { value: DiceTools.get2d4(1), type: 'Metal' },
+        m: { value: DiceTools.get2d4(1), type: 'Metal' },
+        h: { value: DiceTools.get2d4(4), type: 'Metal' },
       },
       effects: [
         'This attack treats Range 2 as if it was Adjacent Range.',
@@ -65,20 +66,36 @@ const exObj: { [key: string]: Weapon } = {
     attackModes: [{
       tags: ['Attack', 'Melee', 'Adjacent Range'],
       damage: {
-        l: { value: 4, type: 'Metal' },
-        m: { value: 4, type: 'Metal' },
-        h: { value: 7, type: 'Metal' },
+        l: { value: DiceTools.get2d4(), type: 'Metal' },
+        m: { value: DiceTools.get2d4(), type: 'Metal' },
+        h: { value: DiceTools.get2d4(4), type: 'Metal' },
       },
     }, {
       tags: ['Attack', 'Thrown', 'Short Range'],
       damage: {
-        l: { value: 3, type: 'Metal' },
-        m: { value: 3, type: 'Metal' },
-        h: { value: 5, type: 'Metal' },
+        l: { value: DiceTools.get2d4(-1), type: 'Metal' },
+        m: { value: DiceTools.get2d4(-1), type: 'Metal' },
+        h: { value: DiceTools.get2d4(1), type: 'Metal' },
       },
     }],
-    
   },
+  drownerHook: {
+    name: 'Drowner Hook',
+    tags: ['One-Handed'],
+    isAdvancedItem: true,
+    attackModes: [{
+      tags: ['Attack', 'Melee', 'Short Range'],
+      damage: {
+        l: { value: DiceTools.get2d4(1), type: 'Abyssal' },
+        m: { value: DiceTools.get2d4(1), type: 'Abyssal' },
+        h: { value: DiceTools.get3d4(3), type: 'Abyssal' },
+      },
+      effects: [
+        'When you hit an enemy with this weapon, you can move them a number of spaces in any direction equal to ' +
+        'the Success Rank in any direction.'
+      ],
+    }],
+  }
 };
 
 export default exObj;

@@ -2,7 +2,7 @@ import { AllValidTags } from "./tag-types";
 
 // Crit attacks do what?
 // Display advanced items/weapons/perks/trainings?/etc
-// I'm a GM toggle
+// "I'm a GM" toggle
 // Clean up tabs
 // Clean up homepage tabs?
 // Prone?

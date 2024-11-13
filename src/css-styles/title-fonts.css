@@ -587,11 +587,72 @@ h1.cutive-mono-regular.index-title {
   font-size: .8em;
 }
 
+.tapestry-regular {
+  font-family: "Tapestry", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.edu-au-vic-wa-nt-pre-400 {
+  font-family: "Edu AU VIC WA NT Pre", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.bangers-regular {
+  font-family: "Bangers", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+.bangers-regular .before-title {
+  font-size: .8em;
+}
 
 
 
+.barcoded,
+.libre-barcode-39-regular {
+  font-family: "Libre Barcode 39", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+.barcoded .lower-barcode .title {
+  letter-spacing: 4px;
+}
+.barcoded .lower-barcode .title, 
+.space-mono-regular {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
 
 
-
-
-
+.barcoded {
+  --columns: 12;
+  --barcodeTitleColor: white;
+  --textTitleColor: rgb(0,0,0,0);
+}
+.barcoded:hover {
+  --barcodeTitleColor: rgb(0,0,0,0);;
+  --textTitleColor: white;
+}
+.barcoded .barcode-holder {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-template-rows: 1.5em;
+}
+.barcoded .barcode-holder .lower-barcode,
+.barcoded .barcode-holder .upper-barcode {
+  grid-column-start: 1;
+  grid-column-end: var(--columns);
+  grid-row-start: 1;
+  grid-row-end: 1;
+  place-self: center;
+}
+.barcoded .upper-barcode .title {
+  color: var(--barcodeTitleColor);
+}
+.barcoded .lower-barcode .title {
+  color: var(--textTitleColor);
+  font-size: .7em;
+}

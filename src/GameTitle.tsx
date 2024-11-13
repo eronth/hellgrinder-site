@@ -103,6 +103,23 @@ export default function GameTitle({isIndex}: Props) {
     <div className="title">Hellgrinder</div>
   </>);
 
+  const barcodeData = (<>12345</>);
+
+  const barcodeTitle = (<>
+    <div className="barcode-holder">
+      <div className="upper-barcode">
+        <span>{barcodeData}</span>
+        <span className="title">Hellgrinder</span>
+        <span>{barcodeData}</span>
+      </div>
+      <div className="lower-barcode">
+        {/* <span>{barcodeData}</span> */}
+        <span className="title ss">Hellgrinder</span>
+        {/* <span>{barcodeData}</span> */}
+      </div>
+    </div>
+  </>);
+
   const titlesDesigns: JSX.Element[] = [
     // title('lancelot', {pre: 'The Tales of', above: true}, null),
     // title('lancelot2', {pre:'A'}, {post:'Story'}, "Hellgrinder's"),
@@ -164,13 +181,15 @@ export default function GameTitle({isIndex}: Props) {
     //title('creepster-regular', {pre: 'The Harrowing', above: true}),
     //title('grenze-gotisch', {pre: 'I cast'}, null, 'Hellgrinder!'),
     //title('mystery-quest-regular'),
-    quickTitleWrapper('faculty-glyphic-regular', spiritTitle),
+    //quickTitleWrapper('faculty-glyphic-regular', spiritTitle),
+    //title('tapestry-regular'),
+    //title('edu-au-vic-wa-nt-pre-400'),
+    //title('bangers-regular', {pre: 'The Invincible', above: true}, null, 'Hellgrinder!'),
+    quickTitleWrapper('barcoded', barcodeTitle),
     //He🏒🏒grinder
     // The Amazing Hellgrinder!
     // The Beginning of the End: Hellgrinder
-    // Spirit Hellgrinder
     // Brought to you by: Hellgrinder
-    //title('??', {pre: 'The Invincible', above: true}, null, 'Hellgrinder!'),
   ];
 
   return (<span className='title-region'>{getRandElement(titlesDesigns)}</span>);

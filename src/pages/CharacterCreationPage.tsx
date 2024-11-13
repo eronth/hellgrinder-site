@@ -1,23 +1,33 @@
+import React from "react";
+import { Toggle } from '../common-design/Toggle';
 import GameTitle from "../GameTitle";
 import NavTabs from "../common-design/nav/NavTabs";
 import { TabType } from "../ts-types/types";
-import KitsListDisplayComponent from "./character-creation-components/KitsListDisplayComponent.tsx";
-import PerksListDisplayComponent from "./character-creation-components/PerksListDisplayComponent";
-import CreationCoreRules from "./character-creation-components/CreationCoreRules.tsx";
-
+import CharacterCreationRules from "./character-creation-components/CharacterCreationRules";
+import CharacterGenerator from "./character-creation-components/CharacterGenerator";
 // Todo merge into Character Creation Page as a sub-tab/toggle.
 
 export default function CharacterCreationPage() {
   const page: TabType = 'character-creation';
 
+  // Create a state to toggle rules and creator.
+  const [showCreator, setShowCreator] = React.useState(false);
+
+  const toggleLabel = {
+    left: 'Character Creation Rules',
+    right: 'Character Generator',
+  };
+  
   return (<div className={page}>
     <GameTitle />
     <NavTabs selectedTab={page} />
-    <CreationCoreRules />
+    <Toggle label={toggleLabel}
+            toggled={showCreator}
+            onClick={setShowCreator} />
     <hr />
-    <KitsListDisplayComponent />
-    <hr />
-    <PerksListDisplayComponent />
-    <hr />
+    {showCreator
+      ? <CharacterGenerator />
+      : <CharacterCreationRules />
+    }
   </div>);
 }

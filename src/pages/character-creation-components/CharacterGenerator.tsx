@@ -1,18 +1,16 @@
 import React from "react";
-import GameTitle from "../GameTitle";
-import NavTabs from "../common-design/nav/NavTabs";
-import { TabType, Kit, Perk, DamageElement } from "../ts-types/types";
-import { SkillChecks } from "../ts-types/tag-types";
+import { TabType, Kit, Perk, DamageElement } from "../../ts-types/types.tsx";
+import { SkillChecks } from "../../ts-types/tag-types.tsx";
 
-import KitComponent from "./character-creation-components/kits/Kit";
-import PerkComponent from "./character-creation-components/perks/PerkComponent";
+import KitComponent from "./kits/Kit.tsx";
+import PerkComponent from "./perks/PerkComponent.tsx";
 
-import Tools from "../common-design/Tools";
+import Tools from "../../common-design/Tools.tsx";
 
-import CombatKits from "../common-design/equipment/combat-kits";
-import SupportKits from "../common-design/equipment/support-kits";
-import Perks from "../common-design/equipment/perks";
-import CharacterStartingStatsTable from "./character-creation-components/CharacterStartingStatsTable";
+import CombatKits from "../../common-design/equipment/combat-kits.tsx";
+import SupportKits from "../../common-design/equipment/support-kits.tsx";
+import Perks from "../../common-design/equipment/perks.tsx";
+import CharacterStartingStatsTable from "./CharacterStartingStatsTable.tsx";
 
 type CharDesign = {
   health: number, injuries: number, speed: number,
@@ -25,7 +23,7 @@ type CharDesign = {
 
 
 
-export default function CharacterCreationPage() {
+export default function CharacterGenerator() {
   
   const page: TabType = 'character-generator';
   const [char, setChar] = React.useState(null as CharDesign | null);
@@ -153,8 +151,11 @@ export default function CharacterCreationPage() {
   }
   
   return (<div className={page}>
-    <GameTitle />
-    <NavTabs selectedTab={page} />
+    <p>
+      On this page, you are able to quickly generate a new character at the
+      click of a button. Use this to quickly make your first character, or
+      to get back into a fight with the least delay possible.
+    </p>
     <button onClick={generateCharacter}>Generate Character</button>
     {(char != null)
       ? <div className="generated-character-display">

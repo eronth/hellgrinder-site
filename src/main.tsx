@@ -9,6 +9,7 @@ import './css-styles/nav.css'
 import './css-styles/creature-card.css'
 import './css-styles/attack-mode.css'
 import './css-styles/magic-spell.css'
+import './css-styles/toggle.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

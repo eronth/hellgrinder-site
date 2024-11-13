@@ -1,0 +1,53 @@
+.toggle {
+  /*font-size: 30px;*/
+  height: var(--height);
+  --toggle-off-background-color: #2c3e50;
+  --toggle-on-background-color: #5a88bc;
+  --toggle-nub-color: #fff;
+  --nub-size: 1.1em;
+  --nub-edge-gap: 3px;
+  --height: calc( var(--nub-size) + (2 * var(--nub-edge-gap)) );
+  --width: calc( (2 * var(--height)) + (2 * var(--nub-edge-gap)) );
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle .toggler {
+  position: relative;
+  display: inline-block;
+  height: var(--height);
+  width: var(--width);
+
+  margin: 0;
+  margin-inline: .5em;
+  background-color: var(--toggle-off-background-color);
+  padding: 0;
+
+  transition: 0.3s;
+  cursor: pointer;
+  border-radius: 34px;
+}
+.toggle .toggler:before {
+  position: absolute;
+  content: "";
+
+  top: var(--nub-edge-gap);
+  left: var(--nub-edge-gap);
+  height: var(--nub-size);
+  width: var(--nub-size);
+  background-color: var(--toggle-nub-color);
+
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.toggle.toggled .toggler {
+  background-color: var(--toggle-on-background-color);
+}
+.toggle.toggled .toggler:before {
+  transform: translateX(calc(var(--nub-edge-gap) + var(--width) / 2));
+}

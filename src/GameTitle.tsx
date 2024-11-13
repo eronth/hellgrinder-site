@@ -204,5 +204,5 @@ export default function GameTitle({isIndex}: Props) {
     // The Beginning of the End: Hellgrinder
   ];
 
-  return (<span className='title-region'>{getRandElement(titlesDesigns)}</span>);
+  return (<div className='title-region'>{getRandElement(titlesDesigns)}</div>);
 }

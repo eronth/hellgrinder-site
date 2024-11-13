@@ -616,16 +616,15 @@ h1.cutive-mono-regular.index-title {
   font-weight: 400;
   font-style: normal;
 }
-.barcoded .lower-barcode .title {
-  letter-spacing: 4px;
-}
 .barcoded .lower-barcode .title, 
 .space-mono-regular {
   font-family: "Space Mono", monospace;
   font-weight: 400;
   font-style: normal;
 }
-
+.barcoded .lower-barcode .title {
+  letter-spacing: 4px;
+}
 
 .barcoded {
   --columns: 12;
@@ -655,4 +654,66 @@ h1.cutive-mono-regular.index-title {
 .barcoded .lower-barcode .title {
   color: var(--textTitleColor);
   font-size: .7em;
+}
+
+.julius-sans-one-regular {
+  font-family: "Julius Sans One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.afacad-flux-100 {
+  font-family: "Afacad Flux", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0;
+}
+
+.lemon-regular {
+  font-family: "Lemon", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.brought-to-you {
+  font-size: .8em;
+}
+.brought-to-you .brought-by {
+  margin-left: -3em;
+  font-size: .6em;
+}
+
+.kalnia-glaze-100 {
+  font-family: "Kalnia Glaze", serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+.sour-gummy-400 {
+  font-family: "Sour Gummy", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+.doto-300 {
+  font-family: "Doto", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings:
+    "ROND" 0;
+}
+
+.jetbrains-mono-100 {
+  font-family: "JetBrains Mono", serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
 }

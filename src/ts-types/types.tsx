@@ -78,10 +78,7 @@ type Dice = {
   modifier?: number;
 }
 
-type Item = {
-  name: string;
-  tags: AllValidTags[];
-  description: string;
+type Item = ItemDef & {
   effects: string[];
 }
 

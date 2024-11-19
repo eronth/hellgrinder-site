@@ -1,6 +1,9 @@
 .title-region {
   height: 100px;
 }
+.fancy-index .title-region {
+  height: 200px;
+}
 
 
 .fancy-index h1 {

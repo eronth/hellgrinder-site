@@ -21,11 +21,26 @@ nav.navcluster a {
   width: 23em;
 }
 
+.page nav {
+  height: fit-content;
+}
+.page nav a {
+  height: fit-content;
+}
+.page nav a div {
+  height: 100%;
+}
+
+
+.rules .page nav.navtabs { /* specificity needed to override previous rules */
+  margin-inline: 2em;
+  margin: 3em;
+  margin-inline: 0; /* we want to cancel the indent from rules page. */
+}
 nav.navtabs {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   justify-content: center;
-  margin: 1em 0;
 }
 nav.navtabs a {
   display: inline-block;
@@ -35,6 +50,7 @@ nav.navtabs a {
 nav.navtabs div {
   --selectedColor: white;
   --unselectedColor: #b1b1b1;
+  --unselectedBackgroudnColor: #333;
   
   --color: var(--selectedColor);
   --backing-color: inherit;
@@ -52,7 +68,7 @@ nav.navtabs a {
 }
 nav.navtabs a.unselected-tab div {
   --color: var(--unselectedColor);
-  --backing-color: #333;
+  --backing-color: var(--unselectedBackgroudnColor);
   border-bottom: 1px solid var(--selectedColor);
 }
 

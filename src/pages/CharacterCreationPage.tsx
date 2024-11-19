@@ -18,7 +18,7 @@ export default function CharacterCreationPage() {
     right: 'Character Generator',
   };
   
-  return (<div className={page}>
+  return (<div className={'page ' + page}>
     <GameTitle />
     <NavTabs selectedTab={page} />
     <Toggle label={toggleLabel}

@@ -99,8 +99,8 @@ button:focus-visible {
   }
 }
 
-.rules {
-  margin: 2em 3em;
+.rules .page > * {
+  margin-inline: 2em;
 }
 
 .main-title {

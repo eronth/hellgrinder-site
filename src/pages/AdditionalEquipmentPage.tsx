@@ -23,7 +23,7 @@ export default function AdditionalEquipmentPage() {
   const sortedArmor = Tools.sortItems(Armor);
   const sortedGear = Tools.sortItems(Gear);
 
-  return (<div className={page}>
+  return (<div className={'page ' + page}>
     <GameTitle />
     <NavTabs selectedTab={page} />
     <hr />

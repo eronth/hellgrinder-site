@@ -8,7 +8,7 @@ import { TabType } from "../ts-types/types";
 export default function SettingPage() {
   const page: TabType = 'setting';
 
-  return (<div className={page}>
+  return (<div className={'page ' + page}>
     <GameTitle />
     <NavTabs selectedTab={page} />
     <DemonClans />

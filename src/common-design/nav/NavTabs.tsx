@@ -29,7 +29,7 @@ const NavTabs = ({selectedTab}: Props) => {
         <div>Character Creation</div>
       </Link>
       <Link to="/additional-equipment" className={getClassForTab('additional-equipment')}>
-        <div>Additional Equipment</div>
+        <div>Equipment</div>
       </Link>
       <Link to="/advanced-perks" className={getClassForTab('advanced-perks')}>
         <div>Advanced Perks</div>

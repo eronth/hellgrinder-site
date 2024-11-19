@@ -6,7 +6,7 @@ import { TabType } from "../ts-types/types";
 export default function StoryPage() {
   const page: TabType = 'story';
 
-  return (<div className={page}>
+  return (<div className={'page ' + page}>
     <GameTitle />
     <NavTabs selectedTab={page} />
     <Story />

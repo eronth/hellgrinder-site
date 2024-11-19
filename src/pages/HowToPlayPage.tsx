@@ -10,7 +10,7 @@ import DevilDealTable from "./how-to-play-components/deal-with-the-devil/DevilDe
 export default function HowToPlayPage() {
   const page: TabType = 'how-to-play';
 
-  return (<div className={page}>
+  return (<div className={'page ' + page}>
     <GameTitle />
     <NavTabs selectedTab={page} />
     <hr />

@@ -10,7 +10,7 @@ import Sinners from "../common-design/creatures/sinner-creatures";
 export default function CreaturesPage() {
   const page: TabType = 'creatures';
 
-  return (<div className={page}>
+  return (<div className={'page ' + page}>
     <GameTitle />
     <NavTabs selectedTab={page} />
     <hr />

@@ -5,7 +5,7 @@ import { TabType } from "../ts-types/types";
 export default function AdvancedPerksPage() {
   const page: TabType = 'advanced-perks';
 
-  return (<div className={page}>
+  return (<div className={'page ' + page}>
     <GameTitle />
     <NavTabs selectedTab={page} />
     <hr />

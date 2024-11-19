@@ -100,7 +100,7 @@ button:focus-visible {
 }
 
 .rules .page > * {
-  margin-inline: 2em;
+  padding-inline: 2em;
 }
 
 .main-title {

@@ -16,9 +16,6 @@ const NavTabs = ({selectedTab}: Props) => {
 
   return (
     <nav className="navbar navtabs">
-      <Link to="/" className={getClassForTab('home')}>
-        <div>Home</div>
-      </Link>
       <Link to="/story" className={getClassForTab('story')}>
         <div>Story</div>
       </Link>

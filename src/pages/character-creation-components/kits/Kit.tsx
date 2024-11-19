@@ -1,6 +1,6 @@
 import type { Kit } from '../../../ts-types/types';
 import WeaponComponent from './weapon/WeaponComponent';
-import Item from './item/Item';
+import Item from './item/ItemComponent.tsx';
 import Training from './training/TrainingComponent';
 
 type Props = {

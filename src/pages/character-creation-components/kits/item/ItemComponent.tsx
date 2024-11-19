@@ -5,7 +5,7 @@ type Props = {
   item: Item;
 };
 
-export default function Training({ item }: Props) {
+export default function ItemComponent({ item }: Props) {
   return (<div className='item'>
     <div><span className='name'>{item.name}</span><Tags tags={item.tags} /></div>
     <div className='description details-indent'>{item.description}</div>

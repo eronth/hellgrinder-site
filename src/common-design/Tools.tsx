@@ -199,6 +199,14 @@ function sortCreatures(creatures: { [key: string]: Creature }): Creature[] {
   return [...ct0Creatures, ...ct1Creatures, ...ct2Creatures, ...ct3Creatures, ...ct4Creatures, ...ct5Creatures, ...ct6Creatures];
 }
 
+const sortWeapons = (weapons: { [key: string]: Weapon }): Weapon[] =>
+  Object.values(weapons)
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+const sortItems = (items: { [key: string]: Item }): Item[] =>
+  Object.values(items)
+    .sort((a, b) => a.name.localeCompare(b.name));
+
 const sortKits = (kits: { [key: string]: Kit }): Kit[] => 
   Object.values(kits)
     .sort((a, b) => a.name.localeCompare(b.name));
@@ -229,6 +237,8 @@ const sortStatusEffects = (statusEffects: { [key: string]: StatusEffect }): Stat
 export default {
   //convertHeaderToFull,
   getLoremIpsum,
+  sortWeapons,
+  sortItems,
   sortKits,
   sortPerks,
   sortCreatures,

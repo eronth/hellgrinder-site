@@ -22,9 +22,8 @@ nav.navcluster a {
 }
 
 .rules .page nav.navtabs { /* specificity needed to override previous rules */
-  padding-inline: 2em;
-  padding: 3em;
-  padding-inline: 0; /* we want to cancel the indent from rules page. */
+  margin: 3rem;
+  margin-inline: 0; /* we want to cancel the indent from rules page. */
 }
 nav.navtabs {
   display: flex;

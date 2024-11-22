@@ -167,7 +167,8 @@ export default function GameTitle({isIndex}: Props) {
           + 'thou shalt, henceforth and in kind, grind hell beneath thine own heel.',
         below: true
       },
-      'Hellgrinder'),
+      'Hellgrinder'
+    ),
     title('federant-regular', {pre: 'To'}, {post: 'and Back'}),
     title('gideon-roman-regular', {pre: 'The Depths of'}),
     title('anton-sc-regular', null, null, 'HellgrindeR'),
@@ -194,13 +195,15 @@ export default function GameTitle({isIndex}: Props) {
     title('bangers-regular', {pre: 'The Invincible', above: true}, null, 'Hellgrinder!'),
     quickTitleWrapper('barcoded', barcodeTitle),
     title('julius-sans-one-regular'),
-    title('afacad-flux-100'),
+    title('afacad-flux-100', {pre: 'See no'}),
+    title('afacad-flux-100', {pre: 'Hear no'}),
+    title('afacad-flux-100', {pre: 'Speak no'}),
     quickTitleWrapper('btyb', broughtToYouBy),
     title('kalnia-glaze-100'),
     title('sour-gummy-400', {pre: 'The Amazing', above: true}, null, 'Hellgrinder!'),
     title('doto-300'),
     title('jetbrains-mono-100'),
-    //He🏒🏒grinder
+    // He🏒🏒grinder
     // The Beginning of the End: Hellgrinder
   ];
 

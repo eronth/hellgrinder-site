@@ -1,6 +1,20 @@
 import ColumnEntry from "../../common-design/ColumnEntry";
+import RuleKeyword from "../../common-design/RuleKeyword";
+import RuleDisplay from "../../common-design/RuleDisplay";
 
 export default function BasicRules() {
+
+  const rr = <><div className="simple-header">Calling <RuleKeyword keyword="Reinforcements" />!</div>
+          <ul>
+            <li>
+              <b>Spend 1 <RuleKeyword keyword="Heroic Medals">Heroic Medal</RuleKeyword></b>: If one of your player allies is dead or otherwise non-playable, you may call
+              for a
+              <RuleKeyword keyword="Reinforcements">reinforcement</RuleKeyword>. The player creates a new character (if they haven't yet), and arrives as a <RuleKeyword keyword="Reinforcements">reinforcement</RuleKeyword> at
+              the end of the current round. The cost of this ability increases by 1 for each time it's been used this
+              combat.
+            </li>
+          </ul>/ColumnEntry"</>;
+
   return (<>
     <h2>Basics</h2>
     
@@ -16,18 +30,18 @@ export default function BasicRules() {
         
         <ColumnEntry
           title={{hx: 'h3', text: 'Heroic Medals'}}>
-          <p>Heroic Medals are earned throughout the game and can be spent to create Heroic Moments whereupon an action
-            is boosted. Sometimes you may earn specialized Medals, which can be used as Heroic Medals or for a perk
+          <p><RuleKeyword keyword="Heroic Medals" /> are earned throughout the game and can be spent to create Heroic Moments whereupon an action
+            is boosted. Sometimes you may earn specialized Medals, which can be used as <RuleKeyword keyword="Heroic Medals" /> or for a perk
             described by that medal type.</p>
           
-          <p>Here are some ways Heroic Medals can be spent:</p>
+          <p>Here are some ways <RuleKeyword keyword="Heroic Medals" /> can be spent:</p>
           <div className="simple-header">Hero Time!</div>
           <ul>
             <li>
-              <b>Spend 1 Heroic Medal</b>: Change the result of one dice up or down by 1.
+              <b>Spend 1 <RuleKeyword keyword="Heroic Medals">Heroic Medal</RuleKeyword></b>: Change the result of one dice up or down by 1.
             </li>
             <li>
-              <b>Spend 3 Heroic Medal</b>: Set the value of any dice.
+              <b>Spend 3 <RuleKeyword keyword="Heroic Medals">Heroic Medal</RuleKeyword></b>: Set the value of any dice.
             </li>
           </ul>
           <div className="simple-header">Calling Reinforcement!</div>

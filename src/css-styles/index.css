@@ -8,6 +8,14 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
+  /* Card and table background colors - slightly different from site background */
+  --card-background: #2a2a2a;
+  --card-header-background: #333333;
+  --table-background: #2a2a2a;
+  --table-header-background: #1e2157;
+  --table-row-background: #2a2a2a;
+  --table-row-alt-background: #2e2e2e;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -158,6 +166,7 @@ ol.roman {
   width: calc(100% - (2*var(--page-margin)));
   border: 1px solid white;
   border-collapse: collapse;
+  background-color: var(--table-background);
 }
 
 .devil-deal-table,
@@ -165,10 +174,11 @@ ol.roman {
   width: 100%;
   border: 1px solid white;
   border-collapse: collapse;
+  background-color: var(--table-background);
 }
 .devil-deal-table th,
 .injuries-table th {
-  background-color: #1e2157;
+  background-color: var(--table-header-background);
   color: white;
   padding: 0.5em;
 }
@@ -176,6 +186,7 @@ ol.roman {
 .injuries-table td {
   border: 1px solid white;
   padding: 0.25em;
+  background-color: var(--table-row-background);
 }
 td.center-num {
   text-align: center;
@@ -184,6 +195,10 @@ td.center-num {
 
 .perk {
   margin: 0 .5em;
+  background-color: var(--card-background);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 0.5em;
 }
 .perk .headrow {
   font-weight: bold;
@@ -229,15 +244,17 @@ table {
   width: 100%;
   border: 1px solid white;
   border-collapse: collapse;
+  background-color: var(--table-background);
 }
 th {
-  background-color: #1e2157;
+  background-color: var(--table-header-background);
   color: white;
   padding: 0.5em;
 }
 td {
   border: 1px solid white;
   padding: 0.25em;
+  background-color: var(--table-row-background);
 }
 
 .tags {
@@ -297,3 +314,22 @@ td {
   font-weight: bold;
   color: #ead04e;
 }
+
+/* General card styling for consistency across the project */
+.card {
+  background-color: var(--card-background);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 1em;
+  margin: 0.5em 0;
+}
+
+.card-header {
+  background-color: var(--card-header-background);
+  margin: -1em -1em 0.5em -1em;
+  padding: 0.5em 1em;
+  border-radius: 7px 7px 0 0;
+  font-weight: bold;
+}
+
+/* Perk styling update to use card background */

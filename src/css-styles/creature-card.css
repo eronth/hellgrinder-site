@@ -2,6 +2,7 @@
   border: 1px solid white;
   --border-radius: 10px;
   border-radius: var(--border-radius);
+  background-color: var(--card-background);
 }
 .creature-card > * {
   padding: 0 .5em;
@@ -10,7 +11,8 @@
 .creature-card .title-row {
   padding-top: .25em;
   padding-bottom: .25em;
-  background-color: #fff4;
+  background-color: var(--card-header-background);
+  font-size: 1.2em;
   border-top-left-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
 }
@@ -35,6 +37,8 @@
 
 .damage-modifiers {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em;
   margin: 0 .5em;
 }
 

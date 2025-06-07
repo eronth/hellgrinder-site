@@ -29,11 +29,8 @@ export default function Damage() {
             <li>Voidyr</li>
           </ol>
         </ColumnEntry>
-      
       </div>
       
-      
-
       <ColumnEntry title={{ hx: 'h4', text: 'Weakness, Resistance, and Absorbance' }}>
         <p>
           Many creatures have Weakness, Resistance, or Absorbance to damage types, and some Kits, Perks, or other gear

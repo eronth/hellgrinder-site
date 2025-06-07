@@ -11,7 +11,7 @@ import ZephyrianSpires from "./ZephyrianSpires";
 
 
 export default function OtherFactions() {
-  const factionHxLevel = 'h4';
+  const locationHxLevel = 'h4';
 
   return (<>
     <ColumnEntry
@@ -22,13 +22,13 @@ export default function OtherFactions() {
 
     <div className='col-handler'>
       {/* Various individual realms */}
-      <DeepblindCaverns hx={factionHxLevel} />
-      <GhastcursedVillages hx={factionHxLevel} />
-      <InfernalLocation hx={factionHxLevel} />
-      <ShoalpockedExpanse hx={factionHxLevel} />
-      <TwistedWilds hx={factionHxLevel} />
-      <ZephyrianSpires hx={factionHxLevel} />
-      <WarpwindingPathways hx={factionHxLevel} />
+      <DeepblindCaverns hx={locationHxLevel} />
+      <GhastcursedVillages hx={locationHxLevel} />
+      <InfernalLocation hx={locationHxLevel} />
+      <ShoalpockedExpanse hx={locationHxLevel} />
+      <TwistedWilds hx={locationHxLevel} />
+      <ZephyrianSpires hx={locationHxLevel} />
+      <WarpwindingPathways hx={locationHxLevel} />
     </div>
 
   </>);

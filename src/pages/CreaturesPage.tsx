@@ -1,10 +1,14 @@
+// Components
 import GameTitle from "../GameTitle";
 import NavTabs from "../common-design/nav/NavTabs";
-import { TabType } from "../ts-types/types";
 import GenericToNongenericTable from "./creature-page-components/GenericToNongenericTable";
-import CreatureCard from "./creature-page-components/CreatureCard";
 import Tools from "../common-design/Tools";
+import CreatureCard from "./creature-page-components/CreatureCard";
+// Types
+import { TabType } from "../ts-types/types";
+// Data
 import GenCreatures from "../common-design/creatures/generic-creatures";
+import ZephpterCreatures from "../common-design/creatures/zephpter-creatures";
 import Sinners from "../common-design/creatures/sinner-creatures";
 
 export default function CreaturesPage() {
@@ -54,7 +58,7 @@ export default function CreaturesPage() {
     Sloth - Stoneveined
 
     */}
-    {/* TODO Fix column widths. */}
+
     <div className='col-handler'>
       {Tools
         .sortCreatures(GenCreatures)
@@ -77,6 +81,20 @@ export default function CreaturesPage() {
         .sortCreatures(Sinners)
         .map((creature, i) =>
           <CreatureCard key={`sinner-creature-${creature.name}-${i}`} data={creature} />
+      )}
+    </div>
+
+    <hr />
+
+    <h3>Zephpter</h3>
+    <p>
+      
+    </p>
+    <div className={'col-handler'}>
+      {Tools
+        .sortCreatures(ZephpterCreatures)
+        .map((creature, i) =>
+          <CreatureCard key={`zephpter-creature-${creature.name}-${i}`} data={creature} />
       )}
     </div>
     

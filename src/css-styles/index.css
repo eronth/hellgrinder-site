@@ -100,7 +100,8 @@ button:focus-visible {
 }
 
 .rules .page > * {
-  margin-inline: 2rem;
+  --page-margin: 2rem;
+  margin-inline: var(--page-margin);
 }
 
 .main-title {
@@ -145,6 +146,18 @@ ul {
 }
 ol.roman {
   list-style-type: upper-roman;
+}
+
+/*
+  Idk why these tables need a special
+  boy width calculation compared to the rest.
+*/
+
+.basic-check-result-table,
+.generic-to-nongeneric-table {
+  width: calc(100% - (2*var(--page-margin)));
+  border: 1px solid white;
+  border-collapse: collapse;
 }
 
 .devil-deal-table,
@@ -239,6 +252,18 @@ td {
   color: white;
   border-radius: 5px;
 }
+
+/* .creature-card .tags { */
+  /* display: inline-block; */
+  /* width: 100%; */
+  /* align-items: right; */
+/*} */
+
+/*.name-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+} */
 
 .generated-character-display {
   min-height: 52em;

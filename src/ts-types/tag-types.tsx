@@ -3,7 +3,8 @@ type TagWithValue = {
   value: number;
 };
 
-type AttackTypes = 'Attack' | 'Melee' | 'Shooting' | 'Arcane' | 'Thrown' | 'Special';
+type AttackTypes = 'Attack' | 'Melee' | 'Shooting'
+| 'Arcane' | 'Thrown' | 'Special';
 
 type Range = 'Adjacent Range' | 'Short Range' | 'Medium Range' | 'Long Range' | 'Extreme Range'
   | {tag: 'Range', value: number};

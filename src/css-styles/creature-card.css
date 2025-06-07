@@ -58,3 +58,31 @@
 .creature-card .creature-abilities .details-indentation {
   margin-left: 1em;
 }
+
+/* Responsive grid for creature cards */
+.creatures-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 666px));
+  gap: 1em;
+  justify-content: center;
+  margin: 0;
+}
+
+/* Responsive breakpoints for creature cards */
+@media(max-width: 1400px) {
+  .creatures-grid {
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  }
+}
+
+@media(max-width: 950px) {
+  .creatures-grid {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+}
+
+@media(max-width: 450px) {
+  .creatures-grid {
+    grid-template-columns: 1fr;
+  }
+}

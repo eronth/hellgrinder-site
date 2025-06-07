@@ -59,7 +59,7 @@ export default function CreaturesPage() {
 
     */}
 
-    <div className='col-handler'>
+    <div className='creatures-grid'>
       {Tools
         .sortCreatures(GenCreatures)
         .map((creature, i) => 
@@ -76,7 +76,7 @@ export default function CreaturesPage() {
       incapable of providing much help beyond information. Should a sinner be prevented from completing its task, it will
       become extremely aggressive towards the ones who interrupt.
     </p>
-    <div className={'col-handler'}>
+    <div className='creatures-grid'>
       {Tools
         .sortCreatures(Sinners)
         .map((creature, i) =>
@@ -90,7 +90,7 @@ export default function CreaturesPage() {
     <p>
       
     </p>
-    <div className={'col-handler'}>
+    <div className='creatures-grid'>
       {Tools
         .sortCreatures(ZephpterCreatures)
         .map((creature, i) =>

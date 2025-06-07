@@ -10,7 +10,7 @@ type Props = {
   showTags?: boolean;
 };
 
-export default function AttackModeComponent({ attackMode, showTags }: Props) {
+export default function AttackModeComponent({ attackMode, showTags=true }: Props) {
   function getPerAttackModeTags(attackMode: AttackMode) {
     return (attackMode.name
       ?

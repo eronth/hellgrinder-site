@@ -6,7 +6,7 @@ type Props = {
   data: Creature;
 };
 
-export default function GenericToNongenericTable({ data }: Props) {
+export default function CreatureCard({ data }: Props) {
   const hexIcon = '⬣';
 
   return (<div className='creature-card'>

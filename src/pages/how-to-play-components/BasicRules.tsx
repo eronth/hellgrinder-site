@@ -144,7 +144,7 @@ export default function BasicRules() {
     
     </div>
     
-    <table>
+    <table className="basic-check-result-table">
       <tbody>
       <tr>
         <th>Result</th>

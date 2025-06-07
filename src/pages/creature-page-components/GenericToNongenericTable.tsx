@@ -2,7 +2,7 @@ import GenericToNongenericRow from "./GenericToNongenericRow";
 
 export default function GenericToNongenericTable() {
   return (<>
-   <table>
+   <table className="generic-to-nongeneric-table">
       <tbody>
         <tr>
           <th>Faction</th>

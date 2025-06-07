@@ -20,7 +20,7 @@ export default function Rules() {
         <Route path="/how-to-play" element={<HowToPlayPage />} />
         <Route path="/character-creation" element={<CharacterCreationPage />} />
         <Route path="/additional-equipment" element={<AdditionalEquipmentPage />} />
-        <Route path="/advanced-perks" element={<AdvancedPerksPage />} />
+        <Route path="/perks" element={<AdvancedPerksPage />} />
         <Route path="/magic" element={<MagicPage />} />
         <Route path="/creatures" element={<CreaturesPage />} />
       </Routes>

@@ -355,4 +355,8 @@ const exObj: { [key: string]: Creature } = {
   // Akrethis
   // Sulvithar
 
+// VOIDYR
+  // mad cultist
+      // demonic vessel
+
 export default exObj;

@@ -58,7 +58,7 @@ export const RULES_DATABASE: RuleDefinition[] = [
     category: 'general',
     summary: 'Core dice rolling mechanics using d6 systems for most actions.',
     details: 'The game uses primarily d6 dice for resolution. Players roll dice and compare results against target numbers or opponent rolls.',
-    relatedRules: ['heroic-medals']
+    relatedRules: ['heroic-medals', 'success-ranks']
   },
   {
     id: 'reinforcements',
@@ -67,6 +67,58 @@ export const RULES_DATABASE: RuleDefinition[] = [
     summary: 'Ability to bring in new characters when allies are defeated.',
     details: 'If one of your player allies is dead or otherwise non-playable, you may spend Heroic Medals to call for a reinforcement. The player creates a new character and arrives at the end of the current round.',
     relatedRules: ['heroic-medals']
+  },
+  {
+    id: 'difficulty',
+    keyword: 'Difficulty',
+    category: 'general',
+    summary: 'Mechanics for determining the difficulty of tasks and actions.',
+    details: 'Depending on the difficulty of the action, a Skill Check result can be modified from -4 to +2.',
+    examples: [
+      'Easy: +2',
+      'Normal: 0',
+      'Hard: -2',
+      'Very Hard: -4'
+    ],
+    relatedRules: ['dice-mechanics', 'skill-checks']
+  },
+  {
+    id: 'skill-checks',
+    keyword: 'Skill Checks',
+    category: 'general',
+    summary: 'Mechanics for performing actions and resolving tasks using skills.',
+    details: 'A Skill Check is performed by rolling 3d6. Most skill checks will have Tags associated with them. When you make a Skill Check, you roll 3d6 and add the relevant skill modifier.',
+    relatedRules: ['difficulty', 'tags']
+  },
+  {
+    id: 'success-ranks',
+    keyword: 'Success Ranks',
+    category: 'general',
+    summary: 'Levels of success or failure based on Skill Check results.',
+    details: 'Success Ranks determine the outcome of Skill Checks based on the total rolled. They range from Critical Success to Critical Failure.',
+    examples: [
+      'Result 4-7 — Rank 0: Failure',
+      'Result 8-11 — Rank 1: Partial or minor Success',
+      'Result 12-15 — Rank 2: Full Success',
+      'Result 16+ — Rank 3: Success; with flourish.'
+    ],
+    relatedRules: ['dice-mechanics', 'skill-checks']
+  },
+  {
+    id: 'corruption-test',
+    keyword: 'Corruption Test',
+    category: 'general',
+    summary: 'Mechanics for testing a character\'s corruption level and its effects.',
+    details: 'Occasionally, the GM will force you to make a Corruption Test by rolling a [Corruption Skill Check]. When you have to make a Corruption Skill Check, you roll 3d6. If the result is less than your current Corruption, you fail the check. When you fail, roll 2d6 and take the lowest value to determine what happens.',
+    examples: [
+      '1 — Dread: Gain 1 Corruption.',
+      '2 — Nausiating: Gain 1 Corruption and lose 1 Health.',
+      '3 — Invitation: The GM chooses a Damage Type. You gain Weak Type 1.',
+      '4 — Bout of Madness: Your bout of madness causes you to attack an ally.',
+      '5 — Madness Manifest: You lose control of your character.',
+      '6 — Corrupting Warp: You lose control of your character.'
+    ],
+    relatedRules: ['corruption', 'skill-checks']
   },
 
   // Combat Rules
@@ -176,7 +228,15 @@ export const RULES_DATABASE: RuleDefinition[] = [
     summary: 'Special properties that modify how equipment or abilities function.',
     details: 'Tags provide special rules, restrictions, or bonuses to items, abilities, or creatures. They define unique behaviors and interactions.',
     relatedRules: ['weapon-tags', 'creature-tags']
-  }
+  },
+
+  // Status Effects Rules
+  {
+    id: 'afferlized',
+    keyword: 'Afferlized',
+    category: 'general',
+    summary: 'Your skin hardens and shines with a brilliant light — you have become afferlized. You are immune to all damage, but you cannot take any actions.',
+  },
 ];
 
 // Helper functions for rule management

@@ -85,13 +85,8 @@ export default function RulePopup({
     return { top, left, preferredPosition };
   };
 
-  const handleMouseEnter = () => {
-    setIsVisible(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsVisible(false);
-  };
+  const handleMouseEnter = () => { setIsVisible(true); };
+  const handleMouseLeave = () => { setIsVisible(false); };
 
   useEffect(() => {
     if (isVisible && triggerRef.current && popupRef.current) {

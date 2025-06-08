@@ -1,19 +1,7 @@
 import ColumnEntry from "../../common-design/ColumnEntry";
 import RuleKeyword from "../../common-design/RuleKeyword";
-import RuleDisplay from "../../common-design/RuleDisplay";
 
 export default function BasicRules() {
-
-  const rr = <><div className="simple-header">Calling <RuleKeyword keyword="Reinforcements" />!</div>
-          <ul>
-            <li>
-              <b>Spend 1 <RuleKeyword keyword="Heroic Medals">Heroic Medal</RuleKeyword></b>: If one of your player allies is dead or otherwise non-playable, you may call
-              for a
-              <RuleKeyword keyword="Reinforcements">reinforcement</RuleKeyword>. The player creates a new character (if they haven't yet), and arrives as a <RuleKeyword keyword="Reinforcements">reinforcement</RuleKeyword> at
-              the end of the current round. The cost of this ability increases by 1 for each time it's been used this
-              combat.
-            </li>
-          </ul>/ColumnEntry"</>;
 
   return (<>
     <h2>Basics</h2>

@@ -1,7 +1,7 @@
 import { Creature, CreatureTierList } from '../ts-types/creature-types';
-import { DamageElement, Weapon, AttackMode, Dice } from '../ts-types/types';
+import { DamageElement, Weapon, AttackMode, Dice, Item } from '../ts-types/types';
 import { Kit, Perk, StatusEffect } from '../ts-types/types';
-import {AllValidTags} from "../ts-types/tag-types.tsx";
+import { AllValidTags } from "../ts-types/tag-types.tsx";
 
 type deepCopyWeaponOptions = {
   name?: string,

@@ -47,7 +47,9 @@ export default function RuleDisplay({
       
       {showDetails && rule.examples && rule.examples.length > 0 && (
         <div className="rule-display-examples">
-          <strong>Examples:</strong>
+          <strong>
+            {rule.exampleNameOverride || 'Examples:'}
+          </strong>
           <ul>
             {rule.examples.map((example, index) => (
               <li key={index}>{example}</li>

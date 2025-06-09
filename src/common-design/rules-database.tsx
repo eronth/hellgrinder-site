@@ -1,4 +1,35 @@
 import { RuleDefinition, RuleCategory } from '../ts-types/rule-types';
+import StatusEffects from "../common-design/game-terms/status-effects.tsx"
+import { StatusEffect } from '../ts-types/types';
+
+const convertStatusEffectToRuleDefinition = (statusEffect: StatusEffect): RuleDefinition => {
+  const se = statusEffect;
+  console.log(`Converting status effect:`, se);
+  const nameToId = se.name.toLowerCase().replace(/\s+/g, '-');
+  console.log(`Converted name to ID: ${nameToId}`);
+  const nameToKeyword = se.name
+    // make sure to replace [[X]] and [[Y]] with nothing, then trim whitespace
+    .replace(/\[\[X\]\]/g, '')
+    .replace(/\[\[Y\]\]/g, '')
+    .trim()
+    .replace(/\s+/g, '-');
+  
+  console.log(`Converted name to keyword: ${nameToKeyword}`);
+
+  const ret: RuleDefinition = {
+    id: nameToId,
+    keyword: nameToKeyword,
+    category: 'status-effects',
+    summary: se.description,
+    details: '',
+    examples: se.effects,
+    exampleNameOverride: 'Effects',
+    relatedRules: ['status-effects']
+  }
+  return ret;
+}
+
+console.log('blinded', StatusEffects['blinded']);
 
 // Rule categories for organization
 export const RULE_CATEGORIES: RuleCategory[] = [
@@ -28,15 +59,19 @@ export const RULE_CATEGORIES: RuleCategory[] = [
     description: 'Enemy types, creature abilities, and encounters'
   },
   {
+    id: 'status-effects',
+    name: 'Status Effects',
+    description: 'Temporary and permanent conditions affecting characters'
+  },
+  {
     id: 'general',
     name: 'General',
     description: 'Core game mechanics and general rules'
   }
 ];
 
-// Centralized rules database
-export const RULES_DATABASE: RuleDefinition[] = [
-  // General Rules
+// General Rules
+export const generalRules: RuleDefinition[] = [
   {
     id: 'heroic-medals',
     keyword: 'Heroic Medals',
@@ -120,8 +155,10 @@ export const RULES_DATABASE: RuleDefinition[] = [
     ],
     relatedRules: ['corruption', 'skill-checks']
   },
+];
 
-  // Combat Rules
+// Combat Rules
+export const combatRules: RuleDefinition[] = [
   {
     id: 'health',
     keyword: 'Health',
@@ -186,8 +223,275 @@ export const RULES_DATABASE: RuleDefinition[] = [
     details: 'Shove allows characters to attempt to push opponents a certain distance. The shove value indicates the strength of the push.',
     relatedRules: ['size', 'grab', 'movement']
   },
+];
 
-  // Creature Rules
+export const moreCombatRules: RuleDefinition[] = [
+  // Combat Action Rules
+  {
+    id: 'action',
+    keyword: 'Action',
+    category: 'combat',
+    summary: 'A major activity a character can perform during their turn.',
+    details: 'You can perform one Action per turn. Actions include attacks, special abilities, and other significant activities.',
+    relatedRules: ['maneuver', 'turn-order']
+  },
+  {
+    id: 'maneuver',
+    keyword: 'Maneuver',
+    category: 'combat',
+    summary: 'A movement or positioning activity a character can perform during their turn.',
+    details: 'You can perform one Maneuver per turn. Maneuvers include movement, stance changes, and positioning activities.',
+    relatedRules: ['action', 'movement-points', 'turn-order']
+  },
+  {
+    id: 'attack',
+    keyword: 'Attack',
+    category: 'combat',
+    summary: 'An offensive action that targets enemies with weapons or abilities.',
+    details: 'Make an attack check by rolling 3d6. You deal damage based on your Success Rank and weapon damage values.',
+    relatedRules: ['hit-check', 'damage', 'success-ranks']
+  },
+  {
+    id: 'hit-check',
+    keyword: 'Hit Check',
+    category: 'combat',
+    summary: 'The roll made to determine if an attack successfully hits its target.',
+    details: 'Roll 3d6 and add relevant modifiers. Compare against target\'s defenses or difficulty to determine Success Rank.',
+    relatedRules: ['attack', 'success-ranks', 'dice-mechanics']
+  },
+  {
+    id: 'movement-points',
+    keyword: 'Movement Points',
+    category: 'combat',
+    summary: 'Points spent to move around the battlefield during your turn.',
+    details: 'You gain Movement Points equal to your Move Speed. Spend these points to move hexes or perform movement-related activities.',
+    relatedRules: ['speed', 'maneuver', 'move-speed']
+  },
+  {
+    id: 'move-speed',
+    keyword: 'Move Speed',
+    category: 'combat',
+    summary: 'The number of Movement Points you gain each turn.',
+    details: 'Your Move Speed determines how many Movement Points you receive, which you can spend to move around the battlefield.',
+    relatedRules: ['movement-points', 'speed']
+  },
+  {
+    id: 'turn-order',
+    keyword: 'Turn Order',
+    category: 'combat',
+    summary: 'The sequence in which characters act during combat.',
+    details: 'Players go first unless surprised. Players choose which character acts, then GM chooses enemies to act, alternating until all have acted.',
+    relatedRules: ['action', 'maneuver', 'initiative']
+  },
+  {
+    id: 'initiative',
+    keyword: 'Initiative',
+    category: 'combat',
+    summary: 'Determines who acts first in combat.',
+    details: 'Players go first unless surprised or fighting against a foe that circumvents this rule.',
+    relatedRules: ['turn-order']
+  },
+  {
+    id: 'facing',
+    keyword: 'Facing',
+    category: 'combat',
+    summary: 'The direction a character is looking, determining their arc coverage.',
+    details: 'Characters have Front Arc (3 hexes), Peripheral Arcs (2 hexes each side), and Rear Arc (1 hex behind).',
+    relatedRules: ['front-arc', 'peripheral-arc', 'rear-arc']
+  },
+  {
+    id: 'front-arc',
+    keyword: 'Front Arc',
+    category: 'combat',
+    summary: 'The three hexes directly in front of a character.',
+    details: 'Your Front Arc provides the best position for attacks and defense.',
+    relatedRules: ['facing', 'peripheral-arc', 'rear-arc']
+  },
+  {
+    id: 'peripheral-arc',
+    keyword: 'Peripheral Arc',
+    category: 'combat',
+    summary: 'The two hexes to either side of your Front Arc (Left and Right Peripheral Arcs).',
+    details: 'Attacks from Peripheral Arcs get +1 to Hit Checks and Damage against you.',
+    relatedRules: ['facing', 'front-arc', 'rear-arc']
+  },
+  {
+    id: 'rear-arc',
+    keyword: 'Rear Arc',
+    category: 'combat',
+    summary: 'The hex directly behind a character.',
+    details: 'Attacks from your Rear Arc get +3 to Hit Checks and +1 to Damage against you.',
+    relatedRules: ['facing', 'front-arc', 'peripheral-arc']
+  },
+  {
+    id: 'opportunity-strike',
+    keyword: 'Opportunity Strike',
+    category: 'combat',
+    summary: 'A free attack when enemies move within your threat range.',
+    details: 'When you move within Adjacent Range of a creature\'s Front Arc or Peripheral Arc, they can make a free attack against you.',
+    relatedRules: ['adjacent-range', 'facing']
+  },
+  {
+    id: 'adjacent-range',
+    keyword: 'Adjacent Range',
+    category: 'combat',
+    summary: 'Directly next to a character, within 1 hex.',
+    details: 'Adjacent Range is the closest distance for melee attacks and many special abilities.',
+    relatedRules: ['range', 'short-range', 'medium-range', 'long-range']
+  },
+  {
+    id: 'short-range',
+    keyword: 'Short Range',
+    category: 'combat',
+    summary: 'Combat range of 1-3 hexes.',
+    details: 'Short Range covers nearby targets and is common for thrown weapons and some abilities.',
+    relatedRules: ['range', 'adjacent-range', 'medium-range', 'long-range']
+  },
+  {
+    id: 'medium-range',
+    keyword: 'Medium Range',
+    category: 'combat',
+    summary: 'Combat range of 4-8 hexes.',
+    details: 'Medium Range is typical for firearms and ranged weapons.',
+    relatedRules: ['range', 'short-range', 'long-range']
+  },
+  {
+    id: 'long-range',
+    keyword: 'Long Range',
+    category: 'combat',
+    summary: 'Combat range of 9-12 hexes.',
+    details: 'Long Range represents the maximum effective range for most ranged weapons.',
+    relatedRules: ['range', 'medium-range', 'extreme-range']
+  },
+  {
+    id: 'extreme-range',
+    keyword: 'Extreme Range',
+    category: 'combat',
+    summary: 'Combat range beyond 12 hexes, in 3-hex increments.',
+    details: 'Shooting at Extreme Range gets -3 per range increment beyond Long Range maximum.',
+    relatedRules: ['range', 'long-range']
+  },
+  {
+    id: 'charge',
+    keyword: 'Charge',
+    category: 'combat',
+    summary: 'Move and attack in one action for extra damage.',
+    details: 'Move up to your Move Speed. If you move at least 3 hexes, you may make a Melee Attack with +2 Damage.',
+    relatedRules: ['action', 'move-speed', 'melee-attack']
+  },
+  {
+    id: 'covering-fire',
+    keyword: 'Covering Fire',
+    category: 'combat',
+    summary: 'Suppress enemies to hinder their attacks.',
+    details: 'Choose a 2 hex cone in your front arc. On Rank 2+ Success, enemies in that cone get -2 to Hit Checks until your next turn.',
+    relatedRules: ['action', 'front-arc', 'hit-check']
+  },
+  {
+    id: 'overwatch',
+    keyword: 'Overwatch',
+    category: 'combat',
+    summary: 'Watch an area and attack enemies who enter it.',
+    details: 'Select a 2-hex arc cone in your Front Arc to "Watch". When a creature enters, you can attack with +2 to Hit Check.',
+    relatedRules: ['action', 'front-arc', 'hit-check']
+  },
+  {
+    id: 'study-target',
+    keyword: 'Study Target',
+    category: 'combat',
+    summary: 'Learn information about an enemy.',
+    details: 'Make an Observation Skill Check to learn resistances, health, attacks, or special abilities of a target.',
+    relatedRules: ['action', 'skill-checks', 'tiers']
+  },
+  {
+    id: 'melee-attack',
+    keyword: 'Melee Attack',
+    category: 'combat',
+    summary: 'Close-range attack with melee weapons.',
+    details: 'Attacks made with melee weapons at Adjacent Range or Short Range.',
+    relatedRules: ['attack', 'adjacent-range', 'weapons']
+  },
+  {
+    id: 'shooting-attack',
+    keyword: 'Shooting Attack',
+    category: 'combat',
+    summary: 'Ranged attack with firearms or projectile weapons.',
+    details: 'Attacks made with shooting weapons at various ranges.',
+    relatedRules: ['attack', 'range', 'weapons']
+  },
+  {
+    id: 'arcane-attack',
+    keyword: 'Arcane Attack',
+    category: 'combat',
+    summary: 'Magical attack using arcane weapons or spells.',
+    details: 'Attacks made with arcane weapons or magical abilities.',
+    relatedRules: ['attack', 'magic', 'weapons']
+  },
+  {
+    id: 'weakness',
+    keyword: 'Weakness',
+    category: 'combat',
+    summary: 'Increased vulnerability to specific damage types.',
+    details: 'Weakness increases damage taken of the listed type by the specified amount.',
+    examples: ['Weak Fire 2 means +2 damage from Fire attacks'],
+    relatedRules: ['damage-types', 'resistance', 'absorb']
+  },
+  {
+    id: 'resistance',
+    keyword: 'Resistance',
+    category: 'combat',
+    summary: 'Reduced damage from specific damage types.',
+    details: 'Resistance reduces damage taken of the listed type by the specified amount (minimum 0).',
+    examples: ['Resist Metal 3 means -3 damage from Metal attacks'],
+    relatedRules: ['damage-types', 'weakness', 'absorb']
+  },
+  {
+    id: 'absorb',
+    keyword: 'Absorb',
+    category: 'combat',
+    summary: 'Converts damage into healing.',
+    details: 'Absorb converts damage of the listed type into healing instead.',
+    examples: ['Absorb Fire 2 means Fire damage heals you for the amount instead'],
+    relatedRules: ['damage-types', 'weakness', 'resistance']
+  },
+  {
+    id: 'injuries',
+    keyword: 'Injuries',
+    category: 'combat',
+    summary: 'Persistent negative effects from reaching 0 health.',
+    details: 'When players reach 0 health, they gain Injuries instead of dying. Injuries provide ongoing penalties.',
+    relatedRules: ['health', 'damage']
+  },
+
+  // Movement and Positioning Rules
+  {
+    id: 'movement',
+    keyword: 'Movement',
+    category: 'combat',
+    summary: 'Changing position on the battlefield.',
+    details: 'Spend Movement Points to move hexes or perform movement-related activities like climbing or diving.',
+    relatedRules: ['movement-points', 'maneuver']
+  },
+  {
+    id: 'prone',
+    keyword: 'Prone',
+    category: 'combat',
+    summary: 'Lying down position affecting movement and targeting.',
+    details: 'Prone characters have limited movement options and different combat modifiers.',
+    relatedRules: ['movement', 'stand-up']
+  },
+  {
+    id: 'stand-up',
+    keyword: 'Stand Up',
+    category: 'combat',
+    summary: 'Change from Prone to Standing position.',
+    details: 'Costs 3 Movement Points to swap from Prone to Standing.',
+    relatedRules: ['prone', 'movement-points']
+  },
+];
+
+// Creature Rules
+export const creatureRules: RuleDefinition[] = [
   {
     id: 'tiers',
     keyword: 'Tiers',
@@ -211,8 +515,10 @@ export const RULES_DATABASE: RuleDefinition[] = [
     details: 'Sinners are often thought to be the damned, compelled to eternal punishment for their sins. They are default passive and often willing to help, though their compelled punishment often leads them to be incapable of providing much help beyond information. Should a sinner be prevented from completing its task, it will become extremely aggressive towards the ones who interrupt.',
     relatedRules: ['creatures']
   },
+];
 
-  // Equipment Rules
+// Equipment Rules
+export const equipmentRules: RuleDefinition[] = [
   {
     id: 'weapons',
     keyword: 'Weapons',
@@ -229,14 +535,21 @@ export const RULES_DATABASE: RuleDefinition[] = [
     details: 'Tags provide special rules, restrictions, or bonuses to items, abilities, or creatures. They define unique behaviors and interactions.',
     relatedRules: ['weapon-tags', 'creature-tags']
   },
+];
 
-  // Status Effects Rules
-  {
-    id: 'afferlized',
-    keyword: 'Afferlized',
-    category: 'general',
-    summary: 'Your skin hardens and shines with a brilliant light — you have become afferlized. You are immune to all damage, but you cannot take any actions.',
-  },
+export const statusEffectRules: RuleDefinition[] = 
+  Object.entries(StatusEffects).map(([_, effect]) => (
+    convertStatusEffectToRuleDefinition(effect)
+  ));
+
+// Centralized rules database
+export const RULES_DATABASE: RuleDefinition[] = [
+  ...generalRules,
+  ...combatRules,
+  ...moreCombatRules,
+  ...creatureRules,
+  ...equipmentRules,
+  ...statusEffectRules,  
 ];
 
 // Helper functions for rule management

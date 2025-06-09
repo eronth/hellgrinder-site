@@ -2,10 +2,12 @@
 export interface RuleDefinition {
   id: string;
   keyword: string;
-  category: 'combat' | 'character' | 'equipment' | 'magic' | 'general' | 'creatures';
+  category: 'combat' | 'character' | 'equipment' | 'magic' | 'general' | 'creatures'
+    | 'status-effects';
   summary: string;
   details?: string;
-  examples?: string[];
+  examples?: string[] | React.ReactNode[]; // Can be strings or React nodes for rich content
+  exampleNameOverride?: string; // Optional override for what the "Example" header will display.
   relatedRules?: string[]; // IDs of related rules
 }
 

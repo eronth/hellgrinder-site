@@ -99,7 +99,8 @@ type TabType = "home" | "story" | "setting" | "how-to-play" | "character-creatio
 
 type StatusEffect = {
   name: string;
-  description: string[];
+  description: string;
+  effects: React.ReactNode[];
   x?: number | "X";
   y?: number | "Y";
 };

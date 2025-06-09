@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { CharStats } from "./CharacterGenerator";
 
 type AttackBonus = 'Short Range Shooting' | 'Medium Range Shooting' | 'Long Range Shooting' | 'Melee';
@@ -58,7 +59,6 @@ export default function CharacterStartingStatsTable({
     
     onStatsChange(newStats);
   };
-
   const renderStatCell = (label: string, field: keyof typeof stats, value: number | AttackBonus) => {
     if (!isEditable || field === 'attackBonus') {
       return <td colSpan={3}>{value} {label}</td>;
@@ -84,14 +84,13 @@ export default function CharacterStartingStatsTable({
             className="inline-stat-input"
           />
           <label htmlFor={`current-health-input`} className="stat-label">Health</label>
-        </>)
-        : (<>
+        </>)        : (<>
           <input
             id={`${field}-input`}
             type="number"
             min="0"
-            defaultValue={value as number}
-            onBlur={(e) => updateStat(field, parseInt(e.target.value) || 0)}
+            value={value as number}
+            onChange={(e) => updateStat(field, parseInt(e.target.value) || 0)}
             className="inline-stat-input"
           />
           <label htmlFor={`${field}-input`} className="stat-label">{label}</label>
@@ -133,13 +132,16 @@ export default function CharacterStartingStatsTable({
       </td>
     );
   };
+  const injuriesComp = useMemo(() => {
+    return renderStatCell("Injuries", "injuries", stats.injuries);
+  }, [stats.injuries, isEditable]);
 
   return (
     <table className={`character-stats-table ${isEditable ? 'inline-editable' : ''}`}>
       <tbody>
         <tr>
           {renderStatCell("Max Health", "health", stats.health.max)}
-          {renderStatCell("Injuries", "injuries", stats.injuries)}
+          {injuriesComp}
           {renderStatCell("Move Speed", "speed", stats.speed)}
         </tr>
         <tr>

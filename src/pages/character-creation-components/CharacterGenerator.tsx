@@ -11,6 +11,7 @@ import CombatKits from "../../common-design/equipment/combat-kits.tsx";
 import SupportKits from "../../common-design/equipment/support-kits.tsx";
 import Perks from "../../common-design/equipment/perks.tsx";
 import CharacterStartingStatsTable from "./CharacterStartingStatsTable.tsx";
+import ConfirmDialog from "./ConfirmDialog.tsx";
 
 import './CharacterGenerator.css';
 
@@ -39,6 +40,25 @@ export default function CharacterGenerator() {
   const [selectedCharacterId, setSelectedCharacterId] = React.useState(null as string | null);
   const [isEditingName, setIsEditingName] = React.useState(false);
   const [editingName, setEditingName] = React.useState('');
+  
+  // Confirm dialog states
+  const [deleteConfirmDialog, setDeleteConfirmDialog] = React.useState<{
+    isOpen: boolean;
+    characterId: string;
+    characterName: string;
+  }>({
+    isOpen: false,
+    characterId: '',
+    characterName: ''
+  });
+  
+  const [clearAllConfirmDialog, setClearAllConfirmDialog] = React.useState<{
+    isOpen: boolean;
+    characterCount: number;
+  }>({
+    isOpen: false,
+    characterCount: 0
+  });
   
   const selectedCharacter = characters.find(c => c.id === selectedCharacterId) || null;
   
@@ -176,13 +196,31 @@ export default function CharacterGenerator() {
         + `Your melee attacks can deal ${damageTypes[rand]} instead of their default type. `
         + `You also gain Absorb ${damageTypes[rand]} 1.`;
     }
+  }  function deleteCharacter(characterId: string) {
+    const characterToDelete = characters.find(c => c.id === characterId);
+    const characterName = characterToDelete?.name || 'this character';
+    
+    setDeleteConfirmDialog({
+      isOpen: true,
+      characterId,
+      characterName
+    });
   }
-  function deleteCharacter(characterId: string) {
+  
+  function confirmDeleteCharacter() {
+    const { characterId } = deleteConfirmDialog;
+    
     setCharacters(prev => prev.filter(c => c.id !== characterId));
     if (selectedCharacterId === characterId) {
       const remainingChars = characters.filter(c => c.id !== characterId);
       setSelectedCharacterId(remainingChars.length > 0 ? remainingChars[0].id : null);
     }
+    
+    setDeleteConfirmDialog({ isOpen: false, characterId: '', characterName: '' });
+  }
+  
+  function cancelDeleteCharacter() {
+    setDeleteConfirmDialog({ isOpen: false, characterId: '', characterName: '' });
   }
 
   function getRandomCharacterName(): string {
@@ -195,11 +233,23 @@ export default function CharacterGenerator() {
     
     const randomIndex = Math.floor(Math.random() * availableNames.length);
     return availableNames[randomIndex];
+  }  function clearAllCharacters() {
+    const characterCount = characters.length;
+    
+    setClearAllConfirmDialog({
+      isOpen: true,
+      characterCount
+    });
   }
-
-  function clearAllCharacters() {
+  
+  function confirmClearAllCharacters() {
     setCharacters([]);
     setSelectedCharacterId(null);
+    setClearAllConfirmDialog({ isOpen: false, characterCount: 0 });
+  }
+  
+  function cancelClearAllCharacters() {
+    setClearAllConfirmDialog({ isOpen: false, characterCount: 0 });
   }
   function updateCharacterName(characterId: string, newName: string) {
     if (newName.trim() === '') return;
@@ -295,7 +345,8 @@ export default function CharacterGenerator() {
         )}
       </div>
     
-    {selectedCharacter != null      ? <div className="generated-character-display">
+    {selectedCharacter != null
+    ? <div className="generated-character-display">
         <div className="name-header">
           <div className="character-name">
             {isEditingName ? (
@@ -363,9 +414,31 @@ export default function CharacterGenerator() {
           )}
         
         </div>
-      </div>
-      : <div className="generated-character-display"></div>
+      </div>      : <div className="generated-character-display"></div>
     }
     <hr />
+    
+    {/* Confirm Dialogs */}
+    <ConfirmDialog
+      isOpen={deleteConfirmDialog.isOpen}
+      title="Delete Character"
+      message={`Are you sure you want to delete "${deleteConfirmDialog.characterName}"? This action cannot be undone.`}
+      confirmText="Delete"
+      cancelText="Cancel"
+      confirmButtonVariant="danger"
+      onConfirm={confirmDeleteCharacter}
+      onCancel={cancelDeleteCharacter}
+    />
+    
+    <ConfirmDialog
+      isOpen={clearAllConfirmDialog.isOpen}
+      title="Clear All Characters"
+      message={`Are you sure you want to delete all ${clearAllConfirmDialog.characterCount} character${clearAllConfirmDialog.characterCount !== 1 ? 's' : ''}? This action cannot be undone.`}
+      confirmText="Clear All"
+      cancelText="Cancel"
+      confirmButtonVariant="danger"
+      onConfirm={confirmClearAllCharacters}
+      onCancel={cancelClearAllCharacters}
+    />
   </div>);
 }

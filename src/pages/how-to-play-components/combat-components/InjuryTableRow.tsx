@@ -1,4 +1,5 @@
 import { InjuryRow } from "../../../ts-types/table-types";
+import './InjuryTable.css';
 
 type Props = {
   data: InjuryRow;
@@ -11,7 +12,9 @@ export default function InjuryTableRow({ data }: Props) {
 
   return (<>
     <tr>
-      <td>{data.result.min} - {data.result.max}</td>
+      <td className="roll-column">
+        {data.result.min}&nbsp;-&nbsp;{data.result.max}
+      </td>
       <td colSpan={3}>
         <b>{lightInjury.name}</b>: {lightInjury.description}
       </td>

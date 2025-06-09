@@ -73,7 +73,7 @@ export default function InjuryTable() {
   <table className="injuries-table">
     <thead>
       <tr>
-        <th>Roll</th>
+        <th className="roll-column">Roll</th>
         <th colSpan={3}>Light Injury</th>
         <th colSpan={3}>Serious Injury</th>
         <th colSpan={3}>Critical Injury</th>

@@ -151,7 +151,9 @@ export default function RulePopup({
           
           {rule.examples && rule.examples.length > 0 && (
             <div className="rule-examples">
-              <strong>Examples:</strong>
+              <strong>
+                {rule.exampleNameOverride || 'Examples:'}
+              </strong>
               <ul>
                 {rule.examples.map((example, index) => (
                   <li key={index}>{example}</li>

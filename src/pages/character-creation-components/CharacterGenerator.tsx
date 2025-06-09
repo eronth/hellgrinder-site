@@ -17,19 +17,20 @@ import './CharacterGenerator.css';
 type CharDesign = {
   id: string,
   name: string,
-  health: number, injuries: number, speed: number,
+  currentHealth: number, maxHealth: number, injuries: number, speed: number,
   corruption: number, safelightShards: number,
   startingPerkPoints: number,
   startingCombatKits: number, startingSupportKits: number,
   kits: Kit[], perks: Perk[], bonuses: string[],
   specializationBonus: string, specializationPenalty: string,
+  attackBonus: 'Short Range Shooting' | 'Medium Range Shooting' | 'Long Range Shooting' | 'Melee',
 };
 
 export default function CharacterGenerator() {
-  
   const page: TabType = 'character-generator';
   const [characters, setCharacters] = React.useState([] as CharDesign[]);
-  const [selectedCharacterId, setSelectedCharacterId] = React.useState(null as string | null);
+  const [selectedCharacterId, setSelectedCharacterId] = React.useState(null as string | null);  const [isEditingName, setIsEditingName] = React.useState(false);
+  const [editingName, setEditingName] = React.useState('');
   
   const selectedCharacter = characters.find(c => c.id === selectedCharacterId) || null;
   
@@ -38,14 +39,14 @@ export default function CharacterGenerator() {
     "Flame Bearer", "Storm Rider", "Ghost Walker", "Blood Hunter", "Soul Reaper",
     "War Hammer", "Death Whisper", "Void Walker", "Crimson Edge", "Thunder Strike",
     "Dark Flame", "Ice Heart", "Wind Runner", "Stone Guard", "Light Bringer"
-  ];
-  const characterDefaults: Omit<CharDesign, 'id' | 'name'> = {
-    health: 6, injuries: 0, speed: 5,
+  ];  const characterDefaults: Omit<CharDesign, 'id' | 'name'> = {
+    currentHealth: 6, maxHealth: 6, injuries: 0, speed: 5,
     corruption: 0, safelightShards: 2,
     startingPerkPoints: 2,
     startingCombatKits: 1, startingSupportKits: 1,
     kits: [], perks: [], bonuses: [],
     specializationBonus: '', specializationPenalty: '',
+    attackBonus: 'Melee',
   };
   const specializationOptions: SkillChecks[] = [
   'Might', 'Endurance', 'Agility', 'Stealth' , 'Observation' ,
@@ -186,6 +187,71 @@ export default function CharacterGenerator() {
     setCharacters([]);
     setSelectedCharacterId(null);
   }
+  function updateCharacterName(characterId: string, newName: string) {
+    if (newName.trim() === '') return;
+    
+    setCharacters(prev => 
+      prev.map(char => 
+        char.id === characterId 
+          ? { ...char, name: newName.trim() }
+          : char
+      )
+    );
+  }
+
+  function updateCharacterStats(characterId: string, newStats: {
+    currentHealth: number;
+    maxHealth: number;
+    injuries: number;
+    speed: number;
+    corruption: number;
+    perkPoints: number;
+    safelightShards: number;
+    attackBonus: 'Short Range Shooting' | 'Medium Range Shooting' | 'Long Range Shooting' | 'Melee';
+  }) {
+    setCharacters(prev => 
+      prev.map(char => 
+        char.id === characterId 
+          ? { 
+              ...char,
+              currentHealth: newStats.currentHealth,
+              maxHealth: newStats.maxHealth,
+              injuries: newStats.injuries,
+              speed: newStats.speed,
+              corruption: newStats.corruption,
+              startingPerkPoints: newStats.perkPoints,
+              safelightShards: newStats.safelightShards,
+              attackBonus: newStats.attackBonus
+            }
+          : char
+      )
+    );
+  }
+
+  function startEditingName() {
+    if (selectedCharacter) {
+      setEditingName(selectedCharacter.name);
+      setIsEditingName(true);
+    }
+  }
+
+  function saveNameEdit() {
+    if (selectedCharacter && editingName.trim() !== '') {
+      updateCharacterName(selectedCharacter.id, editingName);
+    }
+    setIsEditingName(false);
+    setEditingName('');
+  }
+
+  function cancelNameEdit() {
+    setIsEditingName(false);
+    setEditingName('');
+  }  // Auto-cancel editing when switching characters
+  React.useEffect(() => {
+    setIsEditingName(false);
+    setEditingName('');
+  }, [selectedCharacterId]);
+
     return (<div className={page}>
     <p>
       On this page, you are able to quickly generate a new character at the
@@ -224,10 +290,35 @@ export default function CharacterGenerator() {
         )}
       </div>
     
-    {selectedCharacter != null
-      ? <div className="generated-character-display">
+    {selectedCharacter != null      ? <div className="generated-character-display">
         <div className="name-header">
-          <div className="character-name">{selectedCharacter.name}</div>
+          <div className="character-name">
+            {isEditingName ? (
+              <div className="name-edit-container">
+                <input
+                  type="text"
+                  value={editingName}
+                  onChange={(e) => setEditingName(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') saveNameEdit();
+                    if (e.key === 'Escape') cancelNameEdit();
+                  }}
+                  className="name-edit-input"
+                  autoFocus
+                />
+                <button onClick={saveNameEdit} className="save-name-btn" title="Save name">
+                  ✓
+                </button>
+                <button onClick={cancelNameEdit} className="cancel-name-btn" title="Cancel">
+                  ✕
+                </button>
+              </div>
+            ) : (
+              <span onClick={startEditingName} className="editable-name" title="Click to edit name">
+                {selectedCharacter.name}
+              </span>
+            )}
+          </div>
           {selectedCharacterId && (
             <button 
               className="delete-character-btn" 
@@ -237,10 +328,21 @@ export default function CharacterGenerator() {
               Delete Character
             </button>
           )}
-        </div>
-        <div className="col-handler">
+        </div>        
+        <div className="col-handler">          
           <div>
-            <CharacterStartingStatsTable corruption={selectedCharacter.corruption} perkPoints={selectedCharacter.startingPerkPoints}/>
+            <CharacterStartingStatsTable
+              currentHealth={selectedCharacter.currentHealth}
+              maxHealth={selectedCharacter.maxHealth}
+              injuries={selectedCharacter.injuries}
+              speed={selectedCharacter.speed}
+              corruption={selectedCharacter.corruption}
+              perkPoints={selectedCharacter.startingPerkPoints}
+              safelightShards={selectedCharacter.safelightShards}
+              attackBonus={selectedCharacter.attackBonus}
+              isEditable={true}
+              onStatsChange={(newStats) => updateCharacterStats(selectedCharacter.id, newStats)}
+            />
             <div className="specialization-block">
               <div className="title">Specializations</div>
               <div>+3 [{selectedCharacter.specializationBonus} Checks] (bonus)</div>

@@ -1,6 +1,8 @@
 import { useState } from "react";
+import './Toggle.css';
 
 type Props = {
+  className?: string;
   label?: {
     left?: string;
     right?: string;
@@ -8,7 +10,7 @@ type Props = {
   toggled: boolean;
   onClick: any;
 }
-export const Toggle = ({ label, toggled, onClick }: Props) => {
+export const Toggle = ({ className, label, toggled, onClick }: Props) => {
   
   const [isToggled, setToggle] = useState(toggled);
   const leftTextComponent = label?.left
@@ -19,20 +21,24 @@ export const Toggle = ({ label, toggled, onClick }: Props) => {
     : null
   
   const callback = () => {
-      const newVal = !isToggled;
+    const newVal = !isToggled;
     setToggle(newVal);
     onClick(newVal);
   }
   
-  return (
-    <label className={'toggle ' + (isToggled ? 'toggled' : 'untoggled')}>
+  if (className) {
+    className = ' ' + className;
+  }
+
+  return (<div className={'toggle ' + (isToggled ? 'toggled' : 'untoggled') + className}>
+    <label>
       {leftTextComponent}
       <span className={'toggler'} >
         <input type={'checkbox'}
-               defaultChecked={isToggled}
-               onClick={callback} />
+          defaultChecked={isToggled}
+          onClick={callback} />
       </span>
       {rightTextComponent}
     </label>
-  );
+  </div>);
 }

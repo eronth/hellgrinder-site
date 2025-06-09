@@ -8,8 +8,8 @@ type Props = {
 };
 
 export default function CharacterStartingStatsTable({
-        maxHealth = 6, injuries = 0, speed = 5, corruption = 0,
-        perkPoints = 2, safelightShards = 2 }: Props)
+    maxHealth = 6, injuries = 0, speed = 5, corruption = 0,
+    perkPoints = 2, safelightShards = 2 }: Props)
   {
   return (
   <table>

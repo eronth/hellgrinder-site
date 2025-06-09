@@ -333,3 +333,8 @@ td {
 }
 
 /* Perk styling update to use card background */
+
+
+.toggle.character-creation-toggle {
+  margin-top: 1em;
+}

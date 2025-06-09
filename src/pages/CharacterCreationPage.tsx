@@ -1,5 +1,5 @@
 import React from "react";
-import { Toggle } from '../common-design/Toggle';
+import { Toggle } from '../common-design/Toggle/Toggle';
 import GameTitle from "../GameTitle";
 import NavTabs from "../common-design/nav/NavTabs";
 import { TabType } from "../ts-types/types";
@@ -21,9 +21,11 @@ export default function CharacterCreationPage() {
   return (<div className={'page ' + page}>
     <GameTitle />
     <NavTabs selectedTab={page} />
-    <Toggle label={toggleLabel}
-            toggled={showCreator}
-            onClick={setShowCreator} />
+    <Toggle 
+      className={'character-creation-toggle'}
+      label={toggleLabel}
+      toggled={showCreator}
+      onClick={setShowCreator} />
     <hr />
     {showCreator
       ? <CharacterGenerator />

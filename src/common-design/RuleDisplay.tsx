@@ -1,4 +1,3 @@
-import React from 'react';
 import { RulesManager } from './rules-database';
 import { RuleDisplayProps } from '../ts-types/rule-types';
 import RuleKeyword from './RuleKeyword';

@@ -22,7 +22,7 @@ export default function RestAndRecover() {
       
       
       <div>
-        <h3>Recovery Check'</h3>
+        <h3>Recovery Check</h3>
         <p>
           When you use a safelight object to recover, you roll a Recovery Skill Check. When you do, you almost always heal,
           but the amount differs based on your success Rank.
@@ -36,7 +36,7 @@ export default function RestAndRecover() {
       </div>
   
       <div>
-        <h3>Squad and Reinforcements'</h3>
+        <h3>Squad and Reinforcements</h3>
         <p>
           Your group is a squad of roughly 15 soldiers, each with their own roles in the fight through Hell. The players will play just a handful of these soldiers on any Operation.
           If the entire squad is ever depleted, that squad completely fails their mission.
@@ -50,7 +50,7 @@ export default function RestAndRecover() {
       </div>
       
       <div>
-        <h3>Gaining Squad Memebers'</h3>
+        <h3>Gaining Squad Memebers</h3>
         <p>At the GM’s purview, there can be more members added to squads. In the chaotic combat zone of hell, these new members can be anything: rescued survivors from a previous attack; the remaining members of another battered squad; new recruits sent to the frontlines; etc. With things as uncoordinated as they are, it is likely that most existing squads contain none of their original members. It matters not, so long as the squad continues to fight.</p>
       </div>
   

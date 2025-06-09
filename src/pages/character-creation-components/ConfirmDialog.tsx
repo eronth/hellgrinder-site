@@ -10,6 +10,7 @@ interface ConfirmDialogProps {
   onConfirm: () => void;
   onCancel: () => void;
   confirmButtonVariant?: 'danger' | 'primary';
+  children?: React.ReactNode;
 }
 
 export default function ConfirmDialog({
@@ -20,7 +21,8 @@ export default function ConfirmDialog({
   cancelText = 'Cancel',
   onConfirm,
   onCancel,
-  confirmButtonVariant = 'primary'
+  confirmButtonVariant = 'primary',
+  children
 }: ConfirmDialogProps) {
   // Handle escape key
   React.useEffect(() => {
@@ -67,6 +69,7 @@ export default function ConfirmDialog({
         
         <div className="confirm-dialog-body">
           <p className="confirm-dialog-message">{message}</p>
+          {children}
         </div>
         
         <div className="confirm-dialog-footer">

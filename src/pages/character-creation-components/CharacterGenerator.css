@@ -282,3 +282,39 @@
     }
   }
 }
+
+/* Inventory display styling */
+.inventory-display {
+  margin-top: 1.5em;
+  padding: 1em;
+  background-color: var(--card-background);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+}
+
+.inventory-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 1em;
+  color: #95f4ec;
+  border-bottom: 1px solid rgba(149, 244, 236, 0.3);
+  padding-bottom: 0.5em;
+}
+
+.inventory-display .col-handler {
+  gap: 1em;
+}
+
+.inventory-display .weapon,
+.inventory-display .item {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 0.8em;
+}
+
+.inventory-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}

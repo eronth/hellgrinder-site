@@ -1,9 +1,11 @@
 import React from "react";
-import { TabType, Kit, Perk, DamageElement } from "../../ts-types/types.tsx";
+import { TabType, Kit, Perk, DamageElement, Weapon, Item } from "../../ts-types/types.tsx";
 import { SkillChecks } from "../../ts-types/tag-types.tsx";
 
 import KitComponent from "./kits/Kit.tsx";
 import PerkComponent from "./perks/PerkComponent.tsx";
+import WeaponComponent from "./kits/weapon/WeaponComponent.tsx";
+import ItemComponent from "./kits/item/ItemComponent.tsx";
 
 import Tools from "../../common-design/Tools.tsx";
 
@@ -12,6 +14,7 @@ import SupportKits from "../../common-design/equipment/support-kits.tsx";
 import Perks from "../../common-design/equipment/perks.tsx";
 import CharacterStartingStatsTable from "./CharacterStartingStatsTable.tsx";
 import ConfirmDialog from "./ConfirmDialog.tsx";
+import InventoryManager from "./InventoryManager.tsx";
 
 import './CharacterGenerator.css';
 
@@ -20,8 +23,15 @@ export type CharDesign = {
   name: string,
   stats: CharStats,
   startingCombatKits: number, startingSupportKits: number,
-  kits: Kit[], perks: Perk[], bonuses: string[],
+  kits: Kit[], 
+  perks: Perk[], // All perks (starting + acquired)
+  bonuses: string[],
   specializationBonus: string, specializationPenalty: string,
+  // Separate inventory for items/weapons acquired during play
+  inventory: {
+    weapons: Weapon[],
+    items: Item[]
+  }
 };
 
 export type CharStats = {
@@ -76,10 +86,13 @@ export default function CharacterGenerator() {
       corruption: 0, safelightShards: 2,
       perkPoints: 2,
       attackBonus: 'Melee',
-    },
-    startingCombatKits: 1, startingSupportKits: 1,
+    },    startingCombatKits: 1, startingSupportKits: 1,
     kits: [], perks: [], bonuses: [],
     specializationBonus: '', specializationPenalty: '',
+    inventory: {
+      weapons: [],
+      items: []
+    }
   };
   const specializationOptions: SkillChecks[] = [
   'Might', 'Endurance', 'Agility', 'Stealth' , 'Observation' ,
@@ -283,6 +296,16 @@ export default function CharacterGenerator() {
     console.log('Characters after update:', characters);
   }
 
+  function updateCharacter(characterId: string, updates: Partial<CharDesign>) {
+    setCharacters(prev => 
+      prev.map(char => 
+        char.id === characterId 
+          ? { ...char, ...updates }
+          : char
+      )
+    );
+  }
+
   function startEditingName() {
     if (selectedCharacter) {
       setEditingName(selectedCharacter.name);
@@ -313,43 +336,42 @@ export default function CharacterGenerator() {
       click of a button. Use this to quickly make your first character, or
       to get back into a fight with the least delay possible.
     </p>
-    
-    
-      <div className="character-selector">
-        <button onClick={generateCharacter}>Generate Character</button>
-        {characters.length > 0 && (
-          <>
-            <label htmlFor="character-select" className="character-select">Select Character: </label>
-            <select
-              id="character-select"
-              value={selectedCharacterId || ''}
-              onChange={(e) => setSelectedCharacterId(e.target.value || null)}
-            >              <option value="">-- Select a character --</option>
-              {characters.map((character) => {
-                const kitNames = character.kits.length > 0 
-                  ? character.kits.map(kit => kit.name).join(', ')
-                  : 'No kits';
-                return (
-                  <option key={character.id} value={character.id}>
-                    {character.name}
-                    &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
-                    {kitNames}
-                  </option>
-                );
-              })}
-            </select>
-          </>
-        )}
-        {characters.length > 1 && (
-          <button
-            className="clear-all-btn"
-            onClick={clearAllCharacters}
-            style={{ marginLeft: '1rem' }}
-          >
-            Clear All Characters
-          </button>
-        )}
-      </div>
+
+    <div className="character-selector">
+      <button onClick={generateCharacter}>Generate Character</button>
+      {characters.length > 0 && (
+        <>
+          <label htmlFor="character-select" className="character-select">Select Character: </label>
+          <select
+            id="character-select"
+            value={selectedCharacterId || ''}
+            onChange={(e) => setSelectedCharacterId(e.target.value || null)}
+          >              <option value="">-- Select a character --</option>
+            {characters.map((character) => {
+              const kitNames = character.kits.length > 0 
+                ? character.kits.map(kit => kit.name).join(', ')
+                : 'No kits';
+              return (
+                <option key={character.id} value={character.id}>
+                  {character.name}
+                  &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
+                  {kitNames}
+                </option>
+              );
+            })}
+          </select>
+        </>
+      )}
+      {characters.length > 1 && (
+        <button
+          className="clear-all-btn"
+          onClick={clearAllCharacters}
+          style={{ marginLeft: '1rem' }}
+        >
+          Clear All Characters
+        </button>
+      )}
+    </div>
     
     {selectedCharacter != null
     ? <div className="generated-character-display">
@@ -410,17 +432,41 @@ export default function CharacterGenerator() {
               <div>+3 [{selectedCharacter.specializationBonus} Checks] (bonus)</div>
               <div>-5 [{selectedCharacter.specializationPenalty} Checks] (penalty)</div>
             </div>
+            
             {selectedCharacter.perks.map((p, i) =>
               <PerkComponent key={`perk-${i}`} perk={p}/>
             )}
           </div>
-          
-          {selectedCharacter.kits.map((k, i) =>
+            {selectedCharacter.kits.map((k, i) =>
             <KitComponent key={`kit-${i}`} kit={k}/>
           )}
-        
         </div>
-      </div>      : <div className="generated-character-display"></div>
+        <div className="inventory-button-container">
+          {/* Inventory Manager */}
+            <InventoryManager
+              characters={characters}
+              selectedCharacterId={selectedCharacter.id}
+              onUpdateCharacter={updateCharacter}
+            />
+        </div>
+        <div>
+          {/* Display inventory items */}
+          {(selectedCharacter.inventory.weapons.length > 0 || selectedCharacter.inventory.items.length > 0) && (
+            <div className="inventory-display">
+              <div className="inventory-title">Acquired Equipment</div>
+              <div className="col-handler">
+                {selectedCharacter.inventory.weapons.map((w, i) =>
+                  <WeaponComponent key={`inventory-weapon-${i}`} weapon={w} />
+                )}
+                {selectedCharacter.inventory.items.map((item, i) =>
+                  <ItemComponent key={`inventory-item-${i}`} item={item} />
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+      : <div className="generated-character-display"></div>
     }
     <hr />
     

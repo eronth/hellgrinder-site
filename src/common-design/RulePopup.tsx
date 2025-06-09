@@ -109,76 +109,75 @@ export default function RulePopup({
 
   const relatedRules = RulesManager.getRelatedRules(rule.id);
 
-  return (
-    <>
-      <span
-        ref={triggerRef}
-        className={`rule-keyword ${className}`}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        title={rule.summary} // Fallback for accessibility
-      >
-        {children}
-      </span>
+  const ruleElement = (
+    <div
+      ref={popupRef}
+      className={`rule-popup rule-popup-${position.preferredPosition}`}
+      style={{
+        position: 'absolute',
+        top: `${position.top}px`,
+        left: `${position.left}px`,
+        zIndex: 1000
+      }}
+      onMouseEnter={() => setIsVisible(true)}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="rule-popup-header">
+        <h4 className="rule-title">{rule.keyword}</h4>
+        <span className="rule-category">{rule.category}</span>
+      </div>
       
-      {isVisible && (
-        <div
-          ref={popupRef}
-          className={`rule-popup rule-popup-${position.preferredPosition}`}
-          style={{
-            position: 'absolute',
-            top: `${position.top}px`,
-            left: `${position.left}px`,
-            zIndex: 1000
-          }}
-          onMouseEnter={() => setIsVisible(true)}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className="rule-popup-header">
-            <h4 className="rule-title">{rule.keyword}</h4>
-            <span className="rule-category">{rule.category}</span>
-          </div>
-          
-          <div className="rule-summary">
-            {rule.summary}
-          </div>
-          
-          {rule.details && (
-            <div className="rule-details">
-              {rule.details}
-            </div>
-          )}
-          
-          {rule.examples && rule.examples.length > 0 && (
-            <div className="rule-examples">
-              <strong>
-                {rule.exampleNameOverride || 'Examples:'}
-              </strong>
-              <ul>
-                {rule.examples.map((example, index) => (
-                  <li key={index}>{example}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-          
-          {relatedRules.length > 0 && (
-            <div className="rule-related">
-              <strong>Related:</strong>
-              <span className="related-rules">
-                {relatedRules.map((relatedRule, index) => (
-                  <span key={relatedRule.id}>
-                    {index > 0 && ', '}
-                    <RulePopup ruleId={relatedRule.id}>
-                      <span className="related-rule-link">{relatedRule.keyword}</span>
-                    </RulePopup>
-                  </span>
-                ))}
-              </span>
-            </div>
-          )}
+      <div className="rule-summary">
+        {rule.summary}
+      </div>
+      
+      {rule.details && (
+        <div className="rule-details">
+          {rule.details}
         </div>
       )}
-    </>
+      
+      {rule.examples && rule.examples.length > 0 && (
+        <div className="rule-examples">
+          <strong>
+            {rule.exampleNameOverride || 'Examples:'}
+          </strong>
+          <ul>
+            {rule.examples.map((example, index) => (
+              <li key={index}>{example}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+      
+      {relatedRules.length > 0 && (
+        <div className="rule-related">
+          <strong>Related:</strong>
+          <span className="related-rules">
+            {relatedRules.map((relatedRule, index) => (
+              <span key={relatedRule.id}>
+                {index > 0 && ', '}
+                <RulePopup ruleId={relatedRule.id}>
+                  <span className="related-rule-link">{relatedRule.keyword}</span>
+                </RulePopup>
+              </span>
+            ))}
+          </span>
+        </div>
+      )}
+    </div>
   );
+
+  return (<>
+    <span
+      ref={triggerRef}
+      className={`rule-keyword ${className}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      title={rule.summary} // Fallback for accessibility
+    >
+      {children}
+    </span>
+    {isVisible && (<>{ruleElement}</>)}
+  </>);
 }

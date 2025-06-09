@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { TabType } from '../../ts-types/types';
-
+import './NavTabs.css';
 
 type Props = {
   selectedTab: TabType;
@@ -8,14 +8,18 @@ type Props = {
 
 const NavTabs = ({selectedTab}: Props) => {
   
+  const navEndDivClass: string = 'nav-tab-bumper';
+
   function getClassForTab(tab: TabType) {
     const sel = 'selected-tab';
     const unsel = 'unselected-tab';
     return tab == selectedTab ? sel : unsel;
   }
 
+
   return (
     <nav className="navbar navtabs">
+      <div className={navEndDivClass} />
       <Link to="/story" className={getClassForTab('story')}>
         <div>Story</div>
       </Link>
@@ -34,12 +38,13 @@ const NavTabs = ({selectedTab}: Props) => {
       <Link to="/perks" className={getClassForTab('advanced-perks')}>
         <div>Advanced</div>
       </Link>
-      <Link to="/magic" className={getClassForTab('magic')}>
+      {/* <Link to="/magic" className={getClassForTab('magic')}>
         <div>Magic</div>
-      </Link>
+      </Link> */}
       <Link to="/creatures" className={getClassForTab('creatures')}>
         <div>Creatures</div>
       </Link>
+      <div className={navEndDivClass} />
     </nav>
   );
 }

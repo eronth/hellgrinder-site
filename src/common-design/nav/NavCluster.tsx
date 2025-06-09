@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import './NavCluster.css';
 
 const NavCluster = () => {
   return (

@@ -134,8 +134,6 @@ const deepCopyAttackMode = (attackMode: AttackMode, options?: deepCopyAttackMode
     },
   }
   
-  console.log('amc damage:', attackModeCopy.damage);
-  
   return attackModeCopy;
 }
 

@@ -1,3 +1,5 @@
+import { CharStats } from "./CharacterGenerator";
+
 type AttackBonus = 'Short Range Shooting' | 'Medium Range Shooting' | 'Long Range Shooting' | 'Melee';
 
 type Props = {
@@ -10,16 +12,7 @@ type Props = {
   safelightShards?: number;
   attackBonus?: AttackBonus;
   isEditable?: boolean;
-  onStatsChange?: (stats: {
-    currentHealth: number;
-    maxHealth: number;
-    injuries: number;
-    speed: number;
-    corruption: number;
-    perkPoints: number;
-    safelightShards: number;
-    attackBonus: AttackBonus;
-  }) => void;
+  onStatsChange?: (stats: CharStats) => void;
 };
 
 export default function CharacterStartingStatsTable({
@@ -34,10 +27,12 @@ export default function CharacterStartingStatsTable({
   isEditable = false,
   onStatsChange
 }: Props) {
-  
-  const stats = {
-    currentHealth,
-    maxHealth,
+
+  const stats: CharStats = {
+    health: {
+      current: currentHealth,
+      max: maxHealth
+    },
     injuries,
     speed,
     corruption,
@@ -46,13 +41,16 @@ export default function CharacterStartingStatsTable({
     attackBonus
   };
 
-  const updateStat = (field: keyof typeof stats, value: number | AttackBonus) => {
+  const updateStat = (field: keyof typeof stats, value: number | AttackBonus, substat?: keyof typeof stats.health) => {
     if (!onStatsChange) return;
     
-    const newStats = { ...stats };
+    const newStats: CharStats = { ...stats };
     
     if (field === 'attackBonus') {
       newStats.attackBonus = value as AttackBonus;
+
+    } else if (field === 'health' && substat) {
+      newStats.health[substat] = value as number;
     } else {
       const numValue = typeof value === 'string' ? parseInt(value) || 0 : value;
       (newStats as any)[field] = Math.max(0, numValue);
@@ -68,21 +66,21 @@ export default function CharacterStartingStatsTable({
 
     return (
       <td colSpan={3} className="inline-editable-stat-cell">
-        {(field === 'maxHealth') 
+        {(field === 'health')
         ? (<>
           <input
             id={`current-health-input`}
             type="number"
             min="0"
-            value={stats.currentHealth as number}
-            onChange={(e) => updateStat('currentHealth', parseInt(e.target.value) || 0)}
+            value={stats.health.current as number}
+            onChange={(e) => updateStat('health', parseInt(e.target.value) || 0, 'current')}
             className="inline-stat-input"
           /> / <input
             id={`${field}-input`}
             type="number"
             min="0"
             value={value as number}
-            onChange={(e) => updateStat(field, parseInt(e.target.value) || 0)}
+            onChange={(e) => updateStat('health', parseInt(e.target.value) || 0, 'max')}
             className="inline-stat-input"
           />
           <label htmlFor={`current-health-input`} className="stat-label">Health</label>
@@ -92,8 +90,8 @@ export default function CharacterStartingStatsTable({
             id={`${field}-input`}
             type="number"
             min="0"
-            value={value as number}
-            onChange={(e) => updateStat(field, parseInt(e.target.value) || 0)}
+            defaultValue={value as number}
+            onBlur={(e) => updateStat(field, parseInt(e.target.value) || 0)}
             className="inline-stat-input"
           />
           <label htmlFor={`${field}-input`} className="stat-label">{label}</label>
@@ -140,7 +138,7 @@ export default function CharacterStartingStatsTable({
     <table className={`character-stats-table ${isEditable ? 'inline-editable' : ''}`}>
       <tbody>
         <tr>
-          {renderStatCell("Max Health", "maxHealth", stats.maxHealth)}
+          {renderStatCell("Max Health", "health", stats.health.max)}
           {renderStatCell("Injuries", "injuries", stats.injuries)}
           {renderStatCell("Move Speed", "speed", stats.speed)}
         </tr>

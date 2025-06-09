@@ -14,22 +14,30 @@ import CharacterStartingStatsTable from "./CharacterStartingStatsTable.tsx";
 
 import './CharacterGenerator.css';
 
-type CharDesign = {
+export type CharDesign = {
   id: string,
   name: string,
-  currentHealth: number, maxHealth: number, injuries: number, speed: number,
-  corruption: number, safelightShards: number,
-  startingPerkPoints: number,
+  stats: CharStats,
   startingCombatKits: number, startingSupportKits: number,
   kits: Kit[], perks: Perk[], bonuses: string[],
   specializationBonus: string, specializationPenalty: string,
+};
+
+export type CharStats = {
+  health: { current: number, max: number };
+  injuries: number;
+  speed: number;
+  corruption: number;
+  perkPoints: number;
+  safelightShards: number;
   attackBonus: 'Short Range Shooting' | 'Medium Range Shooting' | 'Long Range Shooting' | 'Melee',
 };
 
 export default function CharacterGenerator() {
   const page: TabType = 'character-generator';
   const [characters, setCharacters] = React.useState([] as CharDesign[]);
-  const [selectedCharacterId, setSelectedCharacterId] = React.useState(null as string | null);  const [isEditingName, setIsEditingName] = React.useState(false);
+  const [selectedCharacterId, setSelectedCharacterId] = React.useState(null as string | null);
+  const [isEditingName, setIsEditingName] = React.useState(false);
   const [editingName, setEditingName] = React.useState('');
   
   const selectedCharacter = characters.find(c => c.id === selectedCharacterId) || null;
@@ -39,14 +47,19 @@ export default function CharacterGenerator() {
     "Flame Bearer", "Storm Rider", "Ghost Walker", "Blood Hunter", "Soul Reaper",
     "War Hammer", "Death Whisper", "Void Walker", "Crimson Edge", "Thunder Strike",
     "Dark Flame", "Ice Heart", "Wind Runner", "Stone Guard", "Light Bringer"
-  ];  const characterDefaults: Omit<CharDesign, 'id' | 'name'> = {
-    currentHealth: 6, maxHealth: 6, injuries: 0, speed: 5,
-    corruption: 0, safelightShards: 2,
-    startingPerkPoints: 2,
+  ];
+
+  const characterDefaults: Omit<CharDesign, 'id' | 'name'> = {
+    stats: {
+      health: { current: 6, max: 6 },
+      injuries: 0, speed: 5,
+      corruption: 0, safelightShards: 2,
+      perkPoints: 2,
+      attackBonus: 'Melee',
+    },
     startingCombatKits: 1, startingSupportKits: 1,
     kits: [], perks: [], bonuses: [],
     specializationBonus: '', specializationPenalty: '',
-    attackBonus: 'Melee',
   };
   const specializationOptions: SkillChecks[] = [
   'Might', 'Endurance', 'Agility', 'Stealth' , 'Observation' ,
@@ -78,7 +91,7 @@ export default function CharacterGenerator() {
     rand = Math.floor(Math.random() * combatKitsArr.length);
     const chosenCombatKit = structuredClone(combatKitsArr[rand]);
     newChar.startingSupportKits += chosenCombatKit.extraSupportKits ?? 0;
-    newChar.startingPerkPoints += chosenCombatKit.extraPerkPoints ?? 0;
+    newChar.stats.perkPoints += chosenCombatKit.extraPerkPoints ?? 0;
     specialKitLogic(chosenCombatKit);
     newChar.kits.push(chosenCombatKit);
 
@@ -90,7 +103,8 @@ export default function CharacterGenerator() {
       const chosenSupportKit = structuredClone(supportKitsArr[rand]);
       specialKitLogic(chosenSupportKit);
       newChar.kits.push(chosenSupportKit);
-    }    newChar.perks = getPerks(newChar.startingPerkPoints);
+    }
+    newChar.perks = getPerks(newChar.stats.perkPoints);
     handleSelectedPerksLogic({ character: newChar });
 
     setCharacters(prev => [...prev, newChar]);
@@ -127,10 +141,10 @@ export default function CharacterGenerator() {
     character.perks.forEach((p: Perk) => {
       specialPerkLogic(p);
       perksCost += p.cost
-      character.corruption += p.startingCorruption ?? 0;
+      character.stats.corruption += p.startingCorruption ?? 0;
     });
-    character.startingPerkPoints -= perksCost;
-    
+    character.stats.perkPoints -= perksCost;
+
   }
   
   
@@ -199,33 +213,24 @@ export default function CharacterGenerator() {
     );
   }
 
-  function updateCharacterStats(characterId: string, newStats: {
-    currentHealth: number;
-    maxHealth: number;
-    injuries: number;
-    speed: number;
-    corruption: number;
-    perkPoints: number;
-    safelightShards: number;
-    attackBonus: 'Short Range Shooting' | 'Medium Range Shooting' | 'Long Range Shooting' | 'Melee';
-  }) {
+  function updateCharacterStats(characterId: string, newStats: CharStats) {
+    console.log('Characters before update:', characters);
+    console.log('Updating character stats for ID:', characterId, 'with new stats:', newStats);
+    const charToUpdate = characters.find(c => c.id === characterId);
+    if (!charToUpdate) return;
+    charToUpdate.stats = {
+      ...charToUpdate.stats,
+      ...newStats
+    };
+
     setCharacters(prev => 
       prev.map(char => 
         char.id === characterId 
-          ? { 
-              ...char,
-              currentHealth: newStats.currentHealth,
-              maxHealth: newStats.maxHealth,
-              injuries: newStats.injuries,
-              speed: newStats.speed,
-              corruption: newStats.corruption,
-              startingPerkPoints: newStats.perkPoints,
-              safelightShards: newStats.safelightShards,
-              attackBonus: newStats.attackBonus
-            }
+          ? { ...char, stats: charToUpdate.stats }
           : char
       )
     );
+    console.log('Characters after update:', characters);
   }
 
   function startEditingName() {
@@ -332,14 +337,14 @@ export default function CharacterGenerator() {
         <div className="col-handler">          
           <div>
             <CharacterStartingStatsTable
-              currentHealth={selectedCharacter.currentHealth}
-              maxHealth={selectedCharacter.maxHealth}
-              injuries={selectedCharacter.injuries}
-              speed={selectedCharacter.speed}
-              corruption={selectedCharacter.corruption}
-              perkPoints={selectedCharacter.startingPerkPoints}
-              safelightShards={selectedCharacter.safelightShards}
-              attackBonus={selectedCharacter.attackBonus}
+              currentHealth={selectedCharacter.stats.health.current}
+              maxHealth={selectedCharacter.stats.health.max}
+              injuries={selectedCharacter.stats.injuries}
+              speed={selectedCharacter.stats.speed}
+              corruption={selectedCharacter.stats.corruption}
+              perkPoints={selectedCharacter.stats.perkPoints}
+              safelightShards={selectedCharacter.stats.safelightShards}
+              attackBonus={selectedCharacter.stats.attackBonus}
               isEditable={true}
               onStatsChange={(newStats) => updateCharacterStats(selectedCharacter.id, newStats)}
             />

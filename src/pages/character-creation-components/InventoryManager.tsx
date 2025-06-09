@@ -49,6 +49,20 @@ export default function InventoryManager({
     toCharacterId: ''
   });
 
+  const [bulkTransferDialog, setBulkTransferDialog] = useState<{
+    isOpen: boolean;
+    itemType: ItemType;
+    fromCharacterId: string;
+    toCharacterId: string;
+    itemCount: number;
+  }>({
+    isOpen: false,
+    itemType: 'items',
+    fromCharacterId: '',
+    toCharacterId: '',
+    itemCount: 0
+  });
+
   const selectedCharacter = characters.find(c => c.id === selectedCharacterId);
   const otherCharacters = characters.filter(c => c.id !== selectedCharacterId);
 
@@ -188,6 +202,108 @@ export default function InventoryManager({
     });
   };
 
+  const openBulkTransferDialog = (itemType: ItemType) => {
+    const itemCount = itemType === 'perks' 
+      ? selectedCharacter.perks.length 
+      : selectedCharacter.inventory[itemType].length;
+
+    if (itemCount === 0) return;
+
+    setBulkTransferDialog({
+      isOpen: true,
+      itemType,
+      fromCharacterId: selectedCharacterId,
+      toCharacterId: otherCharacters.length > 0 ? otherCharacters[0].id : '',
+      itemCount
+    });
+  };
+
+  const confirmBulkTransfer = () => {
+    const { itemType, fromCharacterId, toCharacterId, itemCount } = bulkTransferDialog;
+    if (!toCharacterId) return;
+
+    const fromCharacter = characters.find(c => c.id === fromCharacterId);
+    const toCharacter = characters.find(c => c.id === toCharacterId);
+    
+    if (!fromCharacter || !toCharacter) return;
+
+    // Check if this is a "transfer all equipment" operation
+    const isAllEquipment = itemCount === (fromCharacter.inventory.weapons.length + fromCharacter.inventory.items.length) && 
+                          fromCharacter.inventory.weapons.length > 0 && fromCharacter.inventory.items.length > 0;
+
+    if (isAllEquipment) {
+      // Transfer all weapons and items
+      const allWeapons = [...fromCharacter.inventory.weapons];
+      const allItems = [...fromCharacter.inventory.items];
+      
+      const newFromInventory = {
+        weapons: [] as Weapon[],
+        items: [] as Item[]
+      };
+      
+      const newToInventory = {
+        weapons: [...toCharacter.inventory.weapons, ...allWeapons.map(w => structuredClone(w))],
+        items: [...toCharacter.inventory.items, ...allItems.map(i => structuredClone(i))]
+      };
+
+      onUpdateCharacter(fromCharacterId, { inventory: newFromInventory });
+      onUpdateCharacter(toCharacterId, { inventory: newToInventory });
+    } else if (itemType === 'perks') {
+      // Transfer all perks
+      const allPerks = [...fromCharacter.perks];
+      const newFromPerks: Perk[] = [];
+      const newToPerks = [...toCharacter.perks, ...allPerks.map(p => structuredClone(p))];
+
+      onUpdateCharacter(fromCharacterId, { perks: newFromPerks });
+      onUpdateCharacter(toCharacterId, { perks: newToPerks });
+    } else {
+      // Transfer all weapons or items
+      const allItems = [...fromCharacter.inventory[itemType]];
+      const newFromInventory = {
+        ...fromCharacter.inventory,
+        [itemType]: []
+      };
+      const newToInventory = {
+        ...toCharacter.inventory,
+        [itemType]: [...toCharacter.inventory[itemType], ...allItems.map(item => structuredClone(item))]
+      };
+
+      onUpdateCharacter(fromCharacterId, { inventory: newFromInventory });
+      onUpdateCharacter(toCharacterId, { inventory: newToInventory });
+    }
+
+    setBulkTransferDialog({
+      isOpen: false,
+      itemType: 'items',
+      fromCharacterId: '',
+      toCharacterId: '',
+      itemCount: 0
+    });
+  };
+
+  const cancelBulkTransfer = () => {
+    setBulkTransferDialog({
+      isOpen: false,
+      itemType: 'items',
+      fromCharacterId: '',
+      toCharacterId: '',
+      itemCount: 0
+    });
+  };
+
+  const openBulkTransferAllEquipment = () => {
+    const totalItems = selectedCharacter.inventory.weapons.length + selectedCharacter.inventory.items.length;
+    if (totalItems === 0) return;
+
+    setBulkTransferDialog({
+      isOpen: true,
+      itemType: 'weapons', // We'll use 'weapons' as a flag for "all equipment"
+      fromCharacterId: selectedCharacterId,
+      toCharacterId: otherCharacters.length > 0 ? otherCharacters[0].id : '',
+      itemCount: totalItems
+    });
+  };
+
   const renderItemGrid = (items: any[], type: ItemType, isInventory = false) => {
     const filteredItems = filterBySearch(items, searchFilter);
     
@@ -277,15 +393,43 @@ export default function InventoryManager({
               onChange={(e) => setSearchFilter(e.target.value)}
               className="search-input"
             />
+            {otherCharacters.length > 0 && (
+              <div className="bulk-actions">
+                <button 
+                  className="bulk-transfer-all-btn"
+                  onClick={() => openBulkTransferAllEquipment()}
+                  disabled={selectedCharacter.inventory.weapons.length === 0 && selectedCharacter.inventory.items.length === 0}
+                  title="Transfer all weapons and items to another character"
+                >
+                  Transfer All Equipment
+                </button>
+              </div>
+            )}
           </div>
 
           <div className="inventory-content">
             <div className="current-inventory">
-              <h4>Current Inventory ({
-                activeTab === 'perks' 
-                  ? selectedCharacter.perks.length 
-                  : selectedCharacter.inventory[activeTab].length
-              })</h4>
+              <div className="inventory-section-header">
+                <h4>Current Inventory ({
+                  activeTab === 'perks' 
+                    ? selectedCharacter.perks.length 
+                    : selectedCharacter.inventory[activeTab].length
+                })</h4>
+                {otherCharacters.length > 0 && (
+                  <button 
+                    className="bulk-transfer-btn"
+                    onClick={() => openBulkTransferDialog(activeTab)}
+                    disabled={
+                      activeTab === 'perks' 
+                        ? selectedCharacter.perks.length === 0 
+                        : selectedCharacter.inventory[activeTab].length === 0
+                    }
+                    title={`Transfer all ${activeTab} to another character`}
+                  >
+                    Transfer All {activeTab === 'perks' ? 'Perks' : activeTab === 'weapons' ? 'Weapons' : 'Items'}
+                  </button>
+                )}
+              </div>
               {(activeTab === 'perks' 
                 ? selectedCharacter.perks.length === 0 
                 : selectedCharacter.inventory[activeTab].length === 0
@@ -331,6 +475,50 @@ export default function InventoryManager({
               id="transfer-target"
               value={transferDialog.toCharacterId}
               onChange={(e) => setTransferDialog(prev => ({
+                ...prev,
+                toCharacterId: e.target.value
+              }))}
+            >
+              {otherCharacters.map(char => (
+                <option key={char.id} value={char.id}>
+                  {char.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+      </ConfirmDialog>
+
+      <ConfirmDialog
+        isOpen={bulkTransferDialog.isOpen}
+        title="Transfer All Items"
+        message={(() => {
+          const { itemType, itemCount, fromCharacterId } = bulkTransferDialog;
+          const fromCharacter = characters.find(c => c.id === fromCharacterId);
+          if (!fromCharacter) return '';
+          
+          const isAllEquipment = itemCount === (fromCharacter.inventory.weapons.length + fromCharacter.inventory.items.length) && 
+                                fromCharacter.inventory.weapons.length > 0 && fromCharacter.inventory.items.length > 0;
+          
+          if (isAllEquipment) {
+            return `Transfer all ${fromCharacter.inventory.weapons.length} weapons and ${fromCharacter.inventory.items.length} items (${itemCount} total) to another character?`;
+          } else {
+            return `Transfer all ${itemCount} ${itemType} to another character?`;
+          }
+        })()}
+        confirmText="Transfer All"
+        cancelText="Cancel"
+        confirmButtonVariant="primary"
+        onConfirm={confirmBulkTransfer}
+        onCancel={cancelBulkTransfer}
+      >
+        {bulkTransferDialog.isOpen && otherCharacters.length > 0 && (
+          <div className="transfer-options">
+            <label htmlFor="bulk-transfer-target">Transfer to:</label>
+            <select
+              id="bulk-transfer-target"
+              value={bulkTransferDialog.toCharacterId}
+              onChange={(e) => setBulkTransferDialog(prev => ({
                 ...prev,
                 toCharacterId: e.target.value
               }))}

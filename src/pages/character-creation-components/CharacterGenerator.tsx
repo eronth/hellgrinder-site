@@ -194,25 +194,28 @@ export default function CharacterGenerator() {
     </p>
     
     
-      {characters.length > 0 && (
       <div className="character-selector">
         <button onClick={generateCharacter}>Generate Character</button>
-        <label htmlFor="character-select" className="character-select">Select Character: </label>
-        <select 
-          id="character-select" 
-          value={selectedCharacterId || ''} 
-          onChange={(e) => setSelectedCharacterId(e.target.value || null)}
-        >
-          <option value="">-- Select a character --</option>
-          {characters.map((character) => (
-            <option key={character.id} value={character.id}>
-              {character.name}
-            </option>
-          ))}
-        </select>
+        {characters.length > 0 && (
+          <>
+            <label htmlFor="character-select" className="character-select">Select Character: </label>
+            <select
+              id="character-select"
+              value={selectedCharacterId || ''}
+              onChange={(e) => setSelectedCharacterId(e.target.value || null)}
+            >
+              <option value="">-- Select a character --</option>
+              {characters.map((character) => (
+                <option key={character.id} value={character.id}>
+                  {character.name}
+                </option>
+              ))}
+            </select>
+          </>
+        )}
         {characters.length > 1 && (
-          <button 
-            className="clear-all-btn" 
+          <button
+            className="clear-all-btn"
             onClick={clearAllCharacters}
             style={{ marginLeft: '1rem' }}
           >
@@ -220,7 +223,6 @@ export default function CharacterGenerator() {
           </button>
         )}
       </div>
-    )}
     
     {selectedCharacter != null
       ? <div className="generated-character-display">

@@ -12,7 +12,11 @@ import SupportKits from "../../common-design/equipment/support-kits.tsx";
 import Perks from "../../common-design/equipment/perks.tsx";
 import CharacterStartingStatsTable from "./CharacterStartingStatsTable.tsx";
 
+import './CharacterGenerator.css';
+
 type CharDesign = {
+  id: string,
+  name: string,
   health: number, injuries: number, speed: number,
   corruption: number, safelightShards: number,
   startingPerkPoints: number,
@@ -21,14 +25,21 @@ type CharDesign = {
   specializationBonus: string, specializationPenalty: string,
 };
 
-
-
 export default function CharacterGenerator() {
   
   const page: TabType = 'character-generator';
-  const [char, setChar] = React.useState(null as CharDesign | null);
-
-  const characterDefaults: CharDesign = {
+  const [characters, setCharacters] = React.useState([] as CharDesign[]);
+  const [selectedCharacterId, setSelectedCharacterId] = React.useState(null as string | null);
+  
+  const selectedCharacter = characters.find(c => c.id === selectedCharacterId) || null;
+  
+  const characterNames = [
+    "Ash Walker", "Steel Heart", "Shadow Bane", "Iron Will", "Night Stalker",
+    "Flame Bearer", "Storm Rider", "Ghost Walker", "Blood Hunter", "Soul Reaper",
+    "War Hammer", "Death Whisper", "Void Walker", "Crimson Edge", "Thunder Strike",
+    "Dark Flame", "Ice Heart", "Wind Runner", "Stone Guard", "Light Bringer"
+  ];
+  const characterDefaults: Omit<CharDesign, 'id' | 'name'> = {
     health: 6, injuries: 0, speed: 5,
     corruption: 0, safelightShards: 2,
     startingPerkPoints: 2,
@@ -41,7 +52,6 @@ export default function CharacterGenerator() {
   'Communication', 'Stoic',
   'Recovery' , 'Corruption',
   ];
-
   function generateCharacter() {
     // Generate a character
     let rand: number;
@@ -49,7 +59,11 @@ export default function CharacterGenerator() {
     const supportKitsArr = Tools.sortKits(SupportKits);
 
     // Start with default values.
-    const newChar = JSON.parse(JSON.stringify(characterDefaults));
+    const newChar: CharDesign = {
+      ...JSON.parse(JSON.stringify(characterDefaults)),
+      id: `char-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      name: getRandomCharacterName()
+    };
 
     // Determine specialization bonus and penalty
     const so = [...specializationOptions]
@@ -75,12 +89,11 @@ export default function CharacterGenerator() {
       const chosenSupportKit = structuredClone(supportKitsArr[rand]);
       specialKitLogic(chosenSupportKit);
       newChar.kits.push(chosenSupportKit);
-    }
-
-    newChar.perks = getPerks(newChar.startingPerkPoints);
+    }    newChar.perks = getPerks(newChar.startingPerkPoints);
     handleSelectedPerksLogic({ character: newChar });
 
-    setChar(newChar);
+    setCharacters(prev => [...prev, newChar]);
+    setSelectedCharacterId(newChar.id);
   }
 
   
@@ -149,32 +162,94 @@ export default function CharacterGenerator() {
         + `You also gain Absorb ${damageTypes[rand]} 1.`;
     }
   }
-  
-  return (<div className={page}>
+  function deleteCharacter(characterId: string) {
+    setCharacters(prev => prev.filter(c => c.id !== characterId));
+    if (selectedCharacterId === characterId) {
+      const remainingChars = characters.filter(c => c.id !== characterId);
+      setSelectedCharacterId(remainingChars.length > 0 ? remainingChars[0].id : null);
+    }
+  }
+
+  function getRandomCharacterName(): string {
+    const usedNames = characters.map(c => c.name);
+    const availableNames = characterNames.filter(name => !usedNames.includes(name));
+    
+    if (availableNames.length === 0) {
+      return `Character ${characters.length + 1}`;
+    }
+    
+    const randomIndex = Math.floor(Math.random() * availableNames.length);
+    return availableNames[randomIndex];
+  }
+
+  function clearAllCharacters() {
+    setCharacters([]);
+    setSelectedCharacterId(null);
+  }
+    return (<div className={page}>
     <p>
       On this page, you are able to quickly generate a new character at the
       click of a button. Use this to quickly make your first character, or
       to get back into a fight with the least delay possible.
     </p>
-    <button onClick={generateCharacter}>Generate Character</button>
-    {(char != null)
+    
+    
+      {characters.length > 0 && (
+      <div className="character-selector">
+        <button onClick={generateCharacter}>Generate Character</button>
+        <label htmlFor="character-select" className="character-select">Select Character: </label>
+        <select 
+          id="character-select" 
+          value={selectedCharacterId || ''} 
+          onChange={(e) => setSelectedCharacterId(e.target.value || null)}
+        >
+          <option value="">-- Select a character --</option>
+          {characters.map((character) => (
+            <option key={character.id} value={character.id}>
+              {character.name}
+            </option>
+          ))}
+        </select>
+        {characters.length > 1 && (
+          <button 
+            className="clear-all-btn" 
+            onClick={clearAllCharacters}
+            style={{ marginLeft: '1rem' }}
+          >
+            Clear All Characters
+          </button>
+        )}
+      </div>
+    )}
+    
+    {selectedCharacter != null
       ? <div className="generated-character-display">
-        <h2>Character</h2>
-        <div className="character-name">name(TODO: Generate or remove)</div>
+        <div className="name-header">
+          <div className="character-name">{selectedCharacter.name}</div>
+          {selectedCharacterId && (
+            <button 
+              className="delete-character-btn" 
+              onClick={() => deleteCharacter(selectedCharacterId)}
+              title="Delete this character"
+            >
+              Delete Character
+            </button>
+          )}
+        </div>
         <div className="col-handler">
           <div>
-            <CharacterStartingStatsTable corruption={char.corruption} perkPoints={char.startingPerkPoints}/>
+            <CharacterStartingStatsTable corruption={selectedCharacter.corruption} perkPoints={selectedCharacter.startingPerkPoints}/>
             <div className="specialization-block">
               <div className="title">Specializations</div>
-              <div>+3 [{char.specializationBonus} Checks] (bonus)</div>
-              <div>-5 [{char.specializationPenalty} Checks] (penalty)</div>
+              <div>+3 [{selectedCharacter.specializationBonus} Checks] (bonus)</div>
+              <div>-5 [{selectedCharacter.specializationPenalty} Checks] (penalty)</div>
             </div>
-            {char.perks.map((p, i) =>
+            {selectedCharacter.perks.map((p, i) =>
               <PerkComponent key={`perk-${i}`} perk={p}/>
             )}
           </div>
           
-          {char.kits.map((k, i) =>
+          {selectedCharacter.kits.map((k, i) =>
             <KitComponent key={`kit-${i}`} kit={k}/>
           )}
         

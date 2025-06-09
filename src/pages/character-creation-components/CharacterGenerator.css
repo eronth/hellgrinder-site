@@ -4,6 +4,10 @@
   background-color: var(--card-background);
   border-radius: 8px;
   border: 1px solid #444;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
 
   label {
     display: inline-block;
@@ -12,7 +16,7 @@
     color: rgba(255, 255, 255, 0.87);
 
     &.character-select {
-      margin-left: 4em;
+      margin-left: 0; /* Remove the 4em margin since we're using flexbox now */
     }
   }
   
@@ -23,12 +27,26 @@
     border-radius: 4px;
     padding: 0.5rem;
     font-size: 1rem;
-    min-width: 200px;
+    min-width: 300px;
+    max-width: 500px;
 
     &:focus {
       outline: none;
       border-color: #646cff;
       box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.2);
+    }
+
+    option {
+      padding: 0.5rem;
+      font-size: 0.95rem;
+      
+      &:not(:first-child) {
+        /* Style for character options with kit names */
+        font-weight: normal;
+        
+        /* Unfortunately, we can't style the kit names differently within option text */
+        /* The bullet separator helps visually distinguish the name from kits */
+      }
     }
   }
 

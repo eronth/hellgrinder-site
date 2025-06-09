@@ -324,13 +324,17 @@ export default function CharacterGenerator() {
               id="character-select"
               value={selectedCharacterId || ''}
               onChange={(e) => setSelectedCharacterId(e.target.value || null)}
-            >
-              <option value="">-- Select a character --</option>
-              {characters.map((character) => (
-                <option key={character.id} value={character.id}>
-                  {character.name}
-                </option>
-              ))}
+            >              <option value="">-- Select a character --</option>
+              {characters.map((character) => {
+                const kitNames = character.kits.length > 0 
+                  ? character.kits.map(kit => kit.name).join(', ')
+                  : 'No kits';
+                return (
+                  <option key={character.id} value={character.id}>
+                    {character.name} • {kitNames}
+                  </option>
+                );
+              })}
             </select>
           </>
         )}

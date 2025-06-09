@@ -52,7 +52,12 @@ export default function Combat() {
       <ColumnEntry title={{ hx: 'h3', text: 'Status Effects' }}>
         <div className='col-handler'>
           {sortedStatusEffects.map((se, i) =>
-            <StatusEffectComponent key={`status-effect-${i}`} name={se.name} description={se.description} x={se.x} y={se.y}/>
+            <StatusEffectComponent key={`status-effect-${i}`}
+              name={se.name}
+              description={se.description}
+              effects={se.effects}
+              x={se.x} y={se.y}
+            />
           )}
         </div>
       </ColumnEntry>

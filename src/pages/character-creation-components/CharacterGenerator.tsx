@@ -331,7 +331,9 @@ export default function CharacterGenerator() {
                   : 'No kits';
                 return (
                   <option key={character.id} value={character.id}>
-                    {character.name} • {kitNames}
+                    {character.name}
+                    &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
+                    {kitNames}
                   </option>
                 );
               })}

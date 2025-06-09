@@ -14,12 +14,7 @@
     margin-right: 0.5rem;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.87);
-
-    &.character-select {
-      margin-left: 0; /* Remove the 4em margin since we're using flexbox now */
-    }
   }
-  
   select {
     background-color: #333;
     color: rgba(255, 255, 255, 0.87);

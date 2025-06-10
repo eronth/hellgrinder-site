@@ -292,6 +292,13 @@
   }
 }
 
+.sort-indicator {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: normal;
+  font-style: italic;
+}
+
 .bulk-transfer-btn {
   background-color: var(--transfer-btn-bg-color);
   color: var(--transfer-btn-color);

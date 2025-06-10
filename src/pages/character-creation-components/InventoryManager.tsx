@@ -334,47 +334,56 @@ export default function InventoryManager({
   const renderItemGrid = (items: any[], type: ItemType, isInventory = false) => {
     const filteredItems = filterBySearch(items, searchFilter);
     
+    // For inventory display, reverse the order to show most recent items first
+    const displayItems = isInventory ? [...filteredItems].reverse() : filteredItems;
+    
     return (
       <div className="item-grid">
-        {filteredItems.map((item, index) => (
-          <div key={`${type}-${item.name}-${index}`} className="item-card">
-            <div className="item-content">
-              {type === 'weapons' && <WeaponComponent weapon={item} />}
-              {type === 'items' && <ItemComponent item={item} />}
-              {type === 'perks' && <PerkComponent perk={item} />}
-            </div>
-            <div className="item-actions">
-              {isInventory ? (
-                <>
-                  <button 
-                    className="remove-btn"
-                    onClick={() => removeFromInventory(index, type)}
-                    title="Remove from inventory"
-                  >
-                    Remove
-                  </button>
-                  {otherCharacters.length > 0 && (
+        {displayItems.map((item, index) => {
+          // For inventory items, we need to calculate the correct index for removal
+          // since we reversed the display order
+          const actualIndex = isInventory ? filteredItems.length - 1 - index : index;
+          
+          return (
+            <div key={`${type}-${item.name}-${index}`} className="item-card">
+              <div className="item-content">
+                {type === 'weapons' && <WeaponComponent weapon={item} />}
+                {type === 'items' && <ItemComponent item={item} />}
+                {type === 'perks' && <PerkComponent perk={item} />}
+              </div>
+              <div className="item-actions">
+                {isInventory ? (
+                  <>
                     <button 
-                      className="transfer-btn"
-                      onClick={() => openTransferDialog(item, type)}
-                      title="Transfer to another character"
+                      className="remove-btn"
+                      onClick={() => removeFromInventory(actualIndex, type)}
+                      title="Remove from inventory"
                     >
-                      Transfer
+                      Remove
                     </button>
-                  )}
-                </>
-              ) : (
-                <button 
-                  className="add-btn"
-                  onClick={() => addToInventory(item, type)}
-                  title="Add to inventory"
-                >
-                  Add
-                </button>
-              )}
+                    {otherCharacters.length > 0 && (
+                      <button 
+                        className="transfer-btn"
+                        onClick={() => openTransferDialog(item, type)}
+                        title="Transfer to another character"
+                      >
+                        Transfer
+                      </button>
+                    )}
+                  </>
+                ) : (
+                  <button 
+                    className="add-btn"
+                    onClick={() => addToInventory(item, type)}
+                    title="Add to inventory"
+                  >
+                    Add
+                  </button>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     );
   };
@@ -390,7 +399,7 @@ export default function InventoryManager({
 
       {isOpen && (<>
         <div className="inventory-backdrop" onClick={() => setIsOpen(false)} />
-          
+
         <div className="inventory-manager" ref={inventoryRef}>
           <div className="inventory-header">
             <h3>Inventory Manager - {selectedCharacter.name}</h3>
@@ -443,7 +452,7 @@ export default function InventoryManager({
                   activeTab === 'perks' 
                     ? selectedCharacter.perks.length 
                     : selectedCharacter.inventory[activeTab].length
-                })</h4>
+                }) <span className="sort-indicator">• Most recent first</span></h4>
                 {otherCharacters.length > 0 && (
                   <button 
                     className="bulk-transfer-btn"

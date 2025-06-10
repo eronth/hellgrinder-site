@@ -34,12 +34,37 @@ export default function StatusEffectsManager({
     y: 1
   });
 
+  const [editEffectDialog, setEditEffectDialog] = useState<{
+    isOpen: boolean;
+    activeEffect: ActiveStatusEffect | null;
+    index: number;
+    x: number;
+    y: number;
+  }>({
+    isOpen: false,
+    activeEffect: null,
+    index: -1,
+    x: 1,
+    y: 1
+  });
+
   const selectedCharacter = characters.find(c => c.id === selectedCharacterId);
 
   if (!selectedCharacter) return null;
 
   // Get all available status effects
   const allStatusEffects = Object.values(StatusEffects);
+
+  // Helper function to normalize status effect names for comparison
+  const normalizeStatusEffectName = (name: string): string => {
+    return name
+      .replace(/\[\[X\]\]/g, '') // Remove X placeholders
+      .replace(/\[\[Y\]\]/g, '') // Remove Y placeholders
+      .replace(/\s+for\s+$/i, '') // Remove trailing "for" (case insensitive)
+      .replace(/\s+for\s+/i, ' ') // Replace "for" in middle with single space
+      .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+      .trim(); // Remove leading/trailing whitespace
+  };
 
   // Filter status effects by search
   const filterBySearch = (effects: StatusEffect[], searchTerm: string) => {
@@ -63,18 +88,84 @@ export default function StatusEffectsManager({
     const { effect, x, y } = addEffectDialog;
     if (!effect) return;
 
-    const activeEffect: ActiveStatusEffect = {
-      effect,
-      ...(effect.x !== undefined ? { x } : {}),
-      ...(effect.y !== undefined ? { y } : {})
-    };
+    // Check if this status effect already exists
+    const existingIndex = selectedCharacter.statusEffects.findIndex(
+      activeEffect => normalizeStatusEffectName(activeEffect.effect.name) === normalizeStatusEffectName(effect.name)
+    );
 
-    const newStatusEffects = [...selectedCharacter.statusEffects, activeEffect];
-    onUpdateCharacter(selectedCharacterId, { statusEffects: newStatusEffects });
+    if (existingIndex !== -1) {
+      // Merge with existing effect by adding x and y values
+      const existingEffect = selectedCharacter.statusEffects[existingIndex];
+      const newStatusEffects = [...selectedCharacter.statusEffects];
+      
+      newStatusEffects[existingIndex] = {
+        ...existingEffect,
+        ...(effect.x !== undefined ? { 
+          x: (existingEffect.x || 0) + x 
+        } : {}),
+        ...(effect.y !== undefined ? { 
+          y: (existingEffect.y || 0) + y 
+        } : {})
+      };
+      
+      onUpdateCharacter(selectedCharacterId, { statusEffects: newStatusEffects });
+    } else {
+      // Add new effect
+      const activeEffect: ActiveStatusEffect = {
+        effect,
+        ...(effect.x !== undefined ? { x } : {}),
+        ...(effect.y !== undefined ? { y } : {})
+      };
+
+      const newStatusEffects = [...selectedCharacter.statusEffects, activeEffect];
+      onUpdateCharacter(selectedCharacterId, { statusEffects: newStatusEffects });
+    }
 
     setAddEffectDialog({
       isOpen: false,
       effect: null,
+      x: 1,
+      y: 1
+    });
+  };
+
+  const openEditEffectDialog = (activeEffect: ActiveStatusEffect, index: number) => {
+    setEditEffectDialog({
+      isOpen: true,
+      activeEffect,
+      index,
+      x: activeEffect.x || 1,
+      y: activeEffect.y || 1
+    });
+  };
+
+  const confirmEditEffect = () => {
+    const { activeEffect, index, x, y } = editEffectDialog;
+    if (!activeEffect) return;
+
+    const newStatusEffects = [...selectedCharacter.statusEffects];
+    newStatusEffects[index] = {
+      ...activeEffect,
+      ...(activeEffect.effect.x !== undefined ? { x } : {}),
+      ...(activeEffect.effect.y !== undefined ? { y } : {})
+    };
+
+    onUpdateCharacter(selectedCharacterId, { statusEffects: newStatusEffects });
+
+    setEditEffectDialog({
+      isOpen: false,
+      activeEffect: null,
+      index: -1,
+      x: 1,
+      y: 1
+    });
+  };
+
+  const cancelEditEffect = () => {
+    setEditEffectDialog({
+      isOpen: false,
+      activeEffect: null,
+      index: -1,
       x: 1,
       y: 1
     });
@@ -97,14 +188,36 @@ export default function StatusEffectsManager({
   // Handle clicking outside the modal and escape key to close it
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (isOpen && managerRef.current && !managerRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
+      if (!isOpen) return;
+      
+      const target = event.target as Node;
+      
+      // Don't close if clicking inside the main manager
+      if (managerRef.current && managerRef.current.contains(target)) {
+        return;
       }
+      
+      // Don't close if clicking inside any open dialogs
+      if (addEffectDialog.isOpen || editEffectDialog.isOpen) {
+        // Check if click is inside a dialog
+        const clickedElement = event.target as Element;
+        if (clickedElement && (
+          clickedElement.closest('.confirm-dialog') ||
+          clickedElement.closest('.confirm-dialog-overlay')
+        )) {
+          return;
+        }
+      }
+      
+      setIsOpen(false);
     };
 
     const handleEscapeKey = (event: KeyboardEvent) => {
       if (isOpen && event.key === 'Escape') {
-        setIsOpen(false);
+        // Only close the main manager if no dialogs are open
+        if (!addEffectDialog.isOpen && !editEffectDialog.isOpen) {
+          setIsOpen(false);
+        }
       }
     };
 
@@ -117,14 +230,14 @@ export default function StatusEffectsManager({
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('keydown', handleEscapeKey);
     };
-  }, [isOpen]);
+  }, [isOpen, addEffectDialog.isOpen, editEffectDialog.isOpen]);
 
   const renderStatusEffectCard = (effect: StatusEffect, isActive = false, activeIndex?: number) => {
     return (
       <div key={effect.name} className="status-effect-card">
         <div className="status-effect-content">
           <div className="status-effect-name">
-            <RuleKeyword keyword={effect.name.replace(/\s*\[\[X\]\]|\s*\[\[Y\]\]/g, '')}>
+            <RuleKeyword keyword={normalizeStatusEffectName(effect.name)}>
               {effect.name}
             </RuleKeyword>
           </div>
@@ -203,10 +316,15 @@ export default function StatusEffectsManager({
                 <div className="status-effects-grid">
                   {selectedCharacter.statusEffects.map((activeEffect, index) => (
                     <div key={`active-${index}`} className="active-status-effect-card">
-                      <div className="active-status-effect-content">
+                      <div 
+                        className="active-status-effect-content"
+                        onClick={() => openEditEffectDialog(activeEffect, index)}
+                        style={{ cursor: 'pointer' }}
+                        title="Click to edit values"
+                      >
                         <div className="status-effect-name">
                           <RuleKeyword 
-                            keyword={activeEffect.effect.name.replace(/\s*\[\[X\]\]|\s*\[\[Y\]\]/g, '')}
+                            keyword={normalizeStatusEffectName(activeEffect.effect.name)}
                             statusEffectX={activeEffect.x}
                             statusEffectY={activeEffect.y}
                           >
@@ -253,7 +371,13 @@ export default function StatusEffectsManager({
       <ConfirmDialog
         isOpen={addEffectDialog.isOpen}
         title="Add Status Effect"
-        message={`Add "${addEffectDialog.effect?.name}" to ${selectedCharacter.name}?`}
+        message={
+          addEffectDialog.effect && selectedCharacter.statusEffects.some(
+            activeEffect => normalizeStatusEffectName(activeEffect.effect.name) === normalizeStatusEffectName(addEffectDialog.effect?.name || '')
+          ) 
+            ? `"${addEffectDialog.effect?.name}" already exists. Values will be added together.`
+            : `Add "${addEffectDialog.effect?.name}" to ${selectedCharacter.name}?`
+        }
         buttons={[
           {
             text: "Cancel",
@@ -296,6 +420,62 @@ export default function StatusEffectsManager({
                   max="10"
                   value={addEffectDialog.y}
                   onChange={(e) => setAddEffectDialog(prev => ({
+                    ...prev,
+                    y: parseInt(e.target.value) || 1
+                  }))}
+                />
+              </div>
+            )}
+          </div>
+        )}
+      </ConfirmDialog>
+
+      <ConfirmDialog
+        isOpen={editEffectDialog.isOpen}
+        title="Edit Status Effect"
+        message={`Edit "${editEffectDialog.activeEffect?.effect.name}" for ${selectedCharacter.name}?`}
+        buttons={[
+          {
+            text: "Cancel",
+            onClick: cancelEditEffect,
+            variant: 'secondary'
+          },
+          {
+            text: "Update Effect",
+            onClick: confirmEditEffect,
+            variant: 'primary',
+            autoFocus: true
+          }
+        ]}
+      >
+        {editEffectDialog.isOpen && editEffectDialog.activeEffect && (
+          <div className="effect-value-inputs">
+            {editEffectDialog.activeEffect.effect.x !== undefined && (
+              <div className="value-input-group">
+                <label htmlFor="edit-x-value">X Value:</label>
+                <input
+                  id="edit-x-value"
+                  type="number"
+                  min="1"
+                  max="10"
+                  value={editEffectDialog.x}
+                  onChange={(e) => setEditEffectDialog(prev => ({
+                    ...prev,
+                    x: parseInt(e.target.value) || 1
+                  }))}
+                />
+              </div>
+            )}
+            {editEffectDialog.activeEffect.effect.y !== undefined && (
+              <div className="value-input-group">
+                <label htmlFor="edit-y-value">Y Value:</label>
+                <input
+                  id="edit-y-value"
+                  type="number"
+                  min="1"
+                  max="10"
+                  value={editEffectDialog.y}
+                  onChange={(e) => setEditEffectDialog(prev => ({
                     ...prev,
                     y: parseInt(e.target.value) || 1
                   }))}

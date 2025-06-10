@@ -13,6 +13,17 @@ export default function FloatingStatusEffects({
 }: FloatingStatusEffectsProps) {
   if (statusEffects.length === 0) return null;
 
+  // Helper function to normalize status effect names for keyword matching
+  const normalizeStatusEffectName = (name: string): string => {
+    return name
+      .replace(/\[\[X\]\]/g, '') // Remove X placeholders
+      .replace(/\[\[Y\]\]/g, '') // Remove Y placeholders
+      .replace(/\s+for\s+$/i, '') // Remove trailing "for" (case insensitive)
+      .replace(/\s+for\s+/i, ' ') // Replace "for" in middle with single space
+      .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+      .trim(); // Remove leading/trailing whitespace
+  };
+
   return (
     <div className="floating-status-effects">
       <h4>{characterName} - Active Effects</h4>
@@ -20,7 +31,7 @@ export default function FloatingStatusEffects({
         {statusEffects.map((activeEffect, index) => (
           <div key={index} className="floating-status-item">
             <RuleKeyword 
-              keyword={activeEffect.effect.name.replace(/\s*\[\[X\]\]|\s*\[\[Y\]\]/g, '')}
+              keyword={normalizeStatusEffectName(activeEffect.effect.name)}
               statusEffectX={activeEffect.x}
               statusEffectY={activeEffect.y}
             >

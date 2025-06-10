@@ -7,9 +7,12 @@ const convertStatusEffectToRuleDefinition = (statusEffect: StatusEffect): RuleDe
   const nameToId = se.name.toLowerCase().replace(/\s+/g, '-').replace(/\[\[X\]\]/g, '').replace(/\[\[Y\]\]/g, '').replace(/--+/g, '-');
   const nameToKeyword = se.name
     // make sure to replace [[X]] and [[Y]] with nothing, then trim whitespace
-    .replace(/\[\[X\]\]/g, '')
-    .replace(/\[\[Y\]\]/g, '')
-    .trim();
+    .replace(/\[\[X\]\]/g, '') // Remove X placeholders
+    .replace(/\[\[Y\]\]/g, '') // Remove Y placeholders
+    .replace(/\s+for\s+$/i, '') // Remove trailing "for" (case insensitive)
+    .replace(/\s+for\s+/i, ' ') // Replace "for" in middle with single space
+    .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+    .trim(); // Remove leading/trailing whitespace
 
   const ret: RuleDefinition = {
     id: nameToId,

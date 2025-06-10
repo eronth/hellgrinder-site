@@ -284,6 +284,36 @@
   background-color: rgba(100, 108, 255, 0.1);
 }
 
+.active-status-effect-content {
+  position: relative;
+}
+
+.active-status-effect-content:hover {
+  background-color: rgba(100, 108, 255, 0.15);
+  border-radius: 4px;
+}
+
+.active-status-effect-content::after {
+  content: "✏️ Click to edit";
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.active-status-effect-content:hover::after {
+  opacity: 1;
+}
+
 /* Floating status effects display (to be implemented) */
 .floating-status-effects {
   position: fixed;
@@ -316,6 +346,15 @@
   font-size: 0.9rem;
   padding: 0.25rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.floating-status-item:hover {
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(100, 108, 255, 0.1);
+  padding-left: 0.5rem;
+  border-radius: 4px;
 }
 
 .floating-status-item:last-child {

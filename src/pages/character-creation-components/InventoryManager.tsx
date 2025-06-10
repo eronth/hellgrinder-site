@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Weapon, Item, Perk } from '../../ts-types/types';
 import { CharDesign } from './CharacterGenerator';
 import ConfirmDialog from './ConfirmDialog';
@@ -35,6 +35,8 @@ export default function InventoryManager({
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<ItemType>('weapons');
   const [searchFilter, setSearchFilter] = useState('');
+  const inventoryRef = useRef<HTMLDivElement>(null);
+  
   const [transferDialog, setTransferDialog] = useState<{
     isOpen: boolean;
     item: Weapon | Item | Perk | null;
@@ -304,6 +306,31 @@ export default function InventoryManager({
     });
   };
 
+  // Handle clicking outside the modal and escape key to close it
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isOpen && inventoryRef.current && !inventoryRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (isOpen && event.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleEscapeKey);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [isOpen]);
+
   const renderItemGrid = (items: any[], type: ItemType, isInventory = false) => {
     const filteredItems = filterBySearch(items, searchFilter);
     
@@ -361,8 +388,10 @@ export default function InventoryManager({
         {isOpen ? 'Close' : 'Manage'} Inventory
       </button>
 
-      {isOpen && (
-        <div className="inventory-manager">
+      {isOpen && (<>
+        <div className="inventory-backdrop" onClick={() => setIsOpen(false)} />
+          
+        <div className="inventory-manager" ref={inventoryRef}>
           <div className="inventory-header">
             <h3>Inventory Manager - {selectedCharacter.name}</h3>
             <button 
@@ -454,7 +483,7 @@ export default function InventoryManager({
             </div>
           </div>
         </div>
-      )}
+      </>)}
 
       <ConfirmDialog
         isOpen={transferDialog.isOpen}

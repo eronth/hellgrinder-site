@@ -260,7 +260,10 @@ export default function CharacterGenerator() {
       }
     });
     
-    return Array.from(perkGroups.values());
+    // Sort alphabetically by perk name
+    return Array.from(perkGroups.values()).sort((a, b) => 
+      a.perk.name.localeCompare(b.perk.name)
+    );
   }
 
   function clearAllCharacters() {
@@ -341,13 +344,13 @@ export default function CharacterGenerator() {
   function cancelNameEdit() {
     setIsEditingName(false);
     setEditingName('');
-  }  // Auto-cancel editing when switching characters
+  } // Auto-cancel editing when switching characters
   React.useEffect(() => {
     setIsEditingName(false);
     setEditingName('');
   }, [selectedCharacterId]);
 
-    return (<div className={page}>
+  return (<div className={page}>
     <p>
       On this page, you are able to quickly generate a new character at the
       click of a button. Use this to quickly make your first character, or

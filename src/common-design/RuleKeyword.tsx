@@ -7,6 +7,9 @@ interface RuleKeywordProps {
   children?: React.ReactNode;
   className?: string;
   disabled?: boolean;
+  // Status effect specific props
+  statusEffectX?: number;
+  statusEffectY?: number;
 }
 
 /**
@@ -18,7 +21,9 @@ export default function RuleKeyword({
   ruleId, 
   children, 
   className = '',
-  disabled = false 
+  disabled = false,
+  statusEffectX,
+  statusEffectY
 }: RuleKeywordProps) {
   return (
     <RulePopup 
@@ -26,6 +31,8 @@ export default function RuleKeyword({
       keyword={!ruleId ? keyword : undefined}
       className={className}
       disabled={disabled}
+      statusEffectX={statusEffectX}
+      statusEffectY={statusEffectY}
     >
       {children || keyword}
     </RulePopup>

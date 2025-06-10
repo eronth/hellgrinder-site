@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { RuleDefinition } from '../ts-types/rule-types';
 import { RulesManager } from './rules-database';
+import { formatReactNode } from './utils/StatusEffectsUtils';
 
 interface RulePopupProps {
   ruleId?: string;
@@ -8,6 +10,9 @@ interface RulePopupProps {
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
+  // Status effect specific props
+  statusEffectX?: number | 'X';
+  statusEffectY?: number | 'Y';
 }
 
 interface PopupPosition {
@@ -21,7 +26,9 @@ export default function RulePopup({
   keyword, 
   children, 
   className = '',
-  disabled = false 
+  disabled = false,
+  statusEffectX,
+  statusEffectY
 }: RulePopupProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [position, setPosition] = useState<PopupPosition>({ top: 0, left: 0, preferredPosition: 'top' });
@@ -41,45 +48,46 @@ export default function RulePopup({
   }
 
   const calculatePosition = (): PopupPosition => {
-    if (!triggerRef.current || !popupRef.current) {
+    if (!triggerRef.current) {
       return { top: 0, left: 0, preferredPosition: 'top' };
     }
 
     const triggerRect = triggerRef.current.getBoundingClientRect();
-    const popupRect = popupRef.current.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
-    const scrollX = window.scrollX;
-    const scrollY = window.scrollY;
+
+    // Use estimated popup dimensions if popup isn't rendered yet
+    const popupWidth = popupRef.current?.getBoundingClientRect().width || 300;
+    const popupHeight = popupRef.current?.getBoundingClientRect().height || 200;
 
     let top = 0;
     let left = 0;
     let preferredPosition: 'top' | 'bottom' | 'left' | 'right' = 'top';
 
     // Try positioning above first
-    if (triggerRect.top - popupRect.height - 10 > 0) {
-      top = triggerRect.top + scrollY - popupRect.height - 10;
+    if (triggerRect.top - popupHeight - 10 > 0) {
+      top = triggerRect.top - popupHeight - 10;
       preferredPosition = 'top';
     } 
     // Otherwise position below
-    else if (triggerRect.bottom + popupRect.height + 10 < viewportHeight) {
-      top = triggerRect.bottom + scrollY + 10;
+    else if (triggerRect.bottom + popupHeight + 10 < viewportHeight) {
+      top = triggerRect.bottom + 10;
       preferredPosition = 'bottom';
     }
     // Fallback to bottom if it doesn't fit above
     else {
-      top = triggerRect.bottom + scrollY + 10;
+      top = triggerRect.bottom + 10;
       preferredPosition = 'bottom';
     }
 
     // Center horizontally relative to trigger
-    left = triggerRect.left + scrollX + (triggerRect.width / 2) - (popupRect.width / 2);
+    left = triggerRect.left + (triggerRect.width / 2) - (popupWidth / 2);
 
     // Ensure popup doesn't go off screen horizontally
     if (left < 10) {
       left = 10;
-    } else if (left + popupRect.width > viewportWidth - 10) {
-      left = viewportWidth - popupRect.width - 10;
+    } else if (left + popupWidth > viewportWidth - 10) {
+      left = viewportWidth - popupWidth - 10;
     }
 
     return { top, left, preferredPosition };
@@ -89,9 +97,19 @@ export default function RulePopup({
   const handleMouseLeave = () => { setIsVisible(false); };
 
   useEffect(() => {
-    if (isVisible && triggerRef.current && popupRef.current) {
+    if (isVisible && triggerRef.current) {
       const newPosition = calculatePosition();
       setPosition(newPosition);
+      
+      // Recalculate after a short delay to get accurate popup dimensions
+      const timeout = setTimeout(() => {
+        if (popupRef.current) {
+          const updatedPosition = calculatePosition();
+          setPosition(updatedPosition);
+        }
+      }, 10);
+      
+      return () => clearTimeout(timeout);
     }
   }, [isVisible]);
 
@@ -109,12 +127,16 @@ export default function RulePopup({
 
   const relatedRules = RulesManager.getRelatedRules(rule.id);
 
+  // Check if this is a status effect and we have X/Y values to display
+  const isStatusEffect = rule.category === 'status-effects';
+  const hasStatusEffectValues = statusEffectX !== undefined || statusEffectY !== undefined;
+
   const ruleElement = (
     <div
       ref={popupRef}
-      className={`rule-popup rule-popup-${position.preferredPosition}`}
+      className={`rule-popup rule-popup-${position.preferredPosition} ${isStatusEffect ? ' status-effect' : ''}`}
       style={{
-        position: 'absolute',
+        position: 'fixed',
         top: `${position.top}px`,
         left: `${position.left}px`,
         zIndex: 1000
@@ -123,20 +145,28 @@ export default function RulePopup({
       onMouseLeave={handleMouseLeave}
     >
       <div className="rule-popup-header">
-        <h4 className="rule-title">{rule.keyword}</h4>
+        <h4 className="rule-title">{
+          rule.fullname 
+          ? formatReactNode(rule.fullname, { x: statusEffectX, y: statusEffectY }) 
+          : rule.keyword
+        }</h4>
         <span className="rule-category">{rule.category}</span>
       </div>
       
       <div className="rule-summary">
-        {rule.summary}
+        {(isStatusEffect && hasStatusEffectValues) 
+        ? formatReactNode(rule.summary, { x: statusEffectX, y: statusEffectY })
+        : rule.summary}
       </div>
       
       {rule.details && (
         <div className="rule-details">
-          {rule.details}
+          {(isStatusEffect && hasStatusEffectValues)
+          ? formatReactNode(rule.details, { x: statusEffectX, y: statusEffectY })
+          : rule.details}
         </div>
       )}
-      
+
       {rule.examples && rule.examples.length > 0 && (
         <div className="rule-examples">
           <strong>
@@ -144,7 +174,7 @@ export default function RulePopup({
           </strong>
           <ul>
             {rule.examples.map((example, index) => (
-              <li key={index}>{example}</li>
+              <li key={index}>{formatReactNode(example, { x: statusEffectX, y: statusEffectY })}</li>
             ))}
           </ul>
         </div>
@@ -171,13 +201,13 @@ export default function RulePopup({
   return (<>
     <span
       ref={triggerRef}
-      className={`rule-keyword ${className}`}
+      className={`rule-keyword ${className} ${isStatusEffect ? 'status-effect' : ''}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       title={rule.summary} // Fallback for accessibility
     >
       {children}
     </span>
-    {isVisible && (<>{ruleElement}</>)}
+    {isVisible && createPortal(ruleElement, document.body)}
   </>);
 }

@@ -2,6 +2,7 @@
 export interface RuleDefinition {
   id: string;
   keyword: string;
+  fullname?: string; // Full name for display, can include variables like [[X]] or [[Y]]
   category: 'combat' | 'character' | 'equipment' | 'magic' | 'general' | 'creatures'
     | 'status-effects';
   summary: string;

@@ -1,5 +1,5 @@
 import React from "react";
-import { TabType, Kit, Perk, DamageElement, Weapon, Item } from "../../ts-types/types.tsx";
+import { TabType, Kit, Perk, DamageElement, Weapon, Item, StatusEffect } from "../../ts-types/types.tsx";
 import { SkillChecks } from "../../ts-types/tag-types.tsx";
 
 import KitComponent from "./kits/Kit.tsx";
@@ -15,8 +15,17 @@ import Perks from "../../common-design/equipment/perks.tsx";
 import CharacterStartingStatsTable from "./CharacterStartingStatsTable.tsx";
 import ConfirmDialog from "./ConfirmDialog.tsx";
 import InventoryManager from "./InventoryManager.tsx";
+import StatusEffectsManager from "./StatusEffectsManager.tsx";
+import FloatingStatusEffects from "./FloatingStatusEffects.tsx";
 
 import './CharacterGenerator.css';
+
+// Active status effect with actual X/Y values
+export type ActiveStatusEffect = {
+  effect: StatusEffect;
+  x?: number;
+  y?: number;
+};
 
 export type CharDesign = {
   id: string,
@@ -31,7 +40,9 @@ export type CharDesign = {
   inventory: {
     weapons: Weapon[],
     items: Item[]
-  }
+  },
+  // Active status effects with their actual X/Y values
+  statusEffects: ActiveStatusEffect[]
 };
 
 export type CharStats = {
@@ -95,7 +106,6 @@ export default function CharacterGenerator() {
     "War Hammer", "Death Whisper", "Void Walker", "Crimson Edge", "Thunder Strike",
     "Dark Flame", "Ice Heart", "Wind Runner", "Stone Guard", "Light Bringer"
   ];
-
   const characterDefaults: Omit<CharDesign, 'id' | 'name'> = {
     stats: {
       health: { current: 6, max: 6 },
@@ -109,7 +119,8 @@ export default function CharacterGenerator() {
     inventory: {
       weapons: [],
       items: []
-    }
+    },
+    statusEffects: []
   };
   const specializationOptions: SkillChecks[] = [
   'Might', 'Endurance', 'Agility', 'Stealth' , 'Observation' ,
@@ -476,7 +487,10 @@ export default function CharacterGenerator() {
       click of a button. Use this to quickly make your first character, or
       to get back into a fight with the least delay possible.
     </p>
-
+    <FloatingStatusEffects
+      statusEffects={selectedCharacter?.statusEffects ?? []}
+      characterName={selectedCharacter ? selectedCharacter.name : 'No Character Selected'}
+    />
     <div className="character-selector">
       <button onClick={generateCharacter}>Generate Character</button>
       {characters.length > 0 && (
@@ -543,15 +557,23 @@ export default function CharacterGenerator() {
               </span>
             )}
           </div>
-          {selectedCharacterId && (
-            <button 
-              className="delete-character-btn" 
-              onClick={() => deleteCharacter(selectedCharacterId)}
-              title="Delete this character"
-            >
-              Delete Character
-            </button>
-          )}
+          <div>
+            {/* Status Effects Manager */}
+            <StatusEffectsManager
+              characters={characters}
+              selectedCharacterId={selectedCharacter.id}
+              onUpdateCharacter={updateCharacter}
+            />
+            {selectedCharacterId && (
+              <button 
+                className="delete-character-btn" 
+                onClick={() => deleteCharacter(selectedCharacterId)}
+                title="Delete this character"
+              >
+                Delete Character
+              </button>
+            )}
+          </div>
         </div>        
         <div className="col-handler">          
           <div>
@@ -586,11 +608,11 @@ export default function CharacterGenerator() {
         </div>
         <div className="inventory-button-container">
           {/* Inventory Manager */}
-            <InventoryManager
-              characters={characters}
-              selectedCharacterId={selectedCharacter.id}
-              onUpdateCharacter={updateCharacter}
-            />
+          <InventoryManager
+            characters={characters}
+            selectedCharacterId={selectedCharacter.id}
+            onUpdateCharacter={updateCharacter}
+          />
         </div>
         <div>
           {/* Display inventory items */}

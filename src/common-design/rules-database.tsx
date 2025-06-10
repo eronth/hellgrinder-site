@@ -4,17 +4,17 @@ import { StatusEffect } from '../ts-types/types';
 
 const convertStatusEffectToRuleDefinition = (statusEffect: StatusEffect): RuleDefinition => {
   const se = statusEffect;
-  const nameToId = se.name.toLowerCase().replace(/\s+/g, '-');
+  const nameToId = se.name.toLowerCase().replace(/\s+/g, '-').replace(/\[\[X\]\]/g, '').replace(/\[\[Y\]\]/g, '').replace(/--+/g, '-');
   const nameToKeyword = se.name
     // make sure to replace [[X]] and [[Y]] with nothing, then trim whitespace
     .replace(/\[\[X\]\]/g, '')
     .replace(/\[\[Y\]\]/g, '')
-    .trim()
-    .replace(/\s+/g, '-');
+    .trim();
 
   const ret: RuleDefinition = {
     id: nameToId,
     keyword: nameToKeyword,
+    fullname: se.name,
     category: 'status-effects',
     summary: se.description,
     details: '',

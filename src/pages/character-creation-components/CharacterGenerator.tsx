@@ -489,10 +489,9 @@ export default function CharacterGenerator() {
     </p>
     <FloatingStatusEffects
       statusEffects={selectedCharacter?.statusEffects ?? []}
-      characterName={selectedCharacter ? selectedCharacter.name : 'No Character Selected'}
-    />
+      characterName={selectedCharacter ? selectedCharacter.name : 'No Character Selected'}    />
     <div className="character-selector">
-      <button onClick={generateCharacter}>Generate Character</button>
+      <button className="generate-character-btn magical-button" onClick={generateCharacter}>Generate Character</button>
       {characters.length > 0 && (
         <>
           <label htmlFor="character-select" className="character-select">Select Character: </label>

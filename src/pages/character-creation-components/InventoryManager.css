@@ -217,9 +217,31 @@
     .add-btn {
       background-color: #28a745;
       color: white;
+      min-width: 120px;
+      font-weight: 500;
 
-      &:hover {
+      &:hover:not(:disabled) {
         background-color: #218838;
+        transform: translateY(-1px);
+      }
+
+      &.disabled,
+      &:disabled {
+        background-color: #6c757d;
+        color: rgba(255, 255, 255, 0.5);
+        cursor: not-allowed;
+        transform: none;
+        opacity: 0.6;
+      }
+
+      /* Special styling for negative cost perks (give perk points) */
+      &.negative-cost {
+        background-color: #17a2b8;
+        color: white;
+
+        &:hover {
+          background-color: #138496;
+        }
       }
     }
 

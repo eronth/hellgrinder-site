@@ -7,12 +7,14 @@ const exObj: { [key: string]: Perk } =
     tags: [],
     isAdvancedItem: false,
     description: 'You have a mark of the nether realms on you. The GM chooses a Damage Type. You have Weak 3 to that type.',
+    startingCorruption: 2,
   },
   durable: {
     name: 'Durable', cost: 1,
     tags: [],
     isAdvancedItem: false,
     description: 'You have always been a bit more sturdy. You have +1 Max Health and Resist 1 to your choice of Damage Type.',
+    healthModifier: 1,
   },
   evil: {
     name: 'Evil', cost: -1,
@@ -41,6 +43,7 @@ const exObj: { [key: string]: Perk } =
     tags: [],
     isAdvancedItem: false,
     description: 'You are quick on your feet. You gain +1 [Agility Skill Checks].',
+    speedModifier: 1,
   },
   sinister: {
     name: 'Sinister', cost: 2,
@@ -59,12 +62,14 @@ const exObj: { [key: string]: Perk } =
     tags: [],
     isAdvancedItem: false,
     description: 'You have seen many battles. Start with a random Light Injury, this counts as a Perminant Injury instead, and cannot be removed by normal means. You gain +3 to all [Shooting], [Melee], [Arcane], or [Thrown] Hit Checks.',
+    injuriesModifier: 1,
   },
   lucky: {
     name: 'Lucky', cost: 2,
     tags: [],
     isAdvancedItem: false,
     description: 'You have a bit of luck on your side. Once per session, you can reroll a Skill Check and keep the better result.',
+    safelightShardsModifier: 1,
   },
   guardBreaker: {
     name: 'Guard Breaker', cost: 2,

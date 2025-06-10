@@ -5,6 +5,7 @@ import ConfirmDialog from './ConfirmDialog';
 import WeaponComponent from './kits/weapon/WeaponComponent';
 import ItemComponent from './kits/item/ItemComponent';
 import PerkComponent from './perks/PerkComponent';
+import NotificationToast, { Notification } from './NotificationToast';
 import Tools from '../../common-design/Tools';
 
 // Import equipment databases
@@ -35,6 +36,7 @@ export default function InventoryManager({
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<ItemType>('weapons');
   const [searchFilter, setSearchFilter] = useState('');
+  const [notifications, setNotifications] = useState<Notification[]>([]);
   const inventoryRef = useRef<HTMLDivElement>(null);
   
   const [transferDialog, setTransferDialog] = useState<{
@@ -70,6 +72,20 @@ export default function InventoryManager({
 
   if (!selectedCharacter) return null;
 
+  // Helper function to show notifications
+  const showNotification = (notification: Omit<Notification, 'id'>) => {
+    const newNotification: Notification = {
+      ...notification,
+      id: `notification-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+    };
+    setNotifications(prev => [...prev, newNotification]);
+  };
+
+  // Helper function to dismiss notifications
+  const dismissNotification = (id: string) => {
+    setNotifications(prev => prev.filter(notification => notification.id !== id));
+  };
+
   // Combine all equipment databases
   const allWeapons = [
     ...Tools.sortWeapons(MeleeWeapons),
@@ -96,9 +112,48 @@ export default function InventoryManager({
 
   const addToInventory = (item: Weapon | Item | Perk, type: ItemType) => {
     if (type === 'perks') {
-      // Add perks to main perks array instead of inventory
-      const newPerks = [...selectedCharacter.perks, structuredClone(item as Perk)];
-      onUpdateCharacter(selectedCharacterId, { perks: newPerks });
+      const perk = item as Perk;
+      
+      // Check if character has enough perk points
+      if (selectedCharacter.stats.perkPoints < perk.cost) {
+        showNotification({
+          type: 'error',
+          message: `Not enough perk points! Need ${perk.cost} but only have ${selectedCharacter.stats.perkPoints}.`
+        });
+        return;
+      }
+      
+      // Add perk to main perks array
+      const newPerks = [...selectedCharacter.perks, structuredClone(perk)];
+      
+      // Calculate new stats based on perk modifiers
+      const newStats = {
+        ...selectedCharacter.stats,
+        perkPoints: selectedCharacter.stats.perkPoints - perk.cost,
+        corruption: selectedCharacter.stats.corruption + (perk.startingCorruption || 0),
+        health: {
+          ...selectedCharacter.stats.health,
+          max: selectedCharacter.stats.health.max + (perk.healthModifier || 0),
+          // Also increase current health if health was increased
+          current: perk.healthModifier && perk.healthModifier > 0 
+            ? selectedCharacter.stats.health.current + perk.healthModifier
+            : selectedCharacter.stats.health.current
+        },
+        speed: selectedCharacter.stats.speed + (perk.speedModifier || 0),
+        injuries: selectedCharacter.stats.injuries + (perk.injuriesModifier || 0),
+        safelightShards: selectedCharacter.stats.safelightShards + (perk.safelightShardsModifier || 0)
+      };
+      
+      onUpdateCharacter(selectedCharacterId, { 
+        perks: newPerks,
+        stats: newStats
+      });
+      
+      // Show success notification
+      showNotification({
+        type: 'success',
+        message: `Added "${perk.name}" perk! Cost: ${perk.cost} perk points.`
+      });
     } else {
       // Add weapons/items to inventory
       const newInventory = {
@@ -111,9 +166,42 @@ export default function InventoryManager({
 
   const removeFromInventory = (index: number, type: ItemType) => {
     if (type === 'perks') {
+      const perkToRemove = selectedCharacter.perks[index];
+      
       // Remove from main perks array
       const newPerks = selectedCharacter.perks.filter((_, i) => i !== index);
-      onUpdateCharacter(selectedCharacterId, { perks: newPerks });
+      
+      // Calculate new stats by reversing perk modifiers
+      const newStats = {
+        ...selectedCharacter.stats,
+        perkPoints: selectedCharacter.stats.perkPoints + perkToRemove.cost,
+        corruption: Math.max(0, selectedCharacter.stats.corruption - (perkToRemove.startingCorruption || 0)),
+        health: {
+          ...selectedCharacter.stats.health,
+          max: Math.max(1, selectedCharacter.stats.health.max - (perkToRemove.healthModifier || 0)),
+          // Decrease current health if max health was decreased and current > new max
+          current: perkToRemove.healthModifier && perkToRemove.healthModifier > 0
+            ? Math.min(
+                selectedCharacter.stats.health.current - perkToRemove.healthModifier,
+                selectedCharacter.stats.health.max - perkToRemove.healthModifier
+              )
+            : selectedCharacter.stats.health.current
+        },
+        speed: Math.max(1, selectedCharacter.stats.speed - (perkToRemove.speedModifier || 0)),
+        injuries: Math.max(0, selectedCharacter.stats.injuries - (perkToRemove.injuriesModifier || 0)),
+        safelightShards: Math.max(0, selectedCharacter.stats.safelightShards - (perkToRemove.safelightShardsModifier || 0))
+      };
+      
+      onUpdateCharacter(selectedCharacterId, { 
+        perks: newPerks,
+        stats: newStats
+      });
+      
+      // Show success notification
+      showNotification({
+        type: 'info',
+        message: `Removed "${perkToRemove.name}" perk! Refunded: ${perkToRemove.cost} perk points.`
+      });
     } else {
       // Remove from inventory
       const newInventory = {
@@ -372,13 +460,42 @@ export default function InventoryManager({
                     )}
                   </>
                 ) : (
-                  <button 
-                    className="add-btn"
-                    onClick={() => addToInventory(item, type)}
-                    title="Add to inventory"
-                  >
-                    Add
-                  </button>
+                  (() => {
+                    // For perks, check if character can afford it
+                    if (type === 'perks') {
+                      const canAfford = selectedCharacter.stats.perkPoints >= item.cost;
+                      const isNegativeCost = item.cost < 0;
+                      
+                      return (
+                        <button 
+                          className={`add-btn ${!canAfford && !isNegativeCost ? 'disabled' : ''} ${isNegativeCost ? 'negative-cost' : ''}`}
+                          onClick={() => addToInventory(item, type)}
+                          disabled={!canAfford && !isNegativeCost}
+                          title={
+                            isNegativeCost 
+                              ? `Add ${item.name} (Gain ${Math.abs(item.cost)} perk points)`
+                              : canAfford 
+                                ? `Add ${item.name} (Cost: ${item.cost} perk points)`
+                                : `Cannot afford ${item.name} (Need ${item.cost}, have ${selectedCharacter.stats.perkPoints})`
+                          }
+                        >
+                          {isNegativeCost ? `Add (+${Math.abs(item.cost)} pts)` : 
+                           canAfford ? `Add (${item.cost} pts)` : 
+                           `Need ${item.cost - selectedCharacter.stats.perkPoints} more pts`}
+                        </button>
+                      );
+                    } else {
+                      return (
+                        <button 
+                          className="add-btn"
+                          onClick={() => addToInventory(item, type)}
+                          title="Add to inventory"
+                        >
+                          Add
+                        </button>
+                      );
+                    }
+                  })()
                 )}
               </div>
             </div>
@@ -586,6 +703,12 @@ export default function InventoryManager({
           </div>
         )}
       </ConfirmDialog>
+
+      {/* Notification system */}
+      <NotificationToast 
+        notifications={notifications} 
+        onDismiss={dismissNotification} 
+      />
     </>
   );
 }

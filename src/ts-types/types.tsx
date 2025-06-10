@@ -91,6 +91,10 @@ type Training = {
 type Perk = ItemDef & {
   cost: number;
   startingCorruption?: number;
+  healthModifier?: number;
+  speedModifier?: number;
+  injuriesModifier?: number;
+  safelightShardsModifier?: number;
 }
 
 type TabType = "home" | "story" | "setting" | "how-to-play" | "character-creation" 

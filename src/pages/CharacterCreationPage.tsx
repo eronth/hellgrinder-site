@@ -9,9 +9,20 @@ import CharacterGenerator from "./character-creation-components/CharacterGenerat
 
 export default function CharacterCreationPage() {
   const page: TabType = 'character-creation';
+  // Create a state to toggle rules and creator with persistent storage
+  const [showCreator, setShowCreator] = React.useState(() => {
+    try {
+      const saved = localStorage.getItem('hellgrinder_character_creation_toggle_state');
+      return saved ? JSON.parse(saved) : false;
+    } catch {
+      return false;
+    }
+  });
 
-  // Create a state to toggle rules and creator.
-  const [showCreator, setShowCreator] = React.useState(false);
+  // Save toggle state when it changes
+  React.useEffect(() => {
+    localStorage.setItem('hellgrinder_character_creation_toggle_state', JSON.stringify(showCreator));
+  }, [showCreator]);
 
   const toggleLabel = {
     left: 'Character Creation Rules',

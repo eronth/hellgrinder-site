@@ -17,6 +17,10 @@ import ConfirmDialog from "./ConfirmDialog.tsx";
 import InventoryManager from "./InventoryManager.tsx";
 import StatusEffectsManager from "./StatusEffectsManager.tsx";
 import FloatingStatusEffects from "./FloatingStatusEffects.tsx";
+import ImportExportPanel from "./ImportExportPanel.tsx";
+import NotificationToast, { Notification } from "./NotificationToast.tsx";
+
+import { CharacterStorage } from "../../common-design/utils/CharacterStorage.tsx";
 
 import './CharacterGenerator.css';
 
@@ -61,6 +65,8 @@ export default function CharacterGenerator() {
   const [selectedCharacterId, setSelectedCharacterId] = React.useState(null as string | null);
   const [isEditingName, setIsEditingName] = React.useState(false);
   const [editingName, setEditingName] = React.useState('');
+  const [notifications, setNotifications] = React.useState<Notification[]>([]);
+  const hasShownInitialLoadNotification = React.useRef(false);
     // Confirm dialog states
   const [deleteConfirmDialog, setDeleteConfirmDialog] = React.useState<{
     isOpen: boolean;
@@ -480,6 +486,59 @@ export default function CharacterGenerator() {
     setIsEditingName(false);
     setEditingName('');
   }, [selectedCharacterId]);
+  // Load characters from storage on component mount
+  React.useEffect(() => {
+    const { characters: savedCharacters, selectedCharacterId: savedSelectedId } = CharacterStorage.loadCharacters();
+    if (savedCharacters.length > 0) {
+      setCharacters(savedCharacters);
+      if (savedSelectedId && savedCharacters.find(c => c.id === savedSelectedId)) {
+        setSelectedCharacterId(savedSelectedId);
+      }
+      // Only show notification on first load to avoid duplicates in development
+      if (!hasShownInitialLoadNotification.current) {
+        showNotification('success', `Loaded ${savedCharacters.length} saved character(s)`);
+        hasShownInitialLoadNotification.current = true;
+      }
+    }
+  }, []);
+
+  // Auto-save characters when they change
+  React.useEffect(() => {
+    if (characters.length > 0) {
+      CharacterStorage.autoSave(characters, selectedCharacterId || undefined);
+    }
+  }, [characters, selectedCharacterId]);
+
+  // Notification management
+  const showNotification = (type: Notification['type'], message: string, duration?: number) => {
+    const id = `notification-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    const notification: Notification = { id, type, message, duration };
+    setNotifications(prev => [...prev, notification]);
+  };
+
+  const dismissNotification = (id: string) => {
+    setNotifications(prev => prev.filter(n => n.id !== id));
+  };
+
+  // Import/Export handlers
+  const handleCharactersImported = (importedCharacters: CharDesign[], importedSelectedId?: string) => {
+    setCharacters(importedCharacters);
+    if (importedSelectedId && importedCharacters.find(c => c.id === importedSelectedId)) {
+      setSelectedCharacterId(importedSelectedId);
+    } else if (importedCharacters.length > 0) {
+      setSelectedCharacterId(importedCharacters[0].id);
+    } else {
+      setSelectedCharacterId(null);
+    }
+  };
+
+  const handleError = (message: string) => {
+    showNotification('error', message);
+  };
+
+  const handleSuccess = (message: string) => {
+    showNotification('success', message);
+  };
 
   return (<div className={page}>
     <p>
@@ -728,8 +787,20 @@ export default function CharacterGenerator() {
               </option>
             ))}
           </select>
-        </div>
-      )}
+        </div>      )}
     </ConfirmDialog>
+
+    <ImportExportPanel
+      characters={characters}
+      selectedCharacterId={selectedCharacterId || undefined}
+      onCharactersImported={handleCharactersImported}
+      onError={handleError}
+      onSuccess={handleSuccess}
+    />
+
+    <NotificationToast
+      notifications={notifications}
+      onDismiss={dismissNotification}
+    />
   </div>);
 }

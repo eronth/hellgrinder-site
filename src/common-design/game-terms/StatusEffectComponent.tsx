@@ -1,6 +1,5 @@
-import React from "react";
 import {StatusEffect} from "../../ts-types/types.tsx";
-import { formatReactNode, formatTextValue } from "../utils/StatusEffectsUtils.tsx";
+import { formatReactNode } from "../utils/StatusEffectsUtils.tsx";
 
 type Props = StatusEffect;
 export default function StatusEffectComponent({

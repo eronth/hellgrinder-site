@@ -1,3 +1,4 @@
+import { useCallback, useMemo } from "react";
 import { Link } from "react-router-dom";
 
 type Pretext = {
@@ -16,11 +17,11 @@ type Props = {
   isIndex?: boolean;
 }
 
-export default function GameTitle({isIndex}: Props) {
+export default function GameTitle({ isIndex }: Props) {
 
-  const getRandInt = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;
-  function getRandElement<T>(arr: T[]): T { return arr[getRandInt(0, arr.length - 1)]; }
-  function title(css: string, pretext?: Pretext, posttext?: Posttext, name?: string): JSX.Element {
+  const getRandInt = useCallback((min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min, []);
+  const getRandElement = useCallback(<T,>(arr: T[]): T  => { return arr[getRandInt(0, arr.length - 1)]; }, [getRandInt]);
+  const title = useCallback((css: string, pretext?: Pretext, posttext?: Posttext, name?: string): JSX.Element => {
     const pre = <>{pretext ? <span className='before-title'>{pretext.pre}</span> : null}</>;
     const post = <>{posttext ? <span className='after-title'>{posttext.post}</span> : null}</>;
 
@@ -55,9 +56,9 @@ export default function GameTitle({isIndex}: Props) {
         </h1>
       </Link>
     );
-  }
-  
-  function quickTitleWrapper(css: string, element: JSX.Element): JSX.Element {
+  }, [isIndex]);
+
+  const quickTitleWrapper = useCallback((css: string, element: JSX.Element): JSX.Element => {
     return (
       <Link to="/" className='title-link'>
         <h1 className={css} title="Hellgrinder">
@@ -65,18 +66,19 @@ export default function GameTitle({isIndex}: Props) {
         </h1>
       </Link>
     );
-  }
-  const dotIOTitle = (<>
+  }, []);
+
+  const dotIOTitle = useMemo(() => (
     <span>
       <span className="hell">hell</span>
       <span className="grinder">grinder</span>
       <span className="io">.io</span>
     </span>
-  </>);
+  ), []);
 
-  const stund = (<span className="star">✦</span>);
-  const individualSpiritLetterElement = (letter: string, alignment: "top" | "bot"): JSX.Element => {
-    const topLet = (alignment === "top") 
+  const stund = useMemo(() => <span className="star">✦</span>, []);
+  const individualSpiritLetterElement = useCallback((letter: string, alignment: "top" | "bot"): JSX.Element => {
+    const topLet = (alignment === "top")
       ? letter
       : stund;
     const botLet = (alignment === "bot")
@@ -88,8 +90,8 @@ export default function GameTitle({isIndex}: Props) {
         <div className="letter bottom-letter">{botLet}</div>
       </div>
     );
-  };
-  const spiritTitle = (<>
+  }, [stund]);
+  const spiritTitle = useMemo(() => (<>
     <div>
       <div className="spirit">
         {individualSpiritLetterElement('S', 'top')}
@@ -101,11 +103,11 @@ export default function GameTitle({isIndex}: Props) {
       </div>
     </div>
     <div className="title">Hellgrinder</div>
-  </>);
+  </>), []);
 
-  const barcodeData = (<>12345</>);
+  const barcodeData = useMemo(() => (<>12345</>), []);
 
-  const barcodeTitle = (<>
+  const barcodeTitle = useMemo(() => (<>
     <div className="barcode-holder">
       <div className="upper-barcode">
         <span>{barcodeData}</span>
@@ -118,16 +120,16 @@ export default function GameTitle({isIndex}: Props) {
         {/* <span>{barcodeData}</span> */}
       </div>
     </div>
-  </>);
+  </>), [barcodeData]);
 
-  const broughtToYouBy = (<>
+  const broughtToYouBy = useMemo(() => (<>
     <div className="brought-to-you">
       <div className="brought-by">Brought to you by:</div>
       <div className="lemon-regular">Hellgrinder</div>
     </div>
-  </>);
+  </>), []);
 
-  const titlesDesigns: JSX.Element[] = [
+  const titlesDesigns: JSX.Element[] = useMemo(() => [
     title('lancelot', {pre: 'The Tales of', above: true}, null),
     title('lancelot2', {pre:'A'}, {post:'Story'}, "Hellgrinder's"),
     title('eagle-lake', {pre: 'The', over: true}, {post:'Saga', below: true}),
@@ -205,7 +207,9 @@ export default function GameTitle({isIndex}: Props) {
     title('jetbrains-mono-100'),
     // He🏒🏒grinder
     // The Beginning of the End: Hellgrinder
-  ];
+  ], [title, quickTitleWrapper, dotIOTitle, spiritTitle, barcodeTitle, broughtToYouBy]);
 
-  return (<div className='title-region'>{getRandElement(titlesDesigns)}</div>);
+  const randomTitle = useMemo(() => getRandElement(titlesDesigns), [getRandElement, titlesDesigns]);
+
+  return (<div className='title-region'>{randomTitle}</div>);
 }

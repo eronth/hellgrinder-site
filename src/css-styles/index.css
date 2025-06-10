@@ -208,10 +208,28 @@ td.center-num {
 }
 .perk .headrow .name {
   font-size: 1.25em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
 }
 .perk .headrow .cost {
   font-size: .98em;
   color: white;
+}
+.perk-count {
+  background-color: #e74c3c;
+  color: white;
+  font-size: 0.75em;
+  font-weight: bold;
+  padding: 0.2em 0.4em;
+  border-radius: 12px;
+  min-width: 1.5em;
+  text-align: center;
+  display: inline-block;
+}
+.total-cost {
+  color: #f39c12;
+  font-weight: bold;
 }
 .perk .description {
   font-size: 1em;

@@ -235,7 +235,6 @@ export default function CharacterGenerator() {
   function cancelDeleteCharacter() {
     setDeleteConfirmDialog({ isOpen: false, characterId: '', characterName: '' });
   }
-
   function getRandomCharacterName(): string {
     const usedNames = characters.map(c => c.name);
     const availableNames = characterNames.filter(name => !usedNames.includes(name));
@@ -246,7 +245,25 @@ export default function CharacterGenerator() {
     
     const randomIndex = Math.floor(Math.random() * availableNames.length);
     return availableNames[randomIndex];
-  }  function clearAllCharacters() {
+  }
+
+  // Group identical perks and count them
+  function groupPerks(perks: Perk[]): Array<{ perk: Perk; count: number }> {
+    const perkGroups = new Map<string, { perk: Perk; count: number }>();
+    
+    perks.forEach(perk => {
+      const key = perk.name; // Group by perk name
+      if (perkGroups.has(key)) {
+        perkGroups.get(key)!.count++;
+      } else {
+        perkGroups.set(key, { perk: perk, count: 1 });
+      }
+    });
+    
+    return Array.from(perkGroups.values());
+  }
+
+  function clearAllCharacters() {
     const characterCount = characters.length;
     
     setClearAllConfirmDialog({
@@ -426,15 +443,18 @@ export default function CharacterGenerator() {
               attackBonus={selectedCharacter.stats.attackBonus}
               isEditable={true}
               onStatsChange={(newStats) => updateCharacterStats(selectedCharacter.id, newStats)}
-            />
-            <div className="specialization-block">
+            />            <div className="specialization-block">
               <div className="title">Specializations</div>
               <div>+3 [{selectedCharacter.specializationBonus} Checks] (bonus)</div>
               <div>-5 [{selectedCharacter.specializationPenalty} Checks] (penalty)</div>
             </div>
             
-            {selectedCharacter.perks.map((p, i) =>
-              <PerkComponent key={`perk-${i}`} perk={p}/>
+            {groupPerks(selectedCharacter.perks).map((perkGroup, i) =>
+              <PerkComponent 
+                key={`perk-${i}`} 
+                perk={perkGroup.perk} 
+                count={perkGroup.count}
+              />
             )}
           </div>
             {selectedCharacter.kits.map((k, i) =>

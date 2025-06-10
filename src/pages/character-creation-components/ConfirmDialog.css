@@ -25,6 +25,11 @@
   animation: dialogSlideIn 0.2s ease-out;
 }
 
+/* Wider dialog for complex content */
+.confirm-dialog.wide {
+  max-width: 666px;
+}
+
 @keyframes dialogSlideIn {
   from {
     opacity: 0;
@@ -94,6 +99,12 @@
   padding: 1rem 1.5rem;
   border-top: 1px solid #444;
   justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+/* Better layout for wide dialogs */
+.confirm-dialog.wide .confirm-dialog-footer {
+  gap: 1rem;
 }
 
 .confirm-dialog-button {
@@ -105,13 +116,49 @@
   transition: all 0.2s;
   border: 1px solid transparent;
   min-width: 80px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
 
   &:focus {
     outline: none;
     box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.4);
   }
 
-  &.cancel-button {
+  &.primary {
+    background-color: #646cff;
+    color: white;
+    border-color: #646cff;
+
+    &:hover {
+      background-color: #5a5fcf;
+      border-color: #5a5fcf;
+    }
+
+    &:active {
+      background-color: #4f54b8;
+      border-color: #4f54b8;
+    }
+  }
+
+  &.danger {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+
+    &:hover {
+      background-color: #c82333;
+      border-color: #c82333;
+    }
+
+    &:active {
+      background-color: #bd2130;
+      border-color: #bd2130;
+    }
+  }
+
+  &.secondary {
     background-color: transparent;
     color: rgba(255, 255, 255, 0.7);
     border-color: #555;
@@ -122,40 +169,10 @@
       border-color: #777;
     }
   }
+}
 
-  &.confirm-button {
-    &.primary {
-      background-color: #646cff;
-      color: white;
-      border-color: #646cff;
-
-      &:hover {
-        background-color: #5a5fcf;
-        border-color: #5a5fcf;
-      }
-
-      &:active {
-        background-color: #4f54b8;
-        border-color: #4f54b8;
-      }
-    }
-
-    &.danger {
-      background-color: #dc3545;
-      color: white;
-      border-color: #dc3545;
-
-      &:hover {
-        background-color: #c82333;
-        border-color: #c82333;
-      }
-
-      &:active {
-        background-color: #bd2130;
-        border-color: #bd2130;
-      }
-    }
-  }
+.button-icon {
+  font-size: 0.9em;
 }
 
 /* Ensure dialog appears above other content */

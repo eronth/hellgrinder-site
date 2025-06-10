@@ -50,8 +50,7 @@ export default function CharacterGenerator() {
   const [selectedCharacterId, setSelectedCharacterId] = React.useState(null as string | null);
   const [isEditingName, setIsEditingName] = React.useState(false);
   const [editingName, setEditingName] = React.useState('');
-  
-  // Confirm dialog states
+    // Confirm dialog states
   const [deleteConfirmDialog, setDeleteConfirmDialog] = React.useState<{
     isOpen: boolean;
     characterId: string;
@@ -60,6 +59,24 @@ export default function CharacterGenerator() {
     isOpen: false,
     characterId: '',
     characterName: ''
+  });
+
+  const [inventoryTransferDialog, setInventoryTransferDialog] = React.useState<{
+    isOpen: boolean;
+    characterId: string;
+    characterName: string;
+    weaponCount: number;
+    itemCount: number;
+    targetCharacterId: string;
+    willCreateNewCharacter: boolean;
+  }>({
+    isOpen: false,
+    characterId: '',
+    characterName: '',
+    weaponCount: 0,
+    itemCount: 0,
+    targetCharacterId: '',
+    willCreateNewCharacter: false
   });
   
   const [clearAllConfirmDialog, setClearAllConfirmDialog] = React.useState<{
@@ -211,13 +228,35 @@ export default function CharacterGenerator() {
     }
   }  function deleteCharacter(characterId: string) {
     const characterToDelete = characters.find(c => c.id === characterId);
-    const characterName = characterToDelete?.name || 'this character';
+    if (!characterToDelete) return;
     
-    setDeleteConfirmDialog({
-      isOpen: true,
-      characterId,
-      characterName
-    });
+    const characterName = characterToDelete.name;
+    const weaponCount = characterToDelete.inventory.weapons.length;
+    const itemCount = characterToDelete.inventory.items.length;
+    const hasInventory = weaponCount > 0 || itemCount > 0;
+    
+    if (hasInventory) {
+      // Character has inventory items, show transfer dialog
+      const otherCharacters = characters.filter(c => c.id !== characterId);
+      const willCreateNewCharacter = otherCharacters.length === 0;
+      
+      setInventoryTransferDialog({
+        isOpen: true,
+        characterId,
+        characterName,
+        weaponCount,
+        itemCount,
+        targetCharacterId: willCreateNewCharacter ? '' : otherCharacters[0].id,
+        willCreateNewCharacter
+      });
+    } else {
+      // No inventory, show regular delete confirmation
+      setDeleteConfirmDialog({
+        isOpen: true,
+        characterId,
+        characterName
+      });
+    }
   }
   
   function confirmDeleteCharacter() {
@@ -231,9 +270,90 @@ export default function CharacterGenerator() {
     
     setDeleteConfirmDialog({ isOpen: false, characterId: '', characterName: '' });
   }
-  
-  function cancelDeleteCharacter() {
+    function cancelDeleteCharacter() {
     setDeleteConfirmDialog({ isOpen: false, characterId: '', characterName: '' });
+  }
+
+  function confirmInventoryTransfer() {
+    const { characterId, targetCharacterId, willCreateNewCharacter } = inventoryTransferDialog;
+    const characterToDelete = characters.find(c => c.id === characterId);
+    if (!characterToDelete) return;
+
+    let finalTargetId = targetCharacterId;
+
+    if (willCreateNewCharacter) {
+      // Generate a new character to receive the inventory
+      const newChar: CharDesign = {
+        ...JSON.parse(JSON.stringify(characterDefaults)),
+        id: `char-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+        name: getRandomCharacterName()
+      };
+      
+      // Add the new character to the list
+      setCharacters(prev => [...prev.filter(c => c.id !== characterId), newChar]);
+      finalTargetId = newChar.id;
+      
+      // Transfer inventory to the new character
+      newChar.inventory = {
+        weapons: [...characterToDelete.inventory.weapons],
+        items: [...characterToDelete.inventory.items]
+      };
+      
+      // Set the new character as selected
+      setSelectedCharacterId(newChar.id);
+    } else {
+      // Transfer inventory to existing character
+      const targetCharacter = characters.find(c => c.id === finalTargetId);
+      if (targetCharacter) {
+        const updatedInventory = {
+          weapons: [...targetCharacter.inventory.weapons, ...characterToDelete.inventory.weapons],
+          items: [...targetCharacter.inventory.items, ...characterToDelete.inventory.items]
+        };
+        
+        // Update the target character and remove the deleted character
+        setCharacters(prev => 
+          prev
+            .filter(c => c.id !== characterId)
+            .map(c => c.id === finalTargetId ? { ...c, inventory: updatedInventory } : c)
+        );
+        
+        // Update selected character if needed
+        if (selectedCharacterId === characterId) {
+          setSelectedCharacterId(finalTargetId);
+        }
+      }
+    }
+
+    setInventoryTransferDialog({
+      isOpen: false,
+      characterId: '',
+      characterName: '',
+      weaponCount: 0,
+      itemCount: 0,
+      targetCharacterId: '',
+      willCreateNewCharacter: false
+    });
+  }
+
+  function cancelInventoryTransfer() {
+    // Show regular delete confirmation instead
+    const { characterId, characterName } = inventoryTransferDialog;
+    
+    setInventoryTransferDialog({
+      isOpen: false,
+      characterId: '',
+      characterName: '',
+      weaponCount: 0,
+      itemCount: 0,
+      targetCharacterId: '',
+      willCreateNewCharacter: false
+    });
+    
+    setDeleteConfirmDialog({
+      isOpen: true,
+      characterId,
+      characterName
+    });
   }
   function getRandomCharacterName(): string {
     const usedNames = characters.map(c => c.name);
@@ -493,27 +613,102 @@ export default function CharacterGenerator() {
     }
     <hr />
     
-    {/* Confirm Dialogs */}
-    <ConfirmDialog
+    {/* Confirm Dialogs */}    <ConfirmDialog
       isOpen={deleteConfirmDialog.isOpen}
       title="Delete Character"
       message={`Are you sure you want to delete "${deleteConfirmDialog.characterName}"? This action cannot be undone.`}
-      confirmText="Delete"
-      cancelText="Cancel"
-      confirmButtonVariant="danger"
-      onConfirm={confirmDeleteCharacter}
-      onCancel={cancelDeleteCharacter}
-    />
-    
-    <ConfirmDialog
+      buttons={[
+        {
+          text: "Cancel",
+          onClick: cancelDeleteCharacter,
+          variant: 'secondary'
+        },
+        {
+          text: "Delete",
+          onClick: confirmDeleteCharacter,
+          variant: 'danger',
+          autoFocus: true
+        }
+      ]}
+    />      <ConfirmDialog
       isOpen={clearAllConfirmDialog.isOpen}
       title="Clear All Characters"
       message={`Are you sure you want to delete all ${clearAllConfirmDialog.characterCount} character${clearAllConfirmDialog.characterCount !== 1 ? 's' : ''}? This action cannot be undone.`}
-      confirmText="Clear All"
-      cancelText="Cancel"
-      confirmButtonVariant="danger"
-      onConfirm={confirmClearAllCharacters}
-      onCancel={cancelClearAllCharacters}
-    />
+      buttons={[
+        {
+          text: "Cancel",
+          onClick: cancelClearAllCharacters,
+          variant: 'secondary'
+        },
+        {
+          text: "Clear All",
+          onClick: confirmClearAllCharacters,
+          variant: 'danger',
+          autoFocus: true
+        }
+      ]}
+    /><ConfirmDialog
+      isOpen={inventoryTransferDialog.isOpen}
+      title="Transfer Inventory"
+      message={(() => {
+        const { characterName, weaponCount, itemCount, willCreateNewCharacter } = inventoryTransferDialog;
+        const itemText = weaponCount > 0 && itemCount > 0 
+          ? `${weaponCount} weapon${weaponCount !== 1 ? 's' : ''} and ${itemCount} item${itemCount !== 1 ? 's' : ''}`
+          : weaponCount > 0 
+            ? `${weaponCount} weapon${weaponCount !== 1 ? 's' : ''}`
+            : `${itemCount} item${itemCount !== 1 ? 's' : ''}`;
+        
+        if (willCreateNewCharacter) {
+          return `"${characterName}" has ${itemText}. Would you like to generate a new character and transfer the items to them?`;
+        } else {
+          return `"${characterName}" has ${itemText}. Would you like to transfer them to another character?`;
+        }
+      })()}
+      buttons={[
+        {
+          text: "Cancel",
+          onClick: () => setInventoryTransferDialog({
+            isOpen: false,
+            characterId: '',
+            characterName: '',
+            weaponCount: 0,
+            itemCount: 0,
+            targetCharacterId: '',
+            willCreateNewCharacter: false
+          }),
+          variant: 'secondary'
+        },
+        {
+          text: "Delete Without Transfer",
+          onClick: cancelInventoryTransfer,
+          variant: 'danger'
+        },
+        {
+          text: inventoryTransferDialog.willCreateNewCharacter ? "Generate & Transfer" : "Transfer",
+          onClick: confirmInventoryTransfer,
+          variant: 'primary',
+          autoFocus: true        }
+      ]}
+    >
+      {inventoryTransferDialog.isOpen && !inventoryTransferDialog.willCreateNewCharacter && (
+        <div className="transfer-options">
+          <label htmlFor="inventory-transfer-target">Transfer to:</label>
+          <select
+            id="inventory-transfer-target"
+            value={inventoryTransferDialog.targetCharacterId}
+            onChange={(e) => setInventoryTransferDialog(prev => ({
+              ...prev,
+              targetCharacterId: e.target.value
+            }))}
+          >
+            {characters.filter(c => c.id !== inventoryTransferDialog.characterId).map(char => (
+              <option key={char.id} value={char.id}>
+                {char.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+    </ConfirmDialog>
   </div>);
 }

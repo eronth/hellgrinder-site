@@ -500,11 +500,19 @@ export default function InventoryManager({
         message={transferDialog.item ? 
           `Transfer "${transferDialog.item.name}" to another character?` : ''
         }
-        confirmText="Transfer"
-        cancelText="Cancel"
-        confirmButtonVariant="primary"
-        onConfirm={confirmTransfer}
-        onCancel={cancelTransfer}
+        buttons={[
+          {
+            text: "Cancel",
+            onClick: cancelTransfer,
+            variant: 'secondary'
+          },
+          {
+            text: "Transfer",
+            onClick: confirmTransfer,
+            variant: 'primary',
+            autoFocus: true
+          }
+        ]}
       >
         {transferDialog.isOpen && otherCharacters.length > 0 && (
           <div className="transfer-options">
@@ -544,11 +552,19 @@ export default function InventoryManager({
             return `Transfer all ${itemCount} ${itemType} to another character?`;
           }
         })()}
-        confirmText="Transfer All"
-        cancelText="Cancel"
-        confirmButtonVariant="primary"
-        onConfirm={confirmBulkTransfer}
-        onCancel={cancelBulkTransfer}
+        buttons={[
+          {
+            text: "Cancel",
+            onClick: cancelBulkTransfer,
+            variant: 'secondary'
+          },
+          {
+            text: "Transfer All",
+            onClick: confirmBulkTransfer,
+            variant: 'primary',
+            autoFocus: true
+          }
+        ]}
       >
         {bulkTransferDialog.isOpen && otherCharacters.length > 0 && (
           <div className="transfer-options">

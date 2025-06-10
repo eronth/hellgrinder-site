@@ -1,15 +1,19 @@
 import React from 'react';
 import './ConfirmDialog.css';
 
+interface ConfirmDialogButton {
+  text: string;
+  onClick: () => void;
+  variant?: 'danger' | 'primary' | 'secondary';
+  icon?: string;
+  autoFocus?: boolean;
+}
+
 interface ConfirmDialogProps {
   isOpen: boolean;
   title: string;
   message: string;
-  confirmText?: string;
-  cancelText?: string;
-  onConfirm: () => void;
-  onCancel: () => void;
-  confirmButtonVariant?: 'danger' | 'primary';
+  buttons: ConfirmDialogButton[];
   children?: React.ReactNode;
 }
 
@@ -17,26 +21,30 @@ export default function ConfirmDialog({
   isOpen,
   title,
   message,
-  confirmText = 'Confirm',
-  cancelText = 'Cancel',
-  onConfirm,
-  onCancel,
-  confirmButtonVariant = 'primary',
+  buttons,
   children
 }: ConfirmDialogProps) {
+  // Handle escape key - use first button with 'secondary' variant as default cancel action
+  const defaultCancelAction = buttons.find(b => b.variant === 'secondary')?.onClick || (() => {});
+  
+  // Determine if dialog should be wider based on content
+  const needsWideLayout = buttons.length > 2 || 
+    buttons.some(button => button.text.length > 12) ||
+    message.length > 100;
+  
   // Handle escape key
   React.useEffect(() => {
     if (!isOpen) return;
     
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        onCancel();
+        defaultCancelAction();
       }
     };
     
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
-  }, [isOpen, onCancel]);
+  }, [isOpen, defaultCancelAction]);
 
   // Prevent body scroll when dialog is open
   React.useEffect(() => {
@@ -54,13 +62,13 @@ export default function ConfirmDialog({
   if (!isOpen) return null;
 
   return (
-    <div className="confirm-dialog-overlay" onClick={onCancel}>
-      <div className="confirm-dialog" onClick={(e) => e.stopPropagation()}>
+    <div className="confirm-dialog-overlay" onClick={defaultCancelAction}>
+      <div className={`confirm-dialog ${needsWideLayout ? 'wide' : ''}`} onClick={(e) => e.stopPropagation()}>
         <div className="confirm-dialog-header">
           <h3 className="confirm-dialog-title">{title}</h3>
           <button 
             className="confirm-dialog-close" 
-            onClick={onCancel}
+            onClick={defaultCancelAction}
             aria-label="Close dialog"
           >
             ✕
@@ -73,19 +81,17 @@ export default function ConfirmDialog({
         </div>
         
         <div className="confirm-dialog-footer">
-          <button 
-            className="confirm-dialog-button cancel-button" 
-            onClick={onCancel}
-          >
-            {cancelText}
-          </button>
-          <button 
-            className={`confirm-dialog-button confirm-button ${confirmButtonVariant}`}
-            onClick={onConfirm}
-            autoFocus
-          >
-            {confirmText}
-          </button>
+          {buttons.map((button, index) => (
+            <button
+              key={index}
+              className={`confirm-dialog-button ${button.variant || 'secondary'}`}
+              onClick={button.onClick}
+              autoFocus={button.autoFocus}
+            >
+              {button.icon && <span className="button-icon">{button.icon}</span>}
+              {button.text}
+            </button>
+          ))}
         </div>
       </div>
     </div>

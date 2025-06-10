@@ -1,6 +1,9 @@
 import { useCallback, useMemo } from "react";
 import { Link } from "react-router-dom";
 
+// Module-level storage for selected title index to persist across all renders
+let globalSelectedTitleIndex: number | null = null;
+
 type Pretext = {
   pre: string;
   over?: boolean
@@ -19,8 +22,10 @@ type Props = {
 
 export default function GameTitle({ isIndex }: Props) {
 
+  // Debug: Check if isIndex is changing
+  console.log('GameTitle render - isIndex:', isIndex, 'globalSelectedTitleIndex:', globalSelectedTitleIndex);
+
   const getRandInt = useCallback((min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min, []);
-  const getRandElement = useCallback(<T,>(arr: T[]): T  => { return arr[getRandInt(0, arr.length - 1)]; }, [getRandInt]);
   const title = useCallback((css: string, pretext?: Pretext, posttext?: Posttext, name?: string): JSX.Element => {
     const pre = <>{pretext ? <span className='before-title'>{pretext.pre}</span> : null}</>;
     const post = <>{posttext ? <span className='after-title'>{posttext.post}</span> : null}</>;
@@ -209,7 +214,10 @@ export default function GameTitle({ isIndex }: Props) {
     // The Beginning of the End: Hellgrinder
   ], [title, quickTitleWrapper, dotIOTitle, spiritTitle, barcodeTitle, broughtToYouBy]);
 
-  const randomTitle = useMemo(() => getRandElement(titlesDesigns), [getRandElement, titlesDesigns]);
+  // Use module-level storage for selected title index to persist across all renders
+  if (globalSelectedTitleIndex === null || globalSelectedTitleIndex >= titlesDesigns.length) {
+    globalSelectedTitleIndex = getRandInt(0, titlesDesigns.length - 1);
+  }
 
-  return (<div className='title-region'>{randomTitle}</div>);
+  return (<div className='title-region'>{titlesDesigns[globalSelectedTitleIndex]}</div>);
 }

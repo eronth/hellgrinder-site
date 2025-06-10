@@ -1,0 +1,449 @@
+/* Blood Flip Button and Effects */
+.blood-flip-button {
+  background: linear-gradient(135deg, #8B0000, #DC143C, #8B0000);
+  border: 2px solid #660000;
+  border-radius: 8px;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 24px;
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+  text-shadow: 0 0 8px rgba(139, 0, 0, 0.8);
+  box-shadow: 
+    0 4px 8px rgba(139, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  margin: 20px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 10;
+}
+
+.blood-flip-button:hover {
+  background: linear-gradient(135deg, #A00000, #FF1493, #A00000);
+  border-color: #770000;
+  box-shadow: 
+    0 6px 12px rgba(139, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  animation: bloodPulse 0.5s ease-in-out infinite alternate;
+}
+
+.blood-flip-button:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 4px rgba(139, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: bloodShake 0.3s ease-in-out;
+}
+
+/* Blood drip effects - multiple droplets */
+.blood-flip-button::before,
+.blood-flip-button::after {
+  content: '🩸';
+  position: absolute;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.blood-flip-button::before {
+  top: -25px;
+  left: 20%;
+  animation: bloodDrop1 2s ease-in-out infinite;
+}
+
+.blood-flip-button::after {
+  top: -30px;
+  right: 25%;
+  font-size: 10px;
+  animation: bloodDrop2 2.5s ease-in-out infinite 0.8s;
+}
+
+.blood-flip-button:hover::before,
+.blood-flip-button:hover::after {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+.blood-flip-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+/* Additional blood droplets around the container */
+.blood-flip-container::before,
+.blood-flip-container::after {
+  content: '🩸';
+  position: absolute;
+  font-size: 8px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.blood-flip-container::before {
+  left: -40px;
+  top: 10px;
+  animation: bloodSplatter1 3s ease-in-out infinite;
+}
+
+.blood-flip-container::after {
+  right: -40px;
+  top: -5px;
+  animation: bloodSplatter2 4s ease-in-out infinite 1.5s;
+}
+
+.blood-flip-button:hover ~ *,
+.blood-flip-container:hover::before,
+.blood-flip-container:hover::after {
+  animation-play-state: running;
+}
+
+/* Particle effect around button */
+.blood-flip-container:hover {
+  position: relative;
+}
+
+.blood-flip-container:hover::before {
+  content: '💀';
+  position: absolute;
+  left: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  opacity: 0;
+  animation: spookySideEffect 2s ease-in-out infinite;
+}
+
+.blood-flip-container:hover::after {
+  content: '💀';
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  opacity: 0;
+  animation: spookySideEffect 2s ease-in-out infinite 1s;
+}
+
+@keyframes spookySideEffect {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.5) rotate(0deg);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-50%) scale(1.2) rotate(180deg);
+  }
+}
+
+/* Blood drop animations */
+@keyframes bloodDrop1 {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.3) rotate(0deg);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(5px) scale(1) rotate(10deg);
+  }
+  85% {
+    opacity: 0.8;
+    transform: translateY(60px) scale(0.8) rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(80px) scale(0.2) rotate(90deg);
+  }
+}
+
+@keyframes bloodDrop2 {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5) rotate(0deg);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(3px) scale(1.2) rotate(-5deg);
+  }
+  80% {
+    opacity: 0.9;
+    transform: translateY(70px) scale(0.6) rotate(-30deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(90px) scale(0.1) rotate(-60deg);
+  }
+}
+
+@keyframes bloodSplatter1 {
+  0%, 85%, 100% {
+    opacity: 0;
+    transform: scale(0.3) rotate(0deg);
+  }
+  5% {
+    opacity: 0.4;
+    transform: scale(0.8) rotate(20deg);
+  }
+  15%, 75% {
+    opacity: 0.8;
+    transform: scale(1.5) rotate(180deg);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1) rotate(90deg);
+  }
+}
+
+@keyframes bloodSplatter2 {
+  0%, 90%, 100% {
+    opacity: 0;
+    transform: scale(0.2) rotate(0deg);
+  }
+  10% {
+    opacity: 0.6;
+    transform: scale(1) rotate(-15deg);
+  }
+  20%, 80% {
+    opacity: 1;
+    transform: scale(1.8) rotate(-180deg);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.2) rotate(-90deg);
+  }
+}
+
+/* Eerie background pattern when flipped */
+body.blood-flipped::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(220, 20, 60, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+  animation: eerieBackground 5s ease-in-out infinite alternate;
+}
+
+@keyframes eerieBackground {
+  0% {
+    background: 
+      radial-gradient(circle at 25% 25%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(220, 20, 60, 0.1) 0%, transparent 50%);
+  }
+  100% {
+    background: 
+      radial-gradient(circle at 75% 25%, rgba(139, 0, 0, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 25% 75%, rgba(220, 20, 60, 0.15) 0%, transparent 50%);
+  }
+}
+
+/* Flipped state styles */
+body.blood-flipped {
+  transform: rotate(180deg);
+  background-color: #0a0000;
+  color: #DC143C !important;
+  transition: all 0.8s ease-in-out;
+  background: radial-gradient(circle at center, #1a0000 0%, #0a0000 100%);
+  min-height: 100vh;
+}
+
+body.blood-flipped * {
+  color: #DC143C !important;
+  text-shadow: 0 0 4px rgba(220, 20, 60, 0.6);
+}
+
+body.blood-flipped a,
+body.blood-flipped button:not(.blood-flip-button),
+body.blood-flipped .nav-tab,
+body.blood-flipped .toggle-label {
+  color: #FF4500 !important;
+  text-shadow: 0 0 6px rgba(255, 69, 0, 0.8);
+}
+
+body.blood-flipped .blood-flip-button {
+  background: linear-gradient(135deg, #FF0000, #8B0000, #FF0000);
+  color: #000000 !important;
+  text-shadow: 0 0 8px rgba(255, 0, 0, 1);
+  border-color: #AA0000;
+  box-shadow: 
+    0 4px 8px rgba(255, 0, 0, 0.5),
+    inset 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth transition for the flip */
+html, body {
+  transition: transform 0.8s ease-in-out, background-color 0.8s ease-in-out;
+}
+
+/* Ensure the button container is visible during flip */
+.blood-flip-container {
+  z-index: 1000;
+  position: relative;
+}
+
+/* Accessibility - respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .blood-flip-button,
+  .blood-flip-button::before,
+  .blood-flip-button::after,
+  .blood-flip-container::before,
+  .blood-flip-container::after,
+  body.blood-flipped,
+  html, body {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  body.blood-flipped {
+    transform: rotate(180deg);
+    background-color: #0a0000;
+  }
+}
+
+/* Secret reveal animation */
+.blood-flip-container.secret-reveal {
+  animation: bloodSecretReveal 2s ease-out;
+}
+
+@keyframes bloodSecretReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(-50px);
+    filter: blur(10px);
+  }
+  20% {
+    opacity: 0.3;
+    transform: scale(0.8) translateY(-20px);
+    filter: blur(5px);
+  }
+  60% {
+    opacity: 0.8;
+    transform: scale(1.1) translateY(5px);
+    filter: blur(1px);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(0.95) translateY(-2px);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Blood sacrifice activation visual feedback */
+.blood-flip-container.secret-reveal::before {
+  content: '🩸💀🩸';
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  opacity: 0;
+  animation: sacrificeSymbols 2s ease-out;
+  z-index: 100;
+}
+
+@keyframes sacrificeSymbols {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(2) rotate(0deg);
+  }
+  30% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1) rotate(180deg);
+  }
+  70% {
+    opacity: 0.8;
+    transform: translateX(-50%) scale(1.2) rotate(360deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.5) rotate(540deg);
+  }
+}
+
+/* Ominous text appears when secret is revealed */
+.blood-flip-container.secret-reveal::after {
+  content: 'THE SACRIFICE HAS BEEN ACCEPTED...';
+  position: absolute;
+  top: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #8B0000;
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(139, 0, 0, 0.8);
+  opacity: 0;
+  animation: ominousMessage 2s ease-out;
+  z-index: 99;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+@keyframes ominousMessage {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  40%, 80% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+/* Subtle hint animation */
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Subtle screen flash when secret is revealed */
+body.secret-activated {
+  animation: bloodScreenFlash 0.5s ease-out;
+}
+
+@keyframes bloodScreenFlash {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgba(139, 0, 0, 0.1);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* Hidden state - ensure button is completely invisible when not revealed */
+.blood-flip-container:not(.secret-reveal) {
+  display: none !important;
+  visibility: hidden;
+  opacity: 0;
+}

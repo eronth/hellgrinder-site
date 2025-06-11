@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faFolder, faSave, faDownload, faUpload, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faFolder, faSave, faDownload, faUpload, faTrash, faLightbulb } from '@fortawesome/free-solid-svg-icons';
 import { CharDesign } from './CharacterGenerator';
 import { CharacterStorage } from '../../common-design/utils/CharacterStorage';
 import './ImportExportPanel.css';
@@ -175,7 +175,7 @@ export default function ImportExportPanel({
 
           <div className="panel-footer">
             <div className="tips">
-              <h5>💡 Tips:</h5>
+              <h5><FontAwesomeIcon icon={faLightbulb} />Tips:</h5>
               <ul>
                 <li>Characters auto-save when you make changes</li>
                 <li>Export regularly to backup your characters</li>

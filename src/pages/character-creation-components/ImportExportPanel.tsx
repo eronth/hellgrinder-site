@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faFolder, faSave, faDownload, faUpload, faTrash, faLightbulb } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faFolder, faSave, faDownload, faUpload, faTrash, faLightbulb, faBolt } from '@fortawesome/free-solid-svg-icons';
 import { CharDesign } from './CharacterGenerator';
 import { CharacterStorage } from '../../common-design/utils/CharacterStorage';
 import './ImportExportPanel.css';
@@ -114,36 +114,42 @@ export default function ImportExportPanel({
           </div>
 
           <div className="panel-section">
-            <h4><FontAwesomeIcon icon={faDownload} /> Export Characters</h4>
+            <h4><FontAwesomeIcon icon={faBolt} /> Quick Actions</h4>
             <p className="section-description">
-              Download all your characters as a JSON file for backup or sharing.
+              Manage your character data with these convenient options.
             </p>
-            <button 
-              className="export-btn"
-              onClick={handleExport}
-              disabled={characters.length === 0}
-            >
-              <FontAwesomeIcon icon={faDownload} /> Export All Characters ({characters.length})
-            </button>
-          </div>
-
-          <div className="panel-section">
-            <h4><FontAwesomeIcon icon={faUpload} /> Import Characters</h4>
-            <p className="section-description">
-              Load characters from a previously exported JSON file.
-            </p>
-            <div className="import-controls">
+            <div className="action-buttons">
+              <button 
+                className="export-btn"
+                onClick={handleExport}
+                disabled={characters.length === 0}
+                title="Download all characters as JSON file"
+              >
+                <FontAwesomeIcon icon={faDownload} /> Export ({characters.length})
+              </button>
+              
               <button 
                 className="import-btn"
                 onClick={handleImportClick}
                 disabled={isImporting}
+                title="Load characters from JSON file"
               >
                 {isImporting ? (
                   <><FontAwesomeIcon icon={faUpload} /> Importing...</>
                 ) : (
-                  <><FontAwesomeIcon icon={faUpload} /> Import Characters</>
+                  <><FontAwesomeIcon icon={faUpload} /> Import</>
                 )}
               </button>
+              
+              <button 
+                className="clear-btn danger-btn"
+                onClick={handleClearStorage}
+                disabled={!storageInfo.hasData}
+                title="Remove all saved character data"
+              >
+                <FontAwesomeIcon icon={faTrash} /> Clear All
+              </button>
+              
               <input
                 ref={fileInputRef}
                 type="file"
@@ -153,24 +159,9 @@ export default function ImportExportPanel({
                 aria-label="Select character file to import"
               />
             </div>
-            <div className="import-note">
-              <strong>Note:</strong> Importing will replace all current characters. 
-              Make sure to export your current characters first if you want to keep them.
+            <div className="action-note">
+              <strong>Note:</strong> Importing will replace all current characters. Export first to backup your data.
             </div>
-          </div>
-
-          <div className="panel-section danger-section">
-            <h4><FontAwesomeIcon icon={faTrash} /> Clear Data</h4>
-            <p className="section-description">
-              Remove all saved character data from your browser.
-            </p>
-            <button 
-              className="clear-btn danger-btn"
-              onClick={handleClearStorage}
-              disabled={!storageInfo.hasData}
-            >
-              <FontAwesomeIcon icon={faTrash} /> Clear All Saved Data
-            </button>
           </div>
 
           <div className="panel-footer">

@@ -229,8 +229,75 @@
   }
 }
 
-/* Responsive Design */
+/* Action Buttons Row Layout */
+.action-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.action-buttons .export-btn,
+.action-buttons .import-btn,
+.action-buttons .clear-btn {
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+}
+
+.action-note {
+  background-color: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 4px;
+  padding: 0.75rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 0.5rem;
+
+  strong {
+    color: #3b82f6;
+  }
+}
+
+/* Enhanced button styling for action row */
+.action-buttons .export-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.action-buttons .import-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.action-buttons .clear-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+}
+
+.action-buttons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Responsive design for action buttons */
 @media (max-width: 768px) {
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-buttons .export-btn,
+  .action-buttons .import-btn,
+  .action-buttons .clear-btn {
+    flex: none;
+    width: 100%;
+  }
+
   .panel-content {
     padding: 1rem;
   }

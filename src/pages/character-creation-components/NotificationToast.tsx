@@ -1,9 +1,11 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faExclamationCircle, faExclamationTriangle, faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
 import './NotificationToast.css';
 
 export interface Notification {
   id: string;
-  type: 'success' | 'error' | 'info' | 'warning';
+  type: 'success' | 'error' | 'warning' | 'info';
   message: string;
   duration?: number;
 }
@@ -34,11 +36,11 @@ export default function NotificationToast({ notifications, onDismiss }: Props) {
 
   const getIcon = (type: Notification['type']) => {
     switch (type) {
-      case 'success': return '✅';
-      case 'error': return '❌';
-      case 'warning': return '⚠️';
-      case 'info': return 'ℹ️';
-      default: return 'ℹ️';
+      case 'success': return <FontAwesomeIcon icon={faCheckCircle} />;
+      case 'error': return <FontAwesomeIcon icon={faExclamationCircle} />;
+      case 'warning': return <FontAwesomeIcon icon={faExclamationTriangle} />;
+      case 'info': return <FontAwesomeIcon icon={faInfoCircle} />;
+      default: return <FontAwesomeIcon icon={faInfoCircle} />;
     }
   };
 
@@ -62,7 +64,7 @@ export default function NotificationToast({ notifications, onDismiss }: Props) {
             onClick={() => onDismiss(notification.id)}
             aria-label="Dismiss notification"
           >
-            ✕
+            <FontAwesomeIcon icon={faTimes} />
           </button>
         </div>
       ))}

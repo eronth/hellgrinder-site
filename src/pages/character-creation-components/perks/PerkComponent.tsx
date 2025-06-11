@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Perk } from "../../../ts-types/types";
 
 type Props = {
@@ -47,7 +49,7 @@ export default function PerkComponent({ perk, count = 1 }: Props) {
       <div className='headrow'>
         <div className='name'>
           {perk.name}
-          {count > 1 && <span className='perk-count'>×{count}</span>}
+          {count > 1 && <span className='perk-count'><FontAwesomeIcon icon={faTimes} />{count}</span>}
         </div>
         <div className='cost'>
           Cost: {perk.cost} Perk Point{perk.cost !== 1 ? "s" : ""}

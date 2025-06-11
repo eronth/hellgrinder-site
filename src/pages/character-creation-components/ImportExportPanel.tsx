@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown, faFolder, faSave, faDownload, faUpload, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { CharDesign } from './CharacterGenerator';
 import { CharacterStorage } from '../../common-design/utils/CharacterStorage';
 import './ImportExportPanel.css';
@@ -73,14 +75,16 @@ export default function ImportExportPanel({
         onClick={() => setIsExpanded(!isExpanded)}
         aria-expanded={isExpanded}
       >
-        📁 Character Data Management
-        <span className={`toggle-arrow ${isExpanded ? 'expanded' : ''}`}>▼</span>
+        <FontAwesomeIcon icon={faFolder} /> Character Data Management
+        <span className={`toggle-arrow ${isExpanded ? 'expanded' : ''}`}>
+          <FontAwesomeIcon icon={faChevronDown} />
+        </span>
       </button>
 
       {isExpanded && (
         <div className="panel-content">
           <div className="panel-section">
-            <h4>💾 Save & Load</h4>
+            <h4><FontAwesomeIcon icon={faSave} /> Save & Load</h4>
             <p className="section-description">
               Characters are automatically saved to your browser's local storage.
             </p>
@@ -110,7 +114,7 @@ export default function ImportExportPanel({
           </div>
 
           <div className="panel-section">
-            <h4>📤 Export Characters</h4>
+            <h4><FontAwesomeIcon icon={faDownload} /> Export Characters</h4>
             <p className="section-description">
               Download all your characters as a JSON file for backup or sharing.
             </p>
@@ -119,12 +123,12 @@ export default function ImportExportPanel({
               onClick={handleExport}
               disabled={characters.length === 0}
             >
-              📤 Export All Characters ({characters.length})
+              <FontAwesomeIcon icon={faDownload} /> Export All Characters ({characters.length})
             </button>
           </div>
 
           <div className="panel-section">
-            <h4>📥 Import Characters</h4>
+            <h4><FontAwesomeIcon icon={faUpload} /> Import Characters</h4>
             <p className="section-description">
               Load characters from a previously exported JSON file.
             </p>
@@ -134,7 +138,11 @@ export default function ImportExportPanel({
                 onClick={handleImportClick}
                 disabled={isImporting}
               >
-                {isImporting ? '📥 Importing...' : '📥 Import Characters'}
+                {isImporting ? (
+                  <><FontAwesomeIcon icon={faUpload} /> Importing...</>
+                ) : (
+                  <><FontAwesomeIcon icon={faUpload} /> Import Characters</>
+                )}
               </button>
               <input
                 ref={fileInputRef}
@@ -152,7 +160,7 @@ export default function ImportExportPanel({
           </div>
 
           <div className="panel-section danger-section">
-            <h4>🗑️ Clear Data</h4>
+            <h4><FontAwesomeIcon icon={faTrash} /> Clear Data</h4>
             <p className="section-description">
               Remove all saved character data from your browser.
             </p>
@@ -161,7 +169,7 @@ export default function ImportExportPanel({
               onClick={handleClearStorage}
               disabled={!storageInfo.hasData}
             >
-              🗑️ Clear All Saved Data
+              <FontAwesomeIcon icon={faTrash} /> Clear All Saved Data
             </button>
           </div>
 

@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import './ConfirmDialog.css';
 
 interface ConfirmDialogButton {
@@ -71,7 +73,7 @@ export default function ConfirmDialog({
             onClick={defaultCancelAction}
             aria-label="Close dialog"
           >
-            ✕
+            <FontAwesomeIcon icon={faTimes} />
           </button>
         </div>
         

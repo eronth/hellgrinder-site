@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDice, faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import './FloatingDiceRoller.css';
 
 interface DiceRollResult {
@@ -87,9 +89,12 @@ export default function FloatingDiceRoller({ isVisible }: FloatingDiceRollerProp
         className="dice-roller-header"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <span className="dice-icon">🎲</span>
+        <FontAwesomeIcon icon={faDice} className="dice-icon" />
         <span className="header-text">Skill Check</span>
-        <span className="expand-arrow">{isExpanded ? '▼' : '▶'}</span>
+        <FontAwesomeIcon 
+          icon={isExpanded ? faChevronDown : faChevronRight} 
+          className="expand-arrow" 
+        />
       </div>
 
       {isExpanded && (

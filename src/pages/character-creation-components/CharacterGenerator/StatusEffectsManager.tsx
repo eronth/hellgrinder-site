@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { StatusEffect } from '../../ts-types/types';
-import { CharDesign, ActiveStatusEffect } from './CharacterGenerator/CharacterGenerator';
-import ConfirmDialog from './CharacterGenerator/ConfirmDialog';
-import RuleKeyword from '../../common-design/RuleKeyword';
-import StatusEffects from '../../common-design/game-terms/status-effects';
+import { StatusEffect } from '../../../ts-types/types';
+import { CharDesign, ActiveStatusEffect } from './CharacterGenerator';
+import ConfirmDialog from './ConfirmDialog';
+import RuleKeyword from '../../../common-design/RuleKeyword';
+import StatusEffects from '../../../common-design/game-terms/status-effects';
 
 import './StatusEffectsManager.css';
 

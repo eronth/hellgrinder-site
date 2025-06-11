@@ -1,17 +1,17 @@
 import React from "react";
-import { TabType, Kit, Perk, DamageElement, Weapon, Item, StatusEffect } from "../../ts-types/types.tsx";
-import { SkillChecks } from "../../ts-types/tag-types.tsx";
+import { TabType, Kit, Perk, DamageElement, Weapon, Item, StatusEffect } from "../../../ts-types/types.tsx";
+import { SkillChecks } from "../../../ts-types/tag-types.tsx";
 
-import KitComponent from "./kits/Kit.tsx";
-import PerkComponent from "./perks/PerkComponent.tsx";
-import WeaponComponent from "./kits/weapon/WeaponComponent.tsx";
-import ItemComponent from "./kits/item/ItemComponent.tsx";
+import KitComponent from "../kits/Kit.tsx";
+import PerkComponent from "../perks/PerkComponent.tsx";
+import WeaponComponent from "../kits/weapon/WeaponComponent.tsx";
+import ItemComponent from "../kits/item/ItemComponent.tsx";
 
-import Tools from "../../common-design/Tools.tsx";
+import Tools from "../../../common-design/Tools.tsx";
 
-import CombatKits from "../../common-design/equipment/combat-kits.tsx";
-import SupportKits from "../../common-design/equipment/support-kits.tsx";
-import Perks from "../../common-design/equipment/perks.tsx";
+import CombatKits from "../../../common-design/equipment/combat-kits.tsx";
+import SupportKits from "../../../common-design/equipment/support-kits.tsx";
+import Perks from "../../../common-design/equipment/perks.tsx";
 import CharacterStartingStatsTable from "./CharacterStartingStatsTable.tsx";
 import ConfirmDialog from "./ConfirmDialog.tsx";
 import InventoryManager from "./InventoryManager.tsx";
@@ -21,7 +21,7 @@ import FloatingDiceRoller from "./FloatingDiceRoller.tsx";
 import ImportExportPanel from "./ImportExportPanel.tsx";
 import NotificationToast, { Notification } from "./NotificationToast.tsx";
 
-import { CharacterStorage } from "../../common-design/utils/CharacterStorage.tsx";
+import { CharacterStorage } from "../../../common-design/utils/CharacterStorage.tsx";
 
 import './CharacterGenerator.css';
 

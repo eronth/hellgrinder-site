@@ -1,5 +1,5 @@
 import ColumnEntry from "../../common-design/ColumnEntry";
-import CharacterStartingStatsTable from "./CharacterStartingStatsTable";
+import CharacterStartingStatsTable from "./CharacterGenerator/CharacterStartingStatsTable";
 
 export default function CreationCoreRules() {
   return (<>

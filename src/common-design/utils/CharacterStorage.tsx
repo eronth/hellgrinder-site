@@ -1,4 +1,4 @@
-import { CharDesign } from "../../pages/character-creation-components/CharacterGenerator";
+import { CharDesign } from "../../pages/character-creation-components/CharacterGenerator/CharacterGenerator";
 
 const STORAGE_KEY = 'hellgrinder_characters';
 const STORAGE_VERSION = '1.0.0';

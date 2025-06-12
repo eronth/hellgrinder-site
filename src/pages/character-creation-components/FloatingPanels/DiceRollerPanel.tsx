@@ -19,6 +19,7 @@ type Props = {
 
 export default function DiceRollerPanel({ isVisible }: Props) {
   const [bonus, setBonus] = useState(0);
+  const [difficultyBonus, setDifficultyBonus] = useState(0);
   const [lastRoll, setLastRoll] = useState<DiceRollResult | null>(null);
   const [rollHistory, setRollHistory] = useState<DiceRollResult[]>([]);
   const [isRolling, setIsRolling] = useState(false);
@@ -52,13 +53,13 @@ export default function DiceRollerPanel({ isVisible }: Props) {
         Math.floor(Math.random() * 6) + 1
       ];
       
-      const total = dice.reduce((sum, die) => sum + die, 0) + bonus;
+      const total = dice.reduce((sum, die) => sum + die, 0) + bonus + difficultyBonus;
       const { rank, description } = getSuccessRank(total);
       const special = checkSpecialResult(dice);
       
       const result: DiceRollResult = {
         dice,
-        bonus,
+        bonus: bonus + difficultyBonus,
         total,
         successRank: rank,
         rankDescription: description,
@@ -109,29 +110,29 @@ export default function DiceRollerPanel({ isVisible }: Props) {
           <span className="shortcuts-label">Quick Difficulty:</span>
           <div className="difficulty-buttons">
             <button 
-              className={`difficulty-btn ${bonus === 2 ? 'active' : ''}`}
-              onClick={() => setBonus(2)}
+              className={`difficulty-btn ${difficultyBonus === 2 ? 'active' : ''}`}
+              onClick={() => setDifficultyBonus(2)}
               title="Easy task"
             >
               Easy (+2)
             </button>
             <button 
-              className={`difficulty-btn ${bonus === 0 ? 'active' : ''}`}
-              onClick={() => setBonus(0)}
+              className={`difficulty-btn ${difficultyBonus === 0 ? 'active' : ''}`}
+              onClick={() => setDifficultyBonus(0)}
               title="Normal task"
             >
               Normal (0)
             </button>
             <button 
-              className={`difficulty-btn ${bonus === -2 ? 'active' : ''}`}
-              onClick={() => setBonus(-2)}
+              className={`difficulty-btn ${difficultyBonus === -2 ? 'active' : ''}`}
+              onClick={() => setDifficultyBonus(-2)}
               title="Hard task"
             >
               Hard (-2)
             </button>
             <button 
-              className={`difficulty-btn ${bonus === -4 ? 'active' : ''}`}
-              onClick={() => setBonus(-4)}
+              className={`difficulty-btn ${difficultyBonus === -4 ? 'active' : ''}`}
+              onClick={() => setDifficultyBonus(-4)}
               title="Extremely difficult task"
             >
               Extreme (-4)

@@ -1,80 +1,23 @@
-/* Floating Dice Roller Styles */
-.floating-dice-roller {
-  position: fixed;
-  top: 80px; /* Position below the status effects */
-  left: 20px;
-  background-color: var(--card-background);
-  border: 1px solid #444;
-  border-radius: 8px;
-  min-width: 200px;
-  max-width: 400px;
-  z-index: 400;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-  overflow: hidden;
-}
-
-.floating-dice-roller.collapsed {
-  max-width: 180px;
-}
-
 .dice-roller-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  user-select: none;
   background-color: rgba(100, 108, 255, 0.1);
   border-bottom: 1px solid rgba(100, 108, 255, 0.2);
-}
 
-.dice-roller-header:hover {
-  background-color: rgba(100, 108, 255, 0.15);
-}
-
-.dice-icon {
-  color: #646cff;
-  transition: transform 0.3s ease;
-}
-
-.dice-roller-header:hover .dice-icon {
-  transform: rotate(15deg);
-}
-
-.header-text {
-  flex: 1;
-  color: rgba(255, 255, 255, 0.87);
-  font-weight: 500;
-  font-size: 0.9rem;
-}
-
-.expand-arrow {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.8rem;
-  transition: transform 0.2s ease;
-}
-
-.floating-dice-roller.expanded .expand-arrow {
-  transform: rotate(90deg);
-}
-
-.dice-roller-content {
-  padding: 1rem;
-  animation: slideDown 0.3s ease;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
+  .header-icon {
+    --header-icon-color: #646cff;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  
+  &:hover {
+    background-color: rgba(100, 108, 255, 0.15);
+
+    .header-icon {
+      transform: rotate(15deg);
+    }
   }
 }
+
+
+
+
 
 .dice-input-section {
   margin-bottom: 1rem;
@@ -539,11 +482,8 @@
 /* Responsive design */
 @media (max-width: 768px) {
   .floating-dice-roller {
-    position: fixed;
-    top: 60px;
-    left: 10px;
-    right: 10px;
     max-width: none;
+    min-width: auto;
   }
   
   .dice-display {

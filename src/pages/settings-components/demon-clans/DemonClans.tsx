@@ -21,10 +21,10 @@ export default function DemonClans() {
       {/* Individual Clans */}
       <AshbornLegion hx={factionHxLevel} />
       <StoneveinedOrder hx={factionHxLevel} />
-      <ZephpterHorde hx={factionHxLevel} />
       <ThornwraithConclave hx={factionHxLevel} />
       <UmbralNexus hx={factionHxLevel} />
       <VastfathomDominion hx={factionHxLevel} />
+      <ZephpterHorde hx={factionHxLevel} />
     </div>
   </>);
 }

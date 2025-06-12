@@ -1,0 +1,30 @@
+
+.floating-panels-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 500;
+  pointer-events: none; /* Allow clicks to pass through container */
+}
+
+/* Panel slots */
+.panel-slot {
+  pointer-events: auto; /* Re-enable clicks for actual panels */
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .floating-panels-container {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    align-items: stretch;
+  }
+  
+  .panel-slot {
+    width: 100%;
+  }
+}

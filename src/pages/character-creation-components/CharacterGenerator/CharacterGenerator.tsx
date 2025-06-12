@@ -16,8 +16,7 @@ import CharacterStartingStatsTable from "./CharacterStartingStatsTable.tsx";
 import ConfirmDialog from "./ConfirmDialog.tsx";
 import InventoryManager from "./InventoryManager.tsx";
 import StatusEffectsManager from "./StatusEffectsManager.tsx";
-import FloatingStatusEffects from "./FloatingStatusEffects.tsx";
-import FloatingDiceRoller from "./FloatingDiceRoller.tsx";
+import FloatingPanelsContainer from "../FloatingPanels/FloatingPanelsContainer.tsx";
 import ImportExportPanel from "./ImportExportPanel.tsx";
 import NotificationToast, { Notification } from "./NotificationToast.tsx";
 
@@ -540,19 +539,19 @@ export default function CharacterGenerator() {
   const handleSuccess = (message: string) => {
     showNotification('success', message);
   };
-
   return (<div className={page}>
     <p>
       On this page, you are able to quickly generate a new character at the
       click of a button. Use this to quickly make your first character, or
       to get back into a fight with the least delay possible.
-    </p>    <FloatingStatusEffects
-      statusEffects={selectedCharacter?.statusEffects ?? []}
-      characterName={selectedCharacter ? selectedCharacter.name : 'No Character Selected'}    />
+    </p>
     
-    <FloatingDiceRoller 
-      isVisible={!!selectedCharacter}
+    <FloatingPanelsContainer
+      isDiceRollerVisible={!!selectedCharacter}
+      activeStatusEffects={selectedCharacter?.statusEffects ?? []}
+      characterName={selectedCharacter ? selectedCharacter.name : 'No Character Selected'}
     />
+    
     <div className="character-selector">
       <button className="generate-character-btn magical-button" onClick={generateCharacter}>Generate Character</button>
       {characters.length > 0 && (

@@ -1,0 +1,114 @@
+.status-effects-header {
+  background-color: rgba(220, 53, 69, 0.1);
+  border-bottom: 1px solid rgba(220, 53, 69, 0.2);
+
+  .status-icon {
+    --header-icon-color: #dc3545;
+  }
+
+  &:hover {
+    background-color: rgba(220, 53, 69, 0.15);
+
+    .status-icon {
+      transform: rotate(15deg);
+    }
+  }
+}
+
+
+.floating-status-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.floating-status-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 0.75rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.floating-status-item:hover {
+  border-color: #dc3545;
+  background-color: rgba(220, 53, 69, 0.1);
+  transform: translateY(-1px);
+}
+
+.floating-status-item .status-effect-values {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Custom scrollbar for floating status effects */
+.floating-status-effects .status-effects-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.floating-status-effects .status-effects-content::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.floating-status-effects .status-effects-content::-webkit-scrollbar-thumb {
+  background-color: rgba(220, 53, 69, 0.5);
+  border-radius: 3px;
+}
+
+.floating-status-effects .status-effects-content::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(220, 53, 69, 0.7);
+}
+
+/* Slide down animation for status effects content */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced FontAwesome icon styling for status effects */
+.status-effects-header svg {
+  margin-right: 0.5rem;
+}
+
+.status-effects-header .expand-arrow {
+  margin-right: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .status-effects-manager {
+    width: 95vw;
+    max-height: 90vh;
+  }
+  
+  .status-effects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .floating-status-effects {
+    max-width: none;
+    min-width: auto;
+  }
+  
+  .floating-status-effects .status-effects-content {
+    max-height: 200px;
+  }
+  
+  .floating-status-item {
+    padding: 0.5rem;
+  }
+  
+  .status-effects-header .header-text {
+    font-size: 0.85rem;
+  }
+}

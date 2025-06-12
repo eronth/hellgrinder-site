@@ -37,7 +37,7 @@ type SkillChecks =
   | 'Corruption'
 
 type DemonFactionTags =
-  'Ashborn Legion' | 'Stoneveined Order' | 'Vastfathom Dominion'
+  'Ashborn Legion' | 'Stoneveined Order' | 'Vastfathom League'
   | 'Thornwraith Conclave' | 'Wanderlost Clan'
   | 'Zephpter Horde' | 'Umbral Nexus';
 

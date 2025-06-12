@@ -35,7 +35,7 @@ export default function GenericToNongenericTable() {
           </>,
         }} />
         <GenericToNongenericRow data={{
-          name: "Vastfathom Dominion",
+          name: "Vastfathom League",
           primary: "Abyssal",
           absorb: "Metal",
           weaknesses: ["Chthonic", "Nethercurrent"],

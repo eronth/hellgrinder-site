@@ -15,51 +15,58 @@
   }
 }
 
-
-.floating-status-list {
+.status-effects-panel {
+  max-height: 270px;
+  overflow-y: auto;
+}
+.status-list {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+
+
+  .status-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 0.75rem;
+    transition: all 0.2s;
+    cursor: pointer;
+    
+    &:hover {
+      border-color: #dc3545;
+      background-color: rgba(220, 53, 69, 0.1);
+      transform: translateY(-1px);
+    }
+    
+    .status-effect-values {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+  }
 }
 
-.floating-status-item {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
-  padding: 0.75rem;
-  transition: all 0.2s;
-  cursor: pointer;
-}
 
-.floating-status-item:hover {
-  border-color: #dc3545;
-  background-color: rgba(220, 53, 69, 0.1);
-  transform: translateY(-1px);
-}
 
-.floating-status-item .status-effect-values {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-  flex-wrap: wrap;
-}
 
 /* Custom scrollbar for floating status effects */
-.floating-status-effects .status-effects-content::-webkit-scrollbar {
+.panel-content::-webkit-scrollbar {
   width: 6px;
 }
 
-.floating-status-effects .status-effects-content::-webkit-scrollbar-track {
+.panel-content::-webkit-scrollbar-track {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 3px;
 }
 
-.floating-status-effects .status-effects-content::-webkit-scrollbar-thumb {
+.panel-content::-webkit-scrollbar-thumb {
   background-color: rgba(220, 53, 69, 0.5);
   border-radius: 3px;
 }
 
-.floating-status-effects .status-effects-content::-webkit-scrollbar-thumb:hover {
+.panel-content::-webkit-scrollbar-thumb:hover {
   background-color: rgba(220, 53, 69, 0.7);
 }
 

@@ -38,6 +38,7 @@ export default function CreaturesPage() {
         Using the table below, you can see which placeholder value should be swapped for which types.
       </p>
       <GenericToNongenericTable />
+      <br />
     </>
     {/*
     TODO create these creatures

@@ -589,3 +589,27 @@
     }
   }
 }
+
+.generated-character-display {
+  min-height: 52em;
+
+  .character-name {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: .5em;
+  }
+
+  .specialization-block {
+    margin: 1em .5em;
+
+    .title {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  }
+
+  .perk {
+    margin-top: 1em;
+  }
+}
+

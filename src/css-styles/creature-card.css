@@ -16,52 +16,60 @@
   border-top-left-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
 }
-.creature-card .title-row {
-  display: flex;
-  justify-content: space-between;
-}
-.creature-card .title-row .name {
-  font-size: 1.2em;
-  font-weight: bold;
-}
-.creature-card .stats {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 0;
+.creature-card {
+  .title-row {
+    display: flex;
+    justify-content: space-between;
+    .name {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  }
+
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0;
+  }
+
+  .creature-description {
+    padding-top: .5em;
+    padding-bottom: .5em;
+  }
+  .creature-abilities {
+    padding-top: .5em;
+
+    .details-indentation {
+      margin-left: 1em;
+    }
+  }
 }
 
-.creature-card .creature-description {
-  padding-top: .5em;
-  padding-bottom: .5em;
-}
+
 
 .damage-modifiers {
   display: flex;
   flex-wrap: wrap;
   gap: 0.25em;
   margin: 0 .5em;
+
+  .damage-modifier {
+    display: flex;
+    justify-content: space-between;
+    margin: .25em;
+    padding: 0 .5em;
+    border: 1px solid #fff8;
+    background-color: #fff4;
+    border-radius: 4px;
+    font-size: .8em;
+
+    .damage-type {
+      margin: 0 .5em;
+    }
+  }
 }
 
-.damage-modifier {
-  display: flex;
-  justify-content: space-between;
-  margin: .25em;
-  padding: 0 .5em;
-  border: 1px solid #fff8;
-  background-color: #fff4;
-  border-radius: 4px;
-  font-size: .8em;
-}
-.damage-modifier .damage-type {
-  margin: 0 .5em;
-}
 
-.creature-card .creature-abilities {
-  padding-top: .5em;
-}
-.creature-card .creature-abilities .details-indentation {
-  margin-left: 1em;
-}
 
 /* Responsive grid for creature cards */
 .creatures-grid {
@@ -88,5 +96,134 @@
 @media(max-width: 450px) {
   .creatures-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+.creature-card {
+  --border-color: rgba(255, 255, 255, 0.3);
+  --background-transition-color: rgba(255, 255, 255, 0.05);
+  --title-bg-color: rgba(255, 255, 255, 0.1);
+  --title-border-bottom-color: rgba(255, 255, 255, 0.2);
+
+  border-color: var(--border-color);
+  background: linear-gradient(135deg, var(--card-background), var(--background-transition-color));
+
+  .title-row {
+    background: linear-gradient(135deg, var(--title-bg-color), rgba(255, 255, 255, 0.05));
+    border-bottom: 1px solid var(--title-border-bottom-color);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .tags span.faction-tag {
+    --tag-bg-color: rgba(255, 255, 255, 0.1);
+    --tag-border-color: rgba(255, 255, 255, 0.3);
+    --text-color: rgba(255, 255, 255, 0.9);
+    background-color: var(--tag-bg-color);
+    border: 1px solid var(--tag-border-color);
+    border-radius: 12px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-right: 0.5rem;
+  }
+
+  &.faction-ashborn-legion {
+    --border-color: #8B0000; /* Dark red for Infernal */
+    --background-transition-color: rgba(139, 0, 0, 0.1);
+    --title-bg-color: rgba(139, 0, 0, 0.15);
+    --title-border-bottom-color: rgba(139, 0, 0, 0.3);
+  }
+
+  &.faction-stoneveined-order {
+    --border-color: #4A4A4A; /* Dark gray for Chthonic */
+    --background-transition-color: rgba(74, 74, 74, 0.1);
+    --title-bg-color: rgba(74, 74, 74, 0.15);
+    --title-border-bottom-color: rgba(74, 74, 74, 0.3);
+  }
+
+  &.faction-vastfathom-league {
+    --border-color: #191970; /* Dark midnight blue for Abyssal */
+    --background-transition-color: rgba(25, 25, 112, 0.1);
+    --title-bg-color: rgba(25, 25, 112, 0.15);
+    --title-border-bottom-color: rgba(25, 25, 112, 0.3);
+  }
+
+  &.faction-thornwraith-covenant {
+    --border-color: #228B22; /* Dark forest green for Verdant */
+    --background-transition-color: rgba(34, 139, 34, 0.1);
+    --title-bg-color: rgba(34, 139, 34, 0.15);
+    --title-border-bottom-color: rgba(34, 139, 34, 0.3);
+  }
+
+  &.faction-wanderlost-clans {
+    --border-color: #8B7355; /* Dark bronze for Metal */
+    --background-transition-color: rgba(139, 115, 85, 0.1);
+    --title-bg-color: rgba(139, 115, 85, 0.15);
+    --title-border-bottom-color: rgba(139, 115, 85, 0.3);
+  }
+
+  &.faction-zephpter-horde {
+    --border-color: #4B0082; /* Dark indigo for Nethercurrent */
+    --background-transition-color: rgba(75, 0, 130, 0.1);
+    --title-bg-color: rgba(75, 0, 130, 0.15);
+    --title-border-bottom-color: rgba(75, 0, 130, 0.3);
+  }
+
+  &.faction-umbral-nexus {
+    --border-color: #2F2F2F; /* Very dark gray for Voidyr */
+    --background-transition-color: rgba(47, 47, 47, 0.1);
+    --title-bg-color: rgba(47, 47, 47, 0.15);
+    --title-border-bottom-color: rgba(47, 47, 47, 0.3);
+  }
+
+  /* Other faction styles */
+  &.faction-sinner {
+    --border-color: #B22222; /* Dark firebrick red for Sinners */
+    --background-transition-color: rgba(178, 34, 34, 0.1);
+    --title-bg-color: rgba(178, 34, 34, 0.15);
+    --title-border-bottom-color: rgba(178, 34, 34, 0.3);
+  }
+
+  &.faction-forgefiend-syndicate {
+    --border-color: #CD853F; /* Dark goldenrod for Forgefiend */
+    --background-transition-color: rgba(205, 133, 63, 0.1);
+    --title-bg-color: rgba(205, 133, 63, 0.15);
+    --title-border-bottom-color: rgba(205, 133, 63, 0.3);
+  }
+
+  &.faction-hand-of-death {
+    --border-color: #1C1C1C; /* Almost black for Hand of Death */
+    --background-transition-color: rgba(28, 28, 28, 0.1);
+    --title-bg-color: rgba(28, 28, 28, 0.15);
+    --title-border-bottom-color: rgba(28, 28, 28, 0.3);
+  }
+
+  &.faction-heavens-host {
+    --border-color: #FFD700; /* Gold for Heaven's Host */
+    --background-transition-color: rgba(255, 215, 0, 0.1);
+    --title-bg-color: rgba(255, 215, 0, 0.15);
+    --title-border-bottom-color: rgba(255, 215, 0, 0.3);
+  }
+
+  &.faction-voidfire-conclave {
+    --border-color: #483D8B; /* Dark slate blue for Voidfire */
+    --background-transition-color: rgba(72, 61, 139, 0.1);
+    --title-bg-color: rgba(72, 61, 139, 0.15);
+    --title-border-bottom-color: rgba(72, 61, 139, 0.3);
+  }
+
+  &.faction-witch-coven {
+    --border-color: #8B008B; /* Dark magenta for Witch Coven */
+    --background-transition-color: rgba(139, 0, 139, 0.1);
+    --title-bg-color: rgba(139, 0, 139, 0.15);
+    --title-border-bottom-color: rgba(139, 0, 139, 0.3);
+  }
+
+  /* Generic/No faction styling - subtle enhancement */
+  &.faction-generic {
+    --border-color: rgba(255, 255, 255, 0.3);
+    --background-transition-color: rgba(255, 255, 255, 0.02);
+    --title-bg-color: rgba(255, 255, 255, 0.05);
   }
 }

@@ -9,13 +9,63 @@ type Props = {
 export default function CreatureCard({ data }: Props) {
   const hexIcon = '⬣';
 
-  return (<div className='creature-card'>
+  // Determine faction class based on creature tags
+  const getFactionClass = (tags: (string | { tag: string; value: number })[]) => {
+    const tagStrings = tags.map(tag => typeof tag === 'string' ? tag : tag.tag);
+    
+    // Define faction mappings
+    const factionMap: { [key: string]: string } = {
+      'Ashborn Legion': 'faction-ashborn-legion',
+      'Stoneveined Order': 'faction-stoneveined-order',
+      'Vastfathom League': 'faction-vastfathom-league',
+      'Thornwraith Covenant': 'faction-thornwraith-covenant',
+      'Thornwraith Conclave': 'faction-thornwraith-covenant', // Alternative name
+      'Wanderlost Clans': 'faction-wanderlost-clans',
+      'Wanderlost Clan': 'faction-wanderlost-clans', // Alternative name
+      'Zephpter Horde': 'faction-zephpter-horde',
+      'Umbral Nexus': 'faction-umbral-nexus',
+      'Sinner': 'faction-sinner',
+      'Forgefiend Syndicate': 'faction-forgefiend-syndicate',
+      'Hand of Death': 'faction-hand-of-death',
+      "Heaven's Host": 'faction-heavens-host',
+      'Voidfire Conclave': 'faction-voidfire-conclave',
+      'Witch Coven': 'faction-witch-coven'
+    };
+
+    // Find the first matching faction
+    for (const tagString of tagStrings) {
+      if (factionMap[tagString]) {
+        return factionMap[tagString];
+      }
+    }
+    
+    return 'faction-generic'; // Default class for non-faction creatures
+  };
+
+  // Check if a tag is a faction tag
+  const isFactionTag = (tag: string | { tag: string; value: number }) => {
+    const tagString = typeof tag === 'string' ? tag : tag.tag;
+    const factionTags = [
+      'Ashborn Legion', 'Stoneveined Order', 'Vastfathom League',
+      'Thornwraith Covenant', 'Thornwraith Conclave', 'Wanderlost Clans', 'Wanderlost Clan',
+      'Zephpter Horde', 'Umbral Nexus', 'Sinner', 'Forgefiend Syndicate',
+      'Hand of Death', "Heaven's Host", 'Voidfire Conclave', 'Witch Coven'
+    ];
+    return factionTags.includes(tagString);
+  };
+
+  const factionClass = getFactionClass(data.tags);
+
+  return (<div className={`creature-card ${factionClass}`}>
     <div className='title-row'>
       <span className='name'>{data.name}</span>
       <span className='tier'>{data.tier}</span>
     </div>
     <div className='tags'>
-      {data.tags.map((tag, i) => <span key={`creature-${data.name}-tag-${i}`}>
+      {data.tags.map((tag, i) => <span 
+        key={`creature-${data.name}-tag-${i}`}
+        className={isFactionTag(tag) ? 'faction-tag' : ''}
+      >
         {(typeof tag === 'string')
           ? tag
           : `${tag.tag}: ${tag.value}`

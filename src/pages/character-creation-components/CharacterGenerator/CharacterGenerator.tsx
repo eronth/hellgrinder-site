@@ -695,8 +695,9 @@ export default function CharacterGenerator() {
       : <div className="generated-character-display"></div>
     }
     <hr />
-    
-    {/* Confirm Dialogs */}    <ConfirmDialog
+
+    {/* Confirm Dialogs */}
+    <ConfirmDialog
       isOpen={deleteConfirmDialog.isOpen}
       title="Delete Character"
       message={`Are you sure you want to delete "${deleteConfirmDialog.characterName}"? This action cannot be undone.`}
@@ -713,7 +714,8 @@ export default function CharacterGenerator() {
           autoFocus: true
         }
       ]}
-    />      <ConfirmDialog
+    />
+    <ConfirmDialog
       isOpen={clearAllConfirmDialog.isOpen}
       title="Clear All Characters"
       message={`Are you sure you want to delete all ${clearAllConfirmDialog.characterCount} character${clearAllConfirmDialog.characterCount !== 1 ? 's' : ''}? This action cannot be undone.`}
@@ -730,7 +732,8 @@ export default function CharacterGenerator() {
           autoFocus: true
         }
       ]}
-    /><ConfirmDialog
+    />
+    <ConfirmDialog
       isOpen={inventoryTransferDialog.isOpen}
       title="Transfer Inventory"
       message={(() => {

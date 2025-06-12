@@ -288,36 +288,7 @@ td {
   border-radius: 5px;
 }
 
-/* .creature-card .tags { */
-  /* display: inline-block; */
-  /* width: 100%; */
-  /* align-items: right; */
-/*} */
 
-/*.name-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-} */
-
-.generated-character-display {
-  min-height: 52em;
-}
-.generated-character-display .character-name {
-    font-size: 2em;
-    font-weight: bold;
-    margin-bottom: .5em;
-}
-.generated-character-display .specialization-block {
-  margin: 1em .5em;
-}
-.generated-character-display .specialization-block .title {
-  font-size: 1.2em;
-  font-weight: bold;
-}
-.generated-character-display .perk {
-  margin-top: 1em;
-}
 
 .reminder-text {
   font-size: .8em;

@@ -1,7 +1,7 @@
 import Panel from './Panel';
 import RuleKeyword from '../../../common-design/RuleKeyword';
 import { faShield } from '@fortawesome/free-solid-svg-icons';
-import { ActiveStatusEffect } from '../CharacterGenerator';
+import { ActiveStatusEffect } from '../CharacterGenerator/CharacterGenerator';
 import './StatusEffectsPanel.css';
 
 interface Props {
@@ -33,10 +33,10 @@ export default function StatusEffectsPanel({
       headerText={`${characterName} - Effects (${statusEffects.length})`}
       headerClassName="status-effects-header"
     >
-      <div className="panel-content">
-        <div className="floating-status-list">
+      <div className="panel-content status-effects-panel">
+        <div className="status-list">
           {statusEffects.map((activeEffect, index) => (
-            <div key={index} className="floating-status-item">
+            <div key={index} className="status-item">
               <RuleKeyword 
                 keyword={normalizeStatusEffectName(activeEffect.effect.name)}
                 statusEffectX={activeEffect.x}

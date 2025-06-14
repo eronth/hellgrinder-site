@@ -1,0 +1,173 @@
+.faction-selector {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.selector-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.selector-icon {
+  color: #646cff;
+  font-size: 1.1rem;
+}
+
+.selector-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.faction-dropdown {
+  width: 100%;
+  background-color: var(--card-background);
+  color: rgba(255, 255, 255, 0.87);
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  /* Custom dropdown styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg fill='rgba(255,255,255,0.87)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+.faction-dropdown:focus {
+  outline: none;
+  border-color: #646cff;
+  box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.2);
+  background-color: rgba(100, 108, 255, 0.1);
+}
+
+.faction-dropdown:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.faction-dropdown option {
+  background-color: var(--card-background);
+  color: rgba(255, 255, 255, 0.87);
+  padding: 0.5rem;
+}
+
+.faction-info {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  animation: fadeIn 0.3s ease;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.info-row:last-child {
+  margin-bottom: 0;
+}
+
+.info-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.info-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  text-align: right;
+}
+
+.info-value.primary {
+  background-color: rgba(100, 108, 255, 0.2);
+  color: #a8b4ff;
+}
+
+.info-value.absorb {
+  background-color: rgba(34, 139, 34, 0.2);
+  color: #90EE90;
+}
+
+.info-value.weakness {
+  background-color: rgba(220, 53, 69, 0.2);
+  color: #ff6b6b;
+}
+
+.special-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-value.special {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  padding: 0.5rem;
+  text-align: left;
+  line-height: 1.4;
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .faction-selector {
+    padding: 0.75rem;
+  }
+  
+  .faction-dropdown {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+  
+  .info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  
+  .info-value {
+    align-self: stretch;
+    text-align: left;
+  }
+  
+  .special-info {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+  }
+}

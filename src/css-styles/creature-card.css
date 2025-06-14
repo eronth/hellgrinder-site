@@ -129,17 +129,17 @@
   }
 
   &.faction-ashborn-legion {
-    --border-color: #8B0000; /* Dark red for Infernal */
+    --border-color: rgb(139, 0, 0); /* Dark red for Infernal */
     --background-transition-color: rgba(139, 0, 0, 0.1);
     --title-bg-color: rgba(139, 0, 0, 0.15);
     --title-border-bottom-color: rgba(139, 0, 0, 0.3);
   }
 
   &.faction-stoneveined-order {
-    --border-color: #4A4A4A; /* Dark gray for Chthonic */
-    --background-transition-color: rgba(74, 74, 74, 0.1);
-    --title-bg-color: rgba(74, 74, 74, 0.15);
-    --title-border-bottom-color: rgba(74, 74, 74, 0.3);
+    --border-color: rgb(134, 100, 55); /* Dim brown for Chthonic */
+    --background-transition-color: rgba(134, 100, 55, 0.1);
+    --title-bg-color: rgba(134, 100, 55, 0.15);
+    --title-border-bottom-color: rgba(134, 100, 55, 0.3);
   }
 
   &.faction-vastfathom-league {

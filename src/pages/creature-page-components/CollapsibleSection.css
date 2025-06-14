@@ -1,0 +1,193 @@
+.collapsible-section {
+  margin: 1.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background-color: var(--card-background);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.collapsible-section:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.collapsible-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.collapsible-header:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+  border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+.header-content {
+  flex: 1;
+}
+
+.section-title {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  transition: color 0.2s ease;
+}
+
+.collapsible-header:hover .section-title {
+  color: #646cff;
+}
+
+.section-description {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.4;
+}
+
+.toggle-icon {
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.collapsible-header:hover .toggle-icon {
+  background-color: rgba(100, 108, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.chevron {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.collapsible-header:hover .chevron {
+  color: #646cff;
+}
+
+.chevron.open {
+  transform: rotate(0deg);
+}
+
+.chevron.closed {
+  transform: rotate(0deg);
+}
+
+.collapsible-content {
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.collapsible-content.open {
+  max-height: 5000px; /* Large enough to accommodate any content */
+  opacity: 1;
+}
+
+.collapsible-content.closed {
+  max-height: 0;
+  opacity: 0;
+}
+
+.content-inner {
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.collapsible-content.closed .content-inner {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Enhanced animation for accordion expansion */
+@keyframes slideDown {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 5000px;
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    max-height: 5000px;
+    opacity: 1;
+  }
+  to {
+    max-height: 0;
+    opacity: 0;
+  }
+}
+
+.collapsible-content.open {
+  animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.collapsible-content.closed {
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .collapsible-header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.1rem;
+  }
+  
+  .section-description {
+    font-size: 0.8rem;
+  }
+  
+  .content-inner {
+    padding: 1rem;
+  }
+  
+  .toggle-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  .chevron {
+    font-size: 0.8rem;
+  }
+}
+
+/* Special styling for first section (faction examples) */
+.collapsible-section.faction-examples .collapsible-header {
+  background: linear-gradient(135deg, rgba(100, 108, 255, 0.1), rgba(139, 92, 246, 0.05));
+}
+
+.collapsible-section.faction-examples .collapsible-header:hover {
+  background: linear-gradient(135deg, rgba(100, 108, 255, 0.15), rgba(139, 92, 246, 0.08));
+}
+
+.collapsible-section.faction-examples .section-title {
+  color: #646cff;
+}
+
+.collapsible-section.faction-examples .toggle-icon {
+  background-color: rgba(100, 108, 255, 0.2);
+}
+
+.collapsible-section.faction-examples .collapsible-header:hover .toggle-icon {
+  background-color: rgba(100, 108, 255, 0.3);
+}

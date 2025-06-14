@@ -103,15 +103,25 @@ export default function CharacterGenerator() {
     isOpen: false,
     characterCount: 0
   });
+    const selectedCharacter = characters.find(c => c.id === selectedCharacterId) || null;
   
-  const selectedCharacter = characters.find(c => c.id === selectedCharacterId) || null;
-  
-  const characterNames = [
-    "Ash Walker", "Steel Heart", "Shadow Bane", "Iron Will", "Night Stalker",
-    "Flame Bearer", "Storm Rider", "Ghost Walker", "Blood Hunter", "Soul Reaper",
-    "War Hammer", "Death Whisper", "Void Walker", "Crimson Edge", "Thunder Strike",
-    "Dark Flame", "Ice Heart", "Wind Runner", "Stone Guard", "Light Bringer"
+  const firstNames = [
+    "Ash", "Steel", "Shadow", "Iron", "Night", "Flame", "Storm", "Ghost", 
+    "Blood", "Soul", "War", "Death", "Void", "Crimson", "Thunder", "Dark",
+    "Ice", "Wind", "Stone", "Light", "Silver", "Raven", "Wolf", "Ember",
+    "Frost", "Thorn", "Viper", "Blade", "Scar", "Grim", "Red", "Hawk", 
+    "Hero"
   ];
+  
+  const lastNames = [
+    "Walker", "Heart", "Bane", "Will", "Stalker", "Bearer", "Rider", 
+    "Hunter", "Reaper", "Hammer", "Whisper", "Edge", "Strike", "Flame",
+    "Runner", "Guard", "Bringer", "Fang", "Claw", "Born", "Sworn",
+    "Touched", "Marked", "Bound", "Forged", "Wrought", "Shaper", "Seeker",
+    "Slayer", "Keeper", "Thunder", "Warden", "Anvil",
+    "Hero"
+  ];
+
   const characterDefaults: Omit<CharDesign, 'id' | 'name'> = {
     stats: {
       health: { current: 6, max: 6 },
@@ -119,7 +129,8 @@ export default function CharacterGenerator() {
       corruption: 0, safelightShards: 2,
       perkPoints: 2,
       attackBonus: 'Melee',
-    },    startingCombatKits: 1, startingSupportKits: 1,
+    },
+    startingCombatKits: 1, startingSupportKits: 1,
     kits: [], perks: [], bonuses: [],
     specializationBonus: '', specializationPenalty: '',
     inventory: {
@@ -128,11 +139,13 @@ export default function CharacterGenerator() {
     },
     statusEffects: []
   };
+
   const specializationOptions: SkillChecks[] = [
-  'Might', 'Endurance', 'Agility', 'Stealth' , 'Observation' ,
-  'Communication', 'Stoic',
-  'Recovery' , 'Corruption',
+    'Might', 'Endurance', 'Agility', 'Stealth' , 'Observation' ,
+    'Communication', 'Stoic',
+    'Recovery' , 'Corruption',
   ];
+
   function generateCharacter() {
     // Generate a character
     let rand: number;
@@ -177,7 +190,6 @@ export default function CharacterGenerator() {
     setCharacters(prev => [...prev, newChar]);
     setSelectedCharacterId(newChar.id);
   }
-
   
   function getPerks(perkPoints: number) {
     const perksArr: Perk[] = [...Tools.sortPerks(Perks)];
@@ -211,11 +223,8 @@ export default function CharacterGenerator() {
       character.stats.corruption += p.startingCorruption ?? 0;
     });
     character.stats.perkPoints -= perksCost;
-
   }
-  
-  
-  
+
   function specialKitLogic(kit: Kit) {
     if (kit.name === "Helltouched") {
       const damageTypes: DamageElement[] = ['Metal', 'Infernal', 'Abyssal', 'Verdant', 'Chthonic', 'Nethercurrent', 'Voidyr'];
@@ -243,7 +252,9 @@ export default function CharacterGenerator() {
         + `Your melee attacks can deal ${damageTypes[rand]} instead of their default type. `
         + `You also gain Absorb ${damageTypes[rand]} 1.`;
     }
-  }  function deleteCharacter(characterId: string) {
+  }
+  
+  function deleteCharacter(characterId: string) {
     const characterToDelete = characters.find(c => c.id === characterId);
     if (!characterToDelete) return;
     
@@ -287,7 +298,8 @@ export default function CharacterGenerator() {
     
     setDeleteConfirmDialog({ isOpen: false, characterId: '', characterName: '' });
   }
-    function cancelDeleteCharacter() {
+  
+  function cancelDeleteCharacter() {
     setDeleteConfirmDialog({ isOpen: false, characterId: '', characterName: '' });
   }
 
@@ -373,15 +385,24 @@ export default function CharacterGenerator() {
     });
   }
   function getRandomCharacterName(): string {
+    // Generate random combinations until we find a unique one
     const usedNames = characters.map(c => c.name);
-    const availableNames = characterNames.filter(name => !usedNames.includes(name));
+    let attempts = 0;
+    const maxAttempts = 100; // Prevent infinite loops
     
-    if (availableNames.length === 0) {
-      return `Character ${characters.length + 1}`;
+    while (attempts < maxAttempts) {
+      const firstNameIndex = Math.floor(Math.random() * firstNames.length);
+      const lastNameIndex = Math.floor(Math.random() * lastNames.length);
+      const generatedName = `${firstNames[firstNameIndex]} ${lastNames[lastNameIndex]}`;
+      
+      if (!usedNames.includes(generatedName)) {
+        return generatedName;
+      }
+      attempts++;
     }
     
-    const randomIndex = Math.floor(Math.random() * availableNames.length);
-    return availableNames[randomIndex];
+    // Fallback if we somehow can't generate a unique name
+    return `Character ${characters.length + 1}`;
   }
 
   // Group identical perks and count them
@@ -481,11 +502,14 @@ export default function CharacterGenerator() {
   function cancelNameEdit() {
     setIsEditingName(false);
     setEditingName('');
-  } // Auto-cancel editing when switching characters
+  }
+  
+  // Auto-cancel editing when switching characters
   React.useEffect(() => {
     setIsEditingName(false);
     setEditingName('');
   }, [selectedCharacterId]);
+  
   // Load characters from storage on component mount
   React.useEffect(() => {
     const { characters: savedCharacters, selectedCharacterId: savedSelectedId } = CharacterStorage.loadCharacters();

@@ -1,7 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
+import { ThemeProvider } from './contexts/ThemeContext'
 import Rules from './Rules.tsx'
+import './css-styles/theme-system.css'
 import './css-styles/index.css'
 import './css-styles/kit.css'
 import './css-styles/title-fonts.css'
@@ -13,8 +15,10 @@ import './css-styles/rule-popup.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
-      <Rules />
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <Rules />
+      </BrowserRouter>
+    </ThemeProvider>
   </StrictMode>,
 )

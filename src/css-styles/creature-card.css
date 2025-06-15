@@ -394,3 +394,68 @@
 .encounter-grid {
   gap: 1rem;
 }
+
+/* Light mode adjustments for creature cards */
+:root[data-theme="light"] .creature-card {
+  border-color: rgba(0, 0, 0, 0.2);
+  
+  .title-row {
+    color: #1a1a1a;
+  }
+  
+  .add-creature-btn,
+  .remove-creature-btn {
+    color: rgba(0, 0, 0, 0.6);
+    border-color: rgba(0, 0, 0, 0.2);
+    
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+      color: rgba(0, 0, 0, 0.8);
+      border-color: rgba(0, 0, 0, 0.3);
+    }
+  }
+  
+  .add-creature-btn {
+    color: #2e7d32;
+    border-color: #2e7d32;
+    
+    &:hover {
+      background-color: rgba(46, 125, 50, 0.1);
+      border-color: #2e7d32;
+    }
+  }
+  
+  .remove-creature-btn {
+    color: #d32f2f;
+    border-color: #d32f2f;
+    
+    &:hover {
+      background-color: rgba(211, 47, 47, 0.1);
+      border-color: #d32f2f;
+    }
+  }
+}
+
+:root[data-theme="light"] .damage-modifier {
+  border-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+:root[data-theme="light"] .editable-health {
+  color: #2e7d32;
+  
+  &:hover {
+    color: #1b5e20;
+  }
+}
+
+:root[data-theme="light"] .health-input {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.2);
+  color: #1a1a1a;
+  
+  &:focus {
+    border-color: #2e7d32;
+    background: rgba(46, 125, 50, 0.1);
+  }
+}

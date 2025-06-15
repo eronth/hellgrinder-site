@@ -1,25 +1,26 @@
 .kit {
   --indent: .5em;
+  
+  .name {
+    --indent: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: .5em;
+  }
+
+  .benefits-label {
+    font-weight: bold;
+    margin-top: .5em;
+  }
+
+  .benefits {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding: .25em;
+  }
 }
 .kit > * {
   margin-left: var(--indent);
-}
-.kit .name {
-  --indent: 0;
-  font-size: 1.2em;
-  font-weight: bold;
-  margin-top: .5em;
-}
-
-.kit .benefits-label {
-  font-weight: bold;
-  margin-top: .5em;
-}
-
-.kit .benefits {
-  padding-left: 1em;
-  padding-right: 1em;
-  padding: .25em;
 }
 
 .weapon,
@@ -99,22 +100,22 @@
 
 /* Clickable dice styles - subtle and seamless */
 .clickable-dice {
-  color: inherit; /* Match surrounding text color */
+  color: inherit;
   cursor: pointer;
-  text-decoration: none; /* Remove underline by default */
+  text-decoration: none;
   transition: all 0.15s ease;
-  display: inline; /* Ensure it only takes space of content */
-  padding: 0; /* Remove any padding */
-  margin: 0; /* Remove any margin */
-  border: none; /* Remove any border */
-  background: none; /* Remove any background */
-  font: inherit; /* Inherit font properties */
+  display: inline;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  font: inherit;
 
   &:hover {
-    color: #66c0e6;
+    color: var(--dice-hover-color, #66c0e6);
     text-decoration: underline;
     text-decoration-style: dotted;
-    text-shadow: 0 0 4px rgba(79, 168, 212, 0.3);
+    text-shadow: var(--dice-hover-shadow, 0 0 4px rgba(79, 168, 212, 0.3));
   }
   
   &:active {
@@ -124,9 +125,9 @@
 
 
 .rolled-result {
-  color: hsl(142, 69%, 58%) !important;
+  color: var(--dice-result-color, hsl(142, 69%, 58%));
   font-weight: bold;
-  text-shadow: 0 0 6px rgba(74, 222, 128, 0.4);
+  text-shadow: var(--dice-result-shadow, 0 0 6px rgba(74, 222, 128, 0.4));
   animation: pulse-roll 0.6s ease-out;
 }
 

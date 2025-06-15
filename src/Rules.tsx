@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 import FancyIndexPage from "./pages/FancyIndexPage";
 import StoryPage from "./pages/StoryPage";
 import SettingPage from "./pages/SettingPage";
@@ -13,6 +14,7 @@ import MagicSpellPage from "./pages/MagicSpellPage";
 export default function Rules() {
   return (
     <div className="rules">
+      <ThemeSwitcher />
       <Routes>
         <Route path="/" element={<FancyIndexPage />} />
         <Route path="/story" element={<StoryPage />} />

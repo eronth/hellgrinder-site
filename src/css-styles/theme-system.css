@@ -1,0 +1,614 @@
+/* Theme System - CSS Variables for Light/Dark Mode and Faction Themes */
+/* This file extends the existing styling system with theme variables */
+
+/* Base System Variables - Always Available */
+:root {
+  /* Typography */
+  --font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Layout */
+  --page-margin: 2rem;
+  --border-radius-small: 4px;
+  --border-radius-medium: 8px;
+  --border-radius-large: 12px;
+  --border-radius-card: 10px;
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-medium: 0.25s ease;
+  --transition-slow: 0.4s ease;
+  
+  /* Shadows */
+  --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.2);
+  
+  /* Z-index scale */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-popover: 600;
+  --z-tooltip: 700;
+  --z-notification: 800;
+  --z-theme-switcher: 1000;
+}
+
+/* Light Theme Override (when explicitly set) */
+:root[data-theme="light"] {
+  color-scheme: light;
+  color: #213547;
+  background-color: #ffffff;
+  
+  /* Update existing CSS variables for light mode */
+  --card-background: #f8f9fa;
+  --card-header-background: #e9ecef;
+  --table-background: #ffffff;
+  --table-header-background: #e9ecef;
+  --table-row-background: #ffffff;
+  --table-row-alt-background: #f8f9fa;
+  
+  /* Light mode button theme variables */
+  --button-background: #f9f9f9;
+  --button-color: #213547;
+  --button-hover-border: #747bff;
+  --button-hover-background: #f0f0f0;
+}
+
+/* Dark Theme (default, preserving existing dark theme) */
+:root[data-theme="dark"],
+:root {
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  
+  /* Keep existing dark theme variables */
+  --card-background: #2a2a2a;
+  --card-header-background: #333333;
+  --table-background: #2a2a2a;
+  --table-header-background: #1e2157;
+  --table-row-background: #2a2a2a;
+  --table-row-alt-background: #2e2e2e;
+  
+  /* Default button theme variables */
+  --button-background: #1a1a1a;
+  --button-color: rgba(255, 255, 255, 0.87);
+  --button-hover-border: #646cff;
+  --button-hover-background: #1a1a1a;
+}
+
+/* System preference detection */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+    color: #213547;
+    background-color: #ffffff;
+    
+    --card-background: #f8f9fa;
+    --card-header-background: #e9ecef;
+    --table-background: #ffffff;
+    --table-header-background: #e9ecef;
+    --table-row-background: #ffffff;
+    --table-row-alt-background: #f8f9fa;
+    
+    /* Light mode button theme variables */
+    --button-background: #f9f9f9;
+    --button-color: #213547;
+    --button-hover-border: #747bff;
+    --button-hover-background: #f0f0f0;
+  }
+}
+
+/* Faction Theme Variables with Background Tinting */
+:root[data-faction="ashborn"] {
+  --faction-primary: #d84315; /* Deep orange-red instead of pure red */
+  --faction-primary-dark: #bf360c;
+  --faction-primary-light: #ff5722;
+  --faction-on-primary: #ffffff;
+  --faction-accent: #ff6f00;
+  --faction-accent-light: #ffab00;
+  --faction-background: #2a2424; /* Slightly warmer/redder dark background */
+  
+  /* Background tinting - very subtle */
+  background-color: var(--faction-background);
+}
+
+:root[data-theme="light"][data-faction="ashborn"] {
+  --faction-background: #fefafa; /* Very subtle red tint for light mode */
+}
+
+:root[data-faction="stoneveined"] {
+  --faction-primary: #5d4037;
+  --faction-primary-dark: #3e2723;
+  --faction-primary-light: #8d6e63;
+  --faction-on-primary: #ffffff;
+  --faction-accent: #795548;
+  --faction-accent-light: #a1887f;
+  --faction-background: #262424; /* Slightly earthier dark background */
+
+  background-color: var(--faction-background);
+}
+
+:root[data-theme="light"][data-faction="stoneveined"] {
+  --faction-background: #fefefe; /* Very subtle brown tint for light mode */
+}
+
+:root[data-faction="thornwraith"] {
+  --faction-primary: #388e3c;
+  --faction-primary-dark: #1b5e20;
+  --faction-primary-light: #66bb6a;
+  --faction-on-primary: #ffffff;
+  --faction-accent: #689f38;
+  --faction-accent-light: #9ccc65;
+  --faction-background: #242a24; /* Slightly greener dark background */
+
+  background-color: var(--faction-background);
+}
+
+:root[data-theme="light"][data-faction="thornwraith"] {
+  --faction-background: #fafefa; /* Very subtle green tint for light mode */
+}
+
+:root[data-faction="umbral"] {
+  --faction-primary: #424242;
+  --faction-primary-dark: #212121;
+  --faction-primary-light: #616161;
+  --faction-on-primary: #ffffff;
+  --faction-accent: #6a1b9a;
+  --faction-accent-light: #9c27b0;
+  --faction-background: #1f1f1f; /* Darker, more shadowy background */
+
+  background-color: var(--faction-background);
+}
+
+:root[data-theme="light"][data-faction="umbral"] {
+  --faction-background: #fcfcfc; /* Slightly cooler light background */
+}
+
+:root[data-faction="vastfathom"] {
+  --faction-primary: #0277bd;
+  --faction-primary-dark: #01579b;
+  --faction-primary-light: #0288d1;
+  --faction-on-primary: #ffffff;
+  --faction-accent: #00838f;
+  --faction-accent-light: #00acc1;
+  --faction-background: #242428; /* Slightly bluer dark background */
+
+  background-color: var(--faction-background);
+}
+
+:root[data-theme="light"][data-faction="vastfathom"] {
+  --faction-background: #fafafe; /* Very subtle blue tint for light mode */
+}
+
+:root[data-faction="zephpter"] {
+  --faction-primary: #7b1fa2;
+  --faction-primary-dark: #4a148c;
+  --faction-primary-light: #9c27b0;
+  --faction-on-primary: #ffffff;
+  --faction-accent: #512da8;
+  --faction-accent-light: #673ab7;
+  --faction-background: #272424; /* Slightly purpler dark background */
+
+  background-color: var(--faction-background);
+}
+
+:root[data-theme="light"][data-faction="zephpter"] {
+  --faction-background: #fefaff; /* Very subtle purple tint for light mode */
+}
+
+:root[data-faction="wanderlost"] {
+  --faction-primary: #455a64;
+  --faction-primary-dark: #263238;
+  --faction-primary-light: #607d8b;
+  --faction-on-primary: #ffffff;
+  --faction-accent: #00695c;
+  --faction-accent-light: #00897b;
+  --faction-background: #242628; /* Slightly more neutral but cooler background */
+
+  background-color: var(--faction-background);
+}
+
+:root[data-theme="light"][data-faction="wanderlost"] {
+  --faction-background: #fafafc; /* Very subtle cool tint for light mode */
+}
+
+/* Preserve body styling but add theme transitions */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Add theme transition support to existing elements */
+.creature-card,
+.card,
+.perk,
+table,
+.weapon,
+.item,
+.training {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Light mode adjustments for existing elements */
+:root[data-theme="light"] h4 {
+  color: #1565c0; /* Darker blue for light mode readability */
+}
+
+:root[data-theme="light"] .simple-header {
+  color: #1a1a1a;
+}
+
+:root[data-theme="light"] hr::after {
+  background-color: #ffffff;
+  color: #1a1a1a;
+}
+
+:root[data-theme="light"] .status-effect .x-display {
+  color: #006064;
+}
+
+:root[data-theme="light"] .status-effect .y-display {
+  color: #ff8f00;
+}
+
+/* Light mode button adjustments are now handled by CSS variables above */
+
+/* Light mode link adjustments */
+:root[data-theme="light"] a {
+  color: #1976d2;
+}
+
+:root[data-theme="light"] a:hover {
+  color: #1565c0;
+}
+
+/* Faction-themed Headers and UI Elements */
+
+/* Set header color variables for faction themes */
+:root[data-faction] {
+  --header-primary-color: var(--faction-primary);
+  --header-secondary-color: var(--faction-accent);
+  --header-tertiary-color: var(--faction-primary-light);
+  --header-quaternary-color: var(--faction-accent-light);
+  --simple-header-color: var(--faction-primary-light);
+  --header-text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  
+  /* Set button theme variables for faction themes */
+  --button-background: var(--faction-primary);
+  --button-color: var(--faction-on-primary);
+  --button-hover-border: var(--faction-primary-light);
+  --button-hover-background: var(--faction-primary-dark);
+}
+
+/* Light mode header adjustments */
+:root[data-theme="light"][data-faction] {
+  --header-primary-color: var(--faction-primary-dark);
+  --header-secondary-color: var(--faction-primary);
+  --header-tertiary-color: var(--faction-primary-dark);
+  --header-quaternary-color: var(--faction-accent);
+  --simple-header-color: var(--faction-primary-dark);
+  --header-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  
+  /* Set button theme variables for light mode faction themes */
+  --button-background: var(--faction-primary);
+  --button-color: var(--faction-on-primary);
+  --button-hover-border: var(--faction-primary-dark);
+  --button-hover-background: var(--faction-primary-dark);
+}
+
+/* Faction-themed buttons and interactive elements */
+:root[data-faction] button:not(.theme-switcher-button):not(.add-creature-btn):not(.remove-creature-btn):not(.clear-encounter-btn):not(.export-encounter-btn):not(.import-encounter-btn):not(.clear-all-btn):not(.clear-history-btn):not(.delete-character-btn):not(.remove-btn):not(.clear-btn):not(.danger-btn):not([class*="clear"]):not([class*="delete"]):not([class*="remove"]) {
+  background: linear-gradient(135deg, var(--faction-primary), var(--faction-primary-dark));
+  color: var(--faction-on-primary);
+  border-color: var(--faction-primary);
+}
+
+:root[data-faction] button:not(.theme-switcher-button):not(.add-creature-btn):not(.remove-creature-btn):not(.clear-encounter-btn):not(.export-encounter-btn):not(.import-encounter-btn):not(.clear-all-btn):not(.clear-history-btn):not(.delete-character-btn):not(.remove-btn):not(.clear-btn):not(.danger-btn):not([class*="clear"]):not([class*="delete"]):not([class*="remove"]):hover {
+  background: linear-gradient(135deg, var(--faction-primary-light), var(--faction-primary));
+  border-color: var(--faction-primary-light);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Light mode button adjustments */
+:root[data-theme="light"] button:not(.theme-switcher-button):not(.add-creature-btn):not(.remove-creature-btn):not(.clear-encounter-btn):not(.export-encounter-btn):not(.import-encounter-btn):not(.clear-all-btn):not(.clear-history-btn):not(.delete-character-btn):not(.remove-btn):not(.clear-btn):not(.danger-btn):not([class*="clear"]):not([class*="delete"]):not([class*="remove"]) {
+  background: var(--faction-primary);
+  color: var(--faction-on-primary);
+  border-color: var(--faction-primary);
+}
+
+:root[data-theme="light"] button:not(.theme-switcher-button):not(.add-creature-btn):not(.remove-creature-btn):not(.clear-encounter-btn):not(.export-encounter-btn):not(.import-encounter-btn):not(.clear-all-btn):not(.clear-history-btn):not(.delete-character-btn):not(.remove-btn):not(.clear-btn):not(.danger-btn):not([class*="clear"]):not([class*="delete"]):not([class*="remove"]):hover {
+  background: var(--faction-primary-dark);
+  border-color: var(--faction-primary-dark);
+}
+
+/* Toggle component gets faction theming */
+:root[data-faction] .toggle .toggler {
+  border-color: var(--faction-primary);
+}
+
+:root[data-faction] .toggle .toggler:hover {
+  border-color: var(--faction-primary-light);
+}
+
+:root[data-faction] .toggle.toggled .toggler {
+  background: linear-gradient(135deg, var(--faction-primary), var(--faction-primary-dark));
+  border-color: var(--faction-primary);
+}
+
+/* Links get faction accent colors */
+:root[data-faction] a:not(.title-link) {
+  color: var(--faction-accent-light);
+}
+
+:root[data-faction] a:not(.title-link):hover {
+  color: var(--faction-primary-light);
+}
+
+:root[data-theme="light"][data-faction] a:not(.title-link) {
+  color: var(--faction-primary);
+}
+
+:root[data-theme="light"][data-faction] a:not(.title-link):hover {
+  color: var(--faction-primary-dark);
+}
+
+/* Table headers get faction theming */
+:root[data-faction]:not([data-faction=""]) {
+  --table-header-background: var(--faction-primary-dark);
+}
+
+/* Navigation theming */
+:root[data-faction] nav.navtabs .nav-tab {
+  border-color: var(--faction-primary);
+}
+
+:root[data-faction] nav.navtabs .nav-tab.active {
+  background: linear-gradient(135deg, var(--faction-primary), var(--faction-primary-dark));
+  color: var(--faction-on-primary);
+  border-color: var(--faction-primary);
+}
+
+:root[data-faction] nav.navtabs .nav-tab:hover:not(.active) {
+  background-color: var(--faction-primary);
+  opacity: 0.1;
+  border-color: var(--faction-primary-light);
+}
+
+:root[data-faction] nav.navcluster a {
+  color: var(--faction-accent-light);
+}
+
+:root[data-faction] nav.navcluster a:hover {
+  color: var(--faction-primary-light);
+  background-color: var(--faction-primary);
+  opacity: 0.1;
+}
+
+/* Light mode navigation adjustments */
+:root[data-theme="light"][data-faction] nav.navtabs .nav-tab.active {
+  background: var(--faction-primary);
+  color: var(--faction-on-primary);
+}
+
+:root[data-theme="light"][data-faction] nav.navtabs .nav-tab:hover:not(.active) {
+  background-color: var(--faction-primary);
+  opacity: 0.05;
+}
+
+:root[data-theme="light"][data-faction] nav.navcluster a {
+  color: var(--faction-primary);
+}
+
+:root[data-theme="light"][data-faction] nav.navcluster a:hover {
+  color: var(--faction-primary-dark);
+}
+
+/* Specific UI button theming */
+
+/* Status Effects Manager and Inventory Manager buttons - using class patterns */
+:root[data-faction] .status-effects-button,
+:root[data-faction] .inventory-button,
+:root[data-faction] .dice-roller-button,
+:root[data-faction] button[class*="status"],
+:root[data-faction] button[class*="inventory"],
+:root[data-faction] button[class*="dice"] {
+  background: linear-gradient(135deg, var(--faction-accent), var(--faction-accent-light));
+  color: var(--faction-on-primary);
+  border-color: var(--faction-accent);
+}
+
+:root[data-faction] .status-effects-button:hover,
+:root[data-faction] .inventory-button:hover,
+:root[data-faction] .dice-roller-button:hover,
+:root[data-faction] button[class*="status"]:hover,
+:root[data-faction] button[class*="inventory"]:hover,
+:root[data-faction] button[class*="dice"]:hover {
+  background: linear-gradient(135deg, var(--faction-accent-light), var(--faction-accent));
+  border-color: var(--faction-accent-light);
+}
+
+/* Character creation toggle buttons */
+:root[data-faction] .character-creation-toggle button,
+:root[data-faction] .toggle-button {
+  background: linear-gradient(135deg, var(--faction-primary), var(--faction-primary-dark));
+  color: var(--faction-on-primary);
+  border-color: var(--faction-primary);
+}
+
+:root[data-faction] .character-creation-toggle button:hover,
+:root[data-faction] .toggle-button:hover {
+  background: linear-gradient(135deg, var(--faction-primary-light), var(--faction-primary));
+  transform: translateY(-2px);
+}
+
+/* Generate character and similar primary action buttons */
+:root[data-faction] .primary-action-button,
+:root[data-faction] button[class*="generate"],
+:root[data-faction] button[class*="create"],
+:root[data-faction] button[class*="add"] {
+  background: linear-gradient(135deg, var(--faction-primary), var(--faction-primary-dark));
+  color: var(--faction-on-primary);
+  border-color: var(--faction-primary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+:root[data-faction] .primary-action-button:hover,
+:root[data-faction] button[class*="generate"]:hover,
+:root[data-faction] button[class*="create"]:hover,
+:root[data-faction] button[class*="add"]:hover {
+  background: linear-gradient(135deg, var(--faction-primary-light), var(--faction-primary));
+  border-color: var(--faction-primary-light);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Secondary buttons get accent colors */
+:root[data-faction] .secondary-action-button,
+:root[data-faction] button[class*="edit"],
+:root[data-faction] button[class*="modify"],
+:root[data-faction] button[class*="update"] {
+  background: var(--faction-accent);
+  color: var(--faction-on-primary);
+  border-color: var(--faction-accent);
+}
+
+:root[data-faction] .secondary-action-button:hover,
+:root[data-faction] button[class*="edit"]:hover,
+:root[data-faction] button[class*="modify"]:hover,
+:root[data-faction] button[class*="update"]:hover {
+  background: var(--faction-accent-light);
+  border-color: var(--faction-accent-light);
+}
+
+/* HR elements get faction accent colors */
+:root[data-faction] hr {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-top-color: var(--faction-primary);
+}
+
+:root[data-faction] hr::after {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color: var(--faction-accent-light);
+  background-color: var(--faction-background, #242424);
+}
+
+:root[data-theme="light"][data-faction] hr::after {
+  background-color: var(--faction-background, #ffffff);
+}
+
+/* Enhanced theming for tags and small UI elements */
+
+/* Tags get faction-themed colors */
+:root[data-faction] .tags .tag {
+  background: linear-gradient(135deg, var(--faction-accent), var(--faction-accent-light));
+  color: var(--faction-on-primary);
+  border: 1px solid var(--faction-accent);
+}
+
+/* Special tag overrides for weapon/item/training types are preserved but enhanced */
+:root[data-faction] .weapon .tags .tag {
+  background: linear-gradient(135deg, var(--faction-primary), var(--faction-primary-dark));
+  border-color: var(--faction-primary);
+}
+
+:root[data-faction] .item .tags .tag {
+  background: linear-gradient(135deg, var(--faction-accent), var(--faction-accent-light));
+  border-color: var(--faction-accent);
+}
+
+:root[data-faction] .training .tags .tag {
+  background: linear-gradient(135deg, var(--faction-primary-light), var(--faction-primary));
+  border-color: var(--faction-primary-light);
+}
+
+/* Card headers get subtle faction tinting */
+:root[data-faction] .card-header {
+  background: linear-gradient(135deg, var(--card-header-background), var(--faction-primary-dark));
+  background-blend-mode: multiply;
+  opacity: 0.9;
+}
+
+:root[data-theme="light"][data-faction] .card-header {
+  background: linear-gradient(135deg, var(--card-header-background), var(--faction-primary-light));
+  background-blend-mode: overlay;
+  opacity: 0.95;
+}
+
+/* Faction tag enhancement */
+:root[data-faction] .faction-tag {
+  background: linear-gradient(135deg, var(--faction-primary), var(--faction-primary-dark));
+  border-color: var(--faction-primary);
+  color: var(--faction-on-primary);
+  box-shadow: 0 2px 8px var(--faction-primary);
+  opacity: 0.4;
+}
+
+/* Danger buttons - always red regardless of faction theme for safety */
+button.clear-all-btn,
+button.clear-encounter-btn,
+button.clear-history-btn,
+button.delete-character-btn,
+button.remove-creature-btn,
+button.remove-btn,
+button.clear-btn,
+button.danger-btn,
+button[class*="clear"]:not(.clear-filter):not(.clear-search),
+button[class*="delete"],
+button[class*="remove"]:not(.remove-filter):not(.remove-search) {
+  background: linear-gradient(135deg, #d32f2f, #b71c1c);
+  color: #ffffff;
+  border-color: #d32f2f;
+}
+
+button.clear-all-btn:hover,
+button.clear-encounter-btn:hover,
+button.clear-history-btn:hover,
+button.delete-character-btn:hover,
+button.remove-creature-btn:hover,
+button.remove-btn:hover,
+button.clear-btn:hover,
+button.danger-btn:hover,
+button[class*="clear"]:not(.clear-filter):not(.clear-search):hover,
+button[class*="delete"]:hover,
+button[class*="remove"]:not(.remove-filter):not(.remove-search):hover {
+  background: linear-gradient(135deg, #f44336, #d32f2f);
+  border-color: #f44336;
+  box-shadow: 0 4px 8px rgba(211, 47, 47, 0.3);
+}
+
+/* Light mode danger buttons */
+:root[data-theme="light"] button.clear-all-btn,
+:root[data-theme="light"] button.clear-encounter-btn,
+:root[data-theme="light"] button.clear-history-btn,
+:root[data-theme="light"] button.delete-character-btn,
+:root[data-theme="light"] button.remove-creature-btn,
+:root[data-theme="light"] button.remove-btn,
+:root[data-theme="light"] button.clear-btn,
+:root[data-theme="light"] button.danger-btn,
+:root[data-theme="light"] button[class*="clear"]:not(.clear-filter):not(.clear-search),
+:root[data-theme="light"] button[class*="delete"],
+:root[data-theme="light"] button[class*="remove"]:not(.remove-filter):not(.remove-search) {
+  background: #d32f2f;
+  color: #ffffff;
+  border-color: #d32f2f;
+}
+
+:root[data-theme="light"] button.clear-all-btn:hover,
+:root[data-theme="light"] button.clear-encounter-btn:hover,
+:root[data-theme="light"] button.clear-history-btn:hover,
+:root[data-theme="light"] button.delete-character-btn:hover,
+:root[data-theme="light"] button.remove-creature-btn:hover,
+:root[data-theme="light"] button.remove-btn:hover,
+:root[data-theme="light"] button.clear-btn:hover,
+:root[data-theme="light"] button.danger-btn:hover,
+:root[data-theme="light"] button[class*="clear"]:not(.clear-filter):not(.clear-search):hover,
+:root[data-theme="light"] button[class*="delete"]:hover,
+:root[data-theme="light"] button[class*="remove"]:not(.remove-filter):not(.remove-search):hover {
+  background: #b71c1c;
+  border-color: #b71c1c;
+}

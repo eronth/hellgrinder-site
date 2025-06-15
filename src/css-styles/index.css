@@ -57,12 +57,14 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--button-background, #1a1a1a);
+  color: var(--button-color, inherit);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, background-color 0.25s, color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--button-hover-border, #646cff);
+  background-color: var(--button-hover-background, #1a1a1a);
 }
 button:focus,
 button:focus-visible {
@@ -126,27 +128,31 @@ h1 {
   display: grid;
   text-align: center;
   font-size: 5em;
+  color: var(--header-primary-color, currentColor);
+  text-shadow: var(--header-text-shadow, none);
 }
 h2 {
   font-size: 2.5em;
   display: grid;
   text-align: center;
+  color: var(--header-secondary-color, currentColor);
 }
 h3 {
   font-size: 1.75em;
   text-decoration: underline;
   margin-bottom: .5em;
+  color: var(--header-tertiary-color, currentColor);
 }
 h4 {
   font-size: 1.5em;
   font-style: italic;
-  color: hsl(238, 100%, 87%);
+  color: var(--header-quaternary-color, hsl(238, 100%, 87%));
   margin-bottom: .5em;
 }
 .simple-header {
   font-weight: bold;
   font-style: italic;
-  color: white;
+  color: var(--simple-header-color, white);
 }
 
 ul {
@@ -243,18 +249,19 @@ hr {
   text-align: center;
   height: 5px;
   margin-top: 1em;
+
+  &::after {
+    font-size: 1.2em;
+    background-color: var(--faction-background);
+    color: var(--faction-background);
+    /* content: '§'; */
+    content: '𝚮';
+    padding: 0 4px;
+    position: relative;
+    top: -.9em;
+  }
 }
 
-hr::after {
-  font-size: 1.2em;
-  background-color: #242424;
-  color: white;
-  /* content: '§'; */
-  content: '𝚮';
-  padding: 0 4px;
-  position: relative;
-  top: -.9em;
-}
 
 
 
@@ -263,29 +270,31 @@ table {
   border: 1px solid white;
   border-collapse: collapse;
   background-color: var(--table-background);
-}
-th {
-  background-color: var(--table-header-background);
-  color: white;
-  padding: 0.5em;
-}
-td {
-  border: 1px solid white;
-  padding: 0.25em;
-  background-color: var(--table-row-background);
+
+  th {
+    background-color: var(--table-header-background);
+    color: white;
+    padding: 0.5em;
+  }
+
+  td {
+    border: 1px solid white;
+    padding: 0.25em;
+    background-color: var(--table-row-background);
+  }
 }
 
 .tags {
   font-size: .8em;
-}
 
-.tags .tag {
-  display: inline-block;
-  margin: .1em;
-  padding: .1em .5em;
-  background-color: rgb(6, 58, 107);
-  color: white;
-  border-radius: 5px;
+  .tag {
+    display: inline-block;
+    margin: .1em;
+    padding: .1em .5em;
+    background-color: rgb(6, 58, 107);
+    color: white;
+    border-radius: 5px;
+  }
 }
 
 
@@ -295,13 +304,16 @@ td {
   font-style: italic;
 }
 
-.status-effect .x-display {
-  font-weight: bold;
-  color: #95f4ec;
-}
-.status-effect .y-display {
-  font-weight: bold;
-  color: #ead04e;
+.status-effect {
+  .x-display {
+    font-weight: bold;
+    color: #95f4ec;
+  }
+
+  .y-display {
+    font-weight: bold;
+    color: #ead04e;
+  }
 }
 
 /* General card styling for consistency across the project */
@@ -320,9 +332,6 @@ td {
   border-radius: 7px 7px 0 0;
   font-weight: bold;
 }
-
-/* Perk styling update to use card background */
-
 
 .toggle.character-creation-toggle {
   margin-top: 1em;

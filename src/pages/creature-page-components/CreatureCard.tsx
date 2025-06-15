@@ -55,6 +55,10 @@ export default function CreatureCard({ data }: Props) {
   };
 
   const factionClass = getFactionClass(data.tags);
+  
+  // Separate faction tags from other tags
+  const factionTags = data.tags.filter(tag => isFactionTag(tag));
+  const nonFactionTags = data.tags.filter(tag => !isFactionTag(tag));
 
   return (<div className={`creature-card ${factionClass}`}>
     <div className='title-row'>
@@ -62,9 +66,8 @@ export default function CreatureCard({ data }: Props) {
       <span className='tier'>{data.tier}</span>
     </div>
     <div className='tags'>
-      {data.tags.map((tag, i) => <span 
+      {nonFactionTags.map((tag, i) => <span 
         key={`creature-${data.name}-tag-${i}`}
-        className={isFactionTag(tag) ? 'faction-tag' : ''}
       >
         {(typeof tag === 'string')
           ? tag
@@ -106,5 +109,22 @@ export default function CreatureCard({ data }: Props) {
       }
 
     <div className='creature-description'><i>{data.description}</i></div>
+    
+    {/* Faction tag positioned at bottom right */}
+    {factionTags.length > 0 && (
+      <div className='faction-tag-container'>
+        {factionTags.map((tag, i) => (
+          <span 
+            key={`creature-${data.name}-faction-tag-${i}`}
+            className='faction-tag'
+          >
+            {(typeof tag === 'string')
+              ? tag
+              : `${tag.tag}: ${tag.value}`
+            }
+          </span>
+        ))}
+      </div>
+    )}
   </div>);
 }

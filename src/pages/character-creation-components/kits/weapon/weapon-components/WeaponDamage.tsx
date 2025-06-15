@@ -1,11 +1,11 @@
 import {AttackMode, Dice} from "../../../../../ts-types/types.tsx";
+import ClickableDice from "../../../../../common-design/ClickableDice.tsx";
 
 type Props = {
   attackMode: AttackMode;
 }
 export default function WeaponDamage({ attackMode }: Props) {
-  
-  function makeAttackDamageText(attackMode: AttackMode) {
+    function makeAttackDamageText(attackMode: AttackMode) {
     const dmg = attackMode.damage;
     const displayDmg = {
       l: damageToDisplayString(dmg.l.value),
@@ -19,40 +19,40 @@ export default function WeaponDamage({ attackMode }: Props) {
     if (dmg.l.type === dmg.m.type && dmg.m.type === dmg.h.type) {
       return (<>
         <span className='damage-bloc'>
-          {IDontWantToRewriteThis10times({displayDice: displayDmg.l, avgObj: displayDmg.lav})}
+          {IDontWantToRewriteThis10times({displayDice: displayDmg.l, avgObj: displayDmg.lav, damageValue: dmg.l.value})}
         </span>
 
         <span className={'damage-separator'}> / </span>
 
         <span className='damage-bloc'>
-          {IDontWantToRewriteThis10times({displayDice: displayDmg.m, avgObj: displayDmg.mav})}
+          {IDontWantToRewriteThis10times({displayDice: displayDmg.m, avgObj: displayDmg.mav, damageValue: dmg.m.value})}
         </span>
 
         <span className={'damage-separator'}> / </span>
 
         <span className='damage-bloc'>
-          {IDontWantToRewriteThis10times({displayDice: displayDmg.h, avgObj: displayDmg.hav})}
+          {IDontWantToRewriteThis10times({displayDice: displayDmg.h, avgObj: displayDmg.hav, damageValue: dmg.h.value})}
         </span>
         <span className={'damage-type'}> {dmg.l.type} Damage</span>
       </>);
     }
     return (<>
       <span className='damage-bloc'>
-        {IDontWantToRewriteThis10times({displayDice: displayDmg.l, avgObj: displayDmg.lav})}
+        {IDontWantToRewriteThis10times({displayDice: displayDmg.l, avgObj: displayDmg.lav, damageValue: dmg.l.value})}
       </span>
       <span className={'damage-type'}> {dmg.l.type} Damage</span>
       
       <span className={'damage-separator'}> / </span>
       
       <span className='damage-bloc'>
-        {IDontWantToRewriteThis10times({displayDice: displayDmg.m, avgObj: displayDmg.mav})}
+        {IDontWantToRewriteThis10times({displayDice: displayDmg.m, avgObj: displayDmg.mav, damageValue: dmg.m.value})}
       </span>
       <span className={'damage-type'}> {dmg.l.type} Damage</span>
       
       <span className={'damage-separator'}> / </span>
       
       <span className='damage-bloc'>
-        {IDontWantToRewriteThis10times({displayDice: displayDmg.h, avgObj: displayDmg.hav})}
+        {IDontWantToRewriteThis10times({displayDice: displayDmg.h, avgObj: displayDmg.hav, damageValue: dmg.h.value})}
       </span>
       <span className={'damage-type'}> {dmg.l.type} Damage</span>
     </>);
@@ -113,16 +113,20 @@ export default function WeaponDamage({ attackMode }: Props) {
     
     return (amount * (sides / 2)) + modifier;
   }
-
   type IDontWantToRewriteThis10timesParams = {
     displayDice: string,
-    avgObj: { average: number, shouldShow: boolean }
+    avgObj: { average: number, shouldShow: boolean },
+    damageValue: number | Dice | Dice[]
   }
-  function IDontWantToRewriteThis10times({ displayDice, avgObj }: IDontWantToRewriteThis10timesParams) {
-    return (<>
-      {displayDice}
-      {avgObj.shouldShow && <span className={'average-damage'}> ({avgObj.average})</span>}
-    </>);
+  function IDontWantToRewriteThis10times({ displayDice, avgObj, damageValue }: IDontWantToRewriteThis10timesParams) {
+    return (
+      <ClickableDice 
+        damage={damageValue}
+        displayText={displayDice}
+        averageValue={avgObj.average}
+        shouldShowAverage={avgObj.shouldShow}
+      />
+    );
   }
   
   return (<span className={'weapon-damage'}>

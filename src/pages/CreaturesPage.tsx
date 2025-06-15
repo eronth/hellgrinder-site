@@ -7,8 +7,12 @@ import Tools from "../common-design/Tools";
 import CreatureCard from "./creature-page-components/CreatureCard";
 import CollapsibleSection from "./creature-page-components/CollapsibleSection";
 import FactionSelector from "./creature-page-components/FactionSelector";
+import EncounterSection from "./creature-page-components/EncounterSection";
+import FloatingPanelsContainer from "./character-creation-components/FloatingPanels/FloatingPanelsContainer";
 // Types
 import { TabType } from "../ts-types/types";
+import { Creature } from "../ts-types/creature-types";
+import { Encounter, EncounterCreature } from "../ts-types/encounter-types";
 // Data
 import GenCreatures from "../common-design/creatures/generic-creatures";
 import ZephpterCreatures from "../common-design/creatures/zephpter-creatures";
@@ -20,15 +24,70 @@ import { transformCreatureToFaction } from "./creature-page-components/FactionTr
 export default function CreaturesPage() {
   const page: TabType = 'creatures';
   const [selectedFaction, setSelectedFaction] = useState<string>('Generic');
+  const [encounter, setEncounter] = useState<Encounter>({ creatures: [] });
 
   const handleFactionChange = (faction: string) => {
     setSelectedFaction(faction);
   };
 
+  const handleAddToEncounter = (creature: Creature) => {
+    const newEncounterCreature: EncounterCreature = {
+      id: `encounter-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      creature: creature,
+      currentHealth: creature.health,
+      maxHealth: creature.health
+    };
+    
+    setEncounter(prev => ({
+      ...prev,
+      creatures: [...prev.creatures, newEncounterCreature]
+    }));
+  };
+
+  const handleRemoveFromEncounter = (id: string) => {
+    setEncounter(prev => ({
+      ...prev,
+      creatures: prev.creatures.filter(c => c.id !== id)
+    }));
+  };
+
+  const handleHealthChange = (id: string, newHealth: number) => {
+    setEncounter(prev => ({
+      ...prev,
+      creatures: prev.creatures.map(c => 
+        c.id === id ? { ...c, currentHealth: newHealth } : c
+      )
+    }));
+  };
+
+  const handleClearEncounter = () => {
+    setEncounter({ creatures: [] });
+  };
+
+  const hasEncounterCreatures = encounter.creatures.length > 0;
+
   return (<div className={'page ' + page}>
     <GameTitle />
     <NavTabs selectedTab={page} />
     <hr />
+    
+    {/* Encounter Section - appears at top when there are creatures */}
+    <EncounterSection
+      encounter={encounter}
+      onRemoveCreature={handleRemoveFromEncounter}
+      onHealthChange={handleHealthChange}
+      onClearEncounter={handleClearEncounter}
+    />
+    
+    {/* Floating Panels for Dice Roller - only show when encounter is active */}
+    {hasEncounterCreatures && (
+      <FloatingPanelsContainer
+        isDiceRollerVisible={true}
+        activeStatusEffects={[]}
+        characterName="Encounter"
+      />
+    )}
+    
     <h2>Enemies</h2>
       <p>Enemies mark the threats the players may face in combat. An enemy doesn’t follow the same injury system as players do. Instead, when an enemy hits 0 health, they are defeated. Generally, it is up to the player who deals the final hit whether a defeated enemy is left unconscious, as a corpse, or completely banished from the area. Some enemies may have abilities based on which defeat state is chosen, but most are simply defeated at that point.</p>
     <hr />
@@ -51,7 +110,11 @@ export default function CreaturesPage() {
         {Tools
           .sortCreatures(FactionExamples)
           .map((creature, i) => 
-            <CreatureCard key={`faction-example-${creature.name}-${i}`} data={creature} />
+            <CreatureCard 
+              key={`faction-example-${creature.name}-${i}`} 
+              data={creature} 
+              onAddToEncounter={handleAddToEncounter}
+            />
         )}
       </div>
     </CollapsibleSection>
@@ -82,7 +145,8 @@ export default function CreaturesPage() {
             return (
               <CreatureCard 
                 key={`generic-creature-${creature.name}-${selectedFaction}-${i}`} 
-                data={transformedCreature} 
+                data={transformedCreature}
+                onAddToEncounter={handleAddToEncounter}
               />
             );
           })
@@ -104,7 +168,11 @@ export default function CreaturesPage() {
         {Tools
           .sortCreatures(Sinners)
           .map((creature, i) =>
-            <CreatureCard key={`sinner-creature-${creature.name}-${i}`} data={creature} />
+            <CreatureCard 
+              key={`sinner-creature-${creature.name}-${i}`} 
+              data={creature} 
+              onAddToEncounter={handleAddToEncounter}
+            />
         )}
       </div>
     </CollapsibleSection>
@@ -117,7 +185,11 @@ export default function CreaturesPage() {
         {Tools
           .sortCreatures(ZephpterCreatures)
           .map((creature, i) =>
-            <CreatureCard key={`zephpter-creature-${creature.name}-${i}`} data={creature} />
+            <CreatureCard 
+              key={`zephpter-creature-${creature.name}-${i}`} 
+              data={creature} 
+              onAddToEncounter={handleAddToEncounter}
+            />
         )}
       </div>
     </CollapsibleSection>

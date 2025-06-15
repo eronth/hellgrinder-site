@@ -1,13 +1,63 @@
 import AttackModeComponent from '../../common-design/AttackModeComponent';
 import { Creature } from '../../ts-types/creature-types';
+import { EncounterCreature } from '../../ts-types/encounter-types';
 import DamageModComponent from './DamageModComponent';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from 'react';
 
 type Props = {
   data: Creature;
+  onAddToEncounter?: (creature: Creature) => void;
+  // Encounter mode props
+  isEncounterMode?: boolean;
+  encounterCreature?: EncounterCreature;
+  onRemoveFromEncounter?: (id: string) => void;
+  onHealthChange?: (id: string, newHealth: number) => void;
 };
 
-export default function CreatureCard({ data }: Props) {
+export default function CreatureCard({ 
+  data, 
+  onAddToEncounter, 
+  isEncounterMode = false,
+  encounterCreature,
+  onRemoveFromEncounter,
+  onHealthChange 
+}: Props) {
+  const [isEditingHealth, setIsEditingHealth] = useState(false);
+  const [tempHealth, setTempHealth] = useState(
+    isEncounterMode && encounterCreature ? encounterCreature.currentHealth.toString() : ''
+  );
+
   const hexIcon = '⬣';
+
+  // Health editing functions for encounter mode
+  const handleHealthClick = () => {
+    if (isEncounterMode && encounterCreature) {
+      setIsEditingHealth(true);
+    }
+  };
+
+  const handleHealthSubmit = () => {
+    if (isEncounterMode && encounterCreature && onHealthChange) {
+      const newHealth = parseInt(tempHealth);
+      if (!isNaN(newHealth) && newHealth >= 0) {
+        onHealthChange(encounterCreature.id, newHealth);
+      }
+    }
+    setIsEditingHealth(false);
+  };
+
+  const handleHealthKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleHealthSubmit();
+    } else if (e.key === 'Escape') {
+      if (isEncounterMode && encounterCreature) {
+        setTempHealth(encounterCreature.currentHealth.toString());
+      }
+      setIsEditingHealth(false);
+    }
+  };
 
   // Determine faction class based on creature tags
   const getFactionClass = (tags: (string | { tag: string; value: number })[]) => {
@@ -60,10 +110,29 @@ export default function CreatureCard({ data }: Props) {
   const factionTags = data.tags.filter(tag => isFactionTag(tag));
   const nonFactionTags = data.tags.filter(tag => !isFactionTag(tag));
 
-  return (<div className={`creature-card ${factionClass}`}>
+  return (<div className={`creature-card ${factionClass} ${isEncounterMode ? 'encounter-card' : ''}`}>
     <div className='title-row'>
       <span className='name'>{data.name}</span>
-      <span className='tier'>{data.tier}</span>
+      <div>
+        <span className='tier'>{data.tier}</span>
+        {isEncounterMode && encounterCreature && onRemoveFromEncounter ? (
+          <button 
+            className='remove-creature-btn'
+            onClick={() => onRemoveFromEncounter(encounterCreature.id)}
+            title="Remove from encounter"
+          >
+            <FontAwesomeIcon icon={faMinus} />
+          </button>
+        ) : onAddToEncounter && (
+          <button 
+            className='add-creature-btn'
+            onClick={() => onAddToEncounter(data)}
+            title="Add to encounter"
+          >
+            <FontAwesomeIcon icon={faPlus} />
+          </button>
+        )}
+      </div>
     </div>
     <div className='tags'>
       {nonFactionTags.map((tag, i) => <span 
@@ -76,7 +145,34 @@ export default function CreatureCard({ data }: Props) {
       </span>)}
     </div>
     <div className='stats'>
-      <span>Health: {data.health}⛨</span>
+      <span>
+        Health: 
+        {isEncounterMode && encounterCreature && onHealthChange ? (
+          isEditingHealth ? (
+            <input
+              type="number"
+              value={tempHealth}
+              onChange={(e) => setTempHealth(e.target.value)}
+              onBlur={handleHealthSubmit}
+              onKeyDown={handleHealthKeyPress}
+              className="health-input"
+              autoFocus
+              min="0"
+            />
+          ) : (
+            <span 
+              className="editable-health" 
+              onClick={handleHealthClick}
+              title="Click to edit health"
+            >
+              {encounterCreature.currentHealth}
+            </span>
+          )
+        ) : (
+          data.health
+        )}
+        {isEncounterMode && encounterCreature ? `/${encounterCreature.maxHealth}` : ''}⛨
+      </span>
       <span>Speed: {data.speed}{hexIcon}
         {data.dash ? ` (${data.dash >= 0 ? '+' : ''}${data.dash}${hexIcon})` : null}
       </span>

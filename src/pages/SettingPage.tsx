@@ -137,7 +137,7 @@ export default function SettingPage() {
           onClick={toggleBloodFlip}
           title={isFlipped ? "Return to normal view" : "Flip the world upside down"}
         >
-          {isFlipped ? "🩸 RESTORE REALITY 🩸" : "🩸 BLOOD FLIP 🩸"}
+          {isFlipped ? "🩸 RESTORE REALITY 🩸" : "🩸 SACRIFICE BLOOD 🩸"}
         </button>
       </div>
     )}

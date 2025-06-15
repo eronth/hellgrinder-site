@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // Components
 import GameTitle from "../GameTitle";
 import NavTabs from "../common-design/nav/NavTabs";
@@ -20,11 +20,27 @@ import Sinners from "../common-design/creatures/sinner-creatures";
 import FactionExamples from "../common-design/creatures/faction-examples";
 // Utils
 import { transformCreatureToFaction } from "./creature-page-components/FactionTransformUtils";
+import { EncounterStorage } from "../common-design/utils/EncounterStorage";
 
 export default function CreaturesPage() {
   const page: TabType = 'creatures';
   const [selectedFaction, setSelectedFaction] = useState<string>('Generic');
   const [encounter, setEncounter] = useState<Encounter>({ creatures: [] });
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Load encounter from localStorage on component mount
+  useEffect(() => {
+    const savedEncounter = EncounterStorage.loadCurrentEncounter();
+    setEncounter(savedEncounter);
+    setIsLoaded(true);
+  }, []);
+
+  // Save encounter to localStorage whenever it changes (but not on initial load)
+  useEffect(() => {
+    if (isLoaded) {
+      EncounterStorage.saveCurrentEncounter(encounter);
+    }
+  }, [encounter, isLoaded]);
 
   const handleFactionChange = (faction: string) => {
     setSelectedFaction(faction);
@@ -61,7 +77,13 @@ export default function CreaturesPage() {
   };
 
   const handleClearEncounter = () => {
-    setEncounter({ creatures: [] });
+    const emptyEncounter = { creatures: [] };
+    setEncounter(emptyEncounter);
+    EncounterStorage.clearEncounterStorage();
+  };
+
+  const handleImportEncounter = (importedEncounter: Encounter) => {
+    setEncounter(importedEncounter);
   };
 
   const hasEncounterCreatures = encounter.creatures.length > 0;
@@ -77,6 +99,7 @@ export default function CreaturesPage() {
       onRemoveCreature={handleRemoveFromEncounter}
       onHealthChange={handleHealthChange}
       onClearEncounter={handleClearEncounter}
+      onImportEncounter={handleImportEncounter}
     />
     
     {/* Floating Panels for Dice Roller - only show when encounter is active */}
@@ -135,7 +158,7 @@ export default function CreaturesPage() {
         onFactionChange={handleFactionChange}
       />
       
-      <GenericToNongenericTable />
+      {/* <GenericToNongenericTable /> */}
       <br />
       <div className='creatures-grid'>
         {Tools

@@ -8,8 +8,12 @@ export default function Maneuvers() {
     </ColumnEntry>
 
       <ColumnEntry title={{ hx: 'h4', text: 'Move' }}>
-        <p>You gain a number of Movement Points equal to your Move Speed. You can spend these points to move a number of hexes equal to the points spent.</p>
-        <p>Additionally, you can take any of the following actions as part of a move using your movement points.
+        <p>
+          You gain a number of Movement Points equal to your Move Speed. You can spend these points to
+          move a number of hexes equal to the points spent.
+        </p>
+        <p>
+          Additionally, you can take any of the following actions as part of a move using your movement points.
           In some cases, you must spend additional Movement Points and/or pass the associated Skill Check.
         </p>
         <ul>
@@ -19,7 +23,9 @@ export default function Maneuvers() {
             </ColumnEntry>
 
             <ColumnEntry title={{ text: 'Climb' }}>
-              <p>Move 1 hex up a vertical surface. Costs 1 Movement Point. In some cases, a Skill Check may be needed to keep from falling off (such as if the surface is particularly smooth or slipery) or to avoid taking damage (such as when a surface is sharp or covered in thorny brambles).</p>
+              <p>Move 1 hex up a vertical surface. Costs 1 Movement Point. In some cases, a
+                Skill Check may be needed to keep from falling off (such as if the surface is particularly
+                smooth or slippery) or to avoid taking damage (such as when a surface is sharp or covered in thorny brambles).</p>
             </ColumnEntry>
 
             <ColumnEntry title={{ text: 'Crawl' }}>
@@ -27,13 +33,17 @@ export default function Maneuvers() {
             </ColumnEntry>
 
             <ColumnEntry title={{ text: 'Dive' }}>
-              <p>Move 1 hex and drop prone. On a Skill Check you can move 2 hexes and drop prone.</p>
+              <p>
+                Spend 1 movement and make a [Agility Might] Skill Check. On a Rank 2 Success you can move 2 hexes and drop prone.
+                On a Rank 1 Success you move 1 hex and drop prone. On a Rank 0, you fall prone without moving.
+              </p>
             </ColumnEntry>
 
             <ColumnEntry title={{ text: 'Leap' }}>
               <p>
-                Make an [Agility Skill Check]. You move a number of hexes equal to your Success Rank, jumping over all hexes
-                between your starting and ending hex. On a Failure, you move one hex and fall prone.
+                Make an [Agility Might] Skill Check. You move a number of hexes up to your Success Rank, jumping over all hexes
+                between your starting and ending hex. On a Failure, you move one hex and fall prone. You must spend movement points 
+                equal to the hexes you move.
               </p>
             </ColumnEntry>
 
@@ -56,7 +66,8 @@ export default function Maneuvers() {
       <div>
         <h4>Call Out</h4>
         <p>
-          Grants all valid allies +1 to the next Medium or Long Range attack they make against foes within Long Range of your front-arc.
+          Grants all valid allies +1 to the next Medium or Long Range attack they
+          make against foes within Long Range of your front-arc.
         </p>
 
         <h4>Guard</h4>

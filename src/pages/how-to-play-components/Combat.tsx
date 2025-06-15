@@ -33,11 +33,11 @@ export default function Combat() {
         <li>[Range Attacks] that pass through your [Peripheral Arc] and [Melee Attacks] that originate from your [Peripheral Arc] get +1 on Hit Checks and Damage against you.</li>
         <li>[Range Attacks] that pass through your [Rear Rear] and [Melee Attacks] that originate from your [Rear Arc] get +3 on Hit Checks and +1 to Damage against you.</li>
       </ul>
-      <p><s>Actions with the [Adjust Position] tag allow you to change facing.</s></p>
     </ColumnEntry>
 
     <ColumnEntry title={{ hx: 'h3', text: 'Opportunity Strike' }}>
-      <p>When you move within [Adjacent Range] of a creature's [Front Arc] or [Peripheral Arc], they can make a free attack against you. Demons are quick, and typically have an infinite number of these attacks. Humans, however, can't make another Opportunity Strike until the start of their turn.</p>
+      <p>When you move within [Adjacent Range] of a creature's [Front Arc] or [Peripheral Arc],
+         they can make a free attack against you. Demons are quick, and typically have an infinite number of these attacks. Humans, however, can't make another Opportunity Strike until the start of their turn.</p>
     </ColumnEntry>
   
     <Maneuvers />

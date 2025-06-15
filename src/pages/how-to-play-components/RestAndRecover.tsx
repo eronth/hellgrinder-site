@@ -30,17 +30,20 @@ export default function RestAndRecover() {
         <ul>
           <li>Rank 0 - Heal 2 health.</li>
           <li>Rank 1 - Remove one Light Injury, heal 3 health.</li>
-          <li>Rank 2 - Remove one LIght Injury, heal to max health.</li>
-          <li>Rank 3 - Remove one Light Injury and reduce one Serious Injury to Light OR completely remove one Serious Injury.</li>
+          <li>Rank 2 - Remove one Light Injury, heal to max health.</li>
+          <li>Rank 3 - (Remove one Light Injury and reduce one Serious Injury to Light) OR (completely remove one Serious Injury).</li>
         </ul>
       </div>
   
       <div>
         <h3>Squad and Reinforcements</h3>
         <p>
-          Your group is a squad of roughly 15 soldiers, each with their own roles in the fight through Hell. The players will play just a handful of these soldiers on any Operation.
+          Your group is a squad of roughly 15 soldiers — 15 reserve and as many active soldiers as there are 
+          players — each with their own roles in the fight through Hell. The players will play just a handful 
+          of these soldiers on any Operation.
           If the entire squad is ever depleted, that squad completely fails their mission.
-          It is up to you whether the entire thing is failed or if another squad can try to swoop in later to clean up the mess, but it will always be a mess to clean up.
+          It is up to the GM what happens when a mission is failed — if another squad can try
+          to swoop in later to clean up the mess or if the mission is abandoned.
         </p>
         <p>
           Whenever a player character falls in combat, the team is reinforced by a squadmate who is then generated and played by the player whose character died.

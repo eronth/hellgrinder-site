@@ -21,14 +21,14 @@
 .selector-label {
   font-size: 1rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--deep-text);
   margin: 0;
 }
 
 .faction-dropdown {
   width: 100%;
   background-color: var(--card-background);
-  color: rgba(255, 255, 255, 0.87);
+  color: var(--mid-text);
   border: 1px solid #444;
   border-radius: 6px;
   padding: 0.75rem;
@@ -45,25 +45,26 @@
   background-position: right 0.75rem center;
   background-size: 1rem;
   padding-right: 2.5rem;
+  
+  &:focus {
+    outline: none;
+    border-color: #646cff;
+    box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.2);
+    background-color: rgba(100, 108, 255, 0.1);
+  }
+  
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+  
+  option {
+    background-color: var(--card-background);
+    color: var(--mid-text);
+    padding: 0.5rem;
+  }
 }
 
-.faction-dropdown:focus {
-  outline: none;
-  border-color: #646cff;
-  box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.2);
-  background-color: rgba(100, 108, 255, 0.1);
-}
-
-.faction-dropdown:hover {
-  border-color: rgba(255, 255, 255, 0.4);
-  background-color: rgba(255, 255, 255, 0.02);
-}
-
-.faction-dropdown option {
-  background-color: var(--card-background);
-  color: rgba(255, 255, 255, 0.87);
-  padding: 0.5rem;
-}
 
 .faction-info {
   margin-top: 1rem;
@@ -87,7 +88,7 @@
 
 .info-label {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--mid-text);
   font-weight: 500;
 }
 

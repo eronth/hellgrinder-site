@@ -65,11 +65,13 @@
   border-bottom: 1px dotted currentColor;
   text-decoration: none;
   position: relative;
+  color: var(--deep-text);
+  
+  .rule-keyword:hover {
+    color: var(--faction-accent);
+  }
 }
 
-.rule-keyword:hover {
-  color: #646cff;
-}
 
 .rule-popup {
   background-color: var(--card-background);

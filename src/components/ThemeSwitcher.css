@@ -69,6 +69,14 @@
           color: var(--faction-on-primary);
           border-color: var(--faction-primary);
         }
+
+        &.retro-button.active {
+          background: linear-gradient(135deg, var(--faction-primary), var(--faction-primary-dark));
+          color: var(--faction-on-primary);
+          border-color: var(--faction-primary);
+          box-shadow: 0 0 8px var(--faction-primary);
+          animation: retro-glow 2s ease-in-out infinite alternate;
+        }
       }
     }
   }
@@ -104,6 +112,35 @@
   }
 }
 
+/* Retro theme button styling */
+.theme-switcher-button.retro-button.active {
+  background: linear-gradient(135deg, var(--faction-primary), var(--faction-primary-dark));
+  color: var(--faction-on-primary);
+  border-color: var(--faction-primary);
+  box-shadow: 0 0 8px var(--faction-primary);
+  animation: retro-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes retro-glow {
+  from {
+    box-shadow: 0 0 8px var(--faction-primary);
+  }
+  to {
+    box-shadow: 0 0 12px var(--faction-primary), 0 0 16px var(--faction-accent);
+  }
+}
+
+/* Special retro theme adjustments */
+:root[data-retro*="retro"] {
+  --card-background: rgba(0, 0, 0, 0.8);
+  --card-header-background: rgba(0, 0, 0, 0.9);
+}
+
+:root[data-theme="light"][data-retro*="retro"] {
+  --card-background: rgba(255, 255, 255, 0.9);
+  --card-header-background: rgba(240, 240, 240, 0.95);
+}
+
 @media (max-width: 768px) {
   .theme-switcher {
     position: relative;
@@ -112,4 +149,112 @@
     margin: 1rem auto;
     max-width: 100%;
   }
+}
+
+/* 3-State Color Mode Toggle Switch */
+.color-mode-toggle {
+  position: relative;
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.toggle-labels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.toggle-label {
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 33.333%;
+  height: 100%;
+  line-height: 1;
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(33.333% - 4px);
+  height: calc(100% - 4px);
+  background: linear-gradient(135deg, #646cff, #4338ca);
+  border-radius: 18px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-slider.light {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+}
+
+.toggle-slider.system {
+  background: linear-gradient(135deg, #6b7280, #4b5563);
+}
+
+.toggle-slider.dark {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+}
+
+/* Highlight active label based on current mode */
+.color-mode-toggle.mode-light .toggle-label.light,
+.color-mode-toggle.mode-system .toggle-label.system,
+.color-mode-toggle.mode-dark .toggle-label.dark {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Hover effects */
+.color-mode-toggle:hover .toggle-track {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.color-mode-toggle:hover .toggle-slider {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Active state animation */
+.color-mode-toggle:active .toggle-slider {
+  transform: scale(0.95);
+}
+
+/* Light mode adjustments for toggle */
+:root[data-theme="light"] .toggle-track {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="light"] .toggle-label {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+:root[data-theme="light"] .color-mode-toggle:hover .toggle-track {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.2);
 }

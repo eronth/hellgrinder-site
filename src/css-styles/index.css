@@ -253,7 +253,7 @@ hr {
   &::after {
     font-size: 1.2em;
     background-color: var(--faction-background);
-    color: var(--faction-background);
+    color: var(--strong-text);
     /* content: '§'; */
     content: '𝚮';
     padding: 0 4px;
@@ -273,7 +273,7 @@ table {
 
   th {
     background-color: var(--table-header-background);
-    color: white;
+    color: var(--table-header-color, white);
     padding: 0.5em;
   }
 
@@ -335,4 +335,49 @@ table {
 
 .toggle.character-creation-toggle {
   margin-top: 1em;
+}
+
+/* Light mode overrides for tables and specific elements */
+:root[data-theme="light"] table {
+  border-color: #e2e8f0;
+}
+
+:root[data-theme="light"] table td {
+  border-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .devil-deal-table th,
+:root[data-theme="light"] .injuries-table th {
+  color: #2d3748;
+}
+
+:root[data-theme="light"] .devil-deal-table td,
+:root[data-theme="light"] .injuries-table td {
+  border-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .perk {
+  border-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .perk .headrow .cost {
+  color: #2d3748;
+}
+
+:root[data-theme="light"] hr {
+  border-top-color: #e2e8f0;
+  color: #e2e8f0;
+}
+
+:root {
+  --x-value-bg: rgba(149, 244, 236, 0.2);
+  --x-value-text: #95f4ec;
+  --y-value-bg: rgba(234, 208, 78, 0.2);
+  --y-value-text: #ead04e;
+}
+:root[data-theme="light"] {
+  --x-value-bg: rgba(149, 244, 236, 0.5);
+  --x-value-text: hsl(174, 25%, 40%);
+  --y-value-bg: rgba(211, 200, 147, 0.5);
+  --y-value-text: hsl(50, 25%, 40%);
 }

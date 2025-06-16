@@ -13,6 +13,12 @@
       transform: rotate(15deg);
     }
   }
+  svg {
+    margin-right: 0.5rem;
+  }
+  .expand-arrow {
+    margin-right: 0;
+  }
 }
 
 .status-effects-panel {
@@ -82,14 +88,7 @@
   }
 }
 
-/* Enhanced FontAwesome icon styling for status effects */
-.status-effects-header svg {
-  margin-right: 0.5rem;
-}
 
-.status-effects-header .expand-arrow {
-  margin-right: 0;
-}
 
 /* Responsive design */
 @media (max-width: 768px) {

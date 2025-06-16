@@ -32,11 +32,11 @@
     display: inline-block;
     margin-right: 0.5rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.87);
+    color: var(--mid-text);
   }
   select {
     background-color: #333;
-    color: rgba(255, 255, 255, 0.87);
+    color: var(--mid-text);
     border: 1px solid #555;
     border-radius: 4px;
     padding: 0.5rem;
@@ -86,13 +86,13 @@
   background-color: var(--card-background);
   border-radius: 8px;
   border: 1px solid #444;
-
+  
   .character-name {
-    font-size: 1.2rem;
+    font-size: 1.6em;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #646cff;
-
+    color: var(--faction-accent);
+    
     .editable-name {
       cursor: pointer;
       padding: 0.25rem 0.5rem;
@@ -118,7 +118,7 @@
 
       .name-edit-input {
         background-color: #333;
-        color: rgba(255, 255, 255, 0.87);
+        color: var(--mid-text);
         border: 1px solid #646cff;
         border-radius: 4px;
         padding: 0.25rem 0.5rem;
@@ -208,7 +208,7 @@
       .inline-stat-input {
         
         background: transparent;
-        color: rgba(255, 255, 255, 0.87);
+        color: var(--mid-text);
         border: none;
         border-radius: 4px;
         padding: 0.25rem 0.5rem;
@@ -245,19 +245,19 @@
 
       .stat-label {
         font-size: 1rem;
-        color: rgba(255, 255, 255, 0.87);
+        color: var(--mid-text);
       }
     }
 
     .attack-bonus-cell {
       .attack-bonus-prefix {
-        color: rgba(255, 255, 255, 0.87);
+        color: var(--mid-text);
         font-size: 1rem;
       }
 
       .inline-attack-bonus-select {
         background: transparent;
-        color: rgba(255, 255, 255, 0.87);
+        color: var(--mid-text);
         border: none;
         border-radius: 4px;
         padding: 0.25rem 0.5rem;
@@ -292,7 +292,7 @@
 
         option {
           background-color: #333;
-          color: rgba(255, 255, 255, 0.87);
+          color: var(--mid-text);
         }
       }
     }
@@ -590,26 +590,55 @@
   }
 }
 
-.generated-character-display {
-  min-height: 52em;
-
-  .character-name {
-    font-size: 2em;
-    font-weight: bold;
-    margin-bottom: .5em;
+/* Light mode overrides for Character Generator */
+:root[data-theme="light"] .character-selector {
+  border-color: #e2e8f0;
+  
+  label {
+    color: #2d3748;
   }
-
-  .specialization-block {
-    margin: 1em .5em;
-
-    .title {
-      font-size: 1.2em;
-      font-weight: bold;
+  
+  select {
+    background-color: #ffffff;
+    color: #2d3748;
+    border-color: #e2e8f0;
+    
+    &:focus {
+      border-color: #646cff;
+      box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.2);
     }
   }
+}
 
-  .perk {
-    margin-top: 1em;
+/* Light mode overrides for character display */
+:root[data-theme="light"] .character-display {
+  .character-name {
+    color: #2d3748;
   }
+  
+  .character-stats {
+    color: #2d3748;
+  }
+  
+  .section-header {
+    color: #2d3748;
+  }
+  
+  .kit-section-header {
+    color: #2d3748;
+  }
+  
+  .specialization-block .title {
+    color: #2d3748;
+  }
+}
+
+/* Light mode overrides for various text elements */
+:root[data-theme="light"] .stat-display {
+  color: #2d3748;
+}
+
+:root[data-theme="light"] .perk-display {
+  color: #2d3748;
 }
 

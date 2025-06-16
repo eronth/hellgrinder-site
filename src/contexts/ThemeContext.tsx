@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { ColorMode, FactionTheme, ThemeContextType } from '../types/theme';
+import { ColorMode, FactionTheme, RetroTheme, ThemeContextType } from '../types/theme';
 
 export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
@@ -12,6 +12,11 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [factionTheme, setFactionTheme] = useState<FactionTheme>(() => {
     const saved = localStorage.getItem('factionTheme');
     return (saved as FactionTheme) || 'ashborn';
+  });
+
+  const [retroTheme, setRetroTheme] = useState<RetroTheme>(() => {
+    const saved = localStorage.getItem('retroTheme');
+    return (saved as RetroTheme) || 'none';
   });
 
   const [systemPrefersDark, setSystemPrefersDark] = useState(
@@ -31,18 +36,22 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   useEffect(() => {
     localStorage.setItem('colorMode', colorMode);
     localStorage.setItem('factionTheme', factionTheme);
+    localStorage.setItem('retroTheme', retroTheme);
     
     // Apply theme classes to document
     document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
     document.documentElement.setAttribute('data-faction', factionTheme);
-  }, [colorMode, factionTheme, isDarkMode]);
+    document.documentElement.setAttribute('data-retro', retroTheme);
+  }, [colorMode, factionTheme, retroTheme, isDarkMode]);
 
   return (
     <ThemeContext.Provider value={{
       colorMode,
       factionTheme,
+      retroTheme,
       setColorMode,
       setFactionTheme,
+      setRetroTheme,
       isDarkMode
     }}>
       {children}

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 // Components
 import GameTitle from "../GameTitle";
 import NavTabs from "../common-design/nav/NavTabs";
-import GenericToNongenericTable from "./creature-page-components/GenericToNongenericTable";
 import Tools from "../common-design/Tools";
 import CreatureCard from "./creature-page-components/CreatureCard";
 import CollapsibleSection from "./creature-page-components/CollapsibleSection";

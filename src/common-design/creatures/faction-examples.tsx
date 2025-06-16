@@ -1,4 +1,5 @@
 import { Creature } from "../../ts-types/creature-types";
+import StatusKeyword from "../StatusKeyword";
 import Tools from "../Tools";
 
 // Example creatures for each faction to showcase color-coding
@@ -28,7 +29,14 @@ const exampleCreatures: { [key: string]: Creature } = {
       tags: ['Attack', 'Melee', 'Adjacent Range'],
       effects: ['On Rank 3+ Success, target gains [Burning] for 2 turns.'],
     }],
-    abilities: ['Immune to [Burning] status effects.'],
+    abilities: [
+      {
+        name: 'Uninflammable',
+        description: <>
+          Immune to <StatusKeyword effect="immolated" /> status effects.
+        </>
+      }
+    ],
     description: 'A fierce warrior of the Ashborn Legion, wielding weapons wreathed in eternal flame.',
   },
 
@@ -57,7 +65,13 @@ const exampleCreatures: { [key: string]: Creature } = {
       tags: ['Attack', 'Melee', 'Adjacent Range', {tag: 'Knockback', value: 2}],
       effects: ['On Rank 3+, target is [Prone].'],
     }],
-    abilities: ['Can add [Knockback 1] to any attack and reduces knockback by -1 for attacks taken.'],
+    abilities: [{
+        name: '',
+        description: <>
+          Can add [Knockback 1] to any attack and reduces knockback by -1 for attacks taken.
+        </>,
+      }
+    ],
     description: 'A stalwart defender of the Stoneveined Order, their body infused with living stone.',
   },
 
@@ -86,7 +100,14 @@ const exampleCreatures: { [key: string]: Creature } = {
       tags: ['Attack', 'Melee', 'Adjacent Range'],
       effects: ['On Rank 2+, target loses 1 random equipped item for 2 turns.'],
     }],
-    abilities: ['Can breathe underwater and gains +2 to Movement in aquatic environments.'],
+    abilities: [
+      {
+        name: '',
+        description: <>
+          Can breathe underwater and gains +2 to Movement in aquatic environments.
+        </>
+      }
+    ],
     description: 'A greedy member of the Vastfathom League, drawn to wealth and material possessions.',
   },
 
@@ -115,7 +136,14 @@ const exampleCreatures: { [key: string]: Creature } = {
       tags: ['Attack', 'Melee', {tag: 'Range', value: 2}],
       effects: ['On Rank 3+, target is [Entangled] for 1 turn.'],
     }],
-    abilities: ['50% chance to resist any status effect. Regenerates 2 health at start of turn.'],
+    abilities: [
+      {
+        name: '',
+        description: <>
+          50% chance to resist any status effect. Regenerates 2 health at start of turn.
+        </>
+      },
+    ],
     description: 'A nature-twisted creature of the Thornwraith Covenant, blending plant and demonic essence.',
   },
 
@@ -144,7 +172,14 @@ const exampleCreatures: { [key: string]: Creature } = {
       tags: ['Attack', 'Thrown', 'Medium Range'],
       effects: ['On Rank 3+, target weapon is disarmed and thrown 2 hexes away.'],
     }],
-    abilities: ['Can steal and use one weapon from defeated enemies per encounter.'],
+    abilities: [
+      {
+        name: '',
+        description: <>
+          Can steal and use one weapon from defeated enemies per encounter.
+        </>
+      }
+    ],
     description: 'A resourceful member of the Wanderlost Clans, driven by envy to take what others possess.',
   },
 
@@ -174,7 +209,14 @@ const exampleCreatures: { [key: string]: Creature } = {
       tags: ['Attack', 'Melee', 'Adjacent Range'],
       effects: ['On Rank 3+, target gains [Weakened] for 2 turns.'],
     }],
-    abilities: ['Incorporeal: Can move through solid objects. Weak to blessed weapons.'],
+    abilities: [
+      {
+        name: 'Incorporeal',
+        description: <>
+          Can move through solid objects. Weak to blessed weapons.
+        </>
+      }
+    ],
     description: 'A prideful spirit of the Umbral Nexus, existing partially in the void between realms.',
   },
 
@@ -201,7 +243,14 @@ const exampleCreatures: { [key: string]: Creature } = {
       tags: ['Attack', 'Shooting', 'Long Range'],
       effects: ['On Rank 2+, gains [Area: 1] dealing 2 damage to adjacent targets.'],
     }],
-    abilities: ['Can deploy mechanical traps as a Maneuver action.'],
+    abilities: [
+      {
+        name: '',
+        description: <>
+          Can deploy mechanical traps as a Maneuver action.
+        </>
+      }
+    ],
     description: 'A master craftsman of the Forgefiend Syndicate, combining demonic power with mechanical ingenuity.',
   },
 
@@ -229,7 +278,14 @@ const exampleCreatures: { [key: string]: Creature } = {
       tags: ['Attack', 'Melee', 'Adjacent Range'],
       effects: ['On Rank 3+, target must make a Corruption save or gain 2 Corruption.'],
     }],
-    abilities: ['Stealth: Invisible until first attack. Critical hits inflict [Doom] status.'],
+    abilities: [
+      {
+        name: 'Stealth',
+        description: <>
+          Invisible until first attack. Critical hits inflict [Doom] status.
+        </>,
+      }
+    ],
     description: 'A deadly agent of the Hand of Death, bringing swift and merciless endings.',
   },
 
@@ -257,7 +313,14 @@ const exampleCreatures: { [key: string]: Creature } = {
       tags: ['Attack', 'Arcane', 'Medium Range'],
       effects: ['Deals double damage to undead and demonic creatures.'],
     }],
-    abilities: ['Aura of Protection: Allies within 2 hexes gain +1 to all resistances.'],
+    abilities: [
+      {
+        name: 'Aura of Protection',
+        description: <>
+          Allies within 2 hexes gain +1 to all resistances.
+        </>
+      }
+    ],
     description: 'A righteous warrior from the celestial realms, bringing divine justice to the underworld.',
   },
 
@@ -285,7 +348,14 @@ const exampleCreatures: { [key: string]: Creature } = {
       tags: ['Attack', 'Arcane', 'Long Range'],
       effects: ['On Rank 3+, target gains [Cursed] for 3 turns.'],
     }],
-    abilities: ['Can cast minor void magic as Free Actions.'],
+    abilities: [
+      {
+        name: '',
+        description: <>
+          Can cast minor void magic as Free Actions.
+        </>,
+      }
+    ],
     description: 'A devoted member of the Voidfire Conclave, wielding the corrupting power of the void.',
   },
 
@@ -314,7 +384,14 @@ const exampleCreatures: { [key: string]: Creature } = {
       tags: ['Attack', 'Arcane', 'Medium Range'],
       effects: ['On any successful hit, target gains [Hexed] - takes 1 damage at start of each turn for 3 turns.'],
     }],
-    abilities: ['Can cast protective wards and offensive hexes as Maneuver actions.'],
+    abilities: [
+      {
+        name: '',
+        description: <>
+          Can cast protective wards and offensive hexes as Maneuver actions.
+        </>
+      }
+    ],
     description: 'A cunning spellcaster from a Witch Coven, weaving dark magic and ancient curses.',
   }
 };

@@ -16,6 +16,10 @@ type DamageTakenMod = {
   mod: number;
 } | CoreResist | CoreAbsorb | PromoteAborb | PrimaryWeakness | SecondaryWeakness | EffectAll;
 
+export type CreatureAbility = {
+  name: string;
+  description: React.ReactNode;
+};
 
 type Creature = {
   name: string;
@@ -30,13 +34,13 @@ type Creature = {
   
   damageTakenMods: DamageTakenMod[];
   attacks: AttackMode[];
-  abilities: string[];
+  abilities: CreatureAbility[];
   
   description: string;
 };
 
 
-type CreatureTier =
+export type CreatureTier =
   "Minion" | "Spawn" | "Elite" | "Tormentor" | "Archfiend"
   | "Lord" | "Overlord";
 

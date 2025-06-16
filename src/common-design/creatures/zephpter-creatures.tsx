@@ -1,10 +1,15 @@
-import { Creature } from "../../ts-types/creature-types";
+import { Creature, CreatureAbility } from "../../ts-types/creature-types";
 import Tools from "../Tools";
 
-const arc: string = 'At the start of the round, this creature may '
-+ 'draw a line between itself and another creature with "Arc". '
-+ 'All non-Zephpter creatures are targeted by a '
-+ '2/3/4 [Arcane] Nethercurrent attack.';
+const arc: CreatureAbility = {
+  name: 'Arc',
+  description: <>
+    At the start of the round, this creature may
+    draw a line between itself and another creature with "Arc".
+    All non-Zephpter creatures touched by that Arc are targeted by a
+    2/3/4 [Arcane] Nethercurrent attack.
+  </>
+};
 
 const exObj: { [key: string]: Creature } = {
   zephilim: {
@@ -90,9 +95,15 @@ const exObj: { [key: string]: Creature } = {
         tags: ['Attack', 'Arcane', 'Medium Range'],
       }
     ],
-    abilities: [arc, 
-      'If this creature targets a creature that was hit by the '
-      + 'Arc ability this round, it gets +3 to its Hit Check.'
+    abilities: [
+      arc,
+      {
+        name: '',
+        description: <>
+          If this creature targets a creature that was hit by the
+          Arc ability this round, it gets +3 to its Hit Check.
+        </>
+      }
     ],
     description: '',
   }

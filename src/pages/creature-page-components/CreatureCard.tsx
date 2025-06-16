@@ -199,7 +199,11 @@ export default function CreatureCard({
         (data.abilities.length > 0)
         ? <div className='creature-abilities'>
           <div><b>Abilities</b>:</div>
-          {data.abilities.map((ability, i) => <span key={`creature-${data.name}-ability-${i}`} className='details-indentation'>{ability}</span>)}
+          {data.abilities.map((ability, i) => 
+            <div key={`creature-${data.name}-ability-${i}`} className='details-indentation'>
+              {ability.name ? <i>{ability.name}: </i> : null}{ability.description}
+            </div>
+          )}
         </div>
         : null
       }

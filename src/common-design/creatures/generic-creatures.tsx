@@ -1,6 +1,7 @@
 import { Creature } from '../../ts-types/creature-types';
 import { DamageTakenMod } from '../../ts-types/creature-types';
 import Tools from '../../common-design/Tools';
+import RuleKeyword from '../RuleKeyword';
 
 const coreResist: DamageTakenMod = {
   modification: 'Resist',
@@ -73,7 +74,14 @@ const exObj: { [key: string]: Creature } = {
       tags: ['Attack', 'Melee', 'Adjacent Range'],
       effects: ["A creature who reaches 0 health from this attack adds +1 to the Injury Roll."],
     }],
-    abilities: ['Imps have [Flying].'],
+    abilities: [
+      {
+        name: '',
+        description: <>
+          Imps have [Flying].
+        </>
+      }
+    ],
     description: 'A small, weak demon. They are quick and can be hard to hit.',
   },
   swarmer: {
@@ -159,7 +167,16 @@ const exObj: { [key: string]: Creature } = {
       tags: ['Attack', 'Melee', 'Adjacent Range'],
       effects: [],
     }],
-    abilities: ['Lasherator\'s can perform a Shove against creatures within their Shove range to pull them to a space next to the Lasherator.'],
+    abilities: [
+      {
+        name: '',
+        description: <>
+          Lasherators can perform a Shove against
+          creatures within their Shove range to pull them to a
+          space next to the Lasherator.
+        </>
+      }
+    ],
     description: 'A demon with a whip, hook, or other entangling weapon. They are quick to pull you out of safety and into their range.',
   },
   hellhound: {
@@ -181,7 +198,20 @@ const exObj: { [key: string]: Creature } = {
       tags: ['Attack', 'Melee', 'Adjacent Range'],
       effects: ['A Rank 3 Success also gives the target the [Bleeding] status effect.'],
     }],
-    abilities: ['Hellhounds have a +2 bonus to all Observation Skill Checks.', 'Hellhounts without a master can, with great effort, be tamed.'],
+    abilities: [
+      {
+        name: '',
+        description: <>
+          Hellhounds have a +2 bonus to all [Observation] Skill Checks.
+        </>
+      },
+      {
+        name: '',
+        description: <>
+          Hellhounds without a master can, with great effort, be tamed.
+        </>
+      }
+    ],
     description: 'A demon that looks like a hound draped in demonic powers. They are fiercely loyal to their masters.',
   },
   tenebros: {
@@ -209,7 +239,13 @@ const exObj: { [key: string]: Creature } = {
       effects: [],
     }],
     abilities: [
-      'The Tenebros can use a [Shadow Step] Maneuver. When they do, they teleport 3⬣.'
+      {
+        name: 'Shadow Step',
+        description: <>
+          The Tenebros can use a [Shadow Step] Maneuver. 
+          When they do, they teleport 3⬣.
+        </>
+      }
     ],
     description: 'A demon with a hardy form. They are resistant to most forms of damage.',
   },
@@ -231,7 +267,15 @@ const exObj: { [key: string]: Creature } = {
       tags: ['Attack', 'Melee', 'Adjacent Range'],
       effects: ['On a Rank 3+, the target is [Prone].'],
     }],
-    abilities: ['Wreislanders [Resist All 5] until they take either DISRUPT or REJECT damage.'],
+    abilities: [
+      {
+        name: '',
+        description: <>
+          Wreislanders [Resist All 5] until they take either
+          DISRUPT or REJECT damage.
+        </>
+      }
+    ],
     description: 'A large demon that can crush you with a mighty blow. They exude a powerful aura that protects them from harm until disrupted.',
   },
   hellspawn: {
@@ -293,7 +337,15 @@ const exObj: { [key: string]: Creature } = {
       tags: ['Shooting', 'Medium Range', 'Short Range', 'Arcane'],
       effects: ['On a Rank 3+ Success, the target is [Silenced] for 1 turn.'],
     }],
-    abilities: ['Maneuver: Deal 2 Core Damage against all creatures within Melee Range and knock them 2 hex away.'],
+    abilities: [
+      {
+        name: '',
+        description: <>
+          Maneuver: Deal 2 Core Damage against all creatures 
+          within <RuleKeyword keyword="Melee Range" /> and knock them 2 hex away.
+        </>
+      }
+    ],
     description: '',
   },
   allSeeingEyespawn: {
@@ -315,7 +367,18 @@ const exObj: { [key: string]: Creature } = {
       tags: ['Shooting', 'Arcane', 'Medium Range'],
       effects: ['This attack can target 2 enemies.'],
     }],
-    abilities: ['All-Seeing Eyespawn has 2 two-hex front-arcs, all other areas are considered flank-arcs. This creature has no rear-arc.'],
+    abilities: [
+      {
+        name: '',
+        description: <>
+          All-Seeing Eyespawn has 2 two-hex <RuleKeyword keyword='Front Arc'>
+            Front Arcs
+          </RuleKeyword>, all other
+          areas are considered <RuleKeyword keyword='Flank Arc' />.
+          (This creature has no <RuleKeyword keyword='Rear Arc' />.)
+        </>
+      }
+    ],
     description: '',
   },
 };

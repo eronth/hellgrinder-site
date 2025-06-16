@@ -1,19 +1,35 @@
-import { Creature } from '../../ts-types/creature-types';
+import React from 'react';
+import Tools from "../../common-design/Tools";
+import RuleKeyword from '../../common-design/RuleKeyword';
+import { Creature, CreatureAbility, CreatureTier } from '../../ts-types/creature-types';
 import { DamageElement } from '../../ts-types/types';
+import StatusKeyword from '../../common-design/StatusKeyword';
+
+type PrimaryDamageAndGeneric = DamageElement | 'Core Type';
+type AbsorbDamageAndGeneric = DamageElement | 'PROMOTE';
+type WeaknessDamageAndGeneric = DamageElement | 'REJECT' | 'DISRUPT';
 
 export type FactionData = {
   name: string;
-  primary: DamageElement;
-  absorb: DamageElement;
-  weaknesses: [DamageElement, DamageElement];
-  special?: string;
+  primary: PrimaryDamageAndGeneric;
+  absorb: AbsorbDamageAndGeneric;
+  weaknesses: [WeaknessDamageAndGeneric, WeaknessDamageAndGeneric];
+  abilities?: FactionAbility[];
   cssClass: string;
 };
+
+type FactionAbility = CreatureAbility & {
+  permittedTiers: 'all' | CreatureTier[];
+};
+
+const shakeoffStatus = <>
+  50% chance to resist any status effect. 
+</>;
 
 export const FACTION_DATA: { [key: string]: FactionData } = {
   'Generic': {
     name: 'Generic',
-    primary: 'Core',
+    primary: 'Core Type',
     absorb: 'PROMOTE',
     weaknesses: ['REJECT', 'DISRUPT'],
     cssClass: 'faction-generic'
@@ -23,7 +39,28 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
     primary: 'Verdant',
     absorb: 'Abyssal',
     weaknesses: ['Metal', 'Voidyr'],
-    special: 'The first time a Thornwraith is hit with Nethercurrent, they take 4 Infernal Damage (ignores resistances). Thornwraith has a 50% chance to resist any status effect. Thornwraith has [Resist Infernal 2].',
+    abilities: [
+      {
+        name: 'Nethercurrent',
+        description: <>
+          The first time a Thornwraith is hit with Nethercurrent 
+          Damage, they take an additional 4 Infernal Damage which ignores resistances.
+        </>,
+        permittedTiers: 'all'
+      },
+      {
+        name: 'Infernal Resiliency',
+        description: <>
+          Thornwraith has [Resist Infernal 2].
+        </>,
+        permittedTiers: 'all'
+      },
+      {
+        name: 'Verdancy',
+        description: shakeoffStatus,
+        permittedTiers: 'all'
+      }
+    ],
     cssClass: 'faction-thornwraith-covenant'
   },
   'Stoneveined Order': {
@@ -31,7 +68,57 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
     primary: 'Chthonic',
     absorb: 'Infernal',
     weaknesses: ['Verdant', 'Voidyr'],
-    special: 'Gain Resist Nethercurrent for each listed Resist as well. Stoneveined gets extra health based on type. Stoneveined can add [Knockback 1] to any attack they make and reduces knockback by -1 for any attack they take.',
+    abilities: [
+      {
+        name: 'Unyielding',
+        description: shakeoffStatus,
+        permittedTiers: 'all'
+      },
+      {
+        name: 'Inconductive',
+        description: <>
+          Gain Resist Nethercurrent 2.
+        </>,
+        permittedTiers: 'all'
+      },
+      {
+        name: 'Hardy',
+        description: <>
+          Stoneveined gets extra health based on type.
+        </>,
+        permittedTiers: 'all'
+      },
+      {
+        name: 'Impactful',
+        description: <>
+          Stoneveined can add [Knockback 1] to any
+          attack they make and reduces knockback by -1 for any
+          attack they take.
+        </>,
+        permittedTiers: [
+          ...Tools.getCreatureTiersRange(0, 1)
+        ]
+      },
+      {
+        name: 'Super Impactful',
+        description: <>
+          Stoneveined can add [Knockback 2] to any
+          attack they make and reduces knockback by -2 for any
+          attack they take.
+        </>,
+        permittedTiers: [
+          ...Tools.getCreatureTiersRange(2, 'max')
+        ]
+      },
+      {
+        name: 'Lumbering',
+        description: <>
+          Stoneveined get -1 to their Move Speed -3 to their
+          Dash Bonus.
+        </>,
+        permittedTiers: 'all'
+      }
+    ], 
     cssClass: 'faction-stoneveined-order'
   },
   'Vastfathom League': {
@@ -39,6 +126,26 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
     primary: 'Abyssal',
     absorb: 'Metal',
     weaknesses: ['Chthonic', 'Nethercurrent'],
+    abilities: [
+      {
+        name: 'Glider',
+        description: <>
+          Gains [Hover]. Gains [Flying] instead if in a Shoalpocked Expanse area.
+        </>,
+        permittedTiers: 'all'
+      },
+      {
+        name: 'The Depths of Uncertainty',
+        description: <>
+          This creature can make a +2 Skill Check. On a Rank 1 Success, it can
+          grant a creature in Immediate Range <RuleKeyword keyword="Grim Uncertainty" />.
+          On a Rank 2 Success, it can target a creature 
+          within <RuleKeyword keyword="Medium Range" /> instead.
+          On Rank 3 Success, add <StatusKeyword effect="enslumbered" x={1} /> to the effect.
+        </>,
+        permittedTiers: 'all'
+      }
+    ],
     cssClass: 'faction-vastfathom-league'
   },
   'Ashborn Legion': {
@@ -46,6 +153,29 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
     primary: 'Infernal',
     absorb: 'Verdant',
     weaknesses: ['Abyssal', 'Chthonic'],
+    abilities: [
+      {
+        name: 'Heat-Death',
+        description: <>
+          When Ashborn Legion dies, it explodes in a burst of Infernal energy,
+          dealing Infernal damage equal to Tier+1 to all adjacent creatures.
+          <br />
+          All non-Ashborn Legion creatures hit by this must get Rank 2 or higher
+          on a [] Skill Check or gain [Blinded 1].
+        </>,
+        permittedTiers: 'all'
+      },
+      {
+        name: 'Incinerators',
+        description: <>
+          When hitting a creature with an attack that deals Infernal damage,
+          if that creature is adjacent to two other Ashborn Legion creatures,
+          that creature must make Rank 2 a [Stoic Agility] Skill Check. 
+          Rank 1: [Immolated 1 for 1]. Rank 0: [Immolated 1 for 2].
+        </>,
+        permittedTiers: 'all'
+      }
+    ],
     cssClass: 'faction-ashborn-legion'
   },
   'Wanderlost Clans': {
@@ -60,7 +190,36 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
     primary: 'Nethercurrent',
     absorb: 'Voidyr',
     weaknesses: ['Chthonic', 'Metal'],
-    special: 'Randomly either gain [Hover] or increase Move Speed by +2. Creatures that are CT2 or greater, they gain [Flying] instead of [Hover]. 25% chance for attacks to deal Abyssal instead of Nethercurrent.',
+    abilities: [
+      {
+        name: 'Netherburn',
+        description: <>
+          Attacks with [Nethercurrent] damage have a 25% chance to deal
+          Infernal or Abyssal (GM's choice) damage instead.
+        </>,
+        permittedTiers: 'all'
+      },
+      {
+        name: 'Windtouched',
+        description: <>
+          Randomly either gain [Hover] or increase Move Speed by +2.
+          Creatures that are CT2 or greater, they gain [Flying] 
+          instead of [Hover].
+        </>,
+        permittedTiers: [
+          ...Tools.getCreatureTiersRange(0, 1)
+        ]
+      },
+      {
+        name: 'Windborne',
+        description: <>
+          Randomly either gain [Flying] or increase Move Speed by +2.
+        </>,
+        permittedTiers: [
+          ...Tools.getCreatureTiersRange(2, 'max')
+        ]
+      }
+    ],
     cssClass: 'faction-zephpter-horde'
   },
   'Umbral Nexus': {
@@ -68,20 +227,32 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
     primary: 'Voidyr',
     absorb: 'Nethercurrent',
     weaknesses: ['Abyssal', 'Infernal'],
-    special: 'Gain [Resist Metal 5] against non-blessed metals. Gain [Weak Blessed Metal 5] and [Weak Blessed Fire 5].',
+    abilities: [
+      {
+        name: 'Uncanny Durability',
+        description: <>
+        Gain [Resist Metal 5] against non-blessed metals.
+        </>,
+        permittedTiers: 'all'
+      },
+      {
+        name: 'Blessed Aversions',
+        description: <>
+          Gain [Weak Blessed Metal 5] and [Weak Blessed Fire 5].
+        </>,
+        permittedTiers: 'all'
+      }
+    ],
     cssClass: 'faction-umbral-nexus'
   }
 };
 
 export function transformCreatureToFaction(creature: Creature, factionKey: string): Creature {
-  if (factionKey === 'Generic') {
-    return creature; // Return original for generic
-  }
+  // No transformation needed for Generic
+  if (factionKey === 'Generic') { return creature; }
 
   const faction = FACTION_DATA[factionKey];
-  if (!faction) {
-    return creature;
-  }
+  if (!faction) { return creature; }
 
   // Create a deep copy of the creature
   const transformedCreature: Creature = JSON.parse(JSON.stringify(creature));
@@ -122,10 +293,10 @@ export function transformCreatureToFaction(creature: Creature, factionKey: strin
   }));
 
   // Add special faction abilities if they exist
-  if (faction.special) {
+  if (faction.abilities) {
     transformedCreature.abilities = [
       ...transformedCreature.abilities,
-      `Faction Bonus: ${faction.special}`
+      ...faction.abilities
     ];
   }
 

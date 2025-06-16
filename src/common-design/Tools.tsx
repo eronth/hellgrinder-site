@@ -1,4 +1,4 @@
-import { Creature, CreatureTierList } from '../ts-types/creature-types';
+import { Creature, CreatureTier, CreatureTierList } from '../ts-types/creature-types';
 import { DamageElement, Weapon, AttackMode, Dice, Item } from '../ts-types/types';
 import { Kit, Perk, StatusEffect } from '../ts-types/types';
 import { AllValidTags } from "../ts-types/tag-types.tsx";
@@ -174,6 +174,29 @@ const creatureTiers: CreatureTierList = {
   t6: 'Overlord',
 };
 
+const getCreatureTiersRange = (min: number, max: number | 'max'): CreatureTier[] => {
+  const tiers = Object.values(creatureTiers);
+  const range: CreatureTier[] = [];
+
+  min = (min >= tiers.length)
+    ? tiers.length - 1
+    : ((min < 0) ? 0 : min);
+  
+  max = (max === 'max')
+    ? tiers.length - 1
+    : (max < 0 ? 0 : max);
+
+  if (max < min) {
+    throw new Error(`Max (${max}) must be greater than or equal to min (${min}).`);
+  }
+  
+  for (let i = min; i <= max; i++) {
+    range.push(tiers[i]);
+  }
+  
+  return range;
+}
+
 function sortCreatures(creatures: { [key: string]: Creature }): Creature[] {
   // First, separate creatures by type/tier
   let ct0Creatures = Object.values(creatures).filter(c => c.tier === creatureTiers.t0);
@@ -244,4 +267,5 @@ export default {
   deepCopyWeapon,
   deepCopyAttackMode,
   creatureTiers,
+  getCreatureTiersRange,
 };

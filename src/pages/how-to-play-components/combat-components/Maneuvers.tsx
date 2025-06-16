@@ -1,4 +1,5 @@
 import ColumnEntry from "../../../common-design/ColumnEntry";
+import RuleKeyword from "../../../common-design/RuleKeyword";
 
 export default function Maneuvers() {
 
@@ -66,12 +67,12 @@ export default function Maneuvers() {
       <div>
         <h4>Call Out</h4>
         <p>
-          Grants all valid allies +1 to the next Medium or Long Range attack they
-          make against foes within Long Range of your front-arc.
+          Grants all valid allies +1 to the next [Medium Range Attack] or [Long Range Attack] they
+          make against foes within Long Range of your <RuleKeyword keyword="Front Arc" />.
         </p>
 
         <h4>Guard</h4>
-        <p>Attacks against your front get -2 to their Hit Check and Damage.</p>
+        <p>Attacks against your <RuleKeyword keyword="Front Arc" /> get -2 to their Hit Check and Damage.</p>
       </div>
       
       <div>

@@ -4,7 +4,7 @@ import { RuleDefinition } from '../ts-types/rule-types';
 import { RulesManager } from './rules-database';
 import { formatReactNode } from './utils/StatusEffectsUtils';
 
-interface RulePopupProps {
+interface Props {
   ruleId?: string;
   keyword?: string;
   children: React.ReactNode;
@@ -29,7 +29,7 @@ export default function RulePopup({
   disabled = false,
   statusEffectX,
   statusEffectY
-}: RulePopupProps) {
+}: Props) {
   const [isVisible, setIsVisible] = useState(false);
   const [position, setPosition] = useState<PopupPosition>({ top: 0, left: 0, preferredPosition: 'top' });
   const triggerRef = useRef<HTMLSpanElement>(null);

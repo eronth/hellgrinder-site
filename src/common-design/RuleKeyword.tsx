@@ -1,7 +1,7 @@
 import React from 'react';
 import RulePopup from './RulePopup';
 
-interface RuleKeywordProps {
+interface Props {
   keyword: string;
   ruleId?: string;
   children?: React.ReactNode;
@@ -10,7 +10,7 @@ interface RuleKeywordProps {
   // Status effect specific props
   statusEffectX?: number;
   statusEffectY?: number;
-}
+};
 
 /**
  * Convenience component for wrapping keywords with rule popups.
@@ -24,7 +24,7 @@ export default function RuleKeyword({
   disabled = false,
   statusEffectX,
   statusEffectY
-}: RuleKeywordProps) {
+}: Props) {
   return (
     <RulePopup 
       ruleId={ruleId} 

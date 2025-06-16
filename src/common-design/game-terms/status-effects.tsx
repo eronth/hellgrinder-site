@@ -1,6 +1,43 @@
 import { StatusEffect } from '../../ts-types/types';
 
-const exObj: { [key: string]: StatusEffect } = {
+type StatusEffectsReturn = {
+  blinded: StatusEffect;
+  brittle: StatusEffect;
+  doomed: StatusEffect;
+  enfeebled: StatusEffect;
+  invigorated: StatusEffect;
+  frenzied: StatusEffect;
+  poisoned: StatusEffect;
+  immolated: StatusEffect;
+  lost: StatusEffect;
+  silenced: StatusEffect;
+  slowed: StatusEffect;
+  shaken: StatusEffect;
+  terrified: StatusEffect;
+  pure: StatusEffect;
+  beguiled: StatusEffect;
+  hostile: StatusEffect;
+  dread: StatusEffect;
+  determined: StatusEffect;
+  determinism: StatusEffect;
+  egregore: StatusEffect;
+  grimUncertainty: StatusEffect;
+  unremarkable: StatusEffect;
+  unmistakable: StatusEffect;
+  expired: StatusEffect;
+  cursed: StatusEffect;
+  insideOut: StatusEffect;
+  staggered: StatusEffect;
+  decoherence: StatusEffect;
+  unending: StatusEffect;
+  enslumbered: StatusEffect;
+  afferlized: StatusEffect;
+  endarvolism: StatusEffect;
+  antipathism: StatusEffect;
+  zalgorithm: StatusEffect;
+};
+
+const exObj: StatusEffectsReturn = {
   blinded: {
     name: 'Blinded [[X]]',
     description: 'You have reduced visibility.',

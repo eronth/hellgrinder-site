@@ -3,6 +3,7 @@ import { faShield } from '@fortawesome/free-solid-svg-icons';
 import { ActiveStatusEffect } from '../CharacterGenerator/CharacterGenerator';
 import './StatusEffectsPanel.css';
 import StatusKeyword from '../../../common-design/StatusKeyword';
+import Statuses from '../../../common-design/game-terms/status-effects.tsx';
 
 interface Props {
   statusEffects: ActiveStatusEffect[];
@@ -16,6 +17,19 @@ export default function StatusEffectsPanel({
   
   if (statusEffects.length === 0) return null;
 
+  // Helper function to normalize status effect names for keyword matching
+  const normalizeStatusEffectName = (name: string): 'error' | keyof typeof Statuses => {
+    const statusName = name
+      .replace(/\[\[X\]\]/g, '') // Remove X placeholders
+      .replace(/\[\[Y\]\]/g, '') // Remove Y placeholders
+      .replace(/\s+for\s+$/i, '') // Remove trailing "for" (case insensitive)
+      .replace(/\s+for\s+/i, ' ') // Replace "for" in middle with single space
+      .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+      .trim().toLocaleLowerCase() as keyof typeof Statuses; // Remove leading/trailing whitespace
+
+    return (Statuses[statusName] ? statusName : 'error');
+  };
+
   return (
     <Panel
       icon={faShield}
@@ -27,7 +41,7 @@ export default function StatusEffectsPanel({
           {statusEffects.map((activeEffect, index) => (
             <div key={index} className="status-item">
               <StatusKeyword 
-                effect={activeEffect.effect.name}
+                effect={normalizeStatusEffectName(activeEffect.effect.name)}
                 x={activeEffect.x}
                 y={activeEffect.y}
               />

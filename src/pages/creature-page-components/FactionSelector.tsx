@@ -54,10 +54,12 @@ export default function FactionSelector({ selectedFaction, onFactionChange }: Pr
               {FACTION_DATA[selectedFaction].weaknesses.join(', ')}
             </span>
           </div>
-          {FACTION_DATA[selectedFaction].special && (
-            <div className="special-info">
-              <span className="info-label">Special:</span>
-              <span className="info-value special">{FACTION_DATA[selectedFaction].special}</span>
+          {(FACTION_DATA[selectedFaction]?.abilities ?? []).length > 0 && (
+            <div className="info-row">
+              <span className="info-label">Abilities:</span>
+              <span className="info-value abilities">
+                {FACTION_DATA[selectedFaction]!.abilities!.join(', ')}
+              </span>
             </div>
           )}
         </div>

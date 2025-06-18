@@ -14,14 +14,11 @@ export default function WeaponComponent({ weapon }: Props) {
   }
 
   return (<div className='weapon'>
-    
     <WeaponName weapon={w} />
-    
     {
       w.attackModes.map((a, ai) => <div key={`attack-mode-${ai}`}>
         <AttackModeComponent attackMode={a} showTags={hasMultipleAttackModes(weapon)} />
       </div>)
     }
-
   </div>);
 }

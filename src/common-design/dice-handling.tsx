@@ -1,8 +1,6 @@
 import { Dice } from "../ts-types/types.tsx";
 
 
-
-
 export default {
   // d2
   /** Average of 1d2 is 1.5 **/

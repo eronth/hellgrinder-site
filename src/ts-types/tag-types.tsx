@@ -12,6 +12,7 @@ type Range = 'Adjacent Range' | 'Short Range' | 'Medium Range' | 'Long Range' | 
 type EquipmentTags = 'One-Handed' | 'Grenade' | 'Two-Handed' | 'Armor' | 'Gadget'
 | 'Lightweight' | 'Heavy' | 'Illuminate' | 'Concealable' | 'Consumable'
 | 'Breach' | 'Shield' | 'Relic';
+type LocationTags = 'Head' | 'Torso' | 'Armor' | 'Legs' | 'Footwear';
 
 type ActionTags = 'Attack' | 'Defend' | 'Movement' 
   | 'Action' | 'Maneuver' | 'Reaction' | 'Free Action' 
@@ -47,7 +48,9 @@ type OtherFactionTags =
 
 
 type AllValidTags 
-  = AttackTypes | Range | SkillChecks | EquipmentTags | CreatureEffectTags 
+  = AttackTypes | Range | SkillChecks 
+  | EquipmentTags | LocationTags
+  | CreatureEffectTags 
   | AttackEffectTags | ActionTags
   | DemonFactionTags | OtherFactionTags
   | OtherTagsForNow;

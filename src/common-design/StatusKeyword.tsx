@@ -3,7 +3,7 @@ import Statuses from './game-terms/status-effects.tsx';
 
 interface Props {
   // Use the keys from the statuses object
-  effect: keyof typeof Statuses;
+  effect: keyof typeof Statuses | 'error';
   x?: number;
   y?: number;
   className?: string;
@@ -25,11 +25,15 @@ export default function StatusKeyword({
       statusEffectX={x}
       statusEffectY={y}
     >
-      {
+      { effect === 'error' ? (
+        <span className="error-text">
+          {'Error: Status effect not found'}
+        </span>
+      ) : (
         Statuses[effect].name
-        .replace('[[X]]', x?.toString() || 'X')
-        .replace('[[Y]]', y?.toString() || 'Y')
-      }
+          .replace('[[X]]', x?.toString() || 'X')
+          .replace('[[Y]]', y?.toString() || 'Y')
+      )}
     </RuleKeyword>
   );
 }

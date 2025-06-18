@@ -49,14 +49,16 @@ export type CharDesign = {
   statusEffects: ActiveStatusEffect[]
 };
 
+export type AttackBonusStat = 'Short Range Shooting' | 'Medium Range Shooting' | 'Long Range Shooting' | 'Melee';
+export type HealthStat = { current: number, max: number };
 export type CharStats = {
-  health: { current: number, max: number };
+  health: HealthStat;
   injuries: number;
   speed: number;
   corruption: number;
   perkPoints: number;
   safelightShards: number;
-  attackBonus: 'Short Range Shooting' | 'Medium Range Shooting' | 'Long Range Shooting' | 'Melee',
+  attackBonus: AttackBonusStat;
 };
 
 export default function CharacterGenerator() {

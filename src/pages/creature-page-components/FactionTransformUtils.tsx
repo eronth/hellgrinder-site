@@ -1,8 +1,8 @@
 import React from 'react';
 import Tools from "../../common-design/Tools";
 import RuleKeyword from '../../common-design/RuleKeyword';
-import { Creature, CreatureAbility, CreatureTier } from '../../ts-types/creature-types';
-import { DamageElement } from '../../ts-types/types';
+import { Creature, CreatureAbility, CreatureTier, DamageTakenMod } from '../../ts-types/creature-types';
+import { AttackMode, DamageElement } from '../../ts-types/types';
 import StatusKeyword from '../../common-design/StatusKeyword';
 
 type PrimaryDamageAndGeneric = DamageElement | 'Core Type';
@@ -258,19 +258,21 @@ export function transformCreatureToFaction(creature: Creature, factionKey: strin
   const transformedCreature: Creature = JSON.parse(JSON.stringify(creature));
 
   // Add faction tag
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   transformedCreature.tags = [faction.name, ...transformedCreature.tags];
 
   // Transform damage taken mods
   transformedCreature.damageTakenMods = transformedCreature.damageTakenMods.map(mod => {
     switch (mod.type) {
       case 'CORE':
-        return { ...mod, type: faction.primary };
+        return { ...mod, type: faction.primary } as DamageTakenMod;
       case 'PROMOTE':
-        return { ...mod, type: faction.absorb };
+        return { ...mod, type: faction.absorb } as DamageTakenMod;
       case 'REJECT':
-        return { ...mod, type: faction.weaknesses[0] };
+        return { ...mod, type: faction.weaknesses[0] } as DamageTakenMod;
       case 'DISRUPT':
-        return { ...mod, type: faction.weaknesses[1] };
+        return { ...mod, type: faction.weaknesses[1] } as DamageTakenMod;
       default:
         return mod;
     }
@@ -280,14 +282,14 @@ export function transformCreatureToFaction(creature: Creature, factionKey: strin
   transformedCreature.attacks = transformedCreature.attacks.map(attack => ({
     ...attack,
     damage: {
-      l: attack.damage.l.type === 'Core' 
-        ? { ...attack.damage.l, type: faction.primary }
+      l: attack.damage.l.type === 'Core'
+        ? { ...attack.damage.l, type: faction.primary } as AttackMode['damage']['l']
         : attack.damage.l,
       m: attack.damage.m.type === 'Core' 
-        ? { ...attack.damage.m, type: faction.primary }
+        ? { ...attack.damage.m, type: faction.primary } as AttackMode['damage']['m']
         : attack.damage.m,
       h: attack.damage.h.type === 'Core' 
-        ? { ...attack.damage.h, type: faction.primary }
+        ? { ...attack.damage.h, type: faction.primary } as AttackMode['damage']['h']
         : attack.damage.h,
     }
   }));
@@ -316,18 +318,18 @@ export function transformCreatureToFaction(creature: Creature, factionKey: strin
   }
 
   // Add movement bonus for Zephpter Horde
-  if (factionKey === 'Zephpter Horde') {
-    if (transformedCreature.tier === 'Elite' || transformedCreature.tier === 'Tormentor' || 
-        transformedCreature.tier === 'Archfiend' || transformedCreature.tier === 'Lord' || 
-        transformedCreature.tier === 'Overlord') {
-      transformedCreature.abilities = [
-        ...transformedCreature.abilities.filter(a => !a.includes('[Flying]')),
-        'Has [Flying].'
-      ];
-    } else {
-      transformedCreature.speed += 2;
-    }
-  }
+  // if (factionKey === 'Zephpter Horde') {
+  //   if (transformedCreature.tier === 'Elite' || transformedCreature.tier === 'Tormentor' || 
+  //       transformedCreature.tier === 'Archfiend' || transformedCreature.tier === 'Lord' || 
+  //       transformedCreature.tier === 'Overlord') {
+  //     transformedCreature.abilities = [
+  //       ...transformedCreature.abilities.filter(a => !a.includes('[Flying]')),
+  //       'Has [Flying].'
+  //     ];
+  //   } else {
+  //     transformedCreature.speed += 2;
+  //   }
+  // }
 
   return transformedCreature;
 }

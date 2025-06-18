@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import './ConfirmDialog.css';
@@ -27,7 +27,7 @@ export default function ConfirmDialog({
   children
 }: ConfirmDialogProps) {
   // Handle escape key - use first button with 'secondary' variant as default cancel action
-  const defaultCancelAction = buttons.find(b => b.variant === 'secondary')?.onClick || (() => {});
+  const defaultCancelAction = useCallback(() => buttons.find(b => b.variant === 'secondary')?.onClick || (() => {}), [buttons]);
   
   // Determine if dialog should be wider based on content
   const needsWideLayout = buttons.length > 2 || 

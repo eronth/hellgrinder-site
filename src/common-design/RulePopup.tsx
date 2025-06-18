@@ -34,6 +34,7 @@ export default function RulePopup({
   const [position, setPosition] = useState<PopupPosition>({ top: 0, left: 0, preferredPosition: 'top' });
   const triggerRef = useRef<HTMLSpanElement>(null);
   const popupRef = useRef<HTMLDivElement>(null);
+  const [needRuleDisplay, setNeedRuleDisplay] = useState(false);
 
   // Get the rule definition
   const rule: RuleDefinition | undefined = ruleId 
@@ -41,11 +42,10 @@ export default function RulePopup({
     : keyword 
     ? RulesManager.getRuleByKeyword(keyword)
     : undefined;
-
-  // Don't render if no rule found or disabled
-  if (!rule || disabled) {
-    return <span className={className}>{children}</span>;
-  }
+  
+  useEffect(() => {
+    setNeedRuleDisplay(!(!rule || disabled));
+  }, [ruleId, keyword, disabled, rule]);
 
   const calculatePosition = (): PopupPosition => {
     if (!triggerRef.current) {
@@ -125,89 +125,102 @@ export default function RulePopup({
     return () => window.removeEventListener('scroll', handleScroll, true);
   }, [isVisible]);
 
-  const relatedRules = RulesManager.getRelatedRules(rule.id);
+  const relatedRules = needRuleDisplay ? RulesManager.getRelatedRules(rule!.id) : [];
 
   // Check if this is a status effect and we have X/Y values to display
-  const isStatusEffect = rule.category === 'status-effects';
+  const isStatusEffect = needRuleDisplay ? rule!.category === 'status-effects' : false;
   const hasStatusEffectValues = statusEffectX !== undefined || statusEffectY !== undefined;
 
-  const ruleElement = (
-    <div
-      ref={popupRef}
-      className={`rule-popup rule-popup-${position.preferredPosition} ${isStatusEffect ? ' status-effect' : ''}`}
-      style={{
-        position: 'fixed',
-        top: `${position.top}px`,
-        left: `${position.left}px`,
-        zIndex: 1000
-      }}
-      onMouseEnter={() => setIsVisible(true)}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div className="rule-popup-header">
-        <h4 className="rule-title">{
-          rule.fullname 
-          ? formatReactNode(rule.fullname, { x: statusEffectX, y: statusEffectY }) 
-          : rule.keyword
-        }</h4>
-        <span className="rule-category">{rule.category}</span>
-      </div>
-      
-      <div className="rule-summary">
-        {(isStatusEffect && hasStatusEffectValues) 
-        ? formatReactNode(rule.summary, { x: statusEffectX, y: statusEffectY })
-        : rule.summary}
-      </div>
-      
-      {rule.details && (
-        <div className="rule-details">
-          {(isStatusEffect && hasStatusEffectValues)
-          ? formatReactNode(rule.details, { x: statusEffectX, y: statusEffectY })
-          : rule.details}
+  const createDisplay = (rule: RuleDefinition) => {
+    return (
+      <div
+        ref={popupRef}
+        className={`rule-popup rule-popup-${position.preferredPosition} ${isStatusEffect ? ' status-effect' : ''}`}
+        style={{
+          position: 'fixed',
+          top: `${position.top}px`,
+          left: `${position.left}px`,
+          zIndex: 1000
+        }}
+        onMouseEnter={() => setIsVisible(true)}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className="rule-popup-header">
+          <h4 className="rule-title">{
+            rule.fullname 
+            ? formatReactNode(rule.fullname, { x: statusEffectX, y: statusEffectY }) 
+            : rule.keyword
+          }</h4>
+          <span className="rule-category">{rule.category}</span>
         </div>
-      )}
+        
+        <div className="rule-summary">
+          {(isStatusEffect && hasStatusEffectValues) 
+          ? formatReactNode(rule.summary, { x: statusEffectX, y: statusEffectY })
+          : rule.summary}
+        </div>
+        
+        {rule?.details && (
+          <div className="rule-details">
+            {(isStatusEffect && hasStatusEffectValues)
+            ? formatReactNode(rule.details, { x: statusEffectX, y: statusEffectY })
+            : rule.details}
+          </div>
+        )}
 
-      {rule.examples && rule.examples.length > 0 && (
-        <div className="rule-examples">
-          <strong>
-            {rule.exampleNameOverride || 'Examples:'}
-          </strong>
-          <ul>
-            {rule.examples.map((example, index) => (
-              <li key={index}>{formatReactNode(example, { x: statusEffectX, y: statusEffectY })}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-      
-      {relatedRules.length > 0 && (
-        <div className="rule-related">
-          <strong>Related:</strong>
-          <span className="related-rules">
-            {relatedRules.map((relatedRule, index) => (
-              <span key={relatedRule.id}>
-                {index > 0 && ', '}
-                <RulePopup ruleId={relatedRule.id}>
-                  <span className="related-rule-link">{relatedRule.keyword}</span>
-                </RulePopup>
-              </span>
-            ))}
-          </span>
-        </div>
-      )}
-    </div>
+        {rule.examples && rule.examples.length > 0 && (
+          <div className="rule-examples">
+            <strong>
+              {rule.exampleNameOverride || 'Examples:'}
+            </strong>
+            <ul>
+              {rule.examples.map((example, index) => (
+                <li key={index}>{formatReactNode(example, { x: statusEffectX, y: statusEffectY })}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        
+        {relatedRules.length > 0 && (
+          <div className="rule-related">
+            <strong>Related:</strong>
+            <span className="related-rules">
+              {relatedRules.map((relatedRule, index) => (
+                <span key={relatedRule.id}>
+                  {index > 0 && ', '}
+                  <RulePopup ruleId={relatedRule.id}>
+                    <span className="related-rule-link">{relatedRule.keyword}</span>
+                  </RulePopup>
+                </span>
+              ))}
+            </span>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  const ruleElement = (
+    needRuleDisplay
+    ? createDisplay(rule!)
+    : null
   );
 
   return (<>
-    <span
-      ref={triggerRef}
-      className={`rule-keyword ${className} ${isStatusEffect ? 'status-effect' : ''}`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      title={rule.summary} // Fallback for accessibility
-    >
-      {children}
-    </span>
-    {isVisible && createPortal(ruleElement, document.body)}
+    {
+      needRuleDisplay
+      ? <span
+        ref={triggerRef}
+        className={`rule-keyword ${className} ${isStatusEffect ? 'status-effect' : ''}`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        title={rule!.summary} // Fallback for accessibility
+      >
+        {children}
+      </span>
+      : <span className={className}>{children}</span>
+    }
+
+    {needRuleDisplay && isVisible && createPortal(ruleElement, document.body)}
   </>);
 }

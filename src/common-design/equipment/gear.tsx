@@ -16,7 +16,7 @@ const exObj: { [key: string]: Item } = {
   },
   hoverBoots: {
     name: 'Hover Boots',
-    tags: ['Footware'],
+    tags: ['Footwear'],
     isAdvancedItem: true,
     effects: ['You can decrease your movement by 1 to ignore difficult and hazardous terrain.'],
   }

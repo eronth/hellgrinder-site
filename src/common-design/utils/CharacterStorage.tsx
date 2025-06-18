@@ -138,7 +138,7 @@ export class CharacterStorage {
           }
 
           // Extract characters and validate each one
-          const characters = data.characters.map((char: any) => CharacterStorage.validateCharacter(char));
+          const characters = data.characters.map((char: CharDesign) => CharacterStorage.validateCharacter(char));
           
           console.log(`Successfully imported ${characters.length} characters`);
           resolve({ 
@@ -162,6 +162,7 @@ export class CharacterStorage {
   /**
    * Validate imported data structure
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private static validateImportData(data: any): boolean {
     return (
       data &&
@@ -175,7 +176,7 @@ export class CharacterStorage {
   /**
    * Validate and sanitize individual character data
    */
-  private static validateCharacter(char: any): CharDesign {
+  private static validateCharacter(char: CharDesign): CharDesign {
     // Ensure all required fields exist with defaults
     return {
       id: char.id || `char_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -221,7 +222,8 @@ export class CharacterStorage {
         lastSaved: data.lastSaved,
         storageSize: new Blob([stored]).size
       };
-    } catch (error) {
+    } catch (e) {
+      console.error('Failed to get storage info:', e);
       return { hasData: false, characterCount: 0, storageSize: 0 };
     }
   }

@@ -1,7 +1,6 @@
-import { useMemo } from "react";
-import { CharStats } from "./CharacterGenerator";
+import { useCallback, useMemo } from "react";
+import { AttackBonusStat, CharStats } from "./CharacterGenerator";
 
-type AttackBonus = 'Short Range Shooting' | 'Medium Range Shooting' | 'Long Range Shooting' | 'Melee';
 
 type Props = {
   currentHealth?: number;
@@ -11,7 +10,7 @@ type Props = {
   corruption?: number;
   perkPoints?: number;
   safelightShards?: number;
-  attackBonus?: AttackBonus;
+  attackBonus?: AttackBonusStat;
   isEditable?: boolean;
   onStatsChange?: (stats: CharStats) => void;
 };
@@ -29,7 +28,7 @@ export default function CharacterStartingStatsTable({
   onStatsChange
 }: Props) {
 
-  const stats: CharStats = {
+  const stats: CharStats = useMemo(() => ({
     health: {
       current: currentHealth,
       max: maxHealth
@@ -40,26 +39,26 @@ export default function CharacterStartingStatsTable({
     perkPoints,
     safelightShards,
     attackBonus
-  };
+  }), [currentHealth, maxHealth, injuries, speed, corruption, perkPoints, safelightShards, attackBonus]);
 
-  const updateStat = (field: keyof typeof stats, value: number | AttackBonus, substat?: keyof typeof stats.health) => {
+  const updateStat = useCallback((field: keyof typeof stats, value: number | AttackBonusStat, substat?: keyof typeof stats.health) => {
     if (!onStatsChange) return;
     
     const newStats: CharStats = { ...stats };
     
     if (field === 'attackBonus') {
-      newStats.attackBonus = value as AttackBonus;
-
+      newStats.attackBonus = value as AttackBonusStat;
     } else if (field === 'health' && substat) {
       newStats.health[substat] = value as number;
     } else {
       const numValue = typeof value === 'string' ? parseInt(value) || 0 : value;
-      (newStats as any)[field] = Math.max(0, numValue);
+      (newStats as Omit<CharStats, 'attackBonus' | 'health'>)[field] = Math.max(0, numValue);
     }
     
     onStatsChange(newStats);
-  };
-  const renderStatCell = (label: string, field: keyof typeof stats, value: number | AttackBonus) => {
+  }, [onStatsChange, stats]);
+
+  const renderStatCell = useCallback((label: string, field: keyof typeof stats, value: number | AttackBonusStat) => {
     if (!isEditable || field === 'attackBonus') {
       return <td colSpan={3}>{value} {label}</td>;
     }
@@ -97,9 +96,9 @@ export default function CharacterStartingStatsTable({
         </>)}
       </td>
     );
-  };
+  }, [isEditable, stats.health, updateStat]);
 
-  const attackBonusOptions: AttackBonus[] = [
+  const attackBonusOptions: AttackBonusStat[] = [
     'Short Range Shooting',
     'Medium Range Shooting', 
     'Long Range Shooting',
@@ -120,7 +119,7 @@ export default function CharacterStartingStatsTable({
         <span className="attack-bonus-prefix">+1 to </span>
         <select
           value={attackBonus}
-          onChange={(e) => updateStat('attackBonus', e.target.value as AttackBonus)}
+          onChange={(e) => updateStat('attackBonus', e.target.value as AttackBonusStat)}
           className="inline-attack-bonus-select"
         >
           {attackBonusOptions.map(option => (
@@ -134,7 +133,7 @@ export default function CharacterStartingStatsTable({
   };
   const injuriesComp = useMemo(() => {
     return renderStatCell("Injuries", "injuries", stats.injuries);
-  }, [stats.injuries, isEditable]);
+  }, [renderStatCell, stats.injuries]);
 
   return (
     <table className={`character-stats-table ${isEditable ? 'inline-editable' : ''}`}>

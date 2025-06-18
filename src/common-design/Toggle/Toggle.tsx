@@ -8,7 +8,7 @@ type Props = {
     right?: string;
   };
   toggled: boolean;
-  onClick: any;
+  onClick: (toggled: boolean) => void;
 }
 export const Toggle = ({ className, label, toggled, onClick }: Props) => {
   

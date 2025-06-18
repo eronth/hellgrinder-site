@@ -535,6 +535,7 @@ export const equipmentRules: RuleDefinition[] = [
 ];
 
 export const statusEffectRules: RuleDefinition[] = 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   Object.entries(StatusEffects).map(([_, effect]) => (
     convertStatusEffectToRuleDefinition(effect)
   ));

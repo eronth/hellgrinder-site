@@ -8,6 +8,7 @@ import { TabType } from "../ts-types/types";
 import "../css-styles/blood-flip.css";
 
 export default function SettingPage() {
+  const bloodFlipCss = 'blood-flipped';
   const page: TabType = 'setting';
   const [isFlipped, setIsFlipped] = React.useState(() => {
     // Persist flip state as well
@@ -38,9 +39,9 @@ export default function SettingPage() {
     
     // Apply the flip to the entire document body
     if (newFlipState) {
-      document.body.classList.add('blood-flipped');
+      document.body.classList.add(bloodFlipCss);
     } else {
-      document.body.classList.remove('blood-flipped');
+      document.body.classList.remove(bloodFlipCss);
     }
   };
 
@@ -85,19 +86,19 @@ export default function SettingPage() {
       return () => clearTimeout(timeout);
     }
   }, [keySequence]);
+
   // Clean up on component unmount
   React.useEffect(() => {
     return () => {
-      document.body.classList.remove('blood-flipped');
+      document.body.classList.remove(bloodFlipCss);
     };
   }, []);
 
   // Restore flip state on mount
-  React.useEffect(() => {
-    if (isFlipped) {
-      document.body.classList.add('blood-flipped');
-    }
-  }, []);
+  if (isFlipped) {
+    document.body.classList.add(bloodFlipCss);
+  }
+
   // Reset function for development/testing
   const resetSecret = () => {
     localStorage.removeItem('hellgrinder_blood_secret_revealed');
@@ -105,7 +106,7 @@ export default function SettingPage() {
     setSecretRevealed(false);
     setIsFlipped(false);
     setKeySequence('');
-    document.body.classList.remove('blood-flipped');
+    document.body.classList.remove(bloodFlipCss);
   };
 
   // Add double-click handler to the Settings nav tab for reset

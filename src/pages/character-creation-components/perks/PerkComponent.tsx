@@ -15,7 +15,7 @@ export default function PerkComponent({ perk, count = 1 }: Props) {
     let enhancedDescription = perk.description;
     
     // Add combined bonus information
-    const bonuses = [];
+    const bonuses: string[] = [];
     
     if (perk.healthModifier) {
       bonuses.push(`+${perk.healthModifier * count} Max Health`);

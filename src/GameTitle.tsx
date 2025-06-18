@@ -108,7 +108,7 @@ export default function GameTitle({ isIndex }: Props) {
       </div>
     </div>
     <div className="title">Hellgrinder</div>
-  </>), []);
+  </>), [individualSpiritLetterElement]);
 
   const barcodeData = useMemo(() => (<>12345</>), []);
 

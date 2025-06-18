@@ -18,12 +18,14 @@ const exObj: { [key: string]: Kit } = {
       tags: ['Stealth'],
       description: 'A suit that helps you blend in with your surroundings.',
       effects: ['Gain +1 to Stealth checks'],
+      isAdvancedItem: false,
     },
     {
       name:'Sniping Scope',
       tags: ['Gadget'],
       description: 'A scope that helps you see further and more clearly.',
       effects: ['Gain'],
+      isAdvancedItem: false,
     }],
     trainings: [{
       name: 'Long Range Training',
@@ -54,6 +56,7 @@ const exObj: { [key: string]: Kit } = {
       tags: [],
       description: 'A suit that helps protect against he singe of fires.',
       effects: ['Gain [Resist Infernal 2].'],
+      isAdvancedItem: false,
     }],
     trainings: [],
   },
@@ -69,12 +72,14 @@ const exObj: { [key: string]: Kit } = {
       tags: ['Breach'],
       description: 'Easily Breach Doors, whatever that means...',
       effects: [''],
+      isAdvancedItem: false,
     },
     {
       name:'Door Peek',
       tags: ['Observation', 'Stealth', 'Action'],
       description: 'A tool that can be planted on a door to give you a peek at what\'s on the other side.',
       effects: ['You may use an Action to place this tool on a door you are next to. While adjacent to the door, you can see through the door as if it wasn\'t as a Free Interaction, though others cannot see you. You may only deploy one Door Peek per encounter.'],
+      isAdvancedItem: false,
     }],
     trainings: [],
   },
@@ -90,6 +95,7 @@ const exObj: { [key: string]: Kit } = {
       tags: ['Illuminate'],
       description: 'A flashlight that helps you see in the dark. You never know when you might need it.',
       effects: ['Produce bright light in your front arc out to [Medium Range] and dim light in your front arc out to [Long Range]. Cannot penetrate arcane abyssal or voidyr darkness.' ],
+      isAdvancedItem: false,
     }],
     trainings: [{
       name: 'Rounded',
@@ -141,6 +147,7 @@ const exObj: { [key: string]: Kit } = {
       tags: [],
       description: 'A simple to use kit for making coffee. A great way to keep the great taste of home with you on the battlefield.',
       effects: ['If you spend 10 minute, you can make a nice cup of coffee for yourself. You can give the cup to someone else, but they only gain half the benefits. Only one person can benefit from your cup of coffee at a time.', 'Coffee Bonus: Gain +2 to Recovery Checks.', 'Coffee Bonus: Gain +2 to Observation Checks.'],
+      isAdvancedItem: false,
     }],
     trainings: [{
       name: 'Perked Up',
@@ -163,11 +170,13 @@ const exObj: { [key: string]: Kit } = {
       effects: ['Maneuver to deploy or retract the shield.',
         'While held, gain [Resist All 1].',
         'When you deploy the shield, pick two edges or your hex that share a corner. Those edges now have heavy cover.',],
+      isAdvancedItem: false,
     }, {
       name:'Heavy Armor',
       tags: ['Armor'],
       description: 'Extra plating to protect yourself on the battlefield.',
       effects: ['Gain [Resist Any (Except Metal) 1]', 'Gain [Resist Metal 3]'],
+      isAdvancedItem: false,
     }],
     trainings: [],
   },
@@ -200,17 +209,20 @@ const exObj: { [key: string]: Kit } = {
         description: 'When you pick Relic Worker, choose three of the following relics. When combat begins, choose a ' +
           'relic to start as equipped. Swapping Relics is a Maneuver.',
         effects: [''],
+        isAdvancedItem: false,
       }, {
         name: 'Dual Scorchsashes',
         tags: ['Arcane', 'Relic'],
         description: '',
         effects: ['At the start of your turn, creatures in [Melee Range] of you take 2 Infernal Damage and creatures ' +
           'in [Short Range] of you take 1 Infernal Damage.'],
+        isAdvancedItem: false,
       }, {
         name: 'Drowner Discus',
         tags: ['Arcane', 'Relic', 'Medium Range', 'Thrown', {tag: 'Area', value: 1}],
         description: '',
         effects: ['Create a Drownpit Pool in the affected area.'],
+        isAdvancedItem: false,
       }, {
         name: 'Slowing Viewfinder',
         tags: ['Arcane', 'Relic'],
@@ -219,12 +231,14 @@ const exObj: { [key: string]: Kit } = {
           'move. On a Rank 1 Success or less, they are [Slowed 1].',
           'Creatures in your front arc at [Short Range] are [Slowed 1].'
         ],
+        isAdvancedItem: false,
       }, {
         name: 'Innersoul Stabilizing Field Generator',
         tags: ['Arcane', 'Relic'],
         description: '',
         effects: ['At the start of your turn, you and allies in [Short Range] of you gain +1 Health.', 'You and allies ' +
           'in [Short Range] of you gain [Resist Soulrend 1].'],
+        isAdvancedItem: false,
       }, {
         name: 'Soulbinder Darts',
         tags: ['Arcane', 'Relic', 'One-Handed', 'Action', 'Maneuver'],
@@ -235,6 +249,7 @@ const exObj: { [key: string]: Kit } = {
           'Whenever a creature stuck with one Soulbinder Dart takes damage, another creature within [Short Range] of ' +
             'them takes half (rounded up) of the damage as Nethercurrent Damage.',
         ],
+        isAdvancedItem: false,
       }, {
         name: 'Quickrot Ring',
         tags: ['Arcane', 'Relic', 'Action'],
@@ -248,6 +263,7 @@ const exObj: { [key: string]: Kit } = {
           'For every 2 Stacks of Quickrot: Target gets a stack of [Slow 1].',
           'Target Gains “Weak Metal X”, where X is the number of stacks of Quickrot divided by 4.',
         ],
+        isAdvancedItem: false,
       }, {
         name: 'Lifesap Coil',
         tags: ['Arcane', 'Relic', 'One-Handed', 'Maneuver'],
@@ -258,6 +274,7 @@ const exObj: { [key: string]: Kit } = {
           'Whenever a creature with the Lifesap Coil is dealt damage, you heal half of that damage unless it is Soulrend ' +
             'Damage. You then gain Corruption equal to half of the healing.',
         ],
+        isAdvancedItem: false,
       },
     ],
     trainings: [],
@@ -290,6 +307,7 @@ const exObj: { [key: string]: Kit } = {
       tags: ['Armor'],
       description: 'Armor made from the bark of the nethertrees.',
       effects: ['Gain [Resist Chthonic 2] and [Absorb Abyssal 2].'],
+      isAdvancedItem: false,
     }],
     trainings: [{
       name: 'Primal Fury',
@@ -351,6 +369,7 @@ const exObj: { [key: string]: Kit } = {
       tags: ['Maneuver'],
       description: 'A small device that can connect pieces of the eternal Hells.',
       effects: ['As a Maneuver, you can teleport to any hex within [Medium Range] of you, even if it is not in line of sight. The device must recharge, and cannot be used again for 2 encounters.'],
+      isAdvancedItem: false,
     }],
     trainings: [],
   },

@@ -13,7 +13,7 @@ interface StatusEffectsManagerProps {
   characters: CharDesign[];
   selectedCharacterId: string;
   onUpdateCharacter: (characterId: string, updates: Partial<CharDesign>) => void;
-}
+};
 
 export default function StatusEffectsManager({
   characters,
@@ -51,6 +51,53 @@ export default function StatusEffectsManager({
   });
 
   const selectedCharacter = characters.find(c => c.id === selectedCharacterId);
+
+    // Handle clicking outside the modal and escape key to close it
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!isOpen) return;
+      
+      const target = event.target as Node;
+      
+      // Don't close if clicking inside the main manager
+      if (managerRef.current && managerRef.current.contains(target)) {
+        return;
+      }
+      
+      // Don't close if clicking inside any open dialogs
+      if (addEffectDialog.isOpen || editEffectDialog.isOpen) {
+        // Check if click is inside a dialog
+        const clickedElement = event.target as Element;
+        if (clickedElement && (
+          clickedElement.closest('.confirm-dialog') ||
+          clickedElement.closest('.confirm-dialog-overlay')
+        )) {
+          return;
+        }
+      }
+      
+      setIsOpen(false);
+    };
+
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (isOpen && event.key === 'Escape') {
+        // Only close the main manager if no dialogs are open
+        if (!addEffectDialog.isOpen && !editEffectDialog.isOpen) {
+          setIsOpen(false);
+        }
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleEscapeKey);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [isOpen, addEffectDialog.isOpen, editEffectDialog.isOpen]);
 
   if (!selectedCharacter) return null;
 
@@ -186,53 +233,6 @@ export default function StatusEffectsManager({
     const newStatusEffects = selectedCharacter.statusEffects.filter((_, i) => i !== index);
     onUpdateCharacter(selectedCharacterId, { statusEffects: newStatusEffects });
   };
-
-  // Handle clicking outside the modal and escape key to close it
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (!isOpen) return;
-      
-      const target = event.target as Node;
-      
-      // Don't close if clicking inside the main manager
-      if (managerRef.current && managerRef.current.contains(target)) {
-        return;
-      }
-      
-      // Don't close if clicking inside any open dialogs
-      if (addEffectDialog.isOpen || editEffectDialog.isOpen) {
-        // Check if click is inside a dialog
-        const clickedElement = event.target as Element;
-        if (clickedElement && (
-          clickedElement.closest('.confirm-dialog') ||
-          clickedElement.closest('.confirm-dialog-overlay')
-        )) {
-          return;
-        }
-      }
-      
-      setIsOpen(false);
-    };
-
-    const handleEscapeKey = (event: KeyboardEvent) => {
-      if (isOpen && event.key === 'Escape') {
-        // Only close the main manager if no dialogs are open
-        if (!addEffectDialog.isOpen && !editEffectDialog.isOpen) {
-          setIsOpen(false);
-        }
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-      document.addEventListener('keydown', handleEscapeKey);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleEscapeKey);
-    };
-  }, [isOpen, addEffectDialog.isOpen, editEffectDialog.isOpen]);
 
   const renderStatusEffectCard = (effect: StatusEffect, isActive = false, activeIndex?: number) => {
     return (

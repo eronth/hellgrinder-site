@@ -38,7 +38,7 @@ type ItemDef = {
   name: string;
   tags: AllValidTags[];
   description?: string;
-  isAdvancedItem: boolean;
+  isAdvancedItem?: boolean;
 }
 
 type Kit = {
@@ -109,4 +109,4 @@ type StatusEffect = {
   y?: number | "Y";
 };
 
-export type { HeaderSize, Kit, Weapon, AttackMode, Training, Item, Perk, TabType, DamageElement, StatusEffect, Dice};
+export type { HeaderSize, Kit, Weapon, AttackMode, Training, Item, Perk, TabType, DamageElement, StatusEffect, Dice };

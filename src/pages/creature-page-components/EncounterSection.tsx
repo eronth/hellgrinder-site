@@ -23,9 +23,9 @@ export default function EncounterSection({
   const creatureCount = encounter.creatures.length;
   const title = `Encounter (${creatureCount} creature${creatureCount !== 1 ? 's' : ''})`;
   
-  if (creatureCount === 0) {
-    return null; // Don't show the section if there are no creatures
-  }
+  // if (creatureCount === 0) {
+  //   return null; // Don't show the section if there are no creatures
+  // }
 
   const handleExportEncounter = () => {
     EncounterStorage.exportEncounter(encounter);

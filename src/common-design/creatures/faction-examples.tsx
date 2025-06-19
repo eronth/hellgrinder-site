@@ -66,12 +66,11 @@ const exampleCreatures: { [key: string]: Creature } = {
       effects: ['On Rank 3+, target is [Prone].'],
     }],
     abilities: [{
-        name: '',
-        description: <>
-          Can add [Knockback 1] to any attack and reduces knockback by -1 for attacks taken.
-        </>,
-      }
-    ],
+      name: '',
+      description: <>
+        Can add [Knockback 1] to any attack and reduces knockback by -1 for attacks taken.
+      </>,
+    }],
     description: 'A stalwart defender of the Stoneveined Order, their body infused with living stone.',
   },
 

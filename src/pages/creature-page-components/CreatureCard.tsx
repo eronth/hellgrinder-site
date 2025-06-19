@@ -110,68 +110,109 @@ export default function CreatureCard({
   const factionTags = data.tags.filter(tag => isFactionTag(tag));
   const nonFactionTags = data.tags.filter(tag => !isFactionTag(tag));
 
+  const removeFromEncounterButton = ((encounterCreature && onRemoveFromEncounter)
+    ? <button 
+        className='remove-creature-btn'
+        onClick={() => onRemoveFromEncounter(encounterCreature.id)}
+        title="Remove from encounter"
+      >
+        <FontAwesomeIcon icon={faMinus} />
+      </button>
+    : null);
+  const addToEncounterButton = ((onAddToEncounter)
+  ? <button 
+      className='add-creature-btn'
+      onClick={() => onAddToEncounter(data)}
+      title="Add to encounter"
+    >
+      <FontAwesomeIcon icon={faPlus} />
+    </button>
+  : null);
+  const healthDisplay = (<>
+    {isEncounterMode && encounterCreature && onHealthChange ? (
+      isEditingHealth ? (
+        <input
+          type="number"
+          value={tempHealth}
+          onChange={(e) => setTempHealth(e.target.value)}
+          onBlur={handleHealthSubmit}
+          onKeyDown={handleHealthKeyPress}
+          className="health-input"
+          autoFocus
+          min="0"
+        />
+      ) : (
+        <span 
+          className="editable-health" 
+          onClick={handleHealthClick}
+          title="Click to edit health"
+        >
+          {encounterCreature.currentHealth}
+        </span>
+      )
+    ) : (
+      data.health
+    )}
+    {isEncounterMode && encounterCreature ? `/${encounterCreature.maxHealth}` : ''}⛨
+  </>);
+
+  const renderAbilityDescription = (description: unknown): React.ReactNode => {
+    // Handle serialized React nodes from loaded encounters
+    if (description && typeof description === 'object' && description !== null && 'props' in description) {
+      // This is a serialized React element, we need to reconstruct it
+      // For now, let's extract the text content safely
+      try {
+        const element = description as { props?: { children?: unknown } };
+        // If it has props.children, try to render that
+        if (element.props && element.props.children) {
+          // Handle different types of children
+          if (typeof element.props.children === 'string') {
+            return element.props.children;
+          } else if (Array.isArray(element.props.children)) {
+            // Flatten array of children and extract text
+            return element.props.children.map((child: unknown) => {
+              if (typeof child === 'string') {
+                return child;
+              } else if (child && typeof child === 'object' && child !== null && 'props' in child) {
+                const childElement = child as { props?: { children?: unknown } };
+                return typeof childElement.props?.children === 'string' ? childElement.props.children : '';
+              }
+              return '';
+            }).join('');
+          }
+        }
+        // Fallback: try to stringify the object in a readable way
+        return JSON.stringify(description, null, 2);
+      } catch (error) {
+        console.warn('Failed to render serialized ability description:', error);
+        console.log('--description:', description);
+        return '[Description could not be loaded]';
+      }
+    }
+    
+    // Handle normal React nodes or strings
+    return description as React.ReactNode;
+  };
+
+
   return (<div className={`creature-card ${factionClass} ${isEncounterMode ? 'encounter-card' : ''}`}>
     <div className='title-row'>
       <span className='name'>{data.name}</span>
       <div>
         <span className='tier'>{data.tier}</span>
-        {isEncounterMode && encounterCreature && onRemoveFromEncounter ? (
-          <button 
-            className='remove-creature-btn'
-            onClick={() => onRemoveFromEncounter(encounterCreature.id)}
-            title="Remove from encounter"
-          >
-            <FontAwesomeIcon icon={faMinus} />
-          </button>
-        ) : onAddToEncounter && (
-          <button 
-            className='add-creature-btn'
-            onClick={() => onAddToEncounter(data)}
-            title="Add to encounter"
-          >
-            <FontAwesomeIcon icon={faPlus} />
-          </button>
-        )}
+        {isEncounterMode ? (removeFromEncounterButton) : (addToEncounterButton)}
       </div>
     </div>
     <div className='tags'>
       {nonFactionTags.map((tag, i) => <span 
         key={`creature-${data.name}-tag-${i}`}
       >
-        {(typeof tag === 'string')
-          ? tag
-          : `${tag.tag}: ${tag.value}`
-        }
+        {(typeof tag === 'string') ? tag : `${tag.tag}: ${tag.value}`}
       </span>)}
     </div>
     <div className='stats'>
       <span>
-        Health: 
-        {isEncounterMode && encounterCreature && onHealthChange ? (
-          isEditingHealth ? (
-            <input
-              type="number"
-              value={tempHealth}
-              onChange={(e) => setTempHealth(e.target.value)}
-              onBlur={handleHealthSubmit}
-              onKeyDown={handleHealthKeyPress}
-              className="health-input"
-              autoFocus
-              min="0"
-            />
-          ) : (
-            <span 
-              className="editable-health" 
-              onClick={handleHealthClick}
-              title="Click to edit health"
-            >
-              {encounterCreature.currentHealth}
-            </span>
-          )
-        ) : (
-          data.health
-        )}
-        {isEncounterMode && encounterCreature ? `/${encounterCreature.maxHealth}` : ''}⛨
+        Health: {healthDisplay}
       </span>
       <span>Speed: {data.speed}{hexIcon}
         {data.dash ? ` (${data.dash >= 0 ? '+' : ''}${data.dash}${hexIcon})` : null}
@@ -188,25 +229,22 @@ export default function CreatureCard({
 
     <div>
       {data.attacks.map((attack, i) => <div key={`creature-${data.name}-attack-${i}`}>
-        <AttackModeComponent attackMode = {attack} />
+        <AttackModeComponent attackMode={attack} />
       </div>)}
     </div>
-    {/* <div>
-      {data.attacks.map((attack, i) => <span key={`creature-${data.name}-attack-${i}`}>{attack.name}</span>)}
-    </div> */}
-
-      {
-        (data.abilities.length > 0)
-        ? <div className='creature-abilities'>
+    {
+      (data.abilities.length > 0)
+      ? <div className='creature-abilities'>
           <div><b>Abilities</b>:</div>
-          {data.abilities.map((ability, i) => 
-            <div key={`creature-${data.name}-ability-${i}`} className='details-indentation'>
-              {ability.name ? <i>{ability.name}: </i> : null}{ability.description}
+          {data.abilities.map((ability, i) => {
+            return <div key={`creature-${data.name}-ability-${i}`} className='details-indentation'>
+              {ability.name ? <i>{ability.name}: </i> : null}
+              {renderAbilityDescription(ability.description)}
             </div>
-          )}
-        </div>
-        : null
-      }
+          })}
+      </div>
+      : null
+    }
 
     <div className='creature-description'><i>{data.description}</i></div>
     
@@ -225,6 +263,6 @@ export default function CreatureCard({
           </span>
         ))}
       </div>
-    )}
+    )} 
   </div>);
 }

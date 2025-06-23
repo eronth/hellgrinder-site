@@ -8,16 +8,16 @@ type Props = {
 };
 export default function WanderlostClans({ hx }: Props) {
   return (
-    <ColumnEntry title={{ hx: hx, text: "Wanderlost Clans" }}>
+    <ColumnEntry title={{ hx: hx, text: "Wanderlost Crews" }}>
       <p>
-        The <Faction>Wanderlost Clans</Faction> are scattered clans of humans
+        The <Faction>Wanderlost Crews</Faction> are scattered clans of humans
         who have lost their way. Though they are not demons, they have stooped
         to using sinful magic and playing corrupt politics to survive the
         hellscape and chaos of this realm; making them as demonically vile
-        as any other.
+        as any other demon clan.
       </p>
       <p>
-        Though technically fractured and disorganized, the clans are united by
+        Though technically fractured and disorganized, the crews are united by
         their shared goal of thriving and controlling territory. They are
         not bound by any one leader or or ruling body, making them a
         relatively resilient group; not being thrown into disarray by the

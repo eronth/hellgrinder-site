@@ -127,7 +127,9 @@ export default function SettingPage() {
         document.removeEventListener('dblclick', handleNavTabDoubleClick);
       };
     }
-  }, []);  return (<div className={'page ' + page}>
+  }, []);
+  
+  return (<div className={'page ' + page}>
     <GameTitle />
     <NavTabs selectedTab={page} />
     

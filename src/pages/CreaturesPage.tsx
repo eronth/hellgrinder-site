@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 // Components
-import GameTitle from "../GameTitle";
-import NavTabs from "../common-design/nav/NavTabs";
 import Tools from "../common-design/Tools";
 import CreatureCard from "./creature-page-components/CreatureCard";
 import CollapsibleSection from "./creature-page-components/CollapsibleSection";
@@ -20,6 +18,7 @@ import FactionExamples from "../common-design/creatures/faction-examples";
 // Utils
 import { transformCreatureToFaction } from "./creature-page-components/FactionTransformUtils";
 import { EncounterStorage } from "../common-design/utils/EncounterStorage";
+import Page from '../common-design/Page';
 
 export default function CreaturesPage() {
   const page: TabType = 'creatures';
@@ -87,11 +86,8 @@ export default function CreaturesPage() {
 
   const hasEncounterCreatures = encounter.creatures.length > 0;
 
-  return (<div className={'page ' + page}>
-    <GameTitle />
-    <NavTabs selectedTab={page} />
-    <hr />
-    
+  return (<Page pageType={page}>
+
     {/* Encounter Section - appears at top when there are creatures */}
     <EncounterSection
       encounter={encounter}
@@ -216,5 +212,5 @@ export default function CreaturesPage() {
       </div>
     </CollapsibleSection>
     
-  </div>);
+  </Page>);
 }

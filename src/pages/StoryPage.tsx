@@ -1,15 +1,11 @@
-import GameTitle from "../GameTitle";
+import Page from "../common-design/Page";
 import Story from "./story-components/Story";
-import NavTabs from "../common-design/nav/NavTabs";
 import { TabType } from "../ts-types/types";
 
 export default function StoryPage() {
   const page: TabType = 'story';
 
-  return (<div className={'page ' + page}>
-    <GameTitle />
-    <NavTabs selectedTab={page} />
+  return (<Page pageType={page}>
     <Story />
-    <hr />
-  </div>);
+  </Page>);
 }

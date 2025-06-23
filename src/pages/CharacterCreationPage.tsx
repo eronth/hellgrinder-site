@@ -1,10 +1,9 @@
 import React from "react";
+import Page from "../common-design/Page";
 import { Toggle } from '../common-design/Toggle/Toggle';
-import GameTitle from "../GameTitle";
-import NavTabs from "../common-design/nav/NavTabs";
-import { TabType } from "../ts-types/types";
 import CharacterCreationRules from "./character-creation-components/CharacterCreationRules";
 import CharacterGenerator from "./character-creation-components/CharacterGenerator/CharacterGenerator";
+import { TabType } from "../ts-types/types";
 // Todo merge into Character Creation Page as a sub-tab/toggle.
 
 export default function CharacterCreationPage() {
@@ -28,11 +27,9 @@ export default function CharacterCreationPage() {
     left: 'Character Creation Rules',
     right: 'Character Generator',
   };
-  
-  return (<div className={'page ' + page}>
-    <GameTitle />
-    <NavTabs selectedTab={page} />
-    <Toggle 
+
+  return (<Page pageType={page}>
+    <Toggle
       className={'character-creation-toggle'}
       label={toggleLabel}
       toggled={showCreator}
@@ -42,5 +39,5 @@ export default function CharacterCreationPage() {
       ? <CharacterGenerator />
       : <CharacterCreationRules />
     }
-  </div>);
+  </Page>);
 }

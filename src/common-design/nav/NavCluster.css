@@ -1,9 +1,13 @@
 nav.navcluster {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1em;
   justify-content: center;
   margin: 1em 0;
+  
+  .icon {
+    margin-inline-end: 0.25em;
+  }
 
   div {
     display: grid;

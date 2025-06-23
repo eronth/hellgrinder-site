@@ -1,17 +1,36 @@
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faBookSkull, faLightbulb } from '@fortawesome/free-solid-svg-icons';
 import './NavCluster.css';
 
 const NavCluster = () => {
   return (
     <nav className="navbar navcluster">
-      <div><Link to="/story">Story</Link></div>
-      <div><Link to="/setting">Setting</Link></div>
-      <div><Link to="/how-to-play">How to Play</Link></div>
-      <div><Link to="/character-creation">Character Creation</Link></div>
+      {/* Top Row */}
+      <div><Link to="/how-to-play">
+        <FontAwesomeIcon icon={faLightbulb} className='icon' />
+        How to Play
+      </Link></div>
+
+      <div><Link to="/character-creation">
+        <FontAwesomeIcon icon={faUser} className='icon'/>
+        Character Creation
+      </Link></div>
+
+      <div><Link to="/creatures">
+        <FontAwesomeIcon icon={faBookSkull} className='icon' />
+        Creatures
+      </Link></div>
+
+      {/* Bottom Row */}
+      <div><Link to="/story-and-setting">Story + Setting</Link></div>
       <div><Link to="/additional-equipment">Equipment</Link></div>
-      <div><Link to="/advanced-perks">Advanced Perks</Link></div>
-      <div><Link to="/magic">Magic</Link></div>
-      <div><Link to="/creatures">Creatures</Link></div>
+      <div><Link to="/perks">Perks</Link></div>
+
+
+      {/* Unused links */}
+      {/* <div><Link to="/setting">Setting</Link></div> */}
+      {/* <div><Link to="/magic">Magic</Link></div> */}
     </nav>
   );
 }

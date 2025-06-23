@@ -565,6 +565,7 @@ export default function CharacterGenerator() {
   const handleSuccess = (message: string) => {
     showNotification('success', message);
   };
+
   return (<div className={page}>
     <p>
       On this page, you are able to quickly generate a new character at the
@@ -613,113 +614,117 @@ export default function CharacterGenerator() {
         </button>
       )}
     </div>
-    
-    {selectedCharacter != null
-    ? <div className="generated-character-display">
-        <div className="name-header">
-          <div className="character-name">
-            {isEditingName ? (
-              <div className="name-edit-container">
-                <input
-                  type="text"
-                  value={editingName}
-                  onChange={(e) => setEditingName(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') saveNameEdit();
-                    if (e.key === 'Escape') cancelNameEdit();
-                  }}
-                  className="name-edit-input"
-                  autoFocus
-                />
-                <button onClick={saveNameEdit} className="save-name-btn" title="Save name">
-                  ✓
+
+    <div className="generated-character-display">
+      {
+        selectedCharacter != null
+        ? <>
+          <div className="name-header">
+            <div className="character-name">
+              {isEditingName ? (
+                <div className="name-edit-container">
+                  <input
+                    type="text"
+                    value={editingName}
+                    onChange={(e) => setEditingName(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') saveNameEdit();
+                      if (e.key === 'Escape') cancelNameEdit();
+                    }}
+                    className="name-edit-input"
+                    autoFocus
+                  />
+                  <button onClick={saveNameEdit} className="save-name-btn" title="Save name">
+                    ✓
+                  </button>
+                  <button onClick={cancelNameEdit} className="cancel-name-btn" title="Cancel">
+                    ✕
+                  </button>
+                </div>
+              ) : (
+                <span onClick={startEditingName} className="editable-name" title="Click to edit name">
+                  {selectedCharacter.name}
+                </span>
+              )}
+            </div>
+            <div>
+              {/* Status Effects Manager */}
+              <StatusEffectsManager
+                characters={characters}
+                selectedCharacterId={selectedCharacter.id}
+                onUpdateCharacter={updateCharacter}
+              />
+              {selectedCharacterId && (
+                <button 
+                  className="delete-character-btn" 
+                  onClick={() => deleteCharacter(selectedCharacterId)}
+                  title="Delete this character"
+                >
+                  Delete Character
                 </button>
-                <button onClick={cancelNameEdit} className="cancel-name-btn" title="Cancel">
-                  ✕
-                </button>
+              )}
+            </div>
+          </div>        
+          <div className="col-handler">          
+            <div>
+              <CharacterStartingStatsTable
+                currentHealth={selectedCharacter.stats.health.current}
+                maxHealth={selectedCharacter.stats.health.max}
+                injuries={selectedCharacter.stats.injuries}
+                speed={selectedCharacter.stats.speed}
+                corruption={selectedCharacter.stats.corruption}
+                perkPoints={selectedCharacter.stats.perkPoints}
+                safelightShards={selectedCharacter.stats.safelightShards}
+                attackBonus={selectedCharacter.stats.attackBonus}
+                isEditable={true}
+                onStatsChange={(newStats) => updateCharacterStats(selectedCharacter.id, newStats)}
+              />
+              <div className="specialization-block">
+                <div className="title">Specializations</div>
+                <div>+3 [{selectedCharacter.specializationBonus} Checks] (bonus)</div>
+                <div>-5 [{selectedCharacter.specializationPenalty} Checks] (penalty)</div>
               </div>
-            ) : (
-              <span onClick={startEditingName} className="editable-name" title="Click to edit name">
-                {selectedCharacter.name}
-              </span>
+              
+              {groupPerks(selectedCharacter.perks).map((perkGroup, i) =>
+                <PerkComponent 
+                  key={`perk-${i}`} 
+                  perk={perkGroup.perk} 
+                  count={perkGroup.count}
+                />
+              )}
+            </div>
+              {selectedCharacter.kits.map((k, i) =>
+              <KitComponent key={`kit-${i}`} kit={k}/>
             )}
           </div>
-          <div>
-            {/* Status Effects Manager */}
-            <StatusEffectsManager
+          <div className="inventory-button-container">
+            {/* Inventory Manager */}
+            <InventoryManager
               characters={characters}
               selectedCharacterId={selectedCharacter.id}
               onUpdateCharacter={updateCharacter}
             />
-            {selectedCharacterId && (
-              <button 
-                className="delete-character-btn" 
-                onClick={() => deleteCharacter(selectedCharacterId)}
-                title="Delete this character"
-              >
-                Delete Character
-              </button>
-            )}
           </div>
-        </div>        
-        <div className="col-handler">          
           <div>
-            <CharacterStartingStatsTable
-              currentHealth={selectedCharacter.stats.health.current}
-              maxHealth={selectedCharacter.stats.health.max}
-              injuries={selectedCharacter.stats.injuries}
-              speed={selectedCharacter.stats.speed}
-              corruption={selectedCharacter.stats.corruption}
-              perkPoints={selectedCharacter.stats.perkPoints}
-              safelightShards={selectedCharacter.stats.safelightShards}
-              attackBonus={selectedCharacter.stats.attackBonus}
-              isEditable={true}
-              onStatsChange={(newStats) => updateCharacterStats(selectedCharacter.id, newStats)}
-            />            <div className="specialization-block">
-              <div className="title">Specializations</div>
-              <div>+3 [{selectedCharacter.specializationBonus} Checks] (bonus)</div>
-              <div>-5 [{selectedCharacter.specializationPenalty} Checks] (penalty)</div>
-            </div>
-            
-            {groupPerks(selectedCharacter.perks).map((perkGroup, i) =>
-              <PerkComponent 
-                key={`perk-${i}`} 
-                perk={perkGroup.perk} 
-                count={perkGroup.count}
-              />
+            {/* Display inventory items */}
+            {(selectedCharacter.inventory.weapons.length > 0 || selectedCharacter.inventory.items.length > 0) && (
+              <div className="inventory-display">
+                <div className="inventory-title">Acquired Equipment</div>
+                <div className="col-handler">
+                  {selectedCharacter.inventory.weapons.map((w, i) =>
+                    <WeaponComponent key={`inventory-weapon-${i}`} weapon={w} />
+                  )}
+                  {selectedCharacter.inventory.items.map((item, i) =>
+                    <ItemComponent key={`inventory-item-${i}`} item={item} />
+                  )}
+                </div>
+              </div>
             )}
           </div>
-            {selectedCharacter.kits.map((k, i) =>
-            <KitComponent key={`kit-${i}`} kit={k}/>
-          )}
-        </div>
-        <div className="inventory-button-container">
-          {/* Inventory Manager */}
-          <InventoryManager
-            characters={characters}
-            selectedCharacterId={selectedCharacter.id}
-            onUpdateCharacter={updateCharacter}
-          />
-        </div>
-        <div>
-          {/* Display inventory items */}
-          {(selectedCharacter.inventory.weapons.length > 0 || selectedCharacter.inventory.items.length > 0) && (
-            <div className="inventory-display">
-              <div className="inventory-title">Acquired Equipment</div>
-              <div className="col-handler">
-                {selectedCharacter.inventory.weapons.map((w, i) =>
-                  <WeaponComponent key={`inventory-weapon-${i}`} weapon={w} />
-                )}
-                {selectedCharacter.inventory.items.map((item, i) =>
-                  <ItemComponent key={`inventory-item-${i}`} item={item} />
-                )}
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-      : <div className="generated-character-display"></div>
-    }
+        </>
+        : null
+      }
+    </div>
     <hr />
 
     {/* Confirm Dialogs */}

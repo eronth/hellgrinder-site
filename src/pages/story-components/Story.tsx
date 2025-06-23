@@ -3,7 +3,6 @@ import TM from '../../common-design/TM';
 function Story() {
 
   return (<>
-    <hr />
     <div className='col-handler'>
 
       {/*<!-- Hell's Invasion -->*/}

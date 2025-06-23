@@ -1,5 +1,4 @@
-import GameTitle from "../GameTitle";
-import NavTabs from "../common-design/nav/NavTabs";
+import Page from "../common-design/Page";
 import { TabType } from "../ts-types/types";
 import Tools from "../common-design/Tools";
 import Perks from "../common-design/equipment/perks";
@@ -10,10 +9,7 @@ export default function AdvancedPerksPage() {
 
   const sortedPerks = Tools.sortPerks(Perks);
 
-  return (<div className={'page ' + page}>
-    <GameTitle />
-    <NavTabs selectedTab={page} />
-    <hr />
+  return (<Page pageType={page}>
     <h2>Perks</h2>
     <p>
       Perks are special abilities that can be used to enhance your character. Some perks are considered starter perks,
@@ -35,7 +31,5 @@ export default function AdvancedPerksPage() {
         p.isAdvancedItem ? <PerkComponent key={`basic-perk-${i}`} perk={p} /> : null)
       }
     </div>
-
-
-  </div>);
+  </Page>);
 }

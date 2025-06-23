@@ -17,8 +17,8 @@ export default function Rules() {
       <ThemeSwitcher />
       <Routes>
         <Route path="/" element={<FancyIndexPage />} />
-        <Route path="/story" element={<StoryPage />} />
-        <Route path="/setting" element={<SettingPage />} />
+        <Route path="/story-and-setting" element={<StoryPage />} />
+        {/* <Route path="/setting" element={<SettingPage />} /> */}
         <Route path="/how-to-play" element={<HowToPlayPage />} />
         <Route path="/character-creation" element={<CharacterCreationPage />} />
         <Route path="/additional-equipment" element={<AdditionalEquipmentPage />} />

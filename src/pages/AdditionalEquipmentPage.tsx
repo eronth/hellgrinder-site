@@ -1,5 +1,4 @@
-import GameTitle from "../GameTitle";
-import NavTabs from "../common-design/nav/NavTabs";
+import Page from "../common-design/Page.tsx";
 import { TabType } from "../ts-types/types";
 import Tools from "../common-design/Tools";
 import MeleeWeapons from "../common-design/equipment/weapons/melee-weapons.tsx";
@@ -23,10 +22,7 @@ export default function AdditionalEquipmentPage() {
   const sortedArmor = Tools.sortItems(Armor);
   const sortedGear = Tools.sortItems(Gear);
 
-  return (<div className={'page ' + page}>
-    <GameTitle />
-    <NavTabs selectedTab={page} />
-    <hr />
+  return (<Page pageType={page}>
     <h2>Equipment</h2>
     <p>
       The equipment listed on this page is not meant for players to start with. Instead, it is a list of
@@ -160,7 +156,5 @@ export default function AdditionalEquipmentPage() {
         w.isAdvancedItem ? <ItemComponent key={`advanced-gear-${i}`} item={w} /> : null)
       }
     </div>
-    
-    
-  </div>);
+  </Page>);
 }

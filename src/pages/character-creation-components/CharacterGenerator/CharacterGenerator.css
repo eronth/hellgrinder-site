@@ -86,7 +86,8 @@
   background-color: var(--card-background);
   border-radius: 8px;
   border: 1px solid #444;
-  
+  min-height: 60vh;
+
   .character-name {
     font-size: 1.6em;
     font-weight: 600;

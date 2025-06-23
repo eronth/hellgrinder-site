@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './Toggle.css';
 
 type Props = {
@@ -11,8 +11,18 @@ type Props = {
   onClick: (toggled: boolean) => void;
 }
 export const Toggle = ({ className, label, toggled, onClick }: Props) => {
-  
+  const [toggleCss, setToggleCss] = useState<string[]>([]);
   const [isToggled, setToggle] = useState(toggled);
+
+  useEffect(() => {
+    const newCss: string[] = [
+      'toggle',
+      isToggled ? 'toggled' : 'untoggled',
+    ];
+    if (className) { newCss.push(className); }
+    setToggleCss([...newCss]);
+  }, [isToggled, className]);
+
   const leftTextComponent = label?.left
     ? <span className={'left label'}>{label.left}</span>
     : null;
@@ -30,7 +40,7 @@ export const Toggle = ({ className, label, toggled, onClick }: Props) => {
     className = ' ' + className;
   }
 
-  return (<div className={'toggle ' + (isToggled ? 'toggled' : 'untoggled') + className}>
+  return (<div className={toggleCss.join(' ')}>
     <label>
       {leftTextComponent}
       <span className={'toggler'} >

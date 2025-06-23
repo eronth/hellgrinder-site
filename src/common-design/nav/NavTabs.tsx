@@ -22,11 +22,8 @@ const NavTabs = ({selectedTab}: Props) => {
   return (
     <nav className="navbar navtabs">
       <div className={navEndDivClass} />
-      <Link to="/story" className={getClassForTab('story')}>
+      <Link to="/story-and-setting" className={getClassForTab('story-and-setting')}>
         <div>Story + Setting</div>
-      </Link>
-      <Link to="/setting" className={getClassForTab('setting')}>
-        <div>Setting</div>
       </Link>
       
       {/* Start tabs with icons! */}

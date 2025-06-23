@@ -6,6 +6,7 @@ import ThornwraithConclave from "./ThornwraithConclave";
 import UmbralNexus from "./UmbralNexus";
 import VastfathomDominion from "./VastfathomDominion";
 import { HeaderSize } from "../../../ts-types/types";
+import WanderlostClans from "./WanderlostClans.tsx";
 
 export default function DemonClans() {
   const titleHxLevel: HeaderSize = 3;
@@ -25,6 +26,7 @@ export default function DemonClans() {
       <UmbralNexus hx={factionHxLevel} />
       <VastfathomDominion hx={factionHxLevel} />
       <ZephpterHorde hx={factionHxLevel} />
+      <WanderlostClans hx={factionHxLevel} />
     </div>
   </>);
 }

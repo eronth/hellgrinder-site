@@ -214,7 +214,7 @@
     --title-border-bottom-color: rgba(34, 139, 34, 0.3);
   }
 
-  &.faction-wanderlost-clans {
+  &.faction-wanderlost-crews {
     --border-color: #8B7355; /* Dark bronze for Metal */
     --background-transition-color: rgba(139, 115, 85, 0.1);
     --title-bg-color: rgba(139, 115, 85, 0.15);

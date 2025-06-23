@@ -39,7 +39,7 @@ type SkillChecks =
 
 type DemonFactionTags =
   'Ashborn Legion' | 'Stoneveined Order' | 'Vastfathom League'
-  | 'Thornwraith Conclave' | 'Wanderlost Clan'
+  | 'Thornwraith Covenant' | 'Wanderlost Crew'
   | 'Zephpter Horde' | 'Umbral Nexus';
 
 type OtherFactionTags =

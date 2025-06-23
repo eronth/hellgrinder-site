@@ -114,7 +114,7 @@ const exampleCreatures: { [key: string]: Creature } = {
   thornwraithStalker: {
     name: 'Thornwraith Stalker',
     tier: Tools.creatureTiers.t1,
-    tags: ['Thornwraith Conclave'],
+    tags: ['Thornwraith Covenant'],
     health: 12,
     size: 1,
     speed: 5,
@@ -146,11 +146,11 @@ const exampleCreatures: { [key: string]: Creature } = {
     description: 'A nature-twisted creature of the Thornwraith Covenant, blending plant and demonic essence.',
   },
 
-  // Wanderlost Clans - Metal faction
+  // Wanderlost Crews - Metal faction
   wanderlostScavenger: {
     name: 'Wanderlost Scavenger',
     tier: Tools.creatureTiers.t1,
-    tags: ['Wanderlost Clan'],
+    tags: ['Wanderlost Crew'],
     health: 15,
     size: 1,
     speed: 4,
@@ -179,7 +179,7 @@ const exampleCreatures: { [key: string]: Creature } = {
         </>
       }
     ],
-    description: 'A resourceful member of the Wanderlost Clans, driven by envy to take what others possess.',
+    description: 'A resourceful member of the Wanderlost Crews, driven by envy to take what others possess.',
   },
 
   // Umbral Nexus - Voidyr faction

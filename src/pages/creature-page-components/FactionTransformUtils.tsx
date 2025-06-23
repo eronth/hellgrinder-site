@@ -34,8 +34,8 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
     weaknesses: ['REJECT', 'DISRUPT'],
     cssClass: 'faction-generic'
   },
-  'Thornwraith Conclave': {
-    name: 'Thornwraith Conclave',
+  'Thornwraith Covenant': {
+    name: 'Thornwraith Covenant',
     primary: 'Verdant',
     absorb: 'Abyssal',
     weaknesses: ['Metal', 'Voidyr'],
@@ -178,12 +178,12 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
     ],
     cssClass: 'faction-ashborn-legion'
   },
-  'Wanderlost Clans': {
-    name: 'Wanderlost Clans',
+  'Wanderlost Crews': {
+    name: 'Wanderlost Crews',
     primary: 'Metal',
     absorb: 'Chthonic',
     weaknesses: ['Infernal', 'Nethercurrent'],
-    cssClass: 'faction-wanderlost-clans'
+    cssClass: 'faction-wanderlost-crews'
   },
   'Zephpter Horde': {
     name: 'Zephpter Horde',

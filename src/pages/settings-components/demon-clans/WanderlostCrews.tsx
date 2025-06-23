@@ -6,7 +6,7 @@ import { HeaderSize } from "../../../ts-types/types";
 type Props = {
   hx: HeaderSize;
 };
-export default function WanderlostClans({ hx }: Props) {
+export default function WanderlostCrews({ hx }: Props) {
   return (
     <ColumnEntry title={{ hx: hx, text: "Wanderlost Crews" }}>
       <p>

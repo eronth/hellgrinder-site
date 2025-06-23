@@ -70,8 +70,8 @@ export default function CreatureCard({
       'Vastfathom League': 'faction-vastfathom-league',
       'Thornwraith Covenant': 'faction-thornwraith-covenant',
       'Thornwraith Conclave': 'faction-thornwraith-covenant', // Alternative name
-      'Wanderlost Clans': 'faction-wanderlost-clans',
-      'Wanderlost Clan': 'faction-wanderlost-clans', // Alternative name
+      'Wanderlost Crews': 'faction-wanderlost-crews',
+      'Wanderlost Crew': 'faction-wanderlost-crews', // Alternative name
       'Zephpter Horde': 'faction-zephpter-horde',
       'Umbral Nexus': 'faction-umbral-nexus',
       'Sinner': 'faction-sinner',
@@ -97,8 +97,10 @@ export default function CreatureCard({
     const tagString = typeof tag === 'string' ? tag : tag.tag;
     const factionTags = [
       'Ashborn Legion', 'Stoneveined Order', 'Vastfathom League',
-      'Thornwraith Covenant', 'Thornwraith Conclave', 'Wanderlost Clans', 'Wanderlost Clan',
-      'Zephpter Horde', 'Umbral Nexus', 'Sinner', 'Forgefiend Syndicate',
+      'Thornwraith Covenant', 'Thornwraith Covenant',
+      'Zephpter Horde', 'Umbral Nexus',
+      'Wanderlost Crews', 'Wanderlost Crew',
+      'Sinner', 'Forgefiend Syndicate',
       'Hand of Death', "Heaven's Host", 'Voidfire Conclave', 'Witch Coven'
     ];
     return factionTags.includes(tagString);

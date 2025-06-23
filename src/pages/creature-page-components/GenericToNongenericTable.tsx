@@ -13,7 +13,7 @@ export default function GenericToNongenericTable() {
           <th>Special Bonus</th>
         </tr>
         <GenericToNongenericRow data={{
-          name: "Thornwraith Conclave",
+          name: "Thornwraith Covenant",
           primary: "Verdant",
           absorb: "Abyssal",
           weaknesses: ["Metal", "Voidyr"],
@@ -53,7 +53,7 @@ export default function GenericToNongenericTable() {
           </>,
         }} />
         <GenericToNongenericRow data={{
-          name: "Wanderlost Clans", //TODO add story elements for them
+          name: "Wanderlost Crews", //TODO add story elements for them
           primary: "Metal",
           absorb: "Chthonic",
           weaknesses: ["Infernal", "Nethercurrent"],

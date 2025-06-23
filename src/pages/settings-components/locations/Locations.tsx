@@ -4,10 +4,10 @@ import DeepblindCaverns from "./DeepwindCaverns";
 import GhastcursedVillages from "./GhastcursedVillages";
 import InfernalLocation from "./InfernalLocation";
 import ShoalpockedExpanse from "./ShoalpockedExpanse";
+import SorrowshapedEchoplex from "./SorrowshapedEchoplex";
 import TwistedWilds from "./TwistedWilds";
 import WarpwindingPathways from "./WarpwindingPathways";
 import ZephyrianSpires from "./ZephyrianSpires";
-
 
 
 export default function OtherFactions() {
@@ -28,6 +28,7 @@ export default function OtherFactions() {
       <ShoalpockedExpanse hx={locationHxLevel} />
       <TwistedWilds hx={locationHxLevel} />
       <ZephyrianSpires hx={locationHxLevel} />
+      <SorrowshapedEchoplex hx={locationHxLevel} />
       <WarpwindingPathways hx={locationHxLevel} />
     </div>
 

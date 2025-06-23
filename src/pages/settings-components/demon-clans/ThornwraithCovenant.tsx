@@ -5,9 +5,9 @@ import { HeaderSize } from "../../../ts-types/types";
 type Props = {
   hx: HeaderSize;
 };
-export default function ThornwraithConclave ({ hx }: Props) {
+export default function ThornwraithCovenant ({ hx }: Props) {
   return (
-    <ColumnEntry title={{ hx: hx, text: "Thornwraith Conclave/Covenant" }}>
+    <ColumnEntry title={{ hx: hx, text: "Thornwraith Covenant" }}>
       <p>The <Faction>Thornwraith</Faction> are a verdant-aligned clan, an anomaly 
       in the burning wastelands of hell. Unlike other infernal factions, they thrive in primal 
       unity, their forms a fusion of plant and beast. Vines coil around their limbs, bark-like skin 

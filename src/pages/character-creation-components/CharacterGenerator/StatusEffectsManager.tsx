@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { StatusEffect } from '../../../ts-types/types';
-import { CharDesign, ActiveStatusEffect } from './CharacterGenerator';
+import { CharacterDesign, ActiveStatusEffect } from './CharacterGenerator';
 import ConfirmDialog from './ConfirmDialog';
 import RuleKeyword from '../../../common-design/RuleKeyword';
 import StatusEffects from '../../../common-design/game-terms/status-effects';
@@ -10,13 +10,13 @@ import StatusEffects from '../../../common-design/game-terms/status-effects';
 import './StatusEffectsManager.css';
 
 interface StatusEffectsManagerProps {
-  characters: CharDesign[];
+  character: CharacterDesign;
   selectedCharacterId: string;
-  onUpdateCharacter: (characterId: string, updates: Partial<CharDesign>) => void;
+  onUpdateCharacter: (characterId: string, updates: Partial<CharacterDesign>) => void;
 };
 
 export default function StatusEffectsManager({
-  characters,
+  character,
   selectedCharacterId,
   onUpdateCharacter
 }: StatusEffectsManagerProps) {
@@ -50,9 +50,7 @@ export default function StatusEffectsManager({
     y: 1
   });
 
-  const selectedCharacter = characters.find(c => c.id === selectedCharacterId);
-
-    // Handle clicking outside the modal and escape key to close it
+  // Handle clicking outside the modal and escape key to close it
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (!isOpen) return;
@@ -99,7 +97,7 @@ export default function StatusEffectsManager({
     };
   }, [isOpen, addEffectDialog.isOpen, editEffectDialog.isOpen]);
 
-  if (!selectedCharacter) return null;
+  if (!character) return null;
 
   // Get all available status effects
   const allStatusEffects = Object.values(StatusEffects);
@@ -138,15 +136,15 @@ export default function StatusEffectsManager({
     if (!effect) return;
 
     // Check if this status effect already exists
-    const existingIndex = selectedCharacter.statusEffects.findIndex(
+    const existingIndex = character.statusEffects.findIndex(
       activeEffect => normalizeStatusEffectName(activeEffect.effect.name) === normalizeStatusEffectName(effect.name)
     );
 
     if (existingIndex !== -1) {
       // Merge with existing effect by adding x and y values
-      const existingEffect = selectedCharacter.statusEffects[existingIndex];
-      const newStatusEffects = [...selectedCharacter.statusEffects];
-      
+      const existingEffect = character.statusEffects[existingIndex];
+      const newStatusEffects = [...character.statusEffects];
+
       newStatusEffects[existingIndex] = {
         ...existingEffect,
         ...(effect.x !== undefined ? { 
@@ -166,7 +164,7 @@ export default function StatusEffectsManager({
         ...(effect.y !== undefined ? { y } : {})
       };
 
-      const newStatusEffects = [...selectedCharacter.statusEffects, activeEffect];
+      const newStatusEffects = [...character.statusEffects, activeEffect];
       onUpdateCharacter(selectedCharacterId, { statusEffects: newStatusEffects });
     }
 
@@ -192,7 +190,7 @@ export default function StatusEffectsManager({
     const { activeEffect, index, x, y } = editEffectDialog;
     if (!activeEffect) return;
 
-    const newStatusEffects = [...selectedCharacter.statusEffects];
+    const newStatusEffects = [...character.statusEffects];
     newStatusEffects[index] = {
       ...activeEffect,
       ...(activeEffect.effect.x !== undefined ? { x } : {}),
@@ -230,7 +228,7 @@ export default function StatusEffectsManager({
   };
 
   const removeStatusEffect = (index: number) => {
-    const newStatusEffects = selectedCharacter.statusEffects.filter((_, i) => i !== index);
+    const newStatusEffects = character.statusEffects.filter((_, i) => i !== index);
     onUpdateCharacter(selectedCharacterId, { statusEffects: newStatusEffects });
   };
 
@@ -290,7 +288,7 @@ export default function StatusEffectsManager({
 
         <div className="status-effects-manager" ref={managerRef}>
           <div className="status-effects-header">
-            <h3>Status Effects Manager - {selectedCharacter.name}</h3>
+            <h3>Status Effects Manager - {character.name}</h3>
             <button 
               className="close-btn"
               onClick={() => setIsOpen(false)}
@@ -311,12 +309,12 @@ export default function StatusEffectsManager({
 
           <div className="status-effects-content">
             <div className="current-status-effects">
-              <h4>Active Status Effects ({selectedCharacter.statusEffects.length})</h4>
-              {selectedCharacter.statusEffects.length === 0 ? (
+              <h4>Active Status Effects ({character.statusEffects.length})</h4>
+              {character.statusEffects.length === 0 ? (
                 <p className="empty-message">No active status effects</p>
               ) : (
                 <div className="status-effects-grid">
-                  {selectedCharacter.statusEffects.map((activeEffect, index) => (
+                  {character.statusEffects.map((activeEffect, index) => (
                     <div key={`active-${index}`} className="active-status-effect-card">
                       <div 
                         className="active-status-effect-content"
@@ -374,11 +372,11 @@ export default function StatusEffectsManager({
         isOpen={addEffectDialog.isOpen}
         title="Add Status Effect"
         message={
-          addEffectDialog.effect && selectedCharacter.statusEffects.some(
+          addEffectDialog.effect && character.statusEffects.some(
             activeEffect => normalizeStatusEffectName(activeEffect.effect.name) === normalizeStatusEffectName(addEffectDialog.effect?.name || '')
           ) 
             ? `"${addEffectDialog.effect?.name}" already exists. Values will be added together.`
-            : `Add "${addEffectDialog.effect?.name}" to ${selectedCharacter.name}?`
+            : `Add "${addEffectDialog.effect?.name}" to ${character.name}?`
         }
         buttons={[
           {
@@ -435,7 +433,7 @@ export default function StatusEffectsManager({
       <ConfirmDialog
         isOpen={editEffectDialog.isOpen}
         title="Edit Status Effect"
-        message={`Edit "${editEffectDialog.activeEffect?.effect.name}" for ${selectedCharacter.name}?`}
+        message={`Edit "${editEffectDialog.activeEffect?.effect.name}" for ${character.name}?`}
         buttons={[
           {
             text: "Cancel",

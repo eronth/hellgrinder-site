@@ -111,54 +111,6 @@
         opacity: 0.7;
       }
     }
-
-    .name-edit-container {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-
-      .name-edit-input {
-        background-color: #333;
-        color: var(--mid-text);
-        border: 1px solid #646cff;
-        border-radius: 4px;
-        padding: 0.25rem 0.5rem;
-        font-size: 1.2rem;
-        font-weight: 600;
-        min-width: 200px;
-
-        &:focus {
-          outline: none;
-          box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.2);
-        }
-      }
-
-      .save-name-btn, .cancel-name-btn {
-        background: none;
-        border: 1px solid #646cff;
-        color: #646cff;
-        border-radius: 4px;
-        padding: 0.25rem 0.5rem;
-        cursor: pointer;
-        font-size: 1rem;
-        transition: all 0.2s;
-
-        &:hover {
-          background-color: #646cff;
-          color: white;
-        }
-      }
-
-      .cancel-name-btn {
-        border-color: #dc3545;
-        color: #dc3545;
-
-        &:hover {
-          background-color: #dc3545;
-          color: white;
-        }
-      }
-    }
   }
   
   .name-header {

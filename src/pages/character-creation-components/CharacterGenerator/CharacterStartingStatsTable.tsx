@@ -1,6 +1,15 @@
 import { useCallback, useMemo } from "react";
-import { AttackBonusStat, CharStats } from "./CharacterGenerator";
+import { AttackBonusStat, HealthStat } from "./CharacterGenerator";
 
+export type CharacterStats = {
+  health: HealthStat;
+  injuries: number;
+  speed: number;
+  corruption: number;
+  perkPoints: number;
+  safelightShards: number;
+  attackBonus: AttackBonusStat;
+};
 
 type Props = {
   currentHealth?: number;
@@ -12,7 +21,7 @@ type Props = {
   safelightShards?: number;
   attackBonus?: AttackBonusStat;
   isEditable?: boolean;
-  onStatsChange?: (stats: CharStats) => void;
+  onStatsChange?: (stats: CharacterStats) => void;
 };
 
 export default function CharacterStartingStatsTable({
@@ -28,7 +37,7 @@ export default function CharacterStartingStatsTable({
   onStatsChange
 }: Props) {
 
-  const stats: CharStats = useMemo(() => ({
+  const stats: CharacterStats = useMemo(() => ({
     health: {
       current: currentHealth,
       max: maxHealth
@@ -41,18 +50,20 @@ export default function CharacterStartingStatsTable({
     attackBonus
   }), [currentHealth, maxHealth, injuries, speed, corruption, perkPoints, safelightShards, attackBonus]);
 
-  const updateStat = useCallback((field: keyof typeof stats, value: number | AttackBonusStat, substat?: keyof typeof stats.health) => {
+  const updateStat = useCallback((field: keyof CharacterStats, value: number | AttackBonusStat, substat?: keyof typeof stats.health) => {
     if (!onStatsChange) return;
     
-    const newStats: CharStats = { ...stats };
+    const newStats: CharacterStats = { ...stats };
     
     if (field === 'attackBonus') {
       newStats.attackBonus = value as AttackBonusStat;
-    } else if (field === 'health' && substat) {
-      newStats.health[substat] = value as number;
+    } else if (field === 'health') {
+      if (substat) {
+        newStats.health[substat] = value as number;
+      }
     } else {
       const numValue = typeof value === 'string' ? parseInt(value) || 0 : value;
-      (newStats as Omit<CharStats, 'attackBonus' | 'health'>)[field] = Math.max(0, numValue);
+      (newStats as Omit<CharacterStats, 'attackBonus' | 'health'>)[field] = Math.max(0, numValue);
     }
     
     onStatsChange(newStats);

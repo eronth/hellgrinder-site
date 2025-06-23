@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Weapon, Item, Perk } from '../../../ts-types/types';
-import { CharDesign } from './CharacterGenerator';
+import { CharacterDesign } from './CharacterGenerator';
 import ConfirmDialog from './ConfirmDialog';
 import WeaponComponent from '../kits/weapon/WeaponComponent';
 import ItemComponent from '../kits/item/ItemComponent';
@@ -24,9 +24,9 @@ import Perks from '../../../common-design/equipment/perks';
 import './InventoryManager.css';
 
 interface InventoryManagerProps {
-  characters: CharDesign[];
+  characters: CharacterDesign[];
   selectedCharacterId: string;
-  onUpdateCharacter: (characterId: string, updates: Partial<CharDesign>) => void;
+  onUpdateCharacter: (characterId: string, updates: Partial<CharacterDesign>) => void;
 };
 
 type ItemType = 'weapons' | 'items' | 'perks';

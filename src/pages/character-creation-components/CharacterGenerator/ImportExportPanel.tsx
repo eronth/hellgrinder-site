@@ -1,14 +1,14 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faFolder, faSave, faDownload, faUpload, faTrash, faLightbulb, faBolt } from '@fortawesome/free-solid-svg-icons';
-import { CharDesign } from './CharacterGenerator';
+import { CharacterDesign } from './CharacterGenerator';
 import { CharacterStorage } from '../../../common-design/utils/CharacterStorage';
 import './ImportExportPanel.css';
 
 interface Props {
-  characters: CharDesign[];
+  characters: CharacterDesign[];
   selectedCharacterId?: string;
-  onCharactersImported: (characters: CharDesign[], selectedCharacterId?: string) => void;
+  onCharactersImported: (characters: CharacterDesign[], selectedCharacterId?: string) => void;
   onError: (message: string) => void;
   onSuccess: (message: string) => void;
 }

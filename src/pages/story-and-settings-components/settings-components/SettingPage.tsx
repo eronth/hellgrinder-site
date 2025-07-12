@@ -1,4 +1,3 @@
-import React from "react";
 import DemonClans from "./demon-clans/DemonClans";
 import OtherFactions from "./other-factions/OtherFactions";
 import Locations from "./locations/Locations";

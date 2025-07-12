@@ -157,7 +157,7 @@ export default function InventoryManager({
     });
   }, [selectedCharacter, selectedCharacterId, onUpdateCharacter, showNotification]);
 
-  const addNonPerkToInventory = useCallback((item: Item | Weapon, type: ItemType) => {
+  const addNonPerkToInventory = useCallback((item: Item | Weapon, type: "weapons" | "items") => {
     if (!selectedCharacter) return;
     // Add weapons/items to inventory
     const newInventory = {
@@ -218,13 +218,13 @@ export default function InventoryManager({
       });
   }, [selectedCharacter, selectedCharacterId, onUpdateCharacter, showNotification]);
 
-  const removeNonPerkFromInventory = useCallback((index: number, type: ItemType) => {
+  const removeNonPerkFromInventory = useCallback((index: number, type: 'weapons' | 'items') => {
     if (!selectedCharacter || !selectedCharacter.inventory || index < 0 || index >= selectedCharacter.inventory[type].length) return;
 
     // Remove from inventory
     const newInventory = {
       ...selectedCharacter.inventory,
-      [type]: selectedCharacter.inventory[type].filter((_, i) => i !== index)
+      [type]: selectedCharacter.inventory[type].filter((_, i: number) => i !== index)
     };
     onUpdateCharacter(selectedCharacterId, { inventory: newInventory });
   }, [selectedCharacter, selectedCharacterId, onUpdateCharacter]);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 // Components
 import Tools from "../common-design/Tools";
 import CreatureCard from "./creature-page-components/CreatureCard";

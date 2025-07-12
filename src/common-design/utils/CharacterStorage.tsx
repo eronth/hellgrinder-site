@@ -1,11 +1,11 @@
-import { CharDesign } from "../../pages/character-creation-components/CharacterGenerator/CharacterGenerator";
+import { CharacterDesign } from "../../pages/character-creation-components/CharacterGenerator/CharacterGenerator";
 
 const STORAGE_KEY = 'hellgrinder_characters';
 const STORAGE_VERSION = '1.0.0';
 
 export interface StorageData {
   version: string;
-  characters: CharDesign[];
+  characters: CharacterDesign[];
   lastSaved: string;
   selectedCharacterId?: string;
 }
@@ -24,7 +24,7 @@ export class CharacterStorage {
   /**
    * Save characters to localStorage
    */
-  static saveCharacters(characters: CharDesign[], selectedCharacterId?: string): boolean {
+  static saveCharacters(characters: CharacterDesign[], selectedCharacterId?: string): boolean {
     try {
       const data: StorageData = {
         version: STORAGE_VERSION,
@@ -45,7 +45,7 @@ export class CharacterStorage {
   /**
    * Load characters from localStorage
    */
-  static loadCharacters(): { characters: CharDesign[], selectedCharacterId?: string } {
+  static loadCharacters(): { characters: CharacterDesign[], selectedCharacterId?: string } {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (!stored) {
@@ -89,7 +89,7 @@ export class CharacterStorage {
   /**
    * Export characters to JSON file
    */
-  static exportCharacters(characters: CharDesign[], selectedCharacterId?: string): void {
+  static exportCharacters(characters: CharacterDesign[], selectedCharacterId?: string): void {
     try {
       const exportData: ExportData = {
         version: STORAGE_VERSION,
@@ -122,7 +122,7 @@ export class CharacterStorage {
   /**
    * Import characters from JSON file
    */
-  static importCharacters(file: File): Promise<{ characters: CharDesign[], selectedCharacterId?: string }> {
+  static importCharacters(file: File): Promise<{ characters: CharacterDesign[], selectedCharacterId?: string }> {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       
@@ -138,8 +138,8 @@ export class CharacterStorage {
           }
 
           // Extract characters and validate each one
-          const characters = data.characters.map((char: CharDesign) => CharacterStorage.validateCharacter(char));
-          
+          const characters = data.characters.map((char: CharacterDesign) => CharacterStorage.validateCharacter(char));
+
           console.log(`Successfully imported ${characters.length} characters`);
           resolve({ 
             characters: characters,
@@ -176,7 +176,7 @@ export class CharacterStorage {
   /**
    * Validate and sanitize individual character data
    */
-  private static validateCharacter(char: CharDesign): CharDesign {
+  private static validateCharacter(char: CharacterDesign): CharacterDesign {
     // Ensure all required fields exist with defaults
     return {
       id: char.id || `char_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -232,8 +232,8 @@ export class CharacterStorage {
    * Auto-save characters (debounced)
    */
   private static autoSaveTimeout: number | null = null;
-  
-  static autoSave(characters: CharDesign[], selectedCharacterId?: string, delay: number = 1000): void {
+
+  static autoSave(characters: CharacterDesign[], selectedCharacterId?: string, delay: number = 1000): void {
     if (CharacterStorage.autoSaveTimeout) {
       clearTimeout(CharacterStorage.autoSaveTimeout);
     }

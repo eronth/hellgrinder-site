@@ -1,4 +1,3 @@
-import React from 'react';
 import Tools from "../../common-design/Tools";
 import RuleKeyword from '../../common-design/RuleKeyword';
 import { Creature, CreatureAbility, CreatureTier, DamageTakenMod } from '../../ts-types/creature-types';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShieldAlt } from '@fortawesome/free-solid-svg-icons';
 import { FACTION_DATA } from './FactionTransformUtils';

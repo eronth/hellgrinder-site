@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Dice } from "../ts-types/types.tsx";
 import { DiceRoller } from './DiceRoller.tsx';
 

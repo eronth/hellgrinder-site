@@ -210,6 +210,7 @@ export default function GameTitle({ isIndex }: Props) {
     title('sour-gummy-400', {pre: 'The Amazing', above: true}, null, 'Hellgrinder!'),
     title('doto-300'),
     title('jetbrains-mono-100'),
+    title('', null, {post: 'I hardly know her!', below: true}, 'Hellgrinder?'),
     // He🏒🏒grinder
     // The Beginning of the End: Hellgrinder
   ], [title, quickTitleWrapper, dotIOTitle, spiritTitle, barcodeTitle, broughtToYouBy]);

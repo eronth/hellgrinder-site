@@ -13,10 +13,13 @@ import './css-styles/magic-spell.css'
 import './css-styles/toggle.css'
 import './css-styles/rule-popup.css'
 
+// Set basename conditionally based on environment
+const basename = import.meta.env.DEV ? '/' : '/hellgrinder-site';
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <Rules />
       </BrowserRouter>
     </ThemeProvider>

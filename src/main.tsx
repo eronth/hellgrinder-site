@@ -14,7 +14,7 @@ import './css-styles/toggle.css'
 import './css-styles/rule-popup.css'
 
 // Set basename conditionally based on environment
-const basename = import.meta.env.DEV ? '/' : '/hellgrinder-site';
+const basename = import.meta.env.DEV ? '/' : '/';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

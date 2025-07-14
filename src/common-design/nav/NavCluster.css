@@ -1,4 +1,5 @@
 nav.navcluster {
+  padding: 2em;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1em;

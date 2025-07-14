@@ -23,7 +23,7 @@ const NavCluster = () => {
       </Link></div>
 
       {/* Bottom Row */}
-      <div><Link to="/story-and-setting">Story + Setting</Link></div>
+      <div><Link to="/story-and-setting">Story & Setting</Link></div>
       <div><Link to="/additional-equipment">Equipment</Link></div>
       <div><Link to="/perks">Perks</Link></div>
 

@@ -26,3 +26,39 @@ nav.navcluster {
     width: 23em;
   }
 }
+
+/* Mobile NavCluster Improvements */
+@media(max-width: 768px) {
+  nav.navcluster {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75em;
+    margin: 0.75em 0;
+  }
+  
+  nav.navcluster a {
+    width: auto; /* Remove fixed width */
+    min-width: 0;
+    padding: 0.75em 0.5em;
+    font-size: 0.9em;
+  }
+  
+  nav.navcluster div {
+    padding: 0.75em 0.5em;
+  }
+}
+
+@media(max-width: 480px) {
+  nav.navcluster {
+    grid-template-columns: 1fr;
+    gap: 0.5em;
+  }
+  
+  nav.navcluster a {
+    padding: 1em;
+    font-size: 1em;
+  }
+  
+  nav.navcluster div {
+    padding: 1em;
+  }
+}

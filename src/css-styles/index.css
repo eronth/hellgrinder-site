@@ -381,3 +381,231 @@ table {
   --y-value-bg: rgba(211, 200, 147, 0.5);
   --y-value-text: hsl(50, 25%, 40%);
 }
+
+/* Enhanced Mobile Responsiveness */
+
+/* Base mobile improvements */
+@media(max-width: 768px) {
+  :root {
+    font-size: 14px; /* Smaller base font size for mobile */
+  }
+  
+  h1 {
+    font-size: 2.5em; /* Smaller titles on mobile */
+  }
+  
+  h2 {
+    font-size: 2em;
+  }
+  
+  h3 {
+    font-size: 1.5em;
+  }
+  
+  .rules .page > * {
+    --page-margin: 1rem; /* Reduce page margins on mobile */
+  }
+  
+  /* Make buttons more touch-friendly */
+  button {
+    padding: 0.8em 1.4em;
+    min-height: 44px; /* iOS recommended minimum touch target */
+    font-size: 1.1em;
+  }
+  
+  /* Better spacing for mobile */
+  p {
+    margin-bottom: 1.2em;
+  }
+  
+  hr {
+    margin: 1.5em 0;
+  }
+  
+  table {
+    font-size: 0.85em;
+    
+    th, td {
+      padding: 0.4em 0.2em;
+    }
+  }
+  
+  /* For very wide tables, allow horizontal scrolling */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Adjust page layout for mobile menu button */
+  .rules .page {
+    /* Add some top padding to account for the mobile menu button */
+    padding-top: 1rem;
+  }
+  
+  /* Ensure the mobile menu button doesn't interfere with page content */
+  .rules .page > * {
+    /* Add a bit more margin to avoid the floating button */
+    margin-top: 0.5rem;
+  }
+}
+
+/* Very small screens (phones in portrait) */
+@media(max-width: 480px) {
+  :root {
+    font-size: 12px;
+  }
+  
+  h1 {
+    font-size: 2em;
+  }
+  
+  .rules .page > * {
+    --page-margin: 0.5rem;
+  }
+  
+  /* Ensure content doesn't get too cramped */
+  body {
+    min-width: 280px;
+  }
+  
+  table {
+    font-size: 0.75em;
+    
+    th, td {
+      padding: 0.3em 0.15em;
+    }
+  }
+}
+
+/* Landscape phones and small tablets */
+@media(max-width: 850px) and (orientation: landscape) {
+  h1 {
+    font-size: 2.2em;
+  }
+  
+  .rules .page > * {
+    --page-margin: 1.5rem;
+  }
+}
+
+/* Touch and Mobile UX Improvements */
+
+/* Improve touch targets and interactions */
+@media (hover: none) and (pointer: coarse) {
+  /* This targets touch devices */
+  
+  button, a, .clickable {
+    min-height: 44px; /* Apple's recommended minimum touch target */
+    min-width: 44px;
+  }
+  
+  /* Remove hover effects on touch devices */
+  button:hover,
+  a:hover {
+    background-color: initial;
+    border-color: initial;
+  }
+  
+  /* Add better active/tap states */
+  button:active,
+  a:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+}
+
+/* Prevent text selection on UI elements for mobile */
+button, .nav-tab, .tab-btn {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Better scrolling for mobile */
+.inventory-content,
+.scrollable-content {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile Form and Input Improvements */
+
+@media(max-width: 768px) {
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="password"],
+  textarea,
+  select {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 0.75em;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    
+    /* Better touch targets */
+    min-height: 44px;
+  }
+  
+  /* Style search inputs specifically */
+  .search-input {
+    font-size: 16px;
+    padding: 0.8em 1em;
+    border-radius: 8px;
+    border: 1px solid var(--color, #ccc);
+    background-color: var(--card-background, white);
+    color: var(--color, inherit);
+  }
+  
+  /* Better spacing for form elements */
+  label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  
+  /* Modal dialogs on mobile */
+  .confirm-dialog,
+  .modal {
+    margin: 1rem;
+    max-width: calc(100vw - 2rem);
+    max-height: calc(100vh - 2rem);
+  }
+}
+
+/* Very small screen adjustments */
+@media(max-width: 480px) {
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="password"],
+  textarea,
+  select {
+    font-size: 16px;
+    padding: 0.6em;
+  }
+  
+  .confirm-dialog,
+  .modal {
+    margin: 0.5rem;
+    max-width: calc(100vw - 1rem);
+    max-height: calc(100vh - 1rem);
+  }
+}

@@ -403,21 +403,131 @@
     bottom: 5%;
   }
 
+  .inventory-header {
+    padding: 0.75rem 1rem;
+
+    h3 {
+      font-size: 1.1em;
+    }
+  }
+
+  .inventory-tabs {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .tab-btn {
+    flex: 1;
+    min-width: 80px;
+    padding: 0.6rem 0.4rem;
+    font-size: 0.9em;
+  }
+
+  .search-section {
+    padding: 0.75rem 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .search-input {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .bulk-actions {
+    width: 100%;
+  }
+
+  .bulk-transfer-all-btn {
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 0.9em;
+  }
+
   .inventory-content {
     flex-direction: column;
+    padding: 0.75rem 1rem;
+  }
 
-    .current-inventory {
-      border-right: none;
-      border-bottom: 1px solid #444;
+  .current-inventory,
+  .available-items {
+    margin-bottom: 1rem;
+  }
+
+  .inventory-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+
+    h4 {
+      font-size: 1em;
     }
+  }
+
+  .bulk-transfer-btn {
+    width: 100%;
+    padding: 0.6rem;
+    font-size: 0.85em;
   }
 
   .item-grid {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .item-card {
+    padding: 0.75rem;
+  }
+
+  .item-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+
+    button {
+      width: 100%;
+      padding: 0.6rem;
+      font-size: 0.9em;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .inventory-manager {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0;
+  }
+
+  .inventory-header {
+    padding: 0.5rem;
+
+    h3 {
+      font-size: 1em;
+    }
   }
 
   .inventory-tabs {
-    overflow-x: auto;
+    padding: 0.5rem;
+  }
+
+  .tab-btn {
+    padding: 0.5rem 0.3rem;
+    font-size: 0.8em;
+  }
+
+  .search-section {
+    padding: 0.5rem;
+  }
+
+  .inventory-content {
+    padding: 0.5rem;
+  }
+
+  .item-card {
+    padding: 0.5rem;
   }
 }
 

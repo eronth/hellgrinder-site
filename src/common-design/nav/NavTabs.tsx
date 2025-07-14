@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { TabType } from '../../ts-types/types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faBookSkull, faLightbulb } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBookSkull, faLightbulb, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import './NavTabs.css';
 
 type Props = {
@@ -9,6 +10,7 @@ type Props = {
 }
 
 const NavTabs = ({selectedTab}: Props) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const navEndDivClass: string = 'nav-tab-bumper';
 
@@ -18,48 +20,87 @@ const NavTabs = ({selectedTab}: Props) => {
     return tab == selectedTab ? sel : unsel;
   }
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
+  const navLinks = [
+    { to: "/story-and-setting", tab: "story-and-setting" as TabType, label: "Story + Setting" },
+    { to: "/how-to-play", tab: "how-to-play" as TabType, label: "How to Play", icon: faLightbulb },
+    { to: "/character-creation", tab: "character-creation" as TabType, label: "Character Creation", icon: faUser },
+    { to: "/creatures", tab: "creatures" as TabType, label: "Creatures", icon: faBookSkull },
+    { to: "/additional-equipment", tab: "additional-equipment" as TabType, label: "Equipment" },
+    { to: "/perks", tab: "advanced-perks" as TabType, label: "Perks" },
+  ];
 
   return (
-    <nav className="navbar navtabs">
-      <div className={navEndDivClass} />
-      <Link to="/story-and-setting" className={getClassForTab('story-and-setting')}>
-        <div>Story + Setting</div>
-      </Link>
-      
-      {/* Start tabs with icons! */}
-      <Link to="/how-to-play" className={getClassForTab('how-to-play')}>
-        <div>
-          <FontAwesomeIcon icon={faLightbulb} className='icon' />
-          How to Play
-        </div>
-      </Link>
-      <Link to="/character-creation" className={getClassForTab('character-creation')}>
-        <div>
-          <FontAwesomeIcon icon={faUser} className='icon' />
-          Character Creation
-        </div>
-      </Link>
-      <Link to="/creatures" className={getClassForTab('creatures')}>
-        <div>
-          <FontAwesomeIcon icon={faBookSkull} className='icon' />
-          Creatures
-        </div>
-      </Link>
-      {/* End tabs with icons! */}
+    <>
+      {/* Mobile Menu Button */}
+      <button 
+        className="mobile-menu-toggle"
+        onClick={toggleMobileMenu}
+        aria-label="Toggle navigation menu"
+      >
+        <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} />
+      </button>
 
-      <Link to="/additional-equipment" className={getClassForTab('additional-equipment')}>
-        <div>Equipment</div>
-      </Link>
-      <Link to="/perks" className={getClassForTab('advanced-perks')}>
-        <div>Perks</div>
-      </Link>
-      
-      <div className={navEndDivClass} />
-      {/* Unused links */}
-      {/* <Link to="/magic" className={getClassForTab('magic')}>
-        <div>Magic</div>
-      </Link> */}
-    </nav>
+      {/* Mobile Overlay */}
+      {isMobileMenuOpen && (
+        <div 
+          className="mobile-menu-overlay" 
+          onClick={closeMobileMenu}
+        />
+      )}
+
+      {/* Desktop Navigation */}
+      <nav className="navbar navtabs desktop-nav">
+        <div className={navEndDivClass} />
+        {navLinks.map(link => (
+          <Link 
+            key={link.tab}
+            to={link.to} 
+            className={getClassForTab(link.tab)}
+          >
+            <div>
+              {link.icon && <FontAwesomeIcon icon={link.icon} className='icon' />}
+              {link.label}
+            </div>
+          </Link>
+        ))}
+        <div className={navEndDivClass} />
+      </nav>
+
+      {/* Mobile Sidebar */}
+      <nav className={`mobile-sidebar ${isMobileMenuOpen ? 'open' : ''}`}>
+        <div className="mobile-sidebar-header">
+          <h3>Navigation</h3>
+          <button 
+            className="mobile-sidebar-close"
+            onClick={closeMobileMenu}
+            aria-label="Close navigation menu"
+          >
+            <FontAwesomeIcon icon={faTimes} />
+          </button>
+        </div>
+        <div className="mobile-sidebar-content">
+          {navLinks.map(link => (
+            <Link 
+              key={link.tab}
+              to={link.to} 
+              className={`mobile-nav-link ${selectedTab === link.tab ? 'active' : ''}`}
+              onClick={closeMobileMenu}
+            >
+              {link.icon && <FontAwesomeIcon icon={link.icon} className='icon' />}
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      </nav>
+    </>
   );
 }
 

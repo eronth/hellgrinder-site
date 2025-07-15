@@ -55,6 +55,83 @@ nav.navtabs.desktop-nav {
     --backing-color: var(--unselectedBackgroudnColor);
     border-bottom: 1px solid var(--selectedColor);
   }
+  
+  /* Enhanced selected tab styling with gradient */
+  a.selected-tab div {
+    background: linear-gradient(135deg, 
+      var(--faction-primary, #646cff) 0%, 
+      var(--faction-accent, #7c7cf8) 50%, 
+      var(--faction-primary, #646cff) 100%
+    );
+    color: white;
+    border-color: var(--faction-primary, #646cff);
+    box-shadow: 
+      0 2px 8px rgba(100, 108, 255, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Add a subtle animated shine effect to selected tab */
+  a.selected-tab div::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.15), 
+      transparent
+    );
+    transition: left 0.6s ease;
+  }
+  
+  a.selected-tab:hover div::before {
+    left: 100%;
+  }
+  
+  /* Enhanced unselected tab hover effects */
+  a.unselected-tab div {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  a.unselected-tab:hover div {
+    background: linear-gradient(135deg, 
+      rgba(100, 108, 255, 0.1) 0%, 
+      rgba(124, 124, 248, 0.15) 50%, 
+      rgba(100, 108, 255, 0.1) 100%
+    );
+    border-color: var(--faction-primary, #646cff);
+    color: var(--faction-primary, #646cff);
+    box-shadow: 0 1px 4px rgba(100, 108, 255, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  /* Add a subtle glow effect on hover for unselected tabs */
+  a.unselected-tab div::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+      rgba(100, 108, 255, 0.05) 0%, 
+      rgba(124, 124, 248, 0.1) 50%, 
+      rgba(100, 108, 255, 0.05) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  
+  a.unselected-tab:hover div::after {
+    opacity: 1;
+  }
 }
 
 @media(max-width: 1600px) {
@@ -264,5 +341,67 @@ nav.navtabs.desktop-nav {
   .mobile-nav-link {
     padding: 1.2rem 1rem;
     font-size: 1.1em;
+  }
+}
+
+/* Subtle pulse animation for selected tab */
+@keyframes selectedTabPulse {
+  0%, 100% {
+    box-shadow: 
+      0 2px 8px rgba(100, 108, 255, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 3px 12px rgba(100, 108, 255, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Apply pulse animation to selected tab */
+nav.navtabs.desktop-nav a.selected-tab div {
+  animation: selectedTabPulse 3s ease-in-out infinite;
+}
+
+/* Theme-specific enhancements for selected tabs */
+
+/* Dark mode enhancements (default) */
+nav.navtabs.desktop-nav a.selected-tab div {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Light mode adjustments */
+@media (prefers-color-scheme: light) {
+  nav.navtabs.desktop-nav a.selected-tab div {
+    background: linear-gradient(135deg, 
+      var(--faction-primary, #646cff) 0%, 
+      var(--faction-accent, #7c7cf8) 50%, 
+      var(--faction-primary, #646cff) 100%
+    );
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    box-shadow: 
+      0 2px 8px rgba(100, 108, 255, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  
+  nav.navtabs.desktop-nav a.unselected-tab:hover div {
+    background: linear-gradient(135deg, 
+      rgba(100, 108, 255, 0.15) 0%, 
+      rgba(124, 124, 248, 0.2) 50%, 
+      rgba(100, 108, 255, 0.15) 100%
+    );
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  nav.navtabs.desktop-nav a.selected-tab div {
+    border-width: 2px;
+    box-shadow: none;
+  }
+  
+  nav.navtabs.desktop-nav a.unselected-tab div {
+    border-width: 2px;
   }
 }

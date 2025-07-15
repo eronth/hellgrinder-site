@@ -44,8 +44,8 @@ function Story() {
         <h3>Netherworld Materials</h3>
         <p>
           The materials of hell were unlike anything found on earth. Each region had a new and strange set of substances to
-          study. With each advance came new materials, with new materials came new studies and discovers, and with new
-          discovers came new advancement in weapons, armor, and knowledge of the Arcane.
+          study. With each advance came new materials, with new materials came new studies and discoveries, and with new
+          discovery came new advancement in weapons, armor, and knowledge of the Arcane.
         </p>
         <p>
           In order to spur soldiers to push into the depths to secure the resources, the military began to offer rewards

@@ -25,7 +25,7 @@ export default function DiceRollerPanel({ isVisible }: Props) {
   const [rollHistory, setRollHistory] = useState<DiceRollResult[]>([]);
   const [isRolling, setIsRolling] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
-  const [showProbabilities, setShowProbabilities] = useState(true);
+  const [showProbabilities, setShowProbabilities] = useState(false);
 
   if (!isVisible) return null;
 

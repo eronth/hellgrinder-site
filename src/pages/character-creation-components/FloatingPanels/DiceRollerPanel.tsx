@@ -24,6 +24,7 @@ export default function DiceRollerPanel({ isVisible }: Props) {
   const [rollHistory, setRollHistory] = useState<DiceRollResult[]>([]);
   const [isRolling, setIsRolling] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
+  const [showProbabilities, setShowProbabilities] = useState(true);
 
   if (!isVisible) return null;
 
@@ -33,6 +34,44 @@ export default function DiceRollerPanel({ isVisible }: Props) {
     if (total >= 12) return { rank: 2, description: "You succeed at your task. There are no extra complications from your efforts." };
     if (total >= 8) return { rank: 1, description: "You succeed at a minor level. You partially succeed at your efforts, or some complications that arise with the success." };
     return { rank: 0, description: "You fail at whatever you're attempting to accomplish." };
+  };
+
+  // Calculate probabilities for each success rank
+  const calculateProbabilities = (totalBonus: number) => {
+    // For 3d6, we need to calculate all possible outcomes (216 total combinations)
+    const outcomes = new Array(19).fill(0); // Indices 0-18 for sums 3-21 (but we use 3-18)
+    
+    // Generate all possible 3d6 combinations
+    for (let die1 = 1; die1 <= 6; die1++) {
+      for (let die2 = 1; die2 <= 6; die2++) {
+        for (let die3 = 1; die3 <= 6; die3++) {
+          const sum = die1 + die2 + die3 + totalBonus;
+          if (sum >= 3 && sum <= 21) {
+            outcomes[Math.min(sum, 18)]++; // Cap at 18 for array bounds
+          }
+        }
+      }
+    }
+
+    const totalCombinations = 216; // 6^3
+    
+    // Calculate probabilities for each rank
+    let rank0 = 0, rank1 = 0, rank2 = 0, rank3 = 0;
+    
+    for (let sum = 3; sum <= 21; sum++) {
+      const count = sum <= 18 ? outcomes[sum] : 0;
+      if (sum >= 16) rank3 += count;
+      else if (sum >= 12) rank2 += count;
+      else if (sum >= 8) rank1 += count;
+      else rank0 += count;
+    }
+
+    return {
+      rank0: Math.round((rank0 / totalCombinations) * 100),
+      rank1: Math.round((rank1 / totalCombinations) * 100),
+      rank2: Math.round((rank2 / totalCombinations) * 100),
+      rank3: Math.round((rank3 / totalCombinations) * 100)
+    };
   };
 
   // Check for special results (all 1s or all 6s)
@@ -82,6 +121,9 @@ export default function DiceRollerPanel({ isVisible }: Props) {
     setRollHistory([]);
     setShowHistory(false);
   };
+
+  // Calculate current probabilities
+  const currentProbabilities = calculateProbabilities(bonus + difficultyBonus);
 
   return (
     <Panel
@@ -138,6 +180,49 @@ export default function DiceRollerPanel({ isVisible }: Props) {
               Extreme (-4)
             </button>
           </div>
+        </div>
+
+        {/* Probability Display */}
+        <div className="probability-display">
+          <div className="probability-header" onClick={() => setShowProbabilities(!showProbabilities)}>
+            <div className="probability-title-section">
+              <span className={`collapse-indicator ${showProbabilities ? 'expanded' : 'collapsed'}`}>
+                ▼
+              </span>
+              <span className="probability-title">Success Probabilities</span>
+            </div>
+          </div>
+          {showProbabilities && (
+            <div className="probability-content">
+              <div className="total-bonus-section">
+                <span className="total-bonus">
+                  Total Mod: {bonus + difficultyBonus >= 0 ? '+' : ''}{bonus + difficultyBonus}
+                </span>
+              </div>
+              <div className="probability-grid">
+                <div className="prob-item rank-0">
+                  <span className="prob-rank">Rank 0</span>
+                  <span className="prob-range">(3-7)</span>
+                  <span className="prob-percentage">{currentProbabilities.rank0}%</span>
+                </div>
+                <div className="prob-item rank-1">
+                  <span className="prob-rank">Rank 1</span>
+                  <span className="prob-range">(8-11)</span>
+                  <span className="prob-percentage">{currentProbabilities.rank1}%</span>
+                </div>
+                <div className="prob-item rank-2">
+                  <span className="prob-rank">Rank 2</span>
+                  <span className="prob-range">(12-15)</span>
+                  <span className="prob-percentage">{currentProbabilities.rank2}%</span>
+                </div>
+                <div className="prob-item rank-3">
+                  <span className="prob-rank">Rank 3</span>
+                  <span className="prob-range">(16+)</span>
+                  <span className="prob-percentage">{currentProbabilities.rank3}%</span>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
             
         <div className="roll-actions">

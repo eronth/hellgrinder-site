@@ -493,13 +493,18 @@
   align-items: center;
   padding: 0.5rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 4px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .probability-header:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.probability-header:active {
+  transform: translateY(0);
 }
 
 .probability-title-section {
@@ -511,7 +516,7 @@
 .collapse-indicator {
   font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.6);
-  transition: transform 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;
 }
 
@@ -524,8 +529,21 @@
 }
 
 .probability-content {
-  animation: slideDown 0.3s ease-out;
+  animation: slidedown 0.3s ease-out;
+  overflow: hidden;
+  transition: all 3.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: top;
+  opacity: 0;
+  max-height: 0;
+  transform: scaleY(0.8);
+
+  &.show {
+    opacity: 1;
+    max-height: 500px; /* Generous max height to accommodate content */
+    transform: scaleY(1);
+  }
 }
+
 
 .total-bonus-section {
   display: flex;

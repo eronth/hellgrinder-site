@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { faDice } from '@fortawesome/free-solid-svg-icons';
+import { faDice, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './DiceRollerPanel.css';
 import Panel from './Panel';
 
@@ -186,14 +187,15 @@ export default function DiceRollerPanel({ isVisible }: Props) {
         <div className="probability-display">
           <div className="probability-header" onClick={() => setShowProbabilities(!showProbabilities)}>
             <div className="probability-title-section">
-              <span className={`collapse-indicator ${showProbabilities ? 'expanded' : 'collapsed'}`}>
-                ▼
-              </span>
+              <FontAwesomeIcon 
+                icon={faChevronDown} 
+                className={`collapse-indicator ${showProbabilities ? 'expanded' : 'collapsed'}`}
+              />
               <span className="probability-title">Success Probabilities</span>
             </div>
           </div>
           {showProbabilities && (
-            <div className="probability-content">
+            <div className="probability-content show">
               <div className="total-bonus-section">
                 <span className="total-bonus">
                   Total Mod: {bonus + difficultyBonus >= 0 ? '+' : ''}{bonus + difficultyBonus}

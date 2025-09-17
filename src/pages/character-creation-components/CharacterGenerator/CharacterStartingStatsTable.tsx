@@ -9,6 +9,7 @@ export type CharacterStats = {
   perkPoints: number;
   safelightShards: number;
   attackBonus: AttackBonusStat;
+  customSkill: string;
 };
 
 type Props = {
@@ -21,6 +22,7 @@ type Props = {
   safelightShards?: number;
   attackBonus?: AttackBonusStat;
   isEditable?: boolean;
+  customSkill?: string;
   onStatsChange?: (stats: CharacterStats) => void;
 };
 
@@ -34,8 +36,12 @@ export default function CharacterStartingStatsTable({
   safelightShards = 2,
   attackBonus = 'Melee',
   isEditable = false,
+  customSkill = '',
   onStatsChange
 }: Props) {
+  const statColSpan = 1;
+  const attackBonusColSpan = 2;
+  const customSkillColSpan = 1;
 
   const stats: CharacterStats = useMemo(() => ({
     health: {
@@ -47,8 +53,9 @@ export default function CharacterStartingStatsTable({
     corruption,
     perkPoints,
     safelightShards,
-    attackBonus
-  }), [currentHealth, maxHealth, injuries, speed, corruption, perkPoints, safelightShards, attackBonus]);
+    attackBonus,
+    customSkill
+  }), [currentHealth, maxHealth, injuries, speed, corruption, perkPoints, safelightShards, attackBonus, customSkill]);
 
   const updateStat = useCallback((field: keyof CharacterStats, value: number | AttackBonusStat, substat?: keyof typeof stats.health) => {
     if (!onStatsChange) return;
@@ -61,21 +68,32 @@ export default function CharacterStartingStatsTable({
       if (substat) {
         newStats.health[substat] = value as number;
       }
+    } else if (field === 'customSkill') {
+      newStats.customSkill = value as string;
     } else {
       const numValue = typeof value === 'string' ? parseInt(value) || 0 : value;
-      (newStats as Omit<CharacterStats, 'attackBonus' | 'health'>)[field] = Math.max(0, numValue);
+      (newStats as Omit<CharacterStats, 'attackBonus' | 'health' | 'customSkill'>)[field] = Math.max(0, numValue);
     }
     
+    onStatsChange(newStats);
+  }, [onStatsChange, stats]);
+  const updateCustomSkill = useCallback((value: string) => {
+    if (!onStatsChange) return;
+    
+    const newStats: CharacterStats = {
+      ...stats,
+      customSkill: value
+    };
     onStatsChange(newStats);
   }, [onStatsChange, stats]);
 
   const renderStatCell = useCallback((label: string, field: keyof typeof stats, value: number | AttackBonusStat) => {
     if (!isEditable || field === 'attackBonus') {
-      return <td colSpan={3}>{value} {label}</td>;
+      return <td colSpan={statColSpan}>{value} {label}</td>;
     }
 
     return (
-      <td colSpan={3} className="inline-editable-stat-cell">
+      <td colSpan={statColSpan} className="inline-editable-stat-cell">
         {(field === 'health')
         ? (<>
           <input
@@ -109,6 +127,29 @@ export default function CharacterStartingStatsTable({
     );
   }, [isEditable, stats.health, updateStat]);
 
+  const renderCustomSkillCell = useCallback(() => {
+    if (!isEditable) {
+      return (
+        <td colSpan={customSkillColSpan}>
+          +2 Custom Skill
+        </td>
+      );
+    }
+
+    return (
+      <td colSpan={customSkillColSpan} className="inline-editable-stat-cell">
+        <label htmlFor={`custom-skill-input`} className="stat-label">+2 </label>
+        <input
+          id={`custom-skill-input`}
+          type="text"
+          value={stats.customSkill}
+          onChange={(e) => updateCustomSkill(e.target.value)}
+          className="inline-stat-input freeform"
+        />
+      </td>
+    );
+  }, [isEditable, stats.customSkill, updateCustomSkill]);
+
   const attackBonusOptions: AttackBonusStat[] = [
     'Short Range Shooting',
     'Medium Range Shooting', 
@@ -119,14 +160,14 @@ export default function CharacterStartingStatsTable({
   const renderAttackBonusCell = () => {
     if (!isEditable) {
       return (
-        <td colSpan={9} className="attack-bonus-cell">
+        <td colSpan={attackBonusColSpan} className="attack-bonus-cell">
           +1 to your choice of [Short Range][Shooting], [Medium Range][Shooting], [Long Range][Shooting], or [Melee] attacks (can be chosen at the end of character creation).
         </td>
       );
     }
 
     return (
-      <td colSpan={9} className="attack-bonus-cell">
+      <td colSpan={attackBonusColSpan} className="attack-bonus-cell">
         <span className="attack-bonus-prefix">+1 to </span>
         <select
           value={attackBonus}
@@ -152,15 +193,16 @@ export default function CharacterStartingStatsTable({
         <tr>
           {renderStatCell("Max Health", "health", stats.health.max)}
           {injuriesComp}
-          {renderStatCell("Move Speed", "speed", stats.speed)}
+          {renderStatCell("Safelight Shards", "safelightShards", stats.safelightShards)}
         </tr>
         <tr>
           {renderStatCell("Corruption", "corruption", stats.corruption)}
           {renderStatCell("Perk Points", "perkPoints", stats.perkPoints)}
-          {renderStatCell("Safelight Shards", "safelightShards", stats.safelightShards)}
+          {renderStatCell("Move Speed", "speed", stats.speed)}
         </tr>
         <tr>
           {renderAttackBonusCell()}
+          {renderCustomSkillCell()}
         </tr>
       </tbody>
     </table>

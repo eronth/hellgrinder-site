@@ -96,6 +96,7 @@ export default function CharacterCard({
           safelightShards={character.stats.safelightShards}
           attackBonus={character.stats.attackBonus}
           isEditable={true}
+          customSkill={character.stats.customSkill}
           onStatsChange={(newStats) => updateCharacterStats(newStats)}
         />
         <div className="specialization-block">

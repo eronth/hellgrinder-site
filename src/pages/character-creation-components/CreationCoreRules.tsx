@@ -16,7 +16,18 @@ export default function CreationCoreRules() {
 
       <div>
         <ColumnEntry title={{ hx: 'h3', text: 'Starting Stats' }}>
-          <p>Characters in Hellgrinder have little choice when it comes to starting stats. Most of the customization comes from Kit and Perk choices, instead. Therefore, starting stats for all characters are as follows:</p>
+          <p>
+            Characters in Hellgrinder have little choice when it
+            comes to starting stats. Most of the customization comes
+            from Kit and Perk choices, instead. Therefore, starting stats
+            for all characters shown on the table below.
+          </p>
+          <p>
+            When choosing your Custom Skill, select any Skill that's NOT provided in the rules. Players are encouraged to
+            be creative here, and GMs should work with players to ensure the chosen skill makes sense. The chosen
+            skill should be something that can be reasonably expected to come up in play, but not something universally applicable.
+            It especially should be something that rarely, if ever, affects attack rolls.
+          </p>
           <CharacterStartingStatsTable />
         </ColumnEntry>
 
@@ -27,7 +38,17 @@ export default function CreationCoreRules() {
       </div>
 
       <ColumnEntry title={{ hx: 'h3', text: 'Progression' }}>
-        <p>Character progression is handled as a group. As a squad delves deeper into the pits of the Underworld, everyone is getting stronger and obtaining better equipment. To explain the extra gear, equipment can be found, delivered by High Command, crafted, or anything else you think of. Since progression is squad based, new characters that get generated to replace old ones should have access to the advancement options as well.</p>
+        <p>
+          Character progression is handled as a group. As a squad delves
+          deeper into the pits of the Underworld, everyone is getting stronger
+          and obtaining better equipment. To explain the extra gear, equipment 
+          can be found, delivered by High Command, crafted, or anything else you
+          think of.
+        </p>
+        <p>
+          <b>Since progression is squad based, new characters that get generated
+          to replace old ones should have access to the advancement options as well.</b>
+        </p>
         <p>Squads should earn progression when they hit adventure milestones, at the GM’s purview. Suggested advancement is as follows:</p>
         <ul>
           <li>+1 Perk Point</li>

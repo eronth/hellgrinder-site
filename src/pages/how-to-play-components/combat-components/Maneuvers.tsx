@@ -1,5 +1,6 @@
 import ColumnEntry from "../../../common-design/ColumnEntry";
 import RuleKeyword from "../../../common-design/RuleKeyword";
+import SkillCheck from "../../../common-design/SkillCheck/SkillCheck";
 
 export default function Maneuvers() {
 
@@ -35,14 +36,14 @@ export default function Maneuvers() {
 
             <ColumnEntry title={{ text: 'Dive' }}>
               <p>
-                Spend 1 movement and make a [Agility Might] Skill Check. On a Rank 2 Success you can move 2 hexes and drop prone.
+                Spend 1 movement and make a <SkillCheck tags={['Agility', 'Might']} />. On a Rank 2 Success you can move 2 hexes and drop prone.
                 On a Rank 1 Success you move 1 hex and drop prone. On a Rank 0, you fall prone without moving.
               </p>
             </ColumnEntry>
 
             <ColumnEntry title={{ text: 'Leap' }}>
               <p>
-                Make an [Agility Might] Skill Check. You move a number of hexes up to your Success Rank, jumping over all hexes
+                Make an <SkillCheck tags={['Agility', 'Might']} />. You move a number of hexes up to your Success Rank, jumping over all hexes
                 between your starting and ending hex. On a Failure, you move one hex and fall prone. You must spend movement points 
                 equal to the hexes you move.
               </p>

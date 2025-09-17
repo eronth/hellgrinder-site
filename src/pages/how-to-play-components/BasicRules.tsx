@@ -1,5 +1,6 @@
 import ColumnEntry from "../../common-design/ColumnEntry";
 import RuleKeyword from "../../common-design/RuleKeyword";
+import SkillCheck from "../../common-design/SkillCheck/SkillCheck";
 
 export default function BasicRules() {
 
@@ -124,15 +125,16 @@ export default function BasicRules() {
         </p>
         
         <div className={'simple-header'}>Corruption Test</div>
-        <p>Occasionally, the GM will force you to make a Corruption Test by rolling a [Corruption Skill Check]. When
-          you have to make a Corruption Skill Check, you roll 3d6. If the result is less than your current Corruption,
+        <p>Occasionally, the GM will force you to make a Corruption Test
+          by rolling a <SkillCheck tags={['Corruption']} />. When
+          you have to make a Corruption Test, you roll 3d6. If the result is less than your current Corruption,
           you fail the check. When you fail, roll 2d6 and take the lowest value to determine what happens.</p>
         <ol>
           <li><b>Creeping Evil</b>: Gain 1 Corruption.</li>
           <li><b>Nauseating</b>: Gain 1 Corruption and lose 1 Health.</li>
           <li><b>Invitation to Death</b>: The GM chooses a Damage Type. You gain Weak 1 for the chosen Type.</li>
           <li><b>Bout of Madness</b>: Your bout of madness causes you to attack an ally. Choose one ally. You and that
-            ally both make [Endurance] Skill Checks. If their result is higher than yours, you gain an Injury.
+            ally both make <SkillCheck tags={['Endurance']} plural />. If their result is higher than yours, you gain an Injury.
             Otherwise, they gain an Injury.
           </li>
           <li><b>Madness Manifest</b>: You lose control of your character. They turn into a Mad Cultist who summons 2

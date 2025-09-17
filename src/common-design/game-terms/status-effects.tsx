@@ -1,4 +1,6 @@
 import { StatusEffect } from '../../ts-types/types';
+import HitCheck from '../HitCheck/HitCheck';
+import SkillCheck from '../SkillCheck/SkillCheck';
 
 type StatusEffectsReturn = {
   blinded: StatusEffect;
@@ -43,8 +45,8 @@ const exObj: StatusEffectsReturn = {
     description: 'You have reduced visibility.',
     effects: [
       <>
-        You have -[[X]] to [Observation] Skill Checks and 
-        -[[X]] to [Attack Shooting] Attack Hit Checks.
+        You have -[[X]] to <SkillCheck tags={['Observation']} plural/> and 
+        -[[X]] to <HitCheck tags={['Shooting', 'Attack']} plural/>.
       </>,
       <>
         For every 3 levels of Blinded you have, 
@@ -85,11 +87,12 @@ const exObj: StatusEffectsReturn = {
     description: 'You feel weak, as if your strength is sapped.',
     effects: [
       <>
-        You gain -[[X]] to [Endurance] Skill Checks and
-        -[[X]] to [Melee Attack] Hit Checks and [Melee Attack] Damage.
+        You gain -[[X]] to <SkillCheck tags={['Endurance']} plural /> and
+        -[[X]] to <HitCheck tags={['Melee', 'Attack']} plural /> and 
+        [Melee Attack] Damage.
       </>,
       <>
-        [Recovery] Skill Checks that target you have -[[X]] to their results.
+        <SkillCheck tags={['Recovery']} plural /> that target you have -[[X]] to their results.
       </>
     ],
     x: 'X',
@@ -128,7 +131,7 @@ const exObj: StatusEffectsReturn = {
     effects: [
       <>
         You take [[X]] Verdant Damage at the end of your turn.
-        Then roll an [Endurance] Skill Check with -[[Y]]. On a Rank 2+ 
+        Then roll an <SkillCheck tags={['Endurance']} /> with -[[Y]]. On a Rank 2+ 
         Success, the poison ends early.
       </>
     ],
@@ -141,7 +144,7 @@ const exObj: StatusEffectsReturn = {
     effects: [
       <>
         You take [[X]] Infernal Damage at the end of your turn.
-        Then roll an [Endurance] Skill Check. On a Rank 2+ 
+        Then roll an <SkillCheck tags={['Endurance']} />. On a Rank 2+ 
         Success, the burning ends early.
       </>
     ],
@@ -196,7 +199,7 @@ const exObj: StatusEffectsReturn = {
     description: 'You are gripped by an overwhelming sense of terror.',
     effects: [
       <>
-        Trying to do any Maneuver requires an extra [Stoic] Skill Check.
+        Trying to do any Maneuver requires an extra <SkillCheck tags={['Stoic']} />.
         On a failure, your Maneuver is used without any benefit.
       </>,
       <>
@@ -343,7 +346,7 @@ const exObj: StatusEffectsReturn = {
     description: 'You are unremarkable.',
     effects: [
       <>
-        Gain +4 to [Stealth] Skill Checks, but all Rank 2 and Rank 3 Successes
+        Gain +4 to <SkillCheck tags={['Stealth']} plural />, but all Rank 2 and Rank 3 Successes
         have their Rank reduced by 1.
       </>
     ],
@@ -353,7 +356,7 @@ const exObj: StatusEffectsReturn = {
     description: 'You are unmistakable.',
     effects: [
       <>
-        You gain -4 to [Stealth] Skill Checks.
+        You gain -4 to <SkillCheck tags={['Stealth']} plural />.
       </>,
       <>
         Enemies who have seen you 
@@ -484,7 +487,7 @@ const exObj: StatusEffectsReturn = {
     description: 'You feel a revulsion against the realm around you, as if everything is wrong.',
     effects: [
       <>
-        Every hex you move requires a [Stoic] Skill Check.
+        Every hex you move requires a <SkillCheck tags={['Stoic']} />.
       </>,
       <>
         Every hex you move through deals 1 damage to you.
@@ -506,7 +509,8 @@ const exObj: StatusEffectsReturn = {
         You can see through all forms of cover, and you can see creatures in the [Hidden] state.
       </>,
       <>
-        Also, Choose a single Skill Check tag. You gain +2 to all non-[Attack] Skill Checks with that tag.
+        Also, Choose a single Skill Check tag. You gain +2 to all 
+        non-<SkillCheck tags={['Attack']} plural /> with that tag.
       </>,
     ]
   }

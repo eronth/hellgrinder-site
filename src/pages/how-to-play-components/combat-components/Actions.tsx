@@ -1,3 +1,4 @@
+import SkillCheck from "../../../common-design/SkillCheck/SkillCheck";
 
 export default function Actions() {
 
@@ -48,8 +49,9 @@ export default function Actions() {
         
         <h4>Covering Fire</h4>
         <p>
-          Choose a 2 hex cone in your front arc of a range listed on your weapon. Make a [Shooting] Skill Check, [Arcane]
-          Skill Check, or [Throwing] Skill Check, so long as you have an equipped weapon with the same tag. Rank 2+ Success
+          Choose a 2 hex cone in your front arc of a range listed on your weapon.
+          Make a <SkillCheck tags={['Shooting']} />, <SkillCheck tags={['Arcane']} />,
+          or <SkillCheck tags={['Throwing']} />, so long as you have an equipped weapon with the same tag. Rank 2+ Success
           grants -2 to Hit Checks for the attacks made by creatures in that cone until the start of your next turn.
         </p>
         
@@ -69,15 +71,15 @@ export default function Actions() {
       <div>
         <h4>Restrain</h4>
         <p>
-          Make a [Might Agility] Check against a target's [Might Agility] Check. If you succeed, the target is
-          Restrained
-          until the start of your next turn. While restrained this way, you may spend movement points to move the target
+          Make a <SkillCheck tags={['Might', 'Agility']} /> against
+          a target's <SkillCheck tags={['Might', 'Agility']} />. If you succeed, the target is
+          Restrained until the start of your next turn. While restrained this way, you may spend movement points to move the target
           1 hex in any direction.
         </p>
         
         <h4>Study Target</h4>
         <p>
-          Make an -X [Observation] Skill Check for a target, where X is the target's tier, minus 1.
+          Make an -X <SkillCheck tags={['Observation']} /> for a target, where X is the target's tier, minus 1.
           If you succeed, you learn any two pieces of information about the target of your choice.
           Things such as:
           - resistances, weaknesses, and absorbance
@@ -88,13 +90,16 @@ export default function Actions() {
         
         <h4>Shove</h4>
         <p>
-          Make a +4 [Might] Check against a target's [Might Endurance] Check. If you succeed, the target is Shoved 1
+          Make a +4 <SkillCheck tags={['Might']} /> against a 
+          target's <SkillCheck tags={['Might', 'Endurance']} />.
+          If you succeed, the target is Shoved 1
           hex in a direction of your choice.
         </p>
         
         <h4>Sprint</h4>
         <p>
-          Move up to your Move Speed +2. Gain +2 to [Agility] Skill Checks until the start of your next turn.
+          Move up to your Move Speed +2. Gain +2 
+          to <SkillCheck tags={['Agility']} plural /> until the start of your next turn.
         </p>
       </div>
     

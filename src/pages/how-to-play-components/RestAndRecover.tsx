@@ -1,3 +1,4 @@
+import SkillCheck from "../../common-design/SkillCheck/SkillCheck";
 
 export default function RestAndRecover() {
 
@@ -17,15 +18,16 @@ export default function RestAndRecover() {
       </div>
       <div>
         <div className='simple-header'>Safelight Shard</div>
-        <p>These shards are small enough to be carried by individual soldiers. Unfortunately, breaking chunks from a Safelight Geode or Gemstone is not possible without proper equipment, so soldiers are assigned a limited number while scientists work on further advancements in SafeLiteTM technology. With just a moment of meditation, a character can grant themselves a few minutes of safety. When they do so, they roll Recovery Skill Check with a bonus of +2.</p>
+        <p>These shards are small enough to be carried by individual soldiers. Unfortunately, breaking chunks from a Safelight Geode or Gemstone is not possible without proper equipment, so soldiers are assigned a limited number while scientists work on further advancements in SafeLiteTM technology. With just a moment of meditation, a character can grant themselves a few minutes of safety. When they do so, 
+          they roll a Recoverty Test with +2.</p>
       </div>
       
       
       <div>
-        <h3>Recovery Check</h3>
+        <h3>Recovery Test</h3>
         <p>
-          When you use a safelight object to recover, you roll a Recovery Skill Check. When you do, you almost always heal,
-          but the amount differs based on your success Rank.
+          When you use a safelight object to recover, you roll a <SkillCheck tags={['Recovery']} />. 
+          When you do, the amount you heal differs based on your success Rank.
         </p>
         <ul>
           <li>Rank 0 - Heal 2 health.</li>

@@ -4,7 +4,7 @@ import { EncounterCreature } from '../../ts-types/encounter-types';
 import DamageModComponent from './DamageModComponent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-import React, { useState } from 'react';
+import React, { isValidElement, useState } from 'react';
 
 type Props = {
   data: Creature;
@@ -159,41 +159,31 @@ export default function CreatureCard({
   </>);
 
   const renderAbilityDescription = (description: unknown): React.ReactNode => {
-    // Handle serialized React nodes from loaded encounters
-    if (description && typeof description === 'object' && description !== null && 'props' in description) {
-      // This is a serialized React element, we need to reconstruct it
-      // For now, let's extract the text content safely
-      try {
-        const element = description as { props?: { children?: unknown } };
-        // If it has props.children, try to render that
-        if (element.props && element.props.children) {
-          // Handle different types of children
-          if (typeof element.props.children === 'string') {
-            return element.props.children;
-          } else if (Array.isArray(element.props.children)) {
-            // Flatten array of children and extract text
-            return element.props.children.map((child: unknown) => {
-              if (typeof child === 'string') {
-                return child;
-              } else if (child && typeof child === 'object' && child !== null && 'props' in child) {
-                const childElement = child as { props?: { children?: unknown } };
-                return typeof childElement.props?.children === 'string' ? childElement.props.children : '';
-              }
-              return '';
-            }).join('');
-          }
-        }
-        // Fallback: try to stringify the object in a readable way
-        return JSON.stringify(description, null, 2);
-      } catch (error) {
-        console.warn('Failed to render serialized ability description:', error);
-        console.log('--description:', description);
-        return '[Description could not be loaded]';
+    // If it's a string, just return it
+    if (typeof description === 'string') {
+      return description;
+    }
+    // If it's a valid React element, return it directly
+    if (isValidElement(description)) {
+      return description;
+    }
+    // If it's an array, map and render each item
+    if (Array.isArray(description)) {
+      return description.map(item => renderAbilityDescription(item));
+    }
+    // If it's an object with props and children, try to render children
+    if (
+      description &&
+      typeof description === 'object' &&
+      'props' in description
+    ) {
+      const props = (description as { props?: { children?: unknown } }).props;
+      if (props && props.children !== undefined) {
+        return renderAbilityDescription(props.children);
       }
     }
-    
-    // Handle normal React nodes or strings
-    return description as React.ReactNode;
+    // Fallback: show error
+    return '[Description could not be loaded]';
   };
 
 

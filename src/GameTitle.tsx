@@ -211,6 +211,7 @@ export default function GameTitle({ isIndex }: Props) {
     title('doto-300'),
     title('jetbrains-mono-100'),
     title('', null, {post: 'I hardly know her!', below: true}, 'Hellgrinder?'),
+    title('quintessential-regular-made-for-two', {pre: 'On a'}, {post: 'made for two.', below: true}),
     // He🏒🏒grinder
     // The Beginning of the End: Hellgrinder
   ], [title, quickTitleWrapper, dotIOTitle, spiritTitle, barcodeTitle, broughtToYouBy]);

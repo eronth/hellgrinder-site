@@ -153,6 +153,21 @@ h1.cutive-mono-regular.index-title {
   margin-right: 9em;
 }
 
+.quintessential-regular-made-for-two {
+  font-family: "Quintessential", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 4.5em;
+
+  .before-title {
+    font-size: .8em;
+  }
+  .after-title {
+    font-size: .8em;
+    margin-right: 1em;
+  }
+}
+
 .eater-regular {
   font-family: "Eater", serif;
   font-weight: 400;

@@ -27,7 +27,11 @@ const exampleCreatures: { [key: string]: Creature } = {
         h: { value: 4, type: 'Infernal' },
       },
       tags: ['Attack', 'Melee', 'Adjacent Range'],
-      effects: ['On Rank 3+ Success, target gains [Burning] for 2 turns.'],
+      effects: [
+        <>
+          On Rank 3+ Success, target gains <StatusKeyword effect="immolated" x={1} y={2} />.
+        </>
+      ],
     }],
     abilities: [
       {
@@ -133,7 +137,12 @@ const exampleCreatures: { [key: string]: Creature } = {
         h: { value: 4, type: 'Verdant' },
       },
       tags: ['Attack', 'Melee', {tag: 'Range', value: 2}],
-      effects: ['On Rank 3+, target is [Entangled] for 1 turn.'],
+      effects: [
+        <>
+        AAAH ADD ENTANGLED
+          {/* On Rank 3+ Success, target is <StatusKeyword effect="Entangled" x={2} /> for 1 turn. */}
+        </>
+      ],
     }],
     abilities: [
       {
@@ -206,7 +215,11 @@ const exampleCreatures: { [key: string]: Creature } = {
         h: { value: 5, type: 'Voidyr' },
       },
       tags: ['Attack', 'Melee', 'Adjacent Range'],
-      effects: ['On Rank 3+, target gains [Weakened] for 2 turns.'],
+      effects: [
+        <>
+          On Rank 3+, target gains <StatusKeyword effect="enfeebled" x={1} /> for 2 turns.
+        </>
+      ],
     }],
     abilities: [
       {
@@ -345,7 +358,11 @@ const exampleCreatures: { [key: string]: Creature } = {
         h: { value: 5, type: 'Voidyr' },
       },
       tags: ['Attack', 'Arcane', 'Long Range'],
-      effects: ['On Rank 3+, target gains [Cursed] for 3 turns.'],
+      effects: [
+        <>
+          On Rank 3+, target gains <StatusKeyword effect="cursed" /> for 3 turns.
+        </>
+      ],
     }],
     abilities: [
       {
@@ -381,7 +398,14 @@ const exampleCreatures: { [key: string]: Creature } = {
         h: { value: 4, type: 'Voidyr' },
       },
       tags: ['Attack', 'Arcane', 'Medium Range'],
-      effects: ['On any successful hit, target gains [Hexed] - takes 1 damage at start of each turn for 3 turns.'],
+      effects: [
+        <>
+          On any successful hit, 
+          target gains <StatusKeyword effect={'enslumbered'} x={2} />.
+          If this affects a creature that is already Enslumbered, 
+          they instead gain <StatusKeyword effect={'doomed'} x={1} />.
+        </>
+      ],
     }],
     abilities: [
       {

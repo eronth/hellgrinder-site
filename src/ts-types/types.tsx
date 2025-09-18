@@ -64,7 +64,7 @@ type AttackMode = {
     m: Damage;
     h: Damage;
   };
-  effects?: string[];
+  effects?: React.ReactNode[];
 }
 
 type Damage = {

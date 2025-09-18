@@ -73,7 +73,12 @@ const exObj: { [key: string]: Creature } = {
         h: { value: 4, type: 'Core' },
       },
       tags: ['Attack', 'Melee', 'Adjacent Range'],
-      effects: ["A creature who reaches 0 health from this attack adds +1 to their Injury Roll."],
+      effects: [
+        <>
+          A creature who reaches 0 health from this attack 
+          adds +1 to their Injury Roll.
+        </>
+      ],
     }],
     abilities: [
       {
@@ -197,7 +202,11 @@ const exObj: { [key: string]: Creature } = {
         h: { value: 4, type: 'Core' },
       },
       tags: ['Attack', 'Melee', 'Adjacent Range'],
-      effects: ['A Rank 3 Success also gives the target the [Bleeding] status effect.'],
+      effects: [
+        <>
+          A Rank 3 Success also gives the target the [Bleeding] status effect.
+        </>
+      ],
     }],
     abilities: [
       {

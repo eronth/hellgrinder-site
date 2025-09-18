@@ -3,58 +3,59 @@ import { Creature, CreatureAbility } from "../../ts-types/creature-types";
 import { Encounter, EncounterCreature } from "../../ts-types/encounter-types";
 import { AttackMode } from "../../ts-types/types";
 import { CoderizerConsts } from "./CoderizerConsts";
+import _ from "lodash";
 
 export class Encoderizer {
 
-  // static extraSpecialEncounterCopier(encounter): Encounter {
-  //   const newEncounter: Encounter = {creatures: []};
-  //   const ec = encounter.creatures;
-  //   ec?.forEach((ec) => {
-  //     const newEncounterCreature = {
-  //       ...ec,
-  //     };
-  //     newEncounterCreature.creature = {
-  //       ...ec.creature
-  //     };
+  static extraSpecialEncounterCopier(encounter): Encounter {
+    const newEncounter: Encounter = {creatures: []};
+    const ec = encounter.creatures;
+    ec?.forEach((ec) => {
+      const newEncounterCreature = {
+        ...ec,
+      };
+      newEncounterCreature.creature = {
+        ...ec.creature
+      };
 
-  //     // All new attacks.
-  //     const newAttacks = [];
-  //     newEncounterCreature.creature.attacks.forEach(a => {
-  //       // each new attack.
-  //       const newAttack = {
-  //         ...a,
-  //       };
+      // All new attacks.
+      const newAttacks = [];
+      newEncounterCreature.creature.attacks.forEach(a => {
+        // each new attack.
+        const newAttack = {
+          ...a,
+        };
 
-  //       // Each new effect per attack.
-  //       const newEffects: string[] = [];
-  //       if (a.effects) {
-  //         a.effects.forEach((e) => {
-  //           newEffects.push(e);
-  //         });
-  //       }
-  //       if ((newEffects?.length ?? 0) != 0) {
-  //         newAttack.effects = newEffects;
-  //       }
-  //     });
-  //     newEncounterCreature.creature.attacks = newAttacks;
+        // Each new effect per attack.
+        const newEffects: string[] = [];
+        if (a.effects) {
+          a.effects.forEach((e) => {
+            newEffects.push(e);
+          });
+        }
+        if ((newEffects?.length ?? 0) != 0) {
+          newAttack.effects = newEffects;
+        }
+      });
+      newEncounterCreature.creature.attacks = newAttacks;
 
-  //     // All new abilities.
-  //     const newAbilities = [];
-  //     newEncounterCreature.creature.abilities.forEach(a => {
-  //       newAbilities.push({
-  //         ...a
-  //       });
-  //     });
-  //     newEncounterCreature.creature.abilities = newAbilities;
+      // All new abilities.
+      const newAbilities = [];
+      newEncounterCreature.creature.abilities.forEach(a => {
+        newAbilities.push({
+          ...a
+        });
+      });
+      newEncounterCreature.creature.abilities = newAbilities;
 
-  //     newEncounter.creatures.push(ec);
-  //   })
+      newEncounter.creatures.push(ec);
+    })
 
-  //   return newEncounter;
-  // }
+    return newEncounter;
+  }
 
   static encoderizer(encounter: Encounter): Encounter {
-    const newEcounter = {...encounter}; //this.extraSpecialEncounterCopier(encounter);
+    const newEcounter = _.cloneDeep(encounter); // this.extraSpecialEncounterCopier(encounter);
     newEcounter.creatures = 
       newEcounter.creatures.map(c => this.encoderizeEncounterCreature(c));
     return newEcounter;

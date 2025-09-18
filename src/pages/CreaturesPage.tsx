@@ -36,6 +36,8 @@ export default function CreaturesPage() {
   // Save encounter to localStorage whenever it changes (but not on initial load)
   useEffect(() => {
     if (isLoaded) {
+      console.log('================================');
+      console.log('Encounter loaded:', encounter);
       EncounterStorage.saveCurrentEncounter(encounter);
     }
   }, [encounter, isLoaded]);

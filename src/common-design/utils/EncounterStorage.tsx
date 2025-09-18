@@ -2,6 +2,7 @@
 import { Encoderizer } from "./Encoderizer";
 import { Decoderizer } from "./Decoderizer";
 import { Encounter } from "../../ts-types/encounter-types";
+import _ from "lodash";
 
 const STORAGE_KEY = 'hellgrinder_encounters';
 const STORAGE_VERSION = '1.0.0';
@@ -30,16 +31,18 @@ export class EncounterStorage {
    */
   static saveCurrentEncounter(encounter: Encounter): boolean {
     try {
+      // Always save a deep copy, encoderized
+      const encounterCopy = _.cloneDeep(encounter);
+      const encodedEncounter = Encoderizer.encoderizer(encounterCopy);
       const data: EncounterStorageData = {
         version: STORAGE_VERSION,
         encounters: [], // For future: could save multiple encounters
         lastSaved: new Date().toISOString(),
-        currentEncounter: encounter
+        currentEncounter: encodedEncounter
       };
 
-      Encoderizer.encoderizer(encounter);
-
-      console.log('Saving encounter:', data);
+      console.log('Data to be saved:', encodedEncounter);
+      console.log('Saving encounter:', data.currentEncounter);
       console.log('Stringified data:', JSON.stringify(data));
       
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -63,15 +66,16 @@ export class EncounterStorage {
       }
 
       const data: EncounterStorageData = JSON.parse(stored);
-      data.currentEncounter = Decoderizer.decoderizer(data.currentEncounter);
-      
+      // Always decode a deep copy for rendering
+      const decodedEncounter = Decoderizer.decoderizer(_.cloneDeep(data.currentEncounter));
+
       // Version compatibility check
       if (data.version !== STORAGE_VERSION) {
         console.warn(`Version mismatch: stored ${data.version}, current ${STORAGE_VERSION}`);
         // Could implement migration logic here if needed
       }
 
-      const encounter = data.currentEncounter || { creatures: [] };
+      const encounter = decodedEncounter || { creatures: [] };
       console.log(`Loaded encounter with ${encounter.creatures.length} creatures from localStorage`);
       return encounter;
     } catch (error) {

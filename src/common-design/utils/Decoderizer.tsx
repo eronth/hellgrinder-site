@@ -6,13 +6,16 @@ import HitCheck from "../HitCheck/HitCheck";
 import SkillCheck from "../SkillCheck/SkillCheck";
 import StatusKeyword from "../StatusKeyword";
 import { CoderizerConsts } from "./CoderizerConsts";
+import _ from "lodash";
+
 
 export class Decoderizer {
 
   static decoderizer(encounter: Encounter): Encounter {
-    encounter.creatures = 
-      encounter.creatures.map(c => this.decoderizeEncounterCreature(c));
-    return encounter;
+    const newEncounter = _.cloneDeep(encounter);
+    newEncounter.creatures = 
+      newEncounter.creatures.map(c => this.decoderizeEncounterCreature(c));
+    return newEncounter;
   }
 
   static decoderizeEncounterCreature(encounterCreature: EncounterCreature): EncounterCreature {
@@ -41,29 +44,30 @@ export class Decoderizer {
   }
 
   static decoderizeText(description: string): React.ReactElement {
-    console.log("DECODERIZE ME!", description);
+    // Type guard: if already a React element, just return it
+    if (React.isValidElement(description)) {
+      return description;
+    }
+    // If not a string, return a fallback error
+    if (typeof description !== 'string') {
+      return <>Error: Unexpected type for description</>;
+    }
     if (!description) {return <> HOW IS THERE NO DESCRIPTION??? </>}
     const brokenString = description.split(CoderizerConsts.componentSplit);
-    console.log('-brokenString', brokenString);
     const elements = brokenString.map((part, index) => {
       if (part.startsWith(CoderizerConsts.componentStart) 
         && part.endsWith(CoderizerConsts.componentEnd)) {
-        console.log('-special part', part)
         const content = part
           .slice(CoderizerConsts.componentStart.length, -CoderizerConsts.componentEnd.length)
           .split(CoderizerConsts.componentNameSplit); // Extract content between tags
         if (content == 'MEN WERE NOT MEANT TO THINK THIS HARD') {
-          return <>Why...</>;
+          return <>Error: How did we get here...</>;
         }
-        console.log('content', content);
         const [name, paramsString] = content;
-        console.log('name',  name)
-        console.log('paramsString', paramsString);
         // Turn paramsString into an object
         const paramsArr = paramsString
           .slice(1, -1) // Remove the surrounding {}
           .split(',');
-        console.log("paramsArr", paramsArr)
         const paramsObj: { [key: string]: any } = {};
         paramsArr.forEach(p => {
           let [key, value] = p.split(':');
@@ -76,12 +80,11 @@ export class Decoderizer {
         });
         return this.makeMeAReactComponent(name, paramsObj);
       } else {
-        console.log('-part', part)
-        return <>{part.trim()}</>;
+        return part.trim();
       }
     });
     return (<>
-      {elements.map((el, i) => <React.Fragment key={i}>{el} </React.Fragment>)}
+      {elements.map((el, i) => el)}
     </>);
   }
 

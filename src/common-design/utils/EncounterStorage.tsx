@@ -1,8 +1,7 @@
-
+import _ from "lodash";
 import { Encoderizer } from "./Encoderizer";
 import { Decoderizer } from "./Decoderizer";
 import { Encounter } from "../../ts-types/encounter-types";
-import _ from "lodash";
 
 const STORAGE_KEY = 'hellgrinder_encounters';
 const STORAGE_VERSION = '1.0.0';
@@ -67,6 +66,10 @@ export class EncounterStorage {
 
       const data: EncounterStorageData = JSON.parse(stored);
       // Always decode a deep copy for rendering
+      if (!data.currentEncounter) {
+        console.log('No current encounter in storage data');
+        return { creatures: [] };
+      }
       const decodedEncounter = Decoderizer.decoderizer(_.cloneDeep(data.currentEncounter));
 
       // Version compatibility check

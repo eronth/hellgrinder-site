@@ -7,7 +7,7 @@ import _ from "lodash";
 
 export class Encoderizer {
 
-  static extraSpecialEncounterCopier(encounter): Encounter {
+  static extraSpecialEncounterCopier(encounter: Encounter): Encounter {
     const newEncounter: Encounter = {creatures: []};
     const ec = encounter.creatures;
     ec?.forEach((ec) => {
@@ -19,7 +19,7 @@ export class Encoderizer {
       };
 
       // All new attacks.
-      const newAttacks = [];
+      const newAttacks: AttackMode[] = [];
       newEncounterCreature.creature.attacks.forEach(a => {
         // each new attack.
         const newAttack = {
@@ -27,7 +27,7 @@ export class Encoderizer {
         };
 
         // Each new effect per attack.
-        const newEffects: string[] = [];
+        const newEffects: React.ReactNode[] = [];
         if (a.effects) {
           a.effects.forEach((e) => {
             newEffects.push(e);
@@ -40,7 +40,7 @@ export class Encoderizer {
       newEncounterCreature.creature.attacks = newAttacks;
 
       // All new abilities.
-      const newAbilities = [];
+      const newAbilities: CreatureAbility[] = [];
       newEncounterCreature.creature.abilities.forEach(a => {
         newAbilities.push({
           ...a
@@ -78,31 +78,31 @@ export class Encoderizer {
   }
 
   static encoderizeCreatureAttack(attack: AttackMode): AttackMode {
+    attack.effects = attack.effects?.map(effect => this.encoderizeTextBlock(effect));
     return attack; // No-op for now, could implement more complex logic if needed
   }
 
   static encoderizeCreatureAbility(ability: CreatureAbility): CreatureAbility {
-    ability.description = this.encoderizeCreatureAbilityDescription(ability.description);
+    ability.description = this.encoderizeTextBlock(ability.description);
     return ability; // No-op for now, could implement more complex logic if needed
   }
 
-  static encoderizeCreatureAbilityDescription(description: React.ReactNode): React.ReactNode {
-    let newDescription: string = description;
-    if (React.isValidElement(description)) {
-      console.log("TTTTTTTTTT  1")
+  static encoderizeTextBlock(description: React.ReactNode | string): React.ReactNode {
+    let newDescription: string = '';
+    if (typeof description === 'string') {
+      newDescription = description;
+    } else if (React.isValidElement(description)) {
       if (Array.isArray(description.props.children)) {
-        console.log("TTTTTTTTTT  2")
-        const newDescAr: string[] = description.props.children.map((child: any) =>
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        const newDescAr: string[] = description.props.children.map((child) =>
           this.encoderizeTextFragment(child)
         );
-        console.log("TTTTTTTTTT  3")
         newDescription = newDescAr.join('');
       } else {
-        console.log("TTTTTTTTTT  4")
         newDescription = this.encoderizeTextFragment(description.props.children);
       }
     }
-    console.log("TTTTTTTTTT  5")
     return newDescription; // Return the original description for now
   }
 
@@ -110,10 +110,6 @@ export class Encoderizer {
     if (typeof fragment === 'string') {
       return fragment; // Plain text, no action needed
     } else if (React.isValidElement(fragment)) {
-      console.log('Found React element in text fragment:', fragment);
-      console.log(typeof fragment);
-      console.log(fragment.type);
-      console.log(fragment.type.name)
       return this.encoderizeReactElement(fragment);
     } else {
       console.warn('Unknown fragment type:', fragment);
@@ -121,8 +117,10 @@ export class Encoderizer {
     }
   }
 
-  static encoderizeReactElement(element): string {
+  static encoderizeReactElement(element: React.ReactElement): string {
     let text = '';
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     if (element.type?.name) {
       const paramList = 
         Object.entries(element.props).map((kvp) => {
@@ -135,6 +133,8 @@ export class Encoderizer {
         });
       text += 
         // THIS IS THE NAME
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         element.type.name
         + CoderizerConsts.componentNameSplit
         // THIS PART MAKES THE OBJECT LIST

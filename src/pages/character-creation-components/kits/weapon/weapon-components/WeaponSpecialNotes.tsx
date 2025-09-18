@@ -1,6 +1,6 @@
 type Props = {
   className?: string;
-  effects?: string[];
+  effects?: React.ReactNode[];
 };
 
 export default function WeaponSpecialNotes({ className, effects }: Props) {

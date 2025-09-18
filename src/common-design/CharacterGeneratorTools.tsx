@@ -30,6 +30,7 @@ const characterDefaults: Omit<CharacterDesign, 'id' | 'name'> = {
     corruption: 0, safelightShards: 2,
     perkPoints: 2,
     attackBonus: 'Melee',
+    customSkill: '',
   },
   startingCombatKits: 1, startingSupportKits: 1,
   kits: [], perks: [], bonuses: [],

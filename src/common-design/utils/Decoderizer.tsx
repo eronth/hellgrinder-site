@@ -35,6 +35,7 @@ export class Decoderizer {
   }
 
   static decoderizeCreatureAttack(attack: AttackMode): AttackMode {
+    attack.effects = attack.effects?.map(effect => this.decoderizeText(effect));
     return attack; // No-op for now, could implement more complex logic if needed
   }
 
@@ -43,7 +44,7 @@ export class Decoderizer {
     return ability; // No-op for now, could implement more complex logic if needed
   }
 
-  static decoderizeText(description: string): React.ReactElement {
+  static decoderizeText(description: string | React.ReactNode): React.ReactElement {
     // Type guard: if already a React element, just return it
     if (React.isValidElement(description)) {
       return description;
@@ -54,12 +55,15 @@ export class Decoderizer {
     }
     if (!description) {return <> HOW IS THERE NO DESCRIPTION??? </>}
     const brokenString = description.split(CoderizerConsts.componentSplit);
-    const elements = brokenString.map((part, index) => {
+    const elements = brokenString.map((part) => {
       if (part.startsWith(CoderizerConsts.componentStart) 
         && part.endsWith(CoderizerConsts.componentEnd)) {
         const content = part
           .slice(CoderizerConsts.componentStart.length, -CoderizerConsts.componentEnd.length)
           .split(CoderizerConsts.componentNameSplit); // Extract content between tags
+        // BIT OF AN ERROR HANDLER HERE
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         if (content == 'MEN WERE NOT MEANT TO THINK THIS HARD') {
           return <>Error: How did we get here...</>;
         }
@@ -68,9 +72,11 @@ export class Decoderizer {
         const paramsArr = paramsString
           .slice(1, -1) // Remove the surrounding {}
           .split(',');
-        const paramsObj: { [key: string]: any } = {};
+        const paramsObj: { [key: string]: string | string[] } = {};
         paramsArr.forEach(p => {
-          let [key, value] = p.split(':');
+          const kvp = p.split(':');
+          const key = kvp[0];
+          let value: string | string[] = kvp[1];
           value = value.trim();
           if (value.startsWith('[') && value.endsWith(']')) {
             value = value.slice(1, -1);
@@ -84,11 +90,13 @@ export class Decoderizer {
       }
     });
     return (<>
-      {elements.map((el, i) => el)}
+      {elements.map((el) => el)}
     </>);
   }
 
-  static makeMeAReactComponent(name, params) {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  static makeMeAReactComponent(name: string, params): React.ReactElement {
     switch (name) {
       case 'SkillCheck':
         return <SkillCheck {...params} />;

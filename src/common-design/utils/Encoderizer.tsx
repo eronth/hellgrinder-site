@@ -96,7 +96,7 @@ export class Encoderizer {
           this.encoderizeTextFragment(child)
         );
         console.log("TTTTTTTTTT  3")
-        newDescription = newDescAr.join(' ');
+        newDescription = newDescAr.join('');
       } else {
         console.log("TTTTTTTTTT  4")
         newDescription = this.encoderizeTextFragment(description.props.children);

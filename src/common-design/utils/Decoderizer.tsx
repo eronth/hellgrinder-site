@@ -80,7 +80,7 @@ export class Decoderizer {
         });
         return this.makeMeAReactComponent(name, paramsObj);
       } else {
-        return part.trim();
+        return part;
       }
     });
     return (<>

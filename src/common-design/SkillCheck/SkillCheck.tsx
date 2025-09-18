@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import './SkillCheck.css';
 
 type Props = {
   tags: string[];
@@ -12,19 +13,19 @@ export default function SkillCheck({ text, tags, plural }: Props) {
     if (tags.length === 0) return null;
     
     console.log('Formatting tags:', tags);
-    return <>
+    return <span className={'tags-list'}>
       [{tags.join(' ')}]
-    </>;
+    </span>;
   }, []);
 
-  const displayCheck = (<span style={{backgroundColor: 'red'}}> 
+  const displayCheck = (<span>
     {text
       ? <>{text}</>
       : <>Skill Check</>
     }{plural ? 's' : ''}
   </span>);
 
-  return (<>
+  return (<span className="skill-check-listing">
     {formatTagsToDisplay(tags)} {displayCheck}
-  </>);
+  </span>);
 };

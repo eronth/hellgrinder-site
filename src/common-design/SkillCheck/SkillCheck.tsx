@@ -17,12 +17,12 @@ export default function SkillCheck({ text, tags, plural }: Props) {
     </>;
   }, []);
 
-  const displayCheck = (<> 
+  const displayCheck = (<span style={{backgroundColor: 'red'}}> 
     {text
       ? <>{text}</>
       : <>Skill Check</>
     }{plural ? 's' : ''}
-  </>);
+  </span>);
 
   return (<>
     {formatTagsToDisplay(tags)} {displayCheck}

@@ -2,6 +2,7 @@ import { Creature } from '../../ts-types/creature-types';
 import { DamageTakenMod } from '../../ts-types/creature-types';
 import Tools from '../../common-design/Tools';
 import RuleKeyword from '../RuleKeyword';
+import SkillCheck from '../SkillCheck/SkillCheck';
 
 const coreResist: DamageTakenMod = {
   modification: 'Resist',
@@ -72,7 +73,7 @@ const exObj: { [key: string]: Creature } = {
         h: { value: 4, type: 'Core' },
       },
       tags: ['Attack', 'Melee', 'Adjacent Range'],
-      effects: ["A creature who reaches 0 health from this attack adds +1 to the Injury Roll."],
+      effects: ["A creature who reaches 0 health from this attack adds +1 to their Injury Roll."],
     }],
     abilities: [
       {
@@ -202,7 +203,7 @@ const exObj: { [key: string]: Creature } = {
       {
         name: '',
         description: <>
-          Hellhounds have a +2 bonus to all [Observation] Skill Checks.
+          Hellhounds have a +2 bonus to all <SkillCheck tags={['Observation']} plural />.
         </>
       },
       {

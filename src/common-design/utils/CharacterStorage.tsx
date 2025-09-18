@@ -189,6 +189,7 @@ export class CharacterStorage {
         perkPoints: char.stats?.perkPoints || 2,
         safelightShards: char.stats?.safelightShards || 2,
         attackBonus: char.stats?.attackBonus || 'Melee',
+        customSkill: char.stats?.customSkill || ''
       },
       startingCombatKits: char.startingCombatKits || 1,
       startingSupportKits: char.startingSupportKits || 1,

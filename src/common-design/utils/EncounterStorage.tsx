@@ -1,3 +1,6 @@
+
+import { Encoderizer } from "./Encoderizer";
+import { Decoderizer } from "./Decoderizer";
 import { Encounter } from "../../ts-types/encounter-types";
 
 const STORAGE_KEY = 'hellgrinder_encounters';
@@ -20,7 +23,8 @@ export interface EncounterExportData extends EncounterStorageData {
  * Handles persistence, import/export for Hellgrinder encounter data
  */
 export class EncounterStorage {
-  
+
+
   /**
    * Save current encounter to localStorage
    */
@@ -32,6 +36,11 @@ export class EncounterStorage {
         lastSaved: new Date().toISOString(),
         currentEncounter: encounter
       };
+
+      Encoderizer.encoderizer(encounter);
+
+      console.log('Saving encounter:', data);
+      console.log('Stringified data:', JSON.stringify(data));
       
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
       console.log(`Saved encounter with ${encounter.creatures.length} creatures to localStorage`);
@@ -54,6 +63,7 @@ export class EncounterStorage {
       }
 
       const data: EncounterStorageData = JSON.parse(stored);
+      data.currentEncounter = Decoderizer.decoderizer(data.currentEncounter);
       
       // Version compatibility check
       if (data.version !== STORAGE_VERSION) {

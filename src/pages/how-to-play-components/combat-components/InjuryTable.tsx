@@ -6,7 +6,7 @@ export default function InjuryTable() {
     {
       result: { min: 1, max: 2 },
       injury: {
-        light: { name: 'Broken Foot', description: '-2 to [Agility Skill Checks].' },
+        light: { name: 'Broken Foot', description: '-2 to [Agility] Skill Checks.' },
         serious: { name: 'Shattered Leg', description: '-2 Move Speed.' },
         critical: { name: 'Bruised: -2 to all rolls', description: 'Bruised: -2 to all rolls' }
       }

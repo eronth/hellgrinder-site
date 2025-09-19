@@ -9,6 +9,7 @@
   background-color: #242424;
 
   /* Card and table background colors - slightly different from site background */
+  --header-primary-color: hsl(0, 0%, 100%);
   --card-background: #2a2a2a;
   --card-header-background: #333333;
   --table-background: #2a2a2a;
@@ -16,10 +17,22 @@
   --table-row-background: #2a2a2a;
   --table-row-alt-background: #2e2e2e;
 
+  --text: hsl(0, 0%, 100%);
+  --nav-border: hsl(0, 0%, 100%);
+  --header-icon-color: var(--text);
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --probability-title: #646cff;
+}
+:root[data-theme="light"] {
+  --header-primary-color: hsl(208, 37%, 20%);
+  --text: hsl(208, 37%, 20%);
+  --nav-border: hsl(0, 0%, 0%);
+  --header-icon-color: var(--text);
 }
 #root {
   width: 100%;

@@ -465,14 +465,13 @@
 }
 
 .history-total {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text);
   font-weight: bold;
   font-family: 'Courier New', monospace;
 }
 
 .history-rank {
   background-color: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.8);
   padding: 0.1rem 0.3rem;
   border-radius: 3px;
   font-size: 0.75rem;
@@ -515,7 +514,7 @@
 
 .collapse-indicator {
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--probability-title);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;
 }
@@ -556,7 +555,6 @@
 
 .total-bonus {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.7);
   font-family: 'Courier New', monospace;
   padding: 0.2rem 0.5rem;
   background: rgba(255, 255, 255, 0.1);
@@ -565,7 +563,7 @@
 
 .probability-title {
   font-weight: 600;
-  color: #646cff;
+  color: var(--probability-title);
   font-size: 0.9rem;
 }
 
@@ -646,7 +644,6 @@
 
 .prob-range {
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.6);
   margin-bottom: 0.3rem;
   font-family: 'Courier New', monospace;
 }
@@ -654,7 +651,6 @@
 .prob-percentage {
   font-size: 0.9rem;
   font-weight: bold;
-  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Responsive design */

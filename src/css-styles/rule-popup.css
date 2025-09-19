@@ -83,7 +83,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   font-size: 0.9em;
   line-height: 1.4;
-  color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   animation: fadeIn 0.2s ease-out;
 }
@@ -117,7 +116,6 @@
 
 .rule-category {
   background-color: var(--card-header-background);
-  color: rgba(255, 255, 255, 0.8);
   padding: 0.2em 0.5em;
   border-radius: 4px;
   font-size: 0.8em;
@@ -131,7 +129,6 @@
 
 .rule-details {
   margin-bottom: 0.5em;
-  color: rgba(255, 255, 255, 0.8);
   font-size: 0.95em;
 }
 
@@ -153,7 +150,6 @@
 .rule-examples li {
   margin-bottom: 0.2em;
   font-size: 0.85em;
-  color: rgba(255, 255, 255, 0.8);
 }
 
 .rule-related {

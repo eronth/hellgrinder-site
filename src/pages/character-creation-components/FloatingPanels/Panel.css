@@ -17,7 +17,7 @@
     cursor: pointer;
     transition: all 0.2s;
     user-select: none;
-    --header-icon-color: white;
+    
 
     .header-icon {
       color: var(--header-icon-color);
@@ -26,13 +26,13 @@
 
     .header-text {
       flex: 1;
-      color: rgba(255, 255, 255, 0.87);
+      color: var(--text);
       font-weight: 500;
       font-size: 0.9rem;
     }
 
     .header-expand-arrow {
-      color: rgba(255, 255, 255, 0.6);
+      color: var(--text);
       font-size: 0.8rem;
       transition: transform 0.2s ease;
     }

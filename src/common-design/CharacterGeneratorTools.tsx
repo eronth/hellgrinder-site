@@ -5,6 +5,7 @@ import SupportKits from "./equipment/support-kits.tsx";
 import Perks from "./equipment/perks.tsx";
 import { SkillChecks } from "../ts-types/tag-types.tsx";
 import { DamageElement, Kit, Perk } from "../ts-types/types.tsx";
+import _ from "lodash";
 
 const firstNames = [
   "Ash", "Steel", "Shadow", "Iron", "Night", "Flame", "Storm", "Ghost", 
@@ -58,7 +59,8 @@ function generateRandomCharacter({
 
   // Start with default values.
   const newChar: CharacterDesign = {
-    ...JSON.parse(JSON.stringify(characterDefaults)),
+    ...(_.cloneDeep(characterDefaults)),
+    //...JSON.parse(JSON.stringify(characterDefaults)),
     id: `char-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
     name: getRandomCharacterName({ usedNames })
   };

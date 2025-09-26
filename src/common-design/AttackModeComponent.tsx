@@ -13,11 +13,10 @@ type Props = {
 export default function AttackModeComponent({ attackMode, showTags=true }: Props) {
   function getPerAttackModeTags(attackMode: AttackMode) {
     return (attackMode.name
-      ?
-      (<span className="name-row">
-        <span className="name">- {attackMode.name}</span>
-        {showTags ? <Tags tags={attackMode.tags} /> : null}
-      </span>)
+      ? (<span className="name-row">
+          <span className="name">- {attackMode.name}</span>
+          {showTags ? <Tags tags={attackMode.tags} /> : null}
+        </span>)
       : (<></>)
       );
   }

@@ -57,7 +57,9 @@ export default function FactionSelector({ selectedFaction, onFactionChange }: Pr
             <div className="info-row">
               <span className="info-label">Abilities:</span>
               <span className="info-value abilities">
-                {FACTION_DATA[selectedFaction]!.abilities!.join(', ')}
+                {
+                  FACTION_DATA[selectedFaction]!.abilities!.map((ability, index) => ability.name + (index < FACTION_DATA[selectedFaction]!.abilities!.length - 1 ? ', ' : ''))
+                }
               </span>
             </div>
           )}

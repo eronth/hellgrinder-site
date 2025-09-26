@@ -163,8 +163,8 @@ export default function CreaturesPage() {
           .map((creature, i) => {
             const transformedCreature = transformCreatureToFaction(creature, selectedFaction);
             return (
-              <CreatureCard 
-                key={`generic-creature-${creature.name}-${selectedFaction}-${i}`} 
+              <CreatureCard
+                key={`generic-creature-${creature.name}-${selectedFaction}-${i}`}
                 data={transformedCreature}
                 onAddToEncounter={handleAddToEncounter}
               />

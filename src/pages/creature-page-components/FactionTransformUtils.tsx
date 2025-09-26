@@ -3,6 +3,7 @@ import RuleKeyword from '../../common-design/RuleKeyword';
 import { Creature, CreatureAbility, CreatureTier, DamageTakenMod } from '../../ts-types/creature-types';
 import { AttackMode, DamageElement } from '../../ts-types/types';
 import StatusKeyword from '../../common-design/StatusKeyword';
+import _ from "lodash";
 
 type PrimaryDamageAndGeneric = DamageElement | 'Core Type';
 type AbsorbDamageAndGeneric = DamageElement | 'PROMOTE';
@@ -249,12 +250,12 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
 export function transformCreatureToFaction(creature: Creature, factionKey: string): Creature {
   // No transformation needed for Generic
   if (factionKey === 'Generic') { return creature; }
-
+  
   const faction = FACTION_DATA[factionKey];
   if (!faction) { return creature; }
 
   // Create a deep copy of the creature
-  const transformedCreature: Creature = JSON.parse(JSON.stringify(creature));
+  const transformedCreature: Creature = _.cloneDeep(creature);
   transformedCreature.abilities = creature.abilities || [];
   console.log('Transforming creature:', transformedCreature, 'to faction:', faction);
   console.log('Abilities before:', transformedCreature.abilities);

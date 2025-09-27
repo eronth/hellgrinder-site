@@ -30,7 +30,7 @@ type StatusTypes =
   | 'Blinded' | 'Silenced' | 'Confused' | 'Charmed' | 'Frightened'
   | 'Enraged' | 'Invisible' | 'Incorporeal' | 'Insubstantial'
   | 'Incapacitated' | 'Restrained' | 'Grappled' | 'Paralyzed'
-  | 'Petrified' | 'Unconscious' | 'Dead';
+  | 'Petrified' | 'Unconscious' | 'Dead' | 'Entangled';
   // Blinded X, Brittle X, Doomed X, Enfeebled X, Envigorated, Frenzied, Imolated X for Y,
   // Lost X, Shaken, Silenced X, Slowed X, Terrified
 

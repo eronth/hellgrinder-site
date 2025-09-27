@@ -6,6 +6,7 @@ type StatusEffectsReturn = {
   blinded: StatusEffect;
   brittle: StatusEffect;
   doomed: StatusEffect;
+  entangled: StatusEffect;
   enfeebled: StatusEffect;
   invigorated: StatusEffect;
   frenzied: StatusEffect;
@@ -87,8 +88,21 @@ const exObj: StatusEffectsReturn = {
     description: 'You feel weak, as if your strength is sapped.',
     effects: [
       <>
-        You gain -[[X]] to <SkillCheck tags={['Endurance']} plural /> and
-        -[[X]] to <HitCheck tags={['Melee', 'Attack']} plural /> and 
+        At the start of your turn you get -[[x]] Movement Points. You may
+        make a -[[X]] <SkillCheck tags={['Might']} plural /> to free yourself as a
+        free action on your turn. On a Rank 2+ Success, remove all stacks of Enfeebled. On a Rank 0,
+        fall prone and you cannot use a check to free yourself.
+      </>
+    ],
+    x: 'X',
+  },
+  entangled: {
+    name: 'Entangled [[X]]',
+    description: 'You are entangled in something, unable to move freely.',
+    effects: [
+      <>
+        You gain -[[X]] to <SkillCheck tags={['Agility']} plural /> and
+        -[[X]] to <HitCheck tags={['Melee', 'Attack']} plural /> and
         [Melee Attack] Damage.
       </>,
       <>
@@ -401,7 +415,7 @@ const exObj: StatusEffectsReturn = {
   staggered: {
     name: 'Staggered',
     description: 
-      'Your sense of balance has been thrown off. Any time you choose a movement, do the following:',
+      'Your sense of balance has been thrown off. Any time you choose to move, do the following:',
     effects: [
       <>
         The GM publicly assigns each hex adjacent to you a number, 1 through 6.

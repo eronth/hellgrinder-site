@@ -1,0 +1,29 @@
+.specialization-block {
+  .title {
+    --indent: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: .5em;
+  }
+}
+
+.standard-issue-kit-block {
+  .title {
+    --indent: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: .5em;
+  }
+  .description {
+    margin-left: var(--indent);
+    margin-top: .25em;
+    margin-bottom: .5em;
+  }
+}
+
+.perks-title {
+  --indent: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: .5em;
+  }

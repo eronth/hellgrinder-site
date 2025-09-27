@@ -8,6 +8,8 @@ import CharacterPerksDisplay from "./CharacterPerksDisplay/CharacterPerksDisplay
 import CharacterInventoryDisplay from "./CharacterInventoryDisplay/CharacterInventoryDisplay.tsx";
 import DeleteCharacterButton from "./DeleteCharacterButton/DeleteCharacterButton.tsx";
 import CharacterKitsDisplay from "./CharacterKitsDisplay/CharacterKitsDisplay.tsx";
+import SkillCheck from "../../../../common-design/SkillCheck/SkillCheck.tsx";
+import "./CharacterCard.css";
 
 type Props = {
   character: CharacterDesign;
@@ -101,10 +103,20 @@ export default function CharacterCard({
         />
         <div className="specialization-block">
           <div className="title">Specializations</div>
-          <div>+3 [{character.specializationBonus} Checks] (bonus)</div>
-          <div>-5 [{character.specializationPenalty} Checks] (penalty)</div>
+          <div>+3 to <SkillCheck tags={[character.specializationBonus]} plural /> (bonus)</div>
+          <div>-5 to <SkillCheck tags={[character.specializationPenalty]} plural /> (penalty)</div>
         </div>
 
+        <div className="standard-issue-kit-block">
+          <div className="title">Standard Issue Equipment</div>
+          <div className="description">
+            This kit contains your standard issue equipment such as
+            a flashlight, canteen, flares, rope, and other
+            basic operational gear.
+          </div>
+        </div>
+        
+        <div className="perks-title">Perks</div>
         <CharacterPerksDisplay character={character} />
       </div>
       <CharacterKitsDisplay character={character} />

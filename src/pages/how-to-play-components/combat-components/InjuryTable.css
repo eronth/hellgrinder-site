@@ -1,4 +1,7 @@
 .injuries-table {
+  td {
+    max-width: 100px;
+  }
   td.roll-column {
     width: 55px;
     text-align: center;

@@ -2,7 +2,7 @@ import { DamageElement } from "./types";
 
 type Injury = {
   name: string;
-  description: string;
+  description: React.ReactNode;
 }
 
 type InjuryRow = {

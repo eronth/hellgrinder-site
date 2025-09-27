@@ -17,9 +17,17 @@ export default function StatusKeyword({
   className,
   disabled,
 }: Props) {
+  // Convert effects to usable tags just for display
+  // e.g. insideOut -> inside out
+  const effectAsDisplayItemGetterThing = effect
+    .replace(/([a-z])([A-Z])/g, '$1 $2') // Add space between lowercase and uppercase letters
+    .toLowerCase();
+    // .replace(/-([a-z])/g, (g) => g[1].toUpperCase())
+    // .replace(/^\w/, c => c.toLowerCase());
+
   return (
     <RuleKeyword
-      keyword={effect.toString()}
+      keyword={effectAsDisplayItemGetterThing.toString()} // Needs to be "Inside Out"
       className={className}
       disabled={disabled}
       statusEffectX={x}
@@ -30,7 +38,7 @@ export default function StatusKeyword({
           {'Error: Status effect not found'}
         </span>
       ) : (
-        Statuses[effect].name
+        Statuses[effect]?.name 
           .replace('[[X]]', x?.toString() || 'X')
           .replace('[[Y]]', y?.toString() || 'Y')
       )}

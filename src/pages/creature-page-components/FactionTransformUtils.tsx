@@ -257,8 +257,6 @@ export function transformCreatureToFaction(creature: Creature, factionKey: strin
   // Create a deep copy of the creature
   const transformedCreature: Creature = _.cloneDeep(creature);
   transformedCreature.abilities = creature.abilities || [];
-  console.log('Transforming creature:', transformedCreature, 'to faction:', faction);
-  console.log('Abilities before:', transformedCreature.abilities);
 
   // Add faction tag
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

@@ -5,6 +5,7 @@ import DamageModComponent from './DamageModComponent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import React, { isValidElement, useState } from 'react';
+import { movementIcon } from '../../common-design/CommonIcons';
 
 type Props = {
   data: Creature;
@@ -29,7 +30,7 @@ export default function CreatureCard({
     isEncounterMode && encounterCreature ? encounterCreature.currentHealth.toString() : ''
   );
 
-  const hexIcon = '⬣';
+  const hexIcon = movementIcon;
 
   // Health editing functions for encounter mode
   const handleHealthClick = () => {

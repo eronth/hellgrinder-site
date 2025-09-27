@@ -3,6 +3,7 @@ import { DamageTakenMod } from '../../ts-types/creature-types';
 import Tools from '../../common-design/Tools';
 import RuleKeyword from '../RuleKeyword';
 import SkillCheck from '../SkillCheck/SkillCheck';
+import { movementIcon } from '../CommonIcons';
 
 const coreResist: DamageTakenMod = {
   modification: 'Resist',
@@ -253,7 +254,7 @@ const exObj: { [key: string]: Creature } = {
         name: 'Shadow Step',
         description: <>
           The Tenebros can use a [Shadow Step] Maneuver. 
-          When they do, they teleport 3⬣.
+          When they do, they teleport 3{movementIcon}.
         </>
       }
     ],

@@ -1,0 +1,3 @@
+const movementIcon = '⬣';
+
+export { movementIcon };

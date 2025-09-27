@@ -18,6 +18,7 @@
   --table-row-alt-background: #2e2e2e;
 
   --text: hsl(0, 0%, 100%);
+  --text-secondary: hsl(0, 0%, 60%);
   --nav-border: hsl(0, 0%, 100%);
   --header-icon-color: var(--text);
 
@@ -31,6 +32,7 @@
 :root[data-theme="light"] {
   --header-primary-color: hsl(208, 37%, 20%);
   --text: hsl(208, 37%, 20%);
+  --text-secondary: hsl(208, 37%, 40%);
   --nav-border: hsl(0, 0%, 0%);
   --header-icon-color: var(--text);
 }

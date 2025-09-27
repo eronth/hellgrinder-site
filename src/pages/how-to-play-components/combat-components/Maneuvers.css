@@ -1,0 +1,7 @@
+.simple-header {
+  .movement-cost {
+    padding-inline: .6em;
+    font-size: .85em;
+    color: var(--text-secondary);
+  }
+}

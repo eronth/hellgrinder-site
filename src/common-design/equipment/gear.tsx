@@ -18,7 +18,7 @@ const exObj: { [key: string]: Item } = {
     name: 'Hover Boots',
     tags: ['Footwear'],
     isAdvancedItem: true,
-    effects: ['You can decrease your movement by 1 to ignore difficult and hazardous terrain.'],
+    effects: ['You can spend one Movement Point to ignore difficult and hazardous terrain for that turn.'],
   }
 };
 

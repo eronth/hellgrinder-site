@@ -12,7 +12,7 @@ const firstNames = [
   "Blood", "Soul", "War", "Death", "Void", "Crimson", "Thunder", "Dark",
   "Ice", "Wind", "Stone", "Light", "Silver", "Raven", "Wolf", "Ember",
   "Frost", "Thorn", "Viper", "Blade", "Scar", "Grim", "Red", "Hawk", 
-  "Hero"
+  "Hero", "Morning", "Even", "Dawn", "Odd", "Vexing"
 ];
 
 const lastNames = [
@@ -21,7 +21,8 @@ const lastNames = [
   "Runner", "Guard", "Bringer", "Fang", "Claw", "Born", "Sworn",
   "Touched", "Marked", "Bound", "Forged", "Wrought", "Shaper", "Seeker",
   "Slayer", "Keeper", "Thunder", "Warden", "Anvil",
-  "Hero"
+  "Hero", "Carrion", "Dusk", "Gloom", "Shade", "Fury", "Shrike",
+  "Steel"
 ];
 
 const characterDefaults: Omit<CharacterDesign, 'id' | 'name'> = {

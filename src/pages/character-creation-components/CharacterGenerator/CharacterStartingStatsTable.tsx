@@ -1,5 +1,6 @@
 import { useCallback, useMemo } from "react";
 import { AttackBonusStat, HealthStat } from "./CharacterGenerator";
+import SkillCheck from "../../../common-design/SkillCheck/SkillCheck";
 
 export type CharacterStats = {
   health: HealthStat;
@@ -159,9 +160,16 @@ export default function CharacterStartingStatsTable({
 
   const renderAttackBonusCell = () => {
     if (!isEditable) {
+      const shortRangeChecks = <SkillCheck tags={['Short Range', 'Shooting']} plural/>;
+      const mediumRangeChecks = <SkillCheck tags={['Medium Range', 'Shooting']} plural/>;
+      const longRangeChecks = <SkillCheck tags={['Long Range', 'Shooting']} plural/>;
+      const meleeChecks = <SkillCheck tags={['Melee']} plural />;
+      const arcaneChecks = <SkillCheck tags={['Arcane']} plural/>;
       return (
         <td colSpan={attackBonusColSpan} className="attack-bonus-cell">
-          +1 to your choice of [Short Range][Shooting], [Medium Range][Shooting], [Long Range][Shooting], or [Melee] attacks (can be chosen at the end of character creation).
+          +2 to your choice 
+          of {shortRangeChecks}, {mediumRangeChecks}, {longRangeChecks}, {meleeChecks},
+          or {arcaneChecks} (can be chosen at the end of character creation).
         </td>
       );
     }

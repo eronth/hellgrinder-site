@@ -19,7 +19,7 @@ export default function RestAndRecover() {
       <div>
         <div className='simple-header'>Safelight Shard</div>
         <p>These shards are small enough to be carried by individual soldiers. Unfortunately, breaking chunks from a Safelight Geode or Gemstone is not possible without proper equipment, so soldiers are assigned a limited number while scientists work on further advancements in SafeLiteTM technology. With just a moment of meditation, a character can grant themselves a few minutes of safety. When they do so, 
-          they roll a Recoverty Test with +2.</p>
+          they roll a Recovery Test with +2.</p>
       </div>
       
       

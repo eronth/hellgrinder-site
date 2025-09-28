@@ -129,7 +129,7 @@ const exObj: { [key: string]: Kit } = {
           },
         ],
       },
-      { ...Tools.deepCopyWeapon(ShootingWeapons.pistol, { damageType: 'Nethercurrent', name: 'Hellfroged Pistol' }) }
+      { ...Tools.deepCopyWeapon(ShootingWeapons.pistol, { damageType: 'Nethercurrent', name: 'Hellforged Pistol' }) }
     ],
     items: [],
     trainings: [],
@@ -214,8 +214,9 @@ const exObj: { [key: string]: Kit } = {
         name: 'Dual Scorchsashes',
         tags: ['Arcane', 'Relic'],
         description: '',
-        effects: ['At the start of your turn, creatures in [Melee Range] of you take 2 Infernal Damage and creatures ' +
-          'in [Short Range] of you take 1 Infernal Damage.'],
+        effects: ['At the start of your turn, creatures in [Melee Range] of you take 2'
+          + ' Infernal Damage and creatures'
+          + ' in [Short Range] of you take 1 Infernal Damage.'],
         isAdvancedItem: false,
       }, {
         name: 'Drowner Discus',

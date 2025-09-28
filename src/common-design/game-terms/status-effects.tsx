@@ -38,6 +38,8 @@ type StatusEffectsReturn = {
   endarvolism: StatusEffect;
   antipathism: StatusEffect;
   zalgorithm: StatusEffect;
+  apathy: StatusEffect;
+  reverence: StatusEffect;
 };
 
 const exObj: StatusEffectsReturn = {
@@ -526,6 +528,27 @@ const exObj: StatusEffectsReturn = {
         Also, Choose a single Skill Check tag. You gain +2 to all 
         non-<SkillCheck tags={['Attack']} plural /> with that tag.
       </>,
+    ]
+  },
+  apathy: {
+    name: 'Apathy',
+    description: 'You feel nothing. You are indifferent to everything around you. It\'s... so hard to care.',
+    effects: [
+      <>
+        You cannot gain more than +1 bonus per tag on a skill check. You also cannot gain more than a +3 bonus to any single skill check.
+      </>
+    ]
+  },
+  reverence: {
+    name: 'Reverence',
+    description: 'You feel a deep connection and sense of honor towards whatever creature or object gave you this status effect.',
+    effects: [
+      <>
+        You gain +2 to all <SkillCheck tags={['']} plural /> to protect or aid the target of your reverence.
+      </>,
+      <>
+        You gain -6 to all <SkillCheck tags={['']} plural /> to harm or hinder the target of your reverence.
+      </>
     ]
   }
 }

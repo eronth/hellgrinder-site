@@ -99,8 +99,9 @@ export default function StatusEffectsManager({
 
   if (!character) return null;
 
-  // Get all available status effects
-  const allStatusEffects = Object.values(StatusEffects);
+  // Get all available status effects alphabetically sorted
+  const allStatusEffects = (Object.values(StatusEffects)
+    .sort((a, b) => a.name.localeCompare(b.name)));
 
   // Helper function to normalize status effect names for comparison
   const normalizeStatusEffectName = (name: string): string => {

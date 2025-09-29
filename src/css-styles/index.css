@@ -65,7 +65,7 @@
   --difficulty-button-border-color: hsla(0, 0%, 100%, 0.2);
 
   --difficulty-button-hover-color: red;
-  --difficulty-button-hover-background-color: hsla(0, 0%, 100%, 0.15);
+  --difficulty-button-hover-background-color: hsla(237, 100%, 70%, 0.3);
   --difficulty-button-hover-border-color: hsla(0, 0%, 100%, 0.3);
 
   --difficulty-button-active-color: white;
@@ -74,18 +74,73 @@
 }
 :root[data-theme="light"] {
   --difficulty-button-color: hsla(0, 0%, 0%, 0.6);
-  --difficulty-button-background-color: hsla(0, 0%, 0%, 0.1);
-  --difficulty-button-border-color: hsla(0, 0%, 0%, 0.2);
+  --difficulty-button-background-color: hsla(0, 0%, 0%, 0.05);
+  --difficulty-button-border-color: hsla(0, 0%, 0%, 0.1);
 
   --difficulty-button-hover-color: red;
-  --difficulty-button-hover-background-color: hsla(0, 0%, 0%, 0.15);
+  --difficulty-button-hover-background-color: hsla(237, 100%, 70%, 0.3);
   --difficulty-button-hover-border-color: hsla(0, 0%, 0%, 0.3);
 
   --difficulty-button-active-color: white;
   --difficulty-button-active-background-color: hsl(237, 100%, 70%);
   --difficulty-button-active-border-color: hsl(237, 100%, 70%);
 }
+/* Styles for Success Ranks and Probabilities of Success Ranks. */
+:root {
+  --rank-0-border-color: hsla(331, 72%, 51%, 0.3);
+  --rank-0-background-color-1: hsla(331, 72%, 51%, 0.1);
+  --rank-0-background-color-2: hsla(331, 72%, 51%, 0.05);
+  --rank-0-color: hsl(332, 71%, 52%);
 
+  --rank-1-border-color: hsla(25, 95%, 53%, 0.3);
+  --rank-1-background-color-1: hsla(25, 95%, 53%, 0.1);
+  --rank-1-background-color-2: hsla(25, 95%, 53%, 0.05);
+  --rank-1-color: hsl(25, 95%, 53%);
+  
+  --rank-2-border-color: hsla(142, 71%, 45%, 0.3);
+  --rank-2-background-color-1: hsla(142, 71%, 45%, 0.1);
+  --rank-2-background-color-2:hsla(142, 71%, 45%, 0.05);
+  --rank-2-color: hsl(142, 71%, 45%);
+  
+  --rank-3-border-color: hsla(237, 100%, 70%, 0.3);
+  --rank-3-background-color-1: hsla(237, 100%, 70%, 0.1);
+  --rank-3-background-color-2: hsla(237, 100%, 70%, 0.05);
+  --rank-3-color: hsl(237, 100%, 70%);
+}
+:root[data-theme="light"] {
+
+}
+.rank-0 {
+  --rank-color: var(--rank-0-color);
+  --rank-border-color: var(--rank-0-border-color);
+  --rank-background-color-1: var(--rank-0-background-color-1);
+  --rank-background-color-2: var(--rank-0-background-color-2);
+}
+.rank-1 {
+  --rank-color: var(--rank-1-color);
+  --rank-border-color: var(--rank-1-border-color);
+  --rank-background-color-1: var(--rank-1-background-color-1);
+  --rank-background-color-2: var(--rank-1-background-color-2);
+}
+.rank-2 {
+  --rank-color: var(--rank-2-color);
+  --rank-border-color: var(--rank-2-border-color);
+  --rank-background-color-1: var(--rank-2-background-color-1);
+  --rank-background-color-2: var(--rank-2-background-color-2);
+}
+.rank-3 {
+  --rank-color: var(--rank-3-color);
+  --rank-border-color: var(--rank-3-border-color);
+  --rank-background-color-1: var(--rank-3-background-color-1);
+  --rank-background-color-2: var(--rank-3-background-color-2);
+}
+/* Calculation Operations */
+:root {
+  --bonus-value-color: hsl(47, 100%, 62%);
+}
+:root[data-theme="light"] {
+  --bonus-value-color: hsl(47, 90%, 41%);
+}
 
 #root {
   width: 100%;
@@ -309,8 +364,8 @@ td.center-num {
 
 hr {
   border: none;
-  border-top: 4px double white;
-  color: white;
+  border-top: 4px double var(--text);
+  color: var(--text);
   overflow: visible;
   text-align: center;
   height: 5px;
@@ -320,6 +375,10 @@ hr {
     font-size: 1.2em;
     background-color: var(--faction-background);
     color: var(--strong-text);
+    transition: 
+      background-color var(--transition-time) ease, 
+      color var(--transition-time) ease;
+    border-radius: 50%;
     /* content: '§'; */
     content: '𝚮';
     padding: 0 4px;
@@ -430,10 +489,7 @@ table {
   color: #2d3748;
 }
 
-:root[data-theme="light"] hr {
-  border-top-color: #e2e8f0;
-  color: #e2e8f0;
-}
+
 
 :root {
   --x-value-bg: rgba(149, 244, 236, 0.2);

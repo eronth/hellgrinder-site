@@ -198,7 +198,10 @@ export default function DiceRollerPanel({ isVisible }: Props) {
             <div className="probability-content show">
               <div className="total-bonus-section">
                 <span className="total-bonus">
-                  Total Mod: {bonus + difficultyBonus >= 0 ? '+' : ''}{bonus + difficultyBonus}
+                  Total Mod:
+                  <span className="bonus-value">
+                    {bonus + difficultyBonus >= 0 ? '+' : ''}{bonus + difficultyBonus}
+                  </span>
                 </span>
               </div>
               <div className="probability-grid">
@@ -304,7 +307,7 @@ export default function DiceRollerPanel({ isVisible }: Props) {
                 </>
               )}
               <span className="equals">=</span>
-              <span className="total-result">{lastRoll.total}</span>
+              <span className={`total-result rank-${lastRoll.successRank}`}>{lastRoll.total}</span>
             </div>
           </div>
 

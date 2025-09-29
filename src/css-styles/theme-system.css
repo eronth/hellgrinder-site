@@ -3,6 +3,7 @@
 
 /* Base System Variables - Always Available */
 :root {
+  --transition-time: .2s;
   /* Typography */
   --font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   --font-weight-normal: 400;

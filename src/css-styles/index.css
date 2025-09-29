@@ -28,6 +28,12 @@
   -moz-osx-font-smoothing: grayscale;
 
   --probability-title: #646cff;
+
+  --standard-button-color: #646cff;
+  --standard-button-hover-color: #5a5fcf;
+  --delete-button-color: hsl(354, 70%, 54%);
+  --delete-button-hover-color: hsl(354, 70%, 46%);
+  --delete-button-active-color: hsl(354, 70%, 44%);
 }
 :root[data-theme="light"] {
   --header-primary-color: hsl(208, 37%, 20%);

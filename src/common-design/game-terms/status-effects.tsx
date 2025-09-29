@@ -161,7 +161,7 @@ const exObj: StatusEffectsReturn = {
       <>
         You take [[X]] Infernal Damage at the end of your turn.
         Then roll an <SkillCheck tags={['Endurance']} />. On a Rank 2+ 
-        Success, the burning ends early.
+        Success, the immolation ends early.
       </>
     ],
     x: 'X',

@@ -159,7 +159,7 @@ export default function CharacterGenerator() {
     <div className="character-selector">
       <button className="generate-character-btn magical-button" onClick={generateCharacter}>Generate Character</button>
       {characters.length > 0 && (
-        <>
+        <span>
           <label htmlFor="character-select" className="character-select">Select Character: </label>
           <select
             id="character-select"
@@ -180,7 +180,7 @@ export default function CharacterGenerator() {
               );
             })}
           </select>
-        </>
+        </span>
       )}
       {characters.length > 1 && (
         <button

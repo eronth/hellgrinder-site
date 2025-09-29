@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { CharacterDesign } from "../../CharacterGenerator";
 import "./EditableCharacterName.css";
 
@@ -37,7 +39,8 @@ export default function EditableCharacterName({ selectedCharacter, onUpdateName 
   }
   
   return (<>
-    {isEditingName ? (
+    {isEditingName 
+    ? (
       <div className="name-edit-container">
         <input
           className="name-edit-input"
@@ -68,7 +71,7 @@ export default function EditableCharacterName({ selectedCharacter, onUpdateName 
         className="editable-name"
         onClick={startEditingName}
       >
-        {selectedCharacter.name}
+        {selectedCharacter.name} <FontAwesomeIcon className="edit-icon" icon={faEdit} />
       </span>
     )}
   </>);

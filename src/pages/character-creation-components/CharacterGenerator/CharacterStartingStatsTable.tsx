@@ -190,7 +190,7 @@ export default function CharacterStartingStatsTable({
           >
             {attackBonusOptions.map(option => (
               <option key={option} value={option}>
-                {option} {option === 'Thrown' ? <>Checks</> : <>Attacks</>}
+                [{option}] {option === 'Thrown' ? <>Skill Checks</> : <>Hit Checks</>}
               </option>
             ))}
           </select>

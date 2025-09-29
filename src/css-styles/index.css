@@ -12,8 +12,11 @@
   --header-primary-color: hsl(0, 0%, 100%);
   --card-background: #2a2a2a;
   --card-header-background: #333333;
-  --table-background: #2a2a2a;
+  --card-border-color: hsl(0, 0%, 27%);
+
   --table-header-background: #1e2157;
+  --table-background: #2a2a2a;
+  --table-border-color: hsl(0, 0%, 27%);
   --table-row-background: #2a2a2a;
   --table-row-alt-background: #2e2e2e;
 
@@ -45,11 +48,16 @@
   --tags-list-background: hsl(196, 49%, 21%);
 }
 :root[data-theme="light"] {
+  --nav-border: hsl(0, 0%, 0%);
+
   --header-primary-color: hsl(208, 37%, 20%);
+  --card-border-color: hsl(0, 0%, 57%);
+  --table-border-color: hsl(0, 0%, 57%);
+
   --text: hsl(208, 37%, 20%);
   --text-secondary: hsl(208, 37%, 40%);
-  --nav-border: hsl(0, 0%, 0%);
   --header-icon-color: var(--text);
+
 
   --input-background: hsl(0, 0%, 90%);
   --input-border: hsl(0, 0%, 80%);
@@ -140,6 +148,15 @@
 }
 :root[data-theme="light"] {
   --bonus-value-color: hsl(47, 90%, 41%);
+}
+/* Kit Styles */
+:root {
+  --weapon-card-border-color: hsl(27, 91%, 27%);
+  --weapon-tag-background-color: hsl(27, 91%, 27%);
+  --item-card-border-color: hsl(162, 90%, 21%);
+  --item-tag-background-color: hsl(162, 90%, 21%);
+  --training-card-border-color: hsl(209, 89%, 32%);
+  --training-tag-background-color: hsl(209, 89%, 32%);
 }
 
 #root {
@@ -323,25 +340,31 @@ td.center-num {
 .perk {
   margin: 0 .5em;
   background-color: var(--card-background);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--card-border-color);
   border-radius: 6px;
   padding: 0.5em;
-}
-.perk .headrow {
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-.perk .headrow .name {
-  font-size: 1.25em;
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-}
-.perk .headrow .cost {
-  font-size: .98em;
-  color: white;
+
+  .headrow {
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  
+    .name {
+      font-size: 1.25em;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+  
+    .cost {
+      font-size: .98em;
+    }
+    
+    .description {
+      font-size: 1em;
+    }
+  }
 }
 .perk-count {
   background-color: #e74c3c;
@@ -357,9 +380,6 @@ td.center-num {
 .total-cost {
   color: #f39c12;
   font-weight: bold;
-}
-.perk .description {
-  font-size: 1em;
 }
 
 hr {
@@ -386,9 +406,6 @@ hr {
     top: -.9em;
   }
 }
-
-
-
 
 table {
   width: 100%;
@@ -480,15 +497,6 @@ table {
 :root[data-theme="light"] .injuries-table td {
   border-color: #e2e8f0;
 }
-
-:root[data-theme="light"] .perk {
-  border-color: #e2e8f0;
-}
-
-:root[data-theme="light"] .perk .headrow .cost {
-  color: #2d3748;
-}
-
 
 
 :root {

@@ -165,6 +165,10 @@
   &.inline-editable {
     .inline-editable-stat-cell {
       position: relative;
+      .wrapper {
+        display: grid;
+        grid-template-columns: 2em 1fr;
+      }
       
       .inline-stat-input {
         
@@ -206,6 +210,7 @@
       .inline-stat-input.freeform {
         border: 1px solid #646cff;
         width: 6.6em;
+        font-size: .95rem;
       }
 
       .stat-label {
@@ -215,34 +220,39 @@
     }
 
     .attack-bonus-cell {
+      .wrapper {
+        display: grid;
+        grid-template-columns: 2.75em 1fr;
+      }
+
       .attack-bonus-prefix {
         color: var(--mid-text);
         font-size: 1rem;
+        border: 1px solid var(--card-background);
       }
 
       .inline-attack-bonus-select {
         background: transparent;
         color: var(--mid-text);
-        border: none;
+        width: 100%;
+        
+        border: 1px solid var(--card-background);
         border-radius: 4px;
+        
         padding: 0.25rem 0.5rem;
+        padding-inline-start: 0;   
+        
         font-size: 1rem;
         font-family: inherit;
         font-weight: inherit;
+        
         cursor: pointer;
         transition: all 0.2s;
-        
+
         /* Remove default select styling */
         -webkit-appearance: none;
         -moz-appearance: none;
-        appearance: none;
-        
-        /* Add custom dropdown arrow */
-        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg fill='rgba(255,255,255,0.87)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-        background-repeat: no-repeat;
-        background-position: right 0.25rem center;
-        background-size: 1rem;
-        padding-right: 2rem;
+        appearance: none;        
 
         &:focus {
           outline: none;
@@ -262,6 +272,18 @@
       }
     }
   }
+}
+.character-stats-table.inline-editable .attack-bonus-cell .inline-attack-bonus-select {
+  /* Add custom dropdown arrow */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg fill='rgba(255,255,255,0.87)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.25rem center;
+  background-size: 1rem;
+  padding-right: 2rem;
+}
+:root[data-theme="light"] .character-stats-table.inline-editable .attack-bonus-cell .inline-attack-bonus-select {
+  /* Add custom dropdown arrow */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg fill='rgba(0,0,0,0.87)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
 }
 
 /* Inventory display styling */

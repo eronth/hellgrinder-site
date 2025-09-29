@@ -139,23 +139,28 @@ export default function CharacterStartingStatsTable({
 
     return (
       <td colSpan={customSkillColSpan} className="inline-editable-stat-cell">
-        <label htmlFor={`custom-skill-input`} className="stat-label">+2 </label>
-        <input
-          id={`custom-skill-input`}
-          type="text"
-          value={stats.customSkill}
-          onChange={(e) => updateCustomSkill(e.target.value)}
-          className="inline-stat-input freeform"
-        />
+        <div className="wrapper">
+          <label htmlFor={`custom-skill-input`} className="stat-label">+2 </label>
+          <input
+            id={`custom-skill-input`}
+            type="text"
+            value={stats.customSkill}
+            onChange={(e) => updateCustomSkill(e.target.value)}
+            className="inline-stat-input freeform"
+          />
+        </div>
       </td>
     );
   }, [isEditable, stats.customSkill, updateCustomSkill]);
 
+  const attackBonusValue = 2;
   const attackBonusOptions: AttackBonusStat[] = [
     'Short Range Shooting',
-    'Medium Range Shooting', 
+    'Medium Range Shooting',
     'Long Range Shooting',
-    'Melee'
+    'Melee',
+    'Arcane',
+    'Thrown'
   ];
 
   const renderAttackBonusCell = () => {
@@ -176,18 +181,20 @@ export default function CharacterStartingStatsTable({
 
     return (
       <td colSpan={attackBonusColSpan} className="attack-bonus-cell">
-        <span className="attack-bonus-prefix">+1 to </span>
-        <select
-          value={attackBonus}
-          onChange={(e) => updateStat('attackBonus', e.target.value as AttackBonusStat)}
-          className="inline-attack-bonus-select"
-        >
-          {attackBonusOptions.map(option => (
-            <option key={option} value={option}>
-              {option} Attacks
-            </option>
-          ))}
-        </select>
+        <div className="wrapper">
+          <span className="attack-bonus-prefix">+{attackBonusValue} to </span>
+          <select
+            value={attackBonus}
+            onChange={(e) => updateStat('attackBonus', e.target.value as AttackBonusStat)}
+            className="inline-attack-bonus-select"
+          >
+            {attackBonusOptions.map(option => (
+              <option key={option} value={option}>
+                {option} {option === 'Thrown' ? <>Checks</> : <>Attacks</>}
+              </option>
+            ))}
+          </select>
+        </div>
       </td>
     );
   };

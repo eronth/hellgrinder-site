@@ -88,26 +88,28 @@
 }
 
 .difficulty-btn {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--difficulty-button-color);
+  background-color: var(--difficulty-button-background-color);
+  border: 1px solid var(--difficulty-button-border-color);
   border-radius: 4px;
   padding: 0.5rem;
   font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--difficulty-button-hover-background-color);
+    border-color: var(--difficulty-button-hover-border-color);
+  }
+
+  &.active {
+    color: var(--difficulty-button-active-color);
+    background-color: var(--difficulty-button-active-background-color);
+    border-color: var(--difficulty-button-active-border-color);
+  }
 }
 
-.difficulty-btn:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
-}
 
-.difficulty-btn.active {
-  background-color: #646cff;
-  color: white;
-  border-color: #646cff;
-}
 
 .roll-actions {
   display: flex;

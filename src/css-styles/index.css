@@ -17,6 +17,9 @@
   --table-row-background: #2a2a2a;
   --table-row-alt-background: #2e2e2e;
 
+  --input-background: hsl(0, 0%, 20%);
+  --input-border: hsl(0, 0%, 33%);
+
   --text: hsl(0, 0%, 100%);
   --text-secondary: hsl(0, 0%, 60%);
   --nav-border: hsl(0, 0%, 100%);
@@ -27,13 +30,19 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  --dice-border-color: hsla(0, 0%, 100%, 0.2);
+  --clickable-dice-hover-color: hsl(198, 72%, 65%);
+
   --probability-title: #646cff;
 
-  --standard-button-color: #646cff;
-  --standard-button-hover-color: #5a5fcf;
+  --standard-button-text: white;
+  --standard-button-color: hsl(237, 100%, 70%);
+  --standard-button-hover-color: hsl(237, 55%, 58%);
   --delete-button-color: hsl(354, 70%, 54%);
   --delete-button-hover-color: hsl(354, 70%, 46%);
   --delete-button-active-color: hsl(354, 70%, 44%);
+
+  --tags-list-background: hsl(196, 49%, 21%);
 }
 :root[data-theme="light"] {
   --header-primary-color: hsl(208, 37%, 20%);
@@ -41,7 +50,43 @@
   --text-secondary: hsl(208, 37%, 40%);
   --nav-border: hsl(0, 0%, 0%);
   --header-icon-color: var(--text);
+
+  --input-background: hsl(0, 0%, 90%);
+  --input-border: hsl(0, 0%, 80%);
+  
+  --dice-border-color: hsla(0, 0%, 40%, 0.6);
+
+  --tags-list-background: hsl(196, 49%, 71%);
 }
+/* Specifically a bunch of button stuff just for skill check section. */
+:root {
+  --difficulty-button-color: hsla(0, 0%, 100%, 0.6);
+  --difficulty-button-background-color: hsla(0, 0%, 30%, 0.8);
+  --difficulty-button-border-color: hsla(0, 0%, 100%, 0.2);
+
+  --difficulty-button-hover-color: red;
+  --difficulty-button-hover-background-color: hsla(0, 0%, 100%, 0.15);
+  --difficulty-button-hover-border-color: hsla(0, 0%, 100%, 0.3);
+
+  --difficulty-button-active-color: white;
+  --difficulty-button-active-background-color: hsl(237, 100%, 70%);
+  --difficulty-button-active-border-color: hsl(237, 100%, 70%);
+}
+:root[data-theme="light"] {
+  --difficulty-button-color: hsla(0, 0%, 0%, 0.6);
+  --difficulty-button-background-color: hsla(0, 0%, 0%, 0.1);
+  --difficulty-button-border-color: hsla(0, 0%, 0%, 0.2);
+
+  --difficulty-button-hover-color: red;
+  --difficulty-button-hover-background-color: hsla(0, 0%, 0%, 0.15);
+  --difficulty-button-hover-border-color: hsla(0, 0%, 0%, 0.3);
+
+  --difficulty-button-active-color: white;
+  --difficulty-button-active-background-color: hsl(237, 100%, 70%);
+  --difficulty-button-active-border-color: hsl(237, 100%, 70%);
+}
+
+
 #root {
   width: 100%;
 }

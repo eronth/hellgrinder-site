@@ -277,8 +277,8 @@
   font-size: 1.2em;
   font-weight: bold;
   margin-bottom: 1em;
-  color: #95f4ec;
-  border-bottom: 1px solid rgba(149, 244, 236, 0.3);
+  color: var(--faction-accent-light);
+  border-bottom: 1px solid var(--faction-accent);;
   padding-bottom: 0.5em;
 }
 

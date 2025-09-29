@@ -12,10 +12,20 @@ export default function Combat() {
   return (<>
     <h2>Combat</h2>
     
-    <p>Combat takes place on a hex-based grid. You can perform one maneuver and one action per turn. Some actions are available to all characters, regardless of kit.</p>
+    <p>
+      Combat takes place on a hex-based grid. You can 
+      perform <s>one maneuver and</s> one action 
+      per turn. Some actions are available to all characters,
+      regardless of kit.
+    </p>
 
     <ColumnEntry title={{ hx: 'h3', text: 'Turn Order/Initiative' }}>
-      <p>Players go first unless surprised or fighting against a foe that circumvents this rule. Players pick one of their characters to act, who then takes their turn. On their turn, the character can perform their Action and Maneuver, in any order.</p>
+      <p>
+        Players go first unless surprised or fighting against a foe that 
+        circumvents this rule. Players pick one of their characters to act,
+        who then takes their turn. On their turn, the character can 
+        perform their Action <s>and Maneuver, in any order</s>.
+      </p>
       <p>Once their turn is over, the DM chooses an enemy or enemy group to act in the same manner.</p>
       <p>Players can then choose a character who has not acted this round to take a turn. This repeats back and forth until all characters (both player and DM) have taken their turns. Once this has happened, you begin the next round with the same side that started the first round.</p>
     </ColumnEntry>

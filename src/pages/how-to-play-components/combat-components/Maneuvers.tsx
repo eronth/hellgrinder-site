@@ -1,5 +1,6 @@
 import ColumnEntry from "../../../common-design/ColumnEntry";
 import { movementIcon } from "../../../common-design/CommonIcons";
+import HitCheck from "../../../common-design/HitCheck/HitCheck";
 import RuleKeyword from "../../../common-design/RuleKeyword";
 import SkillCheck from "../../../common-design/SkillCheck/SkillCheck";
 import StatusKeyword from "../../../common-design/StatusKeyword";
@@ -14,15 +15,31 @@ export default function Maneuvers() {
 
       <ColumnEntry title={{ hx: 'h4', text: 'Move' }}>
         <p>
-          At the start of your turn, you gain a number of Movement Points{movementIcon} equal to your Move Speed. You can spend these points to
+          At the start of your turn, you gain a number of Maneuver Points{movementIcon} equal to your Move Speed. You can spend these points to
           move a number of hexes equal to the points spent.
         </p>
         <p>
-          Additionally, you can take any of the following actions as part of a move using your movement points.
-          In some cases, you must spend additional Movement Points and/or pass the associated Skill Check.
+          Additionally, you spend your {movementIcon} to perform
+          any of the following Maneuvers
         </p>
         <ul>
           <div className='col-handler'>
+            <div>
+              <div className="simple-header">
+                Call Out
+                <span className="movement-cost">
+                  Cost: 2{movementIcon}
+                </span>
+              </div>
+              <p>
+                Grants all valid allies +1 to the 
+                next <HitCheck tags={['Medium Range']} /> or <HitCheck tags={['Long Range']} /> they
+                make against foes 
+                within <RuleKeyword keyword="Long Range" /> of
+                your <RuleKeyword keyword="Front Arc" />.
+              </p>
+            </div>
+
             <div>
               <div className="simple-header">
                 Change Facing
@@ -67,7 +84,10 @@ export default function Maneuvers() {
                   Cost: 3{movementIcon}
                 </span>
               </div>
-              <p>Remove the <StatusKeyword effect="entangled" /> condition.</p>
+              <p>
+                Remove the <StatusKeyword effect="entangled" /> condition
+                without requiring a check.
+              </p>
             </div>
 
             <div>
@@ -85,15 +105,33 @@ export default function Maneuvers() {
 
             <div>
               <div className="simple-header">
+                Guard
+                <span className="movement-cost">
+                  Cost: 4{movementIcon}
+                </span>
+              </div>
+              <p>
+                Attacks against
+                your <RuleKeyword keyword="Front Arc" /> get
+                -2 to their Hit Check and Damage.
+              </p>
+            </div>
+
+            <div>
+              <div className="simple-header">
                 Leap
                 <span className="movement-cost">
                   Cost: 1{movementIcon} per hex moved
                 </span>
               </div>
               <p>
-                Make an <SkillCheck tags={['Agility', 'Might']} />. You move a number of hexes up to your Success Rank, jumping over all hexes
-                between your starting and ending hex. On a Failure, you move one hex and fall prone. You must spend movement points 
-                equal to the hexes you move.
+                Make an <SkillCheck tags={['Agility', 'Might']} />. You 
+                move a number of hexes up to your Success Rank, jumping over all hexes
+                between your starting and ending hex. On a Failure, you move
+                one hex and fall prone.
+                You must spend {movementIcon} equal
+                to the hexes you move (in addition to the 1{movementIcon} to use the
+                Maneuver).
               </p>
             </div>
 
@@ -118,6 +156,48 @@ export default function Maneuvers() {
                 -- Stuff about not attacking. --
               </p>
             </div>
+
+
+            <div>
+              <div className="simple-header">
+                Swap Weapons
+                <span className="movement-cost">
+                  Cost: 3{movementIcon}
+                </span>
+              </div>
+              <p>
+                Roll an <SkillCheck tags={['Agility']} /> to attempt
+                to swap your equipment. You may only attempt to Swap Weapons once per turn.
+              </p>
+              <ul>
+                <li>Rank 1: Items successfully swapped.</li>
+                <li>Rank 2: You do not spend {movementIcon} to complete the swap.</li>
+                <li>Rank 3: You do not spend {movementIcon} to complete the swap. You may
+                  choose to use “Swap Weapons” again this turn as a Maneuver.</li>
+              </ul>
+            </div>
+
+            <div>
+              <div className="simple-header">
+                Take Aim
+                <span className="movement-cost">
+                  Cost: 3{movementIcon}
+                </span>
+              </div>
+              <div>Choose one of the following effects:</div>
+              <ul>
+                <li>
+                  Gain +1 to the
+                  next <HitCheck tags={['Melee']} /> you
+                  make and get +1 to that attack's Damage.
+                </li>
+                <li>
+                  Gain +3 to the 
+                  next <HitCheck tags={['Shooting']} /> or <HitCheck tags={['Ranged', 'Arcane']} /> you
+                  make.
+                </li>
+              </ul>
+            </div>
             
             <div>
               <div className="simple-header">
@@ -131,38 +211,5 @@ export default function Maneuvers() {
           </div>
         </ul>
       </ColumnEntry>
-
-    <div className='col-handler'>
-      <div>
-        <h4>Call Out</h4>
-        <p>
-          Grants all valid allies +1 to the next [Medium Range Attack] or [Long Range Attack] they
-          make against foes within Long Range of your <RuleKeyword keyword="Front Arc" />.
-        </p>
-
-        <h4>Guard</h4>
-        <p>Attacks against your <RuleKeyword keyword="Front Arc" /> get -2 to their Hit Check and Damage.</p>
-      </div>
-      
-      <div>
-        <h4>Take Aim</h4>
-        <div>Choose one of the following effects:</div>
-        <ul>
-          <li>Gain +1 to the next [Melee Attack] Hit Check you make and get +1 to that attack's Damage.</li>
-          <li>Gain +3 to the next [Shooting Attack] or [Arcane Attack] Hit Check you make.</li>
-        </ul>
-      </div>
-
-      <div>
-        <h4>Swap Weapons</h4>
-        <p>Roll an Agility Check.</p>
-        <ul>
-          <li>Rank 1: Nothing special, but the Maneuver is still used.</li>
-          <li>Rank 2: Your Maneuver is not used up to complete the swap. You may not use “Swap Weapons” Maneuver again this turn.</li>
-          <li>Rank 3: Your Maneuver is not used up to complete the swap. You may choose  use “Swap Weapons” again this turn as a Maneuver.</li>
-        </ul>
-      </div>
-    
-    </div>
   </>);
 }

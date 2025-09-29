@@ -257,20 +257,20 @@ export const moreCombatRules: RuleDefinition[] = [
     relatedRules: ['attack', 'success-ranks', 'dice-mechanics']
   },
   {
-    id: 'movement-points',
-    keyword: 'Movement Points',
+    id: 'maneuver-points',
+    keyword: 'Maneuver Points',
     category: 'combat',
     summary: 'Points spent to move around the battlefield during your turn.',
-    details: 'You gain Movement Points equal to your Move Speed. Spend these points to move hexes or perform movement-related activities.',
+    details: 'You gain Maneuver Points equal to your Move Speed. Spend these points to move hexes or perform movement-related activities.',
     relatedRules: ['speed', 'maneuver', 'move-speed']
   },
   {
-    id: 'move-speed',
-    keyword: 'Move Speed',
+    id: 'speed',
+    keyword: 'Speed',
     category: 'combat',
-    summary: 'The number of Movement Points you gain each turn.',
-    details: 'Your Move Speed determines how many Movement Points you receive, which you can spend to move around the battlefield.',
-    relatedRules: ['movement-points', 'speed']
+    summary: 'The number of Maneuver Points you gain each turn.',
+    details: 'Your Speed determines how many Maneuver Points you receive, which you can spend to move around the battlefield.',
+    relatedRules: ['maneuver-points', 'speed']
   },
   {
     id: 'turn-order',
@@ -466,8 +466,8 @@ export const moreCombatRules: RuleDefinition[] = [
     keyword: 'Movement',
     category: 'combat',
     summary: 'Changing position on the battlefield.',
-    details: 'Spend Movement Points to move hexes or perform movement-related activities like climbing or diving.',
-    relatedRules: ['movement-points', 'maneuver']
+    details: 'Spend Maneuver Points to move hexes or perform movement-related activities like climbing or diving.',
+    relatedRules: ['maneuver-points', 'maneuver']
   },
   {
     id: 'prone',
@@ -482,8 +482,8 @@ export const moreCombatRules: RuleDefinition[] = [
     keyword: 'Stand Up',
     category: 'combat',
     summary: 'Change from Prone to Standing position.',
-    details: 'Costs 3 Movement Points to swap from Prone to Standing.',
-    relatedRules: ['prone', 'movement-points']
+    details: 'Costs 3 Maneuver Points to swap from Prone to Standing.',
+    relatedRules: ['prone', 'maneuver-points']
   },
 ];
 

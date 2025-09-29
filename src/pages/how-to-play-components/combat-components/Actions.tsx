@@ -1,3 +1,5 @@
+import { movementIcon } from "../../../common-design/CommonIcons";
+import RuleKeyword from "../../../common-design/RuleKeyword";
 import SkillCheck from "../../../common-design/SkillCheck/SkillCheck";
 
 export default function Actions() {
@@ -72,8 +74,11 @@ export default function Actions() {
         <h4>Restrain</h4>
         <p>
           Make a <SkillCheck tags={['Might', 'Agility']} /> against
-          a target's <SkillCheck tags={['Might', 'Agility']} />. If you succeed, the target is
-          Restrained until the start of your next turn. While restrained this way, you may spend movement points to move the target
+          a target's <SkillCheck tags={['Might', 'Agility']} />. If you succeed, the target
+          is <RuleKeyword keyword="Restrained" />
+          Restrained until the start of your next turn. While a target is restrained this way
+          this way,
+          you may spend your {movementIcon} to move the target
           1 hex in any direction.
         </p>
         

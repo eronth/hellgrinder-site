@@ -1,4 +1,5 @@
 import { StatusEffect } from '../../ts-types/types';
+import { movementIcon } from '../CommonIcons';
 import HitCheck from '../HitCheck/HitCheck';
 import SkillCheck from '../SkillCheck/SkillCheck';
 
@@ -90,10 +91,12 @@ const exObj: StatusEffectsReturn = {
     description: 'You feel weak, as if your strength is sapped.',
     effects: [
       <>
-        At the start of your turn you get -[[x]] Movement Points. You may
-        make a -[[X]] <SkillCheck tags={['Might']} plural /> to free yourself as a
-        free action on your turn. On a Rank 2+ Success, remove all stacks of Enfeebled. On a Rank 0,
-        fall prone and you cannot use a check to free yourself.
+        You gain -[[X]] to <SkillCheck tags={['Agility']} plural /> and
+        -[[X]] to <HitCheck tags={['Melee', 'Attack']} plural /> and
+        [Melee Attack] Damage.
+      </>,
+      <>
+        <SkillCheck tags={['Recovery']} plural /> that target you have -[[X]] to their results.
       </>
     ],
     x: 'X',
@@ -103,12 +106,10 @@ const exObj: StatusEffectsReturn = {
     description: 'You are entangled in something, unable to move freely.',
     effects: [
       <>
-        You gain -[[X]] to <SkillCheck tags={['Agility']} plural /> and
-        -[[X]] to <HitCheck tags={['Melee', 'Attack']} plural /> and
-        [Melee Attack] Damage.
-      </>,
-      <>
-        <SkillCheck tags={['Recovery']} plural /> that target you have -[[X]] to their results.
+        At the start of your turn you get -[[x]]{movementIcon}. You may
+        make a -[[X]] <SkillCheck tags={['Might']} plural /> to free yourself as a
+        free action on your turn. On a Rank 2+ Success, remove all stacks of Enfeebled. On a Rank 0,
+        fall prone and you can no longer attempt use this check to free yourself.
       </>
     ],
     x: 'X',

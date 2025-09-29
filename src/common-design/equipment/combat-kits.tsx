@@ -3,6 +3,7 @@ import MeleeWeapons from "./weapons/melee-weapons.tsx";
 import ShootingWeapons from "./weapons/shooting-weapons.tsx";
 import ArcaneWeapons from "./weapons/arcane-weapons.tsx";
 import Tools from '../../common-design/Tools';
+import { movementIcon } from '../CommonIcons.tsx';
 
 // Todo - Add descriptions to all kits.
 
@@ -24,13 +25,13 @@ const exObj: { [key: string]: Kit } = {
       name:'Sniping Scope',
       tags: ['Gadget'],
       description: 'A scope that helps you see further and more clearly.',
-      effects: ['Gain'],
+      effects: [`The Take Aim maneuver only costs 2${movementIcon}.`],
       isAdvancedItem: false,
     }],
     trainings: [{
       name: 'Long Range Training',
       tags: ['Attack'],
-      effects: ['Gain +2 to [Long Range] Hit Checks.'],
+      effects: ['Gain +1 to [Long Range] Hit Checks.'],
     }],
   },
 
@@ -137,7 +138,7 @@ const exObj: { [key: string]: Kit } = {
   
   perky: {
     name: 'Perky',
-    description: "The Sniper Kit excels at picking off enemies from a distance, ensuring you're lethal while staying out of harm's way. However, when the fight gets up close and personal, you'll find yourself at a disadvantage. Use the gillie suit to blend into your surroundings, becoming a ghost on the battlefield, unseen until it's too late.",
+    description: "The perky kit is your easy way to stay awake and alert on the battlefield.",
     weapons: [
       {...Tools.deepCopyWeapon(ShootingWeapons.combatRifle)},
       {...Tools.deepCopyWeapon(ShootingWeapons.pistol)}

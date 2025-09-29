@@ -25,7 +25,7 @@ export default function Damage() {
             <li>Abyssal</li>
             <li>Verdant</li>
             <li>Chthonic</li>
-            <li>Zephyr/Nethercurrent</li>
+            <li>Nethercurrent</li>
             <li>Voidyr</li>
           </ol>
         </ColumnEntry>

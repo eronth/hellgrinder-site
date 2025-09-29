@@ -37,7 +37,13 @@ export type CharacterDesign = {
   statusEffects: ActiveStatusEffect[]
 };
 
-export type AttackBonusStat = 'Short Range Shooting' | 'Medium Range Shooting' | 'Long Range Shooting' | 'Melee';
+export type AttackBonusStat
+  = 'Short Range Shooting'
+  | 'Medium Range Shooting'
+  | 'Long Range Shooting'
+  | 'Melee'
+  | 'Arcane'
+  | 'Thrown';
 export type HealthStat = { current: number, max: number };
 
 

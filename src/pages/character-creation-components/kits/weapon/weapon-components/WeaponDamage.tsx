@@ -108,10 +108,11 @@ export default function WeaponDamage({ attackMode }: Props) {
   
   function getDiceAverage(dice: Dice) {
     const amount = dice.amount ?? 1;
-    const sides = dice.sides;
+    const min = 1;
+    const max = dice.sides;
     const modifier = dice?.modifier ?? 0;
     
-    return (amount * (sides / 2)) + modifier;
+    return (amount * ((min + max) / 2)) + modifier;
   }
   type IDontWantToRewriteThis10timesParams = {
     displayDice: string,

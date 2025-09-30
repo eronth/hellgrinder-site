@@ -1,12 +1,16 @@
-import ColumnEntry from "../../../../common-design/ColumnEntry";
 import { HeaderSize } from "../../../../ts-types/types";
+import DemonClanComponent from "./DemonClanComponent/DemonClanComponent";
 
 type Props = {
   hx: HeaderSize;
 };
 export default function ZephpterHorde ({ hx }: Props) {
+  const buttonText = {
+    offer: 'Swear fealty',
+    renounce: 'Spit'
+  };
   return (
-    <ColumnEntry title={{ hx: hx, text: "Zephpter Hordes" }}>
+    <DemonClanComponent title={"Zephpter Hordes"} hx={hx} buttonText={buttonText}>
       <p>
         The Zephpter Hordes are filled with nethercurrent-aligned demonic critters that reside
         along the walls of the Zephyrian Spires. They are small, insect-like creatures
@@ -18,6 +22,6 @@ export default function ZephpterHorde ({ hx }: Props) {
         energy, such as electrical devices or magical artifacts, and will fiercely defend
         these sources from intruders. Their small size and agility make them difficult to catch.
       </p>
-    </ColumnEntry>
+    </DemonClanComponent>
   )
 }

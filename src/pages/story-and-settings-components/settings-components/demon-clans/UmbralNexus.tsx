@@ -1,13 +1,17 @@
-import ColumnEntry from "../../../../common-design/ColumnEntry";
 import Faction from "../../../../common-design/story-references/Faction";
 import { HeaderSize } from "../../../../ts-types/types";
+import DemonClanComponent from "./DemonClanComponent/DemonClanComponent";
 
 type Props = {
   hx: HeaderSize;
 };
 export default function UmbralNexus ({ hx }: Props) {
+  const buttonText = {
+    offer: 'Swear fealty',
+    renounce: 'Spit'
+  };
   return (
-    <ColumnEntry title={{ hx: hx, text: "Umbral Nexus" }}>
+    <DemonClanComponent title={"Umbral Nexus"} hx={hx} buttonText={buttonText}>
       <p>
         The <Faction>Umbral Nexus</Faction> is composed of
         Voidyr-aligned demons that bear an unsettling resemblance
@@ -22,6 +26,6 @@ export default function UmbralNexus ({ hx }: Props) {
         a life force of their own, they now hunger to drain it from
         humankind.
       </p>
-    </ColumnEntry>
+    </DemonClanComponent>
   )
 }

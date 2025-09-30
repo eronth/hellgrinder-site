@@ -1,13 +1,17 @@
-import ColumnEntry from "../../../../common-design/ColumnEntry";
 import Faction from "../../../../common-design/story-references/Faction";
 import { HeaderSize } from "../../../../ts-types/types";
+import DemonClanComponent from "./DemonClanComponent/DemonClanComponent";
 
 type Props = {
   hx: HeaderSize;
 };
 export default function WanderlostCrews({ hx }: Props) {
+  const buttonText = {
+    offer: 'Swear fealty',
+    renounce: 'Spit'
+  };
   return (
-    <ColumnEntry title={{ hx: hx, text: "Wanderlost Crews" }}>
+    <DemonClanComponent title={"Wanderlost Crews"} hx={hx} buttonText={buttonText}>
       <p>
         The <Faction>Wanderlost Crews</Faction> are scattered clans of humans
         who have lost their way. Though they are not demons, they have stooped
@@ -24,6 +28,6 @@ export default function WanderlostCrews({ hx }: Props) {
         prone to infighting and betrayal, as each clan vies for power and
         resources.
       </p>
-    </ColumnEntry>
+    </DemonClanComponent>
   );
 }

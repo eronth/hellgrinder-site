@@ -7,30 +7,37 @@
   .ashborn {
     color: var(--ashborn-faction-primary);
     --hover-on-faction-color: var(--ashborn-faction-background);
+    --hover-on-faction-border: var(--ashborn-faction-accent);
   }
   .stoneveined {
     color: var(--stoneveined-faction-primary);
     --hover-on-faction-color: var(--stoneveined-faction-background);
+    --hover-on-faction-border: var(--stoneveined-faction-accent);
   }
   .thornwraith {
     color: var(--thornwraith-faction-primary);
     --hover-on-faction-color: var(--thornwraith-faction-background);
+    --hover-on-faction-border: var(--thornwraith-faction-accent);
   }
   .umbral {
     color: var(--umbral-faction-primary);
     --hover-on-faction-color: var(--umbral-faction-background);
+    --hover-on-faction-border: var(--umbral-faction-accent);
   }
   .vastfathom {
     color: var(--vastfathom-faction-primary);
     --hover-on-faction-color: var(--vastfathom-faction-background);
+    --hover-on-faction-border: var(--vastfathom-faction-accent);
   }
   .zephpter /* brood? */ {
     color: var(--zephpter-faction-primary);
     --hover-on-faction-color: var(--zephpter-faction-background);
+    --hover-on-faction-border: var(--zephpter-faction-accent);
   }
   .wanderlost {
     color: var(--wanderlost-faction-primary);
     --hover-on-faction-color: var(--wanderlost-faction-background);
+    --hover-on-faction-border: var(--wanderlost-faction-accent);
   }
 
   .oath-button {
@@ -45,6 +52,7 @@
     padding-inline: .5em;
 
     &:hover {
+      border: 1px solid var(--hover-on-faction-border);
       background-color: var(--hover-on-faction-color);
     }
   }

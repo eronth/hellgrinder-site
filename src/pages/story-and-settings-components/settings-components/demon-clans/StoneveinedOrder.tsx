@@ -1,12 +1,16 @@
-import ColumnEntry from "../../../../common-design/ColumnEntry";
 import { HeaderSize } from "../../../../ts-types/types";
+import DemonClanComponent from "./DemonClanComponent/DemonClanComponent";
 
 type Props = {
   hx: HeaderSize;
 };
 export default function StoneveinedOrder ({ hx }: Props) {
+  const buttonText = {
+    offer: 'Swear fealty',
+    renounce: 'Spit'
+  };
   return (
-    <ColumnEntry title={{ hx: hx, text: "Stoneveined Order" }}>
+    <DemonClanComponent title="Stoneveined Order" hx={hx} buttonText={buttonText}>
       <p>
         The Stoneveined Order are enigmatic chthonic-aligned beings, 
         formed from the very bedrock of hell itself. Their bodies are
@@ -27,6 +31,6 @@ export default function StoneveinedOrder ({ hx }: Props) {
         the realm itself. Yet some rumors have whispers of an even darker
         purpose for these soldiers.
       </p>
-    </ColumnEntry>
+    </DemonClanComponent>
   )
 }

@@ -1,13 +1,17 @@
-import ColumnEntry from "../../../../common-design/ColumnEntry";
 import Faction from "../../../../common-design/story-references/Faction";
 import { HeaderSize } from "../../../../ts-types/types";
+import DemonClanComponent from "./DemonClanComponent/DemonClanComponent";
 
 type Props = {
   hx: HeaderSize;
 };
 export default function AshbornLegion ({ hx }: Props) {
+  const buttonText = {
+    offer: 'Swear fealty',
+    renounce: 'Spit'
+  };
   return (
-    <ColumnEntry title={{ hx: hx, text: "Ashborn Legion" }}>
+    <DemonClanComponent title="Ashborn Legion" hx={hx} buttonText={buttonText}>
       <p>
         The <Faction>Ashborn Legion</Faction> are infernal-aligned
         demons forged in the fires of hell, their very bodies wreathed
@@ -21,6 +25,6 @@ export default function AshbornLegion ({ hx }: Props) {
         enforcers of the Ashborne Lords, leaving scorched ruins in their wake as
         they march ever onward.
       </p>
-    </ColumnEntry>
+    </DemonClanComponent>
   )
 }

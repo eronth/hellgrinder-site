@@ -7,4 +7,4 @@ export interface ThemeContextType {
   setColorMode: (mode: ColorMode) => void;
   setFactionTheme: (theme: FactionTheme) => void;
   isDarkMode: boolean;
-}
+};

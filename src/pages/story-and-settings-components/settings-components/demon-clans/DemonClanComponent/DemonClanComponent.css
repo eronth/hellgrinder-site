@@ -1,0 +1,51 @@
+.demon-clan-component {
+  .title {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ashborn {
+    color: var(--ashborn-faction-primary);
+    --hover-on-faction-color: var(--ashborn-faction-background);
+  }
+  .stoneveined {
+    color: var(--stoneveined-faction-primary);
+    --hover-on-faction-color: var(--stoneveined-faction-background);
+  }
+  .thornwraith {
+    color: var(--thornwraith-faction-primary);
+    --hover-on-faction-color: var(--thornwraith-faction-background);
+  }
+  .umbral {
+    color: var(--umbral-faction-primary);
+    --hover-on-faction-color: var(--umbral-faction-background);
+  }
+  .vastfathom {
+    color: var(--vastfathom-faction-primary);
+    --hover-on-faction-color: var(--vastfathom-faction-background);
+  }
+  .zephpter /* brood? */ {
+    color: var(--zephpter-faction-primary);
+    --hover-on-faction-color: var(--zephpter-faction-background);
+  }
+  .wanderlost {
+    color: var(--wanderlost-faction-primary);
+    --hover-on-faction-color: var(--wanderlost-faction-background);
+  }
+
+  .oath-button {
+    box-sizing: border-box;
+    font-size: .6em;
+
+    background-color: var(--faction-background);
+
+    margin: 0;
+    padding: 0;
+    margin-inline: .5em;
+    padding-inline: .5em;
+
+    &:hover {
+      background-color: var(--hover-on-faction-color);
+    }
+  }
+}

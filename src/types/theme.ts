@@ -10,4 +10,4 @@ export interface ThemeContextType {
   setFactionTheme: (theme: FactionTheme) => void;
   setRetroTheme: (theme: RetroTheme) => void;
   isDarkMode: boolean;
-}
+};

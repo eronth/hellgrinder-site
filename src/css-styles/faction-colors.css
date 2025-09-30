@@ -1,0 +1,88 @@
+:root {
+  /* ashborn */
+  --ashborn-faction-primary: #d84315; /* Deep orange-red instead of pure red */
+  --ashborn-faction-primary-dark: #bf360c;
+  --ashborn-faction-primary-light: #ff5722;
+  --ashborn-faction-on-primary: #ffffff;
+  --ashborn-faction-accent: #ff6f00;
+  --ashborn-faction-accent-light: #ffab00;
+  --ashborn-faction-background: #2a2424; /* Slightly warmer/redder dark background */
+  --ashborn-faction-primary-rgb: 216, 67, 21;
+  --ashborn-faction-accent-rgb: 255, 111, 0;
+  
+  /* stoneveined */
+  --stoneveined-faction-primary: #5d4037;
+  --stoneveined-faction-primary-dark: #3e2723;
+  --stoneveined-faction-primary-light: #8d6e63;
+  --stoneveined-faction-on-primary: #ffffff;
+  --stoneveined-faction-accent: #795548;
+  --stoneveined-faction-accent-light: #a1887f;
+  --stoneveined-faction-background: #262424; /* Slightly earthier dark background */
+  --stoneveined-faction-primary-rgb: 93, 64, 55;
+  --stoneveined-faction-accent-rgb: 121, 85, 72;
+
+  /* thornwraith */
+  --thornwraith-faction-primary: #388e3c;
+  --thornwraith-faction-primary-dark: #1b5e20;
+  --thornwraith-faction-primary-light: #66bb6a;
+  --thornwraith-faction-on-primary: #ffffff;
+  --thornwraith-faction-accent: #689f38;
+  --thornwraith-faction-accent-light: #9ccc65;
+  --thornwraith-faction-background: #242a24; /* Slightly greener dark background */
+  --thornwraith-faction-primary-rgb: 56, 142, 60;
+  --thornwraith-faction-accent-rgb: 104, 159, 56;
+
+  /* umbral */
+  --umbral-faction-primary: #424242;
+  --umbral-faction-primary-dark: #212121;
+  --umbral-faction-primary-light: #616161;
+  --umbral-faction-on-primary: #ffffff;
+  --umbral-faction-accent: #6a1b9a;
+  --umbral-faction-accent-light: #9c27b0;
+  --umbral-faction-background: #1f1f1f; /* Darker, more shadowy background */
+  --umbral-faction-primary-rgb: 66, 66, 66;
+  --umbral-faction-accent-rgb: 106, 27, 154;
+
+  /* vastfathom */
+  --vastfathom-faction-primary: #0277bd;
+  --vastfathom-faction-primary-dark: #01579b;
+  --vastfathom-faction-primary-light: #0288d1;
+  --vastfathom-faction-on-primary: #ffffff;
+  --vastfathom-faction-accent: #00838f;
+  --vastfathom-faction-accent-light: #00acc1;
+  --vastfathom-faction-background: #242428; /* Slightly bluer dark background */
+  --vastfathom-faction-primary-rgb: 2, 119, 189;
+  --vastfathom-faction-accent-rgb: 0, 131, 143;
+
+  /* zephpter */
+  --zephpter-faction-primary: #7b1fa2;
+  --zephpter-faction-primary-dark: #4a148c;
+  --zephpter-faction-primary-light: #9c27b0;
+  --zephpter-faction-on-primary: #ffffff;
+  --zephpter-faction-accent: #512da8;
+  --zephpter-faction-accent-light: #673ab7;
+  --zephpter-faction-background: #272424; /* Slightly purpler dark background */
+  --zephpter-faction-primary-rgb: 123, 31, 162;
+  --zephpter-faction-accent-rgb: 81, 45, 168;
+
+  /* wanderlost */
+  --wanderlost-faction-primary: #455a64;
+  --wanderlost-faction-primary-dark: #263238;
+  --wanderlost-faction-primary-light: #607d8b;
+  --wanderlost-faction-on-primary: #ffffff;
+  --wanderlost-faction-accent: #00695c;
+  --wanderlost-faction-accent-light: #00897b;
+  --wanderlost-faction-background: #242628; /* Slightly more neutral but cooler background */
+  --wanderlost-faction-primary-rgb: 69, 90, 100;
+  --wanderlost-faction-accent-rgb: 0, 105, 92;
+}
+
+:root[data-theme="light"] {
+  --ashborn-faction-background: #fefafa; /* Very subtle red tint for light mode */
+  --stoneveined-faction-background: #fefefe; /* Very subtle brown tint for light mode */
+  --thornwraith-faction-background: #fafefa; /* Very subtle green tint for light mode */
+  --umbral-faction-background: #fcfcfc; /* Slightly cooler light background */
+  --vastfathom-faction-background: #fafafe; /* Very subtle blue tint for light mode */
+  --zephpter-faction-background: #fefaff; /* Very subtle purple tint for light mode */
+  --wanderlost-faction-background: #fafafc; /* Very subtle cool tint for light mode */
+}

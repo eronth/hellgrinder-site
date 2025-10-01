@@ -15,27 +15,31 @@ export default function AshbornLegion ({ hx }: Props) {
       <p>
         The <Faction>Ashborn Legion</Faction> are infernal-aligned
         demons forged in the fires of hell, their very bodies wreathed
-        in ash and embers. Though roughly humanoid in shape, the winged-beasts’
-        flesh is blackened and cracked like scorched earth, with molten veins
-        glowing just beneath the surface. Eyes burn like smoldering coals, and
-        their breath carries the heat of a furnace.
+        in ash and ember. Though roughly humanoid, their winged
+        forms are sheathed in cracked flesh like scorched earth,
+        molten veins glowing just beneath the surface. Their eyes burn
+        like coals, their breath smolders like a furnace, and wherever
+        they tread, the air itself stings with heat and cinders.
       </p>
       <p>
-        The Warlords of the Legion are towering figures clad in
-        jagged, obsidian armor that absorbs all light. They drive their underlings
-        with ruthless efficiency, their commands echoing like thunder across
-        the battlefield. The Warlords organize the hate-filled masses into
-        brutal warbands, armed with infernal weapons and armor. They march
-        across the lands of hell, charring each into a wasteland only befit the Ashborn.
+        At their head march the Warlords — towering figures clad in
+        jagged, obsidian armor that devours the light. Their voices 
+        carry like thunder, binding the Legion into ruthless formations.
+        Under such command, the hate-filled masses are driven into
+        warbands, wielding infernal steel and blackened shields,
+        burning their way across Hell. They leave behind
+        nothing but charred wastelands only befit the Ashborn.
       </p>
       <p>
-        Occasionally, small squads of lesser Ashborn will escape the commands
-        of their Warlord. Such Ashborn lose the power of their infernal armor,
-        and are forced to scrounge and scavenge for any sort of armaments.
-        These rogue Ashborn are often more cunning and adaptable than their
-        brethren, relying on guerrilla tactics and ambushes to strike at
-        their enemies. They are outcasts, hunted by both the Legion and
-        other demon clans alike.
+        Yet not all remain under the Warlords’ banner. On occasion, a squad 
+        of lesser Ashborn break free of command. Such Ashborn lose their infernal
+        arms and armor, and are forced to scavenge the battlefield for
+        crude weapons and fractured
+        defenses. These rogues are despised as deserters, hunted by both Legion
+        and rival clans. Yet their desperation breeds cunning: they strike from
+        shadow and ruin, practicing ambush and sabotage in place of open war.
+        Though few in number, such outcasts are among the most dangerous to
+        encounter — for they embody the Legion’s fury, but without its chains.
       </p>
     </DemonClanComponent>
   )

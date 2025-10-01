@@ -11,7 +11,7 @@ export default function ThornwraithCovenant ({ hx }: Props) {
     renounce: 'Find Your \'Self\''
   };
   return (
-    <DemonClanComponent title="Thornwraith Brood" hx={hx} buttonText={buttonText}>
+    <DemonClanComponent title="Thornwraith Bloom" hx={hx} buttonText={buttonText}>
       <p>
         The <Faction>Thornwraith Bloom</Faction> — also known
         as the <Faction>Thornwraith Brood</Faction> —

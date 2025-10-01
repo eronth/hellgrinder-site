@@ -7,8 +7,8 @@ type Props = {
 };
 export default function UmbralNexus ({ hx }: Props) {
   const buttonText = {
-    offer: 'Swear fealty',
-    renounce: 'Spit'
+    offer: 'Submit to the Darkness',
+    renounce: 'Find the Light'
   };
   return (
     <DemonClanComponent title={"Umbral Nexus"} hx={hx} buttonText={buttonText}>

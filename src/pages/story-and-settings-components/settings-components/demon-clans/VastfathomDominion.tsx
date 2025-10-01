@@ -7,8 +7,8 @@ type Props = {
 };
 export default function VastfathomDominion ({ hx }: Props) {
   const buttonText = {
-    offer: 'Swear fealty',
-    renounce: 'Spit'
+    offer: 'Whisper the Oath',
+    renounce: 'Seal the Forbidden Tome'
   };
   return (
     <DemonClanComponent title={"Vastfathom League"} hx={hx} buttonText={buttonText}>

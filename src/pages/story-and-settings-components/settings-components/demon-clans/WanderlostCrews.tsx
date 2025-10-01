@@ -7,8 +7,8 @@ type Props = {
 };
 export default function WanderlostCrews({ hx }: Props) {
   const buttonText = {
-    offer: 'Swear fealty',
-    renounce: 'Spit'
+    offer: 'Join the Feast',
+    renounce: 'Refuse the Chalice'
   };
   return (
     <DemonClanComponent title={"Wanderlost Crews"} hx={hx} buttonText={buttonText}>

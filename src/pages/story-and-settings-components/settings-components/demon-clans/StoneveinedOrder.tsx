@@ -6,13 +6,13 @@ type Props = {
 };
 export default function StoneveinedOrder ({ hx }: Props) {
   const buttonText = {
-    offer: 'Swear fealty',
-    renounce: 'Spit'
+    offer: 'Sing the Chorus',
+    renounce: 'Silence the Echoes'
   };
   return (
-    <DemonClanComponent title="Stoneveined Order" hx={hx} buttonText={buttonText}>
+    <DemonClanComponent title="Stoneveined Choir" hx={hx} buttonText={buttonText}>
       <p>
-        The Stoneveined Order are enigmatic chthonic-aligned beings, 
+        The Stoneveined Choir are enigmatic chthonic-aligned beings,
         formed from the very bedrock of hell itself. Their bodies are
         fused with the ancient stone, veins of glowing mineral running
         through their skin, pulsing with a faint inner light. These

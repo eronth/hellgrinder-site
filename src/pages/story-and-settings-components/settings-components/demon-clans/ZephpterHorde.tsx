@@ -6,8 +6,8 @@ type Props = {
 };
 export default function ZephpterHorde ({ hx }: Props) {
   const buttonText = {
-    offer: 'Swear fealty',
-    renounce: 'Spit'
+    offer: 'Join the Frenzy',
+    renounce: 'Calm the Storm'
   };
   return (
     <DemonClanComponent title={"Zephpter Hordes"} hx={hx} buttonText={buttonText}>

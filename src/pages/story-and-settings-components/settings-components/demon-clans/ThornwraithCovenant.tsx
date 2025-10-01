@@ -7,13 +7,15 @@ type Props = {
 };
 export default function ThornwraithCovenant ({ hx }: Props) {
   const buttonText = {
-    offer: 'Swear fealty',
-    renounce: 'Spit'
+    offer: 'Accept the Hivemind',
+    renounce: 'Find Your Self'
   };
   return (
-    <DemonClanComponent title="Thornwraith Covenant" hx={hx} buttonText={buttonText}>
+    <DemonClanComponent title="Thornwraith Brood" hx={hx} buttonText={buttonText}>
       <p>
-        The <Faction>Thornwraith</Faction> are a verdant-aligned clan,
+        The <Faction>Thornwraith Bloom</Faction> — also known
+        as the <Faction>Thornwraith Brood</Faction> —
+        are a verdant-aligned clan,
         an anomaly in the burning wastelands of hell. Unlike other
         infernal factions, they thrive in primal 
         unity, their forms a fusion of plant and beast. Vines coil

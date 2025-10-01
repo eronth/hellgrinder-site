@@ -7,8 +7,8 @@ type Props = {
 };
 export default function AshbornLegion ({ hx }: Props) {
   const buttonText = {
-    offer: 'Swear fealty',
-    renounce: 'Spit'
+    offer: 'Swear Your Fealty',
+    renounce: 'Betray the Legion'
   };
   return (
     <DemonClanComponent title="Ashborn Legion" hx={hx} buttonText={buttonText}>

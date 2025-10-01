@@ -56,4 +56,10 @@
       background-color: var(--hover-on-faction-color);
     }
   }
+
+  .selected {
+    .oath-button {
+      color: var(--faction-accent);
+    }
+  }
 }

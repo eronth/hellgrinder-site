@@ -14,36 +14,37 @@ export default function VastfathomDominion ({ hx }: Props) {
     <DemonClanComponent title={"Vastfathom League"} hx={hx} buttonText={buttonText}>
       <p>
         The <Faction>Vastfathom League</Faction> are
-        abyssal-aligned demons that dwell in the darkest
-        depths, born from the crushing cold of Hell’s oceans of
+        abyssal-aligned demons that dwell in the deepest
+        depths of Hell—crushing oceans of
         nothingness. Their forms are elusive and alien, shifting
-        like the murky water that hides them. Some have elongated,
-        serpent-like bodies with translucent skin that reveals a
-        network of pulsating veins. Others bear multiple
-        limbs that undulate like the tentacles of deep-sea
-        horrors. Yet others still are a mass of mouths, whispering
-        the forbidden hymns. Their eyes glow dimly, piercing through the
-        darkness, while their touch brings the icy chill of the depths.
+        as if seen through dark waters. Some stretch into
+        serpent-like silhouettes, translucent skin revealing pulsating veins
+        beneath. Others undulate with countless limbs, tentacles stirring like
+        deep-sea horrors. Still others are nothing but writhing masses of
+        mouths, ceaselessly whispering forbidden hymns that churn the sanity of
+        all who hear. All sport dim eyes which pierce through the black, and
+        their touch carries the icy chill of the depths.
       </p>
       <p>
-        Spawned from the vast, unseen trenches of hell,
-        they serve the Abyssal Sovereigns, rising from the
-        fathomless deep to drag their prey into the cold abyss. 
-        Each Vastfathom demon seeks knowledge beyond knowledge,
+        Spawned from the vast unseen trenches in which Hell folds in upon itself,
+        they serve the Abyssal Sovereigns—eldritch rulers said to dream beneath
+        the cold waters. The League rises at their command, dragging prey into the
+        suffocating dark. Each Vastfathom demon seeks knowledge beyond knowledge,
         learning beyond what is meant to be known, twisting and
         warping themselves in pursuit of forbidden truths.
-        They are often found clutching ancient, abyssal-logged tomes,
+        They clutch abyssal-logged tomes and mind-stained tablets,
         whispering secrets of the deep to those who dare to listen.
       </p>
       <p>
-        The League is broken into cult-like groups, each devoted to a different
-        Abyssal Sovereign and their own interpretation of the forbidden knowledge.
-        Members of the Vastfathom League are often scholars, mystics,
-        and seekers of arcane wisdom, willing to risk their sanity
-        for a glimpse into the abyssal truths. Each Abyssal High Council Member
-        has unlocked vast sorcerous powers, which they use to bend the will of
-        those who try to resist them. Those who obey are rewarded with
-        powers of their own.
+        The League fractures into cults, each devoted to a different
+        Sovereign and their interpretation of the abyssal mysteries.
+        Members are scholars, mystics, and zealots — eager to drown their
+        reason for a glimpse of knowledge beyond comprehension.
+        Their High Councilors, the chosen of the Sovereigns, wield
+        sorcerous powers vast enough to bend wills with a word,
+        rewarding obedience with fragments of power while casting dissenters
+        into eternal silence. To follow the League is to trade one’s soul for
+        an endless descent into the deep, dark expanse.
       </p>
     </DemonClanComponent>
   )

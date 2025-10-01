@@ -152,6 +152,14 @@ export const generalRules: RuleDefinition[] = [
     ],
     relatedRules: ['corruption', 'skill-checks']
   },
+  {
+    id: 'safelight-shards',
+    keyword: 'Safelight Shards',
+    category: 'general',
+    summary: 'Crystalline growths that grant strange resilience and healing.',
+    details: 'Safelight Shards are often carried by individual soldiers to help them quickly heal from injuries.',
+    relatedRules: ['safelight', 'skill-checks', 'recovery']
+  }
 ];
 
 // Combat Rules

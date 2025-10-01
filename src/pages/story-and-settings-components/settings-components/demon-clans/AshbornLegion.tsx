@@ -21,9 +21,21 @@ export default function AshbornLegion ({ hx }: Props) {
         their breath carries the heat of a furnace.
       </p>
       <p>
-        The creatures are born from swirling hate pods and serve as relentless
-        enforcers of the Ashborne Lords, leaving scorched ruins in their wake as
-        they march ever onward.
+        The Warlords of the Legion are towering figures clad in
+        jagged, obsidian armor that absorbs all light. They drive their underlings
+        with ruthless efficiency, their commands echoing like thunder across
+        the battlefield. The Warlords organize the hate-filled masses into
+        brutal warbands, armed with infernal weapons and armor. They march
+        across the lands of hell, charring each into a wasteland only befit the Ashborn.
+      </p>
+      <p>
+        Occasionally, small squads of lesser Ashborn will escape the commands
+        of their Warlord. Such Ashborn lose the power of their infernal armor,
+        and are forced to scrounge and scavenge for any sort of armaments.
+        These rogue Ashborn are often more cunning and adaptable than their
+        brethren, relying on guerrilla tactics and ambushes to strike at
+        their enemies. They are outcasts, hunted by both the Legion and
+        other demon clans alike.
       </p>
     </DemonClanComponent>
   )

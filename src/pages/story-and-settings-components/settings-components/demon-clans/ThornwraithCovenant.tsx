@@ -8,7 +8,7 @@ type Props = {
 export default function ThornwraithCovenant ({ hx }: Props) {
   const buttonText = {
     offer: 'Accept the Hivemind',
-    renounce: 'Find Your Self'
+    renounce: 'Find Your \'Self\''
   };
   return (
     <DemonClanComponent title="Thornwraith Brood" hx={hx} buttonText={buttonText}>

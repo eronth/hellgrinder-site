@@ -34,34 +34,9 @@ export default function DemonClanComponent ({ title, hx, buttonText, children }:
     }
     setFactionTheme(factionCoreName.toLowerCase() as FactionTheme);
   };
-  // Swear
-  // Submit
-  // Pledge
-  // Vow
-  // Oath
-  // Allegiance
-  // Bond
-  // Covenant
-  // Pact
-  // Promise
-  // Commitment
-  // Assurance
-  // Undertaking
-  // Agreement
-  // Contract
-  // Alliance
-  // Fealty
-  // Loyalty
-
-  // Swear Fealty
-  // Submit your Mind
-  // Pledge your Soul
-  // Vow your... soul?
-  // Take the Oath
-  // Accept the Darkness
 
   return (<div className="demon-clan-component">
-    <Hx className={`title ${factionCoreName.toLocaleLowerCase()}`} hx={hx}>
+    <Hx className={`title ${factionCoreName.toLocaleLowerCase()} ${isAccepted ? 'selected' : ''}`} hx={hx}>
       {title}
       <button
         className="oath-button"

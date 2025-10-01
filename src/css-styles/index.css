@@ -6,7 +6,9 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --default-background-color: #242424;
+  background-color: var(--default-background-color);
+  --faction-background: var(--default-background);
 
   /* Header (<Hx>) colors */
   --header-primary-color: hsl(0, 0%, 100%);

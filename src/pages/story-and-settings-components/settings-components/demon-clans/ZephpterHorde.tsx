@@ -11,9 +11,9 @@ export default function ZephpterHorde ({ hx }: Props) {
     renounce: 'Calm the Storm'
   };
   return (
-    <DemonClanComponent title={"Zephpter Hordes"} hx={hx} buttonText={buttonText}>
+    <DemonClanComponent title={"Zephpter Swarm"} hx={hx} buttonText={buttonText}>
       <p>
-        The <Faction>Zephpter Hordes</Faction> are nethercurrent-aligned
+        The <Faction>Zephpter Swarm</Faction> are nethercurrent-aligned
         creatures that infest the jagged walls of the Zephyrian Spires. Small
         and insectile, they move with savage, lightning-fast precision, wings
         crackling with sparks as they dart through the storm clouds. Individually

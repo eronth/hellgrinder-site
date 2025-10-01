@@ -254,10 +254,14 @@ body.blood-flipped::before {
 body.blood-flipped {
   transform: rotate(180deg);
   background-color: #0a0000;
+  --faction-background: #0a0000;
   color: #DC143C !important;
   transition: all 0.8s ease-in-out;
   background: radial-gradient(circle at center, #1a0000 0%, #0a0000 100%);
   min-height: 100vh;
+  .blood-flip-button {
+    transform: rotate(180deg);
+  }
 }
 
 body.blood-flipped * {

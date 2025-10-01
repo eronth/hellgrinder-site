@@ -37,14 +37,18 @@ type SkillChecks =
   | 'Recovery' 
   | 'Corruption'
 
-type DemonFactionTags =
-  'Ashborn Legion' | 'Stoneveined Order' | 'Vastfathom League'
-  | 'Thornwraith Covenant' | 'Wanderlost Crew'
-  | 'Zephpter Horde' | 'Umbral Nexus';
+export type DemonFactionTags
+  = 'Ashborn Legion' 
+  | 'Stoneveined Choir'
+  | 'Vastfathom League'
+  | 'Thornwraith Bloom'
+  | 'Wanderlost Crew'
+  | 'Zephpter Swarm'
+  | 'Umbral Nexus';
 
-type OtherFactionTags =
+export type OtherFactionTags =
   'Forgefiend Syndicate' | 'Hand of Death' | "Heaven's Host"
-  | 'Voidfire Conclave' | 'Witch Coven' | 'Sinner';
+  | 'Voidfire Conclave' | 'Hagswell Covenant' | 'Sinner';
 
 
 type AllValidTags 

@@ -46,6 +46,11 @@ export type DemonFactionTags
   | 'Zephpter Swarm'
   | 'Umbral Nexus';
 
+export type PluralizedFactionTags
+  = 'Wanderlost Crews'
+  | 'Zephpter Swarms'
+  | 'Sinners';
+
 export type OtherFactionTags =
   'Forgefiend Syndicate' | 'Hand of Death' | "Heaven's Host"
   | 'Voidfire Conclave' | 'Hagswell Covenant' | 'Sinner';

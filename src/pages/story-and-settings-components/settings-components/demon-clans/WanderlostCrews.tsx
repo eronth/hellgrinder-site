@@ -14,19 +14,26 @@ export default function WanderlostCrews({ hx }: Props) {
     <DemonClanComponent title={"Wanderlost Crews"} hx={hx} buttonText={buttonText}>
       <p>
         The <Faction>Wanderlost Crews</Faction> are scattered clans of humans
-        who have lost their way. Though they are not demons, they have stooped
+        who have lost their way, unable to return to earth. Though they
+        are not demons, they have stooped
         to using sinful magic and playing corrupt politics to survive the
-        hellscape and chaos of this realm; making them as demonically vile
-        as any other demon clan.
+        hellscape and chaos of this realm; making them often as vile and
+        dangerous as any other demon clan.
       </p>
       <p>
         Though technically fractured and disorganized, the crews are united by
-        their shared goal of thriving and controlling territory. They are
-        not bound by any one leader or or ruling body, making them a
+        their shared goal of a thriving humanity and controlling territory.
+        They are not bound by any one leader or ruling body, making them a
         relatively resilient group; not being thrown into disarray by the
-        loss of a single leader. However, this also means that they are
-        prone to infighting and betrayal, as each clan vies for power and
-        resources.
+        loss of a single key figure. However, this also means that they are
+        more prone to infighting and betrayal, as each clan vies for power
+        and resources.
+      </p>
+      <p>
+        In order to grasp the horrific powers, the members of the crews
+        must engage in the darkest feast, consuming the flesh and blood of
+        others. The act gives them great power, but drives them further into
+        madness and demanity.
       </p>
     </DemonClanComponent>
   );

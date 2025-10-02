@@ -4,10 +4,10 @@ import Hx from "../../../../../common-design/Hx/Hx";
 import "./DemonClanComponent.css";
 import { useTheme } from "../../../../../hooks/useTheme";
 import { FactionTheme } from "../../../../../types/theme";
-import { DemonFactionTags, OtherFactionTags } from "../../../../../ts-types/tag-types";
+import { DemonFactionTags, OtherFactionTags, PluralizedFactionTags } from "../../../../../ts-types/tag-types";
 
 type Props = {
-  title: DemonFactionTags | OtherFactionTags;
+  title: DemonFactionTags | OtherFactionTags | PluralizedFactionTags;
   hx: HeaderSize;
   children: ReactNode;
   buttonText: {

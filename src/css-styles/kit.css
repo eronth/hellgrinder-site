@@ -29,30 +29,33 @@
   margin-bottom: .5em;
   padding: .5em;
   border-radius: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--card-border-color);
 }
 .weapon {
   background-color: var(--card-background);
-  border-color: hsl(27, 91%, 27%);
+  border-color: var(--weapon-card-border-color);
+
+  .tags .tag {
+    background-color: var(--weapon-tag-background-color);
+  }
 }
 .item {
   background-color: var(--card-background);
-  border-color: hsl(162, 90%, 21%);
+  border-color: var(--item-card-border-color);
+
+  .tags .tag {
+    background-color: var(--item-tag-background-color);
+  }
 }
 .training {
   background-color: var(--card-background);
-  border-color: hsl(209, 89%, 32%);
+  border-color: var(--training-card-border-color);
+
+  .tags .tag {
+    background-color: var(--training-tag-background-color);
+  }
 }
 
-.weapon .tags .tag {
-  background-color: hsl(27, 91%, 27%);
-}
-.item .tags .tag {
-  background-color: hsl(162, 90%, 21%);
-}
-.training .tags .tag {
-  background-color: hsl(209, 89%, 32%);
-}
 
 
 .weapon .weapon-name {
@@ -111,7 +114,7 @@
   font: inherit;
 
   &:hover {
-    color: var(--dice-hover-color, #66c0e6);
+    color: var(--clickable-dice-hover-color);
     text-decoration: underline;
     text-decoration-style: dotted;
     text-shadow: var(--dice-hover-shadow, 0 0 4px rgba(79, 168, 212, 0.3));
@@ -146,7 +149,7 @@
 }
 
 .average-damage {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-secondary);
   font-size: 0.9em;
   transition: all 0.3s ease;
 }
@@ -184,11 +187,4 @@
 /* Light mode overrides for kit elements */
 :root[data-theme="light"] .kit .description {
   color: #4a5568; /* Much darker gray for better contrast */
-}
-
-/* Light mode overrides for kit item borders */
-:root[data-theme="light"] .weapon,
-:root[data-theme="light"] .item,
-:root[data-theme="light"] .training {
-  border-color: rgba(0, 0, 0, 0.2);
 }

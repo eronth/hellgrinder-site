@@ -16,34 +16,39 @@ export default function ThornwraithCovenant ({ hx }: Props) {
         The <Faction>Thornwraith Bloom</Faction>, also known
         as the <Faction>Thornwraith Brood</Faction>,
         are a verdant-aligned clan — quite the anomaly in the harsh wastelands of hell.
-        Unlike other hellish factions, they thrive in primal 
-        unity, their forms a fusion of plant and beast. Vines coil
-        around to form limbs, bark-like skin 
-        covers their bodies, and their eyes glow with a feral, greenish light.
-        Many bear antlers or
-        thorn-covered spines, while others have claws of twisted roots.
+        Their forms are a grotesque
+        fusion of beast, root, and fungus. Bark-like hide cracks to reveal
+        pulsing mycelial threads beneath. Their limbs are formed of coiling
+        vines and sinew, ending in claws of twisted roots. Many sprout
+        antlers like petrified branches, while others bristle with thorns,
+        fungal caps, or spore-pods that shudder with every movement. Their
+        eyes glow with a feral green light, like lanterns buried in rot.
       </p>
       <p>
-        Behind the actions of the beasts lies a collective consciousness, a hive mind that
-        binds them together. This shared mind allows them to communicate silently and
-        coordinate their movements with uncanny precision, making them formidable opponents in battle.
-        The hive mind, often referred to as "The Bloom", grants a mysterious connection and purpose
-        to each member of the <Faction>Thornwraith</Faction>.
+        Beneath their monstrous forms lies a single will: a hive-mind known as
+        <i>The Bloom</i>. Through it, each Thornwraith is bound, their thoughts
+        woven together like mycellial-coated roots in soil. They move
+        with uncanny precision,
+        silent but perfectly in concert, guided by impulses that seem less like
+        strategy and more like instinct. To face one Thornwraith is to face the
+        collective, for none are ever truly alone.
       </p>
       <p>
-        They move as one, their connection to each other and the natural world evident in their
-        every action, functioning more like a pack or tribe than an army. Despite
-        their savage appearance, the <Faction>Thornwraith</Faction> are deeply attuned to the life forces
-        around them, though their presence in hell remains a mystery. They are often seen cultivating 
-        small patches of overgrown wilderness in the Underworld — areas somehow untouched by the 
-        surrounding destructive environment. It is suspected that these growths permit the spread
-        of the hive mind.
+        They spread as creeping overgrowths, patches of viridian life clinging
+        to existance hell’s desolation. Fungal mats and tangles of thorned roots choke
+        ruins and caverns, forming colonies that serve as extensions of the
+        hive-mind. Scholars whisper that these growths are not merely terrain,
+        but the Bloom itself—each sprout, each spore, a fragment of its
+        consciousness. To linger in such places is to risk inhaling the spores
+        and hearing the Bloom’s call whispering from within.
       </p>
       <p>
-        The Bloom compels its members to harvest any and all resources for the growth of the wilds.
-        Any are welcome to join the <Faction>Thornwraith Bloom</Faction>, but once you do, your body
-        and individuality are subsumed by the collective will. Rejecting the will of the Bloom
-        comes at a terrible cost.
+        The Bloom commands endless harvest: flesh, bone, and stone alike are
+        torn down and rewoven into the verdant sprawl. Any who enter their
+        midst are offered a place in the Bloom’s embrace. But to join is to be
+        subsumed—body reshaped, mind dissolved into the collective will. To
+        resist is to be strangled, consumed, and repurposed as food for the growth.
+        In Hell, the Thornwraith are both garden and grave.
       </p>
     </DemonClanComponent>
   )

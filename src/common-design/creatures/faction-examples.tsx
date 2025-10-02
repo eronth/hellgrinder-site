@@ -377,9 +377,9 @@ const exampleCreatures: { [key: string]: Creature } = {
 
   // Witch Coven - Other faction
   witchCovenHexer: {
-    name: 'Witch Coven Hexer',
+    name: 'Hagswell Hexer',
     tier: Tools.creatureTiers.t1,
-    tags: ['Witch Coven'],
+    tags: ['Hagswell Covenant'],
     health: 10,
     size: 1,
     speed: 4,

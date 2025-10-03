@@ -138,24 +138,15 @@ nav.navtabs.desktop-nav {
   nav.navcluster {
     grid-template-columns: repeat(3, 1fr);
   }
-  nav.navcluster a {
-    width: 20em;
-  }
 }
 @media(max-width: 1100px) {
   nav.navcluster {
     grid-template-columns: repeat(2, 1fr);
   }
-  nav.navcluster a {
-    width: 23em;
-  }
 }
 @media(max-width: 800px) {
   nav.navcluster {
     grid-template-columns: repeat(1, 1fr);
-  }
-  nav.navcluster a {
-    width: 23em;
   }
 }
 @media(max-width: 768px) {

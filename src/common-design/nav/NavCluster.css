@@ -10,24 +10,16 @@ nav.navcluster {
     margin-inline-end: 0.25em;
   }
 
-  div {
-    /* display: grid;
-    justify-content: center; */
+  a {
     border: 1px solid var(--nav-border);
     border-radius: 8px;
-
-    a {
-      /* background: red; */
-      text-align: center;
-      padding: 1em;
-      color: var(--text);
-      text-decoration: none;
-      transition: background-color 0.25s;
-      display: inline-block;
-      width: 93%;
-    }
+    text-align: center;
+    padding: 1em;
+    color: var(--text);
+    text-decoration: none;
+    transition: background-color 0.25s;
+    display: inline-block;
   }
-
 }
 
 /* Mobile NavCluster Improvements */
@@ -44,19 +36,11 @@ nav.navcluster {
     padding: 0.75em 0.5em;
     font-size: 0.9em;
   }
-  
-  nav.navcluster div {
-    padding: 0.75em 0.5em;
-  }
 }
 
 @media(max-width: 480px) {
   nav.navcluster {
     grid-template-columns: 1fr;
     gap: 0.5em;
-  }
-  
-  nav.navcluster div {
-    padding: 1em;
   }
 }

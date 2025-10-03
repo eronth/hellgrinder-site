@@ -7,30 +7,30 @@ const NavCluster = () => {
   return (
     <nav className="navbar navcluster">
       {/* Top Row */}
-      <div><Link to="/how-to-play">
+      <Link to="/how-to-play">
         <FontAwesomeIcon icon={faLightbulb} className='icon' />
         How to Play
-      </Link></div>
+      </Link>
 
-      <div><Link to="/character-creation">
+      <Link to="/character-creation">
         <FontAwesomeIcon icon={faUser} className='icon'/>
         Character Creation
-      </Link></div>
+      </Link>
 
-      <div><Link to="/creatures">
+      <Link to="/creatures">
         <FontAwesomeIcon icon={faBookSkull} className='icon' />
         Creatures
-      </Link></div>
+      </Link>
 
       {/* Bottom Row */}
-      <div><Link to="/story-and-setting">Story & Setting</Link></div>
-      <div><Link to="/additional-equipment">Equipment</Link></div>
-      <div><Link to="/perks">Perks</Link></div>
+      <Link to="/story-and-setting">Story & Setting</Link>
+      <Link to="/additional-equipment">Equipment</Link>
+      <Link to="/perks">Perks</Link>
 
 
       {/* Unused links */}
-      {/* <div><Link to="/setting">Setting</Link></div> */}
-      {/* <div><Link to="/magic">Magic</Link></div> */}
+      {/* <Link to="/setting">Setting</Link> */}
+      {/* <Link to="/magic">Magic</Link> */}
     </nav>
   );
 }

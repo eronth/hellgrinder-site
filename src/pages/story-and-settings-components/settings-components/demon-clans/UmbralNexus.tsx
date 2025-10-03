@@ -13,31 +13,31 @@ export default function UmbralNexus ({ hx }: Props) {
   return (
     <DemonClanComponent title={"Umbral Nexus"} hx={hx} buttonText={buttonText}>
       <p>
-        The <Faction>Umbral Nexus</Faction> is composed of
-        Voidyr-aligned demons that bear an unsettling resemblance
-        to humans with grotesque distortions. They bear
-        arms with extra joints, smiles that stretch unnaturally wide,
-        or eyes that sprout in strange places.
+        The <Faction>Umbral Nexus</Faction> is composed of Voidyr-aligned
+        demons that bear an unsettling resemblance to humans, marred by
+        grotesque distortions. Some carry arms with too many joints, others
+        smiles that stretch far beyond the bounds of the face, or eyes that
+        sprout in places no eye should ever be. To look upon them is to feel
+        that something once familiar has gone irreparably wrong.
       </p>
       <p>
-        They are cloaked in shadow that writhe and twist, as if alive. 
-        If given enough
-        time, they can claim the shadows of those nearby, turning them into
-        extensions of their own forms. Once they do so, they can mimic their
-        target — but only the aspects the target refuses to see within themselves.
-        They become the near-perfect
-        predators, able to melt into darkness and strike from
-        your shadow, reflection, dreams, and pictures.
+        Cloaked in shadows that writhe like living things, they slowly extend
+        their influence into the darkness around them. Given time, they can
+        seize control of another’s shadow, twisting it into an extension of
+        themselves. Once claimed, they can mimic their target — but only the
+        aspects the target refuses to see within themselves. In this way, they
+        become near-perfect predators, stepping from shadow, reflection, dream,
+        or photograph to stalk their chosen prey.
       </p>
       <p>
-        These creatures inspire dark rumors—some say they were once
-        human, individuals who, without any infernal influence, twisted
-        their own bodies and minds into a new kind of demon. They are the
-        complete loss of a sense of belonging, twisting into something
-        alien and monstrous. They are said to be drawn to places of deep
-        shadow and isolation, where they can find others who feel like
-        outsiders. They are often found in abandoned buildings, forgotten
-        homes, or dilapidated workplaces.
+        Dark rumors persist that the Umbral Nexus were once human—outcasts who,
+        without infernal corruption, twisted themselves into demons through
+        despair and self-denial. They embody the complete loss of belonging,
+        warped into alien forms by isolation. Drawn to places of abandonment
+        and silence, they linger in ruined homes, forgotten offices, and
+        decayed workplaces — feeding on those who, like them, have been left
+        behind. Where the Umbral gather, shadows thicken, and the memory of
+        those who vanish there is soon erased, as though they had never been.
       </p>
     </DemonClanComponent>
   )

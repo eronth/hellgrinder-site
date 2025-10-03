@@ -14,26 +14,31 @@ export default function WanderlostCrews({ hx }: Props) {
     <DemonClanComponent title={"Wanderlost Crews"} hx={hx} buttonText={buttonText}>
       <p>
         The <Faction>Wanderlost Crews</Faction> are scattered clans of humans
-        who have lost their way, unable to return to earth. Though they
-        are not demons, they have stooped
-        to using sinful magic and playing corrupt politics to survive the
-        hellscape and chaos of this realm; making them often as vile and
-        dangerous as any other demon clan.
+        who have lost their way, unable to return to Earth. Though they
+        are not demons, they have 
+        embraced sinful magics and corrupt politics to survive the hellscape;
+        often making them as vile and dangerous as any infernal clan. Their
+        humanity remains in form only; in spirit, most are little more than
+        predators draped in familiar skin.
       </p>
       <p>
-        Though technically fractured and disorganized, the crews are united by
-        their shared goal of a thriving humanity and controlling territory.
-        They are not bound by any one leader or ruling body, making them a
-        relatively resilient group; not being thrown into disarray by the
-        loss of a single key figure. However, this also means that they are
-        more prone to infighting and betrayal, as each clan vies for power
-        and resources.
+        Fractured and clan-based, the Crews are bound together not by loyalty
+        or law, but by a shared hunger for dominion. Each clan fights to carve
+        out territory from the demons, playing games of betrayal and uneasy alliance. 
+        Without
+        a single ruler, they cannot be toppled at once, but their constant
+        infighting leaves their ambitions stained in blood. What unity they
+        have is born of desperation: the belief that if humanity cannot rule
+        Hell, it will be ruled by none.
       </p>
       <p>
-        In order to grasp the horrific powers, the members of the crews
-        must engage in the darkest feast, consuming the flesh and blood of
-        others. The act gives them great power, but drives them further into
-        madness and demanity.
+        To wield their horrific powers, the Crews perform the darkest rite:
+        the feast of bone, flesh, and blood. By consuming others — be it demon or
+        human — they draw strength and sorcery into themselves. Yet each bite
+        drags them further from humanity, minds twisting toward paranoia and
+        madness. In time, the Wanderlost become gaunt, shadow-eyed figures
+        who whisper like revenants, half-human and half-monster, but wholly
+        enthralled to their hunger.
       </p>
     </DemonClanComponent>
   );

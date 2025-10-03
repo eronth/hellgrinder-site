@@ -1,5 +1,5 @@
 export type ColorMode = 'light' | 'dark' | 'system';
-export type FactionTheme = 'ashborn' | 'stoneveined' | 'thornwraith' | 'umbral' | 'vastfathom' | 'zephpter' | 'wanderlost';
+export type FactionTheme = 'default' | 'ashborn' | 'stoneveined' | 'thornwraith' | 'umbral' | 'vastfathom' | 'zephpter' | 'wanderlost';
 export type RetroTheme = 'none' | 'retro-deco' | 'retro-atompunk' | 'retro-western' | 'retro-nouveau' | 'retro-bauhaus' | 'retro-midcentury' | 'retro-psychedelic' | 'retro-memphis' | 'retro-grunge' | 'retro-future' | 'retro-victorian' | 'retro-stellar';
 
 export interface ThemeContextType {

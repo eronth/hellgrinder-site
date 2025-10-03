@@ -48,7 +48,7 @@ const exampleCreatures: { [key: string]: Creature } = {
   stoneveineGuardian: {
     name: 'Stoneveined Guardian',
     tier: Tools.creatureTiers.t2,
-    tags: ['Stoneveined Order'],
+    tags: ['Stoneveined Choir'],
     health: 24,
     size: 2,
     speed: 3,
@@ -118,7 +118,7 @@ const exampleCreatures: { [key: string]: Creature } = {
   thornwraithStalker: {
     name: 'Thornwraith Stalker',
     tier: Tools.creatureTiers.t1,
-    tags: ['Thornwraith Covenant'],
+    tags: ['Thornwraith Bloom'],
     health: 12,
     size: 1,
     speed: 5,

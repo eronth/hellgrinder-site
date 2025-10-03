@@ -16,15 +16,15 @@ type Props = {
   }
 };
 export default function DemonClanComponent ({ title, hx, buttonText, children }: Props) {
-  const { factionTheme,setFactionTheme } = useTheme();
+  const { factionTheme, setFactionTheme } = useTheme();
 
   const { offer, renounce } = buttonText;
 
   // Title to css class
-  const titleClass = title.toLowerCase().replace(/\s+/g, '-');
+  // const titleClass = title.toLowerCase().replace(/\s+/g, '-');
   const titleArr = title.split(' ');
   const factionCoreName = titleArr[0];
-  const factionStructure = titleArr[titleArr.length - 1];
+  // const factionStructure = titleArr[titleArr.length - 1];
 
   const isAccepted = factionTheme === factionCoreName.toLowerCase();
 

@@ -15,7 +15,7 @@ const exObj: { [key: string]: Creature } = {
   zephilim: {
     name: 'Zephilim',
     tier: Tools.creatureTiers.t2,
-    tags: ['Zephpter Horde'],
+    tags: ['Zephpter Swarm'],
     health: 8, size: 1,
     speed: 7, dash: 5,
     damageTakenMods: [
@@ -41,7 +41,7 @@ const exObj: { [key: string]: Creature } = {
   elzid: {
     name: 'Elzid',
     tier: Tools.creatureTiers.t1,
-    tags: ['Zephpter Horde'],
+    tags: ['Zephpter Swarm'],
     health: 6, size: 1,
     speed: 6, dash: 4,
     damageTakenMods: [
@@ -66,7 +66,7 @@ const exObj: { [key: string]: Creature } = {
   magid: {
     name: 'Magid',
     tier: Tools.creatureTiers.t3,
-    tags: ['Zephpter Horde'],
+    tags: ['Zephpter Swarm'],
     health: 6, size: 1,
     speed: 3, dash: 1,
     damageTakenMods: [

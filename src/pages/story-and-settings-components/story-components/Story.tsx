@@ -1,3 +1,4 @@
+import Faction from '../../../common-design/story-references/Faction';
 import TM from '../../../common-design/TM';
 
 function Story() {
@@ -103,10 +104,9 @@ function Story() {
           resources. The project is largely considered a success, and the front lines began to push deeper into hell.
         </p>
       </div>
-
-      {/*<!-- The Hellgrinder -->*/}
-
     </div>
+
+    {/*<!-- The Hellgrinder -->*/}
     <div>
       <h3>The Hellgrinder</h3>
       <p>
@@ -137,19 +137,20 @@ function Story() {
       <div>
         <h4>ARC Grinder</h4>
         <p>
-          Arc Grinders are medium sized boring machines, capable of making pathways large enough for light tanks and
-          armored personnel carriers to pass through. Arc Grinders move at a moderate pace, and can be deployed in a variety
-          of operations.</p>
+          The Advanced Recon Carrier (ARC) Grinders are medium sized boring machines, capable of making pathways large enough for light tanks and
+          armored personnel carriers to pass through. ARC Grinders move at a moderate pace, and can be deployed in a variety
+          of operations.
+        </p>
         <p>
-          One of the most common uses of an Arc Grinder is establishing a new Safelight Haven, as it can
-          be equipped a larger Safelight Gemstone on to act as a small pocket of safety wherever it deploys. The mechanism
+          One of the most common uses of an ARC Grinder is establishing a new Safelight Haven, as it can
+          be equipped with a larger Safelight Gemstone on to act as a small pocket of safety wherever it deploys. The mechanism
           is designed to be broken down and reassembled into more permanent shelter.
         </p>
       </div>
       <div>
         <h4>Squad Transport</h4>
         <p>
-          The simply named Squad Transport is aptly named. It is a small-ish boring machine, with enough room for a
+          The simple name Squad Transport is apt. It is a relatively small boring machine, with enough room for a
           squad of soldiers inside. It can be deployed to quickly move soldiers to their next operation or objective,
           and provides enough space for a squad to rest and recover between operations.
         </p>
@@ -163,7 +164,8 @@ function Story() {
         <p>
           A squad can use 1-3 TISCs to quickly deploy to a designated location. Each TISC is capable of holding up to 3 soldiers
           and their gear. All TISCs sport extra armor in key locations, allowing it to act as cover for soldiers as they exit
-          the craft, usually into combat.
+          the craft, usually into combat. A TISC carries no Safelight Gemestones, aside from the shards carried by the soldiers
+          inside.
         </p>
       </div>
       <div>
@@ -179,6 +181,61 @@ function Story() {
           mid-operation repositioning. A squad might only have one, or two if they are lucky.
         </p>
       </div>
+    </div>
+
+    {/*<!-- Soldiers -->*/}
+    <div>
+      <h3>Soldiers</h3>
+      <p>
+        The soldiers who delve deep into hell are officially known as Descent Corps, and
+        some on earth will refer to these soldiers as Redeemers.
+        Many people simply call these soldiers Delvers. Those deployed soldiers
+        often feel the weight and hopelessness of their operations, and may refer
+        to themselves as Wyrmfood in a self-deprecating manner.
+
+        The standard infantryman of a Delver team is often referred to as a Grunt, 
+        though this term is not officially recognized by the military. They are responsible
+        for the bulk of the fighting and operations away from 
+        
+        The path-boring teams are known by the soldiers as Grind Corps, sometimes called Gravediggers
+        by those who fear the mission is too dangerous for humans to attempt. 
+        
+        The Drill Rats or Pit Rats are soldiers in charge of the maintenance of the Hellgrinders.
+        
+        The EchoTechs, or ETs are in charge of the comms units for chatter within hell *and* between hell and the earth.
+        
+        The Long-Haulers work tirelessly to keep the front lines stocked with ammo, food, and other essentials. They must
+        constantly re-tread the carved paths, and need to constantly correct changes in the terrain or eliminate
+        new demon threats else they risk cutting off the front lines from their supplies.
+
+        Hell-Engineers and Hell-Workers work with the new resources of hell to create improved weapons, armor, and equipment
+        to help soldiers survive and delve the harsh environments of hell. Teams will occasionally have a Delver-Engineer
+        deployed with them for on-the-spot repairs and and as-needed inventions and constructions. With how new the
+        resources of hell are to humans, many of these inventions and contructions are inherently unsafe
+        and may have unintended side effects. Still, soldiers are often thankful to have a Delver-Engineer on their team.
+
+        With the advent of Safelight, medical personnel rarely deploy deep into hell, instead staying well behind
+        front lines as a last resort for medical needs. Their focus is on creating stim pacs and other
+        enhancing drugs to keep soldiers in the field longer.
+      </p>
+      <p>
+        The denizens of hell themselves often have their own names and terms for the invading humans.
+        The <Faction>Legion</Faction> refers to the soldiers as "False Flames", alluding to the human penchant for fire
+        and explosive technology, none of which matches the "true fire" of infernal power.
+
+        The <Faction>Vastfathom League</Faction> calls the soldiers "Acolytes", indicating their belief that 
+        humans are here to join the League itself, even if they do not yet know it.
+
+        The <Faction>Umbral Nexus</Faction> refers to Delvers as "Exhumers", believing they are here
+        to dig up and steal the secrets of the darkness.
+
+        Meanwhile, the <Faction>Thornwraith Bloom</Faction>, speaking only through connected thoughts, seems to
+        see the soldiers as new limbs to connect to The Bloom. Those who don't or won't
+        submit their mind are the "Infestation".
+
+        The Stoneveined Choir call soldiers the "Noise" or the "Dissodants", 
+        believing them to be a disruption to the song they sing.
+      </p>
     </div>
   </>);
 }

@@ -1,4 +1,4 @@
-import ColumnEntry from "../../../../common-design/ColumnEntry";
+import Hx from "../../../../common-design/Hx/Hx";
 import Tools from "../../../../common-design/Tools";
 import { HeaderSize } from "../../../../ts-types/types";
 
@@ -6,9 +6,8 @@ type Props = {
   hx: HeaderSize;
 };
 export default function HandOfDeath ({ hx }: Props) {
-  return (
-    <ColumnEntry title={{ hx: hx, text: "Hand of Death" }}>
-      <p>{Tools.getLoremIpsum()}</p>
-    </ColumnEntry>
-  )
+  return (<>
+    <Hx hx={hx}>Hand of Death</Hx>
+    <p>{Tools.getLoremIpsum()}</p>
+  </>)
 }

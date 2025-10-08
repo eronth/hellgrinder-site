@@ -1,13 +1,17 @@
+import Hx from '../../../common-design/Hx/Hx';
 import Faction from '../../../common-design/story-references/Faction';
 import TM from '../../../common-design/TM';
 
 function Story() {
 
+  const majorHeader = 'h3';
+  const minorHeader = 'h4';
+
   return (<>
-    <h3>The Situation</h3>
+    <Hx hx={majorHeader}>The Situation</Hx>
     <div className='lore-columns'>
       {/*<!-- Hell's Invasion -->*/}
-      <h4>Hell's Invasion</h4>
+      <Hx hx={minorHeader}>Hell's Invasion</Hx>
       <p>
         In the far off year of 2001, hell broke loose... literally. Gaping holes opened in the earth as demons of all clans
         poured into the world, looking for souls to harvest and lands to conquer. The world was in chaos, and the first
@@ -23,7 +27,7 @@ function Story() {
       </p>
 
       {/*<!-- The war on hell -->*/}
-      <h4>The War on Hell</h4>
+      <Hx hx={minorHeader}>The War on Hell</Hx>
       <p>
         When humankind began to push through the gates into hell itself, they quickly discovered that the demons were not
         the only threat. The various landscapes of hell was as dangerous and varied as the demons themselves, and the
@@ -37,7 +41,7 @@ function Story() {
       </p>
 
       {/*<!-- Materials and research... -->*/}
-      <h4>Netherworld Materials</h4>
+      <Hx hx={minorHeader}>Netherworld Materials</Hx>
       <p>
         The materials of hell were unlike anything found on earth. Each region had a new and strange set of substances to
         study. With each advance came new materials, with new materials came new studies and discoveries, and with new
@@ -53,7 +57,7 @@ function Story() {
         journeys to known resource nodes.
       </p>
 
-      <h4>Resources of Value</h4>
+      <Hx hx={minorHeader}>Resources of Value</Hx>
       <p>
         The most valuable resources that were quickly discovered were:
         <ul>
@@ -67,7 +71,7 @@ function Story() {
       </p>
 
       {/*<!-- Safelight discovered... -->*/}
-      <h4>Safelight Discovered</h4>
+      <Hx hx={minorHeader}>Safelight Discovered</Hx>
       <p>
         That was before the discovery of a new material that
         came to be known as Safelight<TM/> by the research team that first discovered it's . Safelight<TM/> seemed
@@ -79,7 +83,7 @@ function Story() {
       </p>
 
       {/*<!-- The Safelight project... -->*/}
-      <h4>The Safelight Project</h4>
+      <Hx hx={minorHeader}>The Safelight Project</Hx>
       <p>
         Once the potential of Safelight was discovered, the military, with the help of Afterworld Research Corp, quickly
         began to invest in the material. Operations were set up to secure the material, bring back samples for study, and
@@ -95,7 +99,7 @@ function Story() {
     <hr />
 
     {/*<!-- The Hellgrinder -->*/}
-    <h3>The Hellgrinder</h3>
+    <Hx hx={majorHeader}>The Hellgrinder</Hx>
     <div className={'lore-columns'}>
       <p>
         The Hellgrinder was the next invention by Afterworld Research Corp
@@ -116,64 +120,68 @@ function Story() {
         designs for a a variety of vehicle options.
       </p>
 
-        <h4>Hellshaper</h4>
-        <p>
-          Hellshapers are large boring machines, capable of making pathways large enough for heavy tanks and artillery to
-          pass through. Hellshapers move exceedingly slow, meaning each one needs to be allocated to a carefully planned
-          operation.
-        </p>
-        <p>
-          Hellshapers are also the most expensive to operate, requiring a large crew and a large amount of resources
-          to keep running. Generally, operations not deploying from Safelight Havens might deploy from a Hellshaper instead, as
-          it acts as a barely mobile base of its own.
-        </p>
-        <h4>ARC Grinder</h4>
-        <p>
-          The Advanced Recon Carrier (ARC) Grinders are medium sized boring machines, capable of making pathways large enough for light tanks and
-          armored personnel carriers to pass through. ARC Grinders move at a moderate pace, and can be deployed in a variety
-          of operations.
-        </p>
-        <p>
-          One of the most common uses of an ARC Grinder is establishing a new Safelight Haven, as it can
-          be equipped with a larger Safelight Gemstone on to act as a small pocket of safety wherever it deploys. The mechanism
-          is designed to be broken down and reassembled into more permanent shelter.
-        </p>
-        <h4>Squad Transport</h4>
-        <p>
-          The simple name Squad Transport is apt. It is a relatively small boring machine, with enough room for a
-          squad of soldiers inside. It can be deployed to quickly move soldiers to their next operation or objective,
-          and provides enough space for a squad to rest and recover between operations.
-        </p>
-        <p>
-          Squad Transports are equipped with small to medium sized Safelight Gemstones, a precaution for the soldiers
-          now isolated from their larger division.
-        </p>
-        <h4>Tactical Insertion Strike Craft (TISC)</h4>
-        <p>
-          A squad can use 1-3 TISCs to quickly deploy to a designated location. Each TISC is capable of holding up to 3 soldiers
-          and their gear. All TISCs sport extra armor in key locations, allowing it to act as cover for soldiers as they exit
-          the craft, usually into combat. A TISC carries no Safelight Gemestones, aside from the shards carried by the soldiers
-          inside.
-        </p>
-        <h4>Scouter Pod</h4>
-        <p>
-          A Scouter Pod is a small, single person boring machine. It is used to scout ahead of the main force, looking for
-          advantageous positions or weaknesses in enemy defenses. A Scouter Pod can often be deployed with more precision
-          than a TISC, allowing for advantageous positioning of a single soldier.
-        </p>
-        <p>
-          Scouter Pods are less commonly produced, and not all squads are equipped with them. Those that find them in their
-          equipment list enjoy more robust tactics when deploying to new operations, and can sometimes employ one for a
-          mid-operation repositioning. A squad might only have one, or two if they are lucky.
-        </p>
+      <Hx hx={minorHeader}>Hellshaper</Hx>
+      <p>
+        Hellshapers are large boring machines, capable of making pathways large enough for heavy tanks and artillery to
+        pass through. Hellshapers move exceedingly slow, meaning each one needs to be allocated to a carefully planned
+        operation.
+      </p>
+      <p>
+        Hellshapers are also the most expensive to operate, requiring a large crew and a large amount of resources
+        to keep running. Generally, operations not deploying from Safelight Havens might deploy from a Hellshaper instead, as
+        it acts as a barely mobile base of its own.
+      </p>
+
+      <Hx hx={minorHeader}>ARC Grinder</Hx>
+      <p>
+        The Advanced Recon Carrier (ARC) Grinders are medium sized boring machines, capable of making pathways large enough for light tanks and
+        armored personnel carriers to pass through. ARC Grinders move at a moderate pace, and can be deployed in a variety
+        of operations.
+      </p>
+      <p>
+        One of the most common uses of an ARC Grinder is establishing a new Safelight Haven, as it can
+        be equipped with a larger Safelight Gemstone on to act as a small pocket of safety wherever it deploys. The mechanism
+        is designed to be broken down and reassembled into more permanent shelter.
+      </p>
+
+      <Hx hx={minorHeader}>Squad Transport</Hx>
+      <p>
+        The simple name Squad Transport is apt. It is a relatively small boring machine, with enough room for a
+        squad of soldiers inside. It can be deployed to quickly move soldiers to their next operation or objective,
+        and provides enough space for a squad to rest and recover between operations.
+      </p>
+      <p>
+        Squad Transports are equipped with small to medium sized Safelight Gemstones, a precaution for the soldiers
+        now isolated from their larger division.
+      </p>
+
+      <Hx hx={minorHeader}>Tactical Insertion Strike Craft (TISC)</Hx>
+      <p>
+        A squad can use 1-3 TISCs to quickly deploy to a designated location. Each TISC is capable of holding up to 3 soldiers
+        and their gear. All TISCs sport extra armor in key locations, allowing it to act as cover for soldiers as they exit
+        the craft, usually into combat. A TISC carries no Safelight Gemestones, aside from the shards carried by the soldiers
+        inside.
+      </p>
+
+      <Hx hx={minorHeader}>Scouter Pod</Hx>
+      <p>
+        A Scouter Pod is a small, single person boring machine. It is used to scout ahead of the main force, looking for
+        advantageous positions or weaknesses in enemy defenses. A Scouter Pod can often be deployed with more precision
+        than a TISC, allowing for advantageous positioning of a single soldier.
+      </p>
+      <p>
+        Scouter Pods are less commonly produced, and not all squads are equipped with them. Those that find them in their
+        equipment list enjoy more robust tactics when deploying to new operations, and can sometimes employ one for a
+        mid-operation repositioning. A squad might only have one, or two if they are lucky.
+      </p>
     </div>
 
     <hr />
 
     {/*<!-- Soldiers -->*/}
-    <h3>Those who Delve</h3>
+    <Hx hx={majorHeader}>Those who Delve</Hx>
     <div className='lore-columns'>
-      <h4>Soldiers</h4>
+      <Hx hx={minorHeader}>Soldiers</Hx>
       <p>
         The soldiers who delve deep into Hell are officially designated as the <b>Descent Corps</b>,
         though on Earth they are sometimes praised as <b>Redeemers</b>. 
@@ -227,7 +235,8 @@ function Story() {
         creating stim pacs and other enhancing drugs to keep soldiers
         in the field longer.
       </p>
-      <h4>Denizens' Names</h4>
+
+      <Hx hx={minorHeader}>Denizens' Names</Hx>
       <p>
         The denizens of Hell have their own names for the intrusive humanity.
         The <Faction>Legion</Faction> refers to the soldiers as "<b>False Flames</b>", alluding to

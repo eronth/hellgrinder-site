@@ -1,4 +1,4 @@
-import ColumnEntry from "../../../../common-design/ColumnEntry";
+import Hx from "../../../../common-design/Hx/Hx";
 import Tools from "../../../../common-design/Tools";
 import ForgefiendSyndicate from "./ForgefiendSyndicate";
 import HandOfDeath from "./HandOfDeath";
@@ -12,13 +12,11 @@ export default function OtherFactions() {
   const factionHxLevel = 'h4';
 
   return (<>
-    <ColumnEntry
-      title={{ hx: 'h3', text: 'Other Factions' }}>
+    <Hx hx='h3'>Other Factions</Hx>
+    <div className='lore-columns'>
       <p>Other Factions survive...</p>
       <p>{Tools.getLoremIpsum()}</p>
-    </ColumnEntry>
 
-    <div className='col-handler'>
       {/* Individual Factions */}
       <ForgefiendSyndicate hx={factionHxLevel} />
       <HandOfDeath hx={factionHxLevel} />

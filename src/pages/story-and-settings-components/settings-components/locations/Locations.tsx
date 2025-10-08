@@ -1,4 +1,4 @@
-import ColumnEntry from "../../../../common-design/ColumnEntry";
+import Hx from "../../../../common-design/Hx/Hx";
 import Tools from "../../../../common-design/Tools";
 import DeepblindCaverns from "./DeepwindCaverns";
 import GhastcursedVillages from "./GhastcursedVillages";
@@ -14,13 +14,11 @@ export default function OtherFactions() {
   const locationHxLevel = 'h4';
 
   return (<>
-    <ColumnEntry
-      title={{ hx: 'h3', text: 'Realms of the Netherworld' }}>
+    <Hx hx={'h3'}>Realms of the Netherworld</Hx>
+
+    <div className='lore-columns'>
       <p>Other Factions survive...</p>
       <p>{Tools.getLoremIpsum()}</p>
-    </ColumnEntry>
-
-    <div className='col-handler'>
       {/* Various individual realms */}
       <DeepblindCaverns hx={locationHxLevel} />
       <GhastcursedVillages hx={locationHxLevel} />

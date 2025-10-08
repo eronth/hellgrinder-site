@@ -187,59 +187,73 @@ function Story() {
     <div>
       <h3>Soldiers</h3>
       <p>
-        The soldiers who delve deep into hell are officially known as Descent Corps, and
-        some on earth will refer to these soldiers as Redeemers.
-        Many people simply call these soldiers Delvers. Those deployed soldiers
-        often feel the weight and hopelessness of their operations, and may refer
-        to themselves as Wyrmfood in a self-deprecating manner.
-
+        The soldiers who delve deep into Hell are officially designated as the <b>Descent Corps</b>,
+        though on Earth they are sometimes praised as <b>Redeemers</b>. 
+        Most simply call them <b>Delvers</b>. Among the deployed, cynicism runs deep:
+        soldiers of the Decent Corps often refer to themselves
+        as <b>Wyrmfood</b>, as a show of hopelessness.
+      </p>
+      <p>
         The standard infantryman of a Delver team is often referred to as a Grunt, 
         though this term is not officially recognized by the military. They are responsible
-        for the bulk of the fighting and operations away from 
-        
-        The path-boring teams are known by the soldiers as Grind Corps, sometimes called Gravediggers
-        by those who fear the mission is too dangerous for humans to attempt. 
-        
-        The Drill Rats or Pit Rats are soldiers in charge of the maintenance of the Hellgrinders.
-        
-        The EchoTechs, or ETs are in charge of the comms units for chatter within hell *and* between hell and the earth.
-        
-        The Long-Haulers work tirelessly to keep the front lines stocked with ammo, food, and other essentials. They must
-        constantly re-tread the carved paths, and need to constantly correct changes in the terrain or eliminate
-        new demon threats else they risk cutting off the front lines from their supplies.
-
-        A team's Artifactors work with the new resources of hell to
+        for the bulk of the fighting and reconnaissance beyond the safe zones.
+      </p>
+      <p>    
+        The path-boring teams are known by the soldiers as <b>Grind Corps</b>, sometimes
+        called <b>Gravediggers</b> by those who believe humanity is barreling towards its own ruin
+        through these operations.
+        They are supported by the <b>Drill Rats</b> or <b>Pit Rats</b>; soldiers in charge of
+        the maintenance of the Hellgrinders and related equipment.
+      </p>
+      <p>
+        <b>EchoTechs</b> — or simply <b>ETs</b> — manage communication arrays, 
+        maintaining chatter both within Hell <i>and</i> between the
+        underworld and Earth.
+      </p>
+      <p>
+        The <b>Long-Haulers</b> keep the front stocked with munitions, food, and oxygen,
+        walking the same carved tunnels day after day to ensure the Delvers are never cut off.
+        Their route work is constant and perilous; they must constantly correct changes in the
+        terrain or eliminate new demon threats else they risk cutting off the front
+        lines from their supplies.
+      </p>
+      <p>
+        A team's <b>Artifactors</b> work with the new resources of hell to
         create improved weapons, armor, and equipment
         to help soldiers survive and delve the harsh environments
         of hell. Teams will occasionally have an artifactor
-        deployed with them for on-the-spot repairs and and as-needed
+        deployed with them for on-the-spot repairs and as-needed
         inventions and constructions. With how new the
         resources of hell are to humans, many of these inventions
         and constructions are inherently unsafe
         and may have unintended side effects. Still, soldiers
         are often thankful to have a Delver-Engineer on their team.
-
-        With the advent of Safelight, medical personnel rarely deploy deep into hell, instead staying well behind
-        front lines as a last resort for medical needs. Their focus is on creating stim pacs and other
-        enhancing drugs to keep soldiers in the field longer.
       </p>
       <p>
-        The denizens of hell themselves often have their own names and terms for the invading humans.
-        The <Faction>Legion</Faction> refers to the soldiers as "False Flames", alluding to the human penchant for fire
+        With the advent of <b>Safelight</b> technology, medics rarely deploy far from the rear lines. Instead, they focus on
+        producing stimulants and regenerative serums to keep Delvers functional in the field. The few field medics who remain
+        are regarded with near-religious reverence—and fear—for they’re the last faces most soldiers ever see.
+      </p>
+      <p>
+        The denizens of Hell have their own names for the intrusive humanity.
+        The <Faction>Legion</Faction> refers to the soldiers as "<b>False Flames</b>", alluding to
+        the human penchant for fire
         and explosive technology, none of which matches the "true fire" of infernal power.
 
-        The <Faction>Vastfathom League</Faction> calls the soldiers "Acolytes", indicating their belief that 
-        humans are here to join the League itself, even if they do not yet know it.
+        The <Faction>Vastfathom League</Faction> calls the soldiers "<b>Acolytes</b>",
+        indicating their belief that 
+        humans have arrived in hell to join the League itself, even if they do not yet know it.
 
-        The <Faction>Umbral Nexus</Faction> refers to Delvers as "Exhumers", believing they are here
+        The <Faction>Umbral Nexus</Faction> refers to Delvers as "<b>Exhumers</b>",
+        believing they are here
         to dig up and steal the secrets of the darkness.
 
         Meanwhile, the <Faction>Thornwraith Bloom</Faction>, speaking only through connected thoughts, seems to
-        see the soldiers as new limbs to connect to The Bloom. Those who don't or won't
-        submit their mind are the "Infestation".
+        see the soldiers as new limbs to connect to <b>The Bloom</b>. Those who don't or won't
+        submit their mind are the "<b>Infestation</b>".
 
-        The Stoneveined Choir call soldiers the "Noise" or the "Dissodants", 
-        believing them to be a disruption to the song they sing.
+        The Stoneveined Choir call soldiers the "<b>Noise</b>" or the "<b>Dissodants</b>",
+        believing them to be a disruption to the hymns they sing.
       </p>
     </div>
   </>);

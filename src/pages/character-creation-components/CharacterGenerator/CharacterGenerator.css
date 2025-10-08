@@ -150,10 +150,15 @@
 }
 
 /* Character Stats Table Styles */
+.col-handler {
+  .character-stats-table {
+    width: 100%;
+  }
+}
 .character-stats-table {
-  width: 100%;
+  width: calc(100% - 2 * var(--page-margin));
   border-collapse: collapse;
-  margin: 1rem 0;
+  margin:  0;
 
   td {
     padding: 0.5rem;

@@ -16,13 +16,13 @@
     break-after: avoid;
     break-inside: avoid-column;
     page-break-inside: avoid;
-    &::after {
+    /* &::after {
       content: "";
       display: block;
       --special-break-height: 300px;
       height: var(--special-break-height);
       margin-bottom: calc(-1 * var(--special-break-height));
-    }
+    } */
     /* &::before {
       content: "";
       display: block;

@@ -108,21 +108,28 @@ function Story() {
     </div>
 
     {/*<!-- The Hellgrinder -->*/}
-    <div>
-      <h3>The Hellgrinder</h3>
+    
+    <h3>The Hellgrinder</h3>
+    <div className={'lore-columns'}>
       <p>
-        The Hellgrinder was the next invention by Afterworld Research Corp under the Safelight Project. The Hellgrinder
-        was a specialized drill, imbued with tiny flecks of Safelight<TM /> that allowed it to bore through the toughest
-        walls of Hell and create passageways that resisted the warping of Hell's pathways. Though slow to operate, the
-        Hellgrinder was a massive success, and the military quickly began to use it to create new predictable paths
+        The Hellgrinder was the next invention by Afterworld Research Corp
+        under the Safelight Project. The Hellgrinder
+        was a specialized drill, imbued with tiny flecks of
+        Safelight<TM /> that allowed it to bore through the toughest
+        walls of Hell and create passageways that resisted the
+        warping of Hell's pathways.
+      </p>
+      <p>
+        Though slow to operate, the
+        Hellgrinder was a massive success, and the military quickly
+        began to use it to create new predictable paths
         between Safelight Havens and forward operations.
       </p>
       <p>
-        The Hellgrinder was developed in a number of sizes and designs for a a variety of vehicle options.
+        The Hellgrinder was developed in a number of sizes and
+        designs for a a variety of vehicle options.
       </p>
-    </div>
-    <div className={'col-handler'}>
-      <div>
+
         <h4>Hellshaper</h4>
         <p>
           Hellshapers are large boring machines, capable of making pathways large enough for heavy tanks and artillery to
@@ -134,8 +141,6 @@ function Story() {
           to keep running. Generally, operations not deploying from Safelight Havens might deploy from a Hellshaper instead, as
           it acts as a barely mobile base of its own.
         </p>
-      </div>
-      <div>
         <h4>ARC Grinder</h4>
         <p>
           The Advanced Recon Carrier (ARC) Grinders are medium sized boring machines, capable of making pathways large enough for light tanks and
@@ -147,8 +152,6 @@ function Story() {
           be equipped with a larger Safelight Gemstone on to act as a small pocket of safety wherever it deploys. The mechanism
           is designed to be broken down and reassembled into more permanent shelter.
         </p>
-      </div>
-      <div>
         <h4>Squad Transport</h4>
         <p>
           The simple name Squad Transport is apt. It is a relatively small boring machine, with enough room for a
@@ -159,8 +162,6 @@ function Story() {
           Squad Transports are equipped with small to medium sized Safelight Gemstones, a precaution for the soldiers
           now isolated from their larger division.
         </p>
-      </div>
-      <div>
         <h4>Tactical Insertion Strike Craft (TISC)</h4>
         <p>
           A squad can use 1-3 TISCs to quickly deploy to a designated location. Each TISC is capable of holding up to 3 soldiers
@@ -168,8 +169,6 @@ function Story() {
           the craft, usually into combat. A TISC carries no Safelight Gemestones, aside from the shards carried by the soldiers
           inside.
         </p>
-      </div>
-      <div>
         <h4>Scouter Pod</h4>
         <p>
           A Scouter Pod is a small, single person boring machine. It is used to scout ahead of the main force, looking for
@@ -181,11 +180,10 @@ function Story() {
           equipment list enjoy more robust tactics when deploying to new operations, and can sometimes employ one for a
           mid-operation repositioning. A squad might only have one, or two if they are lucky.
         </p>
-      </div>
     </div>
 
     {/*<!-- Soldiers -->*/}
-    <div>
+
       <h3>Those who Delve</h3>
       <div className='lore-columns'>
         <h4>Soldiers</h4>
@@ -248,11 +246,13 @@ function Story() {
           The <Faction>Legion</Faction> refers to the soldiers as "<b>False Flames</b>", alluding to
           the human penchant for fire
           and explosive technology, none of which matches the "true fire" of infernal power.
-
+        </p>
+        <p>
           The <Faction>Vastfathom League</Faction> calls the soldiers "<b>Acolytes</b>",
           indicating their belief that 
           humans have arrived in hell to join the League itself, even if they do not yet know it.
-
+        </p>
+        <p>
           The <Faction>Umbral Nexus</Faction> refers to Delvers as "<b>Exhumers</b>",
           believing they are here
           to dig up and steal the secrets of the darkness.
@@ -261,11 +261,12 @@ function Story() {
           Meanwhile, the <Faction>Thornwraith Bloom</Faction>, speaking only through connected thoughts, seems to
           see the soldiers as new limbs to connect to <b>The Bloom</b>. Those who don't or won't
           submit their mind are the "<b>Infestation</b>".
-
+        </p>
+        <p>
           The Stoneveined Choir call soldiers the "<b>Noise</b>" or the "<b>Dissodants</b>",
           believing them to be a disruption to the hymns they sing.
         </p>
-      </div>
+ 
     </div>
   </>);
 }

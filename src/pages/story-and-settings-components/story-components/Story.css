@@ -13,7 +13,7 @@
   h2, h3, h4 {
     margin-top: 0;
     padding-top: 0;
-    break-after: avoid-column;
+    break-after: avoid;
     break-inside: avoid-column;
   }
 }

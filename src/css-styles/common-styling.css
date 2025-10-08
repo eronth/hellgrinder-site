@@ -15,12 +15,22 @@
     padding-top: 0;
     break-after: avoid;
     break-inside: avoid-column;
+    page-break-inside: avoid;
     &::after {
       content: "";
       display: block;
-      height: 100px;
-      margin-bottom: -100px;
+      --special-break-height: 300px;
+      height: var(--special-break-height);
+      margin-bottom: calc(-1 * var(--special-break-height));
     }
+    /* &::before {
+      content: "";
+      display: block;
+      height: 8rem;
+      margin-bottom: -8rem;
+      page-break-inside: avoid;
+      break-inside: avoid;
+     } */
   }
 }
 

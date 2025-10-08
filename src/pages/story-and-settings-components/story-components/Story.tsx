@@ -208,11 +208,16 @@ function Story() {
         constantly re-tread the carved paths, and need to constantly correct changes in the terrain or eliminate
         new demon threats else they risk cutting off the front lines from their supplies.
 
-        Hell-Engineers and Hell-Workers work with the new resources of hell to create improved weapons, armor, and equipment
-        to help soldiers survive and delve the harsh environments of hell. Teams will occasionally have a Delver-Engineer
-        deployed with them for on-the-spot repairs and and as-needed inventions and constructions. With how new the
-        resources of hell are to humans, many of these inventions and contructions are inherently unsafe
-        and may have unintended side effects. Still, soldiers are often thankful to have a Delver-Engineer on their team.
+        A team's Artifactors work with the new resources of hell to
+        create improved weapons, armor, and equipment
+        to help soldiers survive and delve the harsh environments
+        of hell. Teams will occasionally have an artifactor
+        deployed with them for on-the-spot repairs and and as-needed
+        inventions and constructions. With how new the
+        resources of hell are to humans, many of these inventions
+        and constructions are inherently unsafe
+        and may have unintended side effects. Still, soldiers
+        are often thankful to have a Delver-Engineer on their team.
 
         With the advent of Safelight, medical personnel rarely deploy deep into hell, instead staying well behind
         front lines as a last resort for medical needs. Their focus is on creating stim pacs and other

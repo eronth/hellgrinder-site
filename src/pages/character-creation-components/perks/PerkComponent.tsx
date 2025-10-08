@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Perk } from "../../../ts-types/types";
+import './PerkComponent.css';
 
 type Props = {
   perk: Perk;

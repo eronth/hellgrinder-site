@@ -60,15 +60,15 @@ function Story() {
       <Hx hx={minorHeader}>Resources of Value</Hx>
       <p>
         The most valuable resources that were quickly discovered were:
-        <ul>
-          <li>Brimstone and brimsteel from the Infernal Location (TODO: FIX ME).</li>
-          <li>Demonhides and apathal coral from the Shoalpocked Expanse.</li>
-          <li>Nearly any large foliage from the Twisted Wilds.</li>
-          <li>Inversion cores and fool's dirt from the Deepblind Caverns.</li>
-          <li>Ghostrot essences, everblood pools, and ichormud from the Ghastcursed Villages.</li>
-          <li>Aukageolt and it's various related minerals from the Zephyrian Spires.</li>
-        </ul>
       </p>
+      <ul>
+        <li>Brimstone and brimsteel from the Infernal Location (TODO: FIX ME).</li>
+        <li>Demonhides and apathal coral from the Shoalpocked Expanse.</li>
+        <li>Nearly any large foliage from the Twisted Wilds.</li>
+        <li>Inversion cores and fool's dirt from the Deepblind Caverns.</li>
+        <li>Ghostrot essences, everblood pools, and ichormud from the Ghastcursed Villages.</li>
+        <li>Aukageolt and it's various related minerals from the Zephyrian Spires.</li>
+      </ul>
 
       {/*<!-- Safelight discovered... -->*/}
       <Hx hx={minorHeader}>Safelight Discovered</Hx>

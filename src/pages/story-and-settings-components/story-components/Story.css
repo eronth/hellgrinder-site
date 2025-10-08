@@ -1,0 +1,32 @@
+/* Wrapper around your lore paragraphs */
+.lore-columns {
+  margin: 0 auto;
+  column-count: 3;
+  column-gap: 1rem;
+  column-rule: var(--lore-column-rule);
+  hyphens: auto;
+  
+  p {
+    break-inside: avoid-column;    /* try not to split a single <p> across columns */
+  }
+  
+  h2, h3, h4 {
+    margin-top: 0;
+    padding-top: 0;
+    break-after: avoid-column;
+    break-inside: avoid-column;
+  }
+}
+
+@media(max-width: 1140px) {
+  .lore-columns {
+    column-count: 2;
+  }
+}
+/* Make it single-column on narrower screens */
+@media (max-width: 850px) {
+  .lore-columns {
+    column-count: 1;
+    column-rule: none;
+  }
+}

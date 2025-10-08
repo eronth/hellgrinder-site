@@ -14,6 +14,8 @@
   --header-primary-color: hsl(0, 0%, 100%);
   --header-quaternary-color: hsl(238, 100%, 87%);
 
+  /* Lore Columns */
+  --lore-column-rule: 1px solid rgba(255,255,255,0.1);
 
   /* Card and table background colors - slightly different from site background */
   --card-background: #2a2a2a;
@@ -59,6 +61,9 @@
   /* Header (<Hx>) colors */
   --header-primary-color: hsl(208, 37%, 20%);
   --header-quaternary-color: hsl(238, 80%, 40%);
+
+  /* Lore Columns */
+  --lore-column-rule: 1px solid rgba(0,0,0,0.08);
 
   /* Card and table background colors - slightly different from site background */
   --card-border-color: hsl(0, 0%, 57%);

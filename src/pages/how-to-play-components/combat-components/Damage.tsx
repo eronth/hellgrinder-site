@@ -19,7 +19,7 @@ export default function Damage() {
         There are several damage types in the world of Hellgrinder. Many clans of demons are attuned to one type or another,
         typically imbuing their attacks with that type and granting them resistance against it.
       </p>
-      <div>Damage types are as follows:</div>
+      <div>The standard damage types are as follows:</div>
       <ol className="roman" start={0}>
         <li>Metal</li>
         <li>Infernal</li>

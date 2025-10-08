@@ -1,4 +1,3 @@
-import ColumnEntry from "../../../../common-design/ColumnEntry";
 import { HeaderSize } from "../../../../ts-types/types";
 import AshbornLegion from "./AshbornLegion";
 import StoneveinedOrder from "./StoneveinedOrder";
@@ -7,16 +6,22 @@ import ThornwraithCovenant from "./ThornwraithCovenant";
 import UmbralNexus from "./UmbralNexus";
 import VastfathomDominion from "./VastfathomDominion";
 import WanderlostCrews from "./WanderlostCrews.tsx";
+import Hx from "../../../../common-design/Hx/Hx.tsx";
 
 export default function DemonClans() {
   const titleHxLevel: HeaderSize = 3;
   const factionHxLevel = (titleHxLevel + 1) as HeaderSize;
 
   return (<>
-    <ColumnEntry
-      title={{ hx: titleHxLevel, text: 'Demon Clans' }}>
-      <p>The infernal depths of Hell teem with countless demon clans, but seven (six?) stand above all others in power and influence. These formidable factions, each aligned with a primordial force, have shaped the very essence of the underworld. Known collectively as the Sovereign Sextet, these clans vie for supremacy in an eternal power struggle that has begun to spill into the mortal realm.</p>
-    </ColumnEntry>
+    <Hx hx={titleHxLevel}>Demon Clans</Hx>
+    <p>
+      The infernal depths of Hell teem with countless demon clans,
+      but seven (six?) stand above all others in power and influence.
+      These formidable factions, each aligned with a primordial force,
+      have shaped the very essence of the underworld. Known collectively
+      as the Sovereign Sextet, these clans vie for supremacy in an eternal
+      power struggle that has begun to spill into the mortal realm.
+    </p>
     
     <div className='col-handler'>
       {/* Individual Clans */}

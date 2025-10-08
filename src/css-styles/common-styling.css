@@ -28,16 +28,16 @@ ol.roman {
     break-inside: avoid-column;
     break-after: avoid-column;
 
-    /* &::after {
+    &::after {
       content: "";
       display: block;
-      --special-break-height: 100px;
+      --special-break-height: 200px;
       height: var(--special-break-height);
       margin-bottom: calc(-1 * var(--special-break-height));
-      break-before: avoid-column;
+      /* break-before: avoid-column;
       break-inside: avoid-column;
-      break-after: avoid-column;
-    } */
+      break-after: avoid-column; */
+    }
     /* &::before {
       content: "";
       display: block;

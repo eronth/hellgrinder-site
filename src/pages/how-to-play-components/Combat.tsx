@@ -1,4 +1,3 @@
-import ColumnEntry from "../../common-design/ColumnEntry";
 import Hx from "../../common-design/Hx/Hx.tsx";
 import Tools from "../../common-design/Tools";
 import Actions from "../../pages/how-to-play-components/combat-components/Actions";
@@ -50,10 +49,9 @@ export default function Combat() {
         <li>[Range Attacks] that pass through your [Rear Rear] and [Melee Attacks] that originate from your [Rear Arc] get +3 on Hit Checks and +1 to Damage against you.</li>
       </ul>
 
-      <ColumnEntry title={{ hx: 'h3', text: 'Opportunity Strike' }}>
-        <p>When you move within [Adjacent Range] of a creature's [Front Arc] or [Peripheral Arc],
-          they can make a free attack against you. Demons are quick, and typically have an infinite number of these attacks. Humans, however, can't make another Opportunity Strike until the start of their turn.</p>
-      </ColumnEntry>
+      <Hx hx={innerHx}>Opportunity Strikes</Hx>
+      <p>When you move within [Adjacent Range] of a creature's [Front Arc] or [Peripheral Arc],
+        they can make a free attack against you. Demons are quick, and typically have an infinite number of these attacks. Humans, however, can't make another Opportunity Strike until the start of their turn.</p>
     </div>
 
     <Maneuvers />

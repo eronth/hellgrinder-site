@@ -1,3 +1,13 @@
+ul, ol {
+  padding-left: 1.5rem;
+}
+ul {
+  list-style-type: "-  ";
+}
+ol.roman {
+  list-style-type: upper-roman;
+}
+
 /* Wrapper around lore paragraphs */
 .lore-columns {
   margin-bottom: 2.5rem;
@@ -6,22 +16,27 @@
   column-rule: var(--lore-column-rule);
   hyphens: auto;
   
-  p {
-    break-inside: avoid-column;    /* try not to split a single <p> across columns */
+  p,
+  ul, ol, li {
+    break-inside: avoid-column;
   }
-  
-  h2, h3, h4 {
+
+  h2, h3, h4, h5, h6, div.simple-header {
     margin-top: 0;
     padding-top: 0;
-    break-after: avoid;
+    break-before: auto;
     break-inside: avoid-column;
-    page-break-inside: avoid;
+    break-after: avoid-column;
+
     /* &::after {
       content: "";
       display: block;
-      --special-break-height: 300px;
+      --special-break-height: 100px;
       height: var(--special-break-height);
       margin-bottom: calc(-1 * var(--special-break-height));
+      break-before: avoid-column;
+      break-inside: avoid-column;
+      break-after: avoid-column;
     } */
     /* &::before {
       content: "";

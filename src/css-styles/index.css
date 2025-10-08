@@ -283,13 +283,6 @@ h4 {
   color: var(--simple-header-color, white);
 }
 
-ul {
-  list-style-type: "- ";
-}
-ol.roman {
-  list-style-type: upper-roman;
-}
-
 /*
   Idk why these tables need a special
   boy width calculation compared to the rest.

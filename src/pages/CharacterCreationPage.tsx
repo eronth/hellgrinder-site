@@ -4,7 +4,6 @@ import { Toggle } from '../common-design/Toggle/Toggle';
 import CharacterCreationRules from "./character-creation-components/CharacterCreationRules";
 import CharacterGenerator from "./character-creation-components/CharacterGenerator/CharacterGenerator";
 import { TabType } from "../ts-types/types";
-// Todo merge into Character Creation Page as a sub-tab/toggle.
 
 export default function CharacterCreationPage() {
   const page: TabType = 'character-creation';

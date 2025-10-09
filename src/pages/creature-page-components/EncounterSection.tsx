@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Encounter } from '../../ts-types/encounter-types';
 import CreatureCard from './CreatureCard';
-import CollapsibleSection from './CollapsibleSection';
+import CollapsibleSection from './CollapsibleSection/CollapsibleSection';
 import { EncounterStorage } from '../../common-design/utils/EncounterStorage';
 
 type Props = {

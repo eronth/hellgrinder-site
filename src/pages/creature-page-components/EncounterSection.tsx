@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { Encounter } from '../../ts-types/encounter-types';
-import CreatureCard from './CreatureCard';
+import CreatureCard from './CreatureCard/CreatureCard';
 import CollapsibleSection from './CollapsibleSection/CollapsibleSection';
 import { EncounterStorage } from '../../common-design/utils/EncounterStorage';
 

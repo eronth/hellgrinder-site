@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 // Components
 import Tools from "../../common-design/Tools";
-import CreatureCard from "../creature-page-components/CreatureCard";
+import CreatureCard from "./CreatureCard/CreatureCard";
 import CollapsibleSection from "../creature-page-components/CollapsibleSection/CollapsibleSection";
 import FactionSelector from "../creature-page-components/FactionSelector/FactionSelector";
 import EncounterSection from "../creature-page-components/EncounterSection";

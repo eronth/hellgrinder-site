@@ -4,6 +4,7 @@ import { Creature, CreatureAbility, CreatureTier, DamageTakenMod } from '../../t
 import { AttackMode, DamageElement } from '../../ts-types/types';
 import StatusKeyword from '../../common-design/StatusKeyword';
 import _ from "lodash";
+import SkillCheck from "../../common-design/SkillCheck/SkillCheck";
 
 type PrimaryDamageAndGeneric = DamageElement | 'Core Type';
 type AbsorbDamageAndGeneric = DamageElement | 'PROMOTE';
@@ -160,8 +161,10 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
           When Ashborn Legion dies, it explodes in a burst of Infernal energy,
           dealing Infernal damage equal to Tier+1 to all adjacent creatures.
           <br />
-          All non-Ashborn Legion creatures hit by this must get Rank 2 or higher
-          on a [] Skill Check or gain [Blinded 1].
+          All non-Ashborn Legion creatures hit by this must get
+          Rank 2 or higher
+          on a <SkillCheck tags={['Stoic', 'Agility']}/> or
+          gain <StatusKeyword effect="blinded" x={1} />.
         </>,
         permittedTiers: 'all'
       },
@@ -170,8 +173,12 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
         description: <>
           When hitting a creature with an attack that deals Infernal damage,
           if that creature is adjacent to two other Ashborn Legion creatures,
-          that creature must make Rank 2 a [Stoic Agility] Skill Check. 
-          Rank 1: [Immolated 1 for 1]. Rank 0: [Immolated 1 for 2].
+          that creature must get a Rank 2 Success on
+          a <SkillCheck tags={['Stoic', 'Agility']}/>.
+          <br />
+          Rank 1: <StatusKeyword effect="immolated" x={1} y={1} />.
+          <br />
+          Rank 0: <StatusKeyword effect="immolated" x={1} y={2} />.
         </>,
         permittedTiers: 'all'
       }

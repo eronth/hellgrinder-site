@@ -1,15 +1,16 @@
-import AttackModeComponent from '../../common-design/AttackModeComponent';
-import { Creature } from '../../ts-types/creature-types';
-import { EncounterCreature } from '../../ts-types/encounter-types';
-import DamageModComponent from './DamageModComponent';
+import AttackModeComponent from '../../../common-design/AttackModeComponent';
+import { Creature } from '../../../ts-types/creature-types';
+import { EncounterCreature } from '../../../ts-types/encounter-types';
+import DamageModComponent from '../DamageModComponent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import React, { isValidElement, useState } from 'react';
-import { movementIcon } from '../../common-design/CommonIcons';
+import { healthIcon, movementIcon } from '../../../common-design/CommonIcons';
+import './CreatureCard.css'
 
 type Props = {
   data: Creature;
-  onAddToEncounter?: (creature: Creature) => void;
+  onAddToEncounter?: null | ((creature: Creature) => void);
   // Encounter mode props
   isEncounterMode?: boolean;
   encounterCreature?: EncounterCreature;
@@ -68,9 +69,11 @@ export default function CreatureCard({
     const factionMap: { [key: string]: string } = {
       'Ashborn Legion': 'faction-ashborn-legion',
       'Stoneveined Order': 'faction-stoneveined-order',
+      'Stoneveined Choir': 'faction-stoneveined-order', // Alternative name
       'Vastfathom League': 'faction-vastfathom-league',
       'Thornwraith Covenant': 'faction-thornwraith-covenant',
       'Thornwraith Conclave': 'faction-thornwraith-covenant', // Alternative name
+      'Thornwraith Bloom': 'faction-thornwraith-covenant', // Alternative name
       'Wanderlost Crews': 'faction-wanderlost-crews',
       'Wanderlost Crew': 'faction-wanderlost-crews', // Alternative name
       'Zephpter Horde': 'faction-zephpter-horde',
@@ -80,7 +83,7 @@ export default function CreatureCard({
       'Hand of Death': 'faction-hand-of-death',
       "Heaven's Host": 'faction-heavens-host',
       'Voidfire Conclave': 'faction-voidfire-conclave',
-      'Witch Coven': 'faction-witch-coven'
+      'Hagswell Covenant': 'faction-witch-coven'
     };
 
     // Find the first matching faction
@@ -97,12 +100,15 @@ export default function CreatureCard({
   const isFactionTag = (tag: string | { tag: string; value: number }) => {
     const tagString = typeof tag === 'string' ? tag : tag.tag;
     const factionTags = [
-      'Ashborn Legion', 'Stoneveined Order', 'Vastfathom League',
+      'Ashborn Legion',
+      'Stoneveined Order', 'Stoneveined Choir',
+      'Vastfathom League',
       'Thornwraith Covenant', 'Thornwraith Covenant',
+      'Thornwraith Bloom',
       'Zephpter Horde', 'Umbral Nexus',
       'Wanderlost Crews', 'Wanderlost Crew',
       'Sinner', 'Forgefiend Syndicate',
-      'Hand of Death', "Heaven's Host", 'Voidfire Conclave', 'Witch Coven'
+      'Hand of Death', "Heaven's Host", 'Voidfire Conclave', 'Hagswell Covenant'
     ];
     return factionTags.includes(tagString);
   };
@@ -156,7 +162,7 @@ export default function CreatureCard({
     ) : (
       data.health
     )}
-    {isEncounterMode && encounterCreature ? `/${encounterCreature.maxHealth}` : ''}⛨
+    {isEncounterMode && encounterCreature ? `/${encounterCreature.maxHealth}` : ''}{healthIcon}
   </>);
 
   const renderAbilityDescription = (description: unknown): React.ReactNode => {
@@ -212,7 +218,7 @@ export default function CreatureCard({
       </span>
       <span>Size: {data.size}{hexIcon}</span>
       <span>Grab: +5</span>
-      <span>Shove: 3</span>
+      <span>Shove: +3</span>
     </div>
 
     <div className='damage-modifiers'>
@@ -230,7 +236,7 @@ export default function CreatureCard({
       ? <div className='creature-abilities'>
           <div><b>Abilities</b>:</div>
           {data.abilities.map((ability, i) => {
-            return <div key={`creature-${data.name}-ability-${i}`} className='details-indentation'>
+            return <div key={`creature-${data.name}-ability-${i}`} className='ability details-indentation'>
               {ability.name ? <i>{ability.name}: </i> : null}
               {renderAbilityDescription(ability.description)}
             </div>

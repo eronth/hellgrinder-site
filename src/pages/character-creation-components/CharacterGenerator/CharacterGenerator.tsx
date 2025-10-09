@@ -5,7 +5,7 @@ import ConfirmDialog from "./ConfirmDialog.tsx";
 import FloatingPanelsContainer from "../FloatingPanels/FloatingPanelsContainer.tsx";
 import ImportExportPanel from "./ImportExportPanel.tsx";
 import NotificationToast, { Notification } from "./NotificationToast.tsx";
-import { CharacterStats } from "./CharacterStartingStatsTable.tsx";
+import { CharacterStats } from "./CharacterStatsGrid/CharacterStatsGrid.tsx";
 
 import { CharacterStorage } from "../../../common-design/utils/CharacterStorage.tsx";
 

@@ -1,5 +1,5 @@
 import Hx from "../../common-design/Hx/Hx";
-import CharacterStartingStatsTable from "./CharacterGenerator/CharacterStartingStatsTable";
+import CharacterStatsGrid from "./CharacterGenerator/CharacterStatsGrid/CharacterStatsGrid";
 
 export default function CreationCoreRules() {
   const innerHeaders = 'h3';
@@ -57,6 +57,6 @@ export default function CreationCoreRules() {
         <li>???</li>
       </ul>
     </div>
-    <CharacterStartingStatsTable />
+    <CharacterStatsGrid />
   </>);
 }

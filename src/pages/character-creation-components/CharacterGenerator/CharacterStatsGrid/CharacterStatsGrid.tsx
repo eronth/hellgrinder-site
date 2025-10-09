@@ -1,6 +1,7 @@
 import { useCallback, useMemo } from "react";
-import { AttackBonusStat, HealthStat } from "./CharacterGenerator";
-import SkillCheck from "../../../common-design/SkillCheck/SkillCheck";
+import { AttackBonusStat, HealthStat } from "../CharacterGenerator";
+import SkillCheck from "../../../../common-design/SkillCheck/SkillCheck";
+import './CharacterStatsGrid.css';
 
 export type CharacterStats = {
   health: HealthStat;
@@ -27,7 +28,7 @@ type Props = {
   onStatsChange?: (stats: CharacterStats) => void;
 };
 
-export default function CharacterStartingStatsTable({
+export default function CharacterStatsGrid({
   currentHealth = 6,
   maxHealth = 6,
   injuries = 0,
@@ -40,9 +41,6 @@ export default function CharacterStartingStatsTable({
   customSkill = '',
   onStatsChange
 }: Props) {
-  const statColSpan = 1;
-  const attackBonusColSpan = 2;
-  const customSkillColSpan = 1;
 
   const stats: CharacterStats = useMemo(() => ({
     health: {
@@ -90,11 +88,11 @@ export default function CharacterStartingStatsTable({
 
   const renderStatCell = useCallback((label: string, field: keyof typeof stats, value: number | AttackBonusStat) => {
     if (!isEditable || field === 'attackBonus') {
-      return <td colSpan={statColSpan}>{value} {label}</td>;
+      return <div className='stat-cell'>{value} {label}</div>;
     }
 
     return (
-      <td colSpan={statColSpan} className="inline-editable-stat-cell">
+      <div className="stat-cell editable">
         {(field === 'health')
         ? (<>
           <input
@@ -103,42 +101,41 @@ export default function CharacterStartingStatsTable({
             min="0"
             value={stats.health.current as number}
             onChange={(e) => updateStat('health', parseInt(e.target.value) || 0, 'current')}
-            className="inline-stat-input"
+            className="stat-input"
           /> / <input
             id={`${field}-input`}
             type="number"
             min="0"
             value={value as number}
             onChange={(e) => updateStat('health', parseInt(e.target.value) || 0, 'max')}
-            className="inline-stat-input"
+            className="stat-input"
           />
           <label htmlFor={`current-health-input`} className="stat-label">Health</label>
-        </>)        : (<>
+        </>)
+        : (<>
           <input
             id={`${field}-input`}
             type="number"
             min="0"
             value={value as number}
             onChange={(e) => updateStat(field, parseInt(e.target.value) || 0)}
-            className="inline-stat-input"
+            className="stat-input"
           />
           <label htmlFor={`${field}-input`} className="stat-label">{label}</label>
         </>)}
-      </td>
+      </div>
     );
   }, [isEditable, stats.health, updateStat]);
 
   const renderCustomSkillCell = useCallback(() => {
     if (!isEditable) {
       return (
-        <td colSpan={customSkillColSpan}>
-          +2 Custom Skill
-        </td>
+        <div className="stat-cell custom-skill">+2 Custom Skill</div>
       );
     }
 
     return (
-      <td colSpan={customSkillColSpan} className="inline-editable-stat-cell">
+      <div className="stat-cell editable custom-skill">
         <div className="wrapper">
           <label htmlFor={`custom-skill-input`} className="stat-label">+2 </label>
           <input
@@ -146,10 +143,10 @@ export default function CharacterStartingStatsTable({
             type="text"
             value={stats.customSkill}
             onChange={(e) => updateCustomSkill(e.target.value)}
-            className="inline-stat-input freeform"
+            className="stat-input freeform"
           />
         </div>
-      </td>
+      </div>
     );
   }, [isEditable, stats.customSkill, updateCustomSkill]);
 
@@ -171,22 +168,27 @@ export default function CharacterStartingStatsTable({
       const meleeChecks = <SkillCheck tags={['Melee']} plural />;
       const arcaneChecks = <SkillCheck tags={['Arcane']} plural/>;
       return (
-        <td colSpan={attackBonusColSpan} className="attack-bonus-cell">
-          +2 to your choice 
-          of {shortRangeChecks}, {mediumRangeChecks}, {longRangeChecks}, {meleeChecks},
-          or {arcaneChecks} (can be chosen at the end of character creation).
-        </td>
+        <div className="stat-cell attack-bonus-cell">
+          +2 one of the following (chosen at the end of character creation).
+          <ul>
+            <li>{shortRangeChecks}</li>
+            <li>{mediumRangeChecks}</li>
+            <li>{longRangeChecks}</li>
+            <li>{meleeChecks}</li>
+            <li>{arcaneChecks}</li>
+          </ul>
+        </div>
       );
     }
 
     return (
-      <td colSpan={attackBonusColSpan} className="attack-bonus-cell">
+      <div className="stat-cell attack-bonus-cell editable">
         <div className="wrapper">
           <span className="attack-bonus-prefix">+{attackBonusValue} to </span>
           <select
             value={attackBonus}
             onChange={(e) => updateStat('attackBonus', e.target.value as AttackBonusStat)}
-            className="inline-attack-bonus-select"
+            className="attack-bonus-select"
           >
             {attackBonusOptions.map(option => (
               <option key={option} value={option}>
@@ -195,7 +197,7 @@ export default function CharacterStartingStatsTable({
             ))}
           </select>
         </div>
-      </td>
+      </div>
     );
   };
   const injuriesComp = useMemo(() => {
@@ -203,23 +205,18 @@ export default function CharacterStartingStatsTable({
   }, [renderStatCell, stats.injuries]);
 
   return (
-    <table className={`character-stats-table ${isEditable ? 'inline-editable' : ''}`}>
-      <tbody>
-        <tr>
-          {renderStatCell("Max Health", "health", stats.health.max)}
-          {injuriesComp}
-          {renderStatCell("Safelight Shards", "safelightShards", stats.safelightShards)}
-        </tr>
-        <tr>
-          {renderStatCell("Corruption", "corruption", stats.corruption)}
-          {renderStatCell("Perk Points", "perkPoints", stats.perkPoints)}
-          {renderStatCell("Move Speed", "speed", stats.speed)}
-        </tr>
-        <tr>
-          {renderAttackBonusCell()}
-          {renderCustomSkillCell()}
-        </tr>
-      </tbody>
-    </table>
+    <div className={`character-stats-grid`}>
+      {renderStatCell("Max Health", "health", stats.health.max)}
+      {injuriesComp}
+      {renderStatCell("Safelight Shards", "safelightShards", stats.safelightShards)}
+
+      
+      {renderStatCell("Corruption", "corruption", stats.corruption)}
+      {renderStatCell("Perk Points", "perkPoints", stats.perkPoints)}
+      {renderStatCell("Move Speed", "speed", stats.speed)}
+
+      {renderAttackBonusCell()}
+      {renderCustomSkillCell()}
+    </div>
   );
 }

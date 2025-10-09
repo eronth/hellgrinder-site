@@ -1,6 +1,6 @@
 import React from "react";
 import { CharacterDesign } from "../CharacterGenerator";
-import CharacterStartingStatsTable, { CharacterStats } from "../CharacterStartingStatsTable";
+import CharacterStatsGrid, { CharacterStats } from "../CharacterStatsGrid/CharacterStatsGrid.tsx";
 import InventoryManager from "../InventoryManager";
 import StatusEffectsManager from "../StatusEffectsManager";
 import EditableCharacterName from "./EditableCharacterName/EditableCharacterName.tsx";
@@ -88,7 +88,7 @@ export default function CharacterCard({
     </div>        
     <div className="col-handler">          
       <div>
-        <CharacterStartingStatsTable
+        <CharacterStatsGrid
           currentHealth={character.stats.health.current}
           maxHealth={character.stats.health.max}
           injuries={character.stats.injuries}

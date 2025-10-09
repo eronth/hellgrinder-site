@@ -8,7 +8,7 @@ export default function Actions() {
   return (<>
     <Hx hx={3}>Actions</Hx>
 
-    <div className='lore-columns'>
+    <div className='fluid-readable-columns'>
       <p>
         On your turn, you can take one Action. Listed below is a standard set of
         actions available to you, but you can always attempt to take other actions

@@ -13,7 +13,7 @@ export default function OtherFactions() {
 
   return (<>
     <Hx hx='h3'>Other Factions</Hx>
-    <div className='lore-columns'>
+    <div className='fluid-readable-columns'>
       <p>Other Factions survive...</p>
       <p>{Tools.getLoremIpsum()}</p>
 

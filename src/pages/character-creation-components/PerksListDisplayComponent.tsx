@@ -17,7 +17,7 @@ export default function PerksListDisplayComponent() {
 
     <div>
       <Hx hx={innerHx}>Perk Options</Hx>
-      <div className='lore-columns'>
+      <div className='fluid-readable-columns'>
         {sortedPerks.map((p, i) => <PerkComponent key={`perk-${i}`} perk={p} />)}
       </div>
     </div>

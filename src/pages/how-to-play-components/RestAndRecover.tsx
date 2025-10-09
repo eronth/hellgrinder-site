@@ -7,7 +7,7 @@ export default function RestAndRecover() {
   return (<>
     <Hx hx={2}>Rest and Recover</Hx>
       
-    <div className='lore-columns'>
+    <div className='fluid-readable-columns'>
       <Hx hx={innerHx}>Resting in Hell</Hx>
       <p>
         In order to rest safely in a realm as threatening as Hell, you need something arcane to assist

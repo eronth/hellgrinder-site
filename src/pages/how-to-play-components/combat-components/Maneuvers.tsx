@@ -12,7 +12,7 @@ export default function Maneuvers() {
   return (<>
     <Hx hx={3}>Maneuvers</Hx>
 
-    <div className='lore-columns'>
+    <div className='fluid-readable-columns'>
       <p>You have access to some maneuvers.</p>
     
       <Hx hx={4}>Move</Hx>

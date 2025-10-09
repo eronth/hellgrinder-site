@@ -16,7 +16,7 @@ export default function OtherFactions() {
   return (<>
     <Hx hx={'h3'}>Realms of the Netherworld</Hx>
 
-    <div className='lore-columns'>
+    <div className='fluid-readable-columns'>
       <p>Other Factions survive...</p>
       <p>{Tools.getLoremIpsum()}</p>
       {/* Various individual realms */}

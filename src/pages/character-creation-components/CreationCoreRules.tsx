@@ -6,7 +6,7 @@ export default function CreationCoreRules() {
   return (<>
     <Hx hx='h2'>Create a Character</Hx>
 
-    <div className='lore-columns'>
+    <div className='fluid-readable-columns'>
 
       <Hx hx={innerHeaders}>Steps</Hx>
       <p>When you create a character, you start with the following stat values. Kit and Perk choices can modify these. Unlike many other similar games, you won’t need to choose to put “points” into some array of starting stats. </p>

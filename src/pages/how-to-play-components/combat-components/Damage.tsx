@@ -7,7 +7,7 @@ export default function Damage() {
   return (<>
     <Hx hx='3'>Damage</Hx>
 
-    <div className='lore-columns'>
+    <div className='fluid-readable-columns'>
       <Hx hx={innerHx}>Taking Damage</Hx>
       <p>
         Whenever you take damage, you reduce your current health by that much. In some cases, armor might reduce the damage

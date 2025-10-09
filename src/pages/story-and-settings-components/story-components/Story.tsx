@@ -9,7 +9,7 @@ function Story() {
 
   return (<>
     <Hx hx={majorHeader}>The Situation</Hx>
-    <div className='lore-columns'>
+    <div className='fluid-readable-columns'>
       {/*<!-- Hell's Invasion -->*/}
       <Hx hx={minorHeader}>Hell's Invasion</Hx>
       <p>
@@ -100,7 +100,7 @@ function Story() {
 
     {/*<!-- The Hellgrinder -->*/}
     <Hx hx={majorHeader}>The Hellgrinder</Hx>
-    <div className={'lore-columns'}>
+    <div className='fluid-readable-columns'>
       <p>
         The Hellgrinder was the next invention by Afterworld Research Corp
         under the Safelight Project. The Hellgrinder
@@ -180,7 +180,7 @@ function Story() {
 
     {/*<!-- Soldiers -->*/}
     <Hx hx={majorHeader}>Those who Delve</Hx>
-    <div className='lore-columns'>
+    <div className='fluid-readable-columns'>
       <Hx hx={minorHeader}>Soldiers</Hx>
       <p>
         The soldiers who delve deep into Hell are officially designated as the <b>Descent Corps</b>,

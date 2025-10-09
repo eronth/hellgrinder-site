@@ -13,7 +13,7 @@ export default function Combat() {
   return (<>
     <Hx hx={2}>Combat</Hx>
     
-    <div className='lore-columns'>
+    <div className='fluid-readable-columns'>
       <p>
         Combat takes place on a hex-based grid. You can 
         perform <s>one maneuver and</s> one action 

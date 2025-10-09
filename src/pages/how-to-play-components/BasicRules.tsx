@@ -9,7 +9,7 @@ export default function BasicRules() {
   return (<>
     <Hx hx={2}>Basics</Hx>
     
-    <div className='lore-columns'>
+    <div className='fluid-readable-columns'>
       
       <Hx hx={innerHx}>Operations</Hx>
       <p>The game of Hellgrinder is intentionally simple to pick up. The game offers a quick character creation and

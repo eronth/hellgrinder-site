@@ -9,10 +9,10 @@ ol.roman {
 }
 
 /* Wrapper around lore paragraphs */
-.lore-columns {
+.fluid-readable-columns {
   margin-bottom: 2.5rem;
   column-count: 3;
-  column-gap: 1rem;
+  column-gap: 2rem;
   column-rule: var(--lore-column-rule);
   hyphens: auto;
   
@@ -50,13 +50,14 @@ ol.roman {
 }
 
 @media(max-width: 1140px) {
-  .lore-columns {
+  .fluid-readable-columns {
     column-count: 2;
+    column-gap: 1.5rem;
   }
 }
 /* Make it single-column on narrower screens */
 @media (max-width: 850px) {
-  .lore-columns {
+  .fluid-readable-columns {
     column-count: 1;
     column-rule: none;
   }

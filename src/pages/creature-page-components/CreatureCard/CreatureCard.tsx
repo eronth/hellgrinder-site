@@ -2,11 +2,15 @@ import AttackModeComponent from '../../../common-design/AttackModeComponent';
 import { Creature } from '../../../ts-types/creature-types';
 import { EncounterCreature } from '../../../ts-types/encounter-types';
 import DamageModComponent from '../DamageModComponent';
+import CreatureTooltip from './CreatureTooltip';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import React, { isValidElement, useState } from 'react';
 import { healthIcon, movementIcon } from '../../../common-design/CommonIcons';
-import './CreatureCard.css'
+import cce from './CreatureCardExplanations';
+import './CreatureCard.css';
+import './CreatureCardExample.css';
+import './CreatureTooltip.css';
 
 type Props = {
   data: Creature;
@@ -16,6 +20,7 @@ type Props = {
   encounterCreature?: EncounterCreature;
   onRemoveFromEncounter?: (id: string) => void;
   onHealthChange?: (id: string, newHealth: number) => void;
+  isExample?: boolean;
 };
 
 export default function CreatureCard({ 
@@ -24,7 +29,8 @@ export default function CreatureCard({
   isEncounterMode = false,
   encounterCreature,
   onRemoveFromEncounter,
-  onHealthChange 
+  onHealthChange,
+  isExample
 }: Props) {
   const [isEditingHealth, setIsEditingHealth] = useState(false);
   const [tempHealth, setTempHealth] = useState(
@@ -165,6 +171,28 @@ export default function CreatureCard({
     {isEncounterMode && encounterCreature ? `/${encounterCreature.maxHealth}` : ''}{healthIcon}
   </>);
 
+  // Helper component to conditionally wrap with tooltip in example mode
+  const TooltipWrapper = ({ 
+    children, 
+    explanation,
+    className,
+    isDiv = false
+  }: { 
+    children: React.ReactNode; 
+    explanation: string;
+    className?: string;
+    isDiv?: boolean;
+  }) => {
+    if (isExample) {
+      return (
+        <CreatureTooltip explanation={explanation} className={className} isDiv={isDiv}>
+          {children}
+        </CreatureTooltip>
+      );
+    }
+    return <>{children}</>;
+  };
+
   const renderAbilityDescription = (description: unknown): React.ReactNode => {
     // If it's a string, just return it
     if (typeof description === 'string') {
@@ -193,73 +221,105 @@ export default function CreatureCard({
     return '[Description could not be loaded]';
   };
 
-
-  return (<div className={`creature-card ${factionClass} ${isEncounterMode ? 'encounter-card' : ''}`}>
+  return (<div
+    className={`creature-card ${factionClass} ${isEncounterMode ? 'encounter-card' : ''} ${isExample ? 'example-card' : ''}`}
+  >
     <div className='title-row'>
-      <span className='name'>{data.name}</span>
+      <TooltipWrapper explanation={cce.name}>
+        <span className='name'>{data.name}</span>
+      </TooltipWrapper>
       <div>
-        <span className='tier'>{data.tier}</span>
+        <TooltipWrapper explanation={cce.tier}>
+          <span className='tier'>{data.tier}</span>
+        </TooltipWrapper>
         {isEncounterMode ? (removeFromEncounterButton) : (addToEncounterButton)}
       </div>
     </div>
-    <div className='tags'>
-      {nonFactionTags.map((tag, i) => <span 
-        key={`creature-${data.name}-tag-${i}`}
-      >
-        {(typeof tag === 'string') ? tag : `${tag.tag}: ${tag.value}`}
-      </span>)}
-    </div>
+    {/* <TooltipWrapper explanation="Tags describe special characteristics, creature types, and mechanical properties. Some abilities or spells may interact specifically with certain tags."> */}
+      <div className='tags'>
+        {nonFactionTags.map((tag, i) => <span 
+          key={`creature-${data.name}-tag-${i}`}
+        >
+          {(typeof tag === 'string') ? tag : `${tag.tag}: ${tag.value}`}
+        </span>)}
+      </div>
+    {/* </TooltipWrapper> */}
     <div className='stats'>
-      <span>
-        Health: {healthDisplay}
-      </span>
-      <span>Speed: {data.speed}{hexIcon}
-        {data.dash ? ` (${data.dash >= 0 ? '+' : ''}${data.dash}${hexIcon})` : null}
-      </span>
-      <span>Size: {data.size}{hexIcon}</span>
-      <span>Grab: +5</span>
-      <span>Shove: +3</span>
+      <TooltipWrapper explanation={cce.health}>
+        <span>Health: {healthDisplay}</span>
+      </TooltipWrapper>
+      <TooltipWrapper explanation={cce.speed}>
+        <span>Speed: {data.speed}{hexIcon}
+          {data.dash ? ` (${data.dash >= 0 ? '+' : ''}${data.dash}${hexIcon})` : null}
+        </span>
+      </TooltipWrapper>
+      <TooltipWrapper explanation={cce.size}>
+        <span>Size: {data.size}{hexIcon}</span>
+      </TooltipWrapper>
+      <TooltipWrapper explanation={cce.shove}>
+        <span>Shove: +3</span>
+      </TooltipWrapper>
+      <TooltipWrapper explanation={cce.grab}>
+        <span>Grapple: +5</span>
+      </TooltipWrapper>
+      <TooltipWrapper explanation={cce.escape}>
+        <span>Escape: +2</span>
+      </TooltipWrapper>
     </div>
 
     <div className='damage-modifiers'>
-      {data.damageTakenMods.map((mod, i) => 
-        <DamageModComponent key={`creature-${data.name}-damage-taken-mod-${i}`} mod={mod} />)}
+      <TooltipWrapper 
+        className='damage-modifiers-tooltip' 
+        explanation={cce.damageMods}
+      >
+        {data.damageTakenMods.map((mod, i) => 
+          <DamageModComponent key={`creature-${data.name}-damage-taken-mod-${i}`} mod={mod} />)}
+      </TooltipWrapper>
     </div>
 
-    <div>
-      {data.attacks.map((attack, i) => <div key={`creature-${data.name}-attack-${i}`}>
-        <AttackModeComponent attackMode={attack} />
-      </div>)}
-    </div>
-    {
-      (data.abilities.length > 0)
-      ? <div className='creature-abilities'>
-          <div><b>Abilities</b>:</div>
-          {data.abilities.map((ability, i) => {
-            return <div key={`creature-${data.name}-ability-${i}`} className='ability details-indentation'>
-              {ability.name ? <i>{ability.name}: </i> : null}
-              {renderAbilityDescription(ability.description)}
-            </div>
-          })}
+    <TooltipWrapper explanation={cce.attacks} isDiv>
+      <div>
+        {data.attacks.map((attack, i) => <div key={`creature-${data.name}-attack-${i}`}>
+          <AttackModeComponent attackMode={attack} />
+        </div>)}
       </div>
+    </TooltipWrapper>
+
+    { // Abilities.
+      (data.abilities.length > 0)
+        ? <TooltipWrapper explanation={cce.abilities} isDiv>
+          <div className='creature-abilities'>
+            <div><b>Abilities</b>:</div>
+            {data.abilities.map((ability, i) => {
+              return <div key={`creature-${data.name}-ability-${i}`} className='ability details-indentation'>
+                {ability.name ? <i>{ability.name}: </i> : null}
+                {renderAbilityDescription(ability.description)}
+              </div>
+            })}
+          </div>
+        </TooltipWrapper>
       : null
     }
 
-    <div className='creature-description'><i>{data.description}</i></div>
+    <TooltipWrapper explanation={cce.description} isDiv>
+      <div className='creature-description'><i>{data.description}</i></div>
+    </TooltipWrapper>
     
     {/* Faction tag positioned at bottom right */}
     {factionTags.length > 0 && (
       <div className='faction-tag-container'>
         {factionTags.map((tag, i) => (
-          <span 
-            key={`creature-${data.name}-faction-tag-${i}`}
-            className='faction-tag'
-          >
-            {(typeof tag === 'string')
-              ? tag
-              : `${tag.tag}: ${tag.value}`
-            }
-          </span>
+          <TooltipWrapper explanation={cce.faction} className="faction-tag-container-tooltip">
+            <span 
+              key={`creature-${data.name}-faction-tag-${i}`}
+              className='faction-tag'
+            >
+                {(typeof tag === 'string')
+                  ? tag
+                  : `${tag.tag}: ${tag.value}`
+                }
+            </span>
+          </TooltipWrapper>
         ))}
       </div>
     )} 

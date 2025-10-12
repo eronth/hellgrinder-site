@@ -75,8 +75,8 @@ export default function Actions() {
       <p>
         Make a <SkillCheck tags={['Might', 'Agility']} /> against
         a target's <SkillCheck tags={['Might', 'Agility']} />. If you succeed, the target
-        is <RuleKeyword keyword="Restrained" />
-        Restrained until the start of your next turn. While a target is restrained this way
+        is <RuleKeyword keyword="Restrained" /> until
+        the start of your next turn. While a target is restrained this way
         this way,
         you may spend your {movementIcon} to move the target
         1 hex in any direction.

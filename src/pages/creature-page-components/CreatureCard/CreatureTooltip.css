@@ -1,0 +1,75 @@
+/* Creature Card Tooltip Styles */
+
+.creature-tooltip-trigger {
+  position: relative;
+  cursor: help;
+  display: inline;
+  padding: 0;
+  margin: 0;
+  border: 1px dashed rgba(255, 255, 255, 0.5);
+  &.as-div {
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+.creature-tooltip {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  line-height: 1.4;
+  max-width: 300px;
+  word-wrap: break-word;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 1000;
+}
+.damage-modifiers-tooltip {
+  display: flex;
+  flex-direction: row;
+}
+.faction-tag-container-tooltip {
+  padding: 10px 8px;
+}
+/*
+
+
+.creature-tooltip-top::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
+}
+
+.creature-tooltip-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent rgba(0, 0, 0, 0.9) transparent;
+}
+
+/* Only show tooltips in example mode */
+/* .creature-card:not(.example-card) .creature-tooltip-trigger {
+  cursor: default;
+}
+
+.creature-card:not(.example-card) .creature-tooltip {
+  display: none;
+} */
+
+/* Highlight effect for tooltip triggers in example mode */
+/* .creature-card.example-card .creature-tooltip-trigger:hover {
+  background-color: rgba(255, 255, 0, 0.1);
+  border-radius: 2px;
+  outline: 1px dashed rgba(255, 255, 0, 0.5);
+} */

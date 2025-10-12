@@ -20,29 +20,9 @@ export default function CreatureRules() {
     <CreatureCard
       data={transformedCreature}
       onAddToEncounter={null}
+      isExample={true}
     />
     <div className='fluid-readable-columns'>
-      <p>
-        how to read a creature block.
-        
-        Health: The total amount of health a creature has. Creatures
-        do not take Injuries as players do, and do not reset their health
-        when they reach 0. For particularly tough creatures, you can
-        you can implement the same Injury system players use.
-        In most cases, such a creature will retreat once injured, 
-        and return for vengeance later.
-
-        When the health has a number listed after with a {armorIcon},
-        that is the creature's armor. Armor reduces damage taken
-        from attacks. For example, a creature with 2 armor takes
-        2 less damage from each attack.
-
-        Speed is typically listed as two numbers. The first number is the
-        Maneuver Points a creature has on its turn. The number in parentheses
-        is the additional movement the creature gains if it uses its Dash Action.
-        Dashing demons are particularly fast, and can often close the distance 
-        to players quickly.
-      </p>
         
       <Hx hx={innerHx}>Building an encounter</Hx>
       <p>

@@ -94,10 +94,9 @@
   }
 }
 
-
-
 .damage-modifiers {
   display: flex;
+
   flex-wrap: wrap;
   gap: 0.25em;
   margin: 0 .5em;

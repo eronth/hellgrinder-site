@@ -3,7 +3,6 @@ import Tools from "../../../common-design/Tools";
 import CreatureCard from "../CreatureCard/CreatureCard";
 import GenCreatures from "../../../common-design/creatures/generic-creatures";
 import { transformCreatureToFaction } from "../FactionTransformUtils";
-import { armorIcon } from "../../../common-design/CommonIcons";
 
 export default function CreatureRules() {
   const innerHx = 4;

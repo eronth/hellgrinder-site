@@ -10,7 +10,6 @@
   h1 {
     margin: 0;
   }
-
 }
 
 .wip-banner {
@@ -22,20 +21,25 @@
   border-radius: 0.5rem;
   padding: 0.5rem;
   background-color: rgb(200, 50, 50);
+  --icon-padding: 0.5rem;
+  --icon-size: 3rem;
 
   .wip-icon-container {
     display: flex;
     align-items: center;
-    padding-right: 1rem;
-    svg { height: 60%; }
+    justify-content: center;
+    padding: var(--icon-padding);
+    svg {
+      height: var(--icon-size);
+      width: var(--icon-size);
+    }
   }
 
   .wip-text-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: calc(100% - (var(--icon-size) + 2 * var(--icon-padding)));
     text-align: center;
     font-weight: bold;
   }
-  
 }

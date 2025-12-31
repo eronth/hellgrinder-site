@@ -1,80 +1,70 @@
 :root {
   /* ashborn */
-  --ashborn-faction-primary: #d84315; /* Deep orange-red instead of pure red */
-  --ashborn-faction-primary-dark: #bf360c;
-  --ashborn-faction-primary-light: #ff5722;
-  --ashborn-faction-on-primary: #ffffff;
-  --ashborn-faction-accent: #ff6f00;
-  --ashborn-faction-accent-light: #ffab00;
-  --ashborn-faction-background: #2a2424; /* Slightly warmer/redder dark background */
-  --ashborn-faction-primary-rgb: 216, 67, 21;
-  --ashborn-faction-accent-rgb: 255, 111, 0;
+  --ashborn-faction-primary: hsl(14, 83%, 46%);
+  --ashborn-faction-on-primary: hsl(0, 0%, 100%);
+  --ashborn-faction-accent: hsl(26, 100%, 50%);
+  --ashborn-faction-accent-light: hsl(40, 100%, 50%);
+  --ashborn-faction-background: hsl(0, 8%, 15%); /* Slightly warmer/redder dark background */
   
   /* stoneveined */
-  --stoneveined-faction-primary: #5d4037;
-  --stoneveined-faction-primary-dark: #3e2723;
-  --stoneveined-faction-primary-light: #8d6e63;
-  --stoneveined-faction-on-primary: #ffffff;
-  --stoneveined-faction-accent: #795548;
-  --stoneveined-faction-accent-light: #a1887f;
-  --stoneveined-faction-background: #262424; /* Slightly earthier dark background */
-  --stoneveined-faction-primary-rgb: 93, 64, 55;
-  --stoneveined-faction-accent-rgb: 121, 85, 72;
+  --stoneveined-faction-primary: hsl(14, 26%, 29%);
+  --stoneveined-faction-on-primary: hsl(0, 0%, 100%);
+  --stoneveined-faction-accent: hsl(16, 25%, 38%);
+  --stoneveined-faction-accent-light: oklch(
+    from var(--stoneveined-faction-accent)
+    calc(l + 0.1) c h
+  );
+  --stoneveined-faction-background: hsl(0, 3%, 15%); /* Slightly earthier dark background */
 
   /* thornwraith */
-  --thornwraith-faction-primary: #388e3c;
-  --thornwraith-faction-primary-dark: #1b5e20;
-  --thornwraith-faction-primary-light: #66bb6a;
-  --thornwraith-faction-on-primary: #ffffff;
-  --thornwraith-faction-accent: #689f38;
-  --thornwraith-faction-accent-light: #9ccc65;
-  --thornwraith-faction-background: #242a24; /* Slightly greener dark background */
-  --thornwraith-faction-primary-rgb: 56, 142, 60;
-  --thornwraith-faction-accent-rgb: 104, 159, 56;
+  --thornwraith-faction-primary: hsl(123, 43%, 39%);
+  --thornwraith-faction-on-primary: hsl(0, 0%, 100%);
+  --thornwraith-faction-accent: hsl(92, 48%, 42%);
+  --thornwraith-faction-accent-light: oklch(
+    from var(--thornwraith-faction-accent)
+    calc(l + 0.1) c h
+  );
+  --thornwraith-faction-background: hsl(120, 8%, 15%); /* Slightly greener dark background */
 
   /* umbral */
-  --umbral-faction-primary: #424242;
-  --umbral-faction-primary-dark: #212121;
-  --umbral-faction-primary-light: #616161;
-  --umbral-faction-on-primary: #ffffff;
-  --umbral-faction-accent: #6a1b9a;
-  --umbral-faction-accent-light: #9c27b0;
-  --umbral-faction-background: #1f1f1f; /* Darker, more shadowy background */
-  --umbral-faction-primary-rgb: 66, 66, 66;
-  --umbral-faction-accent-rgb: 106, 27, 154;
+  --umbral-faction-primary: hsl(0, 0%, 26%);
+  --umbral-faction-on-primary: hsl(0, 0%, 100%);
+  --umbral-faction-accent: hsl(277, 70%, 35%);
+  --umbral-faction-accent-light: oklch(
+    from var(--umbral-faction-accent)
+    calc(l + 0.1) c h
+  );
+  --umbral-faction-background: hsl(0, 0%, 12%); /* Darker, more shadowy background */
 
   /* vastfathom */
-  --vastfathom-faction-primary: #0277bd;
-  --vastfathom-faction-primary-dark: #01579b;
-  --vastfathom-faction-primary-light: #0288d1;
-  --vastfathom-faction-on-primary: #ffffff;
-  --vastfathom-faction-accent: #00838f;
-  --vastfathom-faction-accent-light: #00acc1;
-  --vastfathom-faction-background: #242428; /* Slightly bluer dark background */
-  --vastfathom-faction-primary-rgb: 2, 119, 189;
-  --vastfathom-faction-accent-rgb: 0, 131, 143;
+  --vastfathom-faction-primary: hsl(202, 98%, 37%);
+  --vastfathom-faction-on-primary: hsl(0, 0%, 100%);
+  --vastfathom-faction-accent: hsl(185, 100%, 28%);
+  --vastfathom-faction-accent-light: oklch(
+    from var(--vastfathom-faction-accent)
+    calc(l + 0.1) c h
+  );
+  --vastfathom-faction-background: hsl(240, 5%, 15%); /* Slightly bluer dark background */
 
   /* zephpter */
-  --zephpter-faction-primary: #7b1fa2;
-  --zephpter-faction-primary-dark: #4a148c;
-  --zephpter-faction-primary-light: #9c27b0;
-  --zephpter-faction-on-primary: #ffffff;
-  --zephpter-faction-accent: #512da8;
-  --zephpter-faction-accent-light: #673ab7;
-  --zephpter-faction-background: #272424; /* Slightly purpler dark background */
-  --zephpter-faction-primary-rgb: 123, 31, 162;
-  --zephpter-faction-accent-rgb: 81, 45, 168;
+  --zephpter-faction-primary: hsl(282, 68%, 38%);
+  --zephpter-faction-on-primary: hsl(0, 0%, 100%);
+  --zephpter-faction-accent: hsl(258, 58%, 42%);
+  --zephpter-faction-accent-light: oklch(
+    from var(--zephpter-faction-accent)
+    calc(l + 0.1) c h
+  );
+  --zephpter-faction-background: hsl(0, 4%, 15%); /* Slightly purpler dark background */
 
   /* wanderlost */
-  --wanderlost-faction-primary: #455a64;
-  --wanderlost-faction-primary-dark: #263238;
-  --wanderlost-faction-primary-light: #607d8b;
-  --wanderlost-faction-on-primary: #ffffff;
-  --wanderlost-faction-accent: #00695c;
-  --wanderlost-faction-accent-light: #00897b;
-  --wanderlost-faction-background: #242628; /* Slightly more neutral but cooler background */
-  --wanderlost-faction-primary-rgb: 69, 90, 100;
-  --wanderlost-faction-accent-rgb: 0, 105, 92;
+  --wanderlost-faction-primary: hsl(199, 18%, 33%);
+  --wanderlost-faction-on-primary: hsl(0, 0%, 100%);
+  --wanderlost-faction-accent: hsl(173, 100%, 21%);
+  --wanderlost-faction-accent-light: oklch(
+    from var(--wanderlost-faction-accent)
+    calc(l + 0.1) c h
+  );
+  --wanderlost-faction-background: hsl(210, 5%, 15%); /* Slightly more neutral but cooler background */
 }
 
 :root[data-theme="light"] {

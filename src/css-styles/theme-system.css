@@ -41,10 +41,6 @@
   --z-tooltip: 700;
   --z-notification: 800;
   --z-theme-switcher: 1000;
-  
-  /* Faction color RGB values (for rgba usage) */
-  --faction-primary-rgb: 255, 255, 255; /* Default fallback */
-  --faction-accent-rgb: 255, 255, 255; /* Default fallback */
 }
 
 /* Light Theme Override (when explicitly set) */
@@ -132,8 +128,6 @@
   --faction-accent: var(--ashborn-faction-accent);
   --faction-accent-light: var(--ashborn-faction-accent-light);
   --faction-background: var(--ashborn-faction-background);
-  --faction-primary-rgb: var(--ashborn-faction-primary-rgb);
-  --faction-accent-rgb: var(--ashborn-faction-accent-rgb);
   
   background-color: var(--faction-background);
 }
@@ -146,8 +140,6 @@
   --faction-accent: var(--stoneveined-faction-accent);
   --faction-accent-light: var(--stoneveined-faction-accent-light);
   --faction-background: var(--stoneveined-faction-background);
-  --faction-primary-rgb: var(--stoneveined-faction-primary-rgb);
-  --faction-accent-rgb: var(--stoneveined-faction-accent-rgb);
 
   background-color: var(--faction-background);
 }
@@ -160,8 +152,6 @@
   --faction-accent: var(--thornwraith-faction-accent);
   --faction-accent-light: var(--thornwraith-faction-accent-light);
   --faction-background: var(--thornwraith-faction-background);
-  --faction-primary-rgb: var(--thornwraith-faction-primary-rgb);
-  --faction-accent-rgb: var(--thornwraith-faction-accent-rgb);
 
   background-color: var(--faction-background);
 }
@@ -174,8 +164,6 @@
   --faction-accent: var(--umbral-faction-accent);
   --faction-accent-light: var(--umbral-faction-accent-light);
   --faction-background: var(--umbral-faction-background);
-  --faction-primary-rgb: var(--umbral-faction-primary-rgb);
-  --faction-accent-rgb: var(--umbral-faction-accent-rgb);
 
   background-color: var(--faction-background);
 }
@@ -188,8 +176,6 @@
   --faction-accent: var(--vastfathom-faction-accent);
   --faction-accent-light: var(--vastfathom-faction-accent-light);
   --faction-background: var(--vastfathom-faction-background);
-  --faction-primary-rgb: var(--vastfathom-faction-primary-rgb);
-  --faction-accent-rgb: var(--vastfathom-faction-accent-rgb);
 
   background-color: var(--faction-background);
 }
@@ -202,8 +188,6 @@
   --faction-accent: var(--zephpter-faction-accent);
   --faction-accent-light: var(--zephpter-faction-accent-light);
   --faction-background: var(--zephpter-faction-background);
-  --faction-primary-rgb: var(--zephpter-faction-primary-rgb);
-  --faction-accent-rgb: var(--zephpter-faction-accent-rgb);
 
   background-color: var(--faction-background);
 }
@@ -216,8 +200,6 @@
   --faction-accent: var(--wanderlost-faction-accent);
   --faction-accent-light: var(--wanderlost-faction-accent-light);
   --faction-background: var(--wanderlost-faction-background);
-  --faction-primary-rgb: var(--wanderlost-faction-primary-rgb);
-  --faction-accent-rgb: var(--wanderlost-faction-accent-rgb);
 
   background-color: var(--faction-background);
 }
@@ -303,7 +285,7 @@
 :root[data-retro="retro-atompunk"] .card,
 :root[data-retro="retro-atompunk"] button {
   border-radius: 25px;
-  box-shadow: 0 6px 20px rgba(var(--faction-primary-rgb), 0.4);
+  box-shadow: 0 6px 20px rgb(from var(--faction-primary) r g b / 0.4);
   border: 3px solid var(--faction-primary);
 }
 
@@ -354,7 +336,7 @@
 :root[data-retro="retro-western"] button {
   border: 2px solid var(--faction-primary);
   border-radius: 0;
-  box-shadow: 4px 4px 0px rgba(var(--faction-primary-rgb), 0.3);
+  box-shadow: 4px 4px 0px rgb(from var(--faction-primary) r g b / 0.3);
 }
 
 /* Art Nouveau - 1890s-1910s organic, flowing lines */
@@ -384,7 +366,7 @@
 :root[data-retro="retro-nouveau"] button {
   border: 2px solid var(--faction-primary);
   border-radius: 20px 5px 20px 5px;
-  box-shadow: 0 4px 12px rgba(var(--faction-primary-rgb), 0.3);
+  box-shadow: 0 4px 12px rgb(from var(--faction-primary) r g b / 0.3);
 }
 
 /* Bauhaus - 1920s-1930s clean, geometric modernist */
@@ -419,7 +401,7 @@
 :root[data-retro="retro-midcentury"] button {
   border: none;
   border-radius: 2px;
-  box-shadow: 0 1px 3px rgba(var(--faction-primary-rgb), 0.3);
+  box-shadow: 0 1px 3px rgb(from var(--faction-primary) r g b / 0.3);
 }
 
 /* Psychedelic - 1960s groovy, colorful effects */
@@ -445,7 +427,7 @@
 :root[data-retro="retro-psychedelic"] button {
   border: 3px solid var(--faction-primary);
   border-radius: 50% 10px 50% 10px;
-  box-shadow: 0 0 15px rgba(var(--faction-primary-rgb), 0.5);
+  box-shadow: 0 0 15px rgb(from var(--faction-primary) r g b / 0.5);
   animation: groovy-float 4s ease-in-out infinite;
 }
 
@@ -510,7 +492,7 @@
 :root[data-retro="retro-grunge"] button {
   border: 2px solid var(--faction-primary);
   border-radius: 3px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(var(--faction-primary-rgb), 0.3);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3), 0 2px 8px rgb(from var(--faction-primary) r g b / 0.3);
   position: relative;
   transform: rotate(0.5deg);
 }
@@ -564,7 +546,7 @@
 :root[data-retro="retro-future"] button {
   border: 1px solid var(--faction-primary);
   border-radius: 0;
-  box-shadow: 0 0 10px rgba(var(--faction-primary-rgb), 0.3);
+  box-shadow: 0 0 10px rgb(from var(--faction-primary) r g b / 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -612,7 +594,7 @@
 
 :root[data-retro="retro-deco"] button:hover {
   background: linear-gradient(135deg, var(--faction-primary-light), var(--faction-primary));
-  box-shadow: 0 4px 12px rgba(var(--faction-primary-rgb), 0.4);
+  box-shadow: 0 4px 12px rgb(from var(--faction-primary) r g b / 0.4);
   transform: translateY(-2px);
 }
 
@@ -627,7 +609,7 @@
   font-weight: bold;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 15px rgba(var(--faction-primary-rgb), 0.5);
+  box-shadow: 0 0 15px rgb(from var(--faction-primary) r g b / 0.5);
 }
 
 :root[data-retro="retro-atompunk"] button::before {
@@ -649,7 +631,7 @@
 }
 
 :root[data-retro="retro-atompunk"] button:hover {
-  box-shadow: 0 0 25px rgba(var(--faction-primary-rgb), 0.8);
+  box-shadow: 0 0 25px rgb(from var(--faction-primary) r g b / 0.8);
   transform: scale(1.05);
 }
 
@@ -673,7 +655,7 @@
 
 :root[data-retro="retro-western"] button:hover {
   background: linear-gradient(135deg, var(--faction-primary-light), var(--faction-primary));
-  box-shadow: 6px 6px 0px rgba(var(--faction-primary-rgb), 0.4);
+  box-shadow: 6px 6px 0px rgb(from var(--faction-primary) r g b / 0.4);
   transform: translate(-2px, -2px);
 }
 
@@ -690,7 +672,7 @@
 
 :root[data-retro="retro-nouveau"] button:hover {
   background: linear-gradient(135deg, var(--faction-primary-light), var(--faction-primary));
-  box-shadow: 0 6px 16px rgba(var(--faction-primary-rgb), 0.4);
+  box-shadow: 0 6px 16px rgb(from var(--faction-primary) r g b / 0.4);
   transform: translateY(-2px);
 }
 
@@ -724,7 +706,7 @@
 
 :root[data-retro="retro-midcentury"] button:hover {
   background: var(--faction-primary-dark);
-  box-shadow: 0 2px 6px rgba(var(--faction-primary-rgb), 0.4);
+  box-shadow: 0 2px 6px rgb(from var(--faction-primary) r g b / 0.4);
   transform: translateY(-1px);
 }
 
@@ -745,7 +727,7 @@
 
 :root[data-retro="retro-psychedelic"] button:hover {
   animation-duration: 1s;
-  box-shadow: 0 0 20px rgba(var(--faction-primary-rgb), 0.7);
+  box-shadow: 0 0 20px rgb(from var(--faction-primary) r g b / 0.7);
 }
 
 /* Memphis Design - Bold geometric button styling */
@@ -780,7 +762,7 @@
 
 :root[data-retro="retro-grunge"] button:hover {
   background: linear-gradient(135deg, var(--faction-primary-light), var(--faction-primary));
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2), 0 3px 10px rgba(var(--faction-primary-rgb), 0.4);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2), 0 3px 10px rgb(from var(--faction-primary) r g b / 0.4);
   transform: rotate(-0.5deg);
 }
 
@@ -796,7 +778,7 @@
 }
 
 :root[data-retro="retro-future"] button:hover {
-  box-shadow: 0 0 15px rgba(var(--faction-primary-rgb), 0.6);
+  box-shadow: 0 0 15px rgb(from var(--faction-primary) r g b / 0.6);
   text-shadow: 0 0 8px var(--faction-primary);
 }
 
@@ -950,8 +932,8 @@
 }
 
 :root[data-retro="retro-stellar"] button:hover {
-  box-shadow: 0 6px 20px rgba(var(--faction-primary-rgb), 0.4);
-  text-shadow: 0 0 8px rgba(var(--faction-primary-rgb), 0.5);
+  box-shadow: 0 6px 20px rgb(from var(--faction-primary) r g b / 0.4);
+  text-shadow: 0 0 8px rgb(from var(--faction-primary) r g b / 0.5);
   transform: translateY(-1px);
 }
 
@@ -960,8 +942,8 @@
 :root[data-retro="retro-stellar"] select,
 :root[data-retro="retro-stellar"] textarea {
   font-family: var(--retro-font);
-  background: rgba(var(--faction-primary-rgb), 0.05);
-  border: 1px solid rgba(var(--retro-accent-color), 0.3);
+  background: rgb(from var(--faction-primary) r g b / 0.05);
+  border: 1px solid rgb(from var(--retro-accent-color) r g b / 0.3);
   border-radius: 4px;
 }
 

@@ -6,10 +6,13 @@
   display: inline;
   padding: 0;
   margin: 0;
-  border: 1px dashed rgba(255, 255, 255, 0.5);
+  border: 1px dotted rgba(255, 255, 255, 0.5);
   &.as-div {
     display: inline-block;
     width: 100%;
+  }
+  &:hover {
+    border: 1px dashed rgba(250, 237, 60, 0.8);
   }
 }
 
@@ -33,43 +36,3 @@
 .faction-tag-container-tooltip {
   padding: 10px 8px;
 }
-/*
-
-
-.creature-tooltip-top::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
-}
-
-.creature-tooltip-bottom::after {
-  content: '';
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent rgba(0, 0, 0, 0.9) transparent;
-}
-
-/* Only show tooltips in example mode */
-/* .creature-card:not(.example-card) .creature-tooltip-trigger {
-  cursor: default;
-}
-
-.creature-card:not(.example-card) .creature-tooltip {
-  display: none;
-} */
-
-/* Highlight effect for tooltip triggers in example mode */
-/* .creature-card.example-card .creature-tooltip-trigger:hover {
-  background-color: rgba(255, 255, 0, 0.1);
-  border-radius: 2px;
-  outline: 1px dashed rgba(255, 255, 0, 0.5);
-} */

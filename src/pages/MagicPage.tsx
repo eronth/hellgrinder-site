@@ -1,4 +1,4 @@
-import GameTitle from "../GameTitle";
+import GameTitle from "../GameTitle/GameTitle";
 import NavTabs from "../common-design/nav/NavTabs";
 import { TabType } from "../ts-types/types";
 

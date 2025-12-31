@@ -1,5 +1,9 @@
 import { useCallback, useMemo } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
+import './title-fonts.css';
+import './GameTitle.css';
 
 // Module-level storage for selected title index to persist across all renders
 let globalSelectedTitleIndex: number | null = null;
@@ -221,5 +225,16 @@ export default function GameTitle({ isIndex }: Props) {
     globalSelectedTitleIndex = getRandInt(0, titlesDesigns.length - 1);
   }
 
-  return (<div className='title-region'>{titlesDesigns[globalSelectedTitleIndex]}</div>);
+  return (<>
+    <div className='title-region'>{titlesDesigns[globalSelectedTitleIndex]}</div>
+    <div className='wip-banner'>
+      <div className='wip-icon-container'>
+        <FontAwesomeIcon icon={faTriangleExclamation} />
+      </div>
+      <div className='wip-text-container'>
+        <div>The rules, lore, and website are currently a WIP.</div>
+        <div>Your saves may break with updates!</div>
+      </div>
+    </div>
+  </>);
 }

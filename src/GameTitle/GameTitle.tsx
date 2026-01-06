@@ -236,5 +236,54 @@ export default function GameTitle({ isIndex }: Props) {
         <div>Your saves may break with updates!</div>
       </div>
     </div>
+    <div className="color-visualizer">
+      <div className="title">
+        Color display region
+      </div>
+      <div className="mode lightmode">
+        <div className="primary">
+          Primary
+        </div>
+        <div className="accent">
+          Accent
+        </div>
+        <div className="text">
+          Text
+        </div>
+        <button className="button">
+          btn
+        </button>
+        <div className="headers">
+          <h1>H1</h1>
+          <h2>H2</h2>
+          <h3>H3</h3>
+          <h4>H4</h4>
+          <h5>H5</h5>
+          <h6>H6</h6>
+        </div>
+      </div>
+      <div className="mode darkmode">
+        <div className="primary">
+          Primary
+        </div>
+        <div className="accent">
+          Accent
+        </div>
+        <div className="text">
+          Text
+        </div>
+        <button className="button">
+          btn
+        </button>
+        <div className="headers">
+          <h1>H1</h1>
+          <h2>H2</h2>
+          <h3>H3</h3>
+          <h4>H4</h4>
+          <h5>H5</h5>
+          <h6>H6</h6>
+        </div>
+      </div>
+    </div>
   </>);
 }

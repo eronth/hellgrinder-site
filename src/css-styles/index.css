@@ -36,7 +36,9 @@
     hsl(0, 0%, 57%),
     hsl(0, 0%, 27%)
   );
-    
+  
+
+  --table-header-color: #2d3748;
   --table-header-background: #1e2157;
   --table-background: #2a2a2a;
   --table-border-color: light-dark(
@@ -295,7 +297,10 @@ h4 {
 .simple-header {
   font-weight: bold;
   font-style: italic;
-  color: var(--simple-header-color, white);
+  color: light-dark(
+    #2d3748,
+    var(--simple-header-color, white)
+  );
 }
 
 /*

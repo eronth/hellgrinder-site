@@ -1,7 +1,7 @@
 .demon-clan-component {
   .title {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr max-content;
   }
 
   .ashborn {

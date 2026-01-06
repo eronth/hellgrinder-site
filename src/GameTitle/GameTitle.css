@@ -43,3 +43,66 @@
     font-weight: bold;
   }
 }
+
+.color-visualizer {
+  width: 100%;
+  margin-top: 1rem;
+  border: 1px solid var(--card-border-color);
+  border-radius: 0.5rem;
+  .title {
+    font-weight: bold;
+    border-bottom: 1px solid var(--card-border-color);
+  }
+
+  .mode {
+    font-size: .8rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--card-border-color);
+    background: var(--faction-background);
+
+    &.darkmode {
+      color-scheme: dark;
+    }
+
+    > div, button {
+      --side: 55px;
+      height: var(--side);
+      width: var(--side);
+      background: red;
+    }
+
+    .primary {
+      background: var(--faction-primary);
+    }
+    .accent {
+      background: var(--faction-accent);
+    }
+    .text {
+      text-align: center;
+      align-content: center;
+      font-size: .9rem;
+      font-weight: bold;
+      background: var(--faction-background);
+      color: var(--faction-text);
+    }
+    .button {
+      color: var(--standard-button-text);
+      background: var(--standard-button-background);
+      border: 1px solid var(--standard-button-border);
+      &:hover {
+        background: var(--standard-button-hover-background);
+        border-color: var(--standard-button-hover-border);
+      }
+    }
+    .headers {
+      font-size: .3em;
+      * {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+}

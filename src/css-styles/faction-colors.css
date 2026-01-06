@@ -4,7 +4,10 @@
   --ashborn-faction-on-primary: hsl(0, 0%, 100%);
   --ashborn-faction-accent: hsl(26, 100%, 50%);
   --ashborn-faction-accent-light: hsl(40, 100%, 50%);
-  --ashborn-faction-background: hsl(0, 8%, 15%); /* Slightly warmer/redder dark background */
+  --ashborn-faction-background: light-dark(
+    #fefafa,
+    hsl(0, 8%, 15%)
+  );
   
   /* stoneveined */
   --stoneveined-faction-primary: hsl(14, 26%, 29%);
@@ -14,7 +17,10 @@
     from var(--stoneveined-faction-accent)
     calc(l + 0.1) c h
   );
-  --stoneveined-faction-background: hsl(0, 3%, 15%); /* Slightly earthier dark background */
+  --stoneveined-faction-background: light-dark(
+    #fefefe,
+    hsl(0, 3%, 15%)
+  );
 
   /* thornwraith */
   --thornwraith-faction-primary: hsl(123, 43%, 39%);
@@ -24,7 +30,10 @@
     from var(--thornwraith-faction-accent)
     calc(l + 0.1) c h
   );
-  --thornwraith-faction-background: hsl(120, 8%, 15%); /* Slightly greener dark background */
+  --thornwraith-faction-background: light-dark(
+    #fafefa,
+    hsl(120, 8%, 15%)
+  );
 
   /* umbral */
   --umbral-faction-primary: hsl(0, 0%, 26%);
@@ -34,7 +43,10 @@
     from var(--umbral-faction-accent)
     calc(l + 0.1) c h
   );
-  --umbral-faction-background: hsl(0, 0%, 12%); /* Darker, more shadowy background */
+  --umbral-faction-background: light-dark(
+    #fcfcfc,
+    hsl(0, 0%, 12%)
+  );
 
   /* vastfathom */
   --vastfathom-faction-primary: hsl(202, 98%, 37%);
@@ -44,7 +56,10 @@
     from var(--vastfathom-faction-accent)
     calc(l + 0.1) c h
   );
-  --vastfathom-faction-background: hsl(240, 5%, 15%); /* Slightly bluer dark background */
+  --vastfathom-faction-background: light-dark(
+    #fafafe,
+    hsl(240, 5%, 15%)
+  );
 
   /* zephpter */
   --zephpter-faction-primary: hsl(282, 68%, 38%);
@@ -54,7 +69,10 @@
     from var(--zephpter-faction-accent)
     calc(l + 0.1) c h
   );
-  --zephpter-faction-background: hsl(0, 4%, 15%); /* Slightly purpler dark background */
+  --zephpter-faction-background: light-dark(
+    #fefaff,
+    hsl(0, 4%, 15%)
+  );
 
   /* wanderlost */
   --wanderlost-faction-primary: hsl(199, 18%, 33%);
@@ -64,15 +82,8 @@
     from var(--wanderlost-faction-accent)
     calc(l + 0.1) c h
   );
-  --wanderlost-faction-background: hsl(210, 5%, 15%); /* Slightly more neutral but cooler background */
-}
-
-:root[data-theme="light"] {
-  --ashborn-faction-background: #fefafa; /* Very subtle red tint for light mode */
-  --stoneveined-faction-background: #fefefe; /* Very subtle brown tint for light mode */
-  --thornwraith-faction-background: #fafefa; /* Very subtle green tint for light mode */
-  --umbral-faction-background: #fcfcfc; /* Slightly cooler light background */
-  --vastfathom-faction-background: #fafafe; /* Very subtle blue tint for light mode */
-  --zephpter-faction-background: #fefaff; /* Very subtle purple tint for light mode */
-  --wanderlost-faction-background: #fafafc; /* Very subtle cool tint for light mode */
+  --wanderlost-faction-background: light-dark(
+    #fafafc,
+    hsl(210, 5%, 15%)
+  );
 }

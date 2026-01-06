@@ -63,9 +63,8 @@
     border-bottom: 1px solid var(--card-border-color);
     background: var(--faction-background);
 
-    &.darkmode {
-      color-scheme: dark;
-    }
+    &.lightmode { color-scheme: light; }
+    &.darkmode { color-scheme: dark; }
 
     > div, button {
       --side: 55px;
@@ -86,6 +85,7 @@
       font-size: .9rem;
       font-weight: bold;
       background: var(--faction-background);
+
       color: var(--faction-text);
     }
     .button {

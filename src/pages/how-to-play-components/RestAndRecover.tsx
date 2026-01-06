@@ -1,5 +1,6 @@
 import Hx from "../../common-design/Hx/Hx";
 import SkillCheck from "../../common-design/SkillCheck/SkillCheck";
+import CheckResultsGrid from "./CheckResultsGrid/CheckResultsGrid";
 
 export default function RestAndRecover() {
   const innerHx = 3;
@@ -53,12 +54,12 @@ export default function RestAndRecover() {
         When you use a safelight object to recover, you roll a <SkillCheck tags={['Recovery']} />. 
         When you do, the amount you heal differs based on your success Rank.
       </p>
-      <ul>
-        <li>Rank 0 - Heal 2 health.</li>
-        <li>Rank 1 - Remove one Light Injury, heal 3 health.</li>
-        <li>Rank 2 - Remove one Light Injury, heal to max health.</li>
-        <li>Rank 3 - (Remove one Light Injury and reduce one Serious Injury to Light) OR (completely remove one Serious Injury).</li>
-      </ul>
+      <CheckResultsGrid results={{
+        r0: <>Heal 2 health.</>,
+        r1: <>Remove one Light Injury, heal 3 health.</>,
+        r2: <>Remove one Light Injury, heal to max health.</>,
+        r3: <>(Remove one Light Injury and reduce one Serious Injury to Light) OR (completely remove one Serious Injury).</>,
+      }} />
 
       <Hx hx={innerHx}>Squad and Reinforcements</Hx>
       <p>

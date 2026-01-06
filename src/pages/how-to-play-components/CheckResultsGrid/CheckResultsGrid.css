@@ -1,0 +1,23 @@
+.check-results-grid {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  &.with-numeral {
+    grid-template-columns: max-content max-content 1fr;
+  }
+
+  > div {
+    padding-inline: .4em;
+    align-content: center;
+    border: 1px solid var(--table-border-color);
+
+    &.number-result {
+      text-align: center;;
+    }
+
+    &.title {
+      font-weight: bold;
+      background-color: var(--faction-accent);
+      text-align: center;
+    }
+  };  
+}

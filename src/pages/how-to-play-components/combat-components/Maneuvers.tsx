@@ -4,6 +4,7 @@ import Hx from "../../../common-design/Hx/Hx";
 import RuleKeyword from "../../../common-design/RuleKeyword";
 import SkillCheck from "../../../common-design/SkillCheck/SkillCheck";
 import StatusKeyword from "../../../common-design/StatusKeyword";
+import CheckResultsGrid from "../CheckResultsGrid/CheckResultsGrid";
 import IndividualManeuver from "./IndividualManeuver";
 import './Maneuvers.css';
 
@@ -109,12 +110,12 @@ export default function Maneuvers() {
           Roll an <SkillCheck tags={['Agility']} /> to attempt
           to swap your equipment. You may only attempt to Swap Weapons once per turn.
         </p>
-        <ul>
-          <li>Rank 1: Items successfully swapped.</li>
-          <li>Rank 2: You do not spend {movementIcon} to complete the swap.</li>
-          <li>Rank 3: You do not spend {movementIcon} to complete the swap. You may
-            choose to use “Swap Weapons” again this turn as a Maneuver.</li>
-        </ul>
+        <CheckResultsGrid results={{
+          r1: <>Items successfully swapped.</>,
+          r2: <>You do not spend {movementIcon} to complete the swap.</>,
+          r3: <>You do not spend {movementIcon} to complete the swap. You may
+            choose to use “Swap Weapons” again this turn as a Maneuver.</>,
+        }} />
       </IndividualManeuver>
 
       <IndividualManeuver title='Take Aim' cost={3}>

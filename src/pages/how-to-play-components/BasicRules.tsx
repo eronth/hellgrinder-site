@@ -25,35 +25,40 @@ export default function BasicRules() {
       <Hx>Hero Time!</Hx>
       <ul>
         <li>
-          <b>Spend 1 <RuleKeyword keyword="Heroic Medals">Heroic Medal</RuleKeyword></b>: Change the result of one dice up or down by 1.
+          <b>Spend 1 <RuleKeyword keyword="Heroic Medals">Heroic Medal</RuleKeyword></b>: Change the result of one dice by +1 or -1.
         </li>
         <li>
-          <b>Spend 3 <RuleKeyword keyword="Heroic Medals">Heroic Medal</RuleKeyword></b>: Set the value of any dice.
+          <b>Spend 3 <RuleKeyword keyword="Heroic Medals">Heroic Medals</RuleKeyword></b>: Set the value of any dice.
         </li>
       </ul>
       <Hx>Calling Reinforcement!</Hx>
       <ul>
         <li>
-          <b>Spend 1 Heroic Medal</b>: If one of your player allies is dead or otherwise non-playable, you may call
+          <b>Spend 1 <RuleKeyword keyword="Heroic Medals">Heroic Medal</RuleKeyword></b>:
+          If one of the players' characters (including your own) is dead or otherwise
+          non-playable, you may call
           for a
-          reinforcement. The player creates a new character (if they haven’t yet), and arrives as a reinforcement at
-          the end of the current round. The cost of this ability increases by 1 for each time it’s been used this
-          combat.
+          reinforcement. The player creates a new character (if they haven’t yet),
+          which arrives as a reinforcement at
+          the end of the current round. The cost of this ability increases by 1 for each time it’s been used per combat.
         </li>
       </ul>
       <Hx>Quick Thinking</Hx>
       <ul>
         <li>
-          <b>Spend 1 Heroic Medal after a turn ends</b>: Take an extra action, right now, even if it is not your
+          <b>Spend 1 <RuleKeyword keyword="Heroic Medals">Heroic Medal</RuleKeyword> after a turn ends</b>:
+          Take an extra action, right now, even if it is not your
           turn.
         </li>
         <li>
-          <b>Spend 2 Heroic Medals after a turn ends</b>: Take your turn early, skipping the next turn you would
+          <b>Spend 2 <RuleKeyword keyword="Heroic Medals">Heroic Medals</RuleKeyword> after a turn ends</b>:
+          Take your turn early, skipping the next turn you would
           have had. This does
           not affect the back-and-forth turn order.
         </li>
         <li>
-          <b>Spend 4 Heroic Medals after a turn ends</b>: Take a turn immediately, but you do not need to skip a
+          <b>Spend 4 <RuleKeyword keyword="Heroic Medals">Heroic Medals</RuleKeyword> after a turn ends</b>:
+          Take a turn immediately, but you do not need to skip a
           turn. This does
           not affect the back-and-forth turn order.
         </li>
@@ -75,7 +80,6 @@ export default function BasicRules() {
         Rolling all 6s triggers a Hellish Triumph, and you get +1 to rolls for a bit (tbd).
       </p>
       <p>
-        
         When you roll a Hell’s Wrath or Hellish Triumph, you trigger a Deal with the Devil moment. Roll on the
         Deal table X times, and you are presented each result as an offer. You can choose to accept or decline any or
         all of the offers.

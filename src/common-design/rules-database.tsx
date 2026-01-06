@@ -76,9 +76,9 @@ export const generalRules: RuleDefinition[] = [
     summary: 'Currency earned throughout the game that can be spent to create Heroic Moments and boost actions.',
     details: 'Heroic Medals are earned throughout the game and can be spent to create Heroic Moments whereupon an action is boosted. Sometimes you may earn specialized Medals, which can be used as Heroic Medals or for a perk described by that medal type.',
     examples: [
-      'Spend 1 Heroic Medal: Change the result of one dice up or down by 1',
-      'Spend 3 Heroic Medal: Set the value of any dice',
-      'Spend 1 Heroic Medal: Call reinforcement (cost increases each use)',
+      'Spend 1 Heroic Medal: Change the result of one dice by +1 or -1',
+      'Spend 3 Heroic Medals: Set the value of any dice',
+      'Spend 1 Heroic Medal: Call reinforcement (cost increases +1 each use)',
       'Spend 1 Heroic Medal after a turn ends: Take an extra action right now',
       'Spend 2 Heroic Medals after a turn ends: Take your turn early'
     ],

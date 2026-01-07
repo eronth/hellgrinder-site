@@ -22,22 +22,22 @@ export default function CheckResultsGrid({ results, showNumeral }: Props) {
 
 
       {showRank0 && <>
-        {showNumeral && <div className="number-result">4-7</div>}
-        <div className="rank-result">Rank&nbsp;0</div>
-        <div className="result-description">{results.r0}</div>
+        {showNumeral && <div className="data number-result">4-7</div>}
+        <div className="data rank-result">Rank&nbsp;0</div>
+        <div className="data result-description">{results.r0}</div>
       </>}
 
-      {showNumeral && <div className="number-result">8-11</div>}
-      <div className="rank-result">Rank&nbsp;1</div>
-      <div className="result-description">{results.r1}</div>
+      {showNumeral && <div className="data number-result">8-11</div>}
+      <div className="data rank-result">Rank&nbsp;1</div>
+      <div className="data result-description">{results.r1}</div>
 
-      {showNumeral && <div className="number-result">12-15</div>}
-      <div className="rank-result">Rank&nbsp;2</div>
-      <div className="result-description">{results.r2}</div>
+      {showNumeral && <div className="data number-result">12-15</div>}
+      <div className="data rank-result">Rank&nbsp;2</div>
+      <div className="data result-description">{results.r2}</div>
 
-      {showNumeral && <div className="number-result">16-18</div>}
-      <div className="rank-result">Rank&nbsp;3</div>
-      <div className="result-description">{results.r3}</div>
+      {showNumeral && <div className="data number-result">16-18</div>}
+      <div className="data rank-result">Rank&nbsp;3</div>
+      <div className="data result-description">{results.r3}</div>
     </div>
   </>)
 }

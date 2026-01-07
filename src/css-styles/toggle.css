@@ -1,7 +1,8 @@
 .toggle {
   height: var(--height);
-  --toggle-off-background-color: var(--faction-primary, #2c3e50);
-  --toggle-on-background-color: var(--faction-accent, #5a88bc);
+  --toggle-off-background-color: 
+    hsl( from var(--primary-color) h calc(s*.8) calc(l*.8) );
+  --toggle-on-background-color: var(--primary-color);
   --toggle-nub-color: #fff;
   --nub-size: 1.1em;
   --nub-edge-gap: 3px;

@@ -1,84 +1,74 @@
 :root {
   color-scheme: light dark;
 
-  /*
-  --primary-color: ;
-  --accent-color:
-  --text-color
-  --background-color:
-  --tab-color
-  */
-
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   width: 100%;
 
-  color: light-dark(
-    #213547, rgba(255, 255, 255, 0.87)
-  );
+  
   --default-background-color: light-dark(
-    #ffffff, #242424
+    #FFC0CB, /* was: #ffffff */ #FF00FF /* was: #242424 */
   );
-  background-color: var(--default-background-color);
-  --faction-background: var(--default-background-color);
+  color: var(--text-color);
+  background-color: var(--background-color);
 
   /* Header (<Hx>) colors */
   --header-primary-color: light-dark(
-    hsl(208, 37%, 20%),
-    hsl(0, 0%, 100%)
+    #FF69B4, /* was: hsl(208, 37%, 20%) */
+    #FFC0CB /* was: hsl(0, 0%, 100%) */
+  );
+  --header-secondary-color: var(--primary-color);
+  --header-tertiary-color: var(--accent-color);
+
+  --h4-light: hsl(from var(--accent-color) 
+    h calc(s*.4) calc(l)
+  );
+  --h4-dark: hsl(from var(--accent-color) 
+    h calc(s*.4) calc(l*1.2)
   );
   --header-quaternary-color: light-dark(
-    hsl(238, 80%, 40%),
-    var(--faction-accent, hsl(238, 100%, 87%))
+    var(--h4-light),
+    var(--h4-dark)
   );
-
   /* Lore Columns */
-  --lore-column-rule-color: light-dark(rgba(0,0,0,0.08), rgba(255,255,255,0.1));
+  --lore-column-rule-color: light-dark(#FADADD /* was: rgba(0,0,0,0.08) */, #FFC0CB /* was: rgba(255,255,255,0.1) */);
   --lore-column-rule: 1px solid var(--lore-column-rule-color);
 
   /* Card and table background colors - slightly different from site background */
-  --card-background: #2a2a2a;
-  --card-header-background: #333333;
+  --card-background: #FF00FF; /* was: #2a2a2a */
+  --card-header-background: #FF1493; /* was: #333333 */
   --card-border-color: light-dark(
-    hsl(0, 0%, 57%),
-    hsl(0, 0%, 27%)
+    #FFB6C1, /* was: hsl(0, 0%, 57%) */
+    #DB7093 /* was: hsl(0, 0%, 27%) */
   );
   
 
-  --table-header-color: #2d3748;
-  --table-header-background: #1e2157;
-  --table-background: #2a2a2a;
+  --table-header-color: #FF69B4; /* was: #2d3748 */
+  --table-header-background: #C71585; /* was: #1e2157 */
+  --table-background: #FF00FF; /* was: #2a2a2a */
   --table-border-color: light-dark(
-    hsl(0, 0%, 57%),
-    hsl(0, 0%, 27%)
+    #FFB6C1, /* was: hsl(0, 0%, 57%) */
+    #DB7093 /* was: hsl(0, 0%, 27%) */
   );
-  --table-row-background: #2a2a2a;
-  --table-row-alt-background: #2e2e2e;
+  --table-row-background: #FF00FF; /* was: #2a2a2a */
+  --table-row-alt-background: #DB7093; /* was: #2e2e2e */
 
   --input-background: light-dark(
-    hsl(0, 0%, 90%),
-    hsl(0, 0%, 20%)
+    #FADADD, /* was: hsl(0, 0%, 90%) */
+    #DB7093 /* was: hsl(0, 0%, 20%) */
   );
   --input-border: light-dark(
-    hsl(0, 0%, 80%),
-    hsl(0, 0%, 33%)
+    #FFC0CB, /* was: hsl(0, 0%, 80%) */
+    #FF69B4 /* was: hsl(0, 0%, 33%) */
   );
 
   --nav-border: light-dark(
-    hsl(0, 0%, 0%),
-    hsl(0, 0%, 100%)
+    #FF00FF, /* was: hsl(0, 0%, 0%) */
+    #FFC0CB /* was: hsl(0, 0%, 100%) */
   );
 
-  --text: light-dark(
-    hsl(208, 37%, 20%),
-    hsl(0, 0%, 100%)
-  );
-  --text-secondary: light-dark(
-    hsl(208, 37%, 40%),
-    hsl(0, 0%, 60%)
-  );
-  --header-icon-color: var(--text);
+  --header-icon-color: var(--text-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -86,86 +76,86 @@
   -moz-osx-font-smoothing: grayscale;
 
   --dice-border-color: light-dark(
-    hsla(0, 0%, 40%, 0.6),
-    hsla(0, 0%, 100%, 0.2)
+    #DB7093, /* was: hsla(0, 0%, 40%, 0.6) */
+    #FFC0CB /* was: hsla(0, 0%, 100%, 0.2) */
   );
-  --clickable-dice-hover-color: hsl(198, 72%, 65%);
+  --clickable-dice-hover-color: #FF69B4; /* was: hsl(198, 72%, 65%) */
 
-  --probability-title: #646cff;
+  --probability-title: #FF00FF; /* was: #646cff */
 
-  --standard-button-text: white;
-  --standard-button-color: hsl(237, 100%, 70%);
-  --standard-button-hover-color: hsl(237, 55%, 58%);
-  --delete-button-color: hsl(354, 70%, 54%);
-  --delete-button-hover-color: hsl(354, 70%, 46%);
-  --delete-button-active-color: hsl(354, 70%, 44%);
+  --standard-button-text: #FFC0CB; /* was: white */
+  --standard-button-color: #FF00FF; /* was: hsl(237, 100%, 70%) */
+  --standard-button-hover-color: #DB7093; /* was: hsl(237, 55%, 58%) */
+  --delete-button-color: #FF1493; /* was: hsl(354, 70%, 54%) */
+  --delete-button-hover-color: #C71585; /* was: hsl(354, 70%, 46%) */
+  --delete-button-active-color: #8B008B; /* was: hsl(354, 70%, 44%) */
 
   --tags-list-background: light-dark(
-    hsl(196, 49%, 71%),
-    hsl(196, 49%, 21%)
+    #FFB6C1, /* was: hsl(196, 49%, 71%) */
+    #FF1493 /* was: hsl(196, 49%, 21%) */
   );
 }
 
 /* Specifically a bunch of button stuff just for skill check section. */
 :root {
   --difficulty-button-color: light-dark(
-    hsla(0, 0%, 0%, 0.6),
-    hsla(0, 0%, 100%, 0.6)
+    #DB7093, /* was: hsla(0, 0%, 0%, 0.6) */
+    #FFB6C1 /* was: hsla(0, 0%, 100%, 0.6) */
   );
   --difficulty-button-background-color: light-dark(
-    hsla(0, 0%, 0%, 0.05),
-    hsla(0, 0%, 30%, 0.8)
+    #FADADD, /* was: hsla(0, 0%, 0%, 0.05) */
+    #DB7093 /* was: hsla(0, 0%, 30%, 0.8) */
   );
   --difficulty-button-border-color: light-dark(
-    hsla(0, 0%, 0%, 0.1),
-    hsla(0, 0%, 100%, 0.2)
+    #FFC0CB, /* was: hsla(0, 0%, 0%, 0.1) */
+    #FFC0CB /* was: hsla(0, 0%, 100%, 0.2) */
   );
   --difficulty-button-hover-color: light-dark(
-    red,
-    red
+    #FF00FF, /* was: red */
+    #FF00FF /* was: red */
   );
   --difficulty-button-hover-background-color: light-dark(
-    hsla(237, 100%, 70%, 0.3),
-    hsla(237, 100%, 70%, 0.3)
+    #FF00FF66, /* was: hsla(237, 100%, 70%, 0.3) */
+    #FF00FF66 /* was: hsla(237, 100%, 70%, 0.3) */
   );
   --difficulty-button-hover-border-color: light-dark(
-    hsla(0, 0%, 0%, 0.3),
-    hsla(0, 0%, 100%, 0.3)
+    #FF69B4, /* was: hsla(0, 0%, 0%, 0.3) */
+    #FFB6C1 /* was: hsla(0, 0%, 100%, 0.3) */
   );
   --difficulty-button-active-color: light-dark(
-    white,
-    white
+    #FFC0CB, /* was: white */
+    #FFC0CB /* was: white */
   );
   --difficulty-button-active-background-color: light-dark(
-    hsl(237, 100%, 70%),
-    hsl(237, 100%, 70%)
+    #FF00FF, /* was: hsl(237, 100%, 70%) */
+    #FF00FF /* was: hsl(237, 100%, 70%) */
   );
   --difficulty-button-active-border-color: light-dark(
-    hsl(237, 100%, 70%),
-    hsl(237, 100%, 70%)
+    #FF00FF, /* was: hsl(237, 100%, 70%) */
+    #FF00FF /* was: hsl(237, 100%, 70%) */
   );
 }
 /* Styles for Success Ranks and Probabilities of Success Ranks. */
 :root {
-  --rank-0-border-color: hsla(331, 72%, 51%, 0.3);
-  --rank-0-background-color-1: hsla(331, 72%, 51%, 0.1);
-  --rank-0-background-color-2: hsla(331, 72%, 51%, 0.05);
-  --rank-0-color: hsl(332, 71%, 52%);
+  --rank-0-border-color: #FF149366; /* was: hsla(331, 72%, 51%, 0.3) */
+  --rank-0-background-color-1: #FF14931A; /* was: hsla(331, 72%, 51%, 0.1) */
+  --rank-0-background-color-2: #FF14930D; /* was: hsla(331, 72%, 51%, 0.05) */
+  --rank-0-color: #FF1493; /* was: hsl(332, 71%, 52%) */
 
-  --rank-1-border-color: hsla(25, 95%, 53%, 0.3);
-  --rank-1-background-color-1: hsla(25, 95%, 53%, 0.1);
-  --rank-1-background-color-2: hsla(25, 95%, 53%, 0.05);
-  --rank-1-color: hsl(25, 95%, 53%);
+  --rank-1-border-color: #FF69B466; /* was: hsla(25, 95%, 53%, 0.3) */
+  --rank-1-background-color-1: #FF69B41A; /* was: hsla(25, 95%, 53%, 0.1) */
+  --rank-1-background-color-2: #FF69B40D; /* was: hsla(25, 95%, 53%, 0.05) */
+  --rank-1-color: #FF69B4; /* was: hsl(25, 95%, 53%) */
   
-  --rank-2-border-color: hsla(142, 71%, 45%, 0.3);
-  --rank-2-background-color-1: hsla(142, 71%, 45%, 0.1);
-  --rank-2-background-color-2:hsla(142, 71%, 45%, 0.05);
-  --rank-2-color: hsl(142, 71%, 45%);
+  --rank-2-border-color: #FFB6C166; /* was: hsla(142, 71%, 45%, 0.3) */
+  --rank-2-background-color-1: #FFB6C11A; /* was: hsla(142, 71%, 45%, 0.1) */
+  --rank-2-background-color-2:#FFB6C10D; /* was: hsla(142, 71%, 45%, 0.05) */
+  --rank-2-color: #FFB6C1; /* was: hsl(142, 71%, 45%) */
   
-  --rank-3-border-color: hsla(237, 100%, 70%, 0.3);
-  --rank-3-background-color-1: hsla(237, 100%, 70%, 0.1);
-  --rank-3-background-color-2: hsla(237, 100%, 70%, 0.05);
-  --rank-3-color: hsl(237, 100%, 70%);
+  --rank-3-border-color: #FF00FF66; /* was: hsla(237, 100%, 70%, 0.3) */
+  --rank-3-background-color-1: #FF00FF1A; /* was: hsla(237, 100%, 70%, 0.1) */
+  --rank-3-background-color-2: #FF00FF0D; /* was: hsla(237, 100%, 70%, 0.05) */
+  --rank-3-color: #FF00FF; /* was: hsl(237, 100%, 70%) */
 }
 .rank-0 {
   --rank-color: var(--rank-0-color);
@@ -193,19 +183,19 @@
 }
 /* Calculation Operations */
 :root {
-  --bonus-value-color: hsl(47, 100%, 62%);
+  --bonus-value-color: #FFC0CB; /* was: hsl(47, 100%, 62%) */
 }
 :root[data-theme="light"] {
-  --bonus-value-color: hsl(47, 90%, 41%);
+  --bonus-value-color: #FFB6C1; /* was: hsl(47, 90%, 41%) */
 }
 /* Kit Styles */
 :root {
-  --weapon-card-border-color: hsl(27, 91%, 27%);
-  --weapon-tag-background-color: hsl(27, 91%, 27%);
-  --item-card-border-color: hsl(162, 90%, 21%);
-  --item-tag-background-color: hsl(162, 90%, 21%);
-  --training-card-border-color: hsl(209, 89%, 32%);
-  --training-tag-background-color: hsl(209, 89%, 32%);
+  --weapon-card-border-color: #FF1493; /* was: hsl(27, 91%, 27%) */
+  --weapon-tag-background-color: #FF1493; /* was: hsl(27, 91%, 27%) */
+  --item-card-border-color: #FF69B4; /* was: hsl(162, 90%, 21%) */
+  --item-tag-background-color: #FF69B4; /* was: hsl(162, 90%, 21%) */
+  --training-card-border-color: #C71585; /* was: hsl(209, 89%, 32%) */
+  --training-tag-background-color: #C71585; /* was: hsl(209, 89%, 32%) */
 }
 
 #root {
@@ -214,11 +204,11 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #FF00FF; /* was: #646cff */
   text-decoration: inherit;
 }
 a:hover {
-  color: light-dark(#747bff, #535bf2);
+  color: light-dark(#FFB6C1 /* was: #747bff */, #DB7093 /* was: #535bf2 */);
 }
 
 body {
@@ -245,8 +235,8 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: light-dark(
-    #f9f9f9,
-    var(--button-background, #1a1a1a)
+    #FFC0CB, /* was: #f9f9f9 */
+    var(--button-background, #FF00FF /* was: #1a1a1a */)
   );
   color: var(--button-color, inherit);
   cursor: pointer;
@@ -299,15 +289,15 @@ h3 {
 h4 {
   font-size: 1.5em;
   font-style: italic;
-  color: var(--header-quaternary-color, red);
+  color: var(--header-quaternary-color, currentColor);
   margin-bottom: .5em;
 }
 .simple-header {
   font-weight: bold;
   font-style: italic;
   color: light-dark(
-    #2d3748,
-    var(--simple-header-color, white)
+    pink, /* was: #2d3748 */
+    pink /* was: var(--simple-header-color, white) */
   );
 }
 
@@ -395,8 +385,8 @@ td.center-num {
 
 hr {
   border: none;
-  border-top: 4px double var(--text);
-  color: var(--text);
+  border-top: 4px double var(--text-color);
+  color: var(--text-color);
   overflow: visible;
   text-align: center;
   height: 5px;
@@ -404,8 +394,8 @@ hr {
 
   &::after {
     font-size: 1.2em;
-    background-color: var(--faction-background);
-    color: var(--strong-text);
+    background-color: var(--background-color);
+    color: var(--text-color);
     transition: 
       background-color var(--transition-time) ease, 
       color var(--transition-time) ease;
@@ -492,35 +482,35 @@ table {
 
 /* Light mode overrides for tables and specific elements */
 :root[data-theme="light"] table {
-  border-color: #e2e8f0;
+  border-color: #FADADD; /* was: #e2e8f0 */
 }
 
 :root[data-theme="light"] table td {
-  border-color: #e2e8f0;
+  border-color: #FADADD; /* was: #e2e8f0 */
 }
 
 :root[data-theme="light"] .devil-deal-table th,
 :root[data-theme="light"] .injuries-table th {
-  color: #2d3748;
+  color: #FF00FF; /* was: #2d3748 */
 }
 
 :root[data-theme="light"] .devil-deal-table td,
 :root[data-theme="light"] .injuries-table td {
-  border-color: #e2e8f0;
+  border-color: #FADADD; /* was: #e2e8f0 */
 }
 
 
 :root {
-  --x-value-bg: rgba(149, 244, 236, 0.2);
-  --x-value-text: #95f4ec;
-  --y-value-bg: rgba(234, 208, 78, 0.2);
-  --y-value-text: #ead04e;
+  --x-value-bg: rgba(255, 192, 203, 0.2); /* was: rgba(149, 244, 236, 0.2) */
+  --x-value-text: #FF69B4; /* was: #95f4ec */
+  --y-value-bg: rgba(255, 182, 193, 0.2); /* was: rgba(234, 208, 78, 0.2) */
+  --y-value-text: #DB7093; /* was: #ead04e */
 }
 :root[data-theme="light"] {
-  --x-value-bg: rgba(149, 244, 236, 0.5);
-  --x-value-text: hsl(174, 25%, 40%);
-  --y-value-bg: rgba(211, 200, 147, 0.5);
-  --y-value-text: hsl(50, 25%, 40%);
+  --x-value-bg: rgba(255, 192, 203, 0.5); /* was: rgba(149, 244, 236, 0.5) */
+  --x-value-text: #C71585; /* was: hsl(174, 25%, 40%) */
+  --y-value-bg: rgba(255, 182, 193, 0.5); /* was: rgba(211, 200, 147, 0.5) */
+  --y-value-text: #FF1493; /* was: hsl(50, 25%, 40%) */
 }
 
 /* Enhanced Mobile Responsiveness */

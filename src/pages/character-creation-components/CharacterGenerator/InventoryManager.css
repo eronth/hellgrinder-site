@@ -130,7 +130,7 @@
     max-width: 400px;
     background-color: var(--input-background);
     border: 1px solid var(--input-border);
-    color: var(--text);
+    color: var(--text-color);
     border-radius: 4px;
     padding: 0.75rem;
     font-size: 1rem;
@@ -142,7 +142,7 @@
     }
 
     &::placeholder {
-      color: var(--text-secondary);
+      color: var(--text-secondary-color);
     }
   }
 }

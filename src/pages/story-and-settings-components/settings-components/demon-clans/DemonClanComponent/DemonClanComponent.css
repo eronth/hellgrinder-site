@@ -44,7 +44,7 @@
     box-sizing: border-box;
     font-size: .6em;
 
-    background-color: var(--faction-background);
+    background-color: var(--background-color);
 
     margin: 0;
     padding: 0;
@@ -59,7 +59,7 @@
 
   .selected {
     .oath-button {
-      color: var(--faction-accent);
+      color: var(--accent-color);
     }
   }
 }

@@ -31,7 +31,7 @@ export default function Hx({ hx, className, children }: Props) {
       case 'h6':
         return <h6 className={className}>{children}</h6>;
       default:
-        return <div className={"simple-header "+className}>{children}</div>;
+        return <div className={`simple-header${className ? ' '+className : ""}`}>{children}</div>;
     }
   }
 

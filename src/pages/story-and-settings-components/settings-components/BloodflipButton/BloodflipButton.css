@@ -253,8 +253,7 @@ body.blood-flipped::before {
 /* Flipped state styles */
 body.blood-flipped {
   transform: rotate(180deg);
-  background-color: #0a0000;
-  --faction-background: #0a0000;
+  --background-color: #0a0000;
   color: #DC143C !important;
   transition: all 0.8s ease-in-out;
   background: radial-gradient(circle at center, #1a0000 0%, #0a0000 100%);

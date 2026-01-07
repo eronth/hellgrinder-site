@@ -26,13 +26,13 @@
 
     .header-text {
       flex: 1;
-      color: var(--text);
+      color: var(--text-color);
       font-weight: 500;
       font-size: 0.9rem;
     }
 
     .header-expand-arrow {
-      color: var(--text);
+      color: var(--text-color);
       font-size: 0.8rem;
       transition: transform 0.2s ease;
     }

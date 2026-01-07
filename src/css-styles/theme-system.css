@@ -11,15 +11,15 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   --deep-text: light-dark(
-    #213547, white
+    #FF69B4, /* was: #213547 */ #FF00FF /* was: white */
   );
   --soft-text: light-dark(
-    #4a5568,
-    hsl(0, 0%, 70%)
+    #DB7093, /* was: #4a5568 */
+    #FFB6C1 /* was: hsl(0, 0%, 70%) */
   );
   --mid-text: light-dark(
     color-mix( in srgb, var(--deep-text) 70%, var(--soft-text)),
-    rgba(255, 255, 255, 0.87)
+    #FF1493 /* was: rgba(255, 255, 255, 0.87) */
   );
   
   /* Layout */
@@ -35,9 +35,9 @@
   --transition-slow: 0.4s ease;
   
   /* Shadows */
-  --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15);
-  --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --shadow-light: 0 2px 4px #FFC0CB; /* was: rgba(0, 0, 0, 0.1) */
+  --shadow-medium: 0 4px 12px #FFB6C1; /* was: rgba(0, 0, 0, 0.15) */
+  --shadow-heavy: 0 8px 24px #FF69B4; /* was: rgba(0, 0, 0, 0.2) */
   
   /* Z-index scale */
   --z-dropdown: 100;
@@ -61,125 +61,127 @@
   /* Keep existing dark theme variables */
   /* --card-background: light-dark(#f8f9fa, #2a2a2a); */
 
-  --card-header-background: light-dark(#e9ecef, #333333);
-  --table-background: light-dark(#ffffff, #2a2a2a);
-  --table-header-background: light-dark(#e9ecef, #1e2157);
-  --table-row-background: light-dark(#ffffff, #2a2a2a);
-  --table-row-alt-background: light-dark(#f8f9fa, #2e2e2e);
+  --card-header-background: light-dark(#FFB6C1 /* was: #e9ecef */, #FF1493 /* was: #333333 */);
+  --table-background: light-dark(#FFC0CB /* was: #ffffff */, #FF00FF /* was: #2a2a2a */);
+  --table-header-background: light-dark(#FFB6C1 /* was: #e9ecef */, #C71585 /* was: #1e2157 */);
+  --table-row-background: light-dark(#FFC0CB /* was: #ffffff */, #FF00FF /* was: #2a2a2a */);
+  --table-row-alt-background: light-dark(#FADADD /* was: #f8f9fa */, #DB7093 /* was: #2e2e2e */);
   
   /* Default button theme variables */
   --button-background: light-dark(
-    #f9f9f9,
-    #1a1a1a
+    #FFC0CB, /* was: #f9f9f9 */
+    #FF00FF /* was: #1a1a1a */
   );
   --button-color: light-dark(
-    #213547,
-    rgba(255, 255, 255, 0.87)
+    #FF69B4, /* was: #213547 */
+    #FF1493 /* was: rgba(255, 255, 255, 0.87) */
   );
   --button-hover-border: light-dark(
-    #747bff,
-    #646cff
+    #C71585, /* was: #747bff */
+    #FF00FF /* was: #646cff */
   );
   --button-hover-background: light-dark(
-    #f0f0f0,
-    #1a1a1a
+    #FFB6C1, /* was: #f0f0f0 */
+    #DB7093 /* was: #1a1a1a */
   );
 }
 
 /* Faction Theme Variables with Background Tinting */
 :root {
-  --faction-primary: var(--ashborn-faction-primary);
-  --faction-primary-dark: var(--ashborn-faction-primary-dark);
-  --faction-primary-light: var(--ashborn-faction-primary-light);
-  --faction-on-primary: var(--ashborn-faction-on-primary);
-  --faction-accent: var(--ashborn-faction-accent);
-  --faction-accent-light: var(--ashborn-faction-accent-light);
-  --faction-background: var(--ashborn-faction-background);
-  
-  background-color: var(--faction-background);
+  --text-color: light-dark(
+    hsl(208 37% 20% / 0.9), 
+    hsla(0 0% 100% / 0.87)
+  );
+  --text-secondary-color: light-dark(
+    #DB7093, /* was: hsl(208, 37%, 40%) */
+    #FFB6C1 /* was: hsl(0, 0%, 60%) */
+  );
+  --table-header-color: var(--primary-color);
+  --table-border-color: hsl(from var(--primary-color) h s calc(l*0.9));
+
+  --primary-color: hsl(189, 100%, 35%);
+  --accent-color: hsl(from var(--primary-color) calc(h + 25) 100% 50%);
+
+  --background-color: light-dark(
+    hsl(0, 0%, 95%),
+    hsl(240, 4%, 10%)
+  );
 }
 
 
 :root[data-faction="ashborn"] {
-  --faction-primary: var(--ashborn-faction-primary);
   --faction-primary-dark: var(--ashborn-faction-primary-dark);
   --faction-primary-light: var(--ashborn-faction-primary-light);
   --faction-on-primary: var(--ashborn-faction-on-primary);
-  --faction-accent: var(--ashborn-faction-accent);
   --faction-accent-light: var(--ashborn-faction-accent-light);
-  --faction-background: var(--ashborn-faction-background);
   
-  background-color: var(--faction-background);
+  --primary-color: var(--ashborn-faction-primary);
+  --accent-color: var(--ashborn-faction-accent);
+  --background-color: var(--ashborn-faction-background);
 }
 
 :root[data-faction="stoneveined"] {
-  --faction-primary: var(--stoneveined-faction-primary);
   --faction-primary-dark: var(--stoneveined-faction-primary-dark);
   --faction-primary-light: var(--stoneveined-faction-primary-light);
   --faction-on-primary: var(--stoneveined-faction-on-primary);
-  --faction-accent: var(--stoneveined-faction-accent);
   --faction-accent-light: var(--stoneveined-faction-accent-light);
-  --faction-background: var(--stoneveined-faction-background);
-
-  background-color: var(--faction-background);
+  
+  --primary-color: var(--stoneveined-faction-primary);
+  --accent-color: var(--stoneveined-faction-accent);
+  --background-color: var(--stoneveined-faction-background);
 }
 
 :root[data-faction="thornwraith"] {
-  --faction-primary: var(--thornwraith-faction-primary);
   --faction-primary-dark: var(--thornwraith-faction-primary-dark);
   --faction-primary-light: var(--thornwraith-faction-primary-light);
   --faction-on-primary: var(--thornwraith-faction-on-primary);
-  --faction-accent: var(--thornwraith-faction-accent);
   --faction-accent-light: var(--thornwraith-faction-accent-light);
-  --faction-background: var(--thornwraith-faction-background);
-
-  background-color: var(--faction-background);
+  
+  --primary-color: var(--thornwraith-faction-primary);
+  --accent-color: var(--thornwraith-faction-accent);
+  --background-color: var(--thornwraith-faction-background);
 }
 
 :root[data-faction="umbral"] {
-  --faction-primary: var(--umbral-faction-primary);
   --faction-primary-dark: var(--umbral-faction-primary-dark);
   --faction-primary-light: var(--umbral-faction-primary-light);
   --faction-on-primary: var(--umbral-faction-on-primary);
-  --faction-accent: var(--umbral-faction-accent);
   --faction-accent-light: var(--umbral-faction-accent-light);
-  --faction-background: var(--umbral-faction-background);
-
-  background-color: var(--faction-background);
+  
+  --primary-color: var(--umbral-faction-primary);
+  --accent-color: var(--umbral-faction-accent);
+  --background-color: var(--umbral-faction-background);
 }
 
 :root[data-faction="vastfathom"] {
-  --faction-primary: var(--vastfathom-faction-primary);
   --faction-primary-dark: var(--vastfathom-faction-primary-dark);
   --faction-primary-light: var(--vastfathom-faction-primary-light);
   --faction-on-primary: var(--vastfathom-faction-on-primary);
-  --faction-accent: var(--vastfathom-faction-accent);
   --faction-accent-light: var(--vastfathom-faction-accent-light);
-  --faction-background: var(--vastfathom-faction-background);
-
-  background-color: var(--faction-background);
+  
+  --primary-color: var(--vastfathom-faction-primary);
+  --accent-color: var(--vastfathom-faction-accent);
+  --background-color: var(--vastfathom-faction-background);
 }
 
 :root[data-faction="zephpter"] {
-  --faction-primary: var(--zephpter-faction-primary);
   --faction-primary-dark: var(--zephpter-faction-primary-dark);
   --faction-primary-light: var(--zephpter-faction-primary-light);
   --faction-on-primary: var(--zephpter-faction-on-primary);
-  --faction-accent: var(--zephpter-faction-accent);
   --faction-accent-light: var(--zephpter-faction-accent-light);
-  --faction-background: var(--zephpter-faction-background);
-
-  background-color: var(--faction-background);
+  
+  --primary-color: var(--zephpter-faction-primary);
+  --accent-color: var(--zephpter-faction-accent);
+  --background-color: var(--zephpter-faction-background);
 }
 
 :root[data-faction="wanderlost"] {
-  --faction-primary: var(--wanderlost-faction-primary);
   --faction-primary-dark: var(--wanderlost-faction-primary-dark);
   --faction-primary-light: var(--wanderlost-faction-primary-light);
   --faction-on-primary: var(--wanderlost-faction-on-primary);
-  --faction-accent: var(--wanderlost-faction-accent);
   --faction-accent-light: var(--wanderlost-faction-accent-light);
-  --faction-background: var(--wanderlost-faction-background);
-
-  background-color: var(--faction-background);
+  
+  --primary-color: var(--wanderlost-faction-primary);
+  --accent-color: var(--wanderlost-faction-accent);
+  --background-color: var(--wanderlost-faction-background);
 }

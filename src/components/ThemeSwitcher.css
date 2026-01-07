@@ -54,10 +54,10 @@
         }
 
         &.active {
-          background-color: #646cff;
+          background-color: #FF00FF; /* was: #646cff */
           color: white;
-          border-color: #646cff;
-          box-shadow: 0 2px 4px rgba(100, 108, 255, 0.3);
+          border-color: #FF00FF; /* was: #646cff */
+          box-shadow: 0 2px 4px rgba(255, 0, 255, 0.3); /* was: rgba(100, 108, 255, 0.3) */
         }
 
         .theme-switcher-icon {
@@ -104,29 +104,29 @@
     }
 
     &.active {
-      background-color: #1976d2;
+      background-color: #FF1493; /* was: #1976d2 */
       color: white;
-      border-color: #1976d2;
-      box-shadow: 0 2px 4px rgba(25, 118, 210, 0.3);
+      border-color: #FF1493; /* was: #1976d2 */
+      box-shadow: 0 2px 4px rgba(255, 20, 147, 0.3); /* was: rgba(25, 118, 210, 0.3) */
     }
   }
 }
 
 /* Retro theme button styling */
 .theme-switcher-button.retro-button.active {
-  background: linear-gradient(135deg, var(--faction-primary), var(--faction-primary-dark));
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-color-dark));
   color: var(--faction-on-primary);
-  border-color: var(--faction-primary);
-  box-shadow: 0 0 8px var(--faction-primary);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 8px var(--primary-color);
   animation: retro-glow 2s ease-in-out infinite alternate;
 }
 
 @keyframes retro-glow {
   from {
-    box-shadow: 0 0 8px var(--faction-primary);
+    box-shadow: 0 0 8px var(--primary-color);
   }
   to {
-    box-shadow: 0 0 12px var(--faction-primary), 0 0 16px var(--faction-accent);
+    box-shadow: 0 0 12px var(--primary-color), 0 0 16px var(--accent-color);
   }
 }
 
@@ -202,7 +202,7 @@
   left: 2px;
   width: calc(33.333% - 4px);
   height: calc(100% - 4px);
-  background: linear-gradient(135deg, #646cff, #4338ca);
+  background: linear-gradient(135deg, #FF00FF, #C71585); /* was: linear-gradient(135deg, #646cff, #4338ca) */
   border-radius: 18px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1;
@@ -210,15 +210,15 @@
 }
 
 .toggle-slider.light {
-  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  background: linear-gradient(135deg, #FFB6C1, #FF69B4); /* was: linear-gradient(135deg, #fbbf24, #f59e0b) */
 }
 
 .toggle-slider.system {
-  background: linear-gradient(135deg, #6b7280, #4b5563);
+  background: linear-gradient(135deg, #DB7093, #C71585); /* was: linear-gradient(135deg, #6b7280, #4b5563) */
 }
 
 .toggle-slider.dark {
-  background: linear-gradient(135deg, #1e293b, #0f172a);
+  background: linear-gradient(135deg, #FF1493, #FF00FF); /* was: linear-gradient(135deg, #1e293b, #0f172a) */
 }
 
 /* Highlight active label based on current mode */

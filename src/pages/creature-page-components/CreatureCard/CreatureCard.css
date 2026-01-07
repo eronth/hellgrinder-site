@@ -53,21 +53,21 @@
     }
     
     .add-creature-btn {
-      color: #4ade80;
-      border-color: rgba(74, 222, 128, 0.4);
+      color: #FFB6C1; /* was: #4ade80 */
+      border-color: rgba(255, 182, 193, 0.4); /* was: rgba(74, 222, 128, 0.4) */
       
       &:hover {
-        background-color: rgba(74, 222, 128, 0.1);
-        border-color: rgba(74, 222, 128, 0.6);
+        background-color: rgba(255, 182, 193, 0.1); /* was: rgba(74, 222, 128, 0.1) */
+        border-color: rgba(255, 182, 193, 0.6); /* was: rgba(74, 222, 128, 0.6) */
       }
     }
     
     .remove-creature-btn {
-      color: #ef4444;
-      border-color: rgba(239, 68, 68, 0.4);
+      color: #FF1493; /* was: #ef4444 */
+      border-color: rgba(255, 20, 147, 0.4); /* was: rgba(239, 68, 68, 0.4) */
       
       &:hover {
-        background-color: rgba(239, 68, 68, 0.1);
+        background-color: rgba(255, 20, 147, 0.1); /* was: rgba(239, 68, 68, 0.1) */
         border-color: rgba(239, 68, 68, 0.6);
       }
     }

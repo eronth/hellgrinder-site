@@ -284,6 +284,6 @@ export default function GameTitle({ isIndex }: Props) {
           <h6>H6</h6>
         </div>
       </div>
-    </div>
+    </div> <br />
   </>);
 }

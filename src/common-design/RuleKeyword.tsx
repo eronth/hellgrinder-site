@@ -1,5 +1,6 @@
 import React from 'react';
-import RulePopup from './RulePopup';
+import RulePopup from './RulePopup/RulePopup';
+
 
 interface Props {
   keyword: string;
@@ -26,7 +27,7 @@ export default function RuleKeyword({
   statusEffectY
 }: Props) {
   return (
-    <RulePopup 
+    <RulePopup
       ruleId={ruleId} 
       keyword={!ruleId ? keyword : undefined}
       className={className}

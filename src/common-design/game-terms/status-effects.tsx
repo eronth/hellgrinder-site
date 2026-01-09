@@ -106,7 +106,7 @@ const exObj: StatusEffectsReturn = {
     description: 'You are entangled in something, unable to move freely.',
     effects: [
       <>
-        At the start of your turn you get -[[x]]{movementIcon}. You may
+        At the start of your turn you get -[[X]]{movementIcon}. You may
         make a -[[X]] <SkillCheck tags={['Might']} plural /> to free yourself as a
         free action on your turn. On a Rank 2+ Success, remove all stacks of Enfeebled. On a Rank 0,
         fall prone and you can no longer attempt use this check to free yourself.
@@ -545,10 +545,10 @@ const exObj: StatusEffectsReturn = {
     description: 'You feel a deep connection and sense of honor towards whatever creature or object gave you this status effect.',
     effects: [
       <>
-        You gain +2 to all <SkillCheck tags={['']} plural /> to protect or aid the target of your reverence.
+        You gain +2 to all <SkillCheck tags={[]} plural /> to protect or aid the target of your reverence.
       </>,
       <>
-        You gain -6 to all <SkillCheck tags={['']} plural /> to harm or hinder the target of your reverence.
+        You gain -6 to all <SkillCheck tags={[]} plural /> to harm or hinder the target of your reverence.
       </>
     ]
   }

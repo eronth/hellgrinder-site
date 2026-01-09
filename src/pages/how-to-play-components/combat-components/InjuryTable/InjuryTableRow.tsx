@@ -1,4 +1,4 @@
-import { InjuryRow } from "../../../ts-types/table-types";
+import { InjuryRow } from "../../../../ts-types/table-types";
 import './InjuryTable.css';
 
 type Props = {

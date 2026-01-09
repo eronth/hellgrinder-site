@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { RuleDefinition } from '../ts-types/rule-types';
-import { RulesManager } from './rules-database';
-import { formatReactNode } from './utils/StatusEffectsUtils';
+import { RuleDefinition } from '../../ts-types/rule-types';
+import { RulesManager } from '../rules-database';
+import { formatReactNode } from '../utils/StatusEffectsUtils';
+import './RulePopup.css';
 
 interface Props {
   ruleId?: string;

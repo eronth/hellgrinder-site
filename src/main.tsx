@@ -11,7 +11,6 @@ import './css-styles/kit.css'
 import './css-styles/attack-mode.css'
 import './css-styles/magic-spell.css'
 import './css-styles/toggle.css'
-import './css-styles/rule-popup.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

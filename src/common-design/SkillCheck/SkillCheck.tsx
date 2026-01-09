@@ -10,7 +10,7 @@ type Props = {
 export default function SkillCheck({ text, tags, plural }: Props) {
 
   const formatTagsToDisplay = useCallback((tags: string[]) => {
-    if (tags.length === 0) return null;
+    if ((tags?.length ?? 0) == 0) return null;
     
     console.log('Formatting tags:', tags);
     return <span className={'tags-list'}>

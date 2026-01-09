@@ -1,5 +1,5 @@
 import Hx from "../../../common-design/Hx/Hx";
-import InjuryTable from "./InjuryTable";
+import InjuryTable from "./InjuryTable/InjuryTable";
 
 export default function Damage() {
   const innerHx = 4;

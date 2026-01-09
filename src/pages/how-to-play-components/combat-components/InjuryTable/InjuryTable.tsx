@@ -1,8 +1,8 @@
 import InjuryTableRow from "./InjuryTableRow";
-import { InjuryRow } from "../../../ts-types/table-types";
-import StatusKeyword from "../../../common-design/StatusKeyword";
-import { movementIcon } from "../../../common-design/CommonIcons";
-import SkillCheck from "../../../common-design/SkillCheck/SkillCheck";
+import { InjuryRow } from "../../../../ts-types/table-types";
+import StatusKeyword from "../../../../common-design/StatusKeyword";
+import { movementIcon } from "../../../../common-design/CommonIcons";
+import SkillCheck from "../../../../common-design/SkillCheck/SkillCheck";
 
 export default function InjuryTable() {
   const rowData: InjuryRow[] = [

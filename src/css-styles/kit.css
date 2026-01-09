@@ -183,8 +183,3 @@
     transform: translateX(-50%) translateY(0);
   }
 }
-
-/* Light mode overrides for kit elements */
-:root[data-theme="light"] .kit .description {
-  color: #DB7093; /* was: #4a5568 */
-}

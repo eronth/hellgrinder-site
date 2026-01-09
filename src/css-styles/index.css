@@ -214,12 +214,12 @@
 }
 /* Kit Styles */
 :root {
-  --weapon-card-border-color:    light-dark(hsl(27 91% 37%),hsl(27 91% 33%));
-  --weapon-tag-background-color: light-dark(hsl(27 91% 37%),hsl(27 91% 27%));
-  --item-card-border-color:      light-dark(hsl(162 90% 21%), hsl(162 90% 25%));
-  --item-tag-background-color:   light-dark(hsl(162 90% 21%), hsl(162 90% 25%));
-  --training-card-border-color: #C71585; /* was: hsl(209, 89%, 32%) */
-  --training-tag-background-color: #C71585; /* was: hsl(209, 89%, 32%) */
+  --weapon-card-border-color:      light-dark(hsl(27 91% 37%),hsl(27 91% 33%));
+  --weapon-tag-background-color:   light-dark(hsl(27 91% 37%),hsl(27 91% 27%));
+  --item-card-border-color:        light-dark(hsl(162 90% 21%), hsl(162 90% 25%));
+  --item-tag-background-color:     light-dark(hsl(162 90% 21%), hsl(162 90% 25%));
+  --training-card-border-color:    light-dark(hsl(209 89% 44%), hsl(209 89% 34%));
+  --training-tag-background-color: light-dark(hsl(209 89% 42%), hsl(209 89% 29%));
 }
 
 #root {

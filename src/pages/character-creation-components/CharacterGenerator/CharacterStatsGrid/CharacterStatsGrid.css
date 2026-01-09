@@ -3,13 +3,12 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   border: 1px solid var(--table-border-color);
-  background-color: var(--table-row-background);
+  background-color: var(--table-body-background-color);
 
   .stat-cell {
     padding: 0.5em;
     text-align: center;
     border: 1px solid var(--table-border-color);
-    background-color: var(--table-row-background);
 
     &.custom-skill {
       .stat-input {

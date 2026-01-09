@@ -10,6 +10,9 @@
   --default-background-color: light-dark(
     #FFC0CB, /* was: #ffffff */ #FF00FF /* was: #242424 */
   );
+  --text-color: light-dark(hsl(208 37% 20% / 0.9), hsla(0 0% 100% / 0.87));
+  --text-offset-color: light-dark(hsl(0 0% 20%), hsl(0 0% 70%));
+  --text-secondary-color: light-dark(hsl(208 37% 40%), hsl(0 0% 60%));
   color: var(--text-color);
   background-color: var(--background-color);
 
@@ -33,10 +36,7 @@
   /* Card and table background colors - slightly different from site background */
   --card-background: light-dark(hsl(210, 17%, 98%), hsl(0, 0%, 16%));
   --card-tag-background: light-dark(hsl(210, 17%, 85%), hsl(0, 0%, 25%));
-  --card-border-color: light-dark(
-    #FFB6C1, /* was: hsl(0, 0%, 57%) */
-    #DB7093 /* was: hsl(0, 0%, 27%) */
-  );
+  --card-border-color: light-dark(hsl(210, 17%, 69%), hsl(0, 0%, 36%));
   
 
   --table-header-text-color: white;
@@ -71,10 +71,7 @@
 
   --header-icon-color: var(--text-color);
 
-  --rule-keyword-text-color: light-dark(
-    hsl(0, 0%, 20%),
-    hsl(0, 0%, 70%)
-  );
+  --rule-keyword-text-color: var(--text-offset-color);
   --rule-keyword-text-hover-color: hsl(
     from var(--rule-keyword-text-color) 
     h s calc(l*1.2)
@@ -103,11 +100,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --dice-border-color: light-dark(
-    #DB7093, /* was: hsla(0, 0%, 40%, 0.6) */
-    #FFC0CB /* was: hsla(0, 0%, 100%, 0.2) */
-  );
-  --clickable-dice-hover-color: #FF69B4; /* was: hsl(198, 72%, 65%) */
+  --dice-border-color:
+    light-dark(hsl(0 0% 40% / 0.6), hsl(0 0% 100% / 0.2));
+  --clickable-dice-hover-color: 
+    light-dark(hsl(198, 83%, 27%), hsl(198 72% 75%));
 
   --probability-title: #FF00FF; /* was: #646cff */
 
@@ -218,10 +214,10 @@
 }
 /* Kit Styles */
 :root {
-  --weapon-card-border-color: #FF1493; /* was: hsl(27, 91%, 27%) */
-  --weapon-tag-background-color: #FF1493; /* was: hsl(27, 91%, 27%) */
-  --item-card-border-color: #FF69B4; /* was: hsl(162, 90%, 21%) */
-  --item-tag-background-color: #FF69B4; /* was: hsl(162, 90%, 21%) */
+  --weapon-card-border-color:    light-dark(hsl(27 91% 37%),hsl(27 91% 33%));
+  --weapon-tag-background-color: light-dark(hsl(27 91% 37%),hsl(27 91% 27%));
+  --item-card-border-color:      light-dark(hsl(162 90% 21%), hsl(162 90% 25%));
+  --item-tag-background-color:   light-dark(hsl(162 90% 21%), hsl(162 90% 25%));
   --training-card-border-color: #C71585; /* was: hsl(209, 89%, 32%) */
   --training-tag-background-color: #C71585; /* was: hsl(209, 89%, 32%) */
 }
@@ -266,7 +262,7 @@ button {
     #FFC0CB, /* was: #f9f9f9 */
     var(--button-background, #FF00FF /* was: #1a1a1a */)
   );
-  color: var(--button-color, inherit);
+  color: var(--text-color);
   cursor: pointer;
   transition: border-color 0.25s, background-color 0.25s, color 0.25s;
 }

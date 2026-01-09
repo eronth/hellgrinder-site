@@ -52,7 +52,7 @@
 }
 
 .description {
-  color: light-dark(var(--deep-text), var(--soft-text));
+  color: var(--text-offset-color);
 }
 
 :root {
@@ -85,14 +85,6 @@
 
 /* Faction Theme Variables with Background Tinting */
 :root {
-  --text-color: light-dark(
-    hsl(208 37% 20% / 0.9), 
-    hsla(0 0% 100% / 0.87)
-  );
-  --text-secondary-color: light-dark(
-    hsl(208 37% 40%),
-    hsl(0 0% 60%)
-  );
 
   --primary-color: hsl(189, 100%, 35%);
   --accent-color: hsl(from var(--primary-color) calc(h + 25) 100% 50%);

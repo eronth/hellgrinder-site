@@ -48,7 +48,7 @@
 .section-description {
   margin: 0;
   font-size: 0.9rem;
-  color: var(--mid-text);
+  color: var(--text-offset-color);
   line-height: 1.4;
 }
 

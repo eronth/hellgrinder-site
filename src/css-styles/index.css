@@ -110,7 +110,7 @@
   --standard-button-text: #FFC0CB; /* was: white */
   --standard-button-color: #FF00FF; /* was: hsl(237, 100%, 70%) */
   --standard-button-hover-color: #DB7093; /* was: hsl(237, 55%, 58%) */
-  --delete-button-color: #FF1493; /* was: hsl(354, 70%, 54%) */
+  --delete-button-color: hsl(354 70% 54%);
   --delete-button-hover-color: #C71585; /* was: hsl(354, 70%, 46%) */
   --delete-button-active-color: #8B008B; /* was: hsl(354, 70%, 44%) */
 
@@ -252,27 +252,38 @@ h1 {
 }
 
 button {
+  --btn-bg-color: var(--accent-color);
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: light-dark(
-    #FFC0CB, /* was: #f9f9f9 */
-    var(--button-background, #FF00FF /* was: #1a1a1a */)
-  );
-  color: var(--text-color);
+  color: white;
+  background-color: var(--btn-bg-color);
   cursor: pointer;
   transition: border-color 0.25s, background-color 0.25s, color 0.25s;
-}
-button:hover {
-  border-color: var(--button-hover-border, #646cff);
-  background-color: var(--button-hover-background, #1a1a1a);
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+  &:hover {
+    border-color: hsl(from var(--btn-bg-color)
+      h calc(s*0.8) calc(l*1.1)
+    );
+    background-color: hsl(from var(--btn-bg-color)
+      h calc(s*0.8) calc(l*0.9)
+    );
+  }
+  &:active {
+    border-color: hsl(from var(--btn-bg-color)
+      h s min(calc(l + 20%), 100%)
+    );
+    background-color: hsl(from var(--btn-bg-color)
+      h calc(s*0.7) calc(l*0.7)
+    );
+  }
+  &:focus,
+  &:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
 }
 
 

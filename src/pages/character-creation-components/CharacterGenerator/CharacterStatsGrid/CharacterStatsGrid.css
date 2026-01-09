@@ -9,6 +9,7 @@
     padding: 0.5em;
     text-align: center;
     border: 1px solid var(--table-border-color);
+    --cell-text-color: var(--text-offset-color);
 
     &.custom-skill {
       .stat-input {
@@ -18,11 +19,11 @@
 
     .stat-label {
       font-size: 1rem;
-      color: var(--mid-text); 
+      color: var(--cell-text-color); 
     }
     .stat-input {
       background: transparent;
-      color: var(--mid-text);
+      color: var(--cell-text-color);
       border: none;
       border-radius: 4px;
       padding: 0.25rem 0.5rem;
@@ -85,17 +86,17 @@
   }
 
   .attack-bonus-prefix {
-    color: var(--mid-text);
+    color: var(--cell-text-color);
     font-size: 1rem;
-    border: 1px solid var(--card-background);
+    border: 1px solid rgb(0 0 0 / 0%);
   }
 
   .attack-bonus-select {
     background: transparent;
-    color: var(--mid-text);
+    color: var(--cell-text-color);
     width: 100%;
     
-    border: 1px solid var(--card-background);
+    border: 1px solid rgb(0 0 0 / 0%);
     border-radius: 4px;
     
     padding: 0.25rem 0.5rem;
@@ -126,7 +127,7 @@
 
     option {
       background-color: #333;
-      color: var(--mid-text);
+      color: var(--cell-text-color);
     }
   }
 }

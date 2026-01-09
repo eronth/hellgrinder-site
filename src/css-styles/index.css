@@ -14,23 +14,18 @@
   background-color: var(--background-color);
 
   /* Header (<Hx>) colors */
-  --header-primary-color: light-dark(
-    #FF69B4, /* was: hsl(208, 37%, 20%) */
-    #FFC0CB /* was: hsl(0, 0%, 100%) */
-  );
+  --header-primary-color: light-dark(black, white);
   --header-secondary-color: var(--primary-color);
   --header-tertiary-color: var(--accent-color);
 
-  --h4-light: hsl(from var(--accent-color) 
-    h calc(s*.4) calc(l)
-  );
-  --h4-dark: hsl(from var(--accent-color) 
-    h calc(s*.4) calc(l*1.2)
-  );
-  --header-quaternary-color: light-dark(
-    var(--h4-light),
-    var(--h4-dark)
-  );
+  --h4-light: hsl(from var(--accent-color) h calc(s*.4) calc(l));
+  --h4-dark: hsl(from var(--accent-color) h calc(s*.4) calc(l*1.2));
+  --header-quaternary-color: light-dark(var(--h4-light), var(--h4-dark));
+
+  --simple-header-light: hsl(from var(--primary-color) h calc(s*0.6) calc(l*0.6));
+  --simple-header-dark: hsl(from var(--primary-color) h calc(s*0.5) calc(l*1.4));
+  --simple-header-color: light-dark(var(--simple-header-light), var(--simple-header-dark));
+
   /* Lore Columns */
   --lore-column-rule-color: light-dark(#FADADD /* was: rgba(0,0,0,0.08) */, #FFC0CB /* was: rgba(255,255,255,0.1) */);
   --lore-column-rule: 1px solid var(--lore-column-rule-color);
@@ -44,13 +39,19 @@
   );
   
 
-  --table-header-color: #FF69B4; /* was: #2d3748 */
-  --table-header-background: #C71585; /* was: #1e2157 */
-  --table-background: #FF00FF; /* was: #2a2a2a */
-  --table-border-color: light-dark(
-    #FFB6C1, /* was: hsl(0, 0%, 57%) */
-    #DB7093 /* was: hsl(0, 0%, 27%) */
+  --table-header-text-color: white;
+  --table-header-background-color: var(--primary-color);
+  --table-border-color: hsl(from var(--primary-color) h s calc(l*1.5));
+  --table-body-background-color: light-dark(
+    hsl(from var(--background-color)
+      h s calc(l * .9) / 0.7
+    ),
+    hsl(from var(--background-color)
+      h s calc(l * 1.2) / 0.7
+    )
   );
+  --table-background: #FF00FF; /* was: #2a2a2a */
+  --tbm-index: 1.5;
   --table-row-background: #FF00FF; /* was: #2a2a2a */
   --table-row-alt-background: #DB7093; /* was: #2e2e2e */
 
@@ -295,10 +296,7 @@ h4 {
 .simple-header {
   font-weight: bold;
   font-style: italic;
-  color: light-dark(
-    pink, /* was: #2d3748 */
-    pink /* was: var(--simple-header-color, white) */
-  );
+  color: var(--simple-header-color);
 }
 
 /*

@@ -96,8 +96,6 @@
     #DB7093, /* was: hsl(208, 37%, 40%) */
     #FFB6C1 /* was: hsl(0, 0%, 60%) */
   );
-  --table-header-color: var(--primary-color);
-  --table-border-color: hsl(from var(--primary-color) h s calc(l*0.9));
 
   --primary-color: hsl(189, 100%, 35%);
   --accent-color: hsl(from var(--primary-color) calc(h + 25) 100% 50%);

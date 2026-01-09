@@ -4,12 +4,13 @@
   &.with-numeral {
     grid-template-columns: max-content max-content 1fr;
   }
-
+  
   > div {
     padding-inline: .4em;
     align-content: center;
     
     &.data {
+      background-color: var(--table-body-background-color);
       border: 1px solid var(--table-border-color);
     }
 
@@ -18,9 +19,22 @@
     }
 
     &.title {
+      color: var(--table-header-text-color);
       font-weight: bold;
-      background-color: var(--table-header-color);
+      background-color: var(--table-header-background-color);
       text-align: center;
     }
-  };  
+  }
+  
+  /* Remove top border from first data row */
+  &:not(.with-numeral) > div.data:nth-child(3),
+  &:not(.with-numeral) > div.data:nth-child(4) {
+    border-top: none;
+  }
+  
+  &.with-numeral > div.data:nth-child(4),
+  &.with-numeral > div.data:nth-child(5),
+  &.with-numeral > div.data:nth-child(6) {
+    border-top: none;
+  }
 }

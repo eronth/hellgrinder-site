@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { StatusEffect } from '../../../ts-types/types';
 import { CharacterDesign, ActiveStatusEffect } from './CharacterGenerator';
-import ConfirmDialog from './ConfirmDialog';
+import ConfirmDialog from './ConfirmDialog/ConfirmDialog';
 import RuleKeyword from '../../../common-design/RuleKeyword';
 import StatusEffects from '../../../common-design/game-terms/status-effects';
 
@@ -371,6 +371,7 @@ export default function StatusEffectsManager({
 
       <ConfirmDialog
         isOpen={addEffectDialog.isOpen}
+        onClose={cancelAddEffect}
         title="Add Status Effect"
         message={
           addEffectDialog.effect && character.statusEffects.some(
@@ -433,6 +434,7 @@ export default function StatusEffectsManager({
 
       <ConfirmDialog
         isOpen={editEffectDialog.isOpen}
+        onClose={cancelEditEffect}
         title="Edit Status Effect"
         message={`Edit "${editEffectDialog.activeEffect?.effect.name}" for ${character.name}?`}
         buttons={[

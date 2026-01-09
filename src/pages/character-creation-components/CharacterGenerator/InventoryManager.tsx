@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Weapon, Item, Perk } from '../../../ts-types/types';
 import { CharacterDesign } from './CharacterGenerator';
-import ConfirmDialog from './ConfirmDialog';
+import ConfirmDialog from './ConfirmDialog/ConfirmDialog';
 import WeaponComponent from '../kits/weapon/WeaponComponent';
 import ItemComponent from '../kits/item/ItemComponent';
 import PerkComponent from '../perks/PerkComponent';
@@ -654,6 +654,7 @@ export default function InventoryManager({
 
       <ConfirmDialog
         isOpen={transferDialog.isOpen}
+        onClose={cancelTransfer}
         title="Transfer Item"
         message={transferDialog.item ? 
           `Transfer "${transferDialog.item.name}" to another character?` : ''
@@ -695,6 +696,7 @@ export default function InventoryManager({
 
       <ConfirmDialog
         isOpen={bulkTransferDialog.isOpen}
+        onClose={cancelBulkTransfer}
         title="Transfer All Items"
         message={(() => {
           const { itemType, itemCount, fromCharacterId } = bulkTransferDialog;

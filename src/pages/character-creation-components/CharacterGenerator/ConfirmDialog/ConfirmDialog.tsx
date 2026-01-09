@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import './ConfirmDialog.css';
@@ -13,6 +13,7 @@ interface ConfirmDialogButton {
 
 interface ConfirmDialogProps {
   isOpen: boolean;
+  onClose: () => void;
   title: string;
   message: string;
   buttons: ConfirmDialogButton[];
@@ -21,13 +22,12 @@ interface ConfirmDialogProps {
 
 export default function ConfirmDialog({
   isOpen,
+  onClose,
   title,
   message,
   buttons,
   children
 }: ConfirmDialogProps) {
-  // Handle escape key - use first button with 'secondary' variant as default cancel action
-  const defaultCancelAction = useCallback(() => buttons.find(b => b.variant === 'secondary')?.onClick || (() => {}), [buttons]);
   
   // Determine if dialog should be wider based on content
   const needsWideLayout = buttons.length > 2 || 
@@ -40,13 +40,13 @@ export default function ConfirmDialog({
     
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        defaultCancelAction();
+        if (onClose) { onClose(); }
       }
     };
     
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
-  }, [isOpen, defaultCancelAction]);
+  }, [isOpen, onClose]);
 
   // Prevent body scroll when dialog is open
   React.useEffect(() => {
@@ -64,29 +64,29 @@ export default function ConfirmDialog({
   if (!isOpen) return null;
 
   return (
-    <div className="confirm-dialog-overlay" onClick={defaultCancelAction}>
+    <div className="confirm-dialog-overlay" onClick={onClose}>
       <div className={`confirm-dialog ${needsWideLayout ? 'wide' : ''}`} onClick={(e) => e.stopPropagation()}>
-        <div className="confirm-dialog-header">
-          <h3 className="confirm-dialog-title">{title}</h3>
+        <div className="header">
+          <h3 className="title">{title}</h3>
           <button 
-            className="confirm-dialog-close" 
-            onClick={defaultCancelAction}
+            className="close" 
+            onClick={onClose}
             aria-label="Close dialog"
           >
             <FontAwesomeIcon icon={faTimes} />
           </button>
         </div>
         
-        <div className="confirm-dialog-body">
-          <p className="confirm-dialog-message">{message}</p>
+        <div className="body">
+          <p className="message">{message}</p>
           {children}
         </div>
         
-        <div className="confirm-dialog-footer">
+        <div className="action-buttons">
           {buttons.map((button, index) => (
             <button
               key={index}
-              className={`confirm-dialog-button ${button.variant || 'secondary'}`}
+              className={`button ${button.variant || 'secondary'}`}
               onClick={button.onClick}
               autoFocus={button.autoFocus}
             >

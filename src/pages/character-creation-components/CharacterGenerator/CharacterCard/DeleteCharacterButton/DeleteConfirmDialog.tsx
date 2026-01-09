@@ -1,5 +1,5 @@
 import React from "react";
-import ConfirmDialog from "../../ConfirmDialog";
+import ConfirmDialog from "../../ConfirmDialog/ConfirmDialog";
 import { CharacterDesign } from "../../CharacterGenerator";
 
 type Props = {
@@ -37,6 +37,7 @@ export default function DeleteConfirmDialog({
   return (<>
     <ConfirmDialog
       isOpen={isOpen}
+      onClose={cancelDeleteCharacter}
       title="Delete Character"
       message={`Are you sure you want to delete "${character.name}"? This action cannot be undone.`}
       buttons={[

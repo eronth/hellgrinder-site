@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { TabType, Kit, Perk, Weapon, Item, StatusEffect } from "../../../ts-types/types.tsx";
 import CharacterGeneratorTools from "../../../common-design/CharacterGeneratorTools.tsx";
-import ConfirmDialog from "./ConfirmDialog.tsx";
+import ConfirmDialog from "./ConfirmDialog/ConfirmDialog.tsx";
 import FloatingPanelsContainer from "../FloatingPanels/FloatingPanelsContainer.tsx";
 import ImportExportPanel from "./ImportExportPanel.tsx";
 import NotificationToast, { Notification } from "./NotificationToast.tsx";
@@ -216,6 +216,7 @@ export default function CharacterGenerator() {
     {/* Confirm Dialog */}
     <ConfirmDialog
       isOpen={clearAllConfirmDialog.isOpen}
+      onClose={cancelClearAllCharacters}
       title="Clear All Characters"
       message={`Are you sure you want to delete all ${clearAllConfirmDialog.characterCount} character${clearAllConfirmDialog.characterCount !== 1 ? 's' : ''}? This action cannot be undone.`}
       buttons={[

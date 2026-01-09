@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import ConfirmDialog from "../../ConfirmDialog";
+import ConfirmDialog from "../../ConfirmDialog/ConfirmDialog";
 import { CharacterDesign } from "../../CharacterGenerator";
 import CharacterGeneratorTools from "../../../../../common-design/CharacterGeneratorTools";
 
@@ -107,6 +107,7 @@ export default function TransferAndDeleteConfirmDialog({
   return (<>
     <ConfirmDialog
       isOpen={isOpen}
+      onClose={cancelInventoryTransfer}
       title="Transfer Inventory"
       message={dialogMessage}
       buttons={[

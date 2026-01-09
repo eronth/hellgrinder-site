@@ -27,12 +27,12 @@
   --simple-header-color: light-dark(var(--simple-header-light), var(--simple-header-dark));
 
   /* Lore Columns */
-  --lore-column-rule-color: light-dark(#FADADD /* was: rgba(0,0,0,0.08) */, #FFC0CB /* was: rgba(255,255,255,0.1) */);
+  --lore-column-rule-color: light-dark(hsl(0 0% 0% / 0.08), hsl(0 0% 100% / 0.1));
   --lore-column-rule: 1px solid var(--lore-column-rule-color);
 
   /* Card and table background colors - slightly different from site background */
-  --card-background: #FF00FF; /* was: #2a2a2a */
-  --card-header-background: #FF1493; /* was: #333333 */
+  --card-background: light-dark(hsl(210, 17%, 98%), hsl(0, 0%, 16%));
+  --card-tag-background: light-dark(hsl(210, 17%, 85%), hsl(0, 0%, 25%));
   --card-border-color: light-dark(
     #FFB6C1, /* was: hsl(0, 0%, 57%) */
     #DB7093 /* was: hsl(0, 0%, 27%) */
@@ -71,6 +71,33 @@
 
   --header-icon-color: var(--text-color);
 
+  --rule-keyword-text-color: light-dark(
+    hsl(0, 0%, 20%),
+    hsl(0, 0%, 70%)
+  );
+  --rule-keyword-text-hover-color: hsl(
+    from var(--rule-keyword-text-color) 
+    h s calc(l*1.2)
+  );
+
+  --x-value-bg: light-dark(
+    hsla(175 81% 77% / 0.5),
+    hsla(175 81% 77% / 0.2)
+  );
+  --x-value-text: light-dark(
+    hsl(174 25% 40%),
+    hsl(175 81% 77%)
+  );
+  --y-value-bg: light-dark(
+    hsl(50 42% 70% / 0.5),
+    hsla(50 79% 61% / 0.2)
+  );
+  --y-value-text: light-dark(
+    hsl(50 25% 40%),
+    hsl(50 80% 62%)
+  );
+
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -92,8 +119,8 @@
   --delete-button-active-color: #8B008B; /* was: hsl(354, 70%, 44%) */
 
   --tags-list-background: light-dark(
-    #FFB6C1, /* was: hsl(196, 49%, 71%) */
-    #FF1493 /* was: hsl(196, 49%, 21%) */
+    hsl(196 49% 71%),
+    hsl(196 49% 31%)
   );
 }
 
@@ -312,29 +339,25 @@ h4 {
   background-color: var(--table-background);
 }
 
-.devil-deal-table,
-.injuries-table {
+table {
   width: 100%;
-  border: 1px solid white;
   border-collapse: collapse;
-  background-color: var(--table-background);
+  background-color: var(--table-body-background-color);
+  
+  th {
+    border: 1px solid var(--table-header-background-color);
+    background-color: var(--table-header-background-color);
+    color: var(--table-header-text-color);
+    padding: 0.5em;
+  }
+  td {
+    border: 1px solid var(--table-border-color);
+    padding: 0.25em;
+    .center-num {
+      text-align: center;
+    }
+  }
 }
-.devil-deal-table th,
-.injuries-table th {
-  background-color: var(--table-header-background);
-  color: white;
-  padding: 0.5em;
-}
-.devil-deal-table td,
-.injuries-table td {
-  border: 1px solid white;
-  padding: 0.25em;
-  background-color: var(--table-row-background);
-}
-td.center-num {
-  text-align: center;
-}
-
 
 .perk {
   margin: 0 .5em;
@@ -406,25 +429,6 @@ hr {
   }
 }
 
-table {
-  width: 100%;
-  border: 1px solid white;
-  border-collapse: collapse;
-  background-color: var(--table-background);
-
-  th {
-    background-color: var(--table-header-background);
-    color: var(--table-header-color, white);
-    padding: 0.5em;
-  }
-
-  td {
-    border: 1px solid white;
-    padding: 0.25em;
-    background-color: var(--table-row-background);
-  }
-}
-
 .tags {
   font-size: .8em;
 
@@ -448,12 +452,12 @@ table {
 .status-effect {
   .x-display {
     font-weight: bold;
-    color: #95f4ec;
+    color: var(--x-value-text);
   }
 
   .y-display {
     font-weight: bold;
-    color: #ead04e;
+    color: var(--y-value-text);
   }
 }
 
@@ -467,7 +471,7 @@ table {
 }
 
 .card-header {
-  background-color: var(--card-header-background);
+  background-color: var(--card-tag-background);
   margin: -1em -1em 0.5em -1em;
   padding: 0.5em 1em;
   border-radius: 7px 7px 0 0;
@@ -477,41 +481,6 @@ table {
 .toggle.character-creation-toggle {
   margin-top: 1em;
 }
-
-/* Light mode overrides for tables and specific elements */
-:root[data-theme="light"] table {
-  border-color: #FADADD; /* was: #e2e8f0 */
-}
-
-:root[data-theme="light"] table td {
-  border-color: #FADADD; /* was: #e2e8f0 */
-}
-
-:root[data-theme="light"] .devil-deal-table th,
-:root[data-theme="light"] .injuries-table th {
-  color: #FF00FF; /* was: #2d3748 */
-}
-
-:root[data-theme="light"] .devil-deal-table td,
-:root[data-theme="light"] .injuries-table td {
-  border-color: #FADADD; /* was: #e2e8f0 */
-}
-
-
-:root {
-  --x-value-bg: rgba(255, 192, 203, 0.2); /* was: rgba(149, 244, 236, 0.2) */
-  --x-value-text: #FF69B4; /* was: #95f4ec */
-  --y-value-bg: rgba(255, 182, 193, 0.2); /* was: rgba(234, 208, 78, 0.2) */
-  --y-value-text: #DB7093; /* was: #ead04e */
-}
-:root[data-theme="light"] {
-  --x-value-bg: rgba(255, 192, 203, 0.5); /* was: rgba(149, 244, 236, 0.5) */
-  --x-value-text: #C71585; /* was: hsl(174, 25%, 40%) */
-  --y-value-bg: rgba(255, 182, 193, 0.5); /* was: rgba(211, 200, 147, 0.5) */
-  --y-value-text: #FF1493; /* was: hsl(50, 25%, 40%) */
-}
-
-/* Enhanced Mobile Responsiveness */
 
 /* Base mobile improvements */
 @media(max-width: 768px) {

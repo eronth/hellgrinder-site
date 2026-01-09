@@ -59,9 +59,6 @@
   color: var(--mid-text);
   
   /* Keep existing dark theme variables */
-  /* --card-background: light-dark(#f8f9fa, #2a2a2a); */
-
-  --card-header-background: light-dark(#FFB6C1 /* was: #e9ecef */, #FF1493 /* was: #333333 */);
   --table-background: light-dark(#FFC0CB /* was: #ffffff */, #FF00FF /* was: #2a2a2a */);
   --table-header-background: light-dark(#FFB6C1 /* was: #e9ecef */, #C71585 /* was: #1e2157 */);
   --table-row-background: light-dark(#FFC0CB /* was: #ffffff */, #FF00FF /* was: #2a2a2a */);
@@ -93,8 +90,8 @@
     hsla(0 0% 100% / 0.87)
   );
   --text-secondary-color: light-dark(
-    #DB7093, /* was: hsl(208, 37%, 40%) */
-    #FFB6C1 /* was: hsl(0, 0%, 60%) */
+    hsl(208 37% 40%),
+    hsl(0 0% 60%)
   );
 
   --primary-color: hsl(189, 100%, 35%);

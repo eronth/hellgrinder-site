@@ -32,16 +32,22 @@
 
 
   .status-item {
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: light-dark(
+      rgb(0 0 0 / .1),
+      rgb(255 255 255 / 0.05)
+    );
+    border: 1px solid light-dark(
+      rgb(0 0 0 / .2),
+      rgb(255 255 255 / 0.1)
+    );
     border-radius: 6px;
     padding: 0.75rem;
     transition: all 0.2s;
     cursor: pointer;
     
     &:hover {
-      border-color: #dc3545;
-      background-color: rgba(220, 53, 69, 0.1);
+      border-color: hsl(354 70% 54%);
+      background-color: rgb(220 53 69 / 0.1);
       transform: translateY(-1px);
     }
     

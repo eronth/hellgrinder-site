@@ -71,36 +71,38 @@
 
 .chevron {
   font-size: 0.9rem;
-  color: var(--mid-text);
+  color: var(--text-offset-color);
   transition: all 0.3s ease;
+
+  &.open {
+    transform: rotate(0deg);
+  }
+  
+  &.closed {
+    transform: rotate(0deg);
+  }
 }
 
 .collapsible-header:hover .chevron {
-  color: #646cff;
+  color: var(--accent-color);
 }
 
-.chevron.open {
-  transform: rotate(0deg);
-}
-
-.chevron.closed {
-  transform: rotate(0deg);
-}
 
 .collapsible-content {
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &.open {
+    max-height: 5000px; /* Large enough to accommodate any content */
+    opacity: 1;
+  }
+  
+  &.closed {
+    max-height: 0;
+    opacity: 0;
+  }
 }
 
-.collapsible-content.open {
-  max-height: 5000px; /* Large enough to accommodate any content */
-  opacity: 1;
-}
-
-.collapsible-content.closed {
-  max-height: 0;
-  opacity: 0;
-}
 
 .content-inner {
   padding: 1.5rem;

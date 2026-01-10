@@ -63,7 +63,7 @@ export default function CurrentStatusEffects({
       y: activeEffect.y || 1
     });
   };
-
+  
   return (<>
     <div className="current-status-effects">
       <h4>Active Status Effects ({character.statusEffects.length})</h4>
@@ -91,10 +91,13 @@ export default function CurrentStatusEffects({
                     }
                   </RuleKeyword>
                 </div>
+                <div className="description">
+
+                </div>
                 {(activeEffect.x !== undefined || activeEffect.y !== undefined) && (
                   <div className="variables">
-                    {activeEffect.x !== undefined && <span className="value x-value">X: {activeEffect.x}</span>}
-                    {activeEffect.y !== undefined && <span className="value y-value">Y: {activeEffect.y}</span>}
+                    {activeEffect.x !== undefined && <span className="varval x-value">X: {activeEffect.x}</span>}
+                    {activeEffect.y !== undefined && <span className="varval y-value">Y: {activeEffect.y}</span>}
                   </div>
                 )}
               </div>

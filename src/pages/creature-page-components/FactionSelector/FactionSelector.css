@@ -4,6 +4,7 @@
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1.5rem;
+  
   .selector-header {
     display: flex;
     align-items: center;
@@ -19,14 +20,14 @@
   .selector-label {
     font-size: 1rem;
     font-weight: 600;
-    color: var(--deep-text);
+    color: var(--text-color);
     margin: 0;
   }
   
   .faction-dropdown {
     width: 100%;
     background-color: var(--card-background);
-    color: var(--mid-text);
+    color: var(--text-offset-color);
     border: 1px solid #444;
     border-radius: 6px;
     padding: 0.75rem;

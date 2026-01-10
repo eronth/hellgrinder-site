@@ -68,7 +68,6 @@
 
   .shortcuts-label {
     display: block;
-    color: var(--mid-text);
     font-size: 0.85rem;
     margin-bottom: 0.5rem;
   }
@@ -284,16 +283,18 @@
   }
 }
 
-.success-rank.special-hellsWrath {
-  background-color: rgba(139, 0, 0, 0.2);
-  border-color: #8b0000;
-  animation: hellsWrathPulse 2s ease-in-out infinite;
-}
+.success-rank {
+  &.special-hellsWrath {
+    background-color: rgba(139, 0, 0, 0.2);
+    border-color: #8b0000;
+    animation: hellsWrathPulse 2s ease-in-out infinite;
+  }
 
-.success-rank.special-hellishTriumph {
-  background-color: rgba(255, 215, 0, 0.2);
-  border-color: #ffd700;
-  animation: triumphGlow 2s ease-in-out infinite;
+  &.special-hellishTriumph {
+    background-color: rgba(255, 215, 0, 0.2);
+    border-color: #ffd700;
+    animation: triumphGlow 2s ease-in-out infinite;
+  }
 }
 
 @keyframes hellsWrathPulse {
@@ -323,17 +324,17 @@
 }
 
 .special-description {
-  color: var(--mid-text);
+  color: var(--text-offset-color);
   font-size: 0.85rem;
   font-style: italic;
   padding-top: 0.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--gentle-border-color);
 }
 
 /* Roll History Styles */
 .roll-history {
   margin-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--gentle-border-color);
   padding-top: 1rem;
   animation: slideDown 0.3s ease;
 }

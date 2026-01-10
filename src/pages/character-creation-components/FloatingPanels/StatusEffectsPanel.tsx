@@ -20,8 +20,8 @@ export default function StatusEffectsPanel({
   // Helper function to normalize status effect names for keyword matching
   const normalizeStatusEffectName = (name: string): 'error' | keyof typeof Statuses => {
     const statusName = name
-      .replace(/\[\[X\]\]/g, '') // Remove X placeholders
-      .replace(/\[\[Y\]\]/g, '') // Remove Y placeholders
+      .replace(/\[\[.*?\]\]/gi, '') // Remove variables inside [[]]
+      .replace(/\s*\(.*?\)\s*/g, '') // Remove trailing () and details inside ()
       .replace(/\s+for\s+$/i, '') // Remove trailing "for" (case insensitive)
       .replace(/\s+for\s+/i, ' ') // Replace "for" in middle with single space
       .replace(/\s+/g, ' ') // Replace multiple spaces with single space
@@ -47,8 +47,8 @@ export default function StatusEffectsPanel({
               />
               {(activeEffect.x !== undefined || activeEffect.y !== undefined) && (
                 <div className="status-effect-values" style={{ marginTop: '0.25rem' }}>
-                  {activeEffect.x !== undefined && <span className="x-value">X: {activeEffect.x}</span>}
-                  {activeEffect.y !== undefined && <span className="y-value">Y: {activeEffect.y}</span>}
+                  {activeEffect.x !== undefined && <span className="varval x-value">X: {activeEffect.x}</span>}
+                  {activeEffect.y !== undefined && <span className="varval y-value">Y: {activeEffect.y}</span>}
                 </div>
               )}
             </div>

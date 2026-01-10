@@ -23,9 +23,9 @@ export default function StatusEffectsCard({
           </div>
           {(effect.x !== undefined || effect.y !== undefined) && (
             <div className="variables">
-              {effect.x !== undefined && <span className="variable-info">Has X value</span>}
-              {effect.y !== undefined && <span className="variable-info">Has Y value</span>}
-            </div>
+              {effect.x !== undefined && <span className="varval x-value">Has X value</span>}
+              {effect.y !== undefined && <span className="varval y-value">Has Y value</span>}
+          </div>
           )}
         </div>
         <div className="action-buttons">

@@ -2,7 +2,7 @@ import React from "react";
 import { CharacterDesign } from "../CharacterGenerator";
 import CharacterStatsGrid, { CharacterStats } from "../CharacterStatsGrid/CharacterStatsGrid.tsx";
 import InventoryManager from "../InventoryManager";
-import StatusEffectsManager from "../StatusEffectsManager";
+import StatusEffectsManager from "../StatusEffectsManager/StatusEffectsManager.tsx";
 import EditableCharacterName from "./EditableCharacterName/EditableCharacterName.tsx";
 import CharacterPerksDisplay from "./CharacterPerksDisplay/CharacterPerksDisplay.tsx";
 import CharacterInventoryDisplay from "./CharacterInventoryDisplay/CharacterInventoryDisplay.tsx";

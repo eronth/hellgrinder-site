@@ -3,13 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import './ConfirmDialog.css';
 
-interface ConfirmDialogButton {
+export type ConfirmDialogButton = {
   text: string;
   onClick: () => void;
   variant?: 'danger' | 'primary' | 'secondary';
   icon?: string;
   autoFocus?: boolean;
-}
+};
 
 interface ConfirmDialogProps {
   isOpen: boolean;

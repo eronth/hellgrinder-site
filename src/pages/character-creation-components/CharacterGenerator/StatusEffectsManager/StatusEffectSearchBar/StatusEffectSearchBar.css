@@ -1,0 +1,22 @@
+.status-effects-manager {
+  .search-section {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #444;
+  
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: var(--search-input-background);
+      border: 1px solid var(--search-input-border);
+      border-radius: 4px;
+      color: var(--deep-text);
+      font-size: 1rem;
+      
+      &:focus {
+        outline: none;
+        border-color: #646cff;
+        box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.2);
+      }
+    }
+  }
+}

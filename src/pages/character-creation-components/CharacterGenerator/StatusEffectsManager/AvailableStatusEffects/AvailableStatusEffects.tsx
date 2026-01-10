@@ -1,6 +1,6 @@
 import { StatusEffect } from "../../../../../ts-types/types";
 import { ActiveStatusEffect, CharacterDesign } from "../../CharacterGenerator";
-import AddStatusEffectDialog from "../AddStatusEffectDialog/AddStatusEffectDialog";
+import AddStatusEffectDialog from "../Modify Effects/AddStatusEffectDialog/AddStatusEffectDialog";
 import { normalizeStatusEffectName } from "../helper";
 import StatusEffectsCard from "../StatusEffectsCard/StatusEffectsCard";
 import StatusEffects from '../../../../../common-design/game-terms/status-effects';

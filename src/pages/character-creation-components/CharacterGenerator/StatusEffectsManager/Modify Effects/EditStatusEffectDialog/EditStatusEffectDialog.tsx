@@ -1,7 +1,8 @@
-import { CharacterDesign } from "../../CharacterGenerator";
-import ConfirmDialog from "../../ConfirmDialog/ConfirmDialog";
-import { EditEffectDialogType } from "../CurrentStatusEffects/CurrentStatusEffects";
-
+import { CharacterDesign } from "../../../CharacterGenerator";
+import ConfirmDialog from "../../../ConfirmDialog/ConfirmDialog";
+import { EditEffectDialogType } from "../../CurrentStatusEffects/CurrentStatusEffects";
+import { normalizeStatusEffectName } from "../../helper";
+import '../ModifyStatusEffectsDialog.css';
 
 type Props = {
   character: CharacterDesign;
@@ -33,7 +34,7 @@ export default function EditStatusEffectDialog({
         isOpen={editEffectDialog.isOpen}
         onClose={cancel}
         title="Edit Status Effect"
-        message={`Edit "${editEffectDialog.activeEffect?.effect.name}" for ${character.name}?`}
+        message={`Edit "${normalizeStatusEffectName(editEffectDialog.activeEffect?.effect.name)}" for ${character.name}?`}
         buttons={[
           {
             text: "Cancel",
@@ -49,7 +50,7 @@ export default function EditStatusEffectDialog({
         ]}
       >
         {editEffectDialog.isOpen && editEffectDialog.activeEffect && (
-          <div className="effect-value-inputs">
+          <div className="modify-effects effect-value-inputs">
             {editEffectDialog.activeEffect.effect.x !== undefined && (
               <div className="value-input-group">
                 <label htmlFor="edit-x-value">X Value:</label>

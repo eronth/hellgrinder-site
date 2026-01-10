@@ -1,5 +1,6 @@
 // Helper function to normalize status effect names for comparison
-export const normalizeStatusEffectName = (name: string): string => {
+export const normalizeStatusEffectName = (name?: string): string => {
+  if (!name) { return ''; }
   return name
     .replace(/\[\[X\]\]/g, '') // Remove X placeholders
     .replace(/\[\[Y\]\]/g, '') // Remove Y placeholders

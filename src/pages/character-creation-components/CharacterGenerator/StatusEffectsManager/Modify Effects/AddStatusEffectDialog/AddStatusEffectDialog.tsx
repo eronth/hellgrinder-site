@@ -1,9 +1,8 @@
-import { CharacterDesign } from "../../CharacterGenerator";
-import ConfirmDialog from "../../ConfirmDialog/ConfirmDialog";
-import { AddEffectDialogType } from "../AvailableStatusEffects/AvailableStatusEffects";
-import { normalizeStatusEffectName } from "../helper";
-
-
+import { CharacterDesign } from "../../../CharacterGenerator";
+import ConfirmDialog from "../../../ConfirmDialog/ConfirmDialog";
+import { AddEffectDialogType } from "../../AvailableStatusEffects/AvailableStatusEffects";
+import { normalizeStatusEffectName } from "../../helper";
+import '../ModifyStatusEffectsDialog.css';
 
 type Props = {
   character: CharacterDesign;
@@ -53,12 +52,12 @@ export default function AddStatusEffectDialog({
             activeEffect.effect.name) === normalizeStatusEffectName(addEffectDialog.effect?.name || ''
           )
         ) 
-        ? `"${addEffectDialog.effect?.name}" already exists. Values will be added together.`
+        ? `"${normalizeStatusEffectName(addEffectDialog.effect?.name)}" already exists! Any X or Y values will be added together for the final result.`
         : `Add "${addEffectDialog.effect?.name}" to ${character.name}?`
       }
     >
       {addEffectDialog.isOpen && addEffectDialog.effect && (
-        <div className="effect-value-inputs">
+        <div className="modify-effects effect-value-inputs">
           {addEffectDialog.effect.x !== undefined && (
             <div className="value-input-group">
               <label htmlFor="x-value">X Value:</label>

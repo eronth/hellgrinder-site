@@ -12,23 +12,23 @@ export default function StatusEffectsCard({
 }: Props) {
   return (
       <div key={effect.name} className="status-effect-card">
-        <div className="status-effect-content">
-          <div className="status-effect-name">
+        <div className="content">
+          <div className="name">
             <RuleKeyword keyword={normalizeStatusEffectName(effect.name)}>
               {effect.name}
             </RuleKeyword>
           </div>
-          <div className="status-effect-description">
+          <div className="description">
             {effect.description}
           </div>
           {(effect.x !== undefined || effect.y !== undefined) && (
-            <div className="status-effect-variables">
+            <div className="variables">
               {effect.x !== undefined && <span className="variable-info">Has X value</span>}
               {effect.y !== undefined && <span className="variable-info">Has Y value</span>}
             </div>
           )}
         </div>
-        <div className="status-effect-actions">
+        <div className="action-buttons">
           {actionButton}
           {/* {isActive ? (
             <button 

@@ -1,6 +1,6 @@
 import RuleKeyword from "../../../../../common-design/RuleKeyword";
 import { ActiveStatusEffect, CharacterDesign } from "../../CharacterGenerator";
-import EditStatusEffectDialog from "../EditStatusEffectDialog/EditStatusEffectDialog";
+import EditStatusEffectDialog from "../Modify Effects/EditStatusEffectDialog/EditStatusEffectDialog";
 import { normalizeStatusEffectName } from "../helper";
 
 export type EditEffectDialogType = {
@@ -72,14 +72,14 @@ export default function CurrentStatusEffects({
       ) : (
         <div className="status-effects-grid">
           {character.statusEffects.map((activeEffect, index) => (
-            <div key={`active-${index}`} className="active-status-effect-card">
+            <div key={`active-${index}`} className="active status-effect-card">
               <div 
-                className="active-status-effect-content"
+                className="content"
                 onClick={() => openEditEffectDialog(activeEffect, index)}
                 style={{ cursor: 'pointer' }}
                 title="Click to edit values"
               >
-                <div className="status-effect-name">
+                <div className="name">
                   <RuleKeyword
                     keyword={normalizeStatusEffectName(activeEffect.effect.name)}
                     statusEffectX={activeEffect.x}
@@ -92,13 +92,13 @@ export default function CurrentStatusEffects({
                   </RuleKeyword>
                 </div>
                 {(activeEffect.x !== undefined || activeEffect.y !== undefined) && (
-                  <div className="status-effect-values">
-                    {activeEffect.x !== undefined && <span className="x-value">X: {activeEffect.x}</span>}
-                    {activeEffect.y !== undefined && <span className="y-value">Y: {activeEffect.y}</span>}
+                  <div className="variables">
+                    {activeEffect.x !== undefined && <span className="value x-value">X: {activeEffect.x}</span>}
+                    {activeEffect.y !== undefined && <span className="value y-value">Y: {activeEffect.y}</span>}
                   </div>
                 )}
               </div>
-              <div className="status-effect-actions">
+              <div className="action-buttons">
                 <button 
                   className="remove-btn"
                   onClick={() => removeStatusEffect(index)}

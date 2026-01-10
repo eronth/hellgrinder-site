@@ -1,0 +1,34 @@
+/* Effect Value Inputs in Dialog */
+.modify-effects {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .value-input-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  
+    label {
+      font-weight: 500;
+      min-width: 80px;
+    }
+    
+    input {
+      padding: 0.5rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid #444;
+      border-radius: 4px;
+      font-size: 1rem;
+      width: 80px;
+      text-align: center;
+      
+      &:focus {
+        outline: none;
+        border-color: #646cff;
+        box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.2);
+      }
+    }
+  }
+}

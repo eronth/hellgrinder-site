@@ -236,7 +236,7 @@ export default function GameTitle({ isIndex }: Props) {
         <div>Your saves may break with updates!</div>
       </div>
     </div>
-    <div className="color-visualizer">
+    {/* <div className="color-visualizer">
       <div className="title">
         Color display region
       </div>
@@ -284,6 +284,6 @@ export default function GameTitle({ isIndex }: Props) {
           <h6>H6</h6>
         </div>
       </div>
-    </div> <br />
+    </div> <br /> */}
   </>);
 }

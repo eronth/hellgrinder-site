@@ -114,6 +114,7 @@ export default function AvailableStatusEffects({
       <div className="status-effects-grid">
         {filterBySearch(allStatusEffects, searchFilter).map((effect) => 
           <StatusEffectsCard
+            key={effect.name}
             effect={effect}
             actionButton={createActionButton(effect)}
           />

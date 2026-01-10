@@ -11,6 +11,7 @@ import cce from './CreatureCardExplanations';
 import './CreatureCard.css';
 import './CreatureCardExample.css';
 import './CreatureTooltip.css';
+import './CreatureCardFaction.css';
 
 type Props = {
   data: Creature;

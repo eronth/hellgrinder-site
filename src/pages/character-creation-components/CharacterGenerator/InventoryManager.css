@@ -94,8 +94,12 @@
     border-bottom: 2px solid transparent;
 
     &:hover {
-      color: rgb(255 255 255 / 0.8);
-      background-color: rgb(255 255 255 / 0.05);
+      /* color: rgb(255 255 255 / 0.8); */
+      background-color: hsl(
+        from var(--primary-color)
+        h s 30% / 0.4
+      );
+      border-bottom-color: light-dark(#333, #bbb);
     }
 
     &.active {

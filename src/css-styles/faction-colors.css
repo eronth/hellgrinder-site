@@ -1,74 +1,80 @@
 :root {
   /* ashborn */
-  --ashborn-faction-primary: hsl(14, 83%, 46%);
+  --ashborn-faction-primary: hsl(14 83% 46%);
   --ashborn-faction-on-primary: #FFFFFF; /* was: hsl(0, 0%, 100%) */
-  --ashborn-faction-accent: hsl(26, 100%, 50%);
+  --ashborn-faction-accent: hsl(26 100% 50%);
   --ashborn-faction-accent-light: #FF69B4; /* was: hsl(40, 100%, 50%) */
   --ashborn-faction-background: light-dark(
-    hsl(0, 67%, 94%),
-    hsl(0, 17%, 17%)
+    hsl(0 67% 94%),
+    hsl(0 17% 17%)
   );
   
   /* stoneveined */
   --stoneveined-faction-primary: light-dark(
-    hsl(14, 66%, 25%),
-    hsl(14, 16%, 49%)
+    hsl(14 66% 25%),
+    hsl(14 16% 49%)
   );
   --stoneveined-faction-on-primary: #FFFFFF; /* was: hsl(0, 0%, 100%) */
-  --stoneveined-faction-accent: hsl(16, 25%, 38%);
+  --stoneveined-faction-accent: hsl(16 25% 38%);
   --stoneveined-faction-accent-light: #FF69B4; /* was: oklch(from var(--stoneveined-faction-accent) calc(l + 0.1) c h) */
   --stoneveined-faction-background: light-dark(
-    hsl(0, 4%, 84%),
-    hsl(0, 3%, 15%)
+    hsl(0 4% 84%),
+    hsl(0 3% 15%)
   );
 
   /* thornwraith */
-  --thornwraith-faction-primary: hsl(123, 43%, 39%);
+  --thornwraith-faction-primary: hsl(123 43% 39%);
   --thornwraith-faction-on-primary: #FFFFFF; /* was: hsl(0, 0%, 100%) */
-  --thornwraith-faction-accent: hsl(92, 48%, 42%);
+  --thornwraith-faction-accent: hsl(92 48% 42%);
   --thornwraith-faction-accent-light: #FFB6C1; /* was: oklch(from var(--thornwraith-faction-accent) calc(l + 0.1) c h) */
   --thornwraith-faction-background: light-dark(
-    hsl(120, 67%, 94%),
-    hsl(120, 8%, 15%)
+    hsl(120 67% 94%),
+    hsl(120 8% 15%)
   );
 
   /* umbral */
-  --umbral-faction-primary: hsl(0, 0%, 26%);
+  --umbral-faction-primary: hsl(0 0% 26%);
   --umbral-faction-on-primary: #FFFFFF; /* was: hsl(0, 0%, 100%) */
-  --umbral-faction-accent: #FF00FF; /* was: hsl(277, 70%, 35%) */
+  --umbral-faction-accent: light-dark(
+    hsl(277 70% 35%),
+    hsl(277 65% 46%)
+  );
   --umbral-faction-accent-light: #FF1493; /* was: oklch(from var(--umbral-faction-accent) calc(l + 0.1) c h) */
   --umbral-faction-background: light-dark(
-    hsl(0, 0%, 94%),
-    hsl(0, 0%, 12%)
+    hsl(0 0% 94%),
+    hsl(0 0% 12%)
   );
 
   /* vastfathom */
-  --vastfathom-faction-primary: hsl(202, 98%, 37%);
+  --vastfathom-faction-primary: hsl(202 98% 37%);
   --vastfathom-faction-on-primary: #FFFFFF; /* was: hsl(0, 0%, 100%) */
-  --vastfathom-faction-accent: #FFB6C1; /* was: hsl(185, 100%, 28%) */
+  --vastfathom-faction-accent: hsl(185 100% 28%);
   --vastfathom-faction-accent-light: #FFC0CB; /* was: oklch(from var(--vastfathom-faction-accent) calc(l + 0.1) c h) */
   --vastfathom-faction-background: light-dark(
-    hsl(240, 14%, 84%),
-    hsl(240, 14%, 15%)
+    hsl(240 14% 84%),
+    hsl(240 14% 15%)
   );
 
   /* zephpter */
-  --zephpter-faction-primary: hsl(282, 68%, 38%);
+  --zephpter-faction-primary: hsl(282 68% 38%);
   --zephpter-faction-on-primary: #FFFFFF; /* was: hsl(0, 0%, 100%) */
-  --zephpter-faction-accent: #DB7093; /* was: hsl(258, 58%, 42%) */
+  --zephpter-faction-accent: light-dark(
+    hsl(258 58% 42%),
+    hsl(258, 44%, 59%)
+  );
   --zephpter-faction-accent-light: #FF69B4; /* was: oklch(from var(--zephpter-faction-accent) calc(l + 0.1) c h) */
   --zephpter-faction-background: light-dark(
-    hsl(288, 100%, 94%),
-    hsl(278, 12%, 15%)
+    hsl(288 100% 94%),
+    hsl(278 12% 15%)
   );
 
   /* wanderlost */
-  --wanderlost-faction-primary: hsl(199, 18%, 33%);
+  --wanderlost-faction-primary: hsl(199 18% 33%);
   --wanderlost-faction-on-primary: #FFFFFF; /* was: hsl(0, 0%, 100%) */
-  --wanderlost-faction-accent: #FFB6C1; /* was: hsl(173, 100%, 21%) */
+  --wanderlost-faction-accent: hsl(173 100% 21%);
   --wanderlost-faction-accent-light: #FFC0CB; /* was: oklch(from var(--wanderlost-faction-accent) calc(l + 0.1) c h) */
   --wanderlost-faction-background: light-dark(
-    hsl(240, 25%, 98%),
-    hsl(210, 5%, 15%)
+    hsl(240 25% 98%),
+    hsl(210 5% 15%)
   );
 }

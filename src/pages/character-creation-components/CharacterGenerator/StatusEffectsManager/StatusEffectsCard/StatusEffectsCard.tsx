@@ -30,18 +30,6 @@ export default function StatusEffectsCard({
         </div>
         <div className="action-buttons">
           {actionButton}
-          {/* {isActive ? (
-            <button 
-              className="remove-btn"
-              onClick={() => onOpenDialog(effect)}
-              title="Remove status effect"
-            >
-              Remove
-            </button>
-          ) : (
-          }
-        )}
-        */}
         </div>
       </div>
     );

@@ -2,35 +2,53 @@
   margin: 1.5rem 0;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
-  background-color: var(--card-background);
+  background-color: var(--table-body-background-color);
   overflow: hidden;
   transition: all 0.3s ease;
-}
 
-.collapsible-section:hover {
-  border-color: rgba(255, 255, 255, 0.3);
-  background-color: rgba(255, 255, 255, 0.02);
-}
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .collapsible-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    --shade: light-dark(
+      rgb(10 10 10),
+      rgb(255 255 255)
+    );
+    --ch-bg-c1: light-dark(
+      rgb(from var(--shade) r g b / 0.2),
+      rgb(from var(--shade) r g b / 0.05)
+    );
+    --ch-bg-c2: light-dark(
+      rgb(from var(--shade) r g b / 0.1),
+      rgb(from var(--shade) r g b / 0.02)
+    );
+    background: linear-gradient(135deg, var(--ch-bg-c1), var(--ch-bg-c2));
+    border-bottom: 1px solid rgb(from var(--shade) r g b / 0.1);
+    transition: all 0.2s ease;
+    user-select: none;
+  
+    &:hover {
+      --ch-bg-c1: light-dark(
+        rgb(from var(--shade) r g b / 0.3),
+        rgb(from var(--shade) r g b / 0.08)
+      );
+      --ch-bg-c2: light-dark(
+        rgb(from var(--shade) r g b / 0.15),
+        rgb(from var(--shade) r g b / 0.04)
+      );
+      border-bottom-color: rgb(from var(--shade) r g b / 0.15);
+    }
+  }
 
-.collapsible-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  cursor: pointer;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.2s ease;
-  user-select: none;
-}
-
-.collapsible-header:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
-  border-bottom-color: rgba(255, 255, 255, 0.15);
-}
-
-.header-content {
-  flex: 1;
+  .header-content {
+    flex: 1;
+  }
 }
 
 .section-title {
@@ -41,9 +59,6 @@
   transition: color 0.2s ease;
 }
 
-.collapsible-header:hover .section-title {
-  color: #646cff;
-}
 
 .section-description {
   margin: 0;
@@ -174,22 +189,37 @@
 }
 
 /* Special styling for first section (faction examples) */
-.collapsible-section.faction-examples .collapsible-header {
-  background: linear-gradient(135deg, rgba(100, 108, 255, 0.1), rgba(139, 92, 246, 0.05));
+.collapsible-section{
+
+  .faction-examples {
+    .collapsible-header {
+      background: linear-gradient(
+        135deg,
+        rgb(100 108 255 / 0.1),
+        rgb(139 92 246 / 0.05)
+      );
+
+      &:hover {
+        background: linear-gradient(
+          135deg,
+          rgb(100 108 255 / 0.15),
+          rgb(139 92 246 / 0.08)
+        );
+      }
+    }
+    
+    .section-title {
+      color: #646cff;
+    }
+    
+    .toggle-icon {
+      background-color: rgba(100, 108, 255, 0.2);
+    }
+    
+    .collapsible-header:hover .toggle-icon {
+      background-color: rgba(100, 108, 255, 0.3);
+    }
+  }
 }
 
-.collapsible-section.faction-examples .collapsible-header:hover {
-  background: linear-gradient(135deg, rgba(100, 108, 255, 0.15), rgba(139, 92, 246, 0.08));
-}
 
-.collapsible-section.faction-examples .section-title {
-  color: #646cff;
-}
-
-.collapsible-section.faction-examples .toggle-icon {
-  background-color: rgba(100, 108, 255, 0.2);
-}
-
-.collapsible-section.faction-examples .collapsible-header:hover .toggle-icon {
-  background-color: rgba(100, 108, 255, 0.3);
-}

@@ -39,7 +39,7 @@
     border-top-right-radius: var(--border-radius);
     border-bottom: 1px solid var(--title-border-bottom-color);
 
-    
+
     .name {
       font-size: 1.2em;
       font-weight: bold;
@@ -151,8 +151,14 @@
     justify-content: space-between;
     margin: .25em;
     padding: 0 .5em;
-    border: 1px solid #fff8;
-    background-color: #fff4;
+    border: 1px solid light-dark(
+      #00000033,
+      #fff8
+    );
+    background-color: light-dark(
+      #0000000d,
+      #fff4
+    );
     border-radius: 4px;
     font-size: .8em;
 
@@ -301,14 +307,3 @@
 .encounter-grid {
   gap: 1rem;
 }
-
-
-
-
-
-
-:root[data-theme="light"] .damage-modifier {
-  border-color: rgba(0, 0, 0, 0.2);
-  background-color: rgba(0, 0, 0, 0.05);
-}
-

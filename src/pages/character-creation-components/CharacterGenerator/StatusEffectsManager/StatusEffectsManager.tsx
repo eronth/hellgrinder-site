@@ -93,7 +93,7 @@ export default function StatusEffectsManager({
         className="status-effects-toggle-btn"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {isOpen ? 'Close' : 'Manage'} Status Effects
+        <span className='non-mobile'>Manage </span>Status Effects
       </button>
 
       {isOpen && (<>

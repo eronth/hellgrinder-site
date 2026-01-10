@@ -188,7 +188,7 @@ nav.navtabs.desktop-nav {
     top: 1rem;
     right: 1rem;
     z-index: 1001;
-    background-color: var(--faction-primary, #646cff);
+    background-color: var(--primary-color, #646cff);
     color: white;
     border: none;
     border-radius: 8px;
@@ -206,7 +206,8 @@ nav.navtabs.desktop-nav {
   }
   
   .mobile-menu-toggle:hover {
-    background-color: var(--faction-primary-hover, #5a5fcf);
+    background-color: hsl(from var(--primary-color, #5a5fcf)
+      h s calc(l*1.2));
   }
   
   /* Mobile overlay */
@@ -231,7 +232,7 @@ nav.navtabs.desktop-nav {
     width: 280px;
     height: 100vh;
     background-color: var(--card-background, #2a2a2a);
-    border-left: 1px solid var(--faction-primary, #646cff);
+    border-left: 1px solid var(--accent-color, #646cff);
     z-index: 1000;
     transition: right 0.3s ease-in-out;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
@@ -248,7 +249,7 @@ nav.navtabs.desktop-nav {
     align-items: center;
     padding: 1.5rem 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    background-color: var(--faction-primary, #646cff);
+    background-color: var(--accent-color, #646cff);
     color: white;
   }
   
@@ -290,12 +291,16 @@ nav.navtabs.desktop-nav {
   
   /* Mobile navigation links */
   .mobile-nav-link {
+    --shading: light-dark(
+      rgb(10 10 10 / 0.1),
+      rgb(255 255 255 / 0.05)
+    );
     display: flex;
     align-items: center;
     padding: 1rem 1.5rem;
     color: var(--text-color, white);
     text-decoration: none;
-    border-bottom: 1px solid rgb(255 255 255 / 0.05);
+    border-bottom: 1px solid var(--shading);
     transition: background-color 0.2s;
     font-size: 1em;
     
@@ -303,7 +308,7 @@ nav.navtabs.desktop-nav {
     min-height: 44px;
 
     &:hover {
-      background-color: rgb(255 255 255 / 0.05);
+      background-color: var(--shading);
     }
     
     &.active {

@@ -86,6 +86,8 @@
   }
 
   .attack-bonus-prefix {
+    text-align: center;
+    align-content: center;;
     color: var(--cell-text-color);
     font-size: 1rem;
     border: 1px solid rgb(0 0 0 / 0%);
@@ -131,6 +133,33 @@
     }
   }
 }
+
+@media(max-width: 768px) {
+  .stat-cell{
+    &.attack-bonus-cell {
+      grid-column: span 3;
+    }
+    &.custom-skill {
+      grid-column: span 3;
+      .wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+
+        .stat-label {
+          font-size: 1.2em;
+          align-items: center;
+          align-content: center;;
+        }
+        .stat-input {
+          width: 100%;
+        }
+      }
+    }
+
+  }
+}
+
 :root
 .character-stats-grid
 .stat-cell.attack-bonus-cell.editable

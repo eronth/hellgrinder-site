@@ -2,6 +2,8 @@ import React from "react";
 import { CharacterDesign } from "../../CharacterGenerator";
 import DeleteConfirmDialog from "./DeleteConfirmDialog";
 import TransferAndDeleteConfirmDialog from "./TransferAndDeleteConfirmDialog";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
   character: CharacterDesign;
@@ -43,7 +45,12 @@ export default function DeleteCharacterButton({
       onClick={() => onDeleteCharacter(character.id)}
       title="Delete this character"
     >
-      Delete Character
+      <span className="delete-icon mobile" aria-hidden="true">
+        <FontAwesomeIcon icon={faTrash} />
+      </span>
+      <span className="non-mobile delete-full-text">
+        Delete Character
+      </span>
     </button>
     <DeleteConfirmDialog
       isOpenReactState={[isDeleteDialogOpen, setIsDeleteDialogOpen]}

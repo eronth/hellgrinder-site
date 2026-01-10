@@ -48,10 +48,10 @@
   --table-border-color: hsl(from var(--primary-color) h s calc(l*1.5));
   --table-body-background-color: light-dark(
     hsl(from var(--background-color)
-      h s l / 0.3
+      h calc(s * 0.9) calc(l * 0.9) / 0.9
     ),
     hsl(from var(--background-color)
-      h s calc(l * 1.2) / 0.7
+      h s calc(l * 1.5) / 0.7
     )
   );
   --table-background: #FF00FF; /* was: #2a2a2a */
@@ -229,11 +229,11 @@
 
 a {
   font-weight: 500;
-  color: #FF00FF; /* was: #646cff */
+  color: var(--primary-color);
   text-decoration: inherit;
 }
 a:hover {
-  color: light-dark(#FFB6C1 /* was: #747bff */, #DB7093 /* was: #535bf2 */);
+  color: var(--accent-color);
 }
 
 body {
@@ -369,7 +369,7 @@ table {
 
 .perk {
   margin: 0 .5em;
-  background-color: var(--card-background);
+  background-color: var(--table-body-background-color);
   border: 1px solid var(--card-border-color);
   border-radius: 6px;
   padding: 0.5em;
@@ -668,8 +668,16 @@ button, .nav-tab, .tab-btn {
 }
 
 /* Mobile Form and Input Improvements */
-
+.mobile {
+  display: none;
+}
 @media(max-width: 768px) {
+  .mobile {
+    display: inline;
+  }
+  .non-mobile {
+    display: none;
+  }
   input[type="text"],
   input[type="number"],
   input[type="email"],

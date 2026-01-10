@@ -192,7 +192,6 @@ export default function CharacterGenerator() {
         <button
           className="clear-all-btn"
           onClick={clearAllCharacters}
-          style={{ marginLeft: '1rem' }}
         >
           Clear All Characters
         </button>

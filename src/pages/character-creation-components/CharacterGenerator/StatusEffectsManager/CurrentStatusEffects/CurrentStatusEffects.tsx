@@ -2,6 +2,8 @@ import RuleKeyword from "../../../../../common-design/RuleKeyword";
 import { ActiveStatusEffect, CharacterDesign } from "../../CharacterGenerator";
 import EditStatusEffectDialog from "../Modify Effects/EditStatusEffectDialog/EditStatusEffectDialog";
 import { normalizeStatusEffectName } from "../helper";
+import { formatReactNode } from "../../../../../common-design/utils/StatusEffectsUtils";
+import StatusEffects from "../../../../../common-design/game-terms/status-effects";
 
 export type EditEffectDialogType = {
   isOpen: boolean;
@@ -26,6 +28,19 @@ export default function CurrentStatusEffects({
   onUpdateCharacter,
   editEffectDialogReactState: [editEffectDialog, setEditEffectDialog]
 }: Props) {
+  
+  // Helper to get effects array, looking up from database if it's missing (due to serialization)
+  const getEffects = (activeEffect: ActiveStatusEffect) => {
+    if (activeEffect.effect.effects && activeEffect.effect.effects.length > 0) {
+      return activeEffect.effect.effects;
+    }
+    // Effects missing - look up from database by normalized name
+    const normalizedName = normalizeStatusEffectName(activeEffect.effect.name);
+    const dbEffect = Object.values(StatusEffects).find(
+      effect => normalizeStatusEffectName(effect.name) === normalizedName
+    );
+    return dbEffect?.effects || [];
+  };
   
   const removeStatusEffect = (index: number) => {
     const newStatusEffects = character.statusEffects.filter((_, i) => i !== index);
@@ -63,7 +78,7 @@ export default function CurrentStatusEffects({
       y: activeEffect.y || 1
     });
   };
-  
+
   return (<>
     <div className="current-status-effects">
       <h4>Active Status Effects ({character.statusEffects.length})</h4>
@@ -92,7 +107,21 @@ export default function CurrentStatusEffects({
                   </RuleKeyword>
                 </div>
                 <div className="description">
-
+                  {(() => {
+                    const effects = getEffects(activeEffect);
+                    return effects.length > 0 ? (
+                      <ul>
+                        {effects.map((effect, idx) => {
+                          const formattedEffect = formatReactNode(effect, { x: activeEffect.x, y: activeEffect.y });
+                          return (
+                            <li key={idx}>
+                              {formattedEffect}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    ) : null;
+                  })()}
                 </div>
                 {(activeEffect.x !== undefined || activeEffect.y !== undefined) && (
                   <div className="variables">

@@ -185,19 +185,6 @@
 .rule-popup-top::before {
   content: '';
   position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 8px solid var(--card-tag-background);
-}
-
-.rule-popup-bottom::before {
-  content: '';
-  position: absolute;
   bottom: -8px;
   left: 50%;
   transform: translateX(-50%);
@@ -206,6 +193,19 @@
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
   border-top: 8px solid var(--card-tag-background);
+}
+
+.rule-popup-bottom::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid var(--card-tag-background);
 }
 
 .rule-popup-left::before {

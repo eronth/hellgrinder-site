@@ -36,6 +36,7 @@ export default function RulePopup({
   const triggerRef = useRef<HTMLSpanElement>(null);
   const popupRef = useRef<HTMLDivElement>(null);
   const [needRuleDisplay, setNeedRuleDisplay] = useState(false);
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Get the rule definition
   const rule: RuleDefinition | undefined = ruleId 
@@ -94,8 +95,21 @@ export default function RulePopup({
     return { top, left, preferredPosition };
   };
 
-  const handleMouseEnter = () => { setIsVisible(true); };
-  const handleMouseLeave = () => { setIsVisible(false); };
+  const handleMouseEnter = () => {
+    // Clear any pending close timeout
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setIsVisible(true);
+  };
+  
+  const handleMouseLeave = () => {
+    // Delay closing by 300ms to allow user to mouse onto popup
+    closeTimeoutRef.current = setTimeout(() => {
+      setIsVisible(false);
+    }, 300);
+  };
 
   useEffect(() => {
     if (isVisible && triggerRef.current) {
@@ -143,7 +157,7 @@ export default function RulePopup({
           left: `${position.left}px`,
           zIndex: 1000
         }}
-        onMouseEnter={() => setIsVisible(true)}
+        onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <div className="rule-popup-header">

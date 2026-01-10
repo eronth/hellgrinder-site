@@ -69,10 +69,11 @@ const formatReactNode = (node: React.ReactNode, replacers: Replacers): React.Rea
   
   if (React.isValidElement(node)) {
     // Clone the element and recursively format its children
-    return React.cloneElement(node, {
-      ...node.props,
-      children: React.Children.map(node.props.children, child => formatReactNode(child, replacers))
-    });
+    const formattedChildren = React.Children.map(node.props.children, child => 
+      formatReactNode(child, replacers)
+    );
+    
+    return React.cloneElement(node, { key: node.key } as any, formattedChildren);
   }
   
   // For other types (numbers, arrays, null, undefined, etc.), return as-is

@@ -60,17 +60,17 @@
   --table-row-alt-background: #DB7093; /* was: #2e2e2e */
 
   --input-background: light-dark(
-    #FADADD, /* was: hsl(0, 0%, 90%) */
-    #DB7093 /* was: hsl(0, 0%, 20%) */
+    hsl(0 0% 90%),
+    hsl(0 0% 20%)
   );
   --input-border: light-dark(
-    #FFC0CB, /* was: hsl(0, 0%, 80%) */
-    #FF69B4 /* was: hsl(0, 0%, 33%) */
+    hsl(0 0% 80%),
+    hsl(0 0% 33%)
   );
 
   --nav-border: light-dark(
-    #FF00FF, /* was: hsl(0, 0%, 0%) */
-    #FFC0CB /* was: hsl(0, 0%, 100%) */
+    hsl(0 0% 0%),
+    hsl(0 0% 100%)
   );
 
   --header-icon-color: var(--text-color);
@@ -107,7 +107,7 @@
   --dice-border-color:
     light-dark(hsl(0 0% 40% / 0.6), hsl(0 0% 100% / 0.2));
   --clickable-dice-hover-color: 
-    light-dark(hsl(198, 83%, 27%), hsl(198 72% 75%));
+    light-dark(hsl(198 83% 27%), hsl(198 72% 75%));
 
   --probability-title: #646cff;
 
@@ -209,8 +209,8 @@
 /* Calculation Operations */
 :root {
   --bonus-value-color: light-dark(
-    hsl(47, 90%, 41%),
-    hsl(47, 100%, 62%)
+    hsl(47 90% 41%),
+    hsl(47 100% 62%)
   );
 }
 /* Kit Styles */

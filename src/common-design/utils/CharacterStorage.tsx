@@ -61,9 +61,26 @@ export class CharacterStorage {
         // Could implement migration logic here if needed
       }
 
-      console.log(`Loaded ${data.characters.length} characters from localStorage`);
+      // Fix corrupted status effects data - remove the effects array from serialized objects
+      const cleanedCharacters = data.characters.map(char => ({
+        ...char,
+        statusEffects: char.statusEffects.map(statusEffect => {
+          // If the effect has been serialized, it might have lost its React elements
+          // Remove the effects property to avoid rendering issues
+          if (statusEffect.effect && typeof statusEffect.effect === 'object') {
+            const { effects, ...cleanEffect } = statusEffect.effect as any;
+            return {
+              ...statusEffect,
+              effect: cleanEffect
+            };
+          }
+          return statusEffect;
+        })
+      }));
+
+      console.log(`Loaded ${cleanedCharacters.length} characters from localStorage`);
       return { 
-        characters: data.characters || [], 
+        characters: cleanedCharacters || [], 
         selectedCharacterId: data.selectedCharacterId 
       };
     } catch (error) {

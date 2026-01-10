@@ -4,6 +4,8 @@ import { ActiveStatusEffect } from '../CharacterGenerator/CharacterGenerator';
 import './StatusEffectsPanel.css';
 import StatusKeyword from '../../../common-design/StatusKeyword';
 import Statuses from '../../../common-design/game-terms/status-effects.tsx';
+import StatusEffects from '../../../common-design/game-terms/status-effects';
+import { formatReactNode } from '../../../common-design/utils/StatusEffectsUtils.tsx';
 
 interface Props {
   statusEffects: ActiveStatusEffect[];
@@ -14,6 +16,19 @@ export default function StatusEffectsPanel({
   statusEffects,
   characterName
 }: Props) {
+
+  // Helper to get effects array, looking up from database if it's missing (due to serialization)
+  const getEffects = (activeEffect: ActiveStatusEffect) => {
+    if (activeEffect.effect.effects && activeEffect.effect.effects.length > 0) {
+      return activeEffect.effect.effects;
+    }
+    // Effects missing - look up from database by normalized name
+    const normalizedName = normalizeStatusEffectName(activeEffect.effect.name);
+    const dbEffect = Object.values(StatusEffects).find(
+      effect => normalizeStatusEffectName(effect.name) === normalizedName
+    );
+    return dbEffect?.effects || [];
+  };
   
   if (statusEffects.length === 0) return null;
 
@@ -45,6 +60,23 @@ export default function StatusEffectsPanel({
                 x={activeEffect.x}
                 y={activeEffect.y}
               />
+              <div className="details">
+                {(() => {
+                    const effects = getEffects(activeEffect);
+                    return effects.length > 0 ? (
+                      <ul>
+                        {effects.map((effect, idx) => {
+                          const formattedEffect = formatReactNode(effect, { x: activeEffect.x, y: activeEffect.y });
+                          return (
+                            <li key={idx}>
+                              {formattedEffect}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    ) : null;
+                  })()}
+              </div>
               {(activeEffect.x !== undefined || activeEffect.y !== undefined) && (
                 <div className="status-effect-values" style={{ marginTop: '0.25rem' }}>
                   {activeEffect.x !== undefined && <span className="varval x-value">X: {activeEffect.x}</span>}

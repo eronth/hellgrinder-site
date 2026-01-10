@@ -50,6 +50,10 @@
       background-color: rgb(220 53 69 / 0.1);
       transform: translateY(-1px);
     }
+
+    .details {
+      font-size: .85em;;
+    }
     
     .status-effect-values {
       display: flex;

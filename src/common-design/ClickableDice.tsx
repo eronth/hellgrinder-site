@@ -32,7 +32,7 @@ export default function ClickableDice({ damage, displayText, averageValue, shoul
     setTimeout(() => {
       setIsRolled(false);
       setRollResult(null);
-    }, 800000);
+    }, 15000);
   };
   
   const handleMouseMove = (e: React.MouseEvent) => {

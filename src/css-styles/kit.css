@@ -145,7 +145,10 @@
   font-size: 0.9em;
   transition: all 0.3s ease;
   &.rolled-result {
-    --roll-result-color: hsl(142 69% 58%);
+    --roll-result-color: light-dark(
+      hsl(142 69% 38%),
+      hsl(142 69% 58%)
+    );
     --roll-result-shadow: 0 0 6px rgb(74 222 128 / 0.4);
     color: var(--roll-result-color);
     font-weight: bold;

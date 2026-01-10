@@ -65,6 +65,7 @@
   font-size: 0.9rem;
   color: var(--text-offset-color);
   line-height: 1.4;
+  margin-bottom: .25em;
 }
 
 .toggle-icon {

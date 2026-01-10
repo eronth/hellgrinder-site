@@ -84,6 +84,7 @@ export default function CreatureCard({
       'Wanderlost Crews': 'faction-wanderlost-crews',
       'Wanderlost Crew': 'faction-wanderlost-crews', // Alternative name
       'Zephpter Horde': 'faction-zephpter-horde',
+      'Zephpter Swarm': 'faction-zephpter-horde', // Alternative name
       'Umbral Nexus': 'faction-umbral-nexus',
       'Sinner': 'faction-sinner',
       'Forgefiend Syndicate': 'faction-forgefiend-syndicate',
@@ -112,7 +113,8 @@ export default function CreatureCard({
       'Vastfathom League',
       'Thornwraith Covenant', 'Thornwraith Covenant',
       'Thornwraith Bloom',
-      'Zephpter Horde', 'Umbral Nexus',
+      'Zephpter Horde', 'Zephpter Swarm',
+      'Umbral Nexus',
       'Wanderlost Crews', 'Wanderlost Crew',
       'Sinner', 'Forgefiend Syndicate',
       'Hand of Death', "Heaven's Host", 'Voidfire Conclave', 'Hagswell Covenant'

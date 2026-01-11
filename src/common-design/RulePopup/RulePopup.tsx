@@ -36,7 +36,7 @@ export default function RulePopup({
   const triggerRef = useRef<HTMLSpanElement>(null);
   const popupRef = useRef<HTMLDivElement>(null);
   const [needRuleDisplay, setNeedRuleDisplay] = useState(false);
-  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const closeTimeoutRef = useRef<number | null>(null);
 
   // Get the rule definition
   const rule: RuleDefinition | undefined = ruleId 
@@ -108,7 +108,7 @@ export default function RulePopup({
     // Delay closing by 300ms to allow user to mouse onto popup
     closeTimeoutRef.current = setTimeout(() => {
       setIsVisible(false);
-    }, 300);
+    }, 400);
   };
 
   useEffect(() => {

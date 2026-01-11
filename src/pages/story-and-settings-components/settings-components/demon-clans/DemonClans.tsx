@@ -1,7 +1,7 @@
 import { HeaderSize } from "../../../../ts-types/types";
 import AshbornLegion from "./AshbornLegion";
 import StoneveinedOrder from "./StoneveinedOrder";
-import ZephpterHorde from "./ZephpterHorde.tsx";
+import ZephpterSwarm from "./ZephpterSwarm.tsx";
 import ThornwraithCovenant from "./ThornwraithCovenant";
 import UmbralNexus from "./UmbralNexus";
 import VastfathomDominion from "./VastfathomDominion";
@@ -30,7 +30,7 @@ export default function DemonClans() {
       <ThornwraithCovenant hx={factionHxLevel} />
       <UmbralNexus hx={factionHxLevel} />
       <VastfathomDominion hx={factionHxLevel} />
-      <ZephpterHorde hx={factionHxLevel} />
+      <ZephpterSwarm hx={factionHxLevel} />
       <WanderlostCrews hx={factionHxLevel} />
     </div>
   </>);

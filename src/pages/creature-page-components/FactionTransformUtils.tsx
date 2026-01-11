@@ -192,8 +192,8 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
     weaknesses: ['Infernal', 'Nethercurrent'],
     cssClass: 'faction-wanderlost-crews'
   },
-  'Zephpter Horde': {
-    name: 'Zephpter Horde',
+  'Zephpter Swarm': {
+    name: 'Zephpter Swarm',
     primary: 'Nethercurrent',
     absorb: 'Voidyr',
     weaknesses: ['Chthonic', 'Metal'],
@@ -227,7 +227,7 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
         ]
       }
     ],
-    cssClass: 'faction-zephpter-horde'
+    cssClass: 'faction-zephpter-swarm'
   },
   'Umbral Nexus': {
     name: 'Umbral Nexus',
@@ -253,6 +253,17 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
     cssClass: 'faction-umbral-nexus'
   }
 };
+
+type CreaturesGrouping = {
+  [key: string]: Creature;
+}
+export function transformAllCreaturesToFaction(creatures: CreaturesGrouping, factionKey: string): CreaturesGrouping {
+  const transformedCreatures: CreaturesGrouping = {};
+  Object.keys(creatures).forEach(creatureKey => {
+    transformedCreatures[creatureKey] = transformCreatureToFaction(creatures[creatureKey], factionKey);
+  });
+  return transformedCreatures;
+}
 
 export function transformCreatureToFaction(creature: Creature, factionKey: string): Creature {
   // No transformation needed for Generic
@@ -325,8 +336,8 @@ export function transformCreatureToFaction(creature: Creature, factionKey: strin
     transformedCreature.health += bonus;
   }
 
-  // Add movement bonus for Zephpter Horde
-  // if (factionKey === 'Zephpter Horde') {
+  // Add movement bonus for Zephpter Swarm
+  // if (factionKey === 'Zephpter Swarm') {
   //   if (transformedCreature.tier === 'Elite' || transformedCreature.tier === 'Tormentor' || 
   //       transformedCreature.tier === 'Archfiend' || transformedCreature.tier === 'Lord' || 
   //       transformedCreature.tier === 'Overlord') {

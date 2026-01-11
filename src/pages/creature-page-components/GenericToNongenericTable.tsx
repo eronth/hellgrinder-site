@@ -62,7 +62,7 @@ export default function GenericToNongenericTable() {
           </>,
         }} />
         <GenericToNongenericRow data={{
-          name: "Zephpter Horde", // TODO officially make this rename happen
+          name: "Zephpter Swarm", // TODO officially make this rename happen
           primary: "Nethercurrent",
           absorb: "Voidyr",
           weaknesses: ["Chthonic", "Metal"],

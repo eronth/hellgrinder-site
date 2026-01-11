@@ -5,7 +5,7 @@ import DemonClanComponent from "./DemonClanComponent/DemonClanComponent";
 type Props = {
   hx: HeaderSize;
 };
-export default function ZephpterHorde ({ hx }: Props) {
+export default function ZephpterSwarm ({ hx }: Props) {
   const buttonText = {
     offer: 'Join the Frenzy',
     renounce: 'Calm the Storm'

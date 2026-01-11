@@ -83,8 +83,8 @@ export default function CreatureCard({
       'Thornwraith Bloom': 'faction-thornwraith-covenant', // Alternative name
       'Wanderlost Crews': 'faction-wanderlost-crews',
       'Wanderlost Crew': 'faction-wanderlost-crews', // Alternative name
-      'Zephpter Horde': 'faction-zephpter-horde',
-      'Zephpter Swarm': 'faction-zephpter-horde', // Alternative name
+      'Zephpter Horde': 'faction-zephpter-swarm',
+      'Zephpter Swarm': 'faction-zephpter-swarm', // Alternative name
       'Umbral Nexus': 'faction-umbral-nexus',
       'Sinner': 'faction-sinner',
       'Forgefiend Syndicate': 'faction-forgefiend-syndicate',

@@ -412,6 +412,10 @@ const exObj: StatusEffectsReturn = {
       </>,
       <>
         You take +1 damage from all attacks, and you take 1 at the start of your turn.
+      </>,
+      <>
+        If a character with the Inside Out condition is affected by another instance of
+        Inside Out, they instead take 3 damage and the condition ends.
       </>
     ],
   },

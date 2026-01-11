@@ -1,4 +1,5 @@
 import { Creature, CreatureAbility } from "../../ts-types/creature-types";
+import { movementIcon } from "../CommonIcons";
 import Tools from "../Tools";
 
 const arc: CreatureAbility = {
@@ -12,6 +13,64 @@ const arc: CreatureAbility = {
 };
 
 const exObj: { [key: string]: Creature } = {
+  /* T1 Zephpter Creatures */
+  elzid: {
+    name: 'Elzid',
+    tier: Tools.creatureTiers.t1,
+    tags: ['Zephpter Swarm'],
+    health: 6, size: 1,
+    speed: 6, dash: 4,
+    damageTakenMods: [
+      { modification: 'Resist', type: 'Nethercurrent', mod: 1 },
+      { modification: 'Absorb', type: 'Voidyr', mod: 1 },
+      { modification: 'Weak', type: 'Chthonic', mod: 1 },
+    ],
+    attacks: [
+      {
+        name: 'Zip',
+        damage: {
+          l: { value: 1, type: 'Nethercurrent' },
+          m: { value: 2, type: 'Nethercurrent' },
+          h: { value: 3, type: 'Nethercurrent' },
+        },
+        tags: ['Attack', 'Arcane', 'Short Range'],
+      },
+    ],
+    abilities: [arc],
+    description: '',
+  },
+  netheal: {
+    name: 'Netheal',
+    tier: Tools.creatureTiers.t1,
+    tags: ['Zephpter Swarm'],
+    health: 6, size: 1,
+    speed: 4, dash: 2,
+    damageTakenMods: [
+      { modification: 'Resist', type: 'Nethercurrent', mod: 1 },
+      { modification: 'Absorb', type: 'Voidyr', mod: 1 },
+      { modification: 'Weak', type: 'Chthonic', mod: 1 },
+    ],
+    attacks: [
+      {
+        name: 'Bolting Bite',
+        damage: {
+          l: { value: 1, type: 'Nethercurrent' },
+          m: { value: 2, type: 'Nethercurrent' },
+          h: { value: 3, type: 'Nethercurrent' },
+        },
+        effects:[
+          <>
+            The Netheal can teleport 3{movementIcon} towards their target before this attack.
+          </>,
+        ],
+        tags: ['Attack', 'Arcane', 'Adjacent Range'],
+      },
+    ],
+    abilities: [arc],
+    description: '',
+  },
+
+  /* T2 Zephpter Creatures */
   zephilim: {
     name: 'Zephilim',
     tier: Tools.creatureTiers.t2,
@@ -38,31 +97,36 @@ const exObj: { [key: string]: Creature } = {
     abilities: [arc],
     description: '',
   },
-  elzid: {
-    name: 'Elzid',
-    tier: Tools.creatureTiers.t1,
+  zazzile: {
+    name: 'Zazzile',
+    tier: Tools.creatureTiers.t2,
     tags: ['Zephpter Swarm'],
-    health: 6, size: 1,
-    speed: 6, dash: 4,
+    health: 8, size: 1,
+    speed: 6, dash: 3,
     damageTakenMods: [
-      { modification: 'Resist', type: 'Nethercurrent', mod: 1 },
+      { modification: 'Resist', type: 'Nethercurrent', mod: 2 },
       { modification: 'Absorb', type: 'Voidyr', mod: 1 },
       { modification: 'Weak', type: 'Chthonic', mod: 1 },
+      { modification: 'Weak', type: 'Metal', mod: 3 },
     ],
     attacks: [
       {
-        name: 'Zip',
+        name: 'Currental',
         damage: {
-          l: { value: 1, type: 'Nethercurrent' },
-          m: { value: 2, type: 'Nethercurrent' },
-          h: { value: 3, type: 'Nethercurrent' },
+          l: { value: 2, type: 'Nethercurrent' },
+          m: { value: 3, type: 'Nethercurrent' },
+          h: { value: 4, type: 'Nethercurrent' },
         },
-        tags: ['Attack', 'Arcane', 'Short Range'],
+        tags: ['Attack', 'Melee', 'Adjacent Range'],
       },
     ],
-    abilities: [arc],
+    abilities: [
+      arc,
+      {name: 'Flying', description: <>A zazzile has [Flight],</> }
+    ],
     description: '',
   },
+  /* T3 Zephpter Creatures */
   magid: {
     name: 'Magid',
     tier: Tools.creatureTiers.t3,

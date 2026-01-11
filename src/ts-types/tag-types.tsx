@@ -19,7 +19,7 @@ type ActionTags = 'Attack' | 'Defend' | 'Movement'
   //| 'Adjust Position' | 'Adjust Facing'
   | 'Opportunity Strike' | 'Special';
 
-type OtherTagsForNow = 'Single-Shot' | 'Safelight';
+type OtherTagsForNow = 'Single-Shot' | 'Safelight' | 'Rot Host';
 
 type CreatureEffectTags = 'Flying' 
   | {tag: 'Hover', value: number } 

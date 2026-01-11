@@ -58,7 +58,7 @@
     --title-border-bottom-color: rgba(139, 115, 85, 0.3);
   }
 
-  &.faction-zephpter-horde {
+  &.faction-zephpter-swarm {
     --border-color: #4B0082; /* Dark indigo for Nethercurrent */
     --background-transition-color: rgba(75, 0, 130, 0.1);
     --title-bg-color: rgba(75, 0, 130, 0.15);

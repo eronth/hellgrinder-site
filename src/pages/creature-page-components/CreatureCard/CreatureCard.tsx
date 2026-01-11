@@ -91,7 +91,8 @@ export default function CreatureCard({
       'Hand of Death': 'faction-hand-of-death',
       "Heaven's Host": 'faction-heavens-host',
       'Voidfire Conclave': 'faction-voidfire-conclave',
-      'Hagswell Covenant': 'faction-witch-coven'
+      'Hagswell Covenant': 'faction-witch-coven',
+      'Rot Host': 'faction-rot-host',
     };
 
     // Find the first matching faction
@@ -117,7 +118,8 @@ export default function CreatureCard({
       'Umbral Nexus',
       'Wanderlost Crews', 'Wanderlost Crew',
       'Sinner', 'Forgefiend Syndicate',
-      'Hand of Death', "Heaven's Host", 'Voidfire Conclave', 'Hagswell Covenant'
+      'Hand of Death', "Heaven's Host", 'Voidfire Conclave', 'Hagswell Covenant',
+      'Rot Host'
     ];
     return factionTags.includes(tagString);
   };

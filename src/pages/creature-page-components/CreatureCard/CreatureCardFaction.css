@@ -115,6 +115,13 @@
     --title-border-bottom-color: rgba(139, 0, 139, 0.3);
   }
 
+  &.faction-rot-host {
+    --border-color: #556B2F; /* Dark olive green for Rot Host */
+    --background-transition-color: rgba(85, 107, 47, 0.1);
+    --title-bg-color: rgba(85, 107, 47, 0.15);
+    --title-border-bottom-color: rgba(85, 107, 47, 0.3);
+  }
+
   /* Generic/No faction styling - subtle enhancement */
   &.faction-generic {
     --border-color: rgba(255, 255, 255, 0.3);

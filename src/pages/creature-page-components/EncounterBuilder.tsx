@@ -6,11 +6,13 @@ import CollapsibleSection from "../creature-page-components/CollapsibleSection/C
 import FactionSelector from "../creature-page-components/FactionSelector/FactionSelector";
 import EncounterSection from "../creature-page-components/EncounterSection";
 import FloatingPanelsContainer from "../character-creation-components/FloatingPanels/FloatingPanelsContainer";
+import SingleFactionDisplayRegion from './SingleFactionDisplayRegion/SingleFactionDisplayRegion';
 // Types
 import { Creature } from "../../ts-types/creature-types";
 import { Encounter, EncounterCreature } from "../../ts-types/encounter-types";
 // Data
 import GenCreatures from "../../common-design/creatures/generic-creatures";
+import RotHostCreatures from "../../common-design/creatures/test-creatures";
 import ZephpterCreatures from "../../common-design/creatures/zephpter-creatures";
 import Sinners from "../../common-design/creatures/sinner-creatures";
 import FactionExamples from "../../common-design/creatures/faction-examples";
@@ -193,22 +195,21 @@ export default function EncounterBuilder() {
         )}
       </div>
     </CollapsibleSection>
-    <CollapsibleSection 
-      title="Zephpter Horde"
-      isOpenByDefault={false}
+    <SingleFactionDisplayRegion
+      title="Rot Host"
+      description="The Rot Host is a curse that has bled out from gates to hell, corrupting people into unrecognizable monstrosities."
+      creatureType="rot-host"
+      factionCreatures={RotHostCreatures}
+      genericCreatures={GenCreatures}
+      handleAddToEncounter={handleAddToEncounter}
+    />
+    <SingleFactionDisplayRegion
+      title="Zephpter Swarm"
       description="Nethercurrent-wielding creatures of the Zephpter faction."
-    >
-      <div className='creatures-grid'>
-        {Tools
-          .sortCreatures(ZephpterCreatures)
-          .map((creature, i) =>
-            <CreatureCard 
-              key={`zephpter-creature-${creature.name}-${i}`} 
-              data={creature} 
-              onAddToEncounter={handleAddToEncounter}
-            />
-        )}
-      </div>
-    </CollapsibleSection>
+      creatureType="zephpter"
+      factionCreatures={ZephpterCreatures}
+      genericCreatures={GenCreatures}
+      handleAddToEncounter={handleAddToEncounter}
+    />
   </>);
 }

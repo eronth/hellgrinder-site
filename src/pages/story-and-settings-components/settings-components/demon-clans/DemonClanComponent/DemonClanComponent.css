@@ -41,6 +41,7 @@
   }
 
   .oath-button {
+    color: light-dark(black, white);
     box-sizing: border-box;
     font-size: .6em;
 

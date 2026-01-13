@@ -1,80 +1,106 @@
 :root {
+  --primary-light-l: 37%;
+  --primary-dark-l: 57%;
+  --accent-light-l: 47%;
+  --accent-dark-l: 77%;
+  --bg-light-l: 97%;
+  --bg-dark-l: 23%;
+
   /* ashborn */
-  --ashborn-faction-primary: hsl(14 83% 46%);
-  --ashborn-faction-on-primary: #FFFFFF; /* was: hsl(0, 0%, 100%) */
-  --ashborn-faction-accent: hsl(26 100% 50%);
-  --ashborn-faction-accent-light: #FF69B4; /* was: hsl(40, 100%, 50%) */
+  --ashborn-faction-primary: light-dark(
+    oklch(var(--primary-light-l) 0.19363 35),
+    oklch(var(--primary-dark-l) 0.19363 35)
+  );
+  --ashborn-faction-accent: light-dark(
+    oklch(var(--accent-light-l) 0.19742 46),
+    oklch(var(--accent-dark-l) 0.19742 46)
+  );
   --ashborn-faction-background: light-dark(
-    hsl(0 67% 94%),
-    hsl(0 17% 17%)
+    oklch(var(--bg-light-l) 0.002 17),
+    oklch(var(--bg-dark-l) 0.015 18)
   );
   
   /* stoneveined */
   --stoneveined-faction-primary: light-dark(
-    hsl(14 66% 25%),
-    hsl(14 16% 49%)
+    oklch(var(--primary-light-l) 0.09814 39),
+    oklch(var(--primary-dark-l) 0.04169 39)
   );
-  --stoneveined-faction-on-primary: #FFFFFF; /* was: hsl(0, 0%, 100%) */
-  --stoneveined-faction-accent: hsl(16 25% 38%);
-  --stoneveined-faction-accent-light: #FF69B4; /* was: oklch(from var(--stoneveined-faction-accent) calc(l + 0.1) c h) */
+  --stoneveined-faction-accent: light-dark(
+    oklch(var(--accent-light-l) 0.05115 41),
+    oklch(var(--accent-dark-l) 0.05115 41)
+  );
   --stoneveined-faction-background: light-dark(
-    hsl(0 4% 84%),
-    hsl(0 3% 15%)
+    oklch(var(--bg-light-l) 0.00327 15),
+    oklch(var(--bg-dark-l) 0.00297 16)
   );
 
   /* thornwraith */
-  --thornwraith-faction-primary: hsl(123 43% 39%);
-  --thornwraith-faction-on-primary: #FFFFFF; /* was: hsl(0, 0%, 100%) */
-  --thornwraith-faction-accent: hsl(92 48% 42%);
-  --thornwraith-faction-accent-light: #FFB6C1; /* was: oklch(from var(--thornwraith-faction-accent) calc(l + 0.1) c h) */
+  --thornwraith-faction-primary: light-dark(
+    oklch(var(--primary-light-l) 0.14321 144),
+    oklch(var(--primary-dark-l) 0.14321 144)
+  );
+  --thornwraith-faction-accent: light-dark(
+    oklch(var(--accent-light-l) 0.14662 133),
+    oklch(var(--accent-dark-l) 0.14662 133)
+  );
   --thornwraith-faction-background: light-dark(
-    hsl(120 67% 94%),
-    hsl(120 8% 15%)
+    oklch(var(--bg-light-l) 0.015 145),
+    oklch(var(--bg-dark-l) 0.015 145)
   );
 
   /* umbral */
-  --umbral-faction-primary: hsl(0 0% 26%);
-  --umbral-faction-on-primary: #FFFFFF; /* was: hsl(0, 0%, 100%) */
-  --umbral-faction-accent: light-dark(
-    hsl(277 70% 35%),
-    hsl(277 65% 46%)
+  --umbral-faction-primary: light-dark(
+    oklch(var(--primary-light-l) 0.00004 271),
+    oklch(var(--primary-dark-l) 0.00004 271)
   );
-  --umbral-faction-accent-light: #FF1493; /* was: oklch(from var(--umbral-faction-accent) calc(l + 0.1) c h) */
+  --umbral-faction-accent: light-dark(
+    oklch(var(--accent-light-l) 0.18784 307),
+    oklch(var(--accent-dark-l) 0.22203 307)
+  );
   --umbral-faction-background: light-dark(
-    hsl(0 0% 94%),
-    hsl(0 0% 12%)
+    oklch(var(--bg-light-l) 0.00011 271),
+    oklch(var(--bg-dark-l) 0.00003 271)
   );
 
   /* vastfathom */
-  --vastfathom-faction-primary: hsl(202 98% 37%);
-  --vastfathom-faction-on-primary: #FFFFFF; /* was: hsl(0, 0%, 100%) */
-  --vastfathom-faction-accent: hsl(185 100% 28%);
-  --vastfathom-faction-accent-light: #FFC0CB; /* was: oklch(from var(--vastfathom-faction-accent) calc(l + 0.1) c h) */
+  --vastfathom-faction-primary: light-dark(
+    oklch(var(--primary-light-l) 0.13699 244),
+    oklch(var(--primary-dark-l) 0.13699 244)
+  );
+  --vastfathom-faction-accent: light-dark(
+    oklch(var(--accent-light-l) 0.09535 206),
+    oklch(var(--accent-dark-l) 0.09535 206)
+  );
   --vastfathom-faction-background: light-dark(
-    hsl(240 14% 84%),
-    hsl(240 14% 15%)
+    oklch(var(--bg-light-l) 0.01655 285),
+    oklch(var(--bg-dark-l) 0.02068 285)
   );
 
   /* zephpter */
-  --zephpter-faction-primary: hsl(282 68% 38%);
-  --zephpter-faction-on-primary: #FFFFFF; /* was: hsl(0, 0%, 100%) */
-  --zephpter-faction-accent: light-dark(
-    hsl(258 58% 42%),
-    hsl(258, 44%, 59%)
+  --zephpter-faction-primary: light-dark(
+    oklch(var(--primary-light-l) 0.19976 312.627),
+    oklch(var(--primary-dark-l) 0.19976 312.627)
   );
-  --zephpter-faction-accent-light: #FF69B4; /* was: oklch(from var(--zephpter-faction-accent) calc(l + 0.1) c h) */
+  --zephpter-faction-accent: light-dark(
+    oklch(var(--accent-light-l) 0.18467 289),
+    oklch(var(--accent-dark-l) 0.13863 295)
+  );
   --zephpter-faction-background: light-dark(
-    hsl(288 100% 94%),
-    hsl(278 12% 15%)
+    oklch(var(--bg-light-l) 0.04915 319),
+    oklch(var(--bg-dark-l) 0.01804 309)
   );
 
   /* wanderlost */
-  --wanderlost-faction-primary: hsl(199 18% 33%);
-  --wanderlost-faction-on-primary: #FFFFFF; /* was: hsl(0, 0%, 100%) */
-  --wanderlost-faction-accent: hsl(173 100% 21%);
-  --wanderlost-faction-accent-light: #FFC0CB; /* was: oklch(from var(--wanderlost-faction-accent) calc(l + 0.1) c h) */
+  --wanderlost-faction-primary: light-dark(
+    oklch(var(--primary-light-l) 0.02954 226),
+    oklch(var(--primary-dark-l) 0.02954 226)
+  );
+  --wanderlost-faction-accent: light-dark(
+    oklch(var(--accent-light-l) 0.085 181),
+    oklch(var(--accent-dark-l) 0.085 181)
+  );
   --wanderlost-faction-background: light-dark(
-    hsl(240 25% 98%),
-    hsl(210 5% 15%)
+    oklch(var(--bg-light-l) 0.00275 285),
+    oklch(var(--bg-dark-l) 0.00476 248)
   );
 }

@@ -13,6 +13,7 @@ type Props = {
   factionCreatures: { [key: string]: Creature };
   genericCreatures: { [key: string]: Creature };
   handleAddToEncounter: (creature: Creature) => void;
+  className: string;
 };
 export default function SingleFactionDisplayRegion({
   title,
@@ -20,7 +21,8 @@ export default function SingleFactionDisplayRegion({
   creatureType,
   factionCreatures,
   genericCreatures,
-  handleAddToEncounter
+  handleAddToEncounter,
+  className
 }: Props) {
   const [includeGenerics, setIncludeGenerics] = React.useState(false);
 
@@ -28,6 +30,7 @@ export default function SingleFactionDisplayRegion({
     title={title}
     isOpenByDefault={false}
     description={description}
+    className={className}
   >
     <div className="the-prompt">
       Include Generic Creatures?
@@ -41,7 +44,7 @@ export default function SingleFactionDisplayRegion({
       {Tools
         .sortCreatures({
           ...(includeGenerics
-            ? transformAllCreaturesToFaction(genericCreatures, 'Zephpter Swarm') 
+            ? transformAllCreaturesToFaction(genericCreatures, title) 
             : {}
           ),
           ...factionCreatures

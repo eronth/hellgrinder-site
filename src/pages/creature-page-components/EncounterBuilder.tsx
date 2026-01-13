@@ -123,7 +123,7 @@ export default function EncounterBuilder() {
       title="Faction Examples" 
       isOpenByDefault={true}
       description="Example creatures from each major faction, showcasing the faction-based color-coding system."
-      className="faction-examples"
+      className="faction faction-examples"
     >
       <div className='creatures-grid'>
         {Tools
@@ -196,6 +196,7 @@ export default function EncounterBuilder() {
       </div>
     </CollapsibleSection>
     <SingleFactionDisplayRegion
+      className='faction faction-rot-host'
       title="Rot Host"
       description="The Rot Host is a curse that has bled out from gates to hell, corrupting people into unrecognizable monstrosities."
       creatureType="rot-host"
@@ -204,6 +205,7 @@ export default function EncounterBuilder() {
       handleAddToEncounter={handleAddToEncounter}
     />
     <SingleFactionDisplayRegion
+      className='faction faction-zephpter-swarm'
       title="Zephpter Swarm"
       description="Nethercurrent-wielding creatures of the Zephpter faction."
       creatureType="zephpter"

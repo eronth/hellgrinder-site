@@ -40,7 +40,7 @@ const secondaryWeakness: DamageTakenMod = {
 // tenebros: Creature,
 // wreislander: Creature,
 // hellspawn: Creature,
-// archanistStudent: Creature,
+// arcanistStudent: Creature,
 // allSeeingEyespawn: Creature,
 const exObj: { [key: string]: Creature } = {
   imp: {
@@ -330,8 +330,8 @@ const exObj: { [key: string]: Creature } = {
     abilities: [],
     description: '',
   },
-  archanistStudent: {
-    name: 'Anarchist Student',
+  arcanistStudent: {
+    name: 'Arcanist Student',
     tier: Tools.creatureTiers.t1,
     tags: [],
     health: 10,

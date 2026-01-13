@@ -2,7 +2,7 @@ import { Creature, CreatureAbility } from "../../ts-types/creature-types";
 import { movementIcon } from "../CommonIcons";
 import Tools from "../Tools";
 
-const arc: CreatureAbility = {
+export const arc: CreatureAbility = {
   name: 'Arc',
   description: <>
     At the start of the round, this creature may

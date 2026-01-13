@@ -7,9 +7,11 @@
     z-index: 10;
     .faction-tag {
       /* Use faction-specific colors from CSS variables */
-      background: linear-gradient(135deg, var(--border-color), var(--background-transition-color));
+      background: linear-gradient(135deg,
+          var(--faction-tag-background-color),
+          var(--faction-tag-background-transition-color)
+      );
       border: 2px solid var(--border-color);
-      color: rgba(255, 255, 255, 0.95);
       border-radius: 16px;
       padding: 0.4rem 0.9rem;
       font-size: 0.75rem;
@@ -23,109 +25,131 @@
       text-transform: uppercase;
    }
   }
-&.faction-ashborn-legion {
-    --border-color: rgb(139, 0, 0); /* Dark red for Infernal */
-    --background-transition-color: rgba(139, 0, 0, 0.1);
-    --title-bg-color: rgba(139, 0, 0, 0.15);
-    --title-border-bottom-color: rgba(139, 0, 0, 0.3);
-  }
+  
+  
+}
 
-  &.faction-stoneveined-order {
-    --border-color: rgb(134, 100, 55); /* Dim brown for Chthonic */
-    --background-transition-color: rgba(134, 100, 55, 0.1);
-    --title-bg-color: rgba(134, 100, 55, 0.15);
-    --title-border-bottom-color: rgba(134, 100, 55, 0.3);
-  }
+.faction {
+  --core-color: grey;
+  --border-color: oklch(from var(--core-color) calc(l*1.1) c h);
+  --background-transition-color: oklch(from var(--core-color) calc(l*.5) c h / 0.25);
+  --title-bg-color: oklch(from var(--core-color) l c h / 0.55);
+  --title-border-bottom-color: oklch(from var(--core-color) l c h / .7);
+  --common-l-light: 50%;
+  --common-l-dark: 30%;
 
-  &.faction-vastfathom-league {
-    --border-color: #191970; /* Dark midnight blue for Abyssal */
-    --background-transition-color: rgba(25, 25, 112, 0.1);
-    --title-bg-color: rgba(25, 25, 112, 0.15);
-    --title-border-bottom-color: rgba(25, 25, 112, 0.3);
-  }
+  --faction-tag-background-color: light-dark(
+    oklch(from var(--core-color) 60% c h),
+    oklch(from var(--core-color) 25% c h)
+  );
+  --faction-tag-background-transition-color: light-dark(
+    oklch(from var(--core-color) 80% c h),
+    oklch(from var(--core-color) 40% c h)
+  );
 
-  &.faction-thornwraith-covenant {
-    --border-color: #228B22; /* Dark forest green for Verdant */
-    --background-transition-color: rgba(34, 139, 34, 0.1);
-    --title-bg-color: rgba(34, 139, 34, 0.15);
-    --title-border-bottom-color: rgba(34, 139, 34, 0.3);
-  }
+  &.collapsible-section .collapsible-header {
+    --ch-bg-c1: oklch(from var(--title-bg-color) l c h);
+    --ch-bg-c2: red;
 
-  &.faction-wanderlost-crews {
-    --border-color: #8B7355; /* Dark bronze for Metal */
-    --background-transition-color: rgba(139, 115, 85, 0.1);
-    --title-bg-color: rgba(139, 115, 85, 0.15);
-    --title-border-bottom-color: rgba(139, 115, 85, 0.3);
+    &:hover {
+      --ch-bg-c1: oklch(from var(--title-bg-color) calc(l*1.1) c h);
+      --ch-bg-c2: red;
+    }
   }
+}
 
-  &.faction-zephpter-swarm {
-    --border-color: #4B0082; /* Dark indigo for Nethercurrent */
-    --background-transition-color: rgba(75, 0, 130, 0.1);
-    --title-bg-color: rgba(75, 0, 130, 0.15);
-    --title-border-bottom-color: rgba(75, 0, 130, 0.3);
-  }
+.faction-ashborn-legion {
+  --core-color: light-dark(
+    oklch(var(--common-l-light) 0.16 30),
+    oklch(var(--common-l-dark) 0.16 30)
+  );
+}
+.faction-stoneveined-order {
+  --core-color: light-dark(
+    oklch(var(--common-l-light) 0.07555 72.645),
+    oklch(var(--common-l-dark) 0.07555 72.645)
+  );
+}
+.faction-vastfathom-league {
+  --core-color: light-dark(
+    oklch(var(--common-l-light) .15 273),
+    oklch(var(--common-l-dark) .15 273)
+  );
+}
+.faction-thornwraith-covenant {
+  --core-color: light-dark(
+    oklch(var(--common-l-light) 0.17 143),
+    oklch(var(--common-l-dark) 0.17 143)
+  );
+}
+.faction-wanderlost-crews {
+  --core-color: light-dark(
+    oklch(var(--common-l-light) 0.05 73),
+    oklch(var(--common-l-dark) 0.05 73)
+  );
+  --border-color: oklch(from teal calc(l*1.05) c h);
+  --title-border-bottom-color:  oklch(from teal l c h / .7);
+}
+.faction-zephpter-swarm {
+  --core-color: light-dark(
+    oklch(var(--common-l-light) 0.18 302),  
+    oklch(var(--common-l-dark) 0.18 302)
+  );
+}
+.faction-umbral-nexus {
+  --core-color: light-dark(
+    oklch(var(--common-l-light) 0.00003 271),  
+    oklch(var(--common-l-dark) 0.00003 271)
+  );
+}
+/* Other faction styles */
+.faction-sinner {
+  --core-color: light-dark(
+    oklch(calc(var(--common-l-dark) / 2) 0.18 27),
+    oklch(calc(var(--common-l-dark) / 2) 0.18 27)
+  );
+}
+.faction-forgefiend-syndicate {
+  --core-color: light-dark(
+    oklch(calc(var(--common-l-dark) * 1.5) 0.12 62),
+    oklch(calc(var(--common-l-dark) * 1.5) 0.12 62)
+  );
+}
+.faction-hand-of-death {
+  --core-color: light-dark(
+    oklch(calc(var(--common-l-light) / 2) 0.003 271),
+    oklch(calc(var(--common-l-dark) / 2) 0.003 271)
+  );
+}
+.faction-heavens-host {
+  --core-color: light-dark(
+    oklch(calc(var(--common-l-light) * 2) 0.18 95),
+    oklch(calc(var(--common-l-dark) * 2) 0.18 95)
+  );
+}
+.faction-voidfire-conclave {
+  --core-color: light-dark(
+    oklab(var(--common-l-light) 0.04 -0.12),
+    oklab(var(--common-l-dark) 0.04 -0.12)
+  );
+}
+.faction-witch-coven {
+  --core-color: light-dark(
+    oklch(var(--common-l-light) 0.21 328),
+    oklch(var(--common-l-dark) 0.21 328)
+  );
+}
+.faction-rot-host {
+  --core-color: light-dark(
+    oklch(var(--common-l-light) 0.1 126),
+    oklch(var(--common-l-dark) 0.1 126)
+  );
+}
 
-  &.faction-umbral-nexus {
-    --border-color: #2F2F2F; /* Very dark gray for Voidyr */
-    --background-transition-color: rgba(47, 47, 47, 0.1);
-    --title-bg-color: rgba(47, 47, 47, 0.15);
-    --title-border-bottom-color: rgba(47, 47, 47, 0.3);
-  }
-
-  /* Other faction styles */
-  &.faction-sinner {
-    --border-color: #B22222; /* Dark firebrick red for Sinners */
-    --background-transition-color: rgba(178, 34, 34, 0.1);
-    --title-bg-color: rgba(178, 34, 34, 0.15);
-    --title-border-bottom-color: rgba(178, 34, 34, 0.3);
-  }
-
-  &.faction-forgefiend-syndicate {
-    --border-color: #CD853F; /* Dark goldenrod for Forgefiend */
-    --background-transition-color: rgba(205, 133, 63, 0.1);
-    --title-bg-color: rgba(205, 133, 63, 0.15);
-    --title-border-bottom-color: rgba(205, 133, 63, 0.3);
-  }
-
-  &.faction-hand-of-death {
-    --border-color: #1C1C1C; /* Almost black for Hand of Death */
-    --background-transition-color: rgba(28, 28, 28, 0.1);
-    --title-bg-color: rgba(28, 28, 28, 0.15);
-    --title-border-bottom-color: rgba(28, 28, 28, 0.3);
-  }
-
-  &.faction-heavens-host {
-    --border-color: #FFD700; /* Gold for Heaven's Host */
-    --background-transition-color: rgba(255, 215, 0, 0.1);
-    --title-bg-color: rgba(255, 215, 0, 0.15);
-    --title-border-bottom-color: rgba(255, 215, 0, 0.3);
-  }
-
-  &.faction-voidfire-conclave {
-    --border-color: #483D8B; /* Dark slate blue for Voidfire */
-    --background-transition-color: rgba(72, 61, 139, 0.1);
-    --title-bg-color: rgba(72, 61, 139, 0.15);
-    --title-border-bottom-color: rgba(72, 61, 139, 0.3);
-  }
-
-  &.faction-witch-coven {
-    --border-color: #8B008B; /* Dark magenta for Witch Coven */
-    --background-transition-color: rgba(139, 0, 139, 0.1);
-    --title-bg-color: rgba(139, 0, 139, 0.15);
-    --title-border-bottom-color: rgba(139, 0, 139, 0.3);
-  }
-
-  &.faction-rot-host {
-    --border-color: #556B2F; /* Dark olive green for Rot Host */
-    --background-transition-color: rgba(85, 107, 47, 0.1);
-    --title-bg-color: rgba(85, 107, 47, 0.15);
-    --title-border-bottom-color: rgba(85, 107, 47, 0.3);
-  }
-
-  /* Generic/No faction styling - subtle enhancement */
-  &.faction-generic {
-    --border-color: rgba(255, 255, 255, 0.3);
-    --background-transition-color: rgba(255, 255, 255, 0.02);
-    --title-bg-color: rgba(255, 255, 255, 0.05);
-  }
+/* Generic/No faction styling - subtle enhancement */
+.faction-generic {
+  --core-color: light-dark(
+    oklch(var(--common-l-light) 0.00011 271),
+    oklch(var(--common-l-dark) 0.00011 271)
+  );
 }

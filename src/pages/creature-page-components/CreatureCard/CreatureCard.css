@@ -1,23 +1,28 @@
 .creature-card {
-  --border-color: 
+  /*
+  
+    ---MAPPED IN CreatureCardFaction.css---
+
+  --border-color:
     rgba(255, 255, 255, 0.3);
-  --background-transition-color: 
+  --background-transition-color:
     rgba(255, 255, 255, 0.05);
-  --title-bg-color: 
+  --title-bg-color:
     rgba(255, 255, 255, 0.1);
-  --title-border-bottom-color: 
+  --title-border-bottom-color:
     rgba(255, 255, 255, 0.2);
-  --border-radius: 10px;
+  */
+  --border-radius: 7px;
 
   position: relative;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
-  background-color: var(--card-background);
-
-  background: linear-gradient(
-    135deg,
-    var(--card-background),
-    var(--background-transition-color)
+  background: linear-gradient(135deg,
+    var(--background-transition-color),
+    light-dark(
+      oklch(from var(--background-transition-color) l c h / .2),
+      oklch(from var(--background-transition-color) l c h / .5)
+    )
   );
 
   > * {
@@ -33,7 +38,14 @@
     padding-top: .25em;
     padding-bottom: .25em;
     background-color: var(--card-tag-background);
-    background: linear-gradient(135deg, var(--title-bg-color), rgba(255, 255, 255, 0.05));
+    background: linear-gradient(135deg,
+      var(--title-bg-color),
+      light-dark(
+        oklch(from var(--title-bg-color) l c h / 0.4),
+        oklch(from var(--title-bg-color) l c h / 0.3)
+      )
+      /* oklch(100% 0.00011 271.152 / 0.05) */
+    );
     font-size: 1.2em;
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);

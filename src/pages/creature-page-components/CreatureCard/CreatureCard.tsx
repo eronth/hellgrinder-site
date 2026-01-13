@@ -227,7 +227,7 @@ export default function CreatureCard({
   };
 
   return (<div
-    className={`creature-card ${factionClass} ${isEncounterMode ? 'encounter-card' : ''} ${isExample ? 'example-card' : ''}`}
+    className={`creature-card faction ${factionClass} ${isEncounterMode ? 'encounter-card' : ''} ${isExample ? 'example-card' : ''}`}
   >
     <div className='title-row'>
       <TooltipWrapper explanation={cce.name}>

@@ -28,7 +28,7 @@
       rgb(from var(--shade) r g b / 0.1),
       rgb(from var(--shade) r g b / 0.02)
     );
-    background: linear-gradient(135deg, var(--ch-bg-c1), var(--ch-bg-c2));
+    background: var(--ch-bg-c1);
     border-bottom: 1px solid rgb(from var(--shade) r g b / 0.1);
     transition: all 0.2s ease;
     user-select: none;

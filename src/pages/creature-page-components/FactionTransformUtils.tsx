@@ -5,6 +5,8 @@ import { AttackMode, DamageElement } from '../../ts-types/types';
 import StatusKeyword from '../../common-design/StatusKeyword';
 import _ from "lodash";
 import SkillCheck from "../../common-design/SkillCheck/SkillCheck";
+import { giftOfPlague } from "../../common-design/creatures/test-creatures";
+import { arc } from "../../common-design/creatures/zephpter-creatures";
 
 type PrimaryDamageAndGeneric = DamageElement | 'Core Type';
 type AbsorbDamageAndGeneric = DamageElement | 'PROMOTE';
@@ -17,6 +19,9 @@ export type FactionData = {
   weaknesses: [WeaknessDamageAndGeneric, WeaknessDamageAndGeneric];
   abilities?: FactionAbility[];
   cssClass: string;
+  nameOverrides?: {
+    [key: string]: string;
+  };
 };
 
 type FactionAbility = CreatureAbility & {
@@ -42,7 +47,7 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
     weaknesses: ['Metal', 'Voidyr'],
     abilities: [
       {
-        name: 'Nethercurrent',
+        name: 'Nethercurrent Reactivity',
         description: <>
           The first time a Thornwraith is hit with Nethercurrent 
           Damage, they take an additional 4 Infernal Damage which ignores resistances.
@@ -62,6 +67,9 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
         permittedTiers: 'all'
       }
     ],
+    nameOverrides: {
+      'Hellhound': 'Roothound'
+    },
     cssClass: 'faction-thornwraith-covenant'
   },
   'Stoneveined Order': {
@@ -198,6 +206,7 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
     absorb: 'Voidyr',
     weaknesses: ['Chthonic', 'Metal'],
     abilities: [
+      {...arc, permittedTiers: 'all'},
       {
         name: 'Netherburn',
         description: <>
@@ -251,6 +260,24 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
       }
     ],
     cssClass: 'faction-umbral-nexus'
+  },
+  'Rot Host': {
+    name: 'Rot Host',
+    primary: 'Metal',
+    absorb: 'Nethercurrent',
+    weaknesses: ['Infernal', 'Verdant'],
+    abilities: [{
+      ...giftOfPlague,
+      permittedTiers: 'all'
+    }],
+    nameOverrides: {
+      'Hellhound': 'Plague Hound',
+      'Imp': 'Rotling',
+      'Aggressor Hellspawn': 'Fleshfeaster',
+      'Arcanist Student': 'Plague Doctorate Student',
+
+    },
+    cssClass: 'faction-rot-host'
   }
 };
 
@@ -275,6 +302,13 @@ export function transformCreatureToFaction(creature: Creature, factionKey: strin
   // Create a deep copy of the creature
   const transformedCreature: Creature = _.cloneDeep(creature);
   transformedCreature.abilities = creature.abilities || [];
+
+
+  // Swap name
+  transformedCreature.name =
+    (faction.nameOverrides ?? {})[creature.name]
+    ? faction.nameOverrides![creature.name] + ` (${creature.name})`
+    : creature.name;
 
   // Add faction tag
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

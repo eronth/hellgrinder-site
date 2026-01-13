@@ -27,7 +27,7 @@ const damage = (l: number, m: number, h: number, type: DamageElement) => ({
   h: { value: h, type: type },
 });
 
-const giftOfPlague: CreatureAbility = {
+export const giftOfPlague: CreatureAbility = {
   name: 'Gift of Plague',
   description: <>
     If a character is hit by 3 or more attacks from <i>any</i> creatures with this

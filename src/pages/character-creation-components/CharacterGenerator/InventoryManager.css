@@ -13,9 +13,11 @@
 
 .inventory-manager {
   --transfer-btn-color: white;
-  --transfer-btn-bg-color: #646cff;
-  --transfer-btn-hover-bg-color: #5a5fcf;
-  --transfer-btn-active-bg-color: #4f54b8;
+  --transfer-btn-bg-color: var(--accent-color);
+  --transfer-btn-hover-bg-color: 
+    oklch(from var(--accent-color) calc(l*0.9) c h);
+  --transfer-btn-active-bg-color: 
+    oklch(from var(--accent-color) calc(l*0.8) c h);
   position: fixed;
   top: 10%;
   left: 5%;

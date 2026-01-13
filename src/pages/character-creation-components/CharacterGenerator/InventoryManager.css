@@ -12,12 +12,23 @@
 
 
 .inventory-manager {
-  --transfer-btn-color: white;
-  --transfer-btn-bg-color: var(--accent-color);
-  --transfer-btn-hover-bg-color: 
-    oklch(from var(--accent-color) calc(l*0.9) c h);
-  --transfer-btn-active-bg-color: 
-    oklch(from var(--accent-color) calc(l*0.8) c h);
+  --btn-text-color: #fff;
+
+  --transfer-btn-bg-color: oklch(from var(--accent-color) 49% c h);
+  --remove-btn-bg-color: oklch(59% 0.2 21);
+  --add-btn-bg-color: oklch(59% 0.175 146);
+  --negative-cost-btn-bg-color: oklch(59% 0.11 212);
+
+  --transfer-btn-hover-bg-color: oklch(from var(--accent-color) calc(l*0.9) c h);
+  --remove-btn-hover-bg-color: oklch(from var(--remove-btn-bg-color) calc(l*0.9) c h);
+  --add-btn-hover-bg-color: oklch(from var(--add-btn-bg-color) calc(l*0.9) c h);
+  --negative-cost-btn-hover-bg-color: oklch(from var(--negative-cost-btn-bg-color) calc(l*0.9) c h);
+
+  --transfer-btn-active-bg-color: oklch(from var(--accent-color) calc(l*0.8) c h);
+  --remove-btn-active-bg-color: oklch(from var(--remove-btn-bg-color) calc(l*0.8) c h);
+  --add-btn-active-bg-color: oklch(from var(--add-btn-bg-color) calc(l*0.8) c h);
+  --negative-cost-btn-active-bg-color: oklch(from var(--negative-cost-btn-bg-color) calc(l*0.8) c h);
+
   position: fixed;
   top: 10%;
   left: 5%;
@@ -176,15 +187,25 @@
 
 .item-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns:
+    repeat(auto-fill, minmax(300px, 1fr));
   gap: 1rem;
+}
+.weapons-grid {
+  grid-template-columns:
+    repeat(auto-fill, minmax(500px, 1fr));
 }
 
 .item-card {
+  --button-height: 20px;
+  display: grid;
+  grid-template-rows: auto var(--button-height);
+
   background-color: rgb(255 255 255 / 0.05);
   border: 1px solid #555;
   border-radius: 8px;
   padding: 1rem;
+  padding-bottom: 1.5em;
   transition: all 0.2s;
 
   &:hover {
@@ -193,11 +214,16 @@
   }
 
   .item-content {
-    margin-bottom: 1rem;
+    margin-bottom: .75em;
+    > div {
+      height: calc(100% - var(--button-height));
+    }
   }
 
   .item-actions {
-    display: flex;
+    display: grid;
+    grid-template-columns:
+      repeat(auto-fit, minmax(100px, auto));
     gap: 0.5rem;
     flex-wrap: wrap;
 
@@ -216,14 +242,18 @@
     }
 
     .add-btn {
-      background-color: #28a745;
-      color: white;
+      color: var(--btn-text-color);
+      background-color: var(--add-btn-bg-color);
       min-width: 120px;
       font-weight: 500;
 
       &:hover:not(:disabled) {
-        background-color: #218838;
+        background-color: var(--add-btn-hover-bg-color);
         transform: translateY(-1px);
+      }
+      &:active:not(:disabled) {
+        background-color: var(--add-btn-active-bg-color);
+        transform: translateY(0);
       }
 
       &.disabled,
@@ -237,30 +267,37 @@
 
       /* Special styling for negative cost perks (give perk points) */
       &.negative-cost {
-        background-color: #17a2b8;
-        color: white;
+        color: var(--btn-text-color);
+        background-color: var(--negative-cost-btn-bg-color);
 
-        &:hover {
-          background-color: #138496;
+        &:hover:not(:disabled) {
+          background-color: var(--negative-cost-btn-hover-bg-color);
+        }
+        &:active:not(:disabled) {
+          background-color: var(--negative-cost-btn-active-bg-color);
         }
       }
     }
 
     .remove-btn {
-      background-color: #dc3545;
-      color: white;
-
-      &:hover {
-        background-color: #c82333;
+      color: var(--btn-text-color);
+      background-color: var(--remove-btn-bg-color);
+      &:hover:not(:disabled) {
+        background-color: var(--remove-btn-hover-bg-color);
+      }
+      &:active:not(:disabled) {
+        background-color: var(--remove-btn-active-bg-color);
       }
     }
 
     .transfer-btn {
+      color: var(--btn-text-color);
       background-color: var(--transfer-btn-bg-color);
-      color: var(--transfer-btn-color);
-
-      &:hover {
+      &:hover:not(:disabled) {
         background-color: var(--transfer-btn-hover-bg-color);
+      }
+      &:active:not(:disabled) {
+        background-color: var(--transfer-btn-active-bg-color);
       }
     }
   }
@@ -323,8 +360,8 @@
 }
 
 .bulk-transfer-btn {
+  color: var(--btn-text-color);
   background-color: var(--transfer-btn-bg-color);
-  color: var(--transfer-btn-color);
   border: none;
   border-radius: 4px;
   padding: 0.4rem 0.8rem;
@@ -356,8 +393,8 @@
 }
 
 .bulk-transfer-all-btn {
+  color: var(--btn-text-color);
   background-color: var(--transfer-btn-bg-color);
-  color: var(--transfer-btn-color);
   border: none;
   border-radius: 4px;
   padding: 0.5rem 1rem;

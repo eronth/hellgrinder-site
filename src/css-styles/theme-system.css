@@ -86,8 +86,11 @@
 /* Faction Theme Variables with Background Tinting */
 :root {
 
-  --primary-color: hsl(189, 100%, 35%);
-  --accent-color: hsl(from var(--primary-color) calc(h + 25) 100% 50%);
+  --primary-color: light-dark(
+    oklch(50% 0.15 217),
+    oklch(70% 0.15 217)
+  );
+  --accent-color: hsl(from var(--primary-color) calc(h + 5) 100% 20%);
 
   --background-color: light-dark(
     hsl(0, 0%, 95%),

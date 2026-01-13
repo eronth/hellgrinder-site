@@ -473,7 +473,7 @@ export default function InventoryManager({
   }, [addToInventory, selectedCharacter]);
 
   const inventoryItemActions = useCallback((item: Perk | Item | Weapon, index: number, type: ItemType) => {
-    <>
+    return <>
       <button 
         className="remove-btn"
         onClick={() => removeFromInventory(index, type)}
@@ -500,7 +500,7 @@ export default function InventoryManager({
     const displayItems = isInventory ? [...filteredItems].reverse() : filteredItems;
     
     return (
-      <div className="item-grid">
+      <div className={`item-grid ${type}-grid`}>
         {displayItems.map((item, index) => {
           // For inventory items, we need to calculate the correct index for removal
           // since we reversed the display order

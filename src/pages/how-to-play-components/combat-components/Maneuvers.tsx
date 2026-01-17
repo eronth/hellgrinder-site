@@ -11,19 +11,34 @@ import './Maneuvers.css';
 export default function Maneuvers() {
 
   return (<>
-    <Hx hx={3}>Maneuvers</Hx>
+    <Hx hx={3}>Movement and Maneuvers</Hx>
 
     <div className='fluid-readable-columns'>
-      <p>You have access to some maneuvers.</p>
-    
-      <Hx hx={4}>Move</Hx>
       <p>
-        At the start of your turn, you gain a number of Maneuver Points{movementIcon} equal to your Move Speed. You can spend these points to
-        move a number of hexes equal to the points spent.
+        You have access to some movement and maneuvers. You can mix and match
+        movement and maneuvers as you like on your turn, as long as you have
+        enough Maneuver Points{movementIcon} to pay for them. You can use your
+        action before, after, or in between your movement and maneuvers.
+      </p>
+    
+      <Hx hx={4}>Movement</Hx>
+      <p>
+        At the start of your turn, you gain a number of 
+        Maneuver Points{movementIcon} equal
+        to your Move Speed. You can spend these points to
+        move a number of hexes equal to the points spent. For example, moving 3 hexes
+        costs 3{movementIcon}.
+      </p>
+      <Hx hx={4}>Maneuvers</Hx>
+      <p>
+        Additionally, you spend some of {movementIcon} to perform
+        any of the following Maneuvers. Maneuvers represent simple
+        actions that are not big enough to be considered your Action
+        for the turn, but still require enough focus, effort, or movement
+        to incur a cost on your mobility.
       </p>
       <p>
-        Additionally, you spend your {movementIcon} to perform
-        any of the following Maneuvers
+        Below you can find a list of Maneuvers available to you.
       </p>
       <IndividualManeuver title="Call Out" cost={2}>
         <p>

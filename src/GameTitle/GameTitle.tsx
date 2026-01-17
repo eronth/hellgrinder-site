@@ -138,7 +138,18 @@ export default function GameTitle({ isIndex }: Props) {
     </div>
   </>), []);
 
+  const grindsMyHell = useMemo(() => (<>
+    <div className="grinds-my-hell">
+      <div className="that">That</div>
+      <div className="really">Really</div>
+      <div className="grinds">Grinds</div>
+      <div className="my">My</div>
+      <div className="hell">Hell</div>
+    </div>
+  </>), []);
+
   const titlesDesigns: JSX.Element[] = useMemo(() => [
+    quickTitleWrapper('grinds-my-hell-title', grindsMyHell),
     title('lancelot', {pre: 'The Tales of', above: true}, null),
     title('lancelot2', {pre:'A'}, {post:'Story'}, "Hellgrinder's"),
     title('eagle-lake', {pre: 'The', over: true}, {post:'Saga', below: true}),

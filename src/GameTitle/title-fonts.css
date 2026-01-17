@@ -749,3 +749,29 @@ h1.cutive-mono-regular.index-title {
   font-weight: 100;
   font-style: normal;
 }
+
+.grinds-my-hell-title {
+  font-family: "Times Roman", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 5.5em;
+  
+  .grinds-my-hell {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: .2em;
+
+    .that, .really, .my {
+      font-size: .7em;
+      font-style: italic;
+    }
+
+    .grinds,
+    .hell {
+      font-weight: bold;
+    }
+  }
+}

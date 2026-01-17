@@ -92,15 +92,18 @@
 
   /* wanderlost */
   --wanderlost-faction-primary: light-dark(
-    oklch(var(--primary-light-l) 0.02954 226),
-    oklch(var(--primary-dark-l) 0.02954 226)
+    oklch(var(--primary-light-l) 0.10 73),
+    /* oklch(62% 0.15 45), */
+    oklch(var(--primary-dark-l) 0.10 73)
+    /* oklch(var(--primary-light-l) 0.02954 226),
+    oklch(var(--primary-dark-l) 0.02954 226) */
   );
   --wanderlost-faction-accent: light-dark(
-    oklch(var(--accent-light-l) 0.085 181),
-    oklch(var(--accent-dark-l) 0.085 181)
+    oklch(from teal var(--accent-light-l) c h),
+    oklch(from teal var(--accent-dark-l) c h)
   );
   --wanderlost-faction-background: light-dark(
-    oklch(var(--bg-light-l) 0.00275 285),
-    oklch(var(--bg-dark-l) 0.00476 248)
+    oklch(var(--bg-light-l) 0.05 73),
+    oklch(var(--bg-dark-l) 0.005 73)
   );
 }

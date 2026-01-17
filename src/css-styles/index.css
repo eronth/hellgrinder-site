@@ -23,14 +23,17 @@
   /* Header (<Hx>) colors */
   --header-primary-color: light-dark(black, white);
   --header-secondary-color: var(--primary-color);
-  --header-tertiary-color: var(--accent-color);
+  --header-tertiary-color: light-dark(
+    oklch(from var(--primary-color) calc(l*.7) c h),  
+    oklch(from var(--primary-color) calc(l*1.3) c h)
+  );
 
   --h4-light: hsl(from var(--accent-color) h calc(s*.4) calc(l));
   --h4-dark: hsl(from var(--accent-color) h calc(s*.4) calc(l*1.2));
   --header-quaternary-color: light-dark(var(--h4-light), var(--h4-dark));
 
-  --simple-header-light: hsl(from var(--primary-color) h calc(s*0.6) calc(l*0.6));
-  --simple-header-dark: hsl(from var(--primary-color) h calc(s*0.5) calc(l*1.4));
+  --simple-header-light: hsl(from var(--accent-color) h calc(s*0.6) calc(l*0.6));
+  --simple-header-dark: hsl(from var(--accent-color) h calc(s*0.5) calc(l*1.4));
   --simple-header-color: light-dark(var(--simple-header-light), var(--simple-header-dark));
 
   /* Lore Columns */

@@ -30,7 +30,7 @@ const NavTabs = ({selectedTab}: Props) => {
 
   const navLinks = [
     { to: "/how-to-play", tab: "how-to-play" as TabType, label: "How to Play", icon: faLightbulb },
-    { to: "/character-creation", tab: "character-creation" as TabType, label: "Character Creation", icon: faUser },
+    { to: "/character-creation", tab: "character-creation" as TabType, label: "Character Creation Rules", icon: faUser },
     { to: "/creatures", tab: "creatures" as TabType, label: "Creatures", icon: faBookSkull },
     { to: "/story-and-setting", tab: "story-and-setting" as TabType, label: "Story & Setting" },
     { to: "/additional-equipment", tab: "additional-equipment" as TabType, label: "Equipment" },

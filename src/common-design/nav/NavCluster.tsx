@@ -14,7 +14,7 @@ const NavCluster = () => {
 
       <Link to="/character-creation">
         <FontAwesomeIcon icon={faUser} className='icon'/>
-        Character Creation
+        Character Creation Rules
       </Link>
 
       <Link to="/creatures">

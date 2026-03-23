@@ -1,3 +1,5 @@
+import { DamageElement } from "./types";
+
 type TagWithValue = {
   tag: string;
   value: number;
@@ -62,7 +64,8 @@ type AllValidTags
   | CreatureEffectTags 
   | AttackEffectTags | ActionTags
   | DemonFactionTags | OtherFactionTags
-  | OtherTagsForNow;
+  | OtherTagsForNow
+  | DamageElement;
 
 
 

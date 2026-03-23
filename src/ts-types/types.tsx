@@ -33,9 +33,15 @@ type StatusTypes =
   // Blinded X, Brittle X, Doomed X, Enfeebled X, Envigorated, Frenzied, Imolated X for Y,
   // Lost X, Shaken, Silenced X, Slowed X, Terrified
 
+type ChoiceTagOption = AllValidTags | DamageElement;
+
 type ItemDef = {
   name: string;
   tags: AllValidTags[];
+  choiceTags?: {
+    tags: ChoiceTagOption[];
+    count: number;
+  };
   description?: string;
   isAdvancedItem?: boolean;
 }

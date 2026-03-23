@@ -30,6 +30,11 @@
   padding: .5em;
   border-radius: 5px;
   border: 1px solid var(--card-border-color);
+
+  .choice-tags {
+    font-size: .9em;
+    margin-left: .5em;
+  }
 }
 .weapon {
   background-color: var(--table-body-background-color);

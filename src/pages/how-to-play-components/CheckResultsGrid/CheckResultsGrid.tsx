@@ -9,13 +9,20 @@ type Props = {
     r3: ReactNode;
   }
   showNumeral?: boolean;
+  className?: string;
 };
 
-export default function CheckResultsGrid({ results, showNumeral }: Props) {
+export default function CheckResultsGrid({ results, showNumeral, className }: Props) {
   const showRank0 = (results?.r0 ?? '').toString().trim() !== '';
 
+  const checkResultsCss = [
+    'check-results-grid',
+    showNumeral ? 'with-numeral' : '',
+    className ?? '',
+  ].filter(Boolean).join(' ');
+
   return (<>
-    <div className={`check-results-grid ${showNumeral ? 'with-numeral' : ''}`}>
+    <div className={checkResultsCss}>
       {showNumeral && <div className="title number-result">Roll</div>}
       <div className="title rank-result">Result</div>
       <div className="title result-description">Description</div>

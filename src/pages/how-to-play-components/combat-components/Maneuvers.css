@@ -5,3 +5,6 @@
     color: var(--text-secondary-color);
   }
 }
+.swap-weapons-grid {
+  margin-bottom: 16px;
+}

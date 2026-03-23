@@ -5,6 +5,7 @@ import Damage from "../../pages/how-to-play-components/combat-components/Damage"
 import Maneuvers from "../../pages/how-to-play-components/combat-components/Maneuvers";
 import StatusEffectComponent from "../../common-design/game-terms/StatusEffectComponent";
 import StatusEffects from "../../common-design/game-terms/status-effects.tsx"
+import Spellcasting from "./combat-components/Spellcasting.tsx";
 
 export default function Combat() {
   const sortedStatusEffects = Tools.sortStatusEffects(StatusEffects);
@@ -56,6 +57,7 @@ export default function Combat() {
 
     <Maneuvers />
     <Actions />
+    <Spellcasting />
 
     <Hx hx={innerHx}>Cover</Hx>
     <p>{Tools.getLoremIpsum()}</p>

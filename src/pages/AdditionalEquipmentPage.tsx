@@ -80,10 +80,11 @@ export default function AdditionalEquipmentPage() {
     
     <h3>Spells</h3>
     <p>
-      When found in the world
-      they are often in the form of gems, spell pages, orbs of energy or other mystical items which
-      you can use to learn the spell.
-      Once learned, spells act much like weapons, able to be equipped in the same way and used to make attacks.
+      Spells have a list of optional tags (typically damage type).
+      When a player first learns a spell, typically they can choose which
+      tag they'd like the spell to be, though sometimes the GM may 
+      have specific tags in mind for a spell. The chosen tag cannot be changed,
+      and affects the spell's effects.
     </p>
     <h4>Basic Arcane Weapons</h4>
     <div className={'col-handler'}>
@@ -100,12 +101,12 @@ export default function AdditionalEquipmentPage() {
     </div>
     
     <hr />
-    <h2>Wands and Staves</h2>
+    <h2>Spell Focus</h2>
     <h3>Wands and Staves</h3>
     <p>
       Wands and staves can be used to augment spell tomes, gems, and attacks. When you equip a wand or staff,
       you may also equip a spell that uses the same number (or less) hands, using the same hand that is
-      holding the wand or staff. You can swap spells as an equip action.
+      holding the wand or staff.
     </p>
     <p>
       A staff can be made by taking the values of a wand and making the following changes:

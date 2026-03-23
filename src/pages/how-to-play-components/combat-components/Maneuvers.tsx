@@ -120,16 +120,17 @@ export default function Maneuvers() {
         </p>
       </IndividualManeuver>
 
-      <IndividualManeuver title='Swap Weapons' cost={3}>
+      <IndividualManeuver title='Swap Equipment' cost={3}>
         <p>
           Roll an <SkillCheck tags={['Agility']} /> to attempt
-          to swap your equipment. You may only attempt to Swap Weapons once per turn.
+          to swap your equipment. You may only attempt to (any) 
+          Swap Equipment once per turn.
         </p>
-        <CheckResultsGrid results={{
-          r1: <>Items successfully swapped.</>,
+        <CheckResultsGrid className="swap-equipment-grid" results={{
+          r1: <>Equipment successfully swapped.</>,
           r2: <>You do not spend {movementIcon} to complete the swap.</>,
           r3: <>You do not spend {movementIcon} to complete the swap. You may
-            choose to use “Swap Weapons” again this turn as a Maneuver.</>,
+            choose to use “Swap Equipment” again this turn as a Maneuver.</>,
         }} />
       </IndividualManeuver>
 

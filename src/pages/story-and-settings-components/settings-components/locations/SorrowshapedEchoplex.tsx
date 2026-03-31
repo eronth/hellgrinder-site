@@ -9,7 +9,7 @@ export default function SorrowshapedEchoplex({ hx }: Props) {
   return (<>
     <Hx hx={hx}>Sorrowshaped Echoplex</Hx>
     <p>
-      In regions controlled by <Faction>Wanderlost Crews</Faction>, the
+      In regions controlled by&#32;<Faction>Wanderlost Crews</Faction>, the
       landscape is altered and shaped by their distant and hazy memories
       of life in earthen cities, and the sorrows of knowing they can 
       never return. These areas — known collectively as the 
@@ -17,23 +17,25 @@ export default function SorrowshapedEchoplex({ hx }: Props) {
       home.
     </p>
     <p>
-      The structures resemble malls, offices, shopping districts, and other such
-      human structures; but the features are often distorted. Shadows
-      that stretch from some unseen light source, inconsistent doorways,
-      hallways that stretch a bit too far or too short, and nonsensical
-      architecture are all common features of the Echoplex. When members of
-      the Wanderlost Crews settle into a section of the Echoplex, they don't
-      do much to improve that unsettling feeling. Shopping racks filled with
-      bladed weaponry. Medical bays feeding directly into food courts. Offices
-      full of torturous “accommodations”. Additions from the crews only reflect their madness.
+      The structures resemble malls, offices, shopping districts, and 
+      other such human constructions. But the features are distorted. 
+      Shadows that stretch from some unseen light source, inconsistent
+      doorways, hallways that stretch a bit too far or too short, and
+      nonsensical architecture are all common features of the Echoplex.
+      When members of the Wanderlost Crews settle into a section of the
+      Echoplex, they don't do much to improve that unsettling feeling.
+      Shopping racks filled with bladed weaponry. Medical bays feeding
+      directly into food courts. Offices full of torturous
+      “accommodations”. Additions from the crews only reflect
+      their madness.
     </p>
     <p>
       For members of the Wanderlost Crews, these locations are comforting 
       — empowering even! For the rest, they serve as uneasy living, giving
       rise to a sense of dread and confusion. The incorrectness of the
-      locations serves to remind that the Wanderlost Crews really are
-      no longer to be considered human, and that they now are an established
-      part of the infernal realms.
+      locations serves as a reminder to the Wanderlost Crews that they
+      really are no longer to be considered human and are now an
+      established part of the infernal realms.
     </p>
   </>)
 }

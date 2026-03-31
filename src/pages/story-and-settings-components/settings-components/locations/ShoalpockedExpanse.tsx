@@ -36,8 +36,8 @@ export default function ShoalpockedExpanse ({ hx }: Props) {
   return (<>
     <Hx hx={hx}>Shoalpocked Expanse</Hx>
     <p>
-      To the untrained eye, the Shoalpocked expanse seems like an
-      empty expanse with distant features far out of reach. As you
+      To the untrained eye, the Shoalpocked Expanse seems like a 
+      near empty void with distant features far out of reach. As you
       reach out into the realm of the Vastfathom League, you find
       you can swim into the emptiness, pushing further from the safety
       of your “shore” towards whatever distant land draws your gaze.
@@ -49,9 +49,9 @@ export default function ShoalpockedExpanse ({ hx }: Props) {
       noticing what's been just behind the shadows the whole time.
     </p>
     <p>
-      However, this realm contains so much to those willing to learn the deep
-      secrets. {mysteryText[index1]} {mysteryText[index2]} New
-      techniques for surviving the vast expanse can be learned and
+      However, this realm contains so much to those willing to learn 
+      the deep secrets.&#32;{mysteryText[index1]}&#32;{mysteryText[index2]}&#32;
+      New techniques for surviving the vast expanse can be learned and
       developed by those willing to open their mind.
     </p>
     <p>
@@ -62,10 +62,11 @@ export default function ShoalpockedExpanse ({ hx }: Props) {
       their torso and head, as the pressure continues to build.
       Finally, their head bursts, spewing brain matter across the
       Expanse. Others are crushed bit by bit. First their limbs 
-     crumple into a mangled mess, causing them to be unable to
-     change course. As they drift helplessly onward, their torso
-     and torso too begin to collapse, making it impossible to
-     breath. Finally, their head collapses in and they vanish from sight.
+      crumple into a mangled mess, causing them to be unable to
+      change course. As they drift helplessly onward, their stomach
+      and lungs too begin to collapse, making it impossible to
+      breathe. Finally, their chest and head collapse in and 
+      they vanish from sight. Can you still hear them?
     </p>
     <p>
       The furthest depths of the Shoalpocked Expanse are unexplored by

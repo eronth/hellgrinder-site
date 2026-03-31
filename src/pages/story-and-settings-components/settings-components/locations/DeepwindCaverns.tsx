@@ -16,8 +16,8 @@ export default function DeepblindCaverns ({ hx }: Props) {
     </p>
     <p>Traversing the Caverns is no easy task. Tight squeezes,
       harsh climbs, and unsteady footing awaits all who dare.
-      And, if you can push past the obstacles, the darkness will
-      persist. The deeper you delve, the harsher the darkness
+      And if you can push past the obstacles, the darkness still
+      persists. The deeper you delve, the harsher the darkness
       becomes, eventually blotting out the strongest of lights.
       The only light left to penetrate darkness this deep is Safelight.
     </p>

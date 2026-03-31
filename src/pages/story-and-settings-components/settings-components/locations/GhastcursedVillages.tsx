@@ -15,12 +15,17 @@ export default function GhastcursedVillages ({ hx }: Props) {
       of ghost towns and cities of the mortal realms. These typically
       rustic and dilapidated settlements bear an uncanny resemblance
       to human towns, though almost all modern technology has been
-      replaced by ancient, unfamiliar, eerie renditions.
+      replaced by ancient, unfamiliar, or eerie renditions.
+    </p>
+    <p>
+      The towns are often shrouded in an eerie silence, with an atmosphere
+      that feels both ancient and otherworldly. Those who seek respite in 
+      such a village will soon find that the town itself
+      drains the life-force of any who dare to linger too long.
     </p>
     <p>
       The creatures of the Umbral Nexus take up residence in these
-      villages, undisturbed by their town's ever-present hunger, which
-      drains the life-force of any who dare to linger too long.
+      villages, undisturbed by their town's ever-present hunger.
     </p>
   </>)
 }

@@ -46,7 +46,8 @@ export type DemonFactionTags
   | 'Thornwraith Bloom'
   | 'Wanderlost Crew'
   | 'Zephpter Swarm'
-  | 'Umbral Nexus';
+  | 'Umbral Nexus'
+  | 'Rot Host';
 
 export type PluralizedFactionTags
   = 'Wanderlost Crews'

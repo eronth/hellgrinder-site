@@ -21,7 +21,11 @@ export default function SorrowshapedEchoplex({ hx }: Props) {
       human structures; but the features are often distorted. Shadows
       that stretch from some unseen light source, inconsistent doorways,
       hallways that stretch a bit too far or too short, and nonsensical
-      architecture are all common features of the Echoplex.
+      architecture are all common features of the Echoplex. When members of
+      the Wanderlost Crews settle into a section of the Echoplex, they don’t
+      do much to improve that unsettling feeling. Shopping racks filled with
+      bladed weaponry. Medical bays feeding directly into food courts. Offices
+      full of torturous “accommodations”. Additions from the crews only reflect their madness.
     </p>
     <p>
       For members of the Wanderlost Crews, these locations are comforting

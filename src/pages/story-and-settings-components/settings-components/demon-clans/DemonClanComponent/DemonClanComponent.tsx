@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 import { HeaderSize } from "../../../../../ts-types/types";
-import Hx from "../../../../../common-design/Hx/Hx";
-import "./DemonClanComponent.css";
 import { useTheme } from "../../../../../hooks/useTheme";
 import { FactionTheme } from "../../../../../types/theme";
 import { DemonFactionTags, OtherFactionTags, PluralizedFactionTags } from "../../../../../ts-types/tag-types";
+import Hx from "../../../../../common-design/Hx/Hx";
+import "./DemonClanComponent.css";
 
 type Props = {
   title: DemonFactionTags | OtherFactionTags | PluralizedFactionTags;

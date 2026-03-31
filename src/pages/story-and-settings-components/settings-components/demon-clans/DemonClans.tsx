@@ -6,6 +6,7 @@ import ThornwraithCovenant from "./ThornwraithCovenant";
 import UmbralNexus from "./UmbralNexus";
 import VastfathomDominion from "./VastfathomDominion";
 import WanderlostCrews from "./WanderlostCrews.tsx";
+import RotHost from "./RotHost.tsx";
 import Hx from "../../../../common-design/Hx/Hx.tsx";
 
 export default function DemonClans() {
@@ -16,10 +17,10 @@ export default function DemonClans() {
     <Hx hx={titleHxLevel}>Demon Clans</Hx>
     <p>
       The infernal depths of Hell teem with countless demon clans,
-      but seven (six?) stand above all others in power and influence.
+      but seven stand above all others in power and influence.
       These formidable factions, each aligned with a primordial force,
       have shaped the very essence of the underworld. Known collectively
-      as the Sovereign Sextet, these clans vie for supremacy in an eternal
+      as the Sovereign Heptarchs, these clans vie for supremacy in an eternal
       power struggle that has begun to spill into the mortal realm.
     </p>
     
@@ -32,6 +33,7 @@ export default function DemonClans() {
       <VastfathomDominion hx={factionHxLevel} />
       <ZephpterSwarm hx={factionHxLevel} />
       <WanderlostCrews hx={factionHxLevel} />
+      <RotHost hx={factionHxLevel} />
     </div>
   </>);
 }

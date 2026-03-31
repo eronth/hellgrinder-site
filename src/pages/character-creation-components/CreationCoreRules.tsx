@@ -9,8 +9,8 @@ export default function CreationCoreRules() {
     <div className='fluid-readable-columns'>
 
       <Hx hx={innerHeaders}>Steps</Hx>
-      <p>When you create a character, you start with the following stat values. Kit and Perk choices can modify these. Unlike many other similar games, you won’t need to choose to put “points” into some array of starting stats. </p>
-      <p>The next options require some selection, but can be done via random selection as well. If it’s your first time playing Hellgrinder and creating a character, I advise randomly selecting every option. No need to pour over everything to craft a perfect soldier just to die to the first squad of infernals to assault the squad.</p>
+      <p>When you create a character, you start with the following stat values. Kit and Perk choices can modify these. Unlike many other similar games, you won't need to choose to put "points" into some array of starting stats. </p>
+      <p>The next options require some selection, but can be done via random selection as well. If it's your first time playing Hellgrinder and creating a character, I advise randomly selecting every option. No need to pour over everything to craft a perfect soldier just to die to the first squad of infernals to assault the squad.</p>
       <p>Next, you will select one Combat Kit and one Support Kit. Your Combat Kit will have a major influence on how you engage foes in combat, while your Support Kit will have a more general role to help round out your character as you see fit.</p>
       <p>Once your kits are chosen, you will spend up to 2 Perk Points to select perks. Unused Perk Points can be saved after character creation, but I recommend just spending them.</p>
 
@@ -46,7 +46,7 @@ export default function CreationCoreRules() {
         <b>Since progression is squad based, new characters that get generated
         to replace old ones should have access to the advancement options as well.</b>
       </p>
-      <p>Squads should earn progression when they hit adventure milestones, at the GM’s purview. Suggested advancement is as follows:</p>
+      <p>Squads should earn progression when they hit adventure milestones, at the GM's purview. Suggested advancement is as follows:</p>
       <ul>
         <li>+1 Perk Point</li>
         <li>+1 Supply Certification Level</li>

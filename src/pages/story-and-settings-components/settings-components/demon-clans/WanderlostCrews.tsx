@@ -16,7 +16,7 @@ export default function WanderlostCrews({ hx }: Props) {
         The <Faction>Wanderlost Crews</Faction> are scattered clans of humans
         who have lost their way, unable to return to Earth. Though they
         are not demons, they have 
-        embraced sinful magics and corrupt politics to survive the hellscape;
+        embraced sinful magics and corrupt politics to survive the hellscape,
         often making them as vile and dangerous as any infernal clan. Their
         humanity remains in form only; in spirit, most are little more than
         predators draped in familiar skin.

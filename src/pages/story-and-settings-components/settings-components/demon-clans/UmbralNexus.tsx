@@ -23,7 +23,7 @@ export default function UmbralNexus ({ hx }: Props) {
       <p>
         Cloaked in shadows that writhe like living things, they slowly extend
         their influence into the darkness around them. Given time, they can
-        seize control of another’s shadow, twisting it into an extension of
+        seize control of another's shadow, twisting it into an extension of
         themselves. Once claimed, they can mimic their target — but only the
         aspects the target refuses to see within themselves. In this way, they
         become near-perfect predators, stepping from shadow, reflection, dream,

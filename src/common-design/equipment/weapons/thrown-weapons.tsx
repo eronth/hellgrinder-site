@@ -56,7 +56,7 @@ const exObj: { [key: string]: Weapon } = {
       },
       effects: [
         'The area hit by an incendiary grenade is Burning for 1/2/3 turns. Creatures that enter a Burning area ' +
-        'or end their turn in a Burning area if they started there (and did not leave) take the grenade’s Infernal Damage ' +
+        'or end their turn in a Burning area if they started there (and did not leave) take the grenade\'s Infernal Damage ' +
         'again.'
       ],
     }],

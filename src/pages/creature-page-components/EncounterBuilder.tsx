@@ -108,7 +108,15 @@ export default function EncounterBuilder() {
     )}
     
     <h2>Enemies</h2>
-      <p>Enemies mark the threats the players may face in combat. An enemy doesn’t follow the same injury system as players do. Instead, when an enemy hits 0 health, they are defeated. Generally, it is up to the player who deals the final hit whether a defeated enemy is left unconscious, as a corpse, or completely banished from the area. Some enemies may have abilities based on which defeat state is chosen, but most are simply defeated at that point.</p>
+    <p>
+      Enemies mark the threats the players may face in combat.
+      An enemy doesn't follow the same injury system as players do.
+      Instead, when an enemy hits 0 health, they are defeated. Generally,
+      it is up to the player who deals the final hit whether a defeated
+      enemy is left unconscious, as a corpse, or completely banished
+      from the area. Some enemies may have abilities based on which
+      defeat state is chosen, but most are simply defeated at that point.
+    </p>
     <hr />
     <p>There are many types of creatures in the Underworld.</p>
     <>

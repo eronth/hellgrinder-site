@@ -10,7 +10,7 @@ export default function DeepblindCaverns ({ hx }: Props) {
     <p>
       The Deepblind Caverns are home to the Stoneveined Choir.
       Their long stone passages are perfect to carry the
-      reverberations of the Choir’s grinding song. It is said
+      reverberations of the Choir's grinding song. It is said
       that the longer you spend in the Deepblind Caverns,
       the more melodious the grinding becomes.
     </p>
@@ -18,7 +18,7 @@ export default function DeepblindCaverns ({ hx }: Props) {
       harsh climbs, and unsteady footing awaits all who dare.
       And, if you can push past the obstacles, the darkness will
       persist. The deeper you delve, the harsher the darkness
-      becomes; eventually blotting out the strongest of lights.
+      becomes, eventually blotting out the strongest of lights.
       The only light left to penetrate darkness this deep is Safelight.
     </p>
   </>)

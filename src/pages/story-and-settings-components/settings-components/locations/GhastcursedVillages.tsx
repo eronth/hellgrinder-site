@@ -19,7 +19,7 @@ export default function GhastcursedVillages ({ hx }: Props) {
     </p>
     <p>
       The creatures of the Umbral Nexus take up residence in these
-      villages, undisturbed by their town’s ever-present hunger which
+      villages, undisturbed by their town's ever-present hunger, which
       drains the life-force of any who dare to linger too long.
     </p>
   </>)

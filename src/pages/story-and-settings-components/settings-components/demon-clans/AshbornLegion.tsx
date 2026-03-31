@@ -31,7 +31,7 @@ export default function AshbornLegion ({ hx }: Props) {
         nothing but charred wastelands only befit the Ashborn.
       </p>
       <p>
-        Yet not all remain under the Warlords’ banner. On occasion, a squad 
+        Yet not all remain under the Warlords' banner. On occasion, a squad 
         of lesser Ashborn break free of command. Such Ashborn lose their infernal
         arms and armor, and are forced to scavenge the battlefield for
         crude weapons and fractured
@@ -39,7 +39,7 @@ export default function AshbornLegion ({ hx }: Props) {
         and rival clans. Yet their desperation breeds cunning: they strike from
         shadow and ruin, practicing ambush and sabotage in place of open war.
         Though few in number, such outcasts are among the most dangerous to
-        encounter — for they embody the Legion’s fury, but without its chains.
+        encounter — for they embody the Legion's fury, but without its chains.
       </p>
     </DemonClanComponent>
   )

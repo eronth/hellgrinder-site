@@ -35,18 +35,19 @@ export default function ThornwraithCovenant ({ hx }: Props) {
       </p>
       <p>
         They spread as creeping overgrowths, patches of viridian life clinging
-        to existance hell’s desolation. Fungal mats and tangles of thorned roots choke
+        to existence — hell's desolation. Fungal mats and tangles of thorned
+        roots choke
         ruins and caverns, forming colonies that serve as extensions of the
         hive-mind. Scholars whisper that these growths are not merely terrain,
-        but the Bloom itself—each sprout, each spore, a fragment of its
+        but the Bloom itself — each sprout, each spore, a fragment of its
         consciousness. To linger in such places is to risk inhaling the spores
-        and hearing the Bloom’s call whispering from within.
+        and hearing the Bloom's call whispering from within.
       </p>
       <p>
         The Bloom commands endless harvest: flesh, bone, and stone alike are
         torn down and rewoven into the verdant sprawl. Any who enter their
-        midst are offered a place in the Bloom’s embrace. But to join is to be
-        subsumed—body reshaped, mind dissolved into the collective will. To
+        midst are offered a place in the Bloom's embrace. But to join is to be
+        subsumed — body reshaped, mind dissolved into the collective will. To
         resist is to be strangled, consumed, and repurposed as food for the growth.
         In Hell, the Thornwraith are both garden and grave.
       </p>

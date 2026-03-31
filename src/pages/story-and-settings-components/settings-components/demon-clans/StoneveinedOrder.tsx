@@ -20,13 +20,13 @@ export default function StoneveinedOrder ({ hx }: Props) {
         Some bear embedded <RuleKeyword keyword="Safelight Shards" />,
         crystalline growths that grant them strange resilience.
         Those infused with Safelight seem calmer, their movements
-        slower and less hostile—yet even in docility, they are
+        slower and less hostile — yet even in docility, they are
         never truly benign.
       </p>
       <p>
         They move with ponderous inevitability, as though in rhythm with the
         tectonic pulse of Hell. Wherever they pass, the scraping and grinding
-        of stone fills the caverns, forming a dissonant harmony—an alien hymn
+        of stone fills the caverns, forming a dissonant harmony — an alien hymn
         that unsettles the marrow of all who hear it. Their intentions remain
         obscure, even to other infernal factions, but their presence bends the
         world itself: walls shift, passages collapse, and landscapes twist as
@@ -35,11 +35,11 @@ export default function StoneveinedOrder ({ hx }: Props) {
       <p>
         When the Lords of the Choir stir, their vast bodies shudder like
         mountains breaking free of the earth. Each footfall shakes the cavern
-        and sends echoes crashing like an organ’s roar. Though not innately
+        and sends echoes crashing like an organ's roar. Though not innately
         wrathful, any who assail them find the stone itself rising in
         retaliation: shards, hounds, and serpents of living rock birthed from
-        the Lord’s own form. It is less a counterattack than a natural
-        reflex—a defense of both body and realm.
+        the Lord's own form. It is less a counterattack than a natural
+        reflex — a defense of both body and realm.
       </p>
       <p>
         Whispers claim the Stoneveined Choir have endured since the creation

@@ -34,13 +34,17 @@ export default function BasicRules() {
       <Hx>Calling Reinforcement!</Hx>
       <ul>
         <li>
-          <b>Spend 1 <RuleKeyword keyword="Heroic Medals">Heroic Medal</RuleKeyword></b>:
+          <b>Spend 
+            1 <RuleKeyword keyword="Heroic Medals">Heroic Medal</RuleKeyword>
+          </b>:
           If one of the players' characters (including your own) is dead or otherwise
           non-playable, you may call
           for a
-          reinforcement. The player creates a new character (if they haven’t yet),
+          reinforcement. The player creates a new character
+          (if they haven't yet),
           which arrives as a reinforcement at
-          the end of the current round. The cost of this ability increases by 1 for each time it’s been used per combat.
+          the end of the current round. The cost of this
+          ability increases by 1 for each time it's been used per combat.
         </li>
       </ul>
       <Hx>Quick Thinking</Hx>
@@ -73,15 +77,18 @@ export default function BasicRules() {
       </p>
       <Hx>Critical Success and Failure</Hx>
       <p>
-        A result of all 1s triggers a Hell’s Wrath event, which can change depending on your current enemies and
+        A result of all 1s triggers a Hell's Wrath event, which
+        can change depending on your current enemies and
         environment. It is always additional complications.
       </p>
       <p>
         Rolling all 6s triggers a Hellish Triumph, and you get +1 to rolls for a bit (tbd).
       </p>
       <p>
-        When you roll a Hell’s Wrath or Hellish Triumph, you trigger a Deal with the Devil moment. Roll on the
-        Deal table X times, and you are presented each result as an offer. You can choose to accept or decline any or
+        When you roll a Hell's Wrath or Hellish Triumph, you
+        trigger a Deal with the Devil moment. Roll on the
+        Deal table X times, and you are presented each result
+        as an offer. You can choose to accept or decline any or
         all of the offers.
       </p>
       <Hx>Difficulty</Hx>

@@ -22,14 +22,14 @@ export default function SorrowshapedEchoplex({ hx }: Props) {
       that stretch from some unseen light source, inconsistent doorways,
       hallways that stretch a bit too far or too short, and nonsensical
       architecture are all common features of the Echoplex. When members of
-      the Wanderlost Crews settle into a section of the Echoplex, they don’t
+      the Wanderlost Crews settle into a section of the Echoplex, they don't
       do much to improve that unsettling feeling. Shopping racks filled with
       bladed weaponry. Medical bays feeding directly into food courts. Offices
       full of torturous “accommodations”. Additions from the crews only reflect their madness.
     </p>
     <p>
-      For members of the Wanderlost Crews, these locations are comforting
-      - empowering even! For the rest, they serve as uneasy living, giving
+      For members of the Wanderlost Crews, these locations are comforting 
+      — empowering even! For the rest, they serve as uneasy living, giving
       rise to a sense of dread and confusion. The incorrectness of the
       locations serves to remind that the Wanderlost Crews really are
       no longer to be considered human, and that they now are an established

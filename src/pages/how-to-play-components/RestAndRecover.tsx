@@ -71,18 +71,28 @@ export default function RestAndRecover() {
         to swoop in later to clean up the mess or if the mission is abandoned.
       </p>
       <p>
-        Whenever a player character falls in combat, the team is reinforced by a squadmate who is then generated and played by the player whose character died.
-        It is generally assumed a squadmate will figure out some way to group up with the players’ characters, no matter how unlikely that would seem in the moment.
-        Players can reinforce from the squad outside of combat for free, and can spend Heroic Medals to reinforce mid-combat as needed.
+        Whenever a player character falls in combat, the team
+        is reinforced by a squadmate who is then generated and
+        played by the player whose character died.
+        It is generally assumed a squadmate will figure out
+        some way to group up with the players' characters, no
+        matter how unlikely that would seem in the moment.
+        Players can reinforce from the squad outside of combat for
+        free, and can spend Heroic Medals to reinforce mid-combat as needed.
       </p>
 
       <Hx hx={innerHx}>Gaining Squad Members</Hx>
       <p>
-        At the GM’s purview, there can be more members added to squads. In the chaotic
-        combat zone of hell, these new members can be anything: rescued survivors from a
-        previous attack; the remaining members of another battered squad; new recruits sent
-        to the frontlines; etc. With things as uncoordinated as they are, it is likely that
-        most existing squads contain none of their original members. It matters not, so long 
+        At the GM's purview, there can be more members added to
+        squads. In the chaotic
+        combat zone of hell, these new members can be anything:
+        rescued survivors from a
+        previous attack; the remaining members of another battered
+        squad; new recruits sent
+        to the frontlines; etc. With things as uncoordinated as
+        they are, it is likely that
+        most existing squads contain none of their original
+        members. It matters not, so long 
         as the squad continues to fight.
       </p>
     </div>

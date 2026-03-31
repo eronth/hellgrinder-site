@@ -15,7 +15,7 @@ export default function VastfathomDominion ({ hx }: Props) {
       <p>
         The <Faction>Vastfathom League</Faction> are
         abyssal-aligned demons that dwell in the deepest
-        depths of Hell—crushing oceans of
+        depths of Hell — crushing oceans of
         nothingness. Their forms are elusive and alien, shifting
         as if seen through dark waters. Some stretch into
         serpent-like silhouettes, translucent skin revealing pulsating veins
@@ -27,7 +27,7 @@ export default function VastfathomDominion ({ hx }: Props) {
       </p>
       <p>
         Spawned from the vast unseen trenches in which Hell folds in upon itself,
-        they serve the Abyssal Sovereigns—eldritch rulers said to dream beneath
+        they serve the Abyssal Sovereigns — eldritch rulers said to dream beneath
         the cold waters. The League rises at their command, dragging prey into the
         suffocating dark. Each Vastfathom demon seeks knowledge beyond knowledge,
         learning beyond what is meant to be known, twisting and
@@ -43,7 +43,7 @@ export default function VastfathomDominion ({ hx }: Props) {
         Their High Councilors, the chosen of the Sovereigns, wield
         sorcerous powers vast enough to bend wills with a word,
         rewarding obedience with fragments of power while casting dissenters
-        into eternal silence. To follow the League is to trade one’s soul for
+        into eternal silence. To follow the League is to trade one's soul for
         an endless descent into the deep, dark expanse.
       </p>
     </DemonClanComponent>

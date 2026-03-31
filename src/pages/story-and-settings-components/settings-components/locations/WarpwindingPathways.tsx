@@ -10,7 +10,7 @@ export default function WarpwindingPathways ({ hx }: Props) {
     <p>
       In-between the controlled regions of hell, where borders do not clash,
       lie the Warpwinding Pathways. These pathways are not roads, but rather
-      twisting, winding trails that can lead to nowhere; and sometimes to
+      twisting, winding trails that can lead to nowhere, and sometimes to
       everywhere.
     </p>
     <p>

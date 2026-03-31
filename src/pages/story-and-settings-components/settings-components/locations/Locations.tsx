@@ -1,5 +1,4 @@
 import Hx from "../../../../common-design/Hx/Hx";
-import Tools from "../../../../common-design/Tools";
 import DeepblindCaverns from "./DeepwindCaverns";
 import GhastcursedVillages from "./GhastcursedVillages";
 import InfernalLocation from "./InfernalLocation";
@@ -17,8 +16,12 @@ export default function OtherFactions() {
     <Hx hx={'h3'}>Realms of the Netherworld</Hx>
 
     <div className='fluid-readable-columns'>
-      <p>Other Factions survive...</p>
-      <p>{Tools.getLoremIpsum()}</p>
+      <p>
+        The demon clans of the Sovereign Heptarchs have enough power and influence to warp the very shape of hell to fit their nature. As such, each clan of the Sovereign Heptarchy rules over a unique domain that grows and changes with their power.
+      </p>
+      <p>
+        The remaining minor clans make do simply trying to survive in the harsh landscape shaped by the whims of the Sovereign. Occasionally a minor clan will find an unclaimed corner of hell and build enough power to shape it to their own will. These cases are extremely rare but can prove to be more dangerous than the realms of the Sovereign, as there is no intel on what to expect when entering the minor realm.
+      </p>
       {/* Various individual realms */}
       <DeepblindCaverns hx={locationHxLevel} />
       <GhastcursedVillages hx={locationHxLevel} />

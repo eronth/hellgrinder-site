@@ -28,7 +28,7 @@ export default function AshbornLegion ({ hx }: Props) {
         Under such command, the hate-filled masses are driven into
         warbands, wielding infernal steel and blackened shields,
         burning their way across Hell. They leave behind
-        nothing but charred wastelands only befit the Ashborn.
+        nothing but charred wastelands befitting only the Ashborn.
       </p>
       <p>
         Yet not all remain under the Warlords' banner. On occasion, a squad 
@@ -39,7 +39,7 @@ export default function AshbornLegion ({ hx }: Props) {
         and rival clans. Yet their desperation breeds cunning: they strike from
         shadow and ruin, practicing ambush and sabotage in place of open war.
         Though few in number, such outcasts are among the most dangerous to
-        encounter — for they embody the Legion's fury, but without its chains.
+        encounter — for they embody the Legion's fury without its chains.
       </p>
     </DemonClanComponent>
   )

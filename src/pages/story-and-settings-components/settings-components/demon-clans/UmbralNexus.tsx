@@ -15,9 +15,10 @@ export default function UmbralNexus ({ hx }: Props) {
       <p>
         The <Faction>Umbral Nexus</Faction> is composed of Voidyr-aligned
         demons that bear an unsettling resemblance to humans, marred by
-        grotesque distortions. Some carry arms with too many joints, others
-        smiles that stretch far beyond the bounds of the face, or eyes that
-        sprout in places no eye should ever be. To look upon them is to feel
+        grotesque distortions. Some carry arms with too many joints. Others
+        have smiles that stretch far beyond the bounds of the face. While
+        more still have eyes that sprout in places no eye should ever
+        reside. To look upon them is to feel
         that something once familiar has gone irreparably wrong.
       </p>
       <p>

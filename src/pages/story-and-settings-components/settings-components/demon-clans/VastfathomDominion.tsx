@@ -13,7 +13,7 @@ export default function VastfathomDominion ({ hx }: Props) {
   return (
     <DemonClanComponent title={"Vastfathom League"} hx={hx} buttonText={buttonText}>
       <p>
-        The <Faction>Vastfathom League</Faction> are
+        The&#32;<Faction>Vastfathom League</Faction>&#32;are
         abyssal-aligned demons that dwell in the deepest
         depths of Hell — crushing oceans of
         nothingness. Their forms are elusive and alien, shifting

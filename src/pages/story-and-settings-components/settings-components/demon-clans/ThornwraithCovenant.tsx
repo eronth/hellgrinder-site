@@ -13,10 +13,10 @@ export default function ThornwraithCovenant ({ hx }: Props) {
   return (
     <DemonClanComponent title="Thornwraith Bloom" hx={hx} buttonText={buttonText}>
       <p>
-        The <Faction>Thornwraith Bloom</Faction>, also known
-        as the <Faction>Thornwraith Brood</Faction>,
-        are a verdant-aligned clan — quite the anomaly in the harsh wastelands of hell.
-        Their forms are a grotesque
+        The&#32;<Faction>Thornwraith Bloom</Faction>, also known
+        as the&#32;<Faction>Thornwraith Brood</Faction>,
+        are a verdant-aligned clan — quite the anomaly in the harsh
+        wastelands of hell. Their forms are a grotesque
         fusion of beast, root, and fungus. Bark-like hide cracks to reveal
         pulsing mycelial threads beneath. Their limbs are formed of coiling
         vines and sinew, ending in claws of twisted roots. Many sprout
@@ -25,19 +25,19 @@ export default function ThornwraithCovenant ({ hx }: Props) {
         eyes glow with a feral green light, like lanterns buried in rot.
       </p>
       <p>
-        Beneath their monstrous forms lies a single will: a hive-mind known as
-        <i>The Bloom</i>. Through it, each Thornwraith is bound, their thoughts
-        woven together like mycellial-coated roots in soil. They move
-        with uncanny precision,
+        Beneath their monstrous forms lies a single will: a hive-mind known
+        as&#32;<i>The Bloom</i>. Through it, each Thornwraith is bound,
+        their thoughts woven together like mycelial-coated roots in soil.
+        They move with uncanny precision,
         silent but perfectly in concert, guided by impulses that seem less like
         strategy and more like instinct. To face one Thornwraith is to face the
         collective, for none are ever truly alone.
       </p>
       <p>
         They spread as creeping overgrowths, patches of viridian life clinging
-        to existence — hell's desolation. Fungal mats and tangles of thorned
-        roots choke
-        ruins and caverns, forming colonies that serve as extensions of the
+        to existence amid hell's desolation. Fungal mats and tangles of thorned
+        roots choke ruins and caverns, forming colonies that serve as
+        extensions of the
         hive-mind. Scholars whisper that these growths are not merely terrain,
         but the Bloom itself — each sprout, each spore, a fragment of its
         consciousness. To linger in such places is to risk inhaling the spores

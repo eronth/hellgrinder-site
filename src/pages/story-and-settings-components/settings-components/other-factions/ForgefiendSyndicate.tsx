@@ -12,7 +12,7 @@ export default function ForgefiendSyndicate ({ hx }: Props) {
       they are a faction of tormented survivors who managed
       to escape torture by fleeing into the harshest regions of Hell.
       Through sheer will and ingenuity, they've learned
-      to forge brimsteel — Hell's (previously) unyielding metal — into
+      to forge brimsteel — Hell's once-unyielding metal — into
       tools of survival and defense.
     </p>
     <p>

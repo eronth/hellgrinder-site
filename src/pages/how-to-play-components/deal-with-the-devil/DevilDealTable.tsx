@@ -7,7 +7,7 @@ export default function DevilDealTable() {
     {
       result: 1,
       name: "Demonic Army",
-      boon: "The Devil grants you a demonic army of your own - 666 demons to command.",
+      boon: <><span className="devil">The&nbsp;Devil</span> grants you a demonic army of your own - 666 demons to command.</>,
       cost: "You are unable to gain or lose corruption, as the idea loses all meaning. You never fully connect with the denizens of your demonic army."
     }, {
       result: 2,

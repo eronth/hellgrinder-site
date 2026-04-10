@@ -1,3 +1,4 @@
+import React from "react";
 import { DamageElement } from "./types";
 
 type Injury = {
@@ -20,7 +21,7 @@ type InjuryRow = {
 type DealWithTheDevilRow = {
   result: number;
   name: string;
-  boon: string;
+  boon: React.ReactNode;
   cost: string;
 }
 

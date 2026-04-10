@@ -658,6 +658,10 @@ button, .nav-tab, .tab-btn {
   overscroll-behavior: contain;
 }
 
+.devil {
+  font-weight: 666;
+}
+
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   *,

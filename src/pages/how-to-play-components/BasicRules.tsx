@@ -86,7 +86,8 @@ export default function BasicRules() {
       </p>
       <p>
         When you roll a Hell's Wrath or Hellish Triumph, you
-        trigger a Deal with the Devil moment. Roll on the
+        trigger a Deal with <span className="devil">the&nbsp;Devil</span> moment.
+        Roll on the
         Deal table X times, and you are presented each result
         as an offer. You can choose to accept or decline any or
         all of the offers.
@@ -112,9 +113,12 @@ export default function BasicRules() {
         Corruption</p>
       <Hx hx={3}>Corruption</Hx>
       <p>
-        Corruption is a measure of how much the demonic forces have influenced you. It can be gained through various
+        Corruption is a measure of how much the demonic forces
+        have influenced you. It can be gained through various
         means, such as making a deal
-        with the devil, or being exposed to the demonic forces for too long. The more corruption you have, the more
+        with <span className="devil">the&nbsp;Devil</span>,
+        or being exposed to the demonic forces for too long.
+        The more corruption you have, the more
         likely you are to be influenced
         by the demonic forces.
       </p>

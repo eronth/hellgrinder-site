@@ -21,10 +21,11 @@ export default function HowToPlayPage() {
 
     <hr />
 
-    <Hx hx={2}>A Deal with the&nbsp;Devil</Hx>
+    <Hx hx={2}>A Deal with <span className="devil">the&nbsp;Devil</span></Hx>
     <p>
       Occasionally, you are presented with a moment where you can make a
-      deal (or deals) with the Devil. A powerful entity, one which does
+      deal (or deals) with <span className="devil">the&nbsp;Devil</span>.
+      A powerful entity, one which does
       not seem to fully align with the demonic forces, can grant you a
       powerful boon, but it comes with a cost.
     </p>

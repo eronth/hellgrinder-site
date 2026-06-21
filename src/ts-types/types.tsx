@@ -102,7 +102,7 @@ type Perk = ItemDef & {
   safelightShardsModifier?: number;
 }
 
-type TabType = "home" | "story-and-setting" | "how-to-play" | "character-creation" 
+type TabType = "home" | "lore" | "how-to-play" | "character-creation" 
   | "character-generator" | "creatures"
   | "additional-equipment" | "advanced-perks" | "items" | "magic";
 

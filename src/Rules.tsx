@@ -2,6 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 import FancyIndexPage from "./pages/FancyIndexPage/FancyIndexPage";
 import StoryAndSettingPage from "./pages/StoryAndSettingPage";
+import StoryPage from "./pages/StoryPage";
+import SettingPage from "./pages/SettingPage";
 import HowToPlayPage from "./pages/HowToPlayPage";
 import CharacterCreationPage from "./pages/CharacterCreationPage";
 import AdditionalEquipmentPage from "./pages/AdditionalEquipmentPage";
@@ -16,7 +18,9 @@ export default function Rules() {
       <ThemeSwitcher />
       <Routes>
         <Route path="/" element={<FancyIndexPage />} />
-        <Route path="/story-and-setting" element={<StoryAndSettingPage />} />
+        <Route path="/lore" element={<StoryAndSettingPage />} />
+        <Route path="/lore/story" element={<StoryPage />} />
+        <Route path="/lore/setting" element={<SettingPage />} />
         <Route path="/how-to-play" element={<HowToPlayPage />} />
         <Route path="/character-creation" element={<CharacterCreationPage />} />
         <Route path="/additional-equipment" element={<AdditionalEquipmentPage />} />

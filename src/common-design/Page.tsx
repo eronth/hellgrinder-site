@@ -5,10 +5,11 @@ import { TabType } from "../ts-types/types";
 type Props = {
   children: React.ReactNode;
   pageType: TabType;
+  pageClassName?: string;
 };
-export default function Page({ children, pageType }: Props) {
+export default function Page({ children, pageType, pageClassName = "" }: Props) {
   return (
-    <div className={`page ${pageType}`}>
+    <div className={`page ${pageType} ${pageClassName}`.trim()}>
       <GameTitle />
       <NavTabs selectedTab={pageType} />
       <hr />

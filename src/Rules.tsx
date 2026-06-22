@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 import FancyIndexPage from "./pages/FancyIndexPage/FancyIndexPage";
-import StoryAndSettingPage from "./pages/StoryAndSettingPage/StoryAndSettingPage";
-import StoryPage from "./pages/StoryAndSettingPage/StoryPage/StoryPage";
-import SettingPage from "./pages/StoryAndSettingPage/SettingPage/SettingPage";
+import StoryAndSettingPage from "./pages/LorePage/StoryAndSettingPage";
+import StoryPage from "./pages/LorePage/StoryPage/StoryPage";
+import SettingPage from "./pages/LorePage/SettingPage/SettingPage";
 import HowToPlayPage from "./pages/HowToPlayPage";
 import CharacterCreationPage from "./pages/CharacterCreationPage";
 import AdditionalEquipmentPage from "./pages/AdditionalEquipmentPage";

@@ -1,10 +1,10 @@
-import { HeaderSize } from "../../../../ts-types/types";
-import AshbornLegion from "./AshbornLegion";
-import StoneveinedOrder from "./StoneveinedOrder";
+import { HeaderSize } from "../../../../ts-types/types.tsx";
+import AshbornLegion from "./AshbornLegion.tsx";
+import StoneveinedOrder from "./StoneveinedOrder.tsx";
 import ZephpterSwarm from "./ZephpterSwarm.tsx";
-import ThornwraithCovenant from "./ThornwraithCovenant";
-import UmbralNexus from "./UmbralNexus";
-import VastfathomDominion from "./VastfathomDominion";
+import ThornwraithCovenant from "./ThornwraithCovenant.tsx";
+import UmbralNexus from "./UmbralNexus.tsx";
+import VastfathomDominion from "./VastfathomDominion.tsx";
 import WanderlostCrews from "./WanderlostCrews.tsx";
 import RotHost from "./RotHost.tsx";
 import Hx from "../../../../common-design/Hx/Hx.tsx";

@@ -2,7 +2,7 @@ import Hx from '../../../common-design/Hx/Hx';
 import Faction from '../../../common-design/story-references/Faction';
 import TM from '../../../common-design/TM';
 
-function Story() {
+export default function StoryContent() {
 
   const majorHeader = 'h3';
   const minorHeader = 'h4';
@@ -266,5 +266,3 @@ function Story() {
 
   </>);
 }
-
-export default Story;

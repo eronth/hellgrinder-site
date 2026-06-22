@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import Page from "../common-design/Page";
-import { TabType } from "../ts-types/types";
+import Page from "../../common-design/Page";
+import { TabType } from "../../ts-types/types";
 import "./StoryAndSettingPage.css";
 
 export default function StoryAndSettingPage() {
@@ -12,7 +12,7 @@ export default function StoryAndSettingPage() {
         <Link to="/lore/story" className="story-setting-card">
           <h2>The Story</h2>
           <p>
-            Read the big-picture timeline of the invasion, the rise of Safelight, and how the Hellgrinder changed war.
+            Learn of the the first contact with hell, and the beginnings of the war that ensued.
           </p>
           <span className="story-setting-card-cta">Open Story</span>
         </Link>

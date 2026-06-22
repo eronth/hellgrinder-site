@@ -140,9 +140,10 @@ export default function BasicRules() {
       <ol>
         <li><b>Creeping Evil</b>: Gain 1 Corruption.</li>
         <li><b>Nauseating</b>: Gain 1 Corruption and lose 1 Health.</li>
-        <li><b>Invitation to Death</b>: The GM chooses a Damage Type. You gain Weak 1 for the chosen Type.</li>
+        <li><b>Invitation to Death</b>: The GM chooses a Damage Type. You gain Weak 1 (stacking) for the chosen Type.</li>
         <li><b>Bout of Madness</b>: Your bout of madness causes you to attack an ally. Choose one ally. You and that
-          ally both make <SkillCheck tags={['Endurance']} plural />. If their result is higher than yours, you gain an Injury.
+          ally both make <SkillCheck tags={['Endurance']} plural />. If their result is higher than yours, you gain
+          an Injury.
           Otherwise, they gain an Injury.
         </li>
         <li><b>Madness Manifest</b>: You lose control of your character. They turn into a Mad Cultist who summons 2

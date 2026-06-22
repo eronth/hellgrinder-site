@@ -80,6 +80,14 @@ export default function RestAndRecover() {
         Players can reinforce from the squad outside of combat for
         free, and can spend Heroic Medals to reinforce mid-combat as needed.
       </p>
+      <Hx>Rout</Hx>
+      <p>
+        If a character dies with no reinforcements available, the squad
+        fails. Their morale breakes, and they flee into the depths of hell –
+        result (&lt; wtf is the word I want here?) unknown. A new squad will
+        need to be sent in to complete the mission, or the mission will be
+        completely abandoned by high command.
+      </p>
 
       <Hx hx={innerHx}>Gaining Squad Members</Hx>
       <p>

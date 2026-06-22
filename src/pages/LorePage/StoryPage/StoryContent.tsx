@@ -264,5 +264,19 @@ export default function StoryContent() {
       </p>
     </div>
 
+    <hr />
+
+    <Hx hx={majorHeader}>Notable Units</Hx>
+    <div className='fluid-readable-columns'>
+      <p>
+        The military has deployed countless units throughout the lands of Hell.
+        Many suffer great losses, become fractured, rejoin others, or become entirely
+        destroyed. Some units, however, have made legendary names for their deeds and
+        their survival of the worst of hell.
+      </p>
+
+
+    </div>
+
   </>);
 }

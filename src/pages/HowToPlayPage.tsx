@@ -8,6 +8,7 @@ import RestAndRecover from "./how-to-play-components/RestAndRecover";
 import DevilDealTable from "./how-to-play-components/deal-with-the-devil/DevilDealTable";
 // Types
 import { TabType } from "../ts-types/types";
+import Damage from "./how-to-play-components/combat-components/Damage";
 
 export default function HowToPlayPage() {
   const page: TabType = 'how-to-play';
@@ -16,6 +17,7 @@ export default function HowToPlayPage() {
     <BasicRules />
     <hr />
     <RestAndRecover />
+    <Damage />
     <hr />
     <Combat />
 

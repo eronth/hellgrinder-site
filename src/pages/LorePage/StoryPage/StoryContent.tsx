@@ -274,8 +274,94 @@ export default function StoryContent() {
         destroyed. Some units, however, have made legendary names for their deeds and
         their survival of the worst of hell.
       </p>
-
-
+      <Hx hx={minorHeader}>Unit 017 - Originless</Hx>
+      <p>
+        Claiming an origin back to the beginning of the invasion of Hell,
+        Unit 17 is noteworthy for having never been created. Many of the soldiers
+        in this unit are not in any military record, though there are records of
+        their lives from before their deployment. The Unit itself was never formed
+        nor deployed, and it is unclear where the usage of "Unit 17" first started.
+        What exists, however, is a fighting ready force of dedicated and skilled
+        soldiers, who are often called the "<b>Originless</b>".
+      </p>
+      <Hx hx={minorHeader}>Unit 208 - Bank Heist</Hx>
+      <p>
+        Somehow able to infiltrate any Hellion fotress and extract
+        with valuable resources, Unit 396 is known as "Bank Heist".
+        Rumored to be filled with violent criminals, members of 
+        this unit are supposedly serving for a "second chance".
+        They are brash and reckless, and it's often considered
+        "quite rough" to work beside them.
+      </p>
+      <Hx hx={minorHeader}>Unit 236 - Beach Justice</Hx>
+      <p>
+        Part of the initial strike teams against Hell, Unit 236 is known for their
+        fierce fighting, accurate shots, and thirst for vengeance. Lately,
+        it is rumored 
+        
+      </p>
+      <Hx hx={minorHeader}>Unit 396 - Witchfire</Hx>
+      <p>
+        Masters of the Hellish arcane powers, Unit 396 brings a 
+        firepower not often present at scale in the depths of Hell...
+        at least, not present to the soldiers. Unit Witchfire has an
+        unusually high number of soldiers capable of manipulating hellish magic,
+        leading to accusations of selling their souls or accepting demons
+        into their ranks. They maintain neither is true, but it's hard
+        to shake such unprovable accusations.
+      </p>
+      <Hx hx={minorHeader}>Unit 427 - Foresight</Hx>
+      <p>
+        Unit 427 is a scouting unit that is often called the "Foresight" due
+        to the extremely accurate nature of their scouting reports. If Foresight
+        Unit is on site, it is always advisable to let them call the shots. Not
+        doing so is begging to be operating with outdated intel. Some claim that
+        Foresight Unit pulls intel using mystical means, but this has never been
+        proven.
+      </p>
+      <Hx hx={minorHeader}>Unit 507 - Jericho</Hx>
+      <p>
+        The walls of Hell are no match for the Hellgrinders run by Jericho Unit 507.
+        The steady maintenance and upgrade performed by the team's engineers combined
+        with the ever stalwart soldiers defending them, Jericho Unit consistently drives
+        tunnesl into the worst depths of Hell.
+      </p>
+      <Hx hx={minorHeader}>Unit 666 - The Doomed</Hx>
+      <p>
+        An unfortunate number for a Hellbound Unit, Unit 666 is cursed with the most
+        unfortuante of luck and circumstance. Deployed with the latest tech and
+        experimental weaponry, this unit was originally designated "The Doom Squad".
+        Instead, it is clear they are the ones who are Doomed. Weapon malfunctions,
+        bad intel, unlucky strikes, and other such ill fortune has left this unit
+        in a shattered state. Just be glad you're not one of them.
+      </p>
+      <Hx hx={minorHeader}>Unit 777 - Awaybase</Hx>
+      <p>
+        Having found the largest Safelight deposit and wrestling full control of it, Unit 
+        777 has established one of the safest bases in Hell. Known as Awaybase by those deep
+        in the bowels of Hell, the Safelight deposit base owned by Unit 777 is a welcome
+        refuge from the horrors of Hell. Awaybase seems to have a modicum of control over the
+        tunnels connecting to Awaybase, and can often route emergency rescue paths for those
+        in need.
+      </p>
+      <Hx hx={minorHeader}>Unit 806 - Omen</Hx>
+      <p>
+        Unit 806 is a fighting force of expert recon and strike solders. They are
+        tasked with seeking out and eliminating high-threat demonic gatherings. The 
+        arrival of Unit 806 is, however, not a good sign. Rumors of a curse placed upon
+        806 are rampant, and their arrival often marks the defeat of other units despite
+        an overall victory, gaining them the nickname "<b>Omen</b>". Upon the arrival of
+        Omen Unit, it is best to clear out and let them deal with the threat.
+      </p>
+      <Hx hx={minorHeader}>Unit 941 - Hydra Corps</Hx>
+      <p>
+        The Hydra Corps is a unit known for its tenacity and seemingly endlessly growing
+        numbers. While the tale of the Corps' destruction upon its first descent into hell
+        is well known, the Hydra Corps still stands. Corps' numbers have only grown and grown,
+        with stories of surviving fragments popping up in all corners of Hell. If all stories
+        are to be believed, the current Hydra Corps trooper count is easily dozens of times
+        larger than when they first entered, though broken into smaller scattered units.
+      </p>
     </div>
 
   </>);

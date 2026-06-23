@@ -48,11 +48,18 @@ export default function RestAndRecover() {
         a character can grant themselves a few minutes of safety. When they do so,
         they roll a Recovery Test with +2.
       </p>
+      <p>
+        Safelight Shards often bind themselves to their
+        owner in mysterious ways. They tend to be non-transferrable,
+        and break upon the owner's death.
+      </p>
 
       <Hx hx={innerHx}>Recovery Test</Hx>
       <p>
-        When you use a safelight object to recover, you roll a <SkillCheck tags={['Recovery']} />. 
+        When you use a Safelight object to recover, you roll a <SkillCheck tags={['Recovery']} />. 
         When you do, the amount you heal differs based on your success Rank.
+        Remember, you gain a bonus to your roll based on what
+        kind of Safelight object you are using.
       </p>
       <CheckResultsGrid results={{
         r0: <>Heal 2 health.</>,
@@ -60,49 +67,6 @@ export default function RestAndRecover() {
         r2: <>Remove one Light Injury, heal to max health.</>,
         r3: <>(Remove one Light Injury and reduce one Serious Injury to Light) OR (completely remove one Serious Injury).</>,
       }} />
-
-      <Hx hx={innerHx}>Squad and Reinforcements</Hx>
-      <p>
-        Your group is a squad of roughly 15 soldiers — 15 reserve and as many active soldiers as there are 
-        players — each with their own roles in the fight through Hell. The players will play just a handful 
-        of these soldiers on any Operation.
-        If the entire squad is ever depleted, that squad completely fails their mission.
-        It is up to the GM what happens when a mission is failed — if another squad can try
-        to swoop in later to clean up the mess or if the mission is abandoned.
-      </p>
-      <p>
-        Whenever a player character falls in combat, the team
-        is reinforced by a squadmate who is then generated and
-        played by the player whose character died.
-        It is generally assumed a squadmate will figure out
-        some way to group up with the players' characters, no
-        matter how unlikely that would seem in the moment.
-        Players can reinforce from the squad outside of combat for
-        free, and can spend Heroic Medals to reinforce mid-combat as needed.
-      </p>
-      <Hx>Rout</Hx>
-      <p>
-        If a character dies with no reinforcements available, the squad
-        fails. Their morale breakes, and they flee into the depths of hell –
-        result (&lt; wtf is the word I want here?) unknown. A new squad will
-        need to be sent in to complete the mission, or the mission will be
-        completely abandoned by high command.
-      </p>
-
-      <Hx hx={innerHx}>Gaining Squad Members</Hx>
-      <p>
-        At the GM's purview, there can be more members added to
-        squads. In the chaotic
-        combat zone of hell, these new members can be anything:
-        rescued survivors from a
-        previous attack; the remaining members of another battered
-        squad; new recruits sent
-        to the frontlines; etc. With things as uncoordinated as
-        they are, it is likely that
-        most existing squads contain none of their original
-        members. It matters not, so long 
-        as the squad continues to fight.
-      </p>
     </div>
   </>);
 }

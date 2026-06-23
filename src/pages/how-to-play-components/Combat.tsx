@@ -1,7 +1,6 @@
 import Hx from "../../common-design/Hx/Hx.tsx";
 import Tools from "../../common-design/Tools";
 import Actions from "../../pages/how-to-play-components/combat-components/Actions";
-import Damage from "../../pages/how-to-play-components/combat-components/Damage";
 import Maneuvers from "../../pages/how-to-play-components/combat-components/Maneuvers";
 import StatusEffectComponent from "../../common-design/game-terms/StatusEffectComponent";
 import StatusEffects from "../../common-design/game-terms/status-effects.tsx"
@@ -61,8 +60,6 @@ export default function Combat() {
 
     <Hx hx={innerHx}>Cover</Hx>
     <p>{Tools.getLoremIpsum()}</p>
-
-    <Damage />
 
     <Hx hx={innerHx}>Status Effects</Hx>
     <div className='col-handler'>

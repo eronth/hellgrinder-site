@@ -31,9 +31,11 @@ export default function Maneuvers() {
       </p>
       <Hx hx={4}>Maneuvers</Hx>
       <p>
-        Additionally, you spend some of {movementIcon} to perform
+        In addition to Movement, you may 
+        spend {movementIcon} to perform
         any of the following Maneuvers. Maneuvers represent simple
-        actions that are not big enough to be considered your Action
+        actions that are not big enough to be 
+        considered your full "<i>Action</i>"
         for the turn, but still require enough focus, effort, or movement
         to incur a cost on your mobility.
       </p>

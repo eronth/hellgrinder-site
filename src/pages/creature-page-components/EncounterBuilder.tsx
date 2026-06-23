@@ -5,7 +5,7 @@ import CreatureCard from "./CreatureCard/CreatureCard";
 import CollapsibleSection from "../creature-page-components/CollapsibleSection/CollapsibleSection";
 import FactionSelector from "../creature-page-components/FactionSelector/FactionSelector";
 import EncounterSection from "../creature-page-components/EncounterSection";
-import EncounterTabs from "../creature-page-components/EncounterTabs/EncounterTabs";
+import EncounterTabsGroup from "./EncounterTabsGroup/EncounterTabsGroup";
 import FloatingPanelsContainer from "../character-creation-components/FloatingPanels/FloatingPanelsContainer";
 import SingleFactionDisplayRegion from './SingleFactionDisplayRegion/SingleFactionDisplayRegion';
 // Types
@@ -172,7 +172,7 @@ export default function EncounterBuilder() {
   return (<>
 
     {/* Encounter Tabs - for switching between encounters */}
-    <EncounterTabs
+    <EncounterTabsGroup
       encounterSet={encounterSet}
       onSelectEncounter={handleSelectEncounter}
       onAddEncounter={handleAddEncounter}

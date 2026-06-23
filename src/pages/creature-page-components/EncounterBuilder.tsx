@@ -25,7 +25,8 @@ export default function EncounterBuilder() {
   const [selectedFaction, setSelectedFaction] = useState<string>('Generic');
   const [encounterSet, setEncounterSet] = useState<EncounterSet>({
     encounters: {},
-    activeEncounterId: ''
+    activeEncounterId: '',
+    order: []
   });
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -151,6 +152,11 @@ export default function EncounterBuilder() {
     setEncounterSet(newEncounterSet);
   };
 
+  const handleReorderEncounters = (newOrder: string[]) => {
+    const newEncounterSet = EncounterStorage.reorderEncounters(newOrder, encounterSet);
+    setEncounterSet(newEncounterSet);
+  };
+
   const handleImportEncounter = (importedEncounter: Encounter) => {
     // Add imported encounter to the set
     setEncounterSet(prev => ({
@@ -159,7 +165,8 @@ export default function EncounterBuilder() {
         ...prev.encounters,
         [importedEncounter.id]: importedEncounter
       },
-      activeEncounterId: importedEncounter.id
+      activeEncounterId: importedEncounter.id,
+      order: [...prev.order, importedEncounter.id]
     }));
   };
 
@@ -178,6 +185,7 @@ export default function EncounterBuilder() {
       onAddEncounter={handleAddEncounter}
       onDeleteEncounter={handleDeleteEncounter}
       onRenameEncounter={handleRenameEncounter}
+      onReorderEncounters={handleReorderEncounters}
     />
 
     {/* Encounter Section - appears at top when there are creatures */}

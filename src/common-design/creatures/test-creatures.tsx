@@ -251,7 +251,8 @@ const exObj: { [key: string]: Creature } = {
         effects:[
           <>
             On a Rank 2+ Success against a target with Rot, 
-            the target gains Enfeebled 1.
+            the target gains Enfeebled 1. Otherwise the
+            target is marked with Rot.
           </>,
         ],
       },

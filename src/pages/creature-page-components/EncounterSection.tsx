@@ -25,7 +25,7 @@ export default function EncounterSection({
   const tierCounts = getCreatureTierCounts(encounter);
   const tierCountsStr = formatTierCounts(tierCounts);
 
-  const title = `Encounter (${creatureCount} creature${creatureCount !== 1 ? 's' : ''})`;
+  const title = `${encounter.name} Encounter (${creatureCount} creature${creatureCount !== 1 ? 's' : ''})`;
   const description = tierCountsStr
     ? `Current encounter setup ${tierCountsStr}. Click creature health values to edit them.`
     : 'Current encounter setup. Click creature health values to edit them.';

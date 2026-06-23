@@ -109,7 +109,7 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   
   &.open {
-    max-height: 5000px; /* Large enough to accommodate any content */
+    max-height: 15000px; /* Large enough to accommodate any content */
     opacity: 1;
   }
   

@@ -10,6 +10,7 @@ export interface EncounterStorageData {
   version: string;
   encounters: Record<string, Encounter>;
   activeEncounterId: string;
+  order?: string[];
   lastSaved: string;
   currentEncounter?: Encounter; // Legacy support
 }
@@ -58,6 +59,7 @@ export class EncounterStorage {
         version: STORAGE_VERSION,
         encounters: encodedEncounters,
         activeEncounterId: encounterSet.activeEncounterId,
+        order: encounterSet.order,
         lastSaved: new Date().toISOString(),
       };
 
@@ -81,7 +83,8 @@ export class EncounterStorage {
         const defaultEncounter = this.createDefaultEncounter();
         return {
           encounters: { [defaultEncounter.id]: defaultEncounter },
-          activeEncounterId: defaultEncounter.id
+          activeEncounterId: defaultEncounter.id,
+          order: [defaultEncounter.id]
         };
       }
 
@@ -97,7 +100,8 @@ export class EncounterStorage {
         };
         return {
           encounters: { [encounter.id]: encounter },
-          activeEncounterId: encounter.id
+          activeEncounterId: encounter.id,
+          order: [encounter.id]
         };
       }
 
@@ -113,9 +117,21 @@ export class EncounterStorage {
         activeId = Object.keys(decodedEncounters)[0] || this.createDefaultEncounter().id;
       }
 
+      // Validate and rebuild order array
+      let order = data.order || [];
+      // Ensure all encounter IDs are in the order array
+      const encounterIds = Object.keys(decodedEncounters);
+      order = order.filter(id => decodedEncounters[id]);
+      encounterIds.forEach(id => {
+        if (!order.includes(id)) {
+          order.push(id);
+        }
+      });
+
       const result: EncounterSet = {
         encounters: decodedEncounters,
-        activeEncounterId: activeId
+        activeEncounterId: activeId,
+        order
       };
 
       console.log(`Loaded ${Object.keys(decodedEncounters).length} encounters from localStorage`);
@@ -125,7 +141,8 @@ export class EncounterStorage {
       const defaultEncounter = this.createDefaultEncounter();
       return {
         encounters: { [defaultEncounter.id]: defaultEncounter },
-        activeEncounterId: defaultEncounter.id
+        activeEncounterId: defaultEncounter.id,
+        order: [defaultEncounter.id]
       };
     }
   }
@@ -189,7 +206,8 @@ export class EncounterStorage {
         ...encounterSet.encounters,
         [newEncounter.id]: newEncounter
       },
-      activeEncounterId: newEncounter.id
+      activeEncounterId: newEncounter.id,
+      order: [...encounterSet.order, newEncounter.id]
     };
   }
 
@@ -199,22 +217,25 @@ export class EncounterStorage {
   static deleteEncounter(encounterId: string, encounterSet: EncounterSet): EncounterSet {
     const updatedEncounters = { ...encounterSet.encounters };
     delete updatedEncounters[encounterId];
+    const updatedOrder = encounterSet.order.filter(id => id !== encounterId);
 
     // If we deleted the active one, switch to the first available
     let activeId = encounterSet.activeEncounterId;
     if (activeId === encounterId || !updatedEncounters[activeId]) {
-      activeId = Object.keys(updatedEncounters)[0];
+      activeId = updatedOrder[0];
       if (!activeId) {
         // If no encounters left, create a default one
         const defaultEncounter = this.createDefaultEncounter();
         updatedEncounters[defaultEncounter.id] = defaultEncounter;
         activeId = defaultEncounter.id;
+        updatedOrder.push(defaultEncounter.id);
       }
     }
 
     return {
       encounters: updatedEncounters,
-      activeEncounterId: activeId
+      activeEncounterId: activeId,
+      order: updatedOrder
     };
   }
 
@@ -235,6 +256,16 @@ export class EncounterStorage {
     return {
       ...encounterSet,
       encounters: updated
+    };
+  }
+
+  /**
+   * Reorder encounters
+   */
+  static reorderEncounters(newOrder: string[], encounterSet: EncounterSet): EncounterSet {
+    return {
+      ...encounterSet,
+      order: newOrder
     };
   }
 

@@ -12,7 +12,10 @@ type Props = {
   onSelect: (id: string) => void;
   onDelete: (id: string) => void;
   onRename: (id: string, name: string) => void;
+  onReorder: (newOrder: string[]) => void;
+  allIds: string[];
 };
+
 export default function EncounterTab({
   id,
   encounter,
@@ -20,11 +23,15 @@ export default function EncounterTab({
   canDelete,
   onSelect,
   onDelete,
-  onRename
+  onRename,
+  onReorder,
+  allIds
 }: Props) {
   const [isEditing, setIsEditing] = useState(false);
   const [editName, setEditName] = useState(encounter.name);
+  const [draggedOverId, setDraggedOverId] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const tabRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isEditing && inputRef.current) {
@@ -62,8 +69,50 @@ export default function EncounterTab({
     }
   };
 
+  const handleDragStart = (e: React.DragEvent) => {
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', id);
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    setDraggedOverId(id);
+  };
+
+  const handleDragLeave = () => {
+    setDraggedOverId(null);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    const draggedId = e.dataTransfer.getData('text/plain');
+
+    if (draggedId !== id) {
+      const draggedIndex = allIds.indexOf(draggedId);
+      const targetIndex = allIds.indexOf(id);
+
+      if (draggedIndex !== -1 && targetIndex !== -1) {
+        const newOrder = [...allIds];
+        newOrder.splice(draggedIndex, 1);
+        newOrder.splice(targetIndex, 0, draggedId);
+        onReorder(newOrder);
+      }
+    }
+
+    setDraggedOverId(null);
+  };
+
   return (
-    <div className={`encounter-tab ${isActive ? 'active' : ''}`}>
+    <div
+      ref={tabRef}
+      className={`encounter-tab ${isActive ? 'active' : ''} ${draggedOverId === id ? 'drag-over' : ''}`}
+      draggable={!isEditing}
+      onDragStart={handleDragStart}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop}
+    >
       {isEditing ? (
         <input
           ref={inputRef}
@@ -82,7 +131,7 @@ export default function EncounterTab({
             className="tab-button"
             onClick={() => onSelect(id)}
             onDoubleClick={handleStartEdit}
-            title="Double-click to rename"
+            title="Double-click to rename, drag to reorder"
           >
             {encounter.name}
           </button>

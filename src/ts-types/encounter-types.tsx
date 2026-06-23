@@ -17,4 +17,5 @@ export type Encounter = {
 export type EncounterSet = {
   encounters: Record<string, Encounter>;
   activeEncounterId: string;
+  order: string[];
 };

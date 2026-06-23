@@ -1,6 +1,6 @@
 import { EncounterSet } from '../../../ts-types/encounter-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faFileImport, faFileExport } from '@fortawesome/free-solid-svg-icons';
 import EncounterTab from './EncounterTab/EncounterTab';
 import './EncounterTabsGroup.css';
 
@@ -11,6 +11,8 @@ type Props = {
   onDeleteEncounter: (encounterId: string) => void;
   onRenameEncounter: (encounterId: string, newName: string) => void;
   onReorderEncounters: (newOrder: string[]) => void;
+  onImportEncounters: () => void;
+  onExportEncounters: () => void;
 };
 
 export default function EncounterTabsGroup({
@@ -19,7 +21,9 @@ export default function EncounterTabsGroup({
   onAddEncounter,
   onDeleteEncounter,
   onRenameEncounter,
-  onReorderEncounters
+  onReorderEncounters,
+  onImportEncounters,
+  onExportEncounters
 }: Props) {
   const canDeleteEncounter = Object.keys(encounterSet.encounters).length > 1;
 
@@ -53,6 +57,22 @@ export default function EncounterTabsGroup({
         aria-label="Add new encounter"
       >
         <FontAwesomeIcon icon={faPlus} />
+      </button>
+      <button
+        className="import-encounters-btn"
+        onClick={onImportEncounters}
+        title="Import all encounters"
+        aria-label="Import all encounters"
+      >
+        <FontAwesomeIcon icon={faFileImport} />
+      </button>
+      <button
+        className="export-encounters-btn"
+        onClick={onExportEncounters}
+        title="Export all encounters"
+        aria-label="Export all encounters"
+      >
+        <FontAwesomeIcon icon={faFileExport} />
       </button>
     </div>
   );

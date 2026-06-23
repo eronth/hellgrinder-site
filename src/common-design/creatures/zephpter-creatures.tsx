@@ -15,6 +15,7 @@ export const arc: CreatureAbility = {
 const exObj: { [key: string]: Creature } = {
   /* T1 Zephpter Creatures */
   elzid: {
+    id: 'zephpter/elzid',
     name: 'Elzid',
     tier: Tools.creatureTiers.t1,
     tags: ['Zephpter Swarm'],
@@ -40,6 +41,7 @@ const exObj: { [key: string]: Creature } = {
     description: '',
   },
   netheal: {
+    id: 'zephpter/netheal',
     name: 'Netheal',
     tier: Tools.creatureTiers.t1,
     tags: ['Zephpter Swarm'],
@@ -72,6 +74,7 @@ const exObj: { [key: string]: Creature } = {
 
   /* T2 Zephpter Creatures */
   zephilim: {
+    id: 'zephpter/zephilim',
     name: 'Zephilim',
     tier: Tools.creatureTiers.t2,
     tags: ['Zephpter Swarm'],
@@ -98,6 +101,7 @@ const exObj: { [key: string]: Creature } = {
     description: '',
   },
   zazzile: {
+    id: 'zephpter/zazzile',
     name: 'Zazzile',
     tier: Tools.creatureTiers.t2,
     tags: ['Zephpter Swarm'],
@@ -128,6 +132,7 @@ const exObj: { [key: string]: Creature } = {
   },
   /* T3 Zephpter Creatures */
   magid: {
+    id: 'zephpter/magid',
     name: 'Magid',
     tier: Tools.creatureTiers.t3,
     tags: ['Zephpter Swarm'],

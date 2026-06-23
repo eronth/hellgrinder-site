@@ -14,7 +14,9 @@
     flex: 1;
   }
 
-  .add-encounter-btn {
+  .add-encounter-btn,
+  .import-encounters-btn,
+  .export-encounters-btn {
     background-color: #2a5a3a;
     border: 1px solid #4a8a5a;
     color: #6fff6f;
@@ -35,6 +37,30 @@
 
     &:active {
       transform: scale(0.98);
+    }
+  }
+
+  .import-encounters-btn {
+    background-color: #2a3a5a;
+    border-color: #4a5a8a;
+    color: #6f9fff;
+
+    &:hover {
+      background-color: #3a4a7a;
+      border-color: #6a7aaa;
+      color: #8fbfff;
+    }
+  }
+
+  .export-encounters-btn {
+    background-color: #5a3a2a;
+    border-color: #8a5a4a;
+    color: #ff9f6f;
+
+    &:hover {
+      background-color: #7a4a3a;
+      border-color: #aa7a6a;
+      color: #ffbf8f;
     }
   }
 }

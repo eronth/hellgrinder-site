@@ -22,6 +22,7 @@ export type CreatureAbility = {
 };
 
 type Creature = {
+  id: string;
   name: string;
   tier: CreatureTier;
   

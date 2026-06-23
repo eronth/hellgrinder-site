@@ -6,6 +6,7 @@ import Tools from "../Tools";
 const exampleCreatures: { [key: string]: Creature } = {
   // Ashborn Legion - Infernal faction
   ashbornWarrior: {
+    id: 'faction-examples/ashbornWarrior',
     name: 'Ashborn Warrior',
     tier: Tools.creatureTiers.t1,
     tags: ['Ashborn Legion'],
@@ -46,6 +47,7 @@ const exampleCreatures: { [key: string]: Creature } = {
 
   // Stoneveined Order - Chthonic faction
   stoneveineGuardian: {
+    id: 'faction-examples/stoneveineGuardian',
     name: 'Stoneveined Guardian',
     tier: Tools.creatureTiers.t2,
     tags: ['Stoneveined Choir'],
@@ -80,6 +82,7 @@ const exampleCreatures: { [key: string]: Creature } = {
 
   // Vastfathom League - Abyssal faction
   vastfathomReaver: {
+    id: 'faction-examples/vastfathomReaver',
     name: 'Vastfathom Reaver',
     tier: Tools.creatureTiers.t1,
     tags: ['Vastfathom League'],
@@ -116,6 +119,7 @@ const exampleCreatures: { [key: string]: Creature } = {
 
   // Thornwraith Covenant - Verdant faction
   thornwraithStalker: {
+    id: 'faction-examples/thornwraithStalker',
     name: 'Thornwraith Stalker',
     tier: Tools.creatureTiers.t1,
     tags: ['Thornwraith Bloom'],
@@ -157,6 +161,7 @@ const exampleCreatures: { [key: string]: Creature } = {
 
   // Wanderlost Crews - Metal faction
   wanderlostScavenger: {
+    id: 'faction-examples/wanderlostScavenger',
     name: 'Wanderlost Scavenger',
     tier: Tools.creatureTiers.t1,
     tags: ['Wanderlost Crew'],
@@ -193,6 +198,7 @@ const exampleCreatures: { [key: string]: Creature } = {
 
   // Umbral Nexus - Voidyr faction
   umbralShade: {
+    id: 'faction-examples/umbralShade',
     name: 'Umbral Shade',
     tier: Tools.creatureTiers.t1,
     tags: ['Umbral Nexus'],
@@ -234,6 +240,7 @@ const exampleCreatures: { [key: string]: Creature } = {
 
   // Forgefiend Syndicate - Other faction
   forgefiendEngineer: {
+    id: 'faction-examples/forgefiendEngineer',
     name: 'Forgefiend Engineer',
     tier: Tools.creatureTiers.t2,
     tags: ['Forgefiend Syndicate'],
@@ -266,8 +273,9 @@ const exampleCreatures: { [key: string]: Creature } = {
     description: 'A master craftsman of the Forgefiend Syndicate, combining demonic power with mechanical ingenuity.',
   },
 
-  // Hand of Death - Other faction  
+  // Hand of Death - Other faction
   handOfDeathAssassin: {
+    id: 'faction-examples/handOfDeathAssassin',
     name: 'Hand of Death Assassin',
     tier: Tools.creatureTiers.t2,
     tags: ['Hand of Death'],
@@ -303,6 +311,7 @@ const exampleCreatures: { [key: string]: Creature } = {
 
   // Heaven's Host - Other faction
   heavensHostSentinel: {
+    id: 'faction-examples/heavensHostSentinel',
     name: "Heaven's Host Sentinel",
     tier: Tools.creatureTiers.t2,
     tags: ["Heaven's Host"],
@@ -338,6 +347,7 @@ const exampleCreatures: { [key: string]: Creature } = {
 
   // Voidfire Conclave - Other faction
   voidfireCultist: {
+    id: 'faction-examples/voidfireCultist',
     name: 'Voidfire Cultist',
     tier: Tools.creatureTiers.t1,
     tags: ['Voidfire Conclave'],
@@ -377,6 +387,7 @@ const exampleCreatures: { [key: string]: Creature } = {
 
   // Witch Coven - Other faction
   witchCovenHexer: {
+    id: 'faction-examples/witchCovenHexer',
     name: 'Hagswell Hexer',
     tier: Tools.creatureTiers.t1,
     tags: ['Hagswell Covenant'],
@@ -400,9 +411,9 @@ const exampleCreatures: { [key: string]: Creature } = {
       tags: ['Attack', 'Arcane', 'Medium Range'],
       effects: [
         <>
-          On any successful hit, 
+          On any successful hit,
           target gains <StatusKeyword effect={'enslumbered'} x={2} />.
-          If this affects a creature that is already Enslumbered, 
+          If this affects a creature that is already Enslumbered,
           they instead gain <StatusKeyword effect={'doomed'} x={1} />.
         </>
       ],

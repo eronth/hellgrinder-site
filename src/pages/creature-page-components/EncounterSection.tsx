@@ -31,7 +31,7 @@ export default function EncounterSection({
     : 'Current encounter setup. Click creature health values to edit them.';
 
   const handleExportEncounter = () => {
-    EncounterStorage.exportEncounter(encounter);
+    EncounterStorage.exportSingleEncounter(encounter);
   };
 
   const handleImportClick = () => {
@@ -42,14 +42,14 @@ export default function EncounterSection({
     const file = event.target.files?.[0];
     if (file && onImportEncounter) {
       try {
-        const importedEncounter = await EncounterStorage.importEncounter(file);
-        onImportEncounter(importedEncounter);
+        const imported = await EncounterStorage.importEncounterSet(file);
+        const first = Object.values(imported)[0];
+        if (first) onImportEncounter(first);
       } catch (error) {
         console.error('Failed to import encounter:', error);
         alert('Failed to import encounter. Please check the file format.');
       }
     }
-    // Reset file input
     event.target.value = '';
   };
 

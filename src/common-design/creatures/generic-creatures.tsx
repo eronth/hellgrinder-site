@@ -31,19 +31,9 @@ const secondaryWeakness: DamageTakenMod = {
   mod: 1,
 };
 
-// imp: Creature,
-// swarmer: Creature,
-// spitter: Creature,
-// lansperker: Creature,
-// lasherator: Creature,
-// hellhound: Creature,
-// tenebros: Creature,
-// wreislander: Creature,
-// hellspawn: Creature,
-// arcanistStudent: Creature,
-// allSeeingEyespawn: Creature,
 const exObj: { [key: string]: Creature } = {
   imp: {
+    id: 'generic/imp',
     name: 'Imp',
     tier: Tools.creatureTiers.t0,
     tags: [],
@@ -76,7 +66,7 @@ const exObj: { [key: string]: Creature } = {
       tags: ['Attack', 'Melee', 'Adjacent Range'],
       effects: [
         <>
-          A creature who reaches 0 health from this attack 
+          A creature who reaches 0 health from this attack
           adds +1 to their Injury Roll.
         </>
       ],
@@ -92,6 +82,7 @@ const exObj: { [key: string]: Creature } = {
     description: 'A small, weak demon. They are quick and can be hard to hit.',
   },
   swarmer: {
+    id: 'generic/swarmer',
     name: 'Swarmer',
     tier: Tools.creatureTiers.t0,
     tags: [],
@@ -114,6 +105,7 @@ const exObj: { [key: string]: Creature } = {
     description: 'A small, weak demon, but they often come in large numbers. Best to clean them out before they overwhelm you.',
   },
   spitter: {
+    id: 'generic/spitter',
     name: 'Spitter',
     tier: Tools.creatureTiers.t0,
     tags: [],
@@ -135,6 +127,7 @@ const exObj: { [key: string]: Creature } = {
     description: 'A small, weak demon. They can spit their core type at you from a range away.',
   },
   lansperker: {
+    id: 'generic/lansperker',
     name: 'Lansperker',
     tier: Tools.creatureTiers.t1,
     tags: [],
@@ -156,6 +149,7 @@ const exObj: { [key: string]: Creature } = {
     description: 'A demon with a long spear, whip, or other reaching weapon.',
   },
   lasherator: {
+    id: 'generic/lasherator',
     name: 'Lasherator',
     tier: Tools.creatureTiers.t1,
     tags: [],
@@ -187,6 +181,7 @@ const exObj: { [key: string]: Creature } = {
     description: 'A demon with a whip, hook, or other entangling weapon. They are quick to pull you out of safety and into their range.',
   },
   hellhound: {
+    id: 'generic/hellhound',
     name: 'Hellhound',
     tier: Tools.creatureTiers.t0,
     tags: [],
@@ -226,6 +221,7 @@ const exObj: { [key: string]: Creature } = {
     description: 'A demon that looks like a hound draped in demonic powers. They are fiercely loyal to their masters.',
   },
   tenebros: {
+    id: 'generic/tenebros',
     name: 'Tenebros',
     tier: Tools.creatureTiers.t1,
     tags: [],
@@ -253,7 +249,7 @@ const exObj: { [key: string]: Creature } = {
       {
         name: 'Shadow Step',
         description: <>
-          The Tenebros can use a [Shadow Step] Maneuver. 
+          The Tenebros can use a [Shadow Step] Maneuver.
           When they do, they teleport 3{movementIcon}.
         </>
       }
@@ -261,6 +257,7 @@ const exObj: { [key: string]: Creature } = {
     description: 'A demon with a hardy form. They are resistant to most forms of damage.',
   },
   wreislander: {
+    id: 'generic/wreislander',
     name: 'Wreislander',
     tier: Tools.creatureTiers.t2,
     tags: [],
@@ -290,6 +287,7 @@ const exObj: { [key: string]: Creature } = {
     description: 'A large demon that can crush you with a mighty blow. They exude a powerful aura that protects them from harm until disrupted.',
   },
   hellspawn: {
+    id: 'generic/hellspawn',
     name: 'Aggressor Hellspawn',
     tier: Tools.creatureTiers.t1,
     tags: [],
@@ -331,6 +329,7 @@ const exObj: { [key: string]: Creature } = {
     description: '',
   },
   arcanistStudent: {
+    id: 'generic/arcanistStudent',
     name: 'Arcanist Student',
     tier: Tools.creatureTiers.t1,
     tags: [],
@@ -352,7 +351,7 @@ const exObj: { [key: string]: Creature } = {
       {
         name: '',
         description: <>
-          Maneuver: Deal 2 Core Damage against all creatures 
+          Maneuver: Deal 2 Core Damage against all creatures
           within <RuleKeyword keyword="Melee Range" /> and knock them 2 hex away.
         </>
       }
@@ -360,6 +359,7 @@ const exObj: { [key: string]: Creature } = {
     description: '',
   },
   allSeeingEyespawn: {
+    id: 'generic/allSeeingEyespawn',
     name: 'All-Seeing Eyespawn',
     tier: Tools.creatureTiers.t1,
     tags: [],

@@ -4,7 +4,7 @@ import { movementIcon } from "../CommonIcons";
 import SkillCheck from "../SkillCheck/SkillCheck";
 import Tools from "../Tools";
 
- 
+
 const factionTag = 'Rot Host';
 const resist = (type: DamageElement, amount?: number): DamageTakenMod => ({
   modification: 'Resist',
@@ -32,7 +32,7 @@ export const giftOfPlague: CreatureAbility = {
   description: <>
     If a character is hit by 3 or more attacks from <i>any</i> creatures with this
     ability in a single round, they must attempt a <SkillCheck tags={["Stoic"]} /> at
-    the end of the round. A character must get Rank 2 on the check 
+    the end of the round. A character must get Rank 2 on the check
     or gain 1 Corruption. If they have an even number of Corruption, they immediately
     attempt a Corruption Test.
   </>
@@ -41,6 +41,7 @@ export const giftOfPlague: CreatureAbility = {
 const exObj: { [key: string]: Creature } = {
   /* T1 Test Creatures */
   rotMind: {
+    id: 'rot-host/rotMind',
     name: 'Rot Mind',
     tier: Tools.creatureTiers.t1,
     tags: [factionTag],
@@ -70,6 +71,7 @@ const exObj: { [key: string]: Creature } = {
     description: '',
   },
   decayedOne: {
+    id: 'rot-host/decayedOne',
     name: 'Decayed One',
     tier: Tools.creatureTiers.t1,
     tags: [factionTag],
@@ -97,6 +99,7 @@ const exObj: { [key: string]: Creature } = {
     description: '',
   },
   festerling: {
+    id: 'rot-host/festerling',
     name: 'Festerling',
     tier: Tools.creatureTiers.t1,
     tags: [factionTag],
@@ -113,7 +116,7 @@ const exObj: { [key: string]: Creature } = {
         damage: damage(0, 0, 2, 'Chthonic'),
         effects:[
           <>
-            This attack deals bonus Cthonic damage equal to the number of 
+            This attack deals bonus Cthonic damage equal to the number of
             creatures adjacent to the target which have the Gift of Plague ability.
           </>
         ],
@@ -129,7 +132,7 @@ const exObj: { [key: string]: Creature } = {
           blighted ground in spaces it moves through. Characters
           crossing through this ground must make
           a <SkillCheck tags={['Endurance']} />.
-          On a Failure, they take 1 Abyssal damage and immediately make a 
+          On a Failure, they take 1 Abyssal damage and immediately make a
           Corruption Test. Creatures damaged by this ability treat it as
           though they were hit by an attack for the purposes of determining
           the Gift of Plague ability.
@@ -142,6 +145,7 @@ const exObj: { [key: string]: Creature } = {
 
   /* T2 Zephpter Creatures */
   putridAmalgam: {
+    id: 'rot-host/putridAmalgam',
     name: 'Putrid Amalgam',
     tier: Tools.creatureTiers.t2,
     tags: [factionTag],
@@ -180,6 +184,7 @@ const exObj: { [key: string]: Creature } = {
     description: '',
   },
   stenchBloater: {
+    id: 'rot-host/stenchBloater',
     name: 'Stench Bloater',
     tier: Tools.creatureTiers.t2,
     tags: [factionTag],
@@ -232,6 +237,7 @@ const exObj: { [key: string]: Creature } = {
     description: '',
   },
   blightbringerShaman: {
+    id: 'rot-host/blightbringerShaman',
     name: 'Blightbringer Shaman',
     tier: Tools.creatureTiers.t2,
     tags: [factionTag],
@@ -250,7 +256,7 @@ const exObj: { [key: string]: Creature } = {
         tags: ['Attack', 'Arcane', 'Long Range'],
         effects:[
           <>
-            On a Rank 2+ Success against a target with Rot, 
+            On a Rank 2+ Success against a target with Rot,
             the target gains Enfeebled 1. Otherwise the
             target is marked with Rot.
           </>,
@@ -274,6 +280,7 @@ const exObj: { [key: string]: Creature } = {
 
   /* T3 Zephpter Creatures */
   decayedPile: {
+    id: 'rot-host/decayedPile',
     name: 'Decayed Pile',
     tier: Tools.creatureTiers.t3,
     tags: [factionTag],
@@ -318,7 +325,7 @@ const exObj: { [key: string]: Creature } = {
         name: 'Rotstench',
         description: <>
           At the start of each of the Decayed Pile's turns, each
-          creature Adjacent to it must make 
+          creature Adjacent to it must make
           a <SkillCheck tags={['Stoic', 'Endurance' ]} />.
           On a Rank 0, they gain Slowed 1 and Staggered. On a Rank 1
           Success, they gain Slowed 1.
@@ -328,6 +335,7 @@ const exObj: { [key: string]: Creature } = {
     description: '',
   },
   enplagued: {
+    id: 'rot-host/enplagued',
     name: 'Enplagued',
     tier: Tools.creatureTiers.t3,
     tags: [factionTag],
@@ -389,6 +397,7 @@ const exObj: { [key: string]: Creature } = {
 
   /* T4 Zephpter Creatures */
   finalHorror: {
+    id: 'rot-host/finalHorror',
     name: 'Final Horror',
     tier: Tools.creatureTiers.t4,
     tags: [factionTag],

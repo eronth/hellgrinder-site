@@ -3,6 +3,7 @@ import Tools from '../../common-design/Tools';
 
 const exObj: { [key: string]: Creature } = {
   enragedSinner: {
+    id: 'sinner/enragedSinner',
     name: 'Enraged Sinner',
     tier: Tools.creatureTiers.t2,
     description: 'When a sinner is forced to cease its assigned task, it becomes enraged. once enraged, it will attack without mercy.',

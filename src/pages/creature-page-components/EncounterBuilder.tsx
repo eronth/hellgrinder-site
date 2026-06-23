@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 // Components
 import Tools from "../../common-design/Tools";
 import CreatureCard from "./CreatureCard/CreatureCard";
@@ -29,6 +29,7 @@ export default function EncounterBuilder() {
     order: []
   });
   const [isLoaded, setIsLoaded] = useState(false);
+  const importAllFileInputRef = useRef<HTMLInputElement>(null);
 
   // Load encounters from localStorage on component mount
   useEffect(() => {
@@ -56,7 +57,7 @@ export default function EncounterBuilder() {
     if (!activeEncounter) { return; }
 
     const newEncounterCreature: EncounterCreature = {
-      id: `encounter-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      id: `encounter-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
       creature: creature,
       currentHealth: creature.health,
       maxHealth: creature.health
@@ -170,6 +171,36 @@ export default function EncounterBuilder() {
     }));
   };
 
+  const handleExportAllEncounters = () => {
+    EncounterStorage.exportEncounterSet(encounterSet);
+  };
+
+  const handleImportAllEncounters = () => {
+    importAllFileInputRef.current?.click();
+  };
+
+  const handleImportAllFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      try {
+        const imported = await EncounterStorage.importEncounterSet(file);
+        setEncounterSet(prev => {
+          const firstNewId = Object.keys(imported)[0];
+          return {
+            ...prev,
+            encounters: { ...prev.encounters, ...imported },
+            order: [...prev.order, ...Object.keys(imported)],
+            activeEncounterId: firstNewId ?? prev.activeEncounterId
+          };
+        });
+      } catch (error) {
+        console.error('Failed to import encounters:', error);
+        alert('Failed to import encounters. Please check the file format.');
+      }
+    }
+    event.target.value = '';
+  };
+
   const hasEncounterCreatures: boolean = (activeEncounter?.creatures.length ?? 0) > 0;
 
   if (!isLoaded || !activeEncounter) {
@@ -186,6 +217,15 @@ export default function EncounterBuilder() {
       onDeleteEncounter={handleDeleteEncounter}
       onRenameEncounter={handleRenameEncounter}
       onReorderEncounters={handleReorderEncounters}
+      onImportEncounters={handleImportAllEncounters}
+      onExportEncounters={handleExportAllEncounters}
+    />
+    <input
+      ref={importAllFileInputRef}
+      type="file"
+      accept=".json"
+      style={{ display: 'none' }}
+      onChange={handleImportAllFileChange}
     />
 
     {/* Encounter Section - appears at top when there are creatures */}

@@ -33,7 +33,10 @@
     padding: 1rem 1.5rem;
     cursor: pointer;
     background: var(--header-bg-1);
-    border-bottom: 1px solid light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.1));
+    border-bottom: 1px solid light-dark(
+      rgb(0 0 0 / 0.08),
+      rgb(255 255 255 / 0.1)
+    );
     transition: all 0.2s ease;
     user-select: none;
 
@@ -46,12 +49,15 @@
         rgb(from var(--shade) r g b / 0.15),
         rgb(from var(--shade) r g b / 0.04)
       );
-      border-bottom-color: light-dark(rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.15));
+      border-bottom-color: light-dark(
+        rgb(0 0 0 / 0.12),
+        rgb(255 255 255 / 0.15)
+      );
 
       .toggle-icon {
         background-color: light-dark(
-          rgba(100, 108, 255, 0.15),
-          rgba(100, 108, 255, 0.2)
+          rgb(100 108 255 / 0.15),
+          rgb(100 108 255 / 0.2)
         );
         transform: scale(1.1);
       }

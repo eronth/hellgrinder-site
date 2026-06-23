@@ -106,4 +106,18 @@
     oklch(var(--bg-light-l) 0.05 73),
     oklch(var(--bg-dark-l) 0.005 73)
   );
+
+  /* rot host */
+  --rot-faction-primary: light-dark(
+    oklch(var(--primary-light-l) 0.1 126),
+    oklch(var(--primary-dark-l) 0.1 126)
+  );
+  --rot-faction-accent: light-dark(
+    oklch(var(--accent-light-l) 0.1 126),
+    oklch(var(--accent-dark-l) 0.1 126)
+  );
+  --rot-faction-background: light-dark(
+    oklch(var(--bg-light-l) 0.05 126),
+    oklch(var(--bg-dark-l) 0.005 126)
+  );
 }

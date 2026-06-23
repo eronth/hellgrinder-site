@@ -175,3 +175,14 @@
   --accent-color: var(--wanderlost-faction-accent);
   --background-color: var(--wanderlost-faction-background);
 }
+
+:root[data-faction="rot"] {
+  --faction-primary-dark: var(--rot-faction-primary-dark);
+  --faction-primary-light: var(--rot-faction-primary-light);
+  --faction-on-primary: var(--rot-faction-on-primary);
+  --faction-accent-light: var(--rot-faction-accent-light);
+  
+  --primary-color: var(--rot-faction-primary);
+  --accent-color: var(--rot-faction-accent);
+  --background-color: var(--rot-faction-background);
+}

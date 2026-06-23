@@ -39,6 +39,11 @@
     --hover-on-faction-color: var(--wanderlost-faction-background);
     --hover-on-faction-border: var(--wanderlost-faction-accent);
   }
+  .rot {
+    color: var(--rot-faction-primary);
+    --hover-on-faction-color: var(--rot-faction-background);
+    --hover-on-faction-border: var(--rot-faction-accent);
+  }
 
   .oath-button {
     color: light-dark(black, white);

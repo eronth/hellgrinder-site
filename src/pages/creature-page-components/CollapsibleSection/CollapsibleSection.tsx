@@ -10,13 +10,22 @@ type Props = {
   description?: string;
   className?: string;
   variant?: 'default' | 'faction-examples' | 'rot-host' | 'zephpter-swarm';
+  storageKey?: string;
 };
 
-export default function CollapsibleSection({ title, isOpenByDefault = false, children, description, className, variant = 'default' }: Props) {
-  const [isOpen, setIsOpen] = useState(isOpenByDefault);
+export default function CollapsibleSection({ title, isOpenByDefault = false, children, description, className, variant = 'default', storageKey }: Props) {
+  const [isOpen, setIsOpen] = useState(() => {
+    if (storageKey) {
+      const stored = localStorage.getItem(storageKey);
+      if (stored !== null) return stored === 'true';
+    }
+    return isOpenByDefault;
+  });
 
   const toggleOpen = () => {
-    setIsOpen(!isOpen);
+    const next = !isOpen;
+    setIsOpen(next);
+    if (storageKey) localStorage.setItem(storageKey, String(next));
   };
 
   return (

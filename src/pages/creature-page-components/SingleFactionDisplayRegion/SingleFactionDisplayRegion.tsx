@@ -24,11 +24,21 @@ export default function SingleFactionDisplayRegion({
   handleAddToEncounter,
   className
 }: Props) {
-  const [includeGenerics, setIncludeGenerics] = React.useState(false);
+  const storageKeyBase = `faction-${title.toLowerCase().replace(/\s+/g, '-')}`;
+  const [includeGenerics, setIncludeGenerics] = React.useState(() => {
+    const stored = localStorage.getItem(`${storageKeyBase}-include-generics`);
+    return stored === 'true';
+  });
 
   // Extract variant name from className (e.g., "faction faction-rot-host" -> "rot-host")
   const variantMatch = className?.match(/faction-(\w+-?\w+)/);
   const variant = variantMatch ? variantMatch[1] : undefined;
+
+  const handleIncludeGenericsChange = () => {
+    const next = !includeGenerics;
+    setIncludeGenerics(next);
+    localStorage.setItem(`${storageKeyBase}-include-generics`, String(next));
+  };
 
   return <CollapsibleSection
     title={title}
@@ -36,13 +46,14 @@ export default function SingleFactionDisplayRegion({
     description={description}
     className={className}
     variant={variant as 'default' | 'faction-examples' | undefined}
+    storageKey={`${storageKeyBase}-open`}
   >
     <div className="the-prompt">
       Include Generic Creatures?
       <input
         type="checkbox"
         checked={includeGenerics}
-        onChange={() => setIncludeGenerics(!includeGenerics)}
+        onChange={handleIncludeGenericsChange}
       />
     </div>
     <div className='creatures-grid'>

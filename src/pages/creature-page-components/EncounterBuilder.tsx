@@ -272,6 +272,7 @@ export default function EncounterBuilder() {
       description="Example creatures from each major faction, showcasing the faction-based color-coding system."
       className="faction faction-examples"
       variant="faction-examples"
+      storageKey="eb-faction-examples-open"
     >
       <div className='creatures-grid'>
         {Tools
@@ -290,6 +291,7 @@ export default function EncounterBuilder() {
       title="Generic Enemies"
       isOpenByDefault={false}
       description="Generic types of demons that can be customized using the faction selector below."
+      storageKey="eb-generic-enemies-open"
     >
       <p>
         These are generic examples of common types of demons, perfect when trying to run demons.
@@ -342,6 +344,7 @@ export default function EncounterBuilder() {
       title="Sinners"
       isOpenByDefault={false}
       description="The damned, compelled to eternal punishment for their sins."
+      storageKey="eb-sinners-open"
     >
       <p>
         Sinners are often thought to be the damned, compelled to eternal punishment for their sins. Though this is unconfirmed.

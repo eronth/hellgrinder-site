@@ -59,6 +59,7 @@ export default function EncounterSection({
       isOpenByDefault={true}
       description={description}
       className="encounter-section"
+      storageKey={`encounter-${encounter.id}-open`}
     >
       <div className="encounter-controls">
         <input

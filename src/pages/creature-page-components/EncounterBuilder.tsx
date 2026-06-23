@@ -231,6 +231,7 @@ export default function EncounterBuilder() {
       isOpenByDefault={true}
       description="Example creatures from each major faction, showcasing the faction-based color-coding system."
       className="faction faction-examples"
+      variant="faction-examples"
     >
       <div className='creatures-grid'>
         {Tools
@@ -279,6 +280,24 @@ export default function EncounterBuilder() {
         }
       </div>
     </CollapsibleSection>
+    <SingleFactionDisplayRegion
+      className='faction faction-rot-host'
+      title="Rot Host"
+      description="The Rot Host is a curse that has bled out from gates to hell, corrupting people into unrecognizable monstrosities."
+      creatureType="rot-host"
+      factionCreatures={RotHostCreatures}
+      genericCreatures={GenCreatures}
+      handleAddToEncounter={handleAddToEncounter}
+    />
+    <SingleFactionDisplayRegion
+      className='faction faction-zephpter-swarm'
+      title="Zephpter Swarm"
+      description="Nethercurrent-wielding creatures of the Zephpter faction."
+      creatureType="zephpter"
+      factionCreatures={ZephpterCreatures}
+      genericCreatures={GenCreatures}
+      handleAddToEncounter={handleAddToEncounter}
+    />
     <CollapsibleSection
       title="Sinners"
       isOpenByDefault={false}
@@ -302,23 +321,5 @@ export default function EncounterBuilder() {
           )}
       </div>
     </CollapsibleSection>
-    <SingleFactionDisplayRegion
-      className='faction faction-rot-host'
-      title="Rot Host"
-      description="The Rot Host is a curse that has bled out from gates to hell, corrupting people into unrecognizable monstrosities."
-      creatureType="rot-host"
-      factionCreatures={RotHostCreatures}
-      genericCreatures={GenCreatures}
-      handleAddToEncounter={handleAddToEncounter}
-    />
-    <SingleFactionDisplayRegion
-      className='faction faction-zephpter-swarm'
-      title="Zephpter Swarm"
-      description="Nethercurrent-wielding creatures of the Zephpter faction."
-      creatureType="zephpter"
-      factionCreatures={ZephpterCreatures}
-      genericCreatures={GenCreatures}
-      handleAddToEncounter={handleAddToEncounter}
-    />
   </>);
 }

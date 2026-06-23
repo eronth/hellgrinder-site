@@ -26,11 +26,16 @@ export default function SingleFactionDisplayRegion({
 }: Props) {
   const [includeGenerics, setIncludeGenerics] = React.useState(false);
 
+  // Extract variant name from className (e.g., "faction faction-rot-host" -> "rot-host")
+  const variantMatch = className?.match(/faction-(\w+-?\w+)/);
+  const variant = variantMatch ? variantMatch[1] : undefined;
+
   return <CollapsibleSection
     title={title}
     isOpenByDefault={false}
     description={description}
     className={className}
+    variant={variant as 'default' | 'faction-examples' | undefined}
   >
     <div className="the-prompt">
       Include Generic Creatures?

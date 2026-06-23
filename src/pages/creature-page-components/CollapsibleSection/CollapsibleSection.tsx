@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import './CollapsibleSection.css';
 
 type Props = {
@@ -9,9 +9,10 @@ type Props = {
   children: React.ReactNode;
   description?: string;
   className?: string;
+  variant?: 'default' | 'faction-examples' | 'rot-host' | 'zephpter-swarm';
 };
 
-export default function CollapsibleSection({ title, isOpenByDefault = false, children, description, className }: Props) {
+export default function CollapsibleSection({ title, isOpenByDefault = false, children, description, className, variant = 'default' }: Props) {
   const [isOpen, setIsOpen] = useState(isOpenByDefault);
 
   const toggleOpen = () => {
@@ -19,7 +20,7 @@ export default function CollapsibleSection({ title, isOpenByDefault = false, chi
   };
 
   return (
-    <div className={`collapsible-section ${className || ''}`}>
+    <div className={`collapsible-section ${className || ''}`} data-variant={variant}>
       <div className="collapsible-header" onClick={toggleOpen}>
         <div className="header-content">
           <h3 className="section-title">{title}</h3>
@@ -28,8 +29,8 @@ export default function CollapsibleSection({ title, isOpenByDefault = false, chi
           )}
         </div>
         <div className="toggle-icon">
-          <FontAwesomeIcon 
-            icon={isOpen ? faChevronUp : faChevronDown} 
+          <FontAwesomeIcon
+            icon={faChevronDown}
             className={`chevron ${isOpen ? 'open' : 'closed'}`}
           />
         </div>

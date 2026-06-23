@@ -34,7 +34,8 @@ export type CharacterDesign = {
     items: Item[]
   },
   // Active status effects with their actual X/Y values
-  statusEffects: ActiveStatusEffect[]
+  statusEffects: ActiveStatusEffect[],
+  notes: string
 };
 
 export type AttackBonusStat

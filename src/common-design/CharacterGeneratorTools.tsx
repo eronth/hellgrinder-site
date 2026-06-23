@@ -41,7 +41,8 @@ const characterDefaults: Omit<CharacterDesign, 'id' | 'name'> = {
     weapons: [],
     items: []
   },
-  statusEffects: []
+  statusEffects: [],
+  notes: ''
 };
 
 const specializationOptions: SkillChecks[] = [

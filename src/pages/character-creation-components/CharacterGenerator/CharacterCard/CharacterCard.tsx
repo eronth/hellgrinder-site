@@ -121,6 +121,16 @@ export default function CharacterCard({
       </div>
       <CharacterKitsDisplay character={character} />
     </div>
+    <div className="notes-block">
+      <div className="notes-title">Notes</div>
+      <textarea
+        className="notes-textarea"
+        value={character.notes ?? ''}
+        onChange={(e) => updateCharacter(character.id, { notes: e.target.value })}
+        placeholder="Track anything you want here..."
+        rows={5}
+      />
+    </div>
     <div className="inventory-button-container">
       {/* Inventory Manager */}
       <InventoryManager

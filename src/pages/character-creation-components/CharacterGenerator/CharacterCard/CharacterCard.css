@@ -27,3 +27,26 @@
     font-weight: bold;
     margin-top: .5em;
   }
+
+.notes-block {
+  margin-top: 1em;
+
+  .notes-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: .4em;
+  }
+
+  .notes-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--background-secondary, #1a1a1a);
+    color: inherit;
+    border: 1px solid var(--border-color, #444);
+    border-radius: 4px;
+    padding: .5em;
+    font-family: inherit;
+    font-size: 0.95em;
+    resize: vertical;
+  }
+}

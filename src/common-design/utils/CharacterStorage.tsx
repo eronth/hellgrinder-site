@@ -219,7 +219,8 @@ export class CharacterStorage {
         weapons: Array.isArray(char.inventory?.weapons) ? char.inventory.weapons : [],
         items: Array.isArray(char.inventory?.items) ? char.inventory.items : []
       },
-      statusEffects: Array.isArray(char.statusEffects) ? char.statusEffects : []
+      statusEffects: Array.isArray(char.statusEffects) ? char.statusEffects : [],
+      notes: typeof char.notes === 'string' ? char.notes : ''
     };
   }
 

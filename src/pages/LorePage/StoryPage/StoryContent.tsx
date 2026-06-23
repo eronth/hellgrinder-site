@@ -297,8 +297,9 @@ export default function StoryContent() {
       <p>
         Part of the initial strike teams against Hell, Unit 236 is known for their
         fierce fighting, accurate shots, and thirst for vengeance. Lately,
-        it is rumored 
-        
+        it is rumored that members of Unit 236 have mild time-jumping abilities,
+        able to flash back just a few seconds to retry the most harrowing
+        of moments.
       </p>
       <Hx hx={minorHeader}>Unit 396 - Witchfire</Hx>
       <p>

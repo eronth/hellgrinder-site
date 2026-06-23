@@ -2,6 +2,7 @@ import { useCallback, useMemo } from "react";
 import { AttackBonusStat, HealthStat } from "../CharacterGenerator";
 import SkillCheck from "../../../../common-design/SkillCheck/SkillCheck";
 import './CharacterStatsGrid.css';
+import { movementIcon } from "../../../../common-design/CommonIcons";
 
 export type CharacterStats = {
   health: HealthStat;
@@ -213,7 +214,7 @@ export default function CharacterStatsGrid({
       
       {renderStatCell("Corruption", "corruption", stats.corruption)}
       {renderStatCell("Perk Points", "perkPoints", stats.perkPoints)}
-      {renderStatCell("Move Speed", "speed", stats.speed)}
+      {renderStatCell(movementIcon+"  Movement", "speed", stats.speed)}
 
       {renderAttackBonusCell()}
       {renderCustomSkillCell()}

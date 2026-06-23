@@ -16,6 +16,7 @@ export default function CreatureRules() {
   return (<>
     <Hx hx={2}>Creatures</Hx>
     <Hx hx={3}>Reading a Creature Card</Hx>
+    Mouse over the components below to see what they are.
     <CreatureCard
       data={transformedCreature}
       onAddToEncounter={null}

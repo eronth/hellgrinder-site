@@ -1,19 +1,22 @@
 import _ from "lodash";
 import { Encoderizer } from "./Encoderizer";
 import { Decoderizer } from "./Decoderizer";
-import { Encounter } from "../../ts-types/encounter-types";
+import { Encounter, EncounterSet } from "../../ts-types/encounter-types";
 
 const STORAGE_KEY = 'hellgrinder_encounters';
-const STORAGE_VERSION = '1.0.0';
+const STORAGE_VERSION = '2.0.0';
 
 export interface EncounterStorageData {
   version: string;
-  encounters: Encounter[];
+  encounters: Record<string, Encounter>;
+  activeEncounterId: string;
   lastSaved: string;
-  currentEncounter?: Encounter;
+  currentEncounter?: Encounter; // Legacy support
 }
 
-export interface EncounterExportData extends EncounterStorageData {
+export interface EncounterExportData {
+  version: string;
+  encounter: Encounter;
   exportDate: string;
   appName: string;
 }
@@ -24,81 +27,215 @@ export interface EncounterExportData extends EncounterStorageData {
  */
 export class EncounterStorage {
 
+  private static generateId(): string {
+    return `encounter-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+  }
 
   /**
-   * Save current encounter to localStorage
+   * Create a default encounter
    */
-  static saveCurrentEncounter(encounter: Encounter): boolean {
+  private static createDefaultEncounter(): Encounter {
+    return {
+      id: this.generateId(),
+      name: 'Encounter 1',
+      creatures: []
+    };
+  }
+
+  /**
+   * Save all encounters to localStorage
+   */
+  static saveEncounterSet(encounterSet: EncounterSet): boolean {
     try {
-      // Always save a deep copy, encoderized
-      const encounterCopy = _.cloneDeep(encounter);
-      const encodedEncounter = Encoderizer.encoderizer(encounterCopy);
+      const encountersCopy = _.cloneDeep(encounterSet.encounters);
+      const encodedEncounters: Record<string, Encounter> = {};
+
+      Object.entries(encountersCopy).forEach(([id, encounter]) => {
+        encodedEncounters[id] = Encoderizer.encoderizer(encounter);
+      });
+
       const data: EncounterStorageData = {
         version: STORAGE_VERSION,
-        encounters: [], // For future: could save multiple encounters
+        encounters: encodedEncounters,
+        activeEncounterId: encounterSet.activeEncounterId,
         lastSaved: new Date().toISOString(),
-        currentEncounter: encodedEncounter
       };
 
-      console.log('Data to be saved:', encodedEncounter);
-      console.log('Saving encounter:', data.currentEncounter);
-      console.log('Stringified data:', JSON.stringify(data));
-      
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-      console.log(`Saved encounter with ${encounter.creatures.length} creatures to localStorage`);
+      console.log(`Saved ${Object.keys(encodedEncounters).length} encounters to localStorage`);
       return true;
     } catch (error) {
-      console.error('Failed to save encounter:', error);
+      console.error('Failed to save encounter set:', error);
       return false;
     }
   }
 
   /**
-   * Load current encounter from localStorage
+   * Load all encounters from localStorage
    */
-  static loadCurrentEncounter(): Encounter {
+  static loadEncounterSet(): EncounterSet {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (!stored) {
-        console.log('No saved encounter found');
-        return { creatures: [] };
+        console.log('No saved encounters found, creating default');
+        const defaultEncounter = this.createDefaultEncounter();
+        return {
+          encounters: { [defaultEncounter.id]: defaultEncounter },
+          activeEncounterId: defaultEncounter.id
+        };
       }
 
       const data: EncounterStorageData = JSON.parse(stored);
-      // Always decode a deep copy for rendering
-      if (!data.currentEncounter) {
-        console.log('No current encounter in storage data');
-        return { creatures: [] };
-      }
-      const decodedEncounter = Decoderizer.decoderizer(_.cloneDeep(data.currentEncounter));
 
-      // Version compatibility check
-      if (data.version !== STORAGE_VERSION) {
-        console.warn(`Version mismatch: stored ${data.version}, current ${STORAGE_VERSION}`);
-        // Could implement migration logic here if needed
+      // Handle legacy single encounter format (version 1.0.0)
+      if (data.version === '1.0.0' && data.currentEncounter) {
+        console.log('Migrating from legacy encounter format');
+        const encounter: Encounter = {
+          id: this.generateId(),
+          name: 'Imported Encounter',
+          creatures: data.currentEncounter.creatures
+        };
+        return {
+          encounters: { [encounter.id]: encounter },
+          activeEncounterId: encounter.id
+        };
       }
 
-      const encounter = decodedEncounter || { creatures: [] };
-      console.log(`Loaded encounter with ${encounter.creatures.length} creatures from localStorage`);
-      return encounter;
+      // Decode encounters
+      const decodedEncounters: Record<string, Encounter> = {};
+      Object.entries(data.encounters).forEach(([id, encounter]) => {
+        decodedEncounters[id] = Decoderizer.decoderizer(_.cloneDeep(encounter));
+      });
+
+      // Validate active encounter ID exists
+      let activeId = data.activeEncounterId;
+      if (!decodedEncounters[activeId]) {
+        activeId = Object.keys(decodedEncounters)[0] || this.createDefaultEncounter().id;
+      }
+
+      const result: EncounterSet = {
+        encounters: decodedEncounters,
+        activeEncounterId: activeId
+      };
+
+      console.log(`Loaded ${Object.keys(decodedEncounters).length} encounters from localStorage`);
+      return result;
     } catch (error) {
-      console.error('Failed to load encounter:', error);
-      return { creatures: [] };
+      console.error('Failed to load encounter set:', error);
+      const defaultEncounter = this.createDefaultEncounter();
+      return {
+        encounters: { [defaultEncounter.id]: defaultEncounter },
+        activeEncounterId: defaultEncounter.id
+      };
     }
   }
 
   /**
-   * Clear saved encounter
+   * Load current encounter from localStorage (legacy method for backwards compatibility)
+   */
+  static loadCurrentEncounter(): Encounter {
+    const encounterSet = this.loadEncounterSet();
+    return encounterSet.encounters[encounterSet.activeEncounterId];
+  }
+
+  /**
+   * Save current encounter to localStorage (legacy method for backwards compatibility)
+   */
+  static saveCurrentEncounter(encounter: Encounter): boolean {
+    // Load existing set
+    const encounterSet = this.loadEncounterSet();
+
+    // Update or create the active encounter
+    if (!encounter.id) {
+      encounter.id = this.generateId();
+    }
+    if (!encounter.name) {
+      encounter.name = 'Unnamed Encounter';
+    }
+
+    encounterSet.encounters[encounter.id] = encounter;
+    encounterSet.activeEncounterId = encounter.id;
+
+    return this.saveEncounterSet(encounterSet);
+  }
+
+  /**
+   * Clear all saved encounters
    */
   static clearEncounterStorage(): boolean {
     try {
       localStorage.removeItem(STORAGE_KEY);
-      console.log('Cleared encounter storage');
+      console.log('Cleared all encounters from storage');
       return true;
     } catch (error) {
       console.error('Failed to clear encounter storage:', error);
       return false;
     }
+  }
+
+  /**
+   * Create a new encounter
+   */
+  static createEncounter(name: string, encounterSet: EncounterSet): EncounterSet {
+    const newEncounter: Encounter = {
+      id: this.generateId(),
+      name: name || 'New Encounter',
+      creatures: []
+    };
+
+    return {
+      ...encounterSet,
+      encounters: {
+        ...encounterSet.encounters,
+        [newEncounter.id]: newEncounter
+      },
+      activeEncounterId: newEncounter.id
+    };
+  }
+
+  /**
+   * Delete an encounter
+   */
+  static deleteEncounter(encounterId: string, encounterSet: EncounterSet): EncounterSet {
+    const updatedEncounters = { ...encounterSet.encounters };
+    delete updatedEncounters[encounterId];
+
+    // If we deleted the active one, switch to the first available
+    let activeId = encounterSet.activeEncounterId;
+    if (activeId === encounterId || !updatedEncounters[activeId]) {
+      activeId = Object.keys(updatedEncounters)[0];
+      if (!activeId) {
+        // If no encounters left, create a default one
+        const defaultEncounter = this.createDefaultEncounter();
+        updatedEncounters[defaultEncounter.id] = defaultEncounter;
+        activeId = defaultEncounter.id;
+      }
+    }
+
+    return {
+      encounters: updatedEncounters,
+      activeEncounterId: activeId
+    };
+  }
+
+  /**
+   * Rename an encounter
+   */
+  static renameEncounter(encounterId: string, newName: string, encounterSet: EncounterSet): EncounterSet {
+    if (!encounterSet.encounters[encounterId]) {
+      return encounterSet;
+    }
+
+    const updated = { ...encounterSet.encounters };
+    updated[encounterId] = {
+      ...updated[encounterId],
+      name: newName
+    };
+
+    return {
+      ...encounterSet,
+      encounters: updated
+    };
   }
 
   /**
@@ -108,26 +245,24 @@ export class EncounterStorage {
     try {
       const exportData: EncounterExportData = {
         version: STORAGE_VERSION,
-        encounters: [],
-        lastSaved: new Date().toISOString(),
-        currentEncounter: encounter,
+        encounter: encounter,
         exportDate: new Date().toISOString(),
         appName: 'Hellgrinder Encounter Builder'
       };
 
-      const blob = new Blob([JSON.stringify(exportData, null, 2)], { 
-        type: 'application/json' 
+      const blob = new Blob([JSON.stringify(exportData, null, 2)], {
+        type: 'application/json'
       });
-      
+
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `hellgrinder-encounter-${new Date().toISOString().split('T')[0]}.json`;
+      link.download = `hellgrinder-encounter-${encounter.name}-${new Date().toISOString().split('T')[0]}.json`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
-      
+
       console.log('Encounter exported successfully');
     } catch (error) {
       console.error('Failed to export encounter:', error);
@@ -140,29 +275,48 @@ export class EncounterStorage {
   static importEncounter(file: File): Promise<Encounter> {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
-      
+
       reader.onload = (event) => {
         try {
           const content = event.target?.result as string;
-          const data: EncounterExportData = JSON.parse(content);
-          
-          // Validate data structure
-          if (!data.currentEncounter || !Array.isArray(data.currentEncounter.creatures)) {
+          const data: any = JSON.parse(content);
+
+          let encounter: Encounter;
+
+          // Handle both new and legacy formats
+          if (data.encounter) {
+            encounter = data.encounter;
+          } else if (data.currentEncounter) {
+            encounter = {
+              id: this.generateId(),
+              name: 'Imported Encounter',
+              creatures: data.currentEncounter.creatures
+            };
+          } else {
             throw new Error('Invalid encounter file format');
           }
-          
+
+          // Validate data structure
+          if (!Array.isArray(encounter.creatures)) {
+            throw new Error('Invalid encounter creatures array');
+          }
+
+          // Ensure encounter has required fields
+          if (!encounter.id) encounter.id = this.generateId();
+          if (!encounter.name) encounter.name = 'Imported Encounter';
+
           console.log('Encounter imported successfully');
-          resolve(data.currentEncounter);
+          resolve(encounter);
         } catch (error) {
           console.error('Failed to parse encounter file:', error);
           reject(error);
         }
       };
-      
+
       reader.onerror = () => {
         reject(new Error('Failed to read file'));
       };
-      
+
       reader.readAsText(file);
     });
   }
@@ -170,22 +324,29 @@ export class EncounterStorage {
   /**
    * Get storage statistics
    */
-  static getStorageInfo(): { hasData: boolean; lastSaved?: string; creatureCount: number } {
+  static getStorageInfo(): { hasData: boolean; lastSaved?: string; encounterCount: number; totalCreatures: number } {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (!stored) {
-        return { hasData: false, creatureCount: 0 };
+        return { hasData: false, encounterCount: 0, totalCreatures: 0 };
       }
 
       const data: EncounterStorageData = JSON.parse(stored);
+      let totalCreatures = 0;
+      Object.values(data.encounters).forEach(encounter => {
+        totalCreatures += encounter.creatures.length;
+      });
+
       return {
         hasData: true,
         lastSaved: data.lastSaved,
-        creatureCount: data.currentEncounter?.creatures.length || 0
+        encounterCount: Object.keys(data.encounters).length,
+        totalCreatures
       };
     } catch (error) {
       console.error('Failed to get storage info:', error);
-      return { hasData: false, creatureCount: 0 };
+      return { hasData: false, encounterCount: 0, totalCreatures: 0 };
     }
   }
 }
+

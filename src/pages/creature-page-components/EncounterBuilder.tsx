@@ -5,11 +5,12 @@ import CreatureCard from "./CreatureCard/CreatureCard";
 import CollapsibleSection from "../creature-page-components/CollapsibleSection/CollapsibleSection";
 import FactionSelector from "../creature-page-components/FactionSelector/FactionSelector";
 import EncounterSection from "../creature-page-components/EncounterSection";
+import EncounterTabs from "../creature-page-components/EncounterTabs/EncounterTabs";
 import FloatingPanelsContainer from "../character-creation-components/FloatingPanels/FloatingPanelsContainer";
 import SingleFactionDisplayRegion from './SingleFactionDisplayRegion/SingleFactionDisplayRegion';
 // Types
 import { Creature } from "../../ts-types/creature-types";
-import { Encounter, EncounterCreature } from "../../ts-types/encounter-types";
+import { Encounter, EncounterCreature, EncounterSet } from "../../ts-types/encounter-types";
 // Data
 import GenCreatures from "../../common-design/creatures/generic-creatures";
 import RotHostCreatures from "../../common-design/creatures/test-creatures";
@@ -22,82 +23,172 @@ import { EncounterStorage } from "../../common-design/utils/EncounterStorage";
 
 export default function EncounterBuilder() {
   const [selectedFaction, setSelectedFaction] = useState<string>('Generic');
-  const [encounter, setEncounter] = useState<Encounter>({ creatures: [] });
+  const [encounterSet, setEncounterSet] = useState<EncounterSet>({
+    encounters: {},
+    activeEncounterId: ''
+  });
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Load encounter from localStorage on component mount
+  // Load encounters from localStorage on component mount
   useEffect(() => {
-    const savedEncounter = EncounterStorage.loadCurrentEncounter();
-    setEncounter(savedEncounter);
+    const savedEncounterSet = EncounterStorage.loadEncounterSet();
+    setEncounterSet(savedEncounterSet);
     setIsLoaded(true);
   }, []);
 
-  // Save encounter to localStorage whenever it changes (but not on initial load)
+  // Save encounters to localStorage whenever they change (but not on initial load)
   useEffect(() => {
     if (isLoaded) {
       console.log('================================');
-      console.log('Encounter loaded:', encounter);
-      EncounterStorage.saveCurrentEncounter(encounter);
+      console.log('Encounter set updated:', encounterSet);
+      EncounterStorage.saveEncounterSet(encounterSet);
     }
-  }, [encounter, isLoaded]);
+  }, [encounterSet, isLoaded]);
 
   const handleFactionChange = (faction: string) => {
     setSelectedFaction(faction);
   };
 
+  const activeEncounter = encounterSet.encounters[encounterSet.activeEncounterId];
+
   const handleAddToEncounter = (creature: Creature) => {
+    if (!activeEncounter) { return; }
+
     const newEncounterCreature: EncounterCreature = {
       id: `encounter-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
       creature: creature,
       currentHealth: creature.health,
       maxHealth: creature.health
     };
-    
-    setEncounter(prev => ({
+
+    setEncounterSet(prev => ({
       ...prev,
-      creatures: [...prev.creatures, newEncounterCreature]
+      encounters: {
+        ...prev.encounters,
+        [prev.activeEncounterId]: {
+          ...activeEncounter,
+          creatures: [...activeEncounter.creatures, newEncounterCreature]
+        }
+      }
     }));
   };
 
   const handleRemoveFromEncounter = (id: string) => {
-    setEncounter(prev => ({
+    if (!activeEncounter) return;
+
+    setEncounterSet(prev => ({
       ...prev,
-      creatures: prev.creatures.filter(c => c.id !== id)
+      encounters: {
+        ...prev.encounters,
+        [prev.activeEncounterId]: {
+          ...activeEncounter,
+          creatures: activeEncounter.creatures.filter(c => c.id !== id)
+        }
+      }
     }));
   };
 
   const handleHealthChange = (id: string, newHealth: number) => {
-    setEncounter(prev => ({
+    if (!activeEncounter) return;
+
+    setEncounterSet(prev => ({
       ...prev,
-      creatures: prev.creatures.map(c => 
-        c.id === id ? { ...c, currentHealth: newHealth } : c
-      )
+      encounters: {
+        ...prev.encounters,
+        [prev.activeEncounterId]: {
+          ...activeEncounter,
+          creatures: activeEncounter.creatures.map(c =>
+            c.id === id ? { ...c, currentHealth: newHealth } : c
+          )
+        }
+      }
     }));
   };
 
   const handleClearEncounter = () => {
-    const emptyEncounter = { creatures: [] };
-    setEncounter(emptyEncounter);
-    EncounterStorage.clearEncounterStorage();
+    if (!activeEncounter) return;
+
+    setEncounterSet(prev => ({
+      ...prev,
+      encounters: {
+        ...prev.encounters,
+        [prev.activeEncounterId]: {
+          ...activeEncounter,
+          creatures: []
+        }
+      }
+    }));
+  };
+
+  const handleSelectEncounter = (encounterId: string) => {
+    setEncounterSet(prev => ({
+      ...prev,
+      activeEncounterId: encounterId
+    }));
+  };
+
+  const handleAddEncounter = () => {
+    const existingNames = Object.values(encounterSet.encounters).map(e => e.name);
+    let newName = 'New Encounter';
+    let counter = 1;
+    while (existingNames.includes(newName)) {
+      newName = `New Encounter ${++counter}`;
+    }
+
+    const newEncounterSet = EncounterStorage.createEncounter(newName, encounterSet);
+    setEncounterSet(newEncounterSet);
+  };
+
+  const handleDeleteEncounter = (encounterId: string) => {
+    if (confirm(`Delete encounter? This cannot be undone.`)) {
+      const newEncounterSet = EncounterStorage.deleteEncounter(encounterId, encounterSet);
+      setEncounterSet(newEncounterSet);
+    }
+  };
+
+  const handleRenameEncounter = (encounterId: string, newName: string) => {
+    const newEncounterSet = EncounterStorage.renameEncounter(encounterId, newName, encounterSet);
+    setEncounterSet(newEncounterSet);
   };
 
   const handleImportEncounter = (importedEncounter: Encounter) => {
-    setEncounter(importedEncounter);
+    // Add imported encounter to the set
+    setEncounterSet(prev => ({
+      ...prev,
+      encounters: {
+        ...prev.encounters,
+        [importedEncounter.id]: importedEncounter
+      },
+      activeEncounterId: importedEncounter.id
+    }));
   };
 
-  const hasEncounterCreatures = encounter.creatures.length > 0;
+  const hasEncounterCreatures: boolean = (activeEncounter?.creatures.length ?? 0) > 0;
+
+  if (!isLoaded || !activeEncounter) {
+    return <div>Loading encounters...</div>;
+  }
 
   return (<>
 
+    {/* Encounter Tabs - for switching between encounters */}
+    <EncounterTabs
+      encounterSet={encounterSet}
+      onSelectEncounter={handleSelectEncounter}
+      onAddEncounter={handleAddEncounter}
+      onDeleteEncounter={handleDeleteEncounter}
+      onRenameEncounter={handleRenameEncounter}
+    />
+
     {/* Encounter Section - appears at top when there are creatures */}
     <EncounterSection
-      encounter={encounter}
+      encounter={activeEncounter}
       onRemoveCreature={handleRemoveFromEncounter}
       onHealthChange={handleHealthChange}
       onClearEncounter={handleClearEncounter}
       onImportEncounter={handleImportEncounter}
     />
-    
+
     {/* Floating Panels for Dice Roller - only show when encounter is active */}
     {hasEncounterCreatures && (
       <FloatingPanelsContainer
@@ -106,7 +197,7 @@ export default function EncounterBuilder() {
         characterName="Encounter"
       />
     )}
-    
+
     <h2>Enemies</h2>
     <p>
       Enemies mark the threats the players may face in combat.
@@ -127,8 +218,8 @@ export default function EncounterBuilder() {
       <p>Enemies should be tough. Archfiends should be a hell of a battle, Lords and Overlords should be virtually unbeatable. Probably not worth even statting out.</p>
     </>
 
-    <CollapsibleSection 
-      title="Faction Examples" 
+    <CollapsibleSection
+      title="Faction Examples"
       isOpenByDefault={true}
       description="Example creatures from each major faction, showcasing the faction-based color-coding system."
       className="faction faction-examples"
@@ -136,17 +227,17 @@ export default function EncounterBuilder() {
       <div className='creatures-grid'>
         {Tools
           .sortCreatures(FactionExamples)
-          .map((creature, i) => 
-            <CreatureCard 
-              key={`faction-example-${creature.name}-${i}`} 
-              data={creature} 
+          .map((creature, i) =>
+            <CreatureCard
+              key={`faction-example-${creature.name}-${i}`}
+              data={creature}
               onAddToEncounter={handleAddToEncounter}
             />
-        )}
+          )}
       </div>
     </CollapsibleSection>
 
-    <CollapsibleSection 
+    <CollapsibleSection
       title="Generic Enemies"
       isOpenByDefault={false}
       description="Generic types of demons that can be customized using the faction selector below."
@@ -156,12 +247,12 @@ export default function EncounterBuilder() {
         You can fill out encounters by picking some of these enemies, and updating them accordingly.
         Using the table below, you can see which placeholder value should be swapped for which types.
       </p>
-      
-      <FactionSelector 
+
+      <FactionSelector
         selectedFaction={selectedFaction}
         onFactionChange={handleFactionChange}
       />
-      
+
       {/* <GenericToNongenericTable /> */}
       <br />
       <div className='creatures-grid'>
@@ -180,7 +271,7 @@ export default function EncounterBuilder() {
         }
       </div>
     </CollapsibleSection>
-    <CollapsibleSection 
+    <CollapsibleSection
       title="Sinners"
       isOpenByDefault={false}
       description="The damned, compelled to eternal punishment for their sins."
@@ -195,12 +286,12 @@ export default function EncounterBuilder() {
         {Tools
           .sortCreatures(Sinners)
           .map((creature, i) =>
-            <CreatureCard 
-              key={`sinner-creature-${creature.name}-${i}`} 
-              data={creature} 
+            <CreatureCard
+              key={`sinner-creature-${creature.name}-${i}`}
+              data={creature}
               onAddToEncounter={handleAddToEncounter}
             />
-        )}
+          )}
       </div>
     </CollapsibleSection>
     <SingleFactionDisplayRegion

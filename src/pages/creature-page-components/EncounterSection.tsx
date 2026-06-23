@@ -3,6 +3,7 @@ import { Encounter } from '../../ts-types/encounter-types';
 import CreatureCard from './CreatureCard/CreatureCard';
 import CollapsibleSection from './CollapsibleSection/CollapsibleSection';
 import { EncounterStorage } from '../../common-design/utils/EncounterStorage';
+import { getCreatureTierCounts, formatTierCounts } from '../../common-design/utils/EncounterUtils';
 
 type Props = {
   encounter: Encounter;
@@ -12,20 +13,22 @@ type Props = {
   onImportEncounter?: (encounter: Encounter) => void;
 };
 
-export default function EncounterSection({ 
-  encounter, 
-  onRemoveCreature, 
-  onHealthChange, 
+export default function EncounterSection({
+  encounter,
+  onRemoveCreature,
+  onHealthChange,
   onClearEncounter,
   onImportEncounter
 }: Props) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const creatureCount = encounter.creatures.length;
+  const tierCounts = getCreatureTierCounts(encounter);
+  const tierCountsStr = formatTierCounts(tierCounts);
+
   const title = `Encounter (${creatureCount} creature${creatureCount !== 1 ? 's' : ''})`;
-  
-  // if (creatureCount === 0) {
-  //   return null; // Don't show the section if there are no creatures
-  // }
+  const description = tierCountsStr
+    ? `Current encounter setup ${tierCountsStr}. Click creature health values to edit them.`
+    : 'Current encounter setup. Click creature health values to edit them.';
 
   const handleExportEncounter = () => {
     EncounterStorage.exportEncounter(encounter);
@@ -54,7 +57,7 @@ export default function EncounterSection({
     <CollapsibleSection
       title={title}
       isOpenByDefault={true}
-      description="Current encounter setup. Click creature health values to edit them."
+      description={description}
       className="encounter-section"
     >
       <div className="encounter-controls">
@@ -65,21 +68,21 @@ export default function EncounterSection({
           onChange={handleFileChange}
           style={{ display: 'none' }}
         />
-        <button 
+        <button
           className="import-encounter-btn"
           onClick={handleImportClick}
           title="Import encounter from file"
         >
           Import
         </button>
-        <button 
+        <button
           className="export-encounter-btn"
           onClick={handleExportEncounter}
           title="Export encounter to file"
         >
           Export
         </button>
-        <button 
+        <button
           className="clear-encounter-btn"
           onClick={onClearEncounter}
           title="Clear all creatures from encounter"
@@ -87,7 +90,7 @@ export default function EncounterSection({
           Clear Encounter
         </button>
       </div>
-      
+
       <div className='creatures-grid encounter-grid'>
         {encounter.creatures.map((encounterCreature) => (
           <CreatureCard

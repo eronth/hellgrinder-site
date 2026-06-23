@@ -9,5 +9,12 @@ export type EncounterCreature = {
 };
 
 export type Encounter = {
+  id: string;
+  name: string;
   creatures: EncounterCreature[];
+};
+
+export type EncounterSet = {
+  encounters: Record<string, Encounter>;
+  activeEncounterId: string;
 };

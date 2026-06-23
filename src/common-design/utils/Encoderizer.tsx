@@ -8,7 +8,11 @@ import _ from "lodash";
 export class Encoderizer {
 
   static extraSpecialEncounterCopier(encounter: Encounter): Encounter {
-    const newEncounter: Encounter = {creatures: []};
+    const newEncounter: Encounter = {
+      id: encounter.id,
+      name: encounter.name,
+      creatures: []
+    };
     const ec = encounter.creatures;
     ec?.forEach((ec) => {
       const newEncounterCreature = {

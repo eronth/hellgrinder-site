@@ -30,12 +30,7 @@ export default function CurrentStatusEffects({
   editEffectDialogReactState: [editEffectDialog, setEditEffectDialog]
 }: Props) {
   
-  // Helper to get effects array, looking up from database if it's missing (due to serialization)
   const getEffects = (activeEffect: ActiveStatusEffect) => {
-    if (activeEffect.effects && activeEffect.effects.length > 0) {
-      return activeEffect.effects;
-    }
-    // Effects missing - look up from database by normalized name
     const normalizedName = normalizeStatusEffectName(activeEffect.name);
     const dbEffect = Object.values(StatusEffects).find(
       effect => normalizeStatusEffectName(effect.name) === normalizedName
@@ -108,6 +103,7 @@ export default function CurrentStatusEffects({
                   </RuleKeyword>
                 </div>
                 <div className="description">
+                  {activeEffect.description}
                   {(() => {
                     const effects = getEffects(activeEffect);
                     return effects.length > 0 ? (

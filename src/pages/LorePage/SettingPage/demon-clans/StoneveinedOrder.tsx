@@ -1,4 +1,4 @@
-import RuleKeyword from "../../../../common-design/RuleKeyword";
+import RuleKeyword from "../../../../components/keywords/RuleKeyword";
 import { HeaderSize } from "../../../../ts-types/types";
 import DemonClanComponent from "./DemonClanComponent/DemonClanComponent";
 

@@ -1,7 +1,7 @@
 import React from "react";
 // Common Components
-import Page from "../../common-design/Page";
-import { Toggle } from '../../common-design/Toggle/Toggle';
+import Page from "../../components/common/Page/Page";
+import { Toggle } from '../../components/common/generic/Toggle/Toggle';
 // Types
 import { TabType } from "../../ts-types/types";
 // Components

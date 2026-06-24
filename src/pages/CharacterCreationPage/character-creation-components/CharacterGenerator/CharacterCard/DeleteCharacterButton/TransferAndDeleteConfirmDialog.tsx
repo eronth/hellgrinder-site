@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import ConfirmDialog from "../../ConfirmDialog/ConfirmDialog";
-import { CharacterDesign } from "../../CharacterGenerator";
-import CharacterGeneratorTools from "../../../../../../common-design/CharacterGeneratorTools";
+import CharacterGeneratorTools from "../../../../../../utils/characterGeneratorTools";
+import { CharacterDesign } from "../../../../../../ts-types/player-character-types";
 
 type Props = {
   isOpenReactState: [boolean, React.Dispatch<React.SetStateAction<boolean>>];

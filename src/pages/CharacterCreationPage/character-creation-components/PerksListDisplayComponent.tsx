@@ -1,7 +1,7 @@
 import PerkComponent from "./perks/PerkComponent.tsx";
-import Perks from "../../../common-design/equipment/perks.tsx";
-import Tools from "../../../common-design/Tools.tsx";
-import Hx from "../../../common-design/Hx/Hx.tsx";
+import Perks from "../../../data/equipment/perks.tsx";
+import Tools from "../../../utils/tools.tsx";
+import Hx from "../../../components/common/generic/Hx/Hx";
 
 export default function PerksListDisplayComponent() {
   const outerHx = 3;

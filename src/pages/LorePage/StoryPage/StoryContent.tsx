@@ -1,6 +1,6 @@
-import Hx from '../../../common-design/Hx/Hx';
-import Faction from '../../../common-design/story-references/Faction';
-import TM from '../../../common-design/TM';
+import Hx from "../../../components/common/generic/Hx/Hx";
+import Faction from '../../../components/keywords/story-references/Faction';
+import TM from '../../../components/common/generic/TM/TM';
 
 export default function StoryContent() {
 

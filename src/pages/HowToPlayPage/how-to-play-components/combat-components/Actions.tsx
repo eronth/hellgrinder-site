@@ -1,7 +1,7 @@
-import { movementIcon } from "../../../../common-design/CommonIcons";
-import Hx from "../../../../common-design/Hx/Hx";
-import RuleKeyword from "../../../../common-design/RuleKeyword";
-import SkillCheck from "../../../../common-design/SkillCheck/SkillCheck";
+import { movementIcon } from "../../../../utils/commonIcons";
+import Hx from "../../../../components/common/generic/Hx/Hx";
+import RuleKeyword from "../../../../components/keywords/RuleKeyword";
+import SkillCheck from "../../../../components/keywords/SkillCheck/SkillCheck";
 
 export default function Actions() {
   const innerHx = 4;

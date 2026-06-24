@@ -1,4 +1,4 @@
-import { CharacterDesign } from "../../CharacterGenerator";
+import { CharacterDesign } from "../../../../../../ts-types/player-character-types.tsx";
 import KitComponent from "../../../kits/Kit.tsx";
 
 type Props = {

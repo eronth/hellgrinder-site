@@ -1,6 +1,6 @@
-import { movementIcon } from "../../../../common-design/CommonIcons";
-import Hx from "../../../../common-design/Hx/Hx";
-import SkillCheck from "../../../../common-design/SkillCheck/SkillCheck";
+import { movementIcon } from "../../../../utils/commonIcons";
+import Hx from "../../../../components/common/generic/Hx/Hx";
+import SkillCheck from "../../../../components/keywords/SkillCheck/SkillCheck";
 import CheckResultsGrid from "../CheckResultsGrid/CheckResultsGrid";
 import IndividualManeuver from "./IndividualManeuver";
 

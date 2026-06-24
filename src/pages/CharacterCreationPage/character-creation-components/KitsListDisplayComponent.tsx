@@ -1,7 +1,7 @@
 import Kit from "./kits/Kit";
-import CombatKits from "../../../common-design/equipment/combat-kits";
-import SupportKits from "../../../common-design/equipment/support-kits";
-import Hx from "../../../common-design/Hx/Hx";
+import CombatKits from "../../../data/equipment/combat-kits";
+import SupportKits from "../../../data/equipment/support-kits";
+import Hx from "../../../components/common/generic/Hx/Hx";
 
 
 export default function KitsListDisplayComponent() {

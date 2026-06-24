@@ -1,7 +1,7 @@
-import StatusEffects from '../../../../../../common-design/game-terms/status-effects';
+import StatusEffects from '../../../../../../data/status-effects';
 // Types
 import { ActiveStatusEffect, StatusEffect } from "../../../../../../ts-types/types";
-import { CharacterDesign } from "../../CharacterGenerator";
+import { CharacterDesign } from '../../../../../../ts-types/player-character-types';
 // Components
 import AddStatusEffectDialog from "../Modify Effects/AddStatusEffectDialog/AddStatusEffectDialog";
 import StatusEffectsCard from "../StatusEffectsCard/StatusEffectsCard";
@@ -57,7 +57,7 @@ export default function AvailableStatusEffects({
 
   const confirmAddEffect = () => {
     const { effect, x, y } = addEffectDialog;
-    if (!effect) return;
+    if (!effect) { return; }
 
     // Check if this status effect already exists
     const existingIndex = character.statusEffects.findIndex(
@@ -81,10 +81,10 @@ export default function AvailableStatusEffects({
       
       onUpdateCharacter(selectedCharacterId, { statusEffects: newStatusEffects });
     } else {
-      // Add new effect
-      const effectSansXY: Omit<StatusEffect, 'x' | 'y'> = { ...effect };
+      // Add new effect (exclude effects[] — React nodes can't be serialized to localStorage)
       const activeEffect: ActiveStatusEffect = {
-        ...effectSansXY,
+        name: effect.name,
+        description: effect.description,
         ...(effect.x !== undefined ? { x } : {}),
         ...(effect.y !== undefined ? { y } : {})
       };

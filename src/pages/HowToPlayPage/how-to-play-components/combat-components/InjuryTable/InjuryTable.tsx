@@ -1,8 +1,8 @@
 import InjuryTableRow from "./InjuryTableRow";
 import { InjuryRow } from "../../../../../ts-types/table-types";
-import StatusKeyword from "../../../../../common-design/StatusKeyword";
-import { movementIcon } from "../../../../../common-design/CommonIcons";
-import SkillCheck from "../../../../../common-design/SkillCheck/SkillCheck";
+import StatusKeyword from "../../../../../components/keywords/StatusKeyword";
+import { movementIcon } from "../../../../../utils/commonIcons";
+import SkillCheck from "../../../../../components/keywords/SkillCheck/SkillCheck";
 import CheckResultsGrid from "../../CheckResultsGrid/CheckResultsGrid";
 
 export default function InjuryTable() {

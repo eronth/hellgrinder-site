@@ -3,7 +3,7 @@ import { HeaderSize } from "../../../../../ts-types/types";
 import { useTheme } from "../../../../../hooks/useTheme";
 import { FactionTheme } from "../../../../../types/theme";
 import { DemonFactionTags, OtherFactionTags, PluralizedFactionTags } from "../../../../../ts-types/tag-types";
-import Hx from "../../../../../common-design/Hx/Hx";
+import Hx from "../../../../../components/common/generic/Hx/Hx";
 import "./DemonClanComponent.css";
 
 type Props = {

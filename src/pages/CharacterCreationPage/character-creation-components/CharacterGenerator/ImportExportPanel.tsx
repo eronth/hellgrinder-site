@@ -1,8 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faFolder, faSave, faDownload, faUpload, faTrash, faLightbulb, faBolt } from '@fortawesome/free-solid-svg-icons';
-import { CharacterDesign } from './CharacterGenerator';
-import { CharacterStorage } from '../../../../common-design/utils/CharacterStorage';
+import { CharacterDesign } from '../../../../ts-types/player-character-types';
+import { CharacterStorage } from '../../../../local-storage/CharacterStorage';
 import './ImportExportPanel.css';
 
 interface Props {

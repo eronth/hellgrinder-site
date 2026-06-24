@@ -1,7 +1,7 @@
-import Page from "../common-design/Page";
+import Page from "../components/common/Page/Page";
 import { TabType } from "../ts-types/types";
-import Tools from "../common-design/Tools";
-import Perks from "../common-design/equipment/perks";
+import Tools from "../utils/tools";
+import Perks from "../data/equipment/perks";
 import PerkComponent from "./CharacterCreationPage/character-creation-components/perks/PerkComponent";
 
 export default function AdvancedPerksPage() {

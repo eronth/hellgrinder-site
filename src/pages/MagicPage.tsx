@@ -1,5 +1,5 @@
 import GameTitle from "../GameTitle/GameTitle";
-import NavTabs from "../common-design/nav/NavTabs";
+import NavTabs from "../components/nav/NavTabs";
 import { TabType } from "../ts-types/types";
 
 export default function MagicPage() {

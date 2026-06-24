@@ -1,5 +1,5 @@
 import { Training } from '../../../../../ts-types/types.tsx';
-import Tags from '../../../../../common-design/Tags.tsx';
+import Tags from '../../../../../components/keywords/Tags.tsx';
 
 type Props = {
   training: Training;

@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
-import { CharacterDesign } from "../../CharacterGenerator";
+import { CharacterDesign } from "../../../../../../ts-types/player-character-types";
 import "./EditableCharacterName.css";
 
 type Props = {

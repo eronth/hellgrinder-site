@@ -1,7 +1,7 @@
-import Hx from "../../../common-design/Hx/Hx.tsx";
-import Tools from "../../../common-design/Tools";
-import StatusEffectComponent from "../../../common-design/game-terms/StatusEffectComponent";
-import StatusEffects from "../../../common-design/game-terms/status-effects.tsx"
+import Hx from "../../../components/common/generic/Hx/Hx";
+import Tools from "../../../utils/tools.tsx";
+import StatusEffectComponent from "../../../components/common/StatusEffectComponent/StatusEffectComponent.tsx";
+import StatusEffects from "../../../data/status-effects.tsx"
 // Combat Components
 import Actions from "./combat-components/Actions";
 import Maneuvers from "./combat-components/Maneuvers";

@@ -111,9 +111,11 @@ export type StatusEffect = {
   y?: number | "Y";
 };
 
-export type ActiveStatusEffect = Omit<StatusEffect, 'x' | 'y'> & {
+export type ActiveStatusEffect = {
+  name: string;
+  description: string;
   x?: number;
   y?: number;
-} 
+}
 
 export type { HeaderSize, Kit, Training, Item, Perk, TabType, DamageElement };

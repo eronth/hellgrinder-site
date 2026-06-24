@@ -1,5 +1,5 @@
-import Page from "../../../common-design/Page";
-import SubPageNav from "../../../common-design/nav/SubPageNav";
+import Page from "../../../components/common/Page/Page";
+import SubPageNav from "../../../components/nav/SubPageNav";
 import { TabType } from "../../../ts-types/types";
 import StoryContent from "./StoryContent";
 

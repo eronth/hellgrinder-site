@@ -1,5 +1,5 @@
 import GameTitle from "../../GameTitle/GameTitle";
-import NavCluster from "../../common-design/nav/NavCluster";
+import NavCluster from "../../components/nav/NavCluster";
 //import './FancyIndexPage.css';
 
 export default function FancyIndexPage() {

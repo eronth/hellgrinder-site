@@ -1,9 +1,9 @@
 import React from "react";
-import { CharacterDesign } from "../../CharacterGenerator";
-import DeleteConfirmDialog from "./DeleteConfirmDialog";
-import TransferAndDeleteConfirmDialog from "./TransferAndDeleteConfirmDialog";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { CharacterDesign } from "../../../../../../ts-types/player-character-types";
+import DeleteConfirmDialog from "./DeleteConfirmDialog";
+import TransferAndDeleteConfirmDialog from "./TransferAndDeleteConfirmDialog";
 
 type Props = {
   character: CharacterDesign;

@@ -7,7 +7,7 @@ import UmbralNexus from "./UmbralNexus.tsx";
 import VastfathomDominion from "./VastfathomDominion.tsx";
 import WanderlostCrews from "./WanderlostCrews.tsx";
 import RotHost from "./RotHost.tsx";
-import Hx from "../../../../common-design/Hx/Hx.tsx";
+import Hx from "../../../../components/common/generic/Hx/Hx";
 
 export default function DemonClans() {
   const titleHxLevel: HeaderSize = 3;

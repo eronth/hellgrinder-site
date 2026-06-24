@@ -2,8 +2,8 @@ import React, { isValidElement, useState } from 'react';
 // Components
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-import { healthIcon, movementIcon } from '../../../../common-design/CommonIcons';
-import AttackModeComponent from '../../../../common-design/AttackModeComponent';
+import { healthIcon, movementIcon } from '../../../../utils/commonIcons';
+import AttackModeComponent from '../../../../components/common/AttackModeComponent/AttackModeComponent';
 import DamageModComponent from '../DamageModComponent';
 import CreatureTooltip from './CreatureTooltip';
 // Types

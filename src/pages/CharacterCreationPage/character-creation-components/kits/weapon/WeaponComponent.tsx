@@ -1,7 +1,7 @@
 import WeaponName from './weapon-components/WeaponName';
 import {Weapon } from '../../../../../ts-types/types';
-import AttackModeComponent from "../../../../../common-design/AttackModeComponent.tsx";
-import Tags from '../../../../../common-design/Tags.tsx';
+import AttackModeComponent from "../../../../../components/common/AttackModeComponent/AttackModeComponent.tsx";
+import Tags from '../../../../../components/keywords/Tags.tsx';
 
 type Props = {
   weapon: Weapon;

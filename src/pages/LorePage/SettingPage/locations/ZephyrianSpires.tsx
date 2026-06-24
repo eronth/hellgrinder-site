@@ -1,5 +1,5 @@
-import Hx from "../../../../common-design/Hx/Hx";
-import Tools from "../../../../common-design/Tools";
+import Hx from "../../../../components/common/generic/Hx/Hx";
+import Tools from "../../../../utils/tools";
 import { HeaderSize } from "../../../../ts-types/types";
 
 type Props = {

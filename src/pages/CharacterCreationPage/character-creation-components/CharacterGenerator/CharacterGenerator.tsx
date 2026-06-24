@@ -1,51 +1,20 @@
 import React, { useMemo } from "react";
-import { TabType, Kit, Perk, Weapon, Item, ActiveStatusEffect } from "../../../../ts-types/types.tsx";
-import CharacterGeneratorTools from "../../../../common-design/CharacterGeneratorTools";
+import { TabType } from "../../../../ts-types/types.tsx";
+import CharacterGeneratorTools from "../../../../utils/characterGeneratorTools.tsx";
 import ConfirmDialog from "./ConfirmDialog/ConfirmDialog";
-import FloatingPanelsContainer from "../../../../common-design/FloatingPanels/FloatingPanelsContainer";
+import FloatingPanelsContainer from "../../../../components/common/FloatingPanels/FloatingPanelsContainer.tsx";
 import ImportExportPanel from "./ImportExportPanel.tsx";
 import NotificationToast, { Notification } from "./NotificationToast.tsx";
-import { CharacterStats } from "./CharacterStatsGrid/CharacterStatsGrid.tsx";
-import { CharacterStorage } from "../../../../common-design/utils/CharacterStorage.tsx";
+import { CharacterStorage } from "../../../../local-storage/CharacterStorage.tsx";
 import CharacterCard from "./CharacterCard/CharacterCard.tsx";
+import { CharacterDesign } from "../../../../ts-types/player-character-types.tsx";
 import './CharacterGenerator.css';
-
-
-export type CharacterDesign = {
-  id: string,
-  name: string,
-  stats: CharacterStats,
-  startingCombatKits: number, startingSupportKits: number,
-  kits: Kit[], 
-  perks: Perk[], // All perks (starting + acquired)
-  bonuses: string[],
-  specializationBonus: string, specializationPenalty: string,
-  // Separate inventory for items/weapons acquired during play
-  inventory: {
-    weapons: Weapon[],
-    items: Item[]
-  },
-  // Active status effects with their actual X/Y values
-  statusEffects: ActiveStatusEffect[],
-  notes: string
-};
-
-export type AttackBonusStat
-  = 'Short Range Shooting'
-  | 'Medium Range Shooting'
-  | 'Long Range Shooting'
-  | 'Melee'
-  | 'Arcane'
-  | 'Thrown';
-export type HealthStat = { current: number, max: number };
-
 
 export default function CharacterGenerator() {
   const page: TabType = 'character-generator';
   const [characters, setCharacters] = React.useState([] as CharacterDesign[]);
   const [selectedCharacterId, setSelectedCharacterId] = React.useState(null as string | null);
-
-
+  
   const [notifications, setNotifications] = React.useState<Notification[]>([]);
   const hasShownInitialLoadNotification = React.useRef(false);
   

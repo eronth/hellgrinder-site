@@ -1,9 +1,9 @@
-import { movementIcon } from "../../../../common-design/CommonIcons";
-import HitCheck from "../../../../common-design/HitCheck/HitCheck";
-import Hx from "../../../../common-design/Hx/Hx";
-import RuleKeyword from "../../../../common-design/RuleKeyword";
-import SkillCheck from "../../../../common-design/SkillCheck/SkillCheck";
-import StatusKeyword from "../../../../common-design/StatusKeyword";
+import { movementIcon } from "../../../../utils/commonIcons";
+import HitCheck from "../../../../components/keywords/HitCheck/HitCheck";
+import Hx from "../../../../components/common/generic/Hx/Hx";
+import RuleKeyword from "../../../../components/keywords/RuleKeyword";
+import SkillCheck from "../../../../components/keywords/SkillCheck/SkillCheck";
+import StatusKeyword from "../../../../components/keywords/StatusKeyword";
 import CheckResultsGrid from "../CheckResultsGrid/CheckResultsGrid";
 import IndividualManeuver from "./IndividualManeuver";
 import './Maneuvers.css';

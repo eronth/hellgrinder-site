@@ -1,6 +1,6 @@
+import { CharacterDesign } from "../../../../../../ts-types/player-character-types";
 import ItemComponent from "../../../kits/item/ItemComponent";
 import WeaponComponent from "../../../kits/weapon/WeaponComponent";
-import { CharacterDesign } from "../../CharacterGenerator";
 
 type Props = {
   character: CharacterDesign;

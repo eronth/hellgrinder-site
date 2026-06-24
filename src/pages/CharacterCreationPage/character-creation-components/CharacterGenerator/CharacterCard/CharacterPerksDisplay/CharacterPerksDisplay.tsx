@@ -1,5 +1,5 @@
 import PerkComponent from "../../../perks/PerkComponent";
-import { CharacterDesign } from "../../CharacterGenerator";
+import { CharacterDesign } from "../../../../../../ts-types/player-character-types";
 import { Perk } from "../../../../../../ts-types/types";
 
 type Props = {

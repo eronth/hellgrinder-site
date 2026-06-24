@@ -1,4 +1,4 @@
-import Hx from "../../../common-design/Hx/Hx";
+import Hx from "../../../components/common/generic/Hx/Hx";
 import CharacterStatsGrid from "./CharacterGenerator/CharacterStatsGrid/CharacterStatsGrid";
 
 export default function CreationCoreRules() {

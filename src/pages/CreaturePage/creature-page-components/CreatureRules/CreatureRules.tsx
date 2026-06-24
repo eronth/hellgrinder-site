@@ -1,7 +1,7 @@
-import Hx from "../../../../common-design/Hx/Hx";
-import Tools from "../../../../common-design/Tools";
+import Hx from "../../../../components/common/generic/Hx/Hx";
+import Tools from "../../../../utils/tools";
 import CreatureCard from "../CreatureCard/CreatureCard";
-import GenCreatures from "../../../../common-design/creatures/generic-creatures";
+import GenCreatures from "../../../../data/creatures/generic-creatures";
 import { transformCreatureToFaction } from "../FactionTransformUtils";
 
 export default function CreatureRules() {

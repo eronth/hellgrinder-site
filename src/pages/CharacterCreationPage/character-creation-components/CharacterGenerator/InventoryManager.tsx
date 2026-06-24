@@ -1,25 +1,26 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { Weapon, Item, Perk } from '../../../../ts-types/types';
-import { CharacterDesign } from './CharacterGenerator';
+// Components
 import ConfirmDialog from './ConfirmDialog/ConfirmDialog';
 import WeaponComponent from '../kits/weapon/WeaponComponent';
 import ItemComponent from '../kits/item/ItemComponent';
 import PerkComponent from '../perks/PerkComponent';
 import NotificationToast, { Notification } from './NotificationToast';
-import Tools from '../../../../common-design/Tools';
-
+// Utils
+import Tools from '../../../../utils/tools';
+// Types
+import { Weapon, Item, Perk } from '../../../../ts-types/types';
+import { CharacterDesign } from '../../../../ts-types/player-character-types';
 // Import equipment databases
-import MeleeWeapons from '../../../../common-design/equipment/weapons/melee-weapons';
-import ShootingWeapons from '../../../../common-design/equipment/weapons/shooting-weapons';
-import ThrownWeapons from '../../../../common-design/equipment/weapons/thrown-weapons';
-import ArcaneWeapons from '../../../../common-design/equipment/weapons/arcane-weapons';
-import WandsAndStaves from '../../../../common-design/equipment/weapons/wands-and-staves';
-import Armor from '../../../../common-design/equipment/armor';
-import Gear from '../../../../common-design/equipment/gear';
-import Perks from '../../../../common-design/equipment/perks';
-
+import MeleeWeapons from '../../../../data/equipment/weapons/melee-weapons';
+import ShootingWeapons from '../../../../data/equipment/weapons/shooting-weapons';
+import ThrownWeapons from '../../../../data/equipment/weapons/thrown-weapons';
+import ArcaneWeapons from '../../../../data/equipment/weapons/arcane-weapons';
+import WandsAndStaves from '../../../../data/equipment/weapons/wands-and-staves';
+import Armor from '../../../../data/equipment/armor';
+import Gear from '../../../../data/equipment/gear';
+import Perks from '../../../../data/equipment/perks';
 // Css
 import './InventoryManager.css';
 

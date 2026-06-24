@@ -1,4 +1,4 @@
-import { CharacterDesign } from "../../../CharacterGenerator";
+import { CharacterDesign } from "../../../../../../../ts-types/player-character-types";
 import ConfirmDialog from "../../../ConfirmDialog/ConfirmDialog";
 import { AddEffectDialogType } from "../../AvailableStatusEffects/AvailableStatusEffects";
 import { normalizeStatusEffectName } from "../../helper";

@@ -1,4 +1,4 @@
-import { CharacterDesign } from "../../../CharacterGenerator";
+import { CharacterDesign } from "../../../../../../../ts-types/player-character-types";
 import ConfirmDialog from "../../../ConfirmDialog/ConfirmDialog";
 import { EditEffectDialogType } from "../../CurrentStatusEffects/CurrentStatusEffects";
 import { normalizeStatusEffectName } from "../../helper";
@@ -34,7 +34,7 @@ export default function EditStatusEffectDialog({
         isOpen={editEffectDialog.isOpen}
         onClose={cancel}
         title="Edit Status Effect"
-        message={`Edit "${normalizeStatusEffectName(editEffectDialog.activeEffect?.effect.name)}" for ${character.name}?`}
+        message={`Edit "${normalizeStatusEffectName(editEffectDialog.activeEffect?.name)}" for ${character.name}?`}
         buttons={[
           {
             text: "Cancel",
@@ -51,7 +51,7 @@ export default function EditStatusEffectDialog({
       >
         {editEffectDialog.isOpen && editEffectDialog.activeEffect && (
           <div className="modify-effects effect-value-inputs">
-            {editEffectDialog.activeEffect.effect.x !== undefined && (
+            {editEffectDialog.activeEffect.x !== undefined && (
               <div className="value-input-group">
                 <label htmlFor="edit-x-value">X Value:</label>
                 <input
@@ -67,7 +67,7 @@ export default function EditStatusEffectDialog({
                 />
               </div>
             )}
-            {editEffectDialog.activeEffect.effect.y !== undefined && (
+            {editEffectDialog.activeEffect.y !== undefined && (
               <div className="value-input-group">
                 <label htmlFor="edit-y-value">Y Value:</label>
                 <input

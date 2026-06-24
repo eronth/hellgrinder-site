@@ -1,25 +1,25 @@
 import { useState, useEffect, useRef } from 'react';
 // Components
-import Tools from "../../../common-design/Tools";
+import Tools from "../../../utils/tools";
 import CreatureCard from "./CreatureCard/CreatureCard";
 import CollapsibleSection from "../creature-page-components/CollapsibleSection/CollapsibleSection";
 import FactionSelector from "../creature-page-components/FactionSelector/FactionSelector";
 import EncounterSection from "../creature-page-components/EncounterSection";
 import EncounterTabsGroup from "./EncounterTabsGroup/EncounterTabsGroup";
-import FloatingPanelsContainer from "../../../common-design/FloatingPanels/FloatingPanelsContainer";
+import FloatingPanelsContainer from "../../../components/common/FloatingPanels/FloatingPanelsContainer";
 import SingleFactionDisplayRegion from './SingleFactionDisplayRegion/SingleFactionDisplayRegion';
 // Types
 import { Creature } from "../../../ts-types/creature-types";
 import { Encounter, EncounterCreature, EncounterSet } from "../../../ts-types/encounter-types";
 // Data
-import GenCreatures from "../../../common-design/creatures/generic-creatures";
-import RotHostCreatures from "../../../common-design/creatures/test-creatures";
-import ZephpterCreatures from "../../../common-design/creatures/zephpter-creatures";
-import Sinners from "../../../common-design/creatures/sinner-creatures";
-import FactionExamples from "../../../common-design/creatures/faction-examples";
+import GenCreatures from "../../../data/creatures/generic-creatures";
+import RotHostCreatures from "../../../data/creatures/test-creatures";
+import ZephpterCreatures from "../../../data/creatures/zephpter-creatures";
+import Sinners from "../../../data/creatures/sinner-creatures";
+import FactionExamples from "../../../data/creatures/faction-examples";
 // Utils
 import { transformCreatureToFaction } from "../creature-page-components/FactionTransformUtils";
-import { EncounterStorage } from "../../../common-design/utils/EncounterStorage";
+import { EncounterStorage } from "../../../local-storage/EncounterStorage";
 
 export default function EncounterBuilder() {
   const [selectedFaction, setSelectedFaction] = useState<string>('Generic');

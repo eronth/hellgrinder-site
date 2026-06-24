@@ -1,5 +1,5 @@
 import {AttackMode, Dice} from "../../../../../../ts-types/types.tsx";
-import ClickableDice from "../../../../../../common-design/ClickableDice.tsx";
+import ClickableDice from "../../../../../../components/common/ClickableDice/ClickableDice.tsx";
 
 type Props = {
   attackMode: AttackMode;

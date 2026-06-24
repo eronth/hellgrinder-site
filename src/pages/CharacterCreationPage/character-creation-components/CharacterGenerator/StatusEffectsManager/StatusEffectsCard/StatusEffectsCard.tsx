@@ -1,4 +1,4 @@
-import RuleKeyword from "../../../../../../common-design/RuleKeyword";
+import RuleKeyword from "../../../../../../components/keywords/RuleKeyword";
 import { StatusEffect } from "../../../../../../ts-types/types";
 import { normalizeStatusEffectName } from "../helper";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import ConfirmDialog from "../../ConfirmDialog/ConfirmDialog";
-import { CharacterDesign } from "../../CharacterGenerator";
+import { CharacterDesign } from "../../../../../../ts-types/player-character-types";
 
 type Props = {
   isOpenReactState: [boolean, React.Dispatch<React.SetStateAction<boolean>>];

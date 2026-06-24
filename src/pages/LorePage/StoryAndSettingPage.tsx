@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Page from "../../common-design/Page";
+import Page from "../../components/common/Page/Page";
 import { TabType } from "../../ts-types/types";
 import "./StoryAndSettingPage.css";
 

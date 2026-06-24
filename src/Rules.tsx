@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import ThemeSwitcher from "./components/ThemeSwitcher";
+import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher";
 import FancyIndexPage from "./pages/FancyIndexPage/FancyIndexPage";
 import StoryAndSettingPage from "./pages/LorePage/StoryAndSettingPage";
 import StoryPage from "./pages/LorePage/StoryPage/StoryPage";

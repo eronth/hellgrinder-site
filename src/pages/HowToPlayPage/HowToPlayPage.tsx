@@ -1,6 +1,6 @@
 // Design components
-import Page from "../../common-design/Page";
-import Hx from "../../common-design/Hx/Hx";
+import Page from "../../components/common/Page/Page";
+import Hx from "../../components/common/generic/Hx/Hx";
 // Section Components
 import BasicRules from "./how-to-play-components/BasicRules";
 import Combat from "./how-to-play-components/Combat";

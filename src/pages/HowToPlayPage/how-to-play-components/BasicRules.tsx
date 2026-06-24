@@ -1,6 +1,6 @@
-import Hx from "../../../common-design/Hx/Hx";
-import RuleKeyword from "../../../common-design/RuleKeyword";
-import SkillCheck from "../../../common-design/SkillCheck/SkillCheck";
+import Hx from "../../../components/common/generic/Hx/Hx";
+import RuleKeyword from "../../../components/keywords/RuleKeyword";
+import SkillCheck from "../../../components/keywords/SkillCheck/SkillCheck";
 import BasicCheckResultsTable from "./BasicCheckResultsTable";
 
 export default function BasicRules() {

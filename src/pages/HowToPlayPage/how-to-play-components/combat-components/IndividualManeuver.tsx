@@ -1,5 +1,5 @@
-import Hx from "../../../../common-design/Hx/Hx";
-import { movementIcon } from "../../../../common-design/CommonIcons";
+import Hx from "../../../../components/common/generic/Hx/Hx";
+import { movementIcon } from "../../../../utils/commonIcons";
 import React from "react";
 
 type Props = {

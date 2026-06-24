@@ -1,5 +1,5 @@
-import Hx from "../../../../common-design/Hx/Hx";
-import Faction from "../../../../common-design/story-references/Faction";
+import Hx from "../../../../components/common/generic/Hx/Hx";
+import Faction from "../../../../components/keywords/story-references/Faction";
 import { HeaderSize } from "../../../../ts-types/types";
 
 type Props = {

@@ -1,19 +1,8 @@
 import { useCallback, useMemo } from "react";
-import { AttackBonusStat, HealthStat } from "../CharacterGenerator";
-import SkillCheck from "../../../../../common-design/SkillCheck/SkillCheck";
-import { movementIcon } from "../../../../../common-design/CommonIcons";
+import SkillCheck from "../../../../../components/keywords/SkillCheck/SkillCheck";
+import { movementIcon } from "../../../../../utils/commonIcons";
+import { AttackBonusStat, CharacterStats } from "../../../../../ts-types/player-character-types";
 import './CharacterStatsGrid.css';
-
-export type CharacterStats = {
-  health: HealthStat;
-  injuries: number;
-  speed: number;
-  corruption: number;
-  perkPoints: number;
-  safelightShards: number;
-  attackBonus: AttackBonusStat;
-  customSkill: string;
-};
 
 type Props = {
   currentHealth?: number;

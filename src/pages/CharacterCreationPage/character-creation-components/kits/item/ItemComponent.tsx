@@ -1,5 +1,5 @@
 import { Item } from '../../../../../ts-types/types.tsx';
-import Tags from '../../../../../common-design/Tags';
+import Tags from '../../../../../components/keywords/Tags.tsx';
 
 type Props = {
   item: Item;

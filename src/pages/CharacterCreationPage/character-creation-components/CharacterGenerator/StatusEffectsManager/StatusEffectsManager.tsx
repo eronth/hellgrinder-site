@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { CharacterDesign } from '../CharacterGenerator';
+import { CharacterDesign } from '../../../../../ts-types/player-character-types';
 import StatusEffectSearchBar from './StatusEffectSearchBar/StatusEffectSearchBar';
 import CurrentStatusEffects, { EditEffectDialogType } from './CurrentStatusEffects/CurrentStatusEffects';
 import AvailableStatusEffects, { AddEffectDialogType } from './AvailableStatusEffects/AvailableStatusEffects';
@@ -41,14 +41,12 @@ export default function StatusEffectsManager({
   // Handle clicking outside the modal and escape key to close it
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (!isOpen) return;
+      if (!isOpen) { return; }
       
       const target = event.target as Node;
       
       // Don't close if clicking inside the main manager
-      if (managerRef.current && managerRef.current.contains(target)) {
-        return;
-      }
+      if (managerRef.current && managerRef.current.contains(target)) { return; }
       
       // Don't close if clicking inside any open dialogs
       if (addEffectDialog.isOpen || editEffectDialog.isOpen) {

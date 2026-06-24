@@ -1,9 +1,9 @@
-import RuleKeyword from "../../../../../../common-design/RuleKeyword";
-import { CharacterDesign } from "../../CharacterGenerator";
+import RuleKeyword from "../../../../../../components/keywords/RuleKeyword";
+import { CharacterDesign } from "../../../../../../ts-types/player-character-types";
 import EditStatusEffectDialog from "../Modify Effects/EditStatusEffectDialog/EditStatusEffectDialog";
 import { normalizeStatusEffectName } from "../helper";
-import { formatReactNode } from "../../../../../../common-design/utils/StatusEffectsUtils";
-import StatusEffects from "../../../../../../common-design/game-terms/status-effects";
+import { formatReactNode } from "../../../../../../utils/statusEffectUtils";
+import StatusEffects from "../../../../../../data/status-effects";
 import { ActiveStatusEffect } from "../../../../../../ts-types/types";
 
 export type EditEffectDialogType = {

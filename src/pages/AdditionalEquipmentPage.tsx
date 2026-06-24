@@ -1,13 +1,13 @@
-import Page from "../common-design/Page.tsx";
+import Page from "../components/common/Page/Page.tsx";
 import { TabType } from "../ts-types/types";
-import Tools from "../common-design/Tools";
-import MeleeWeapons from "../common-design/equipment/weapons/melee-weapons.tsx";
-import ShootingWeapons from "../common-design/equipment/weapons/shooting-weapons.tsx";
-import ThrownWeapons from "../common-design/equipment/weapons/thrown-weapons.tsx";
-import ArcaneWeapons from "../common-design/equipment/weapons/arcane-weapons.tsx";
-import WandsAndStaves from "../common-design/equipment/weapons/wands-and-staves.tsx";
-import Armor from "../common-design/equipment/armor.tsx";
-import Gear from "../common-design/equipment/gear.tsx";
+import Tools from "../utils/tools.tsx";
+import MeleeWeapons from "../data/equipment/weapons/melee-weapons.tsx";
+import ShootingWeapons from "../data/equipment/weapons/shooting-weapons.tsx";
+import ThrownWeapons from "../data/equipment/weapons/thrown-weapons.tsx";
+import ArcaneWeapons from "../data/equipment/weapons/arcane-weapons.tsx";
+import WandsAndStaves from "../data/equipment/weapons/wands-and-staves.tsx";
+import Armor from "../data/equipment/armor.tsx";
+import Gear from "../data/equipment/gear.tsx";
 import WeaponComponent from "./CharacterCreationPage/character-creation-components/kits/weapon/WeaponComponent.tsx";
 import ItemComponent from "./CharacterCreationPage/character-creation-components/kits/item/ItemComponent.tsx";
 

@@ -1,4 +1,4 @@
-import Faction from "../../../../common-design/story-references/Faction";
+import Faction from "../../../../components/keywords/story-references/Faction";
 import { HeaderSize } from "../../../../ts-types/types";
 import DemonClanComponent from "./DemonClanComponent/DemonClanComponent";
 

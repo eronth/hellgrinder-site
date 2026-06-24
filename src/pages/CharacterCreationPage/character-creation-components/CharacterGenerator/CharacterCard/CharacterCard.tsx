@@ -1,6 +1,6 @@
 import React from "react";
-import { CharacterDesign } from "../CharacterGenerator";
-import CharacterStatsGrid, { CharacterStats } from "../CharacterStatsGrid/CharacterStatsGrid.tsx";
+import { CharacterDesign, CharacterStats } from "../../../../../ts-types/player-character-types.tsx";
+import CharacterStatsGrid from "../CharacterStatsGrid/CharacterStatsGrid.tsx";
 import InventoryManager from "../InventoryManager";
 import StatusEffectsManager from "../StatusEffectsManager/StatusEffectsManager.tsx";
 import EditableCharacterName from "./EditableCharacterName/EditableCharacterName.tsx";
@@ -8,7 +8,7 @@ import CharacterPerksDisplay from "./CharacterPerksDisplay/CharacterPerksDisplay
 import CharacterInventoryDisplay from "./CharacterInventoryDisplay/CharacterInventoryDisplay.tsx";
 import DeleteCharacterButton from "./DeleteCharacterButton/DeleteCharacterButton.tsx";
 import CharacterKitsDisplay from "./CharacterKitsDisplay/CharacterKitsDisplay.tsx";
-import SkillCheck from "../../../../../common-design/SkillCheck/SkillCheck.tsx";
+import SkillCheck from "../../../../../components/keywords/SkillCheck/SkillCheck.tsx";
 import "./CharacterCard.css";
 
 type Props = {

@@ -1,4 +1,4 @@
-.lore-sub-nav {
+.sub-page-nav {
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -8,7 +8,7 @@
   font-size: 0.9em;
 }
 
-.lore-sub-nav-back {
+.sub-page-nav-back {
   color: var(--primary-color);
   text-decoration: none;
   font-weight: 500;
@@ -21,20 +21,20 @@
   }
 }
 
-.lore-sub-nav-divider {
+.sub-page-nav-divider {
   color: var(--text-offset-color);
   opacity: 0.5;
   user-select: none;
 }
 
-.lore-sub-nav-tabs {
+.sub-page-nav-tabs {
   display: flex;
   border: 1px solid var(--primary-color);
   border-radius: 6px;
   overflow: hidden;
 }
 
-.lore-sub-nav-tab {
+.sub-page-nav-tab {
   padding: 0.2em 0.8em;
   text-decoration: none;
   color: var(--primary-color);

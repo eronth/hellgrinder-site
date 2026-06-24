@@ -204,7 +204,7 @@ export default function EncounterBuilder() {
   const hasEncounterCreatures: boolean = (activeEncounter?.creatures.length ?? 0) > 0;
 
   if (!isLoaded || !activeEncounter) {
-    return <div>Loading encounters...</div>;
+    return <div style={{ minHeight: '100vh' }} />;
   }
 
   return (<>

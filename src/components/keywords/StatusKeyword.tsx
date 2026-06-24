@@ -1,5 +1,6 @@
 import RuleKeyword from './RuleKeyword';
 import Statuses from '../../data/status-effects.tsx';
+import { formatReactNode } from '../../utils/statusEffectUtils';
 
 interface Props {
   // Use the keys from the statuses object
@@ -38,9 +39,7 @@ export default function StatusKeyword({
           {'Error: Status effect not found'}
         </span>
       ) : (
-        Statuses[effect]?.name 
-          .replace('[[X]]', x?.toString() || 'X')
-          .replace('[[Y]]', y?.toString() || 'Y')
+        formatReactNode(Statuses[effect]?.name ?? '', { x: x ?? 'X', y: y ?? 'Y' })
       )}
     </RuleKeyword>
   );

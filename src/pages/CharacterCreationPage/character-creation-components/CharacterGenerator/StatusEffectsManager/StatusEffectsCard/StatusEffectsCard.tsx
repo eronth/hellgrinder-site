@@ -1,6 +1,7 @@
 import RuleKeyword from "../../../../../../components/keywords/RuleKeyword";
 import { StatusEffect } from "../../../../../../ts-types/types";
 import { normalizeStatusEffectName } from "../helper";
+import { formatReactNode } from "../../../../../../utils/statusEffectUtils";
 
 type Props = {
   effect: StatusEffect;
@@ -15,11 +16,11 @@ export default function StatusEffectsCard({
         <div className="content">
           <div className="name">
             <RuleKeyword keyword={normalizeStatusEffectName(effect.name)}>
-              {effect.name}
+              {formatReactNode(effect.name, { x: 'X', y: 'Y' })}
             </RuleKeyword>
           </div>
           <div className="description">
-            {effect.description}
+            {formatReactNode(effect.description, { x: 'X', y: 'Y' })}
           </div>
           {(effect.x !== undefined || effect.y !== undefined) && (
             <div className="variables">

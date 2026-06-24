@@ -83,7 +83,7 @@ export default function CurrentStatusEffects({
       ) : (
         <div className="status-effects-grid">
           {character.statusEffects.map((activeEffect, index) => (
-            <div key={`active-${index}`} className="active status-effect-card">
+            <div key={`active-${index}`} className="active status-effect status-effect-card">
               <div 
                 className="content"
                 onClick={() => openEditEffectDialog(activeEffect, index)}
@@ -96,20 +96,23 @@ export default function CurrentStatusEffects({
                     statusEffectX={activeEffect.x}
                     statusEffectY={activeEffect.y}
                   >
-                    {activeEffect.name
-                      .replace('[[X]]', activeEffect.x?.toString() || 'X')
-                      .replace('[[Y]]', activeEffect.y?.toString() || 'Y')
-                    }
+                    {formatReactNode(activeEffect.name, {
+                      x: activeEffect.x ?? 'X',
+                      y: activeEffect.y ?? 'Y',
+                    })}
                   </RuleKeyword>
                 </div>
                 <div className="description">
-                  {activeEffect.description}
+                  {formatReactNode(activeEffect.description, { x: activeEffect.x ?? 'X', y: activeEffect.y ?? 'Y' })}
                   {(() => {
                     const effects = getEffects(activeEffect);
                     return effects.length > 0 ? (
                       <ul>
                         {effects.map((effect, idx) => {
-                          const formattedEffect = formatReactNode(effect, { x: activeEffect.x, y: activeEffect.y });
+                          const formattedEffect = formatReactNode(effect, {
+                            x: activeEffect.x ?? 'X',
+                            y: activeEffect.y ?? 'Y',
+                          });
                           return (
                             <li key={idx}>
                               {formattedEffect}

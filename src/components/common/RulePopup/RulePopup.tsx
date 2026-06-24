@@ -142,9 +142,9 @@ export default function RulePopup({
 
   const relatedRules = needRuleDisplay ? RulesManager.getRelatedRules(rule!.id) : [];
 
-  // Check if this is a status effect and we have X/Y values to display
   const isStatusEffect = needRuleDisplay ? rule!.category === 'status-effects' : false;
-  const hasStatusEffectValues = statusEffectX !== undefined || statusEffectY !== undefined;
+  const xVal = statusEffectX ?? 'X';
+  const yVal = statusEffectY ?? 'Y';
 
   const createDisplay = (rule: RuleDefinition) => {
     return (
@@ -162,23 +162,23 @@ export default function RulePopup({
       >
         <div className="rule-popup-header">
           <h4 className="rule-title">{
-            rule.fullname 
-            ? formatReactNode(rule.fullname, { x: statusEffectX, y: statusEffectY }) 
+            rule.fullname
+            ? formatReactNode(rule.fullname, { x: xVal, y: yVal })
             : rule.keyword
           }</h4>
           <span className="rule-category">{rule.category}</span>
         </div>
         
         <div className="rule-summary">
-          {(isStatusEffect && hasStatusEffectValues) 
-          ? formatReactNode(rule.summary, { x: statusEffectX, y: statusEffectY })
+          {isStatusEffect
+          ? formatReactNode(rule.summary, { x: xVal, y: yVal })
           : rule.summary}
         </div>
-        
+
         {rule?.details && (
           <div className="rule-details">
-            {(isStatusEffect && hasStatusEffectValues)
-            ? formatReactNode(rule.details, { x: statusEffectX, y: statusEffectY })
+            {isStatusEffect
+            ? formatReactNode(rule.details, { x: xVal, y: yVal })
             : rule.details}
           </div>
         )}
@@ -190,7 +190,7 @@ export default function RulePopup({
             </strong>
             <ul>
               {rule.examples.map((example, index) => (
-                <li key={index}>{formatReactNode(example, { x: statusEffectX, y: statusEffectY })}</li>
+                <li key={index}>{formatReactNode(example, { x: xVal, y: yVal })}</li>
               ))}
             </ul>
           </div>

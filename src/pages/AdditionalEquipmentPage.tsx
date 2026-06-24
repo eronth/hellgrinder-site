@@ -8,8 +8,8 @@ import ArcaneWeapons from "../common-design/equipment/weapons/arcane-weapons.tsx
 import WandsAndStaves from "../common-design/equipment/weapons/wands-and-staves.tsx";
 import Armor from "../common-design/equipment/armor.tsx";
 import Gear from "../common-design/equipment/gear.tsx";
-import WeaponComponent from "./character-creation-components/kits/weapon/WeaponComponent.tsx";
-import ItemComponent from "./character-creation-components/kits/item/ItemComponent.tsx";
+import WeaponComponent from "./CharacterCreationPage/character-creation-components/kits/weapon/WeaponComponent.tsx";
+import ItemComponent from "./CharacterCreationPage/character-creation-components/kits/item/ItemComponent.tsx";
 
 export default function AdditionalEquipmentPage() {
   const page: TabType = 'additional-equipment';

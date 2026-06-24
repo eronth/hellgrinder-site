@@ -1,8 +1,8 @@
 
 import { AttackMode } from "../ts-types/types";
 import Tags from './Tags';
-import WeaponSpecialNotes from '../pages/character-creation-components/kits/weapon/weapon-components/WeaponSpecialNotes';
-import WeaponDamage from "../pages/character-creation-components/kits/weapon/weapon-components/WeaponDamage.tsx";
+import WeaponSpecialNotes from '../pages/CharacterCreationPage/character-creation-components/kits/weapon/weapon-components/WeaponSpecialNotes';
+import WeaponDamage from "../pages/CharacterCreationPage/character-creation-components/kits/weapon/weapon-components/WeaponDamage.tsx";
 
 
 type Props = {

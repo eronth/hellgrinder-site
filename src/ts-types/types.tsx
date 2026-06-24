@@ -1,14 +1,15 @@
 import { AllValidTags } from "./tag-types";
 
-// Crit attacks do what?
 // Display advanced items/weapons/perks/trainings?/etc
 // "I'm a GM" toggle
-// Clean up tabs
-// Clean up homepage tabs?
 // Prone?
 // Talk about special tags (area, knockback, hover, flying, soulrend).
 // Status rework for duration/stack info.
 // Maybe lock status name to status types
+
+type TabType = "home" | "lore" | "how-to-play" | "character-creation" 
+  | "character-generator" | "creatures"
+  | "additional-equipment" | "advanced-perks" | "items" | "magic";
 
 type HeaderSize = 
   'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
@@ -56,11 +57,11 @@ type Kit = {
   extraSupportKits?: number;
 }
 
-type Weapon = ItemDef & {
+export type Weapon = ItemDef & {
   attackModes: AttackMode[];
 }
 
-type AttackMode = {
+export type AttackMode = {
   name?: string;
   charges?: number;
   tags: AllValidTags[];
@@ -72,12 +73,12 @@ type AttackMode = {
   effects?: React.ReactNode[];
 }
 
-type Damage = {
+export type Damage = {
   value: number | Dice | Dice[],
   type: DamageElement,
 }
 
-type Dice = {
+export type Dice = {
   amount?: number;
   sides: number;
   modifier?: number;
@@ -102,11 +103,7 @@ type Perk = ItemDef & {
   safelightShardsModifier?: number;
 }
 
-type TabType = "home" | "lore" | "how-to-play" | "character-creation" 
-  | "character-generator" | "creatures"
-  | "additional-equipment" | "advanced-perks" | "items" | "magic";
-
-type StatusEffect = {
+export type StatusEffect = {
   name: string;
   description: string;
   effects: React.ReactNode[];
@@ -114,4 +111,9 @@ type StatusEffect = {
   y?: number | "Y";
 };
 
-export type { HeaderSize, Kit, Weapon, AttackMode, Training, Item, Perk, TabType, DamageElement, StatusEffect, Dice };
+export type ActiveStatusEffect = Omit<StatusEffect, 'x' | 'y'> & {
+  x?: number;
+  y?: number;
+} 
+
+export type { HeaderSize, Kit, Training, Item, Perk, TabType, DamageElement };

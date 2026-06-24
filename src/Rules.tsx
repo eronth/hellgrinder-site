@@ -4,14 +4,14 @@ import FancyIndexPage from "./pages/FancyIndexPage/FancyIndexPage";
 import StoryAndSettingPage from "./pages/LorePage/StoryAndSettingPage";
 import StoryPage from "./pages/LorePage/StoryPage/StoryPage";
 import SettingPage from "./pages/LorePage/SettingPage/SettingPage";
-import HowToPlayPage from "./pages/HowToPlayPage";
-import CharacterCreationPage from "./pages/CharacterCreationPage";
-import CharacterCreationRulesPage from "./pages/CharacterCreationRulesPage";
-import CharacterGeneratorPage from "./pages/CharacterGeneratorPage";
+import HowToPlayPage from "./pages/HowToPlayPage/HowToPlayPage";
+import CharacterCreationPage from "./pages/CharacterCreationPage/CharacterCreationPage";
+import CharacterCreationRulesPage from "./pages/CharacterCreationPage/CharacterCreationRulesPage";
+import CharacterGeneratorPage from "./pages/CharacterCreationPage/CharacterGeneratorPage";
 import AdditionalEquipmentPage from "./pages/AdditionalEquipmentPage";
 import AdvancedPerksPage from "./pages/AdvancedPerksPage";
 import MagicPage from "./pages/MagicPage";
-import CreaturesPage from "./pages/CreaturesPage";
+import CreaturesPage from "./pages/CreaturePage/CreaturesPage";
 import MagicSpellPage from "./pages/MagicSpellPage";
 
 export default function Rules() {

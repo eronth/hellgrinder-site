@@ -3,7 +3,7 @@ import { movementIcon } from '../utils/commonIcons';
 import HitCheck from '../components/keywords/HitCheck/HitCheck';
 import SkillCheck from '../components/keywords/SkillCheck/SkillCheck';
 
-type StatusEffectsReturn = {
+export type StatusEffectsReturn = {
   blinded: StatusEffect;
   brittle: StatusEffect;
   doomed: StatusEffect;

@@ -4,7 +4,11 @@ import { StatusEffect } from '../ts-types/types.tsx';
 
 const convertStatusEffectToRuleDefinition = (statusEffect: StatusEffect): RuleDefinition => {
   const se = statusEffect;
-  const nameToId = se.name.toLowerCase().replace(/\s+/g, '-').replace(/\[\[X\]\]/g, '').replace(/\[\[Y\]\]/g, '').replace(/--+/g, '-');
+  const nameToId = se.name.toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/\[\[X\]\]/g, '')
+    .replace(/\[\[Y\]\]/g, '')
+    .replace(/--+/g, '-');
   const nameToKeyword = se.name
     // make sure to replace [[X]] and [[Y]] with nothing, then trim whitespace
     .replace(/\[\[X\]\]/g, '') // Remove X placeholders

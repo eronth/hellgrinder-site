@@ -22,18 +22,6 @@ type DamageElement =
 // Overcoming: Metal > Wood > Earth > Water > Fire > Metal
 // Generating: Metal > Water > Wood > Fire > Earth > Metal
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-type StatusTypes =
-  'Burning' | 'Frozen' | 'Poisoned' | 'Stunned' | 'Prone'
-  | 'Blinded' | 'Silenced' | 'Confused' | 'Charmed' | 'Frightened'
-  | 'Enraged' | 'Invisible' | 'Incorporeal' | 'Insubstantial'
-  | 'Incapacitated' | 'Restrained' | 'Grappled' | 'Paralyzed'
-  | 'Petrified' | 'Unconscious' | 'Dead' | 'Entangled';
-  // Blinded X, Brittle X, Doomed X, Enfeebled X, Envigorated, Frenzied, Imolated X for Y,
-  // Lost X, Shaken, Silenced X, Slowed X, Terrified
-
 type ChoiceTagOption = AllValidTags | DamageElement;
 
 type ItemDef = {

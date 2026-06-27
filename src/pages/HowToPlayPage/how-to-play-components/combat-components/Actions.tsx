@@ -2,9 +2,11 @@ import { movementIcon } from "../../../../utils/commonIcons";
 import Hx from "../../../../components/common/generic/Hx/Hx";
 import RuleKeyword from "../../../../components/keywords/RuleKeyword";
 import SkillCheck from "../../../../components/keywords/SkillCheck/SkillCheck";
+import { HeaderSize } from "../../../../ts-types/types";
 
 export default function Actions() {
-  const innerHx = 4;
+  const innerHx: HeaderSize = 4;
+  const innestHx: HeaderSize = 5;
   return (<>
     <Hx hx={3}>Actions</Hx>
 
@@ -17,35 +19,44 @@ export default function Actions() {
 
       <Hx hx={innerHx}>Attack</Hx>
       <p>
-        Roll 3d6 dice to make a Hit Check for your attack. You will deal damage and effects as described by the weapon.
+        As with other checks, roll 3d6 dice to make a Hit Check for your attack. You will deal damage and effects as described by the weapon.
       </p>
       <p>
         If you hit, you deal the weapon's damage to your target, 
-        detailed in the weapon as X/Y/Z, where X is damage dealt
+        detailed in the weapon as <b>X / Y / Z</b>, where X is damage dealt
         on a Rank 1 Success, Y is the damage dealt on a Rank 2 
         Success, and Z is damage dealt on a Rank 3 Success.
       </p>
-      <p>
-        Range: Weapons have different ranges. Some weapons have multiple ranges. Use whichever range is least punishing
-        when determining penalties for attacking outside your range.
-      </p>
-      <ul>
-        <li>
-          Short Range is 1-3 hexes.
-        </li>
-        <li>
-          Medium Range is 4-8 hexes.
-        </li>
-        <li>
-          Long Range is 9-12.
-        </li>
-        <li>
-          Beyond 12 Hexes, you are firing in Extreme Ranges, which increase for every 3 Hexes beyond Long Range maximum.
-          <br />
-          For example, First Extreme Range is 13-15, Second Extreme Range is 16-18, and so on. Shooting outside a
-          weapon's range is permitted, but gets -3 per range increment.
-        </li>
-      </ul>
+      <div>
+        <Hx hx={innestHx}>Range</Hx>
+        <p>
+          Weapons have different ranges. Some weapons have multiple ranges.
+        </p>
+        <ul>
+          <li>
+            Adjacent Range is 1 hex.
+          </li>
+          <li>
+            Short Range is 1-3 hexes.
+          </li>
+          <li>
+            Medium Range is 4-8 hexes.
+          </li>
+          <li>
+            Long Range is 9-12.
+          </li>
+          <li>
+            Beyond 12 Hexes, you are firing in Extreme Ranges, which increase for every 3 Hexes beyond Long Range maximum.
+            <br />
+            For example, First Extreme Range is 13-15, Second Extreme Range is 16-18, and so on.
+          </li>
+        </ul>
+        <Hx hx={innestHx}>Range Penalties</Hx>
+        <p>
+            Shooting outside a
+            weapon's range is usually permitted, but gets -3 per range increment.
+        </p>
+      </div>
 
       <Hx hx={innerHx}>Charge</Hx>
       <p>

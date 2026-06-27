@@ -29,6 +29,12 @@ export default function Maneuvers() {
         move a number of hexes equal to the points spent. For example, moving 3 hexes
         costs 3{movementIcon}.
       </p>
+      <Hx hx={5}>Prone</Hx>
+      <p>
+        If you are prone, you cannot use normal movement. Instead you must use
+        the <i>Crawl</i> Maneuver. You can stand up again by using 
+        the <i>Stand Up</i> Maneuver.
+      </p>
       <Hx hx={4}>Maneuvers</Hx>
       <p>
         In addition to Movement, you may 

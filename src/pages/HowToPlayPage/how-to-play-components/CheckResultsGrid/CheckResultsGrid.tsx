@@ -29,7 +29,7 @@ export default function CheckResultsGrid({ results, showNumeral, className }: Pr
 
 
       {showRank0 && <>
-        {showNumeral && <div className="data number-result">4-7</div>}
+        {showNumeral && <div className="data number-result">7 or less</div>}
         <div className="data rank-result">Rank&nbsp;0</div>
         <div className="data result-description">{results.r0}</div>
       </>}
@@ -42,7 +42,7 @@ export default function CheckResultsGrid({ results, showNumeral, className }: Pr
       <div className="data rank-result">Rank&nbsp;2</div>
       <div className="data result-description">{results.r2}</div>
 
-      {showNumeral && <div className="data number-result">16-18</div>}
+      {showNumeral && <div className="data number-result">16 or more</div>}
       <div className="data rank-result">Rank&nbsp;3</div>
       <div className="data result-description">{results.r3}</div>
     </div>

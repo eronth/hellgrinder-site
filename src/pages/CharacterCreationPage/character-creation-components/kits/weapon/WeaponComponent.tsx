@@ -1,13 +1,14 @@
 import WeaponName from './weapon-components/WeaponName';
-import {Weapon } from '../../../../../ts-types/types';
+import { Weapon } from '../../../../../ts-types/types';
 import AttackModeComponent from "../../../../../components/common/AttackModeComponent/AttackModeComponent.tsx";
-import Tags from '../../../../../components/keywords/Tags.tsx';
+import SelectableTags, { ChoiceInteraction } from './weapon-components/SelectableTags.tsx';
 
 type Props = {
   weapon: Weapon;
+  choiceInteraction?: ChoiceInteraction;
 };
 
-export default function WeaponComponent({ weapon }: Props) {
+export default function WeaponComponent({ weapon, choiceInteraction }: Props) {
   const w = weapon;
 
   function hasMultipleAttackModes(weapon: Weapon) {
@@ -17,15 +18,16 @@ export default function WeaponComponent({ weapon }: Props) {
   return (<div className='weapon'>
     <WeaponName weapon={w} />
     {w.choiceTags && (
-      <div className='choice-tags'>
-        <span>Choose {w.choiceTags.count}:</span>
-        <Tags key={`choice-tags-${w.name}`} tags={w.choiceTags.tags} />
-      </div>
+      <SelectableTags
+        choiceTags={w.choiceTags}
+        choiceInteraction={choiceInteraction}
+      />
     )}
     {
-      w.attackModes.map((a, ai) => <div key={`attack-mode-${ai}`}>
+      w.attackModes.map((a, ai) => (
+      <div key={`attack-mode-${ai}`}>
         <AttackModeComponent attackMode={a} showTags={hasMultipleAttackModes(weapon)} />
-      </div>)
-    }
+      </div>
+    ))}
   </div>);
 }

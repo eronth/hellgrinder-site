@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRotateLeft, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import { Perk } from '../../../../../../ts-types/types';
 import { CharacterDesign } from '../../../../../../ts-types/player-character-types';
 import CharacterGeneratorTools from '../../../../../../utils/characterGeneratorTools';
@@ -57,7 +57,9 @@ export default function PerksSection({ character, onSetPerks }: Props) {
             onClick={handleRandomize}
             disabled={locked}
           >
-            {hasPerks ? '↺ Re-randomize' : 'Randomize'}
+            {hasPerks
+            ? <><FontAwesomeIcon icon={faArrowRotateLeft} /> Re-randomize</>
+            : 'Randomize'}
           </button>
           <button
             className="perks-select-btn"

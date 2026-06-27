@@ -1,9 +1,9 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
-import { Kit } from '../../../../../../ts-types/types';
+import { faArrowRotateLeft, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
+import { Kit, ChoiceTagOption, DamageElement } from '../../../../../../ts-types/types';
 import { CharacterDesign } from '../../../../../../ts-types/player-character-types';
-import KitComponent from '../../../kits/Kit';
+import KitComponent, { WeaponChoiceInteractions } from '../../../kits/Kit';
 import CharacterGeneratorTools from '../../../../../../utils/characterGeneratorTools';
 import KitSelectModal from './KitSelectModal';
 import './KitSlot.css';
@@ -20,6 +20,8 @@ type Props = {
 export default function KitSlot({ kitType, kit, character, onSetKit }: Props) {
   const [modalOpen, setModalOpen] = React.useState(false);
   const [locked, setLocked] = React.useState(false);
+  // Per-weapon choice lock state, keyed by weapon name
+  const [weaponLocks, setWeaponLocks] = React.useState<Record<string, boolean>>({});
 
   const allKits = kitType === 'combat'
     ? CharacterGeneratorTools.getAllCombatKits()
@@ -31,12 +33,72 @@ export default function KitSlot({ kitType, kit, character, onSetKit }: Props) {
 
   const label = kitType === 'combat' ? 'Combat Kit' : 'Support Kit';
 
+  // Derive the currently-selected choice tag for a weapon from its stored damage type.
+  // If all attack modes still have 'Chosen Type', no choice has been made.
+  function getWeaponSelectedTag(weapon: Kit['weapons'][number]): ChoiceTagOption | null {
+    const type = weapon.attackModes[0]?.damage?.l?.type;
+    return (type && type !== 'Chosen Type') ? type as ChoiceTagOption : null;
+  }
+
+  // Apply a damage-element choice to all 'Chosen Type' damage fields in a weapon.
+  function applyWeaponChoice(weaponName: string, chosenTag: ChoiceTagOption) {
+    if (!kit) return;
+    const updatedKit = structuredClone(kit);
+    const weapon = updatedKit.weapons.find(w => w.name === weaponName);
+    if (!weapon) return;
+    weapon.attackModes.forEach(mode => {
+      (['l', 'm', 'h'] as const).forEach(tier => {
+        if (mode.damage[tier].type === 'Chosen Type') {
+          mode.damage[tier].type = chosenTag as DamageElement;
+        }
+      });
+    });
+    onSetKit(updatedKit);
+  }
+
+  function randomizeWeaponChoice(weaponName: string, options: ChoiceTagOption[]) {
+    const chosen = options[Math.floor(Math.random() * options.length)];
+    applyWeaponChoice(weaponName, chosen);
+  }
+
+  function resetWeaponChoice(weaponName: string) {
+    if (!kit) return;
+    const updatedKit = structuredClone(kit);
+    const weapon = updatedKit.weapons.find(w => w.name === weaponName);
+    if (!weapon) return;
+    weapon.attackModes.forEach(mode => {
+      (['l', 'm', 'h'] as const).forEach(tier => {
+        mode.damage[tier].type = 'Chosen Type';
+      });
+    });
+    onSetKit(updatedKit);
+    setWeaponLocks(prev => ({ ...prev, [weaponName]: false }));
+  }
+
+  // Build interaction objects for every weapon in the kit that has choiceTags.
+  const weaponChoiceInteractions: WeaponChoiceInteractions = {};
+  if (kit) {
+    kit.weapons.forEach(weapon => {
+      if (!weapon.choiceTags) return;
+      const wName = weapon.name;
+      weaponChoiceInteractions[wName] = {
+        selectedTag: getWeaponSelectedTag(weapon),
+        locked: weaponLocks[wName] ?? false,
+        onSelect: (tag) => applyWeaponChoice(wName, tag),
+        onRandomize: () => randomizeWeaponChoice(wName, weapon.choiceTags!.tags),
+        onToggleLock: () => setWeaponLocks(prev => ({ ...prev, [wName]: !prev[wName] })),
+        onReset: () => resetWeaponChoice(wName),
+      };
+    });
+  }
+
   function handleRandomize() {
     const newKit = kitType === 'combat'
       ? CharacterGeneratorTools.randomizeCombatKit(usedKitNames).kit
       : CharacterGeneratorTools.randomizeSupportKit(usedKitNames);
     onSetKit(newKit);
     setLocked(false);
+    setWeaponLocks({});
   }
 
   function handleModalConfirm(selectedKit: Kit) {
@@ -44,6 +106,7 @@ export default function KitSlot({ kitType, kit, character, onSetKit }: Props) {
     if (newKit) onSetKit(newKit);
     setModalOpen(false);
     setLocked(false);
+    setWeaponLocks({});
   }
 
   return (
@@ -80,7 +143,7 @@ export default function KitSlot({ kitType, kit, character, onSetKit }: Props) {
               onClick={handleRandomize}
               disabled={locked}
             >
-              ↺ Re-randomize
+              <FontAwesomeIcon icon={faArrowRotateLeft} /> Re-randomize
             </button>
             <button
               className="kit-change-btn"
@@ -97,7 +160,10 @@ export default function KitSlot({ kitType, kit, character, onSetKit }: Props) {
               <FontAwesomeIcon icon={locked ? faLock : faLockOpen} />
             </button>
           </div>
-          <KitComponent kit={kit} />
+          <KitComponent
+            kit={kit}
+            weaponChoiceInteractions={weaponChoiceInteractions}
+          />
         </div>
       )}
     </>

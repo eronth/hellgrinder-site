@@ -133,14 +133,7 @@ function handleSelectedPerksLogic({ character }: { character: CharacterDesign })
 };
 
 function specialKitLogic(kit: Kit) {
-  if (kit.name === "Helltouched") {
-    const damageTypes: DamageElement[] = ['Metal', 'Infernal', 'Abyssal', 'Verdant', 'Chthonic', 'Nethercurrent', 'Voidyr'];
-    const rand = Math.floor(Math.random() * damageTypes.length);
-    kit.weapons[0].attackModes[0].damage.l.type = damageTypes[rand];
-    kit.weapons[0].attackModes[0].damage.m.type = damageTypes[rand];
-    kit.weapons[0].attackModes[0].damage.h.type = damageTypes[rand];
-    kit.weapons[0].attackModes[0].effects = [`When you hit an an enemy that has Resist ${damageTypes[rand]} to ${damageTypes[rand]} Damage, you can forgo damage to reduce their Resist ${damageTypes[rand]} by 1 for the rest of the encounter.`];
-  } else if (kit.name === "Relic Worker") {
+  if (kit.name === "Relic Worker") {
     // Randomly remove all but 3 relics
     while (kit.items.length > 4) { // Do 4 to keep the description chunk.
       // Randomly choose any item NOT INCLUDING the description block to remove.

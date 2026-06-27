@@ -10,11 +10,12 @@ import './PerksSection.css';
 type Props = {
   character: CharacterDesign;
   onSetPerks: (newPerks: Perk[]) => void;
+  locked: boolean;
+  onToggleLock: () => void;
 };
 
-export default function PerksSection({ character, onSetPerks }: Props) {
+export default function PerksSection({ character, onSetPerks, locked, onToggleLock }: Props) {
   const [showSelector, setShowSelector] = React.useState(false);
-  const [locked, setLocked] = React.useState(false);
   const allPerks = CharacterGeneratorTools.getAllPerks();
 
   const hasPerks = character.perks.length > 0;
@@ -25,7 +26,6 @@ export default function PerksSection({ character, onSetPerks }: Props) {
     const { perks } = CharacterGeneratorTools.randomizePerks(totalBudget);
     onSetPerks(perks);
     setShowSelector(false);
-    setLocked(false);
   }
 
   function handleTogglePerk(perk: Perk) {
@@ -41,7 +41,7 @@ export default function PerksSection({ character, onSetPerks }: Props) {
 
   function handleToggleLock() {
     if (!locked) setShowSelector(false);
-    setLocked(v => !v);
+    onToggleLock();
   }
 
   return (

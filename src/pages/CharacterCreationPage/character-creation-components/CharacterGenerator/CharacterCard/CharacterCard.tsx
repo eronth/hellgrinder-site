@@ -1,5 +1,5 @@
 import React from "react";
-import { CharacterDesign, CharacterStats } from "../../../../../ts-types/player-character-types.tsx";
+import { CharacterDesign, CharacterKitLocks, CharacterLocks, CharacterStats, DEFAULT_KIT_LOCKS } from "../../../../../ts-types/player-character-types.tsx";
 import { Kit, Perk } from "../../../../../ts-types/types.tsx";
 import CharacterStatsGrid from "../CharacterStatsGrid/CharacterStatsGrid.tsx";
 import InventoryManager from "../InventoryManager";
@@ -61,6 +61,17 @@ export default function CharacterCard({
           : char
       )
     );
+  }
+
+  function updateLocks(updates: Partial<CharacterLocks>) {
+    updateCharacter(character.id, { locks: { ...character.locks, ...updates } });
+  }
+
+  function updateKitLocks(kitIndex: number, updates: Partial<CharacterKitLocks>) {
+    const currentKitLocks = [...(character.locks?.kits ?? [])];
+    const existing = currentKitLocks[kitIndex] ?? { ...DEFAULT_KIT_LOCKS };
+    currentKitLocks[kitIndex] = { ...existing, ...updates };
+    updateLocks({ kits: currentKitLocks });
   }
 
   function handleSetSpecialization(bonus: string, penalty: string) {
@@ -161,6 +172,8 @@ export default function CharacterCard({
         <SpecializationSection
           character={character}
           onSetSpecialization={handleSetSpecialization}
+          locked={character.locks?.specialization}
+          onToggleLock={() => updateLocks({ specialization: !character.locks?.specialization })}
         />
 
         <div className="standard-issue-kit-block">
@@ -175,6 +188,8 @@ export default function CharacterCard({
         <PerksSection
           character={character}
           onSetPerks={handleSetPerks}
+          locked={character.locks?.perks}
+          onToggleLock={() => updateLocks({ perks: !character.locks?.perks })}
         />
       </div>
 
@@ -184,6 +199,8 @@ export default function CharacterCard({
         kit={combatKit}
         character={character}
         onSetKit={handleSetCombatKit}
+        kitLocks={character.locks?.kits[0] ?? DEFAULT_KIT_LOCKS}
+        onKitLocksChange={(updates) => updateKitLocks(0, updates)}
       />
 
       {/* Column 3+: Support kit slots */}
@@ -194,6 +211,8 @@ export default function CharacterCard({
           kit={supportKits[i] ?? null}
           character={character}
           onSetKit={(kit) => handleSetSupportKit(kit, i)}
+          kitLocks={character.locks?.kits[1 + i] ?? DEFAULT_KIT_LOCKS}
+          onKitLocksChange={(updates) => updateKitLocks(1 + i, updates)}
         />
       ))}
     </div>

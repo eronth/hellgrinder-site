@@ -97,6 +97,56 @@
     }
   }
 }
+
+/* Item choice section (e.g. Relic Worker relics) */
+.item-choice-section {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 0.4em;
+
+  .item-choice-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.35em 0.6em;
+    background: rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    .item-choice-count {
+      flex: 1;
+      font-size: 0.82em;
+      color: var(--text-secondary-color, #aaa);
+    }
+  }
+
+  .item-choice-list {
+    display: flex;
+    flex-direction: column;
+
+    .item-choice-card {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: background-color 0.12s;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &.interactive {
+        cursor: pointer;
+        &:hover {
+          background-color: rgba(100, 108, 255, 0.07);
+        }
+      }
+
+      &.selected {
+        background-color: rgba(100, 108, 255, 0.13);
+        border-left: 3px solid #646cff;
+      }
+    }
+  }
+}
+
 .weapon {
   background-color: var(--table-body-background-color);
   border-color: var(--weapon-card-border-color);

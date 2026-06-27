@@ -2,8 +2,8 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRotateLeft, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import { Kit, ChoiceTagOption, DamageElement } from '../../../../../../ts-types/types';
-import { CharacterDesign } from '../../../../../../ts-types/player-character-types';
-import KitComponent, { WeaponChoiceInteractions } from '../../../kits/Kit';
+import { CharacterDesign, CharacterKitLocks } from '../../../../../../ts-types/player-character-types';
+import KitComponent, { WeaponChoiceInteractions, ItemChoiceInteraction } from '../../../kits/Kit';
 import CharacterGeneratorTools from '../../../../../../utils/characterGeneratorTools';
 import KitSelectModal from './KitSelectModal';
 import './KitSlot.css';
@@ -15,13 +15,23 @@ type Props = {
   kit: Kit | null;
   character: CharacterDesign;
   onSetKit: (kit: Kit) => void;
+  kitLocks: CharacterKitLocks;
+  onKitLocksChange: (updates: Partial<CharacterKitLocks>) => void;
 };
 
-export default function KitSlot({ kitType, kit, character, onSetKit }: Props) {
+const EMPTY_LOCKS: Partial<CharacterKitLocks> = {
+  kitLocked: false,
+  weaponChoiceLocks: {},
+  itemChoiceSelections: [],
+  itemChoiceLocked: false,
+};
+
+export default function KitSlot({ kitType, kit, character, onSetKit, kitLocks, onKitLocksChange }: Props) {
   const [modalOpen, setModalOpen] = React.useState(false);
-  const [locked, setLocked] = React.useState(false);
-  // Per-weapon choice lock state, keyed by weapon name
-  const [weaponLocks, setWeaponLocks] = React.useState<Record<string, boolean>>({});
+  const locked = kitLocks?.kitLocked;
+  const weaponLocks = kitLocks.weaponChoiceLocks;
+  const itemChoiceSelections = kitLocks.itemChoiceSelections ?? [];
+  const itemChoiceLocked = kitLocks.itemChoiceLocked ?? false;
 
   const allKits = kitType === 'combat'
     ? CharacterGeneratorTools.getAllCombatKits()
@@ -34,7 +44,6 @@ export default function KitSlot({ kitType, kit, character, onSetKit }: Props) {
   const label = kitType === 'combat' ? 'Combat Kit' : 'Support Kit';
 
   // Derive the currently-selected choice tag for a weapon from its stored damage type.
-  // If all attack modes still have 'Chosen Type', no choice has been made.
   function getWeaponSelectedTag(weapon: Kit['weapons'][number]): ChoiceTagOption | null {
     const type = weapon.attackModes[0]?.damage?.l?.type;
     return (type && type !== 'Chosen Type') ? type as ChoiceTagOption : null;
@@ -72,7 +81,7 @@ export default function KitSlot({ kitType, kit, character, onSetKit }: Props) {
       });
     });
     onSetKit(updatedKit);
-    setWeaponLocks(prev => ({ ...prev, [weaponName]: false }));
+    onKitLocksChange({ weaponChoiceLocks: { ...weaponLocks, [weaponName]: false } });
   }
 
   // Build interaction objects for every weapon in the kit that has choiceTags.
@@ -86,10 +95,41 @@ export default function KitSlot({ kitType, kit, character, onSetKit }: Props) {
         locked: weaponLocks[wName] ?? false,
         onSelect: (tag) => applyWeaponChoice(wName, tag),
         onRandomize: () => randomizeWeaponChoice(wName, weapon.choiceTags!.tags),
-        onToggleLock: () => setWeaponLocks(prev => ({ ...prev, [wName]: !prev[wName] })),
+        onToggleLock: () => onKitLocksChange({ weaponChoiceLocks: { ...weaponLocks, [wName]: !weaponLocks[wName] } }),
         onReset: () => resetWeaponChoice(wName),
       };
     });
+  }
+
+  // Build item choice interaction if the kit has a choice-item set.
+  let itemChoiceInteraction: ItemChoiceInteraction | undefined;
+  if (kit?.itemChoiceCount) {
+    const choiceItems = kit.items.filter(i => i.isChoiceItem);
+    const choiceCount = kit.itemChoiceCount;
+
+    itemChoiceInteraction = {
+      selectedNames: itemChoiceSelections,
+      choiceCount,
+      locked: itemChoiceLocked,
+      onToggle: (itemName) => {
+        const next = [...itemChoiceSelections];
+        const idx = next.indexOf(itemName);
+        if (idx >= 0) {
+          next.splice(idx, 1);
+        } else if (next.length < choiceCount) {
+          next.push(itemName);
+        }
+        onKitLocksChange({ itemChoiceSelections: next });
+      },
+      onRandomize: () => {
+        const shuffled = [...choiceItems].sort(() => Math.random() - 0.5);
+        const selections = shuffled.slice(0, choiceCount).map(i => i.name);
+        onKitLocksChange({ itemChoiceSelections: selections, itemChoiceLocked: false });
+      },
+      onToggleLock: () => {
+        onKitLocksChange({ itemChoiceLocked: !itemChoiceLocked });
+      },
+    };
   }
 
   function handleRandomize() {
@@ -97,16 +137,14 @@ export default function KitSlot({ kitType, kit, character, onSetKit }: Props) {
       ? CharacterGeneratorTools.randomizeCombatKit(usedKitNames).kit
       : CharacterGeneratorTools.randomizeSupportKit(usedKitNames);
     onSetKit(newKit);
-    setLocked(false);
-    setWeaponLocks({});
+    onKitLocksChange(EMPTY_LOCKS);
   }
 
   function handleModalConfirm(selectedKit: Kit) {
     const newKit = CharacterGeneratorTools.selectKit(selectedKit.name, allKits);
     if (newKit) onSetKit(newKit);
     setModalOpen(false);
-    setLocked(false);
-    setWeaponLocks({});
+    onKitLocksChange(EMPTY_LOCKS);
   }
 
   return (
@@ -154,7 +192,7 @@ export default function KitSlot({ kitType, kit, character, onSetKit }: Props) {
             </button>
             <button
               className={`kit-lock-btn ${locked ? 'locked' : 'unlocked'}`}
-              onClick={() => setLocked(v => !v)}
+              onClick={() => onKitLocksChange({ kitLocked: !locked })}
               title={locked ? 'Unlock to change' : 'Lock kit'}
             >
               <FontAwesomeIcon icon={locked ? faLock : faLockOpen} />
@@ -163,6 +201,7 @@ export default function KitSlot({ kitType, kit, character, onSetKit }: Props) {
           <KitComponent
             kit={kit}
             weaponChoiceInteractions={weaponChoiceInteractions}
+            itemChoiceInteraction={itemChoiceInteraction}
           />
         </div>
       )}

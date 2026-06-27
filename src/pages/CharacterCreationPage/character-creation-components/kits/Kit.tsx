@@ -1,26 +1,77 @@
-import type { Kit } from '../../../../ts-types/types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRotateLeft, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
+import type { Item, Kit } from '../../../../ts-types/types';
 import WeaponComponent from './weapon/WeaponComponent';
-import Item from './item/ItemComponent.tsx';
+import ItemComponent from './item/ItemComponent.tsx';
 import Training from './training/TrainingComponent';
 import { ChoiceInteraction } from './weapon/weapon-components/SelectableTags.tsx';
 
 export type WeaponChoiceInteractions = Record<string, ChoiceInteraction>;
 
+export type ItemChoiceInteraction = {
+  selectedNames: string[];
+  choiceCount: number;
+  locked: boolean;
+  onToggle: (itemName: string) => void;
+  onRandomize: () => void;
+  onToggleLock: () => void;
+};
+
 type Props = {
   needsCols?: boolean;
   kit: Kit;
   weaponChoiceInteractions?: WeaponChoiceInteractions;
+  hideChoiceItems?: boolean;
+  itemChoiceInteraction?: ItemChoiceInteraction;
 };
 
-export default function Kit({ needsCols, kit, weaponChoiceInteractions }: Props) {
+function ItemChoiceSection({ items, interaction }: { items: Item[]; interaction: ItemChoiceInteraction }) {
+  const { selectedNames, choiceCount, locked, onToggle, onRandomize, onToggleLock } = interaction;
+  const allChosen = selectedNames.length >= choiceCount;
+  const displayItems = locked ? items.filter(i => selectedNames.includes(i.name)) : items;
 
-  function getKitBenefitsLayedOut() {
-    if (needsCols) {
-      return (<div className='col-handler'>{getKitBenefitPieces()}</div>);
-    } else {
-      return (<>{getKitBenefitPieces()}</>);
-    }
-  }
+  return (
+    <div className="item-choice-section">
+      <div className="item-choice-header">
+        <span className="item-choice-count">{selectedNames.length}/{choiceCount} chosen</span>
+        <button
+          className="choice-action-btn"
+          onClick={onRandomize}
+          disabled={locked}
+          title="Randomize choices"
+        >
+          <FontAwesomeIcon icon={faArrowRotateLeft} />
+        </button>
+        <button
+          className={`choice-lock-btn ${locked ? 'locked' : ''}`}
+          onClick={onToggleLock}
+          disabled={!allChosen}
+          title={locked ? 'Unlock to change' : 'Lock selection'}
+        >
+          <FontAwesomeIcon icon={locked ? faLock : faLockOpen} />
+        </button>
+      </div>
+      <div className="item-choice-list">
+        {displayItems.map((item, i) => {
+          const isSelected = selectedNames.includes(item.name);
+          return (
+            <div
+              key={i}
+              className={`item-choice-card ${isSelected ? 'selected' : ''} ${locked ? '' : 'interactive'}`}
+              onClick={() => !locked && onToggle(item.name)}
+            >
+              <ItemComponent item={item} />
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+export default function Kit({ needsCols, kit, weaponChoiceInteractions, hideChoiceItems, itemChoiceInteraction }: Props) {
+  const regularItems = kit.items.filter(i => !i.isChoiceItem);
+  const choiceItems = kit.items.filter(i => i.isChoiceItem);
 
   function getKitBenefitPieces() {
     return (<>
@@ -31,13 +82,28 @@ export default function Kit({ needsCols, kit, weaponChoiceInteractions }: Props)
           choiceInteraction={weaponChoiceInteractions?.[w.name]}
         />
       )}
-      {kit.items.map((i, ii) =>
-        <Item item={i} key={`kit-${kit.name}-item-${ii}`} />
+      {regularItems.map((item, ii) =>
+        <ItemComponent item={item} key={`kit-${kit.name}-item-${ii}`} />
+      )}
+      {choiceItems.length > 0 && !hideChoiceItems && (
+        itemChoiceInteraction
+          ? <ItemChoiceSection items={choiceItems} interaction={itemChoiceInteraction} />
+          : choiceItems.map((item, ii) =>
+              <ItemComponent item={item} key={`kit-${kit.name}-choice-item-${ii}`} />
+            )
       )}
       {kit.trainings.map((t, ti) =>
         <Training training={t} key={`kit-${kit.name}-training-${ti}`} />
       )}
     </>);
+  }
+
+  function getKitBenefitsLayedOut() {
+    if (needsCols) {
+      return (<div className='col-handler'>{getKitBenefitPieces()}</div>);
+    } else {
+      return (<>{getKitBenefitPieces()}</>);
+    }
   }
 
   return (<div className='kit'>

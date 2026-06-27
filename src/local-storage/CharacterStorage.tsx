@@ -1,4 +1,4 @@
-import { CharacterDesign } from "../ts-types/player-character-types";
+import { CharacterDesign, DEFAULT_CHARACTER_LOCKS } from "../ts-types/player-character-types";
 import { ActiveStatusEffect } from "../ts-types/types";
 
 const STORAGE_KEY = 'hellgrinder_characters';
@@ -226,6 +226,7 @@ export class CharacterStorage {
       bonuses: Array.isArray(char.bonuses) ? char.bonuses : [],
       specializationBonus: char.specializationBonus || '',
       specializationPenalty: char.specializationPenalty || '',
+      locks: char.locks ?? DEFAULT_CHARACTER_LOCKS,
       inventory: {
         weapons: Array.isArray(char.inventory?.weapons) ? char.inventory.weapons : [],
         items: Array.isArray(char.inventory?.items) ? char.inventory.items : []

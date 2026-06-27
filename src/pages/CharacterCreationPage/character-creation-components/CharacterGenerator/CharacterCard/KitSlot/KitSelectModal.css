@@ -160,3 +160,38 @@
     }
   }
 }
+
+.kit-relic-toggle-btn {
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0.3em 0.7em;
+  font-size: 0.82em;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: #777;
+  }
+}
+
+.kit-relic-preview {
+  margin-top: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  overflow: hidden;
+
+  .kit-relic-preview-header {
+    padding: 0.35em 0.6em;
+    font-size: 0.78em;
+    font-weight: 600;
+    color: var(--text-secondary-color, #aaa);
+    background: rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}

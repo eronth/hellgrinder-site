@@ -37,6 +37,7 @@ const characterDefaults: Omit<CharacterDesign, 'id' | 'name'> = {
   startingCombatKits: 1, startingSupportKits: 1,
   kits: [], perks: [], bonuses: [],
   specializationBonus: '', specializationPenalty: '',
+  locks: { specialization: false, perks: false, kits: [] },
   inventory: {
     weapons: [],
     items: []
@@ -132,15 +133,8 @@ function handleSelectedPerksLogic({ character }: { character: CharacterDesign })
   character.stats.perkPoints -= perksCost;
 };
 
-function specialKitLogic(kit: Kit) {
-  if (kit.name === "Relic Worker") {
-    // Randomly remove all but 3 relics
-    while (kit.items.length > 4) { // Do 4 to keep the description chunk.
-      // Randomly choose any item NOT INCLUDING the description block to remove.
-      const rand = Math.floor(Math.random() * (kit.items.length-1)) + 1;
-      kit.items.splice(rand, 1);
-    }
-  }
+function specialKitLogic(_kit: Kit) {
+  // Reserved for future kit-specific logic at generation time.
 };
 
 function specialPerkLogic(perk: Perk) {

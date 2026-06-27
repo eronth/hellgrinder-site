@@ -9,10 +9,11 @@ import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 type Props = {
   character: CharacterDesign;
   onSetSpecialization: (bonus: string, penalty: string) => void;
+  locked: boolean;
+  onToggleLock: () => void;
 };
 
-export default function SpecializationSection({ character, onSetSpecialization }: Props) {
-  const [locked, setLocked] = React.useState(false);
+export default function SpecializationSection({ character, onSetSpecialization, locked, onToggleLock }: Props) {
 
   const bonus = character.specializationBonus;
   const penalty = character.specializationPenalty;
@@ -21,7 +22,6 @@ export default function SpecializationSection({ character, onSetSpecialization }
   function handleRandomize() {
     const result = CharacterGeneratorTools.randomizeSpecialization();
     onSetSpecialization(result.bonus, result.penalty);
-    setLocked(false);
   }
 
   function handleBonusChange(e: React.ChangeEvent<HTMLSelectElement>) {
@@ -51,7 +51,7 @@ export default function SpecializationSection({ character, onSetSpecialization }
           </button>
           <button
             className={`spec-lock-btn ${locked ? 'locked' : 'unlocked'}`}
-            onClick={() => setLocked(!locked)}
+            onClick={onToggleLock}
             title={locked ? 'Unlock to edit' : 'Lock specialization'}
             disabled={!isSet}
           >

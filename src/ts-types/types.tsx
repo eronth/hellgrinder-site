@@ -33,6 +33,7 @@ type ItemDef = {
   };
   description?: string;
   isAdvancedItem?: boolean;
+  isChoiceItem?: boolean;
 }
 
 type Kit = {
@@ -43,6 +44,7 @@ type Kit = {
   trainings: Training[];
   extraPerkPoints?: number;
   extraSupportKits?: number;
+  itemChoiceCount?: number;
 }
 
 export type Weapon = ItemDef & {

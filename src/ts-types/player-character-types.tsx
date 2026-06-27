@@ -1,14 +1,36 @@
 import { Kit, Perk, Weapon, Item, ActiveStatusEffect } from "./types";
 
+export type CharacterKitLocks = {
+  kitLocked: boolean;
+  weaponChoiceLocks: Record<string, boolean>;
+  itemChoiceSelections: string[];
+  itemChoiceLocked: boolean;
+};
+
+export type CharacterLocks = {
+  specialization: boolean;
+  perks: boolean;
+  kits: CharacterKitLocks[];
+};
+
+export const DEFAULT_KIT_LOCKS: CharacterKitLocks = {
+  kitLocked: false,
+  weaponChoiceLocks: {},
+  itemChoiceSelections: [],
+  itemChoiceLocked: false,
+};
+export const DEFAULT_CHARACTER_LOCKS: CharacterLocks = { specialization: false, perks: false, kits: [] };
+
 export type CharacterDesign = {
   id: string,
   name: string,
   stats: CharacterStats,
   startingCombatKits: number, startingSupportKits: number,
-  kits: Kit[], 
+  kits: Kit[],
   perks: Perk[], // All perks (starting + acquired)
   bonuses: string[],
   specializationBonus: string, specializationPenalty: string,
+  locks: CharacterLocks,
   // Separate inventory for items/weapons acquired during play
   inventory: {
     weapons: Weapon[],

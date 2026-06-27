@@ -207,8 +207,9 @@ const exObj: { [key: string]: Kit } = {
       {
         name: 'Chosen Relics',
         tags: ['Arcane', 'Relic'],
-        description: 'When you pick Relic Worker, choose three of the following relics. When combat begins, choose a ' +
-          'relic to start as equipped. Swapping Relics is a Maneuver.',
+        description: 'When you pick Relic Worker, choose 2 of the following '
+          + 'relics. When combat begins, choose a '
+          + 'relic to start as equipped. Swapping Relics uses the Swap Weapon Maneuver.',
         effects: [''],
         isAdvancedItem: false,
       }, {
@@ -219,12 +220,14 @@ const exObj: { [key: string]: Kit } = {
           + ' Infernal Damage and creatures'
           + ' in [Short Range] of you take 1 Infernal Damage.'],
         isAdvancedItem: false,
+        isChoiceItem: true,
       }, {
         name: 'Drowner Discus',
         tags: ['Arcane', 'Relic', 'Medium Range', 'Thrown', {tag: 'Area', value: 1}],
         description: '',
         effects: ['Create a Drownpit Pool in the affected area.'],
         isAdvancedItem: false,
+        isChoiceItem: true,
       }, {
         name: 'Slowing Viewfinder',
         tags: ['Arcane', 'Relic'],
@@ -234,6 +237,7 @@ const exObj: { [key: string]: Kit } = {
           'Creatures in your front arc at [Short Range] are [Slowed 1].'
         ],
         isAdvancedItem: false,
+        isChoiceItem: true,
       }, {
         name: 'Innersoul Stabilizing Field Generator',
         tags: ['Arcane', 'Relic'],
@@ -241,6 +245,7 @@ const exObj: { [key: string]: Kit } = {
         effects: ['At the start of your turn, you and allies in [Short Range] of you gain +1 Health.', 'You and allies ' +
           'in [Short Range] of you gain [Resist Soulrend 1].'],
         isAdvancedItem: false,
+        isChoiceItem: true,
       }, {
         name: 'Soulbinder Darts',
         tags: ['Arcane', 'Relic', 'One-Handed', 'Action', 'Maneuver'],
@@ -252,6 +257,7 @@ const exObj: { [key: string]: Kit } = {
             'them takes half (rounded up) of the damage as Nethercurrent Damage.',
         ],
         isAdvancedItem: false,
+        isChoiceItem: true,
       }, {
         name: 'Quickrot Ring',
         tags: ['Arcane', 'Relic', 'Action'],
@@ -266,6 +272,7 @@ const exObj: { [key: string]: Kit } = {
           'Target Gains “Weak Metal X”, where X is the number of stacks of Quickrot divided by 4.',
         ],
         isAdvancedItem: false,
+        isChoiceItem: true,
       }, {
         name: 'Lifesap Coil',
         tags: ['Arcane', 'Relic', 'One-Handed', 'Maneuver'],
@@ -277,9 +284,11 @@ const exObj: { [key: string]: Kit } = {
             'Damage. You then gain Corruption equal to half of the healing.',
         ],
         isAdvancedItem: false,
+        isChoiceItem: true,
       },
     ],
     trainings: [],
+    itemChoiceCount: 2,
   },
 
   warrior: {

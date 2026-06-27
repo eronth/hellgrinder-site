@@ -1,4 +1,4 @@
-import { DamageTakenMod } from '../../../ts-types/creature-types';
+import { DamageTakenMod } from '../../../../ts-types/creature-types';
 
 
 type Props = {

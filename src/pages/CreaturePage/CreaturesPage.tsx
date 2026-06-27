@@ -5,8 +5,8 @@ import { Toggle } from '../../components/common/generic/Toggle/Toggle';
 // Types
 import { TabType } from "../../ts-types/types";
 // Components
-import EncounterBuilder from './creature-page-components/EncounterBuilder';
-import CreatureRules from "./creature-page-components/CreatureRules/CreatureRules";
+import EncounterBuilderPage from './EncounterBuilderPage/EncounterBuilderPage';
+import CreatureRulesPage from "./CreatureRulesPage/CreatureRulesPage";
 
 export default function CreaturesPage() {
   const page: TabType = 'creatures';
@@ -38,8 +38,8 @@ export default function CreaturesPage() {
       onClick={setShowBuilder} />
     <hr />
     {showBuilder
-      ? <EncounterBuilder />
-      : <CreatureRules />
+      ? <EncounterBuilderPage />
+      : <CreatureRulesPage />
     }
   </Page>);
 }

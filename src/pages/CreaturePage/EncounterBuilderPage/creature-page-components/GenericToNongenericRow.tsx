@@ -1,4 +1,4 @@
-import { FactionEffectsRow } from "../../../ts-types/table-types";
+import { FactionEffectsRow } from "../../../../ts-types/table-types";
 
 type Props = {
   data: FactionEffectsRow;

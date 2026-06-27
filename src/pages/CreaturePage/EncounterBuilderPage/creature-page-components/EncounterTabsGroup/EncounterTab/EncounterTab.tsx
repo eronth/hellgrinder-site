@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { Encounter } from "../../../../../ts-types/encounter-types";
+import { Encounter } from "../../../../../../ts-types/encounter-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import './EncounterTab.css';

@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
-import { Encounter } from '../../../ts-types/encounter-types';
+import { Encounter } from '../../../../ts-types/encounter-types';
 import CreatureCard from './CreatureCard/CreatureCard';
 import CollapsibleSection from './CollapsibleSection/CollapsibleSection';
-import { EncounterStorage } from '../../../local-storage/EncounterStorage';
-import { getCreatureTierCounts, formatTierCounts } from '../../../utils/encounterUtils';
+import { EncounterStorage } from '../../../../local-storage/EncounterStorage';
+import { getCreatureTierCounts, formatTierCounts } from '../../../../utils/encounterUtils';
 
 type Props = {
   encounter: Encounter;

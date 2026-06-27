@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 // Components
 import Tools from "../../../utils/tools";
-import CreatureCard from "./CreatureCard/CreatureCard";
-import CollapsibleSection from "../creature-page-components/CollapsibleSection/CollapsibleSection";
-import FactionSelector from "../creature-page-components/FactionSelector/FactionSelector";
-import EncounterSection from "../creature-page-components/EncounterSection";
-import EncounterTabsGroup from "./EncounterTabsGroup/EncounterTabsGroup";
+import CreatureCard from "./creature-page-components/CreatureCard/CreatureCard";
+import CollapsibleSection from "./creature-page-components/CollapsibleSection/CollapsibleSection";
+import FactionSelector from "./creature-page-components/FactionSelector/FactionSelector";
+import EncounterSection from "./creature-page-components/EncounterSection";
+import EncounterTabsGroup from "./creature-page-components/EncounterTabsGroup/EncounterTabsGroup";
 import FloatingPanelsContainer from "../../../components/common/FloatingPanels/FloatingPanelsContainer";
-import SingleFactionDisplayRegion from './SingleFactionDisplayRegion/SingleFactionDisplayRegion';
+import SingleFactionDisplayRegion from './creature-page-components/SingleFactionDisplayRegion/SingleFactionDisplayRegion';
 // Types
 import { Creature } from "../../../ts-types/creature-types";
 import { Encounter, EncounterCreature, EncounterSet } from "../../../ts-types/encounter-types";
@@ -18,10 +18,10 @@ import ZephpterCreatures from "../../../data/creatures/zephpter-creatures";
 import Sinners from "../../../data/creatures/sinner-creatures";
 import FactionExamples from "../../../data/creatures/faction-examples";
 // Utils
-import { transformCreatureToFaction } from "../creature-page-components/FactionTransformUtils";
+import { transformCreatureToFaction } from "./creature-page-components/FactionTransformUtils";
 import { EncounterStorage } from "../../../local-storage/EncounterStorage";
 
-export default function EncounterBuilder() {
+export default function EncounterBuilderPage() {
   const [selectedFaction, setSelectedFaction] = useState<string>('Generic');
   const [encounterSet, setEncounterSet] = useState<EncounterSet>({
     encounters: {},

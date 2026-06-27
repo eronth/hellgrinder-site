@@ -1,10 +1,10 @@
-import Hx from "../../../../components/common/generic/Hx/Hx";
-import Tools from "../../../../utils/tools";
-import CreatureCard from "../CreatureCard/CreatureCard";
-import GenCreatures from "../../../../data/creatures/generic-creatures";
-import { transformCreatureToFaction } from "../FactionTransformUtils";
+import Hx from "../../../components/common/generic/Hx/Hx";
+import Tools from "../../../utils/tools";
+import CreatureCard from "../EncounterBuilderPage/creature-page-components/CreatureCard/CreatureCard";
+import GenCreatures from "../../../data/creatures/generic-creatures";
+import { transformCreatureToFaction } from "../EncounterBuilderPage/creature-page-components/FactionTransformUtils";
 
-export default function CreatureRules() {
+export default function CreatureRulesPage() {
   const innerHx = 4;
 
   const creature = GenCreatures['imp'];

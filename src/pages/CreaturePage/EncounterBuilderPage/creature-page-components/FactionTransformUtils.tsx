@@ -1,12 +1,12 @@
-import Tools from "../../../utils/tools";
-import RuleKeyword from '../../../components/keywords/RuleKeyword';
-import { Creature, CreatureAbility, CreatureTier, DamageTakenMod } from '../../../ts-types/creature-types';
-import { AttackMode, DamageElement } from '../../../ts-types/types';
-import StatusKeyword from '../../../components/keywords/StatusKeyword';
+import Tools from "../../../../utils/tools";
+import RuleKeyword from '../../../../components/keywords/RuleKeyword';
+import { Creature, CreatureAbility, CreatureTier, DamageTakenMod } from '../../../../ts-types/creature-types';
+import { AttackMode, DamageElement } from '../../../../ts-types/types';
+import StatusKeyword from '../../../../components/keywords/StatusKeyword';
 import _ from "lodash";
-import SkillCheck from "../../../components/keywords/SkillCheck/SkillCheck";
-import { giftOfPlague } from "../../../data/creatures/test-creatures";
-import { arc } from "../../../data/creatures/zephpter-creatures";
+import SkillCheck from "../../../../components/keywords/SkillCheck/SkillCheck";
+import { giftOfPlague } from "../../../../data/creatures/test-creatures";
+import { arc } from "../../../../data/creatures/zephpter-creatures";
 
 type PrimaryDamageAndGeneric = DamageElement | 'Core Type';
 type AbsorbDamageAndGeneric = DamageElement | 'PROMOTE';

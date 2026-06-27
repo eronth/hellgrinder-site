@@ -1,9 +1,9 @@
 import React from "react";
 import CollapsibleSection from "../CollapsibleSection/CollapsibleSection";
-import Tools from "../../../../utils/tools";
+import Tools from "../../../../../utils/tools";
 import { transformAllCreaturesToFaction } from "../FactionTransformUtils";
 import CreatureCard from "../CreatureCard/CreatureCard";
-import { Creature } from "../../../../ts-types/creature-types";
+import { Creature } from "../../../../../ts-types/creature-types";
 import './SingleFactionDisplayRegion.css';
 
 type Props = {

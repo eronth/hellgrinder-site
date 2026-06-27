@@ -1,4 +1,4 @@
-import { EncounterSet } from '../../../../ts-types/encounter-types';
+import { EncounterSet } from '../../../../../ts-types/encounter-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faFileImport, faFileExport } from '@fortawesome/free-solid-svg-icons';
 import EncounterTab from './EncounterTab/EncounterTab';

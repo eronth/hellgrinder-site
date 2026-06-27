@@ -40,9 +40,9 @@
   .notes-textarea {
     width: 100%;
     box-sizing: border-box;
-    background: var(--background-secondary, #1a1a1a);
+    background: var(--background-color, #1a1a1a);
     color: inherit;
-    border: 1px solid var(--border-color, #444);
+    border: 1px solid var(--primary-color, #444);
     border-radius: 4px;
     padding: .5em;
     font-family: inherit;

@@ -8,8 +8,19 @@
 
 .panel-toggle {
   width: 100%;
-  background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
-  color: rgba(255, 255, 255, 0.87);
+  --bg1: light-dark(
+    oklch(94.705% 0.0001 271),
+    oklch(29% 0.00003 271)
+  );
+  --bg2: light-dark(
+    oklch(91% 0.0001 271),
+    oklch(35% 0.00004 271)
+  );
+  background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
+  color: light-dark(
+    rgb(0 0 0 / 0.87),
+    rgb(255 255 255 / 0.87)
+  );
   border: none;
   padding: 1rem 1.5rem;
   font-size: 1.1rem;
@@ -22,7 +33,14 @@
   text-align: left;
 
   &:hover {
-    background: linear-gradient(135deg, #3a3a3a 0%, #4a4a4a 100%);
+    --bg1: light-dark(
+      oklch(89% 0.0001 271),
+      oklch(35% 0.00004 271)
+    );
+    --bg2: light-dark(
+      oklch(86% 0.0001 271),
+      oklch(41% 0.00005 271)
+    );
     transform: translateY(-1px);
   }
 
@@ -83,8 +101,8 @@ h5 {
 }
 
 .storage-info {
-  background-color: rgba(100, 108, 255, 0.1);
-  border: 1px solid rgba(100, 108, 255, 0.3);
+  background-color: rgb(100 108 255 / 0.1);
+  border: 1px solid rgb(100 108 255 / 0.3);
   border-radius: 6px;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -130,7 +148,7 @@ h5 {
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(100, 108, 255, 0.3);
+    box-shadow: 0 4px 12px rgb(100 108 255 / 0.3);
   }
 
   &:active {
@@ -150,7 +168,7 @@ h5 {
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
 
   &:hover {
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 4px 12px rgb(16 185 129 / 0.3);
   }
 }
 
@@ -158,13 +176,13 @@ h5 {
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
 
   &:hover {
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 12px rgb(59 130 246 / 0.3);
   }
 }
 
 .danger-section {
-  background-color: rgba(220, 53, 69, 0.05);
-  border: 1px solid rgba(220, 53, 69, 0.2);
+  background-color: rgb(220 53 69 / 0.05);
+  border: 1px solid rgb(220 53 69 / 0.2);
   border-radius: 6px;
   padding: 1rem;
 
@@ -177,7 +195,7 @@ h5 {
   background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
 
   &:hover {
-    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+    box-shadow: 0 4px 12px rgb(220 53 69 / 0.3);
   }
 }
 
@@ -186,8 +204,8 @@ h5 {
 }
 
 .import-note {
-  background-color: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  background-color: rgb(245 158 11 / 0.1);
+  border: 1px solid rgb(245 158 11 / 0.3);
   border-radius: 4px;
   padding: 0.75rem;
   font-size: 0.9rem;
@@ -202,7 +220,7 @@ h5 {
 .panel-footer {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgb(255 255 255 / 0.1);
 }
 
 .tips {
@@ -239,8 +257,8 @@ h5 {
 }
 
 .action-note {
-  background-color: rgba(59, 130, 246, 0.2);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  background-color: rgb(59 130 246 / 0.2);
+  border: 1px solid rgb(59 130 246 / 0.2);
   border-radius: 4px;
   padding: 0.75rem;
   font-size: 0.85rem;
@@ -254,17 +272,17 @@ h5 {
 /* Enhanced button styling for action row */
 .action-buttons .export-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 4px 12px rgb(16 185 129 / 0.4);
 }
 
 .action-buttons .import-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 4px 12px rgb(59 130 246 / 0.4);
 }
 
 .action-buttons .clear-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+  box-shadow: 0 4px 12px rgb(220 53 69 / 0.4);
 }
 
 .action-buttons button:disabled {
@@ -354,14 +372,14 @@ h5 {
   }
 
   .success-message {
-    background-color: rgba(16, 185, 129, 0.1);
-    border: 1px solid rgba(16, 185, 129, 0.3);
+    background-color: rgb(16 185 129 / 0.1);
+    border: 1px solid rgb(16 185 129 / 0.3);
     color: #10b981;
   }
 
   .error-message {
-    background-color: rgba(220, 53, 69, 0.1);
-    border: 1px solid rgba(220, 53, 69, 0.3);
+    background-color: rgb(220 53 69 / 0.1);
+    border: 1px solid rgb(220 53 69 / 0.3);
     color: #dc3545;
   }
 }

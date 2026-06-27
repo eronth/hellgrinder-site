@@ -46,7 +46,8 @@ export default function Actions() {
             Long Range is 9-12.
           </li>
           <li>
-            Beyond 12 Hexes, you are firing in Extreme Ranges, which increase for every 3 Hexes beyond Long Range maximum.
+            Beyond 12 Hexes, you are firing in Extreme Ranges, which increase
+            for every 3 Hexes beyond Long Range maximum.
             <br />
             For example, First Extreme Range is 13-15, Second Extreme Range is 16-18, and so on.
           </li>
@@ -55,6 +56,8 @@ export default function Actions() {
         <p>
             Shooting outside a
             weapon's range is usually permitted, but gets -3 per range increment.
+            Melee attacks cannot
+            be performed outside the weapon's range.
         </p>
       </div>
 

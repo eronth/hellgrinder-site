@@ -31,7 +31,7 @@ export default function CharacterGenerator() {
   , [characters, selectedCharacterId]);
 
   function generateCharacter() {
-    const newChar: CharacterDesign = CharacterGeneratorTools.generateRandomCharacter({
+    const newChar: CharacterDesign = CharacterGeneratorTools.generateBaseCharacter({
       usedNames: characters.map(c => c.name)
     });
     setCharacters(prev => [...prev, newChar]);

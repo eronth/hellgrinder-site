@@ -1,15 +1,18 @@
 import React from "react";
 import { CharacterDesign, CharacterStats } from "../../../../../ts-types/player-character-types.tsx";
+import { Kit, Perk } from "../../../../../ts-types/types.tsx";
 import CharacterStatsGrid from "../CharacterStatsGrid/CharacterStatsGrid.tsx";
 import InventoryManager from "../InventoryManager";
 import StatusEffectsManager from "../StatusEffectsManager/StatusEffectsManager.tsx";
 import EditableCharacterName from "./EditableCharacterName/EditableCharacterName.tsx";
-import CharacterPerksDisplay from "./CharacterPerksDisplay/CharacterPerksDisplay.tsx";
 import CharacterInventoryDisplay from "./CharacterInventoryDisplay/CharacterInventoryDisplay.tsx";
 import DeleteCharacterButton from "./DeleteCharacterButton/DeleteCharacterButton.tsx";
-import CharacterKitsDisplay from "./CharacterKitsDisplay/CharacterKitsDisplay.tsx";
-import SkillCheck from "../../../../../components/keywords/SkillCheck/SkillCheck.tsx";
+import SpecializationSection from "./SpecializationSection/SpecializationSection.tsx";
+import KitSlot from "./KitSlot/KitSlot.tsx";
+import PerksSection from "./PerksSection/PerksSection.tsx";
 import "./CharacterCard.css";
+
+const BASE_SUPPORT_KITS = 1;
 
 type Props = {
   character: CharacterDesign;
@@ -17,6 +20,7 @@ type Props = {
   setCharacters: React.Dispatch<React.SetStateAction<CharacterDesign[]>>;
   setSelectedCharacterId: React.Dispatch<React.SetStateAction<string | null>>;
 };
+
 export default function CharacterCard({
   character,
   characters,
@@ -24,12 +28,15 @@ export default function CharacterCard({
   setSelectedCharacterId,
 }: Props) {
 
+  // Convention: kits[0] = combat kit, kits[1..] = support kits
+  const combatKit: Kit | null = character.kits[0] ?? null;
+  const supportKits: Kit[] = character.kits.slice(1);
+
   function updateCharacterName(newName: string) {
     if (newName.trim() === '') return;
-    
-    setCharacters(prev => 
-      prev.map(c => 
-        c.id === character.id 
+    setCharacters(prev =>
+      prev.map(c =>
+        c.id === character.id
           ? { ...c, name: newName.trim() }
           : c
       )
@@ -37,28 +44,76 @@ export default function CharacterCard({
   }
 
   function updateCharacterStats(newStats: CharacterStats) {
-    const combinedStats = {
-      ...character.stats,
-      ...newStats
-    };
-
-    setCharacters(prev => 
-      prev.map(c => 
+    setCharacters(prev =>
+      prev.map(c =>
         c.id === character.id
-          ? { ...c, stats: combinedStats }
+          ? { ...c, stats: { ...character.stats, ...newStats } }
           : c
       )
     );
   }
 
   function updateCharacter(characterId: string, updates: Partial<CharacterDesign>) {
-    setCharacters(prev => 
-      prev.map(char => 
-        char.id === characterId 
+    setCharacters(prev =>
+      prev.map(char =>
+        char.id === characterId
           ? { ...char, ...updates }
           : char
       )
     );
+  }
+
+  function handleSetSpecialization(bonus: string, penalty: string) {
+    updateCharacter(character.id, { specializationBonus: bonus, specializationPenalty: penalty });
+  }
+
+  function handleSetCombatKit(newKit: Kit) {
+    const oldKitExtra = combatKit?.extraPerkPoints ?? 0;
+    const newKitExtra = newKit.extraPerkPoints ?? 0;
+    const newSupportCount = BASE_SUPPORT_KITS + (newKit.extraSupportKits ?? 0);
+
+    // Trim support kits if new kit gives fewer support slots
+    const trimmedSupport = supportKits.slice(0, newSupportCount);
+
+    // Adjust perk points by the delta between old and new kit extras
+    const perkPointsDelta = newKitExtra - oldKitExtra;
+
+    updateCharacter(character.id, {
+      kits: [newKit, ...trimmedSupport],
+      startingSupportKits: newSupportCount,
+      stats: {
+        ...character.stats,
+        perkPoints: character.stats.perkPoints + perkPointsDelta,
+      },
+    });
+  }
+
+  function handleSetSupportKit(newKit: Kit, slotIndex: number) {
+    const newSupport = [...supportKits];
+    newSupport[slotIndex] = newKit;
+    updateCharacter(character.id, {
+      kits: combatKit ? [combatKit, ...newSupport] : [...newSupport],
+    });
+  }
+
+  function handleSetPerks(newPerks: Perk[]) {
+    const oldSpent = character.perks.reduce((sum, p) => sum + p.cost, 0);
+    const newSpent = newPerks.reduce((sum, p) => sum + p.cost, 0);
+    const totalBudget = character.stats.perkPoints + oldSpent;
+    const newRemaining = totalBudget - newSpent;
+
+    const oldCorruptionFromPerks = character.perks.reduce((sum, p) => sum + (p.startingCorruption ?? 0), 0);
+    const newCorruptionFromPerks = newPerks.reduce((sum, p) => sum + (p.startingCorruption ?? 0), 0);
+    const corruptionDelta = newCorruptionFromPerks - oldCorruptionFromPerks;
+
+    updateCharacter(character.id, {
+      perks: newPerks,
+      stats: {
+        ...character.stats,
+        perkPoints: Math.max(0, newRemaining),
+        corruption: character.stats.corruption + corruptionDelta,
+      },
+    });
   }
 
   return (<>
@@ -70,7 +125,6 @@ export default function CharacterCard({
         />
       </div>
       <div>
-        {/* Status Effects Manager */}
         <StatusEffectsManager
           character={character}
           selectedCharacterId={character.id}
@@ -85,8 +139,10 @@ export default function CharacterCard({
           />
         )}
       </div>
-    </div>        
-    <div className="col-handler">          
+    </div>
+
+    <div className="col-handler">
+      {/* Column 1: Stats, Specialization, Standard Issue, Perks */}
       <div>
         <CharacterStatsGrid
           currentHealth={character.stats.health.current}
@@ -101,11 +157,11 @@ export default function CharacterCard({
           customSkill={character.stats.customSkill}
           onStatsChange={(newStats) => updateCharacterStats(newStats)}
         />
-        <div className="specialization-block">
-          <div className="title">Specializations</div>
-          <div>+3 to <SkillCheck tags={[character.specializationBonus]} plural /> (bonus)</div>
-          <div>-5 to <SkillCheck tags={[character.specializationPenalty]} plural /> (penalty)</div>
-        </div>
+
+        <SpecializationSection
+          character={character}
+          onSetSpecialization={handleSetSpecialization}
+        />
 
         <div className="standard-issue-kit-block">
           <div className="title">Standard Issue Equipment</div>
@@ -115,12 +171,33 @@ export default function CharacterCard({
             basic operational gear.
           </div>
         </div>
-        
-        <div className="perks-title">Perks</div>
-        <CharacterPerksDisplay character={character} />
+
+        <PerksSection
+          character={character}
+          onSetPerks={handleSetPerks}
+        />
       </div>
-      <CharacterKitsDisplay character={character} />
+
+      {/* Column 2: Combat kit slot */}
+      <KitSlot
+        kitType="combat"
+        kit={combatKit}
+        character={character}
+        onSetKit={handleSetCombatKit}
+      />
+
+      {/* Column 3+: Support kit slots */}
+      {Array.from({ length: character.startingSupportKits }, (_, i) => (
+        <KitSlot
+          key={i}
+          kitType="support"
+          kit={supportKits[i] ?? null}
+          character={character}
+          onSetKit={(kit) => handleSetSupportKit(kit, i)}
+        />
+      ))}
     </div>
+
     <div className="notes-block">
       <div className="notes-title">Notes</div>
       <textarea
@@ -132,7 +209,6 @@ export default function CharacterCard({
       />
     </div>
     <div className="inventory-button-container">
-      {/* Inventory Manager */}
       <InventoryManager
         characters={characters}
         selectedCharacterId={character.id}

@@ -161,6 +161,73 @@ function specialPerkLogic(perk: Perk) {
   }
 }
 
+function generateBaseCharacter({ usedNames }: { usedNames: string[] }): CharacterDesign {
+  return {
+    ...(_.cloneDeep(characterDefaults)),
+    id: `char-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+    name: getRandomCharacterName({ usedNames })
+  };
+}
+
+function randomizeSpecialization(): { bonus: string; penalty: string } {
+  const so = [...specializationOptions];
+  const bonusIdx = Math.floor(Math.random() * so.length);
+  const bonus = so[bonusIdx];
+  so.splice(bonusIdx, 1);
+  return { bonus, penalty: so[Math.floor(Math.random() * so.length)] };
+}
+
+function selectKit(kitName: string, kitList: Kit[]): Kit | null {
+  const found = kitList.find(k => k.name === kitName);
+  if (!found) return null;
+  const clone = structuredClone(found);
+  specialKitLogic(clone);
+  return clone;
+}
+
+function randomizeCombatKit(usedKitNames: string[] = []): { kit: Kit; extraSupportKits: number; extraPerkPoints: number } {
+  const arr = Tools.sortKits(CombatKits);
+  const available = arr.filter(k => !usedKitNames.includes(k.name));
+  const pool = available.length > 0 ? available : arr;
+  const kit = structuredClone(pool[Math.floor(Math.random() * pool.length)]);
+  specialKitLogic(kit);
+  return { kit, extraSupportKits: kit.extraSupportKits ?? 0, extraPerkPoints: kit.extraPerkPoints ?? 0 };
+}
+
+function randomizeSupportKit(usedKitNames: string[] = []): Kit {
+  const arr = Tools.sortKits(SupportKits);
+  const available = arr.filter(k => !usedKitNames.includes(k.name));
+  const pool = available.length > 0 ? available : arr;
+  const kit = structuredClone(pool[Math.floor(Math.random() * pool.length)]);
+  specialKitLogic(kit);
+  return kit;
+}
+
+function randomizePerks(totalPerkPoints: number): { perks: Perk[]; remainingPoints: number } {
+  const perks = getPerks(totalPerkPoints);
+  perks.forEach(p => specialPerkLogic(p));
+  const spent = perks.reduce((sum, p) => sum + p.cost, 0);
+  return { perks, remainingPoints: totalPerkPoints - spent };
+}
+
+function selectPerk(perk: Perk): Perk {
+  const clone = structuredClone(perk);
+  specialPerkLogic(clone);
+  return clone;
+}
+
+function getAllCombatKits(): Kit[] {
+  return Tools.sortKits(CombatKits);
+}
+
+function getAllSupportKits(): Kit[] {
+  return Tools.sortKits(SupportKits);
+}
+
+function getAllPerks(): Perk[] {
+  return Tools.sortPerks(Perks);
+}
+
 function getRandomCharacterName({ usedNames }: {usedNames: string[]}): string {
   // Generate random combinations until we find a unique one
   let attempts = 0;
@@ -181,6 +248,18 @@ function getRandomCharacterName({ usedNames }: {usedNames: string[]}): string {
   return `Character ${usedNames.length + 1}`;
 }
 
+export { specializationOptions };
+
 export default {
   generateRandomCharacter,
+  generateBaseCharacter,
+  randomizeSpecialization,
+  selectKit,
+  randomizeCombatKit,
+  randomizeSupportKit,
+  randomizePerks,
+  selectPerk,
+  getAllCombatKits,
+  getAllSupportKits,
+  getAllPerks,
 };

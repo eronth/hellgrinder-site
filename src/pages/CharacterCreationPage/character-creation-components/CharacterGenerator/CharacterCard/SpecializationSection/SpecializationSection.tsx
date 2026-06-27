@@ -45,7 +45,8 @@ export default function SpecializationSection({ character, onSetSpecialization }
       <div className="spec-header">
         <div className="title">Specializations</div>
         <div className="spec-controls">
-          <button className="spec-randomize-btn" onClick={handleRandomize}>
+          <button className="spec-randomize-btn" onClick={handleRandomize}
+            disabled={locked}>
             Randomize
           </button>
           <button

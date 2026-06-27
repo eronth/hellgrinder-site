@@ -275,6 +275,12 @@ button {
     background-color: hsl(from var(--btn-bg-color)
       h calc(s*0.8) calc(l*0.9)
     );
+
+  }
+  &:disabled {
+    opacity: 0.4;
+    border-color: transparent;
+    cursor: default;
   }
   &:active {
     border-color: hsl(from var(--btn-bg-color)

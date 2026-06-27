@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import { Kit } from '../../../../../../ts-types/types';
 import { CharacterDesign } from '../../../../../../ts-types/player-character-types';
 import KitComponent from '../../../kits/Kit';
@@ -17,12 +19,12 @@ type Props = {
 
 export default function KitSlot({ kitType, kit, character, onSetKit }: Props) {
   const [modalOpen, setModalOpen] = React.useState(false);
+  const [locked, setLocked] = React.useState(false);
 
   const allKits = kitType === 'combat'
     ? CharacterGeneratorTools.getAllCombatKits()
     : CharacterGeneratorTools.getAllSupportKits();
 
-  // Kit names already in use by other slots (not this one)
   const usedKitNames = character.kits
     .filter(k => k.name !== kit?.name)
     .map(k => k.name);
@@ -34,12 +36,14 @@ export default function KitSlot({ kitType, kit, character, onSetKit }: Props) {
       ? CharacterGeneratorTools.randomizeCombatKit(usedKitNames).kit
       : CharacterGeneratorTools.randomizeSupportKit(usedKitNames);
     onSetKit(newKit);
+    setLocked(false);
   }
 
   function handleModalConfirm(selectedKit: Kit) {
     const newKit = CharacterGeneratorTools.selectKit(selectedKit.name, allKits);
     if (newKit) onSetKit(newKit);
     setModalOpen(false);
+    setLocked(false);
   }
 
   return (
@@ -71,11 +75,26 @@ export default function KitSlot({ kitType, kit, character, onSetKit }: Props) {
       ) : (
         <div className="kit-slot-assigned">
           <div className="kit-change-controls">
-            <button className="kit-reroll-btn" onClick={handleRandomize}>
+            <button
+              className="kit-reroll-btn"
+              onClick={handleRandomize}
+              disabled={locked}
+            >
               ↺ Re-randomize
             </button>
-            <button className="kit-change-btn" onClick={() => setModalOpen(true)}>
+            <button
+              className="kit-change-btn"
+              onClick={() => setModalOpen(true)}
+              disabled={locked}
+            >
               Change {label}
+            </button>
+            <button
+              className={`kit-lock-btn ${locked ? 'locked' : 'unlocked'}`}
+              onClick={() => setLocked(v => !v)}
+              title={locked ? 'Unlock to change' : 'Lock kit'}
+            >
+              <FontAwesomeIcon icon={locked ? faLock : faLockOpen} />
             </button>
           </div>
           <KitComponent kit={kit} />

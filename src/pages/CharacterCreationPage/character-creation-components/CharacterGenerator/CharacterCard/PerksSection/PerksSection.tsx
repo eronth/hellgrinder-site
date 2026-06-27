@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import { Perk } from '../../../../../../ts-types/types';
 import { CharacterDesign } from '../../../../../../ts-types/player-character-types';
 import CharacterGeneratorTools from '../../../../../../utils/characterGeneratorTools';
@@ -12,9 +14,10 @@ type Props = {
 
 export default function PerksSection({ character, onSetPerks }: Props) {
   const [showSelector, setShowSelector] = React.useState(false);
+  const [locked, setLocked] = React.useState(false);
   const allPerks = CharacterGeneratorTools.getAllPerks();
 
-  // Total perk budget = remaining + currently spent
+  const hasPerks = character.perks.length > 0;
   const spentPoints = character.perks.reduce((sum, p) => sum + p.cost, 0);
   const totalBudget = character.stats.perkPoints + spentPoints;
 
@@ -22,6 +25,7 @@ export default function PerksSection({ character, onSetPerks }: Props) {
     const { perks } = CharacterGeneratorTools.randomizePerks(totalBudget);
     onSetPerks(perks);
     setShowSelector(false);
+    setLocked(false);
   }
 
   function handleTogglePerk(perk: Perk) {
@@ -35,6 +39,11 @@ export default function PerksSection({ character, onSetPerks }: Props) {
     }
   }
 
+  function handleToggleLock() {
+    if (!locked) setShowSelector(false);
+    setLocked(v => !v);
+  }
+
   return (
     <div className="perks-section">
       <div className="perks-header">
@@ -43,19 +52,31 @@ export default function PerksSection({ character, onSetPerks }: Props) {
           <span className="perks-budget" title="Perk points remaining / total">
             {character.stats.perkPoints}/{totalBudget} pts
           </span>
-          <button className="perks-randomize-btn" onClick={handleRandomize}>
-            {character.perks.length > 0 ? '↺ Re-randomize' : 'Randomize'}
+          <button
+            className="perks-randomize-btn"
+            onClick={handleRandomize}
+            disabled={locked}
+          >
+            {hasPerks ? '↺ Re-randomize' : 'Randomize'}
           </button>
           <button
             className="perks-select-btn"
             onClick={() => setShowSelector(v => !v)}
+            disabled={locked}
           >
             {showSelector ? 'Done' : 'Select Perks'}
+          </button>
+          <button
+            className={`perks-lock-btn ${locked ? 'locked' : 'unlocked'}`}
+            onClick={handleToggleLock}
+            title={locked ? 'Unlock to edit' : 'Lock perks'}
+          >
+            <FontAwesomeIcon icon={locked ? faLock : faLockOpen} />
           </button>
         </div>
       </div>
 
-      {showSelector && (
+      {showSelector && !locked && (
         <div className="perk-selector">
           <div className="perk-selector-hint">
             Select perks ({character.stats.perkPoints} point{character.stats.perkPoints !== 1 ? 's' : ''} remaining)
@@ -83,9 +104,7 @@ export default function PerksSection({ character, onSetPerks }: Props) {
         </div>
       )}
 
-      {character.perks.length > 0 && (
-        <CharacterPerksDisplay character={character} />
-      )}
+      {hasPerks && <CharacterPerksDisplay character={character} />}
     </div>
   );
 }

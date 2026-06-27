@@ -1,15 +1,21 @@
 import { Creature } from "../../ts-types/creature-types";
+import { FactionTag } from "../../ts-types/tag-types";
 import StatusKeyword from "../../components/keywords/StatusKeyword";
 import Tools from "../../utils/tools";
 
+export type FactionExampleCreature = Creature & {
+  factionKey: FactionTag;
+};
+
 // Example creatures for each faction to showcase color-coding
-const exampleCreatures: { [key: string]: Creature } = {
+const exampleCreatures: { [key: string]: FactionExampleCreature } = {
   // Ashborn Legion - Infernal faction
   ashbornWarrior: {
     id: 'faction-examples/ashbornWarrior',
     name: 'Ashborn Warrior',
     tier: Tools.creatureTiers.t1,
     tags: ['Ashborn Legion'],
+    factionKey: 'Ashborn Legion',
     health: 16,
     size: 1,
     speed: 5,
@@ -51,6 +57,7 @@ const exampleCreatures: { [key: string]: Creature } = {
     name: 'Stoneveined Guardian',
     tier: Tools.creatureTiers.t2,
     tags: ['Stoneveined Choir'],
+    factionKey: 'Stoneveined Choir',
     health: 24,
     size: 2,
     speed: 3,
@@ -86,6 +93,7 @@ const exampleCreatures: { [key: string]: Creature } = {
     name: 'Vastfathom Reaver',
     tier: Tools.creatureTiers.t1,
     tags: ['Vastfathom League'],
+    factionKey: 'Vastfathom League',
     health: 14,
     size: 1,
     speed: 6,
@@ -123,6 +131,7 @@ const exampleCreatures: { [key: string]: Creature } = {
     name: 'Thornwraith Stalker',
     tier: Tools.creatureTiers.t1,
     tags: ['Thornwraith Bloom'],
+    factionKey: 'Thornwraith Bloom',
     health: 12,
     size: 1,
     speed: 5,
@@ -165,6 +174,7 @@ const exampleCreatures: { [key: string]: Creature } = {
     name: 'Wanderlost Scavenger',
     tier: Tools.creatureTiers.t1,
     tags: ['Wanderlost Crew'],
+    factionKey: 'Wanderlost Crew',
     health: 15,
     size: 1,
     speed: 4,
@@ -202,6 +212,7 @@ const exampleCreatures: { [key: string]: Creature } = {
     name: 'Umbral Shade',
     tier: Tools.creatureTiers.t1,
     tags: ['Umbral Nexus'],
+    factionKey: 'Umbral Nexus',
     health: 11,
     size: 1,
     speed: 6,
@@ -244,6 +255,7 @@ const exampleCreatures: { [key: string]: Creature } = {
     name: 'Forgefiend Engineer',
     tier: Tools.creatureTiers.t2,
     tags: ['Forgefiend Syndicate'],
+    factionKey: 'Forgefiend Syndicate',
     health: 18,
     size: 1,
     speed: 4,
@@ -279,6 +291,7 @@ const exampleCreatures: { [key: string]: Creature } = {
     name: 'Hand of Death Assassin',
     tier: Tools.creatureTiers.t2,
     tags: ['Hand of Death'],
+    factionKey: 'Hand of Death',
     health: 13,
     size: 1,
     speed: 7,
@@ -315,6 +328,7 @@ const exampleCreatures: { [key: string]: Creature } = {
     name: "Heaven's Host Sentinel",
     tier: Tools.creatureTiers.t2,
     tags: ["Heaven's Host"],
+    factionKey: "Heaven's Host",
     health: 20,
     size: 1,
     speed: 5,
@@ -351,6 +365,7 @@ const exampleCreatures: { [key: string]: Creature } = {
     name: 'Voidfire Cultist',
     tier: Tools.creatureTiers.t1,
     tags: ['Voidfire Conclave'],
+    factionKey: 'Voidfire Conclave',
     health: 12,
     size: 1,
     speed: 4,
@@ -391,6 +406,7 @@ const exampleCreatures: { [key: string]: Creature } = {
     name: 'Hagswell Hexer',
     tier: Tools.creatureTiers.t1,
     tags: ['Hagswell Covenant'],
+    factionKey: 'Hagswell Covenant',
     health: 10,
     size: 1,
     speed: 4,

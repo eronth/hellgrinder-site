@@ -65,34 +65,29 @@
     .add-creature-btn,
     .remove-creature-btn {
       background: none;
-      border: 1px solid light-dark(
-        rgb(0 0 0 / 0.2),
-        rgb(255 255 255 / 0.3)
-      );
-      color: light-dark(
-        rgb(0 0 0 / 0.6),
-        rgb(255 255 255 / 0.8)
-      );
       border-radius: 4px;
       padding: 0.25rem 0.4rem;
       cursor: pointer;
       font-size: 0.8rem;
       transition: all 0.2s ease;
       margin-left: 0.5rem;
+
+      --color: light-dark(
+        rgb(0 0 0 / 0.6),
+        rgb(255 255 255 / 0.8)
+      );
+      color: var(--color);
+      border-color: (oklch from var(--color) l c h / .66);
+      background-color: light-dark(
+          #fff1,
+          #fff1
+      );
       
       &:hover {
         background-color: light-dark(
-          rgb(0 0 0 / 0.05),
-          rgb(255 255 255 / 0.1)
-        );
-        color: light-dark(
-          rgb(0 0 0 / 0.8),
-          rgb(255 255 255 / 1)
-        );
-        border-color: light-dark(
-          rgb(0 0 0 / 0.3),
-          rgb(255 255 255 / 0.5)
-        );
+          #fff2,
+          #fff4
+        )
       }
       
       &:active {
@@ -101,22 +96,21 @@
     }
     
     .add-creature-btn {
-      color: light-dark(#2e7d32,#4ade80);
-      border-color: light-dark(#2e7d32,#4ade8066);
-      
+      --color: oklch(77% 0.22 144);
+
       &:hover {
-        background-color: light-dark(#2e7d321a, #4ade801a);
-        border-color: light-dark(#2e7d32,#4ade8099);
+        --color: oklch(82% 0.22 144);
       }
     }
     
     .remove-creature-btn {
-      color: light-dark(#d32f2f, #ef4444);
-      border-color: light-dark(#d32f2f, #ef444466);
+      --color: oklch(55% 0.22 26);
       
       &:hover {
-        background-color: light-dark(#d32f2f1a, #ef44441a);
-        border-color: light-dark(#d32f2f, #ef444499);
+        --color: light-dark(
+          oklch(60% 0.22 26),
+          oklch(68% 0.22 26)
+        );
       }
     }
   }
@@ -206,12 +200,18 @@
 
 .editable-health {
   cursor: pointer;
-  color: light-dark(#2e7d32, #4ade80);
+  color: light-dark(
+    oklch(62.344% 0.13464 144.188),
+    oklch(80.036% 0.18204 151.736)
+  );
   text-decoration: underline;
   text-decoration-style: dotted;
   
   &:hover {
-    color: light-dark( #1b5e20, #66d49a);
+    color: light-dark(
+      oklch(52.344% 0.13464 144.188),
+      oklch(80.036% 0.18204 151.736)
+    );
   }
 }
 

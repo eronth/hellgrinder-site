@@ -16,23 +16,26 @@ import './CreatureCard.css';
 import './CreatureCardExample.css';
 import './CreatureTooltip.css';
 import './CreatureCardFaction.css';
+import { FactionTag } from '../../../../../ts-types/tag-types';
 
 type Props = {
   data: Creature;
-  onAddToEncounter?: null | ((creature: Creature) => void);
+  factionKey: FactionTag;
   // Encounter mode props
   isEncounterMode?: boolean;
   encounterCreature?: EncounterCreature;
+  onAddToEncounter?: null | ((creature: Creature, factionKey: FactionTag) => void);
   onRemoveFromEncounter?: (id: string) => void;
   onHealthChange?: (id: string, newHealth: number) => void;
   isExample?: boolean;
 };
 
 export default function CreatureCard({ 
-  data, 
-  onAddToEncounter, 
+  data,
+  factionKey,
   isEncounterMode = false,
   encounterCreature,
+  onAddToEncounter,
   onRemoveFromEncounter,
   onHealthChange,
   isExample
@@ -146,7 +149,7 @@ export default function CreatureCard({
   const addToEncounterButton = ((onAddToEncounter)
   ? <button 
       className='add-creature-btn'
-      onClick={() => onAddToEncounter(data)}
+      onClick={() => onAddToEncounter(data, factionKey)}
       title="Add to encounter"
     >
       <FontAwesomeIcon icon={faPlus} />
@@ -318,7 +321,7 @@ export default function CreatureCard({
     {factionTags.length > 0 && (
       <div className='faction-tag-container'>
         {factionTags.map((tag, i) => (
-          <TooltipWrapper explanation={cce.faction} className="faction-tag-container-tooltip">
+          <TooltipWrapper key={`creature-${data.name}-faction-tag-${i}`} explanation={cce.faction} className="faction-tag-container-tooltip">
             <span 
               key={`creature-${data.name}-faction-tag-${i}`}
               className='faction-tag'

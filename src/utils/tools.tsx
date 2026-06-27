@@ -2,6 +2,7 @@ import { Creature, CreatureTier, CreatureTierList } from '../ts-types/creature-t
 import { DamageElement, Weapon, AttackMode, Dice, Item } from '../ts-types/types.tsx';
 import { Kit, Perk, StatusEffect } from '../ts-types/types.tsx';
 import { AllValidTags } from "../ts-types/tag-types.tsx";
+import { FactionExampleCreature } from '../data/creatures/faction-examples.tsx';
 
 type deepCopyWeaponOptions = {
   name?: string,
@@ -220,6 +221,29 @@ function sortCreatures(creatures: { [key: string]: Creature }): Creature[] {
   return [...ct0Creatures, ...ct1Creatures, ...ct2Creatures, ...ct3Creatures, ...ct4Creatures, ...ct5Creatures, ...ct6Creatures];
 }
 
+function sortExampleCreatures(creatures: { [key: string]: FactionExampleCreature }): FactionExampleCreature[] {
+  // First, separate creatures by type/tier
+  let ct0Creatures = Object.values(creatures).filter(c => c.tier === creatureTiers.t0);
+  let ct1Creatures = Object.values(creatures).filter(c => c.tier === creatureTiers.t1);
+  let ct2Creatures = Object.values(creatures).filter(c => c.tier === creatureTiers.t2);
+  let ct3Creatures = Object.values(creatures).filter(c => c.tier === creatureTiers.t3);
+  let ct4Creatures = Object.values(creatures).filter(c => c.tier === creatureTiers.t4);
+  let ct5Creatures = Object.values(creatures).filter(c => c.tier === creatureTiers.t5);
+  let ct6Creatures = Object.values(creatures).filter(c => c.tier === creatureTiers.t6);
+
+  // Next, sort each tier by name
+  ct0Creatures = ct0Creatures.sort((a, b) => a.name.localeCompare(b.name));
+  ct1Creatures = ct1Creatures.sort((a, b) => a.name.localeCompare(b.name));
+  ct2Creatures = ct2Creatures.sort((a, b) => a.name.localeCompare(b.name));
+  ct3Creatures = ct3Creatures.sort((a, b) => a.name.localeCompare(b.name));
+  ct4Creatures = ct4Creatures.sort((a, b) => a.name.localeCompare(b.name));
+  ct5Creatures = ct5Creatures.sort((a, b) => a.name.localeCompare(b.name));
+  ct6Creatures = ct6Creatures.sort((a, b) => a.name.localeCompare(b.name));
+
+  // Finally, combine all lists and return
+  return [...ct0Creatures, ...ct1Creatures, ...ct2Creatures, ...ct3Creatures, ...ct4Creatures, ...ct5Creatures, ...ct6Creatures];
+}
+
 const sortWeapons = (weapons: { [key: string]: Weapon }): Weapon[] =>
   Object.values(weapons)
     .sort((a, b) => a.name.localeCompare(b.name));
@@ -258,11 +282,11 @@ const sortStatusEffects = (statusEffects: { [key: string]: StatusEffect }): Stat
 export default {
   //convertHeaderToFull,
   getLoremIpsum,
+  sortCreatures, sortExampleCreatures,
   sortWeapons,
   sortItems,
   sortKits,
   sortPerks,
-  sortCreatures,
   sortStatusEffects,
   deepCopyWeapon,
   deepCopyAttackMode,

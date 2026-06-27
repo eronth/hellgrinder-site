@@ -97,6 +97,7 @@ export default function EncounterSection({
           <CreatureCard
             key={encounterCreature.id}
             data={encounterCreature.creature}
+            factionKey={encounterCreature.factionKey}
             isEncounterMode={true}
             encounterCreature={encounterCreature}
             onRemoveFromEncounter={onRemoveCreature}

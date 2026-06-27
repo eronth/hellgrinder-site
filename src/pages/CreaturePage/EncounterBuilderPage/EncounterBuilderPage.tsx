@@ -20,9 +20,10 @@ import FactionExamples from "../../../data/creatures/faction-examples";
 // Utils
 import { transformCreatureToFaction } from "./creature-page-components/FactionTransformUtils";
 import { EncounterStorage } from "../../../local-storage/EncounterStorage";
+import { FactionTag } from '../../../ts-types/tag-types';
 
 export default function EncounterBuilderPage() {
-  const [selectedFaction, setSelectedFaction] = useState<string>('Generic');
+  const [selectedFaction, setSelectedFaction] = useState<FactionTag>('Generic');
   const [encounterSet, setEncounterSet] = useState<EncounterSet>({
     encounters: {},
     activeEncounterId: '',
@@ -34,6 +35,7 @@ export default function EncounterBuilderPage() {
   // Load encounters from localStorage on component mount
   useEffect(() => {
     const savedEncounterSet = EncounterStorage.loadEncounterSet();
+    console.log('Loaded encounter set from localStorage:', savedEncounterSet);
     setEncounterSet(savedEncounterSet);
     setIsLoaded(true);
   }, []);
@@ -47,18 +49,19 @@ export default function EncounterBuilderPage() {
     }
   }, [encounterSet, isLoaded]);
 
-  const handleFactionChange = (faction: string) => {
+  const handleFactionChange = (faction: FactionTag) => 
     setSelectedFaction(faction);
-  };
 
   const activeEncounter = encounterSet.encounters[encounterSet.activeEncounterId];
 
-  const handleAddToEncounter = (creature: Creature) => {
+  const handleAddToEncounter = (creature: Creature, factionKey: FactionTag) => {
     if (!activeEncounter) { return; }
 
+    console.log('Adding creature to encounter:', creature);
     const newEncounterCreature: EncounterCreature = {
       id: `encounter-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
       creature: creature,
+      factionKey: factionKey,
       currentHealth: creature.health,
       maxHealth: creature.health
     };
@@ -276,11 +279,12 @@ export default function EncounterBuilderPage() {
     >
       <div className='creatures-grid'>
         {Tools
-          .sortCreatures(FactionExamples)
+          .sortExampleCreatures(FactionExamples)
           .map((creature, i) =>
             <CreatureCard
               key={`faction-example-${creature.name}-${i}`}
               data={creature}
+              factionKey={creature.factionKey}
               onAddToEncounter={handleAddToEncounter}
             />
           )}
@@ -315,6 +319,7 @@ export default function EncounterBuilderPage() {
               <CreatureCard
                 key={`generic-creature-${creature.name}-${selectedFaction}-${i}`}
                 data={transformedCreature}
+                factionKey={selectedFaction}
                 onAddToEncounter={handleAddToEncounter}
               />
             );
@@ -323,19 +328,15 @@ export default function EncounterBuilderPage() {
       </div>
     </CollapsibleSection>
     <SingleFactionDisplayRegion
-      className='faction faction-rot-host'
-      title="Rot Host"
+      faction="Rot Host"
       description="The Rot Host is a curse that has bled out from gates to hell, corrupting people into unrecognizable monstrosities."
-      creatureType="rot-host"
       factionCreatures={RotHostCreatures}
       genericCreatures={GenCreatures}
       handleAddToEncounter={handleAddToEncounter}
     />
     <SingleFactionDisplayRegion
-      className='faction faction-zephpter-swarm'
-      title="Zephpter Swarm"
+      faction="Zephpter Swarm"
       description="Nethercurrent-wielding creatures of the Zephpter faction."
-      creatureType="zephpter"
       factionCreatures={ZephpterCreatures}
       genericCreatures={GenCreatures}
       handleAddToEncounter={handleAddToEncounter}
@@ -359,6 +360,7 @@ export default function EncounterBuilderPage() {
             <CreatureCard
               key={`sinner-creature-${creature.name}-${i}`}
               data={creature}
+              factionKey={'Sinner'}
               onAddToEncounter={handleAddToEncounter}
             />
           )}

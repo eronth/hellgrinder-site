@@ -4,27 +4,28 @@ import Tools from "../../../../../utils/tools";
 import { transformAllCreaturesToFaction } from "../FactionTransformUtils";
 import CreatureCard from "../CreatureCard/CreatureCard";
 import { Creature } from "../../../../../ts-types/creature-types";
+import { FactionTag } from "../../../../../ts-types/tag-types";
 import './SingleFactionDisplayRegion.css';
 
 type Props = {
-  title: string;
+  faction: FactionTag;
   description: string;
-  creatureType: string;
   factionCreatures: { [key: string]: Creature };
   genericCreatures: { [key: string]: Creature };
-  handleAddToEncounter: (creature: Creature) => void;
-  className: string;
+  handleAddToEncounter: (creature: Creature, factionKey: FactionTag) => void;
 };
 export default function SingleFactionDisplayRegion({
-  title,
+  faction,
   description,
-  creatureType,
   factionCreatures,
   genericCreatures,
   handleAddToEncounter,
-  className
 }: Props) {
-  const storageKeyBase = `faction-${title.toLowerCase().replace(/\s+/g, '-')}`;
+
+  const dashedFaction = faction.toLowerCase().replace(/\s+/g, '-');
+  const className = `faction faction-${dashedFaction}`;
+
+  const storageKeyBase = `faction-${dashedFaction}`;
   const [includeGenerics, setIncludeGenerics] = React.useState(() => {
     const stored = localStorage.getItem(`${storageKeyBase}-include-generics`);
     return stored === 'true';
@@ -41,7 +42,7 @@ export default function SingleFactionDisplayRegion({
   };
 
   return <CollapsibleSection
-    title={title}
+    title={faction}
     isOpenByDefault={false}
     description={description}
     className={className}
@@ -60,15 +61,16 @@ export default function SingleFactionDisplayRegion({
       {Tools
         .sortCreatures({
           ...(includeGenerics
-            ? transformAllCreaturesToFaction(genericCreatures, title) 
+            ? transformAllCreaturesToFaction(genericCreatures, faction) 
             : {}
           ),
           ...factionCreatures
         })
         .map((creature, i) =>
           <CreatureCard
-            key={`${creatureType}-creature-${creature.name}-${i}`} 
-            data={creature} 
+            key={`${dashedFaction}-creature-${creature.name}-${i}`} 
+            data={creature}
+            factionKey={faction}
             onAddToEncounter={handleAddToEncounter}
           />
       )}

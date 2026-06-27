@@ -39,7 +39,7 @@ type SkillChecks =
   | 'Recovery' 
   | 'Corruption'
 
-export type DemonFactionTags
+export type DemonFactionTag
   = 'Ashborn Legion' 
   | 'Stoneveined Choir'
   | 'Vastfathom League'
@@ -49,26 +49,28 @@ export type DemonFactionTags
   | 'Umbral Nexus'
   | 'Rot Host';
 
-export type PluralizedFactionTags
+export type PluralizedFactionTag
   = 'Wanderlost Crews'
   | 'Zephpter Swarms'
   | 'Sinners';
 
-export type OtherFactionTags =
+export type OtherFactionTag =
   'Forgefiend Syndicate' | 'Hand of Death' | "Heaven's Host"
   | 'Voidfire Conclave' | 'Hagswell Covenant' | 'Sinner';
 
+export type FactionTag
+  = DemonFactionTag
+  | OtherFactionTag
+  | 'Generic';
 
-type AllValidTags 
+
+export type AllValidTags 
   = AttackTypes | Range | SkillChecks 
   | EquipmentTags | LocationTags
   | CreatureEffectTags 
   | AttackEffectTags | ActionTags
-  | DemonFactionTags | OtherFactionTags
+  | DemonFactionTag | OtherFactionTag
   | OtherTagsForNow
   | DamageElement;
 
-
-
-
-export type { AttackTypes, Range, SkillChecks, AllValidTags, TagWithValue };
+export type { AttackTypes, Range, SkillChecks, TagWithValue };

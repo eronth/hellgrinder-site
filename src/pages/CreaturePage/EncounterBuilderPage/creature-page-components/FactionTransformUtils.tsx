@@ -40,7 +40,7 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
     weaknesses: ['REJECT', 'DISRUPT'],
     cssClass: 'faction-generic'
   },
-  'Thornwraith Covenant': {
+  'Thornwraith Bloom': {
     name: 'Thornwraith Covenant',
     primary: 'Verdant',
     absorb: 'Abyssal',
@@ -72,7 +72,7 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
     },
     cssClass: 'faction-thornwraith-covenant'
   },
-  'Stoneveined Order': {
+  'Stoneveined Choir': {
     name: 'Stoneveined Order',
     primary: 'Chthonic',
     absorb: 'Infernal',
@@ -193,7 +193,7 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
     ],
     cssClass: 'faction-ashborn-legion'
   },
-  'Wanderlost Crews': {
+  'Wanderlost Crew': {
     name: 'Wanderlost Crews',
     primary: 'Metal',
     absorb: 'Chthonic',

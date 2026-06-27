@@ -1,5 +1,7 @@
 import { Encounter, EncounterCreature, EncounterSet } from '../ts-types/encounter-types';
 import CreatureRegistry from '../data/creatures/creature-registry';
+import { FactionTag } from '../ts-types/tag-types';
+import { transformCreatureToFaction } from '../pages/CreaturePage/EncounterBuilderPage/creature-page-components/FactionTransformUtils';
 
 const STORAGE_KEY = 'hellgrinder_encounters';
 const STORAGE_VERSION = '3.0.0';
@@ -7,6 +9,7 @@ const STORAGE_VERSION = '3.0.0';
 interface EncounterCreatureSaved {
   id: string;
   creatureId: string;
+  factionKey: FactionTag;
   currentHealth: number;
   maxHealth: number;
   notes?: string;
@@ -46,7 +49,8 @@ export class EncounterStorage {
     }
     return {
       id: saved.id,
-      creature,
+      creature: transformCreatureToFaction(creature, saved.factionKey),
+      factionKey: saved.factionKey,
       currentHealth: saved.currentHealth,
       maxHealth: saved.maxHealth,
       notes: saved.notes,
@@ -88,6 +92,7 @@ export class EncounterStorage {
         creatures: encounter.creatures.map(ec => ({
           id: ec.id,
           creatureId: ec.creature.id,
+          factionKey: ec.factionKey,
           currentHealth: ec.currentHealth,
           maxHealth: ec.maxHealth,
           notes: ec.notes,

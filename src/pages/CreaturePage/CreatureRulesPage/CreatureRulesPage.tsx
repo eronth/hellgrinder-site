@@ -3,12 +3,13 @@ import Tools from "../../../utils/tools";
 import CreatureCard from "../EncounterBuilderPage/creature-page-components/CreatureCard/CreatureCard";
 import GenCreatures from "../../../data/creatures/generic-creatures";
 import { transformCreatureToFaction } from "../EncounterBuilderPage/creature-page-components/FactionTransformUtils";
+import { FactionTag } from "../../../ts-types/tag-types";
 
 export default function CreatureRulesPage() {
   const innerHx = 4;
 
   const creature = GenCreatures['imp'];
-  const selectedFaction = 'Ashborn Legion';
+  const selectedFaction: FactionTag = 'Ashborn Legion';
 
   const transformedCreature 
     = transformCreatureToFaction(creature, selectedFaction);
@@ -19,6 +20,7 @@ export default function CreatureRulesPage() {
     Mouse over the components below to see what they are.
     <CreatureCard
       data={transformedCreature}
+      factionKey={selectedFaction}
       onAddToEncounter={null}
       isExample={true}
     />

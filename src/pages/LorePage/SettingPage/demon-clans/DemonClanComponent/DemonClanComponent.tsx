@@ -2,12 +2,12 @@ import { ReactNode } from "react";
 import { HeaderSize } from "../../../../../ts-types/types";
 import { useTheme } from "../../../../../hooks/useTheme";
 import { FactionTheme } from "../../../../../types/theme";
-import { DemonFactionTags, OtherFactionTags, PluralizedFactionTags } from "../../../../../ts-types/tag-types";
+import { DemonFactionTag, OtherFactionTag, PluralizedFactionTag } from "../../../../../ts-types/tag-types";
 import Hx from "../../../../../components/common/generic/Hx/Hx";
 import "./DemonClanComponent.css";
 
 type Props = {
-  title: DemonFactionTags | OtherFactionTags | PluralizedFactionTags;
+  title: DemonFactionTag | OtherFactionTag | PluralizedFactionTag;
   hx: HeaderSize;
   children: ReactNode;
   buttonText: {

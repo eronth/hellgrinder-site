@@ -1,11 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShieldAlt } from '@fortawesome/free-solid-svg-icons';
 import { FACTION_DATA } from '../FactionTransformUtils';
+import { FactionTag } from '../../../../../ts-types/tag-types';
 import './FactionSelector.css';
 
 type Props = {
   selectedFaction: string;
-  onFactionChange: (faction: string) => void;
+  onFactionChange: (faction: FactionTag) => void;
 };
 
 export default function FactionSelector({ selectedFaction, onFactionChange }: Props) {
@@ -23,7 +24,7 @@ export default function FactionSelector({ selectedFaction, onFactionChange }: Pr
       <select
         id="faction-select"
         value={selectedFaction}
-        onChange={(e) => onFactionChange(e.target.value)}
+        onChange={(e) => onFactionChange(e.target.value as FactionTag)}
         className="faction-dropdown"
       >
         {factionKeys.map(factionKey => {

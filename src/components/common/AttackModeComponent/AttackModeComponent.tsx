@@ -26,6 +26,7 @@ export default function AttackModeComponent({ attackMode, showTags=true }: Props
       {getPerAttackModeTags(attackMode)}
     </div>
     <div className="details-indentation">
+      {attackMode.charges != null && <span><b>Charges</b>: {attackMode.charges} | </span>}
       <WeaponDamage attackMode={attackMode} />
     </div>
     <WeaponSpecialNotes className={'details-indentation'} effects={attackMode.effects} />

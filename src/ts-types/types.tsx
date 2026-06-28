@@ -32,6 +32,7 @@ type ItemDef = {
     count: number;
   };
   description?: string;
+  charges?: number;
   isAdvancedItem?: boolean;
   isChoiceItem?: boolean;
 }
@@ -48,6 +49,7 @@ type Kit = {
 }
 
 export type Weapon = ItemDef & {
+  effects?: string[];
   attackModes: AttackMode[];
 }
 

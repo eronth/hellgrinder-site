@@ -2,6 +2,7 @@ import WeaponName from './weapon-components/WeaponName';
 import { Weapon } from '../../../../../ts-types/types';
 import AttackModeComponent from "../../../../../components/common/AttackModeComponent/AttackModeComponent.tsx";
 import SelectableTags, { ChoiceInteraction } from './weapon-components/SelectableTags.tsx';
+import WeaponSpecialNotes from './weapon-components/WeaponSpecialNotes.tsx';
 
 type Props = {
   weapon: Weapon;
@@ -23,6 +24,8 @@ export default function WeaponComponent({ weapon, choiceInteraction }: Props) {
         choiceInteraction={choiceInteraction}
       />
     )}
+    {w.charges && <div className='details-indent'><b>Charges</b>: {w.charges}</div>}
+    <WeaponSpecialNotes className='details-indent' effects={w.effects} />
     {
       w.attackModes.map((a, ai) => (
       <div key={`attack-mode-${ai}`}>

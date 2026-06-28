@@ -21,7 +21,9 @@ const exObj: { [key: string]: Kit } = {
     trainings: [{
       name: 'Medical Expertise',
       tags: [],
-      effects: ['You and allies get +1 to all Recovery Skill Checks.', 'You and all allies get +1 to health restored from Recovery Skill Checks.'], 
+      effects: ['You and allies get +1 to all Recovery Skill Checks.',
+        'You and all allies get +1 to health restored from Recovery Skill Checks.'
+      ], 
     }, {
       name: 'Medical Miracle',
       tags: [],

@@ -8,6 +8,7 @@ type Props = {
 export default function ItemComponent({ item }: Props) {
   return (<div className='item'>
     <div><span className='name'>{item.name}</span><Tags tags={item.tags} /></div>
+    {item.charges != null && <div className='details-indent'><b>Charges</b>: {item.charges}</div>}
     <div className='description details-indent'>{item.description}</div>
     <div className='effect details-indent'>
       {item.effects.map((e, ei) => <div key={`item-${item.name}-effect-${ei}`}>{e}</div>)}

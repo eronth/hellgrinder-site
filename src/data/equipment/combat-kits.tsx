@@ -335,16 +335,21 @@ const exObj: { [key: string]: Kit } = {
   },
   
   prototype: {
-    name: 'Prototype',
-    description: "The prototype kit is for ",
+    name: 'Prototype Test',
+    description: "Safelight has been easily shown to keep users safe. But researchers "
+      + "have been hard at work discovering and utilizing other properties of Safelight. "
+      + "The prototype kit contains a few of the items made from the most advanced "
+      + "Safelight research technology.",
     weapons: [{
-      name: 'Prototype Beam Rifle',
+      name: 'Prototype Safelight Beam Rifle',
       tags: ['Heavy', 'Two-Handed'],
+      effects: ['Can be recharged with Safelight Gemstones or Safelight Geodes. A Safelight Shard is not enough.'],
       isAdvancedItem: true,
       attackModes: [
         {
           name: 'Beam',
           tags: ['Attack', 'Shooting', 'Medium Range', 'Long Range'],
+          charges: 4,
           damage: {
             l: { value: 3, type: 'Infernal' },
             m: { value: 6, type: 'Infernal' },
@@ -355,22 +360,26 @@ const exObj: { [key: string]: Kit } = {
         {
           name: 'Erupt',
           tags: ['Attack', 'Shooting', 'Short Range'],
+          charges: 4,
           damage: {
             l: { value: 1, type: 'Infernal' },
             m: { value: 3, type: 'Infernal' },
             h: { value: 6, type: 'Infernal' },
           },
-          effects: ['This weapon hits all creatures in a cone in front of you.'],
+          effects: [
+            'This weapon hits all creatures [Short Range] or your [Front Arc].'
+          ],
         },
         {
           name: 'Overcharge',
           tags: ['Attack', 'Shooting', 'Long Range'],
+          charges: 1,
           damage: {
             l: { value: 12, type: 'Infernal' },
             m: { value: 12, type: 'Infernal' },
             h: { value: 12, type: 'Infernal' },
           },
-          effects: ['This attack mode can be used only once per encounter. Gain 5 Corruption.']
+          effects: ['Gain 5 Corruption. This attack deals 6 / 4 / 1 damage to you as well.']
         }
       ],
     },
@@ -378,8 +387,12 @@ const exObj: { [key: string]: Kit } = {
     items: [{
       name: 'Prototype Teleporter',
       tags: ['Maneuver'],
-      description: 'A small device that can connect pieces of the eternal Hells.',
-      effects: ['As a Maneuver, you can teleport to any hex within [Medium Range] of you, even if it is not in line of sight. The device must recharge, and cannot be used again for 2 encounters.'],
+      description: 'A small, safelight powered device that can connect pieces of the eternal Hells.',
+      charges: 2,
+      effects: [`As a 2${movementIcon} Maneuver, you can teleport to any hex within [Medium Range] of you, `
+        + 'even if it is not in line of sight.',
+        'Can be recharged with Safelight Gemstones or Safelight Geodes. A Safelight Shard is not enough.'
+      ],
       isAdvancedItem: false,
     }],
     trainings: [],

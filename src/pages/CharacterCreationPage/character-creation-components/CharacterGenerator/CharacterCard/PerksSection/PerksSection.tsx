@@ -1,23 +1,22 @@
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRotateLeft, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import { Perk } from '../../../../../../ts-types/types';
 import { CharacterDesign } from '../../../../../../ts-types/player-character-types';
 import CharacterGeneratorTools from '../../../../../../utils/characterGeneratorTools';
 import CharacterPerksDisplay from '../CharacterPerksDisplay/CharacterPerksDisplay';
+import PerkManager from '../../PerkManager';
 import './PerksSection.css';
 
 type Props = {
   character: CharacterDesign;
+  characters: CharacterDesign[];
   onSetPerks: (newPerks: Perk[]) => void;
+  onUpdateCharacter: (characterId: string, updates: Partial<CharacterDesign>) => void;
   locked: boolean;
   onToggleLock: () => void;
 };
 
-export default function PerksSection({ character, onSetPerks, locked, onToggleLock }: Props) {
-  const [showSelector, setShowSelector] = React.useState(false);
-  const allPerks = CharacterGeneratorTools.getAllPerks();
-
+export default function PerksSection({ character, characters, onSetPerks, onUpdateCharacter, locked, onToggleLock }: Props) {
   const hasPerks = character.perks.length > 0;
   const spentPoints = character.perks.reduce((sum, p) => sum + p.cost, 0);
   const totalBudget = character.stats.perkPoints + spentPoints;
@@ -25,23 +24,6 @@ export default function PerksSection({ character, onSetPerks, locked, onToggleLo
   function handleRandomize() {
     const { perks } = CharacterGeneratorTools.randomizePerks(totalBudget);
     onSetPerks(perks);
-    setShowSelector(false);
-  }
-
-  function handleTogglePerk(perk: Perk) {
-    const alreadySelected = character.perks.some(p => p.name === perk.name);
-    if (alreadySelected) {
-      onSetPerks(character.perks.filter(p => p.name !== perk.name));
-    } else {
-      if (perk.cost > character.stats.perkPoints) return;
-      const clone = CharacterGeneratorTools.selectPerk(perk);
-      onSetPerks([...character.perks, clone]);
-    }
-  }
-
-  function handleToggleLock() {
-    if (!locked) setShowSelector(false);
-    onToggleLock();
   }
 
   return (
@@ -61,50 +43,23 @@ export default function PerksSection({ character, onSetPerks, locked, onToggleLo
             ? <><FontAwesomeIcon icon={faArrowRotateLeft} /> Re-randomize</>
             : 'Randomize'}
           </button>
-          <button
-            className="perks-select-btn"
-            onClick={() => setShowSelector(v => !v)}
+          <PerkManager
+            characters={characters}
+            selectedCharacterId={character.id}
+            onUpdateCharacter={onUpdateCharacter}
             disabled={locked}
-          >
-            {showSelector ? 'Done' : 'Select Perks'}
-          </button>
+            buttonClassName="perks-select-btn"
+            buttonLabel="Manage Perks"
+          />
           <button
             className={`perks-lock-btn ${locked ? 'locked' : 'unlocked'}`}
-            onClick={handleToggleLock}
+            onClick={onToggleLock}
             title={locked ? 'Unlock to edit' : 'Lock perks'}
           >
             <FontAwesomeIcon icon={locked ? faLock : faLockOpen} />
           </button>
         </div>
       </div>
-
-      {showSelector && !locked && (
-        <div className="perk-selector">
-          <div className="perk-selector-hint">
-            Select perks ({character.stats.perkPoints} point{character.stats.perkPoints !== 1 ? 's' : ''} remaining)
-          </div>
-          <div className="perk-selector-list">
-            {allPerks.map(perk => {
-              const isSelected = character.perks.some(p => p.name === perk.name);
-              const canAfford = perk.cost <= character.stats.perkPoints;
-              const disabled = !isSelected && !canAfford;
-              return (
-                <button
-                  key={perk.name}
-                  className={`perk-option ${isSelected ? 'selected' : ''} ${disabled ? 'unaffordable' : ''}`}
-                  onClick={() => handleTogglePerk(perk)}
-                  disabled={disabled}
-                  title={perk.description ?? ''}
-                >
-                  <span className="perk-option-cost">{perk.cost}pt</span>
-                  <span className="perk-option-name">{perk.name}</span>
-                  {isSelected && <span className="perk-option-check">✓</span>}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      )}
 
       {hasPerks && <CharacterPerksDisplay character={character} />}
     </div>

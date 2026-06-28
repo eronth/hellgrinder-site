@@ -187,7 +187,9 @@ export default function CharacterCard({
 
         <PerksSection
           character={character}
+          characters={characters}
           onSetPerks={handleSetPerks}
+          onUpdateCharacter={updateCharacter}
           locked={character.locks?.perks}
           onToggleLock={() => updateLocks({ perks: !character.locks?.perks })}
         />

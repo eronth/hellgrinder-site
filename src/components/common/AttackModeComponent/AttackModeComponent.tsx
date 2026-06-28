@@ -3,7 +3,7 @@ import { AttackMode } from "../../../ts-types/types.tsx";
 import Tags from '../../keywords/Tags.tsx';
 import WeaponSpecialNotes from '../../../pages/CharacterCreationPage/character-creation-components/kits/weapon/weapon-components/WeaponSpecialNotes.tsx';
 import WeaponDamage from "../../../pages/CharacterCreationPage/character-creation-components/kits/weapon/weapon-components/WeaponDamage.tsx";
-
+import './AttackModeComponent.css';
 
 type Props = {
   attackMode: AttackMode;
@@ -22,12 +22,13 @@ export default function AttackModeComponent({ attackMode, showTags=true }: Props
   }
 
   return (<span className="attack-option">
-    <div className={'details-indent'}>
+    <div className={'name-container'}>
       {getPerAttackModeTags(attackMode)}
     </div>
     <div className="details-indentation">
-      {attackMode.charges != null && <span><b>Charges</b>: {attackMode.charges} | </span>}
       <WeaponDamage attackMode={attackMode} />
+      { attackMode.charges != null 
+        && <span className=""> | <b>Charges</b>: {attackMode.charges}</span>}
     </div>
     <WeaponSpecialNotes className={'details-indentation'} effects={attackMode.effects} />
   </span>);

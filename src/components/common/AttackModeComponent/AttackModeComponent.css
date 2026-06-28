@@ -1,0 +1,39 @@
+span {
+  &.attack-option {
+
+    .name-container {
+      margin-top: 0.5rem;
+      margin-left: 1em;
+    
+      .name-row {
+        font-size: .95em;
+
+        .name {
+          font-weight: bold;
+          font-size: 1.1em;
+        }
+      }
+    }
+
+    .tags {
+      margin-left: 1.5em;
+    }
+
+    .details-indentation {
+      margin-left: 1.6em;
+    }
+
+  }
+}
+
+
+.weapon-damage {
+  font-size: .9em;
+
+  .damage-bloc {
+    background-color: var(--card-background);
+    border: 1px solid var(--dice-border-color);
+    padding-inline: .5em;
+    border-radius: .25em;
+  }
+}

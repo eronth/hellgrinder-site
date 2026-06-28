@@ -3,8 +3,7 @@ import { CharacterDesign } from '../../../../../../ts-types/player-character-typ
 import CharacterGeneratorTools, { specializationOptions } from '../../../../../../utils/characterGeneratorTools';
 import SkillCheck from '../../../../../../components/keywords/SkillCheck/SkillCheck';
 import './SpecializationSection.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
+import SimpleLockButton from '../../../../../../components/common/SimpleLockButton/SimpleLockButton';
 
 type Props = {
   character: CharacterDesign;
@@ -49,14 +48,13 @@ export default function SpecializationSection({ character, onSetSpecialization, 
             disabled={locked}>
             Randomize
           </button>
-          <button
-            className={`spec-lock-btn ${locked ? 'locked' : 'unlocked'}`}
-            onClick={onToggleLock}
-            title={locked ? 'Unlock to edit' : 'Lock specialization'}
+          <SimpleLockButton
+            locked={locked}
+            onToggle={onToggleLock}
             disabled={!isSet}
-          >
-            {locked ? <FontAwesomeIcon icon={faLock} /> : <FontAwesomeIcon icon={faLockOpen} />}
-          </button>
+            lockedTitle="Unlock to edit"
+            unlockedTitle="Lock specialization"
+          />
         </div>
       </div>
 

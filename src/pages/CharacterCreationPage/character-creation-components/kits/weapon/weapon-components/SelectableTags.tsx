@@ -2,7 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Tags from "../../../../../../components/keywords/Tags";
 import { AllValidTags } from "../../../../../../ts-types/tag-types";
 import { ChoiceTagOption, Weapon } from "../../../../../../ts-types/types";
-import { faArrowRotateLeft, faLock, faLockOpen, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRotateLeft, faXmark } from "@fortawesome/free-solid-svg-icons";
+import SimpleLockButton from "../../../../../../components/common/SimpleLockButton/SimpleLockButton";
 
 type Props = {
   choiceTags: Weapon['choiceTags'];
@@ -59,14 +60,14 @@ export default function SelectableTags({
               <FontAwesomeIcon icon={faArrowRotateLeft} />
             </button>
           )}
-          <button
-            className={`choice-action-btn choice-lock-btn ${choiceInteraction.locked ? 'locked' : 'unlocked'}`}
-            onClick={choiceInteraction.onToggleLock}
+          <SimpleLockButton
+            locked={choiceInteraction.locked}
+            onToggle={choiceInteraction.onToggleLock}
             disabled={!choiceInteraction.selectedTag}
-            title={choiceInteraction.locked ? 'Unlock to change' : 'Lock choice'}
-          >
-            <FontAwesomeIcon icon={choiceInteraction.locked ? faLock : faLockOpen} />
-          </button>
+            lockedTitle="Unlock to change"
+            unlockedTitle="Lock choice"
+            className="choice-action-btn"
+          />
         </span>
       )}
     </div>

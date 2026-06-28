@@ -33,28 +33,4 @@
   border: 1px solid var(--primary-color, #555);
 }
 
-.perks-lock-btn {
-  font-size: 1em;
-  padding: 0.2em 0.4em;
-  border-radius: 4px;
-  cursor: pointer;
-  background: transparent;
-  --lock-border: 1px solid var(--primary-color, #444);
-  border: var(--lock-border);
-  line-height: 1;
-
-  &:disabled {
-    opacity: 0.5;
-    &:hover {
-      background: transparent;
-      border: var(--lock-border);
-      cursor: default;
-    }
-  }
-
-  &.locked {
-    background:   rgb(100 108 255 / 0.15);
-    border-color: rgb(100 108 255 / 0.4);
-  }
-}
 

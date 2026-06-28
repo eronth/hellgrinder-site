@@ -1,11 +1,12 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRotateLeft, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRotateLeft } from '@fortawesome/free-solid-svg-icons';
 import { Kit, ChoiceTagOption, DamageElement } from '../../../../../../ts-types/types';
 import { CharacterDesign, CharacterKitLocks } from '../../../../../../ts-types/player-character-types';
 import KitComponent, { WeaponChoiceInteractions, ItemChoiceInteraction } from '../../../kits/Kit';
 import CharacterGeneratorTools from '../../../../../../utils/characterGeneratorTools';
 import KitSelectModal from './KitSelectModal';
+import SimpleLockButton from '../../../../../../components/common/SimpleLockButton/SimpleLockButton';
 import './KitSlot.css';
 
 type KitType = 'combat' | 'support';
@@ -190,13 +191,13 @@ export default function KitSlot({ kitType, kit, character, onSetKit, kitLocks, o
             >
               Change {label}
             </button>
-            <button
-              className={`kit-lock-btn ${locked ? 'locked' : 'unlocked'}`}
-              onClick={() => onKitLocksChange({ kitLocked: !locked })}
-              title={locked ? 'Unlock to change' : 'Lock kit'}
-            >
-              <FontAwesomeIcon icon={locked ? faLock : faLockOpen} />
-            </button>
+            <SimpleLockButton
+              locked={locked}
+              onToggle={() => onKitLocksChange({ kitLocked: !locked })}
+              lockedTitle="Unlock to change"
+              unlockedTitle="Lock kit"
+              className="kit-lock-btn"
+            />
           </div>
           <KitComponent
             kit={kit}

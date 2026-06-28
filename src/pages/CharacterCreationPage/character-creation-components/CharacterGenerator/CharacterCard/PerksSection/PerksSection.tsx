@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRotateLeft, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRotateLeft } from '@fortawesome/free-solid-svg-icons';
+import SimpleLockButton from '../../../../../../components/common/SimpleLockButton/SimpleLockButton';
 import { Perk } from '../../../../../../ts-types/types';
 import { CharacterDesign } from '../../../../../../ts-types/player-character-types';
 import CharacterGeneratorTools from '../../../../../../utils/characterGeneratorTools';
@@ -51,13 +52,12 @@ export default function PerksSection({ character, characters, onSetPerks, onUpda
             buttonClassName="perks-select-btn"
             buttonLabel="Manage Perks"
           />
-          <button
-            className={`perks-lock-btn ${locked ? 'locked' : 'unlocked'}`}
-            onClick={onToggleLock}
-            title={locked ? 'Unlock to edit' : 'Lock perks'}
-          >
-            <FontAwesomeIcon icon={locked ? faLock : faLockOpen} />
-          </button>
+          <SimpleLockButton
+            locked={locked}
+            onToggle={onToggleLock}
+            lockedTitle="Unlock to edit"
+            unlockedTitle="Lock perks"
+          />
         </div>
       </div>
 

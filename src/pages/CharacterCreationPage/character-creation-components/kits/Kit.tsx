@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRotateLeft, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRotateLeft } from '@fortawesome/free-solid-svg-icons';
+import SimpleLockButton from '../../../../components/common/SimpleLockButton/SimpleLockButton';
 import type { Item, Kit } from '../../../../ts-types/types';
 import WeaponComponent from './weapon/WeaponComponent';
 import ItemComponent from './item/ItemComponent.tsx';
@@ -42,14 +43,14 @@ function ItemChoiceSection({ items, interaction }: { items: Item[]; interaction:
         >
           <FontAwesomeIcon icon={faArrowRotateLeft} />
         </button>
-        <button
-          className={`choice-lock-btn ${locked ? 'locked' : ''}`}
-          onClick={onToggleLock}
+        <SimpleLockButton
+          locked={locked}
+          onToggle={onToggleLock}
           disabled={!allChosen}
-          title={locked ? 'Unlock to change' : 'Lock selection'}
-        >
-          <FontAwesomeIcon icon={locked ? faLock : faLockOpen} />
-        </button>
+          lockedTitle="Unlock to change"
+          unlockedTitle="Lock selection"
+          className="choice-action-btn"
+        />
       </div>
       <div className="item-choice-list">
         {displayItems.map((item, i) => {

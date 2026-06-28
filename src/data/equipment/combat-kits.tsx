@@ -330,7 +330,7 @@ const exObj: { [key: string]: Kit } = {
       tags: [],
       effects: ['As an Action, you let out a feral cry. All enemies in your front arc at [Short Range] must make an ' +
       '[Endurance] Skill Check. On a Rank 2 Success or less, they begin to focus you instead of your allies. Each target ' +
-      'moves away 2 hexes or towards 2 hexes, your choice.'],
+      'moves 2 hexes away from you or 2 hexes towards you, your choice.'],
     }],
   },
   

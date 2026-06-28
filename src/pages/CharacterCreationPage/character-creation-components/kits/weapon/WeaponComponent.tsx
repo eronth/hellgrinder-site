@@ -24,8 +24,8 @@ export default function WeaponComponent({ weapon, choiceInteraction }: Props) {
         choiceInteraction={choiceInteraction}
       />
     )}
-    {w.charges && <div className='details-indent'><b>Charges</b>: {w.charges}</div>}
     <WeaponSpecialNotes className='details-indent' effects={w.effects} />
+    {w.charges && <div className='details-indent'><b>Charges</b>: {w.charges}</div>}
     {
       w.attackModes.map((a, ai) => (
       <div key={`attack-mode-${ai}`}>

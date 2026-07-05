@@ -63,15 +63,15 @@ export default function EquipmentAndPerksPage() {
 
     <hr />
 
+    <h2>Equipment</h2>
+    <p>
+      The equipment listed on this page is not meant for players to start with. Instead, it is a list of
+      equipment to be given out as rewards or found in the world. This equipment is often meant to be more
+      powerful than some of the standard equipment. Some equipment is considered "Advanced" equipment,
+      while it requires no special training to use, it should be rewarded less often than other equipment.
+    </p>
+    <hr />
     <section id="weapons" className="scrollspy-target">
-      <h2>Equipment</h2>
-      <p>
-        The equipment listed on this page is not meant for players to start with. Instead, it is a list of
-        equipment to be given out as rewards or found in the world. This equipment is often meant to be more
-        powerful than some of the standard equipment. Some equipment is considered "Advanced" equipment,
-        while it requires no special training to use, it should be rewarded less often than other equipment.
-      </p>
-      <hr />
       <h2>Weapons</h2>
 
       <h3>Melee Weapons</h3>

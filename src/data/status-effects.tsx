@@ -157,7 +157,7 @@ const exObj: StatusEffectsReturn = {
   },
   immolated: {
     name: 'Immolated [[X]] for [[Y]]',
-    description: 'You have been set on fire. You burn for [[Y]] turns, taking damage each turn.',
+    description: 'You have been set on fire. You burn for [[Y]] turns, taking damage [[X]] each turn.',
     effects: [
       <>
         You take [[X]] Infernal Damage at the end of your turn.

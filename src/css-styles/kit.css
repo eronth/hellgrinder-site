@@ -149,25 +149,25 @@
   background-color: var(--table-body-background-color);
   border-color: var(--weapon-card-border-color);
 
-  .tags .tag {
-    background-color: var(--weapon-tag-background-color);
-  }
+  --tag-fill: var(--weapon-tag-fill);
+  --tag-line: var(--weapon-tag-line);
+  --tag-text: var(--weapon-tag-text);
 }
 .item {
   background-color: var(--table-body-background-color);
   border-color: var(--item-card-border-color);
 
-  .tags .tag {
-    background-color: var(--item-tag-background-color);
-  }
+  --tag-fill: var(--item-tag-fill);
+  --tag-line: var(--item-tag-line);
+  --tag-text: var(--item-tag-text);
 }
 .training {
   background-color: var(--table-body-background-color);
   border-color: var(--training-card-border-color);
 
-  .tags .tag {
-    background-color: var(--training-tag-background-color);
-  }
+  --tag-fill: var(--training-tag-fill);
+  --tag-line: var(--training-tag-line);
+  --tag-text: var(--training-tag-text);
 }
 
 

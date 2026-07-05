@@ -1,0 +1,63 @@
+.tags {
+  font-size: .8em;
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: .4em;
+    margin: .15em .3em;
+    padding: .34em .62em;
+    line-height: 1;
+    border-radius: 5px;
+
+    /* micro-label character */
+    font-size: .82em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+
+    /* soft tint + hairline + colored text */
+    background: var(--tag-fill);
+    border: 1px solid var(--tag-line);
+    color: var(--tag-text);
+
+    &.clickable {
+      cursor: pointer;
+    }
+  }
+
+  /* Combined Range pill keeps a fixed navy accent so it always reads as a
+     distinct, structural tag — even inside a color-coded kit card. */
+  .range-tag {
+    gap: .45em;
+    background: var(--range-tag-fill);
+    border-color: var(--range-tag-line);
+    color: var(--range-tag-text);
+  }
+
+  .range-key {
+    font-weight: 800;
+    padding-right: .45em;
+    border-right: 1px solid var(--range-tag-line);
+  }
+
+  .range-values {
+    display: inline-flex;
+    align-items: center;
+    gap: .15em;
+    font-weight: 600;
+  }
+
+  .range-value {
+    &.clickable {
+      cursor: pointer;
+    }
+
+    &.selected-choice {
+      outline: 1.5px solid var(--primary-color, #444);
+      outline-offset: 1px;
+      border-radius: 3px;
+      font-weight: 800;
+    }
+  }
+}

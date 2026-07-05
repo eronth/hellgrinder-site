@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Tags from "../../../../../../components/keywords/Tags";
+import Tags from "../../../../../../components/keywords/Tags/Tags";
 import { AllValidTags } from "../../../../../../ts-types/tag-types";
 import { ChoiceTagOption, Weapon } from "../../../../../../ts-types/types";
 import { faArrowRotateLeft, faXmark } from "@fortawesome/free-solid-svg-icons";

@@ -8,7 +8,7 @@ import './css-styles/faction-colors.css'
 import './css-styles/theme-system.css'
 import './css-styles/index.css'
 import './css-styles/kit.css'
-import './css-styles/attack-mode.css'
+//import './css-styles/attack-mode.css'
 import './css-styles/magic-spell.css'
 import './css-styles/toggle.css'
 

@@ -1,6 +1,6 @@
 
 import { AttackMode } from "../../../ts-types/types.tsx";
-import Tags from '../../keywords/Tags.tsx';
+import Tags from '../../keywords/Tags/Tags.tsx';
 import WeaponSpecialNotes from '../../../pages/CharacterCreationPage/character-creation-components/kits/weapon/weapon-components/WeaponSpecialNotes.tsx';
 import WeaponDamage from "../../../pages/CharacterCreationPage/character-creation-components/kits/weapon/weapon-components/WeaponDamage.tsx";
 import './AttackModeComponent.css';

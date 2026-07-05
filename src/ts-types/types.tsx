@@ -9,7 +9,7 @@ import { AllValidTags } from "./tag-types";
 
 type TabType = "home" | "lore" | "how-to-play" | "character-creation" 
   | "character-generator" | "creatures"
-  | "additional-equipment" | "advanced-perks" | "items" | "magic";
+  | "equipment-and-perks" | "items" | "magic";
 
 type HeaderSize = 
   'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'

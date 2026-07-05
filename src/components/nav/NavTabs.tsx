@@ -33,8 +33,7 @@ const NavTabs = ({selectedTab}: Props) => {
     { to: "/character-creation", tab: "character-creation" as TabType, label: "Character Creation Rules", icon: faUser },
     { to: "/creatures", tab: "creatures" as TabType, label: "Creatures", icon: faBookSkull },
     { to: "/lore", tab: "lore" as TabType, label: "Lore" },
-    { to: "/additional-equipment", tab: "additional-equipment" as TabType, label: "Equipment" },
-    { to: "/perks", tab: "advanced-perks" as TabType, label: "Perks" },
+    { to: "/equipment-and-perks", tab: "equipment-and-perks" as TabType, label: "Perks & Equipment" },
   ];
 
   return (

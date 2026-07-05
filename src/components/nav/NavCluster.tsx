@@ -24,8 +24,7 @@ const NavCluster = () => {
 
       {/* Bottom Row */}
       <Link to="/lore">Lore</Link>
-      <Link to="/additional-equipment">Equipment</Link>
-      <Link to="/perks">Perks</Link>
+      <Link to="/equipment-and-perks">Perks & Equipment</Link>
 
 
       {/* Unused links */}

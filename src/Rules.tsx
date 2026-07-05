@@ -8,8 +8,7 @@ import HowToPlayPage from "./pages/HowToPlayPage/HowToPlayPage";
 import CharacterCreationPage from "./pages/CharacterCreationPage/CharacterCreationPage";
 import CharacterCreationRulesPage from "./pages/CharacterCreationPage/CharacterCreationRulesPage";
 import CharacterGeneratorPage from "./pages/CharacterCreationPage/CharacterGeneratorPage";
-import AdditionalEquipmentPage from "./pages/AdditionalEquipmentPage";
-import AdvancedPerksPage from "./pages/AdvancedPerksPage";
+import EquipmentAndPerksPage from "./pages/EquipmentAndPerksPage";
 import MagicPage from "./pages/MagicPage";
 import CreaturesPage from "./pages/CreaturePage/CreaturesPage";
 import MagicSpellPage from "./pages/MagicSpellPage";
@@ -27,8 +26,10 @@ export default function Rules() {
         <Route path="/character-creation" element={<CharacterCreationPage />} />
         <Route path="/character-creation/rules" element={<CharacterCreationRulesPage />} />
         <Route path="/character-creation/generator" element={<CharacterGeneratorPage />} />
-        <Route path="/additional-equipment" element={<AdditionalEquipmentPage />} />
-        <Route path="/perks" element={<AdvancedPerksPage />} />
+        <Route path="/equipment-and-perks" element={<EquipmentAndPerksPage />} />
+        {/* Legacy routes kept so existing links/bookmarks still resolve. */}
+        <Route path="/additional-equipment" element={<EquipmentAndPerksPage />} />
+        <Route path="/perks" element={<EquipmentAndPerksPage />} />
         <Route path="/magic" element={<MagicPage />} />
         <Route path="/creatures" element={<CreaturesPage />} />
         <Route path="/magic-spell" element={<MagicSpellPage />} />

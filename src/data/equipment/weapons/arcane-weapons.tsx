@@ -145,7 +145,8 @@ const exObj: { [key: string]: Weapon } = {
         h: { value: DiceTools.get1d8(), type: 'Chosen Type' },
       },
       effects: [
-        <>This attack targets all creatures in a line up to Long Range.</>
+        <>This attack targets all creatures in a line up to Long Range. Targetting
+        beyond Medium range still suffers the range penalty.</>
       ]
     }],
   },
@@ -225,7 +226,9 @@ const exObj: { [key: string]: Weapon } = {
         h: { value: DiceTools.get1d8(), type: 'Chosen Type' },
       },
       effects: [<>
-        This attack also targets all creatures within [Adjacent Range] of your target with a -2 penalty to their Hit Check.        
+        This attack has the <Tags tags={[{ tag: 'Area', value: 1 }]} /> tag but with the following special rules:
+      </>,<>
+        This attack also targets all creatures within [Adjacent Range] of your target with a -2 penalty to the Hit Check.     
       </>, <>
         You can target yourself with this attack. If you do, you take half damage and ignore the -2 penalty for all creatures in [Adjacent Range] of you.
       </>],
@@ -301,15 +304,13 @@ const exObj: { [key: string]: Weapon } = {
       count: 1,
     },
     attackModes: [{
-      tags: ['Attack', 'Arcane', 'Short Range'],
+      tags: ['Attack', 'Arcane', 'Short Range', {tag: 'Cone', value: 3}],
       damage: {
         l: { value: DiceTools.get1d4(), type: 'Chosen Type' },
         m: { value: DiceTools.get1d6(), type: 'Chosen Type' },
         h: { value: DiceTools.get1d8(), type: 'Chosen Type' },
       },
-      effects: [<>
-        This attack targets all creatures within [Short Range] within your front arc.
-      </>],
+      effects: [<> </>],
     }],
   },
   arcaneLance: {
@@ -317,7 +318,7 @@ const exObj: { [key: string]: Weapon } = {
     tags: ['Two-Handed'],
     isAdvancedItem: true,
     attackModes: [{
-      tags: ['Attack', 'Arcane', 'Melee', 'Adjacent Range','Short Range'],
+      tags: ['Attack', 'Arcane', 'Adjacent Range', 'Short Range'],
       damage: {
         l: { value: DiceTools.get1d6(), type: 'Chosen Type' },
         m: { value: DiceTools.get1d12(), type: 'Chosen Type' },

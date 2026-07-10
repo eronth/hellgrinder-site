@@ -21,6 +21,11 @@
     border: 1px solid var(--tag-line);
     color: var(--tag-text);
 
+    &.special {
+      border-color: var(--special-tag-line);
+      color: var(--special-tag-text);
+    }
+
     &.clickable {
       cursor: pointer;
     }

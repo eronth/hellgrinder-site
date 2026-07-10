@@ -24,11 +24,15 @@ type ActionTags = 'Attack' | 'Defend' | 'Movement'
 type OtherTagsForNow = 'Single-Shot' | 'Safelight' | 'Rot Host';
 
 type CreatureEffectTags = 'Flying' 
-  | {tag: 'Hover', value: number } 
+  | {tag: 'Hover', value: number };
   
 type AttackEffectTags
   = {tag: 'Area', value: number}
-  | {tag: 'Knockback', value: number}
+  | {tag: 'Knockback', value: number};
+
+export type SpecialRuleTag
+  = 'Area' | 'Cone' | 'Cursed' | 'Knockback' | 'Scatter'
+  | 'Hover';
 
 type SkillChecks = 
   | 'Might' | 'Endurance' // brutal status effects

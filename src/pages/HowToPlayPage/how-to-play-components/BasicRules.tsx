@@ -2,6 +2,8 @@ import Hx from "../../../components/common/generic/Hx/Hx";
 import RuleKeyword from "../../../components/keywords/RuleKeyword";
 import SkillCheck from "../../../components/keywords/SkillCheck/SkillCheck";
 import BasicCheckResultsTable from "./BasicCheckResultsTable";
+import Tags from "../../../components/keywords/Tags/Tags";
+import SPECIAL_RULE_TAGS from "../../../data/rules/tag-rules";
 
 export default function BasicRules() {
   const innerHx = 'h3';
@@ -114,21 +116,17 @@ export default function BasicRules() {
         Observation, Communication, Stoic, Recovery,
         Corruption
       </p>
+      <Hx>Special Tags</Hx>
       <p>
-        Tags with Special Rules:<br />
-        <b>Area: X</b>: Attacks and effects with this tag target a hex and each
-        hex within X hexes of your target.
-        <br />
-        <b>Cone: X</b>: Attacks and effects with this tag target a cone of size X.
-        To determine the shape of a cone, look at the pictures that aren't here yet.
-        The lenght of a cone is assumed to be Short Range unless the effect lists
-        a different range.
-        <br />
-        <b>Cursed X</b>: Take X Corruption when using this attack or ability.
-        <br />
-        <b>Scatter X</b>: Targets of attacks or abilities with this tag
-        are shifted by X hexes in a random direction on a Rank 1 Success,
-        and up to twice X in the direction of the GM's choice on a Failure.
+        Some tags have special rules automatically applied:
+        {SPECIAL_RULE_TAGS.map((t) => (<>
+          <br />
+          <Tags key={t.tag.short} tags={[
+            {tag: t.tag.short, value: 'X'}
+            ]}>
+            {t.tag.full}
+          </Tags>: {t.rule}
+        </>))}
       </p>
       <Hx hx={3}>Corruption</Hx>
       <p>

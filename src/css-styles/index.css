@@ -230,22 +230,24 @@
    The default triplet is the neutral navy used for tags outside kit cards;
    each kit category overrides --tag-fill/line/text on its own container. */
 :root {
-  --tag-fill: light-dark(oklch(45% 0.07 250 / 0.13), oklch(72% 0.09 250 / 0.20));
-  --tag-line: light-dark(oklch(45% 0.07 250 / 0.38), oklch(72% 0.09 250 / 0.42));
-  --tag-text: light-dark(oklch(38% 0.09 250),         oklch(83% 0.09 250));
+  --tag-fill:          light-dark(oklch(45% 0.07 250 / 0.13), oklch(72% 0.09 250 / 0.20));
+  --tag-line:          light-dark(oklch(45% 0.07 250 / 0.38), oklch(72% 0.09 250 / 0.42));
+  --tag-text:          light-dark(oklch(38% 0.09 250),        oklch(83% 0.09 250));
+  --special-tag-line:  light-dark(oklch(45% 0.07  80 / 0.38), oklch(72% 0.09  80 / 0.42));
+  --special-tag-text:  light-dark(oklch(38% 0.09  80),        oklch(83% 0.09  80));
 
   /* Combined Range pill keeps a fixed navy accent regardless of card. */
-  --range-tag-fill: light-dark(oklch(45% 0.10 255 / 0.15), oklch(72% 0.11 255 / 0.22));
-  --range-tag-line: light-dark(oklch(45% 0.10 255 / 0.42), oklch(72% 0.11 255 / 0.48));
-  --range-tag-text: light-dark(oklch(40% 0.11 255),         oklch(85% 0.11 255));
+  --range-tag-fill:    light-dark(oklch(45% 0.10 255 / 0.15), oklch(72% 0.11 255 / 0.22));
+  --range-tag-line:    light-dark(oklch(45% 0.10 255 / 0.42), oklch(72% 0.11 255 / 0.48));
+  --range-tag-text:    light-dark(oklch(40% 0.11 255),         oklch(85% 0.11 255));
 
-  --weapon-tag-fill: light-dark(oklch(55% 0.11 51 / 0.15),  oklch(72% 0.12 51 / 0.20));
-  --weapon-tag-line: light-dark(oklch(50% 0.11 51 / 0.40),  oklch(72% 0.12 51 / 0.46));
-  --weapon-tag-text: light-dark(oklch(45% 0.12 51),          oklch(80% 0.12 51));
+  --weapon-tag-fill:   light-dark(oklch(55% 0.11 51 / 0.15),  oklch(72% 0.12 51 / 0.20));
+  --weapon-tag-line:   light-dark(oklch(50% 0.11 51 / 0.40),  oklch(72% 0.12 51 / 0.46));
+  --weapon-tag-text:   light-dark(oklch(45% 0.12 51),          oklch(80% 0.12 51));
 
-  --item-tag-fill:   light-dark(oklch(55% 0.09 165 / 0.16), oklch(72% 0.10 165 / 0.20));
-  --item-tag-line:   light-dark(oklch(50% 0.09 165 / 0.40), oklch(72% 0.10 165 / 0.46));
-  --item-tag-text:   light-dark(oklch(42% 0.10 165),         oklch(80% 0.10 165));
+  --item-tag-fill:     light-dark(oklch(55% 0.09 165 / 0.16), oklch(72% 0.10 165 / 0.20));
+  --item-tag-line:     light-dark(oklch(50% 0.09 165 / 0.40), oklch(72% 0.10 165 / 0.46));
+  --item-tag-text:     light-dark(oklch(42% 0.10 165),         oklch(80% 0.10 165));
 
   --training-tag-fill: light-dark(oklch(55% 0.16 253 / 0.14), oklch(72% 0.14 253 / 0.20));
   --training-tag-line: light-dark(oklch(50% 0.16 253 / 0.40), oklch(72% 0.14 253 / 0.46));

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { RuleDefinition } from '../../../ts-types/rule-types';
-import { RulesManager } from '../../../data/rules-database';
+import { RulesManager } from '../../../data/retire-me-rules-database';
 import { formatReactNode } from '../../../utils/statusEffectUtils';
 import './RulePopup.css';
 

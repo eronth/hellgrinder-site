@@ -2,6 +2,7 @@ import type { Kit } from '../../ts-types/types.tsx';
 import MeleeWeapons from "./weapons/melee-weapons.tsx";
 import ShootingWeapons from "./weapons/shooting-weapons.tsx";
 import ArcaneWeapons from "./weapons/arcane-weapons.tsx";
+import Armor from "./armor.tsx";
 import Tools from '../../utils/tools.tsx';
 import { movementIcon } from '../../utils/commonIcons.tsx';
 
@@ -81,7 +82,7 @@ const exObj: { [key: string]: Kit } = {
       description: 'A tool that can be planted on a door to give you a peek at what\'s on the other side.',
       effects: ['You may use an Action to place this tool on a door you are next to. While adjacent to the door, you can see through the door as if it wasn\'t as a Free Interaction, though others cannot see you. You may only deploy one Door Peek per encounter.'],
       isAdvancedItem: false,
-    }],
+    }, {...Tools.deepCopyItem(Armor.bulletProofVest)}],
     trainings: [],
   },
 
@@ -97,7 +98,7 @@ const exObj: { [key: string]: Kit } = {
       description: 'A flashlight that helps you see in the dark. You never know when you might need it.',
       effects: ['Produce bright light in your front arc out to [Medium Range] and dim light in your front arc out to [Long Range]. Cannot penetrate arcane abyssal or voidyr darkness.' ],
       isAdvancedItem: false,
-    },],
+    }, {...Tools.deepCopyItem(Armor.bulletProofVest)}],
     trainings: [{
       name: 'Rounded',
       tags: [],
@@ -160,25 +161,14 @@ const exObj: { [key: string]: Kit } = {
 
   riot: {
     name: 'Riot',
-    description: "The riot kit is for ",
+    description: "The riot kit gives control",
     weapons: [
-      {...Tools.deepCopyWeapon(ShootingWeapons.pistol)}
+      {...Tools.deepCopyWeapon(ShootingWeapons.pistol)},
     ],
-    items: [{
-      name: 'Deployable Shield',
-      tags: ['Armor', 'Maneuver'],
-      description: 'A shield that can be deployed to protect you from incoming attacks. You can hold the shield to bring it with you, or deploy it to place it down.',
-      effects: ['Maneuver to deploy or retract the shield.',
-        'While held, gain [Resist All 1].',
-        'When you deploy the shield, pick two edges or your hex that share a corner. Those edges now have heavy cover.',],
-      isAdvancedItem: false,
-    }, {
-      name:'Heavy Armor',
-      tags: ['Armor'],
-      description: 'Extra plating to protect yourself on the battlefield.',
-      effects: ['Gain [Resist Any (Except Metal) 1]', 'Gain [Resist Metal 3]'],
-      isAdvancedItem: false,
-    }],
+    items: [
+      { ...Tools.deepCopyItem(Armor.deployableShield) },
+      { ...Tools.deepCopyItem(Armor.heavyArmor) },
+    ],
     trainings: [],
   },
 
@@ -248,7 +238,7 @@ const exObj: { [key: string]: Kit } = {
         isChoiceItem: true,
       }, {
         name: 'Soulbinder Darts',
-        tags: ['Arcane', 'Relic', 'One-Handed', 'Action', 'Maneuver'],
+        tags: ['Arcane', 'Relic', 'One-Handed', 'Action', 'Maneuver', {tag: 'Cursed', value: 1}],
         description: 'You have 2 Soulbinder Darts.',
         effects: [
           'As an Action or Maneuver, you can stick a Soulbinder Dart in a target within [Medium Range].',
@@ -313,13 +303,9 @@ const exObj: { [key: string]: Kit } = {
         effects: ['On a hit, the target is [Slowed 1].'],
       }],
     }],
-    items: [{
-      name: 'Underbark Armor',
-      tags: ['Armor'],
-      description: 'Armor made from the bark of the nethertrees.',
-      effects: ['Gain [Resist Chthonic 2] and [Absorb Abyssal 2].'],
-      isAdvancedItem: false,
-    }],
+    items: [
+      { ...Tools.deepCopyItem(Armor.underbarkArmor) },
+    ],
     trainings: [{
       name: 'Primal Fury',
       tags: ['Melee'],
@@ -359,16 +345,14 @@ const exObj: { [key: string]: Kit } = {
         },
         {
           name: 'Erupt',
-          tags: ['Attack', 'Shooting', 'Short Range'],
+          tags: ['Attack', 'Shooting', 'Short Range', { tag: 'Cone', value: 3 }],
           charges: 4,
           damage: {
             l: { value: 1, type: 'Infernal' },
             m: { value: 3, type: 'Infernal' },
             h: { value: 6, type: 'Infernal' },
           },
-          effects: [
-            'This weapon hits all creatures [Short Range] or your [Front Arc].'
-          ],
+          effects: [],
         },
         {
           name: 'Overcharge',

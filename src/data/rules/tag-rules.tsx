@@ -33,6 +33,7 @@ const UNSORTED_SPECIAL_TAGS: TagDefinition[] = [
       To determine the shape of a cone, look at the pictures
       that aren't here yet. The length of a cone is assumed
       to be Short Range unless the effect lists a different range.
+      Attacks and abilities with this tag cannot be used beyond the listed range.
     </>
   },
   {

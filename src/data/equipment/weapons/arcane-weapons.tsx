@@ -1,3 +1,4 @@
+import Tags from '../../../components/keywords/Tags/Tags';
 import { DamageElement, Weapon } from '../../../ts-types/types';
 import DiceTools from '../../../utils/dice-handling';
 
@@ -103,6 +104,28 @@ const exObj: { [key: string]: Weapon } = {
       },
       effects: [
         <>This attack ignores cover and facing.</>
+      ]
+    }],
+  },
+  soulBurst: {
+    name: 'Soul Burst',
+    tags: ['One-Handed'],
+    isAdvancedItem: true,
+    choiceTags: {
+      tags: [infernal, nethercurrent, voidyr],
+      count: 1,
+    },
+    attackModes: [{
+      tags: ['Attack', 'Arcane', 'Short Range', {tag: 'Cursed', value: 2}, {tag: 'Cone', value: 4}],
+      damage: {
+        l: { value: DiceTools.get2d4(), type: 'Chosen Type' },
+        m: { value: DiceTools.get2d6(), type: 'Chosen Type' },
+        h: { value: DiceTools.get2d8(), type: 'Chosen Type' },
+      },
+      effects: [
+        <>You can increase the cursed value by X to 
+        add <Tags tags={[{ tag: 'Knockback', value: 'X' }]} /> to
+        the attack.</>
       ]
     }],
   },

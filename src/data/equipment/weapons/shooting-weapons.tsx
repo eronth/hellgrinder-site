@@ -57,7 +57,7 @@ const exObj: { [key: string]: Weapon } = {
     tags: ['Heavy', 'Two-Handed'],
     isAdvancedItem: true,
     attackModes: [{
-      tags: ['Attack', 'Shooting', 'Short Range'],
+      tags: ['Attack', 'Shooting', 'Short Range', { tag: 'Cone', value: 'X' }],
       damage: {
         l: { value: 1, type: 'Infernal' },
         m: { value: DiceTools.get1d2(2), type: 'Infernal' },

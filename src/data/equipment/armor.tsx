@@ -1,7 +1,7 @@
 import type { Item } from '../../ts-types/types';
 
 const exObj: { [key: string]: Item } = {
-  bulletproofVest: {
+  bulletProofVest: {
     name: 'Bulletproof Vest',
     tags: ['Armor'],
     isAdvancedItem: false,
@@ -20,6 +20,22 @@ const exObj: { [key: string]: Item } = {
     effects: ['You gain [Resist Metal 3] against attacks in your Front Arc.',
       'As a maneuver, you can give up above effect for the following:',
       'You gain [Resist Metal 1] against attacks in your Left and Right Arcs.'],
+  },
+  deployableShield: {
+    name: 'Deployable Shield',
+    tags: ['Armor', 'Maneuver'],
+    isAdvancedItem: false,
+    description: 'A shield that can be deployed to protect you from incoming attacks. You can hold the shield to bring it with you, or deploy it to place it down.',
+    effects: ['Maneuver to deploy or retract the shield.',
+      'While held, gain [Resist All 1].',
+      'When you deploy the shield, pick two edges or your hex that share a corner. Those edges now have heavy cover.',],
+  },
+  underbarkArmor: {
+    name: 'Underbark Armor',
+    tags: ['Armor'],
+    isAdvancedItem: false,
+    description: 'Armor made from the bark of the nethertrees.',
+    effects: ['Gain [Resist Chthonic 2] and [Absorb Abyssal 2].'],
   },
   heavyArmor: {
     name: 'Heavy Armor',

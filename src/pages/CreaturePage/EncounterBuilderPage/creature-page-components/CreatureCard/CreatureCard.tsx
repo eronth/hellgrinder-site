@@ -16,7 +16,7 @@ import './CreatureCard.css';
 import './CreatureCardExample.css';
 import './CreatureTooltip.css';
 import './CreatureCardFaction.css';
-import { FactionTag } from '../../../../../ts-types/tag-types';
+import { AllValidTags, FactionTag } from '../../../../../ts-types/tag-types';
 
 type Props = {
   data: Creature;
@@ -76,7 +76,7 @@ export default function CreatureCard({
   };
 
   // Determine faction class based on creature tags
-  const getFactionClass = (tags: (string | { tag: string; value: number })[]) => {
+  const getFactionClass = (tags: AllValidTags[]) => {
     const tagStrings = tags.map(tag => typeof tag === 'string' ? tag : tag.tag);
     
     // Define faction mappings
@@ -113,7 +113,7 @@ export default function CreatureCard({
   };
 
   // Check if a tag is a faction tag
-  const isFactionTag = (tag: string | { tag: string; value: number }) => {
+  const isFactionTag = (tag: AllValidTags) => {
     const tagString = typeof tag === 'string' ? tag : tag.tag;
     const factionTags = [
       'Ashborn Legion',

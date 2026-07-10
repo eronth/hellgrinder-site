@@ -29,10 +29,10 @@ const UNSORTED_SPECIAL_TAGS: TagDefinition[] = [
       full: 'Cone X',
     },
     rule: <>
-        Attacks and effects with this tag target a cone of size X.
-        To determine the shape of a cone, look at the pictures
-        that aren't here yet. The length of a cone is assumed
-        to be Short Range unless the effect lists a different range.
+      Attacks and effects with this tag target a cone of size X.
+      To determine the shape of a cone, look at the pictures
+      that aren't here yet. The length of a cone is assumed
+      to be Short Range unless the effect lists a different range.
     </>
   },
   {

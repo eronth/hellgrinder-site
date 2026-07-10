@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Hx from "../../../components/common/generic/Hx/Hx";
 import RuleKeyword from "../../../components/keywords/RuleKeyword";
 import SkillCheck from "../../../components/keywords/SkillCheck/SkillCheck";
@@ -119,15 +120,15 @@ export default function BasicRules() {
       <Hx>Special Tags</Hx>
       <p>
         Some tags have special rules automatically applied:
-        {SPECIAL_RULE_TAGS.map((t) => (<>
+        {SPECIAL_RULE_TAGS.map((t) => (<Fragment key={t.id}>
           <br />
-          <Tags key={t.tag.short} tags={[{
+          <Tags tags={[{
             tag: t.tag.short,
             value: 'X'
           }]}>
             {t.tag.full}
           </Tags>: {t.rule}
-        </>))}
+        </Fragment>))}
       </p>
       <Hx hx={3}>Corruption</Hx>
       <p>

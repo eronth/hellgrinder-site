@@ -1,7 +1,6 @@
 import Page from "../components/common/Page/Page.tsx";
-import ScrollspyNav, { ScrollspySection } from "../components/common/ScrollspyNav/ScrollspyNav.tsx";
-import { TabType } from "../ts-types/types";
 import Tools from "../utils/tools.tsx";
+// data
 import MeleeWeapons from "../data/equipment/weapons/melee-weapons.tsx";
 import ShootingWeapons from "../data/equipment/weapons/shooting-weapons.tsx";
 import ThrownWeapons from "../data/equipment/weapons/thrown-weapons.tsx";
@@ -10,14 +9,21 @@ import WandsAndStaves from "../data/equipment/weapons/wands-and-staves.tsx";
 import Armor from "../data/equipment/armor.tsx";
 import Gear from "../data/equipment/gear.tsx";
 import Perks from "../data/equipment/perks";
+// Components
+import ScrollspyNav, { ScrollspySection } from "../components/common/ScrollspyNav/ScrollspyNav.tsx";
 import WeaponComponent from "./CharacterCreationPage/character-creation-components/kits/weapon/WeaponComponent.tsx";
 import ItemComponent from "./CharacterCreationPage/character-creation-components/kits/item/ItemComponent.tsx";
 import PerkComponent from "./CharacterCreationPage/character-creation-components/perks/PerkComponent";
+// Types
+import { TabType } from "../ts-types/types";
 
 const sections: ScrollspySection[] = [
   { id: 'perks', label: 'Perks' },
-  { id: 'weapons', label: 'Weapons' },
+  { id: 'melee-weapons', label: 'Melee Weapons' },
+  { id: 'shooting-weapons', label: 'Shooting Weapons' },
+  { id: 'thrown-weapons', label: 'Thrown Weapons' },
   { id: 'spell-focus', label: 'Spell Focus' },
+  { id: 'spells', label: 'Arcane Spells' },
   { id: 'protection', label: 'Protection' },
   { id: 'other-gear', label: 'Other Gear' },
 ];
@@ -70,10 +76,11 @@ export default function EquipmentAndPerksPage() {
       powerful than some of the standard equipment. Some equipment is considered "Advanced" equipment,
       while it requires no special training to use, it should be rewarded less often than other equipment.
     </p>
-    <hr />
-    <section id="weapons" className="scrollspy-target">
-      <h2>Weapons</h2>
 
+    <hr />
+    
+    <h2>Weapons</h2>
+    <section id="melee-weapons" className="scrollspy-target">
       <h3>Melee Weapons</h3>
       <h4>Basic Melee Weapons</h4>
       <div className={'col-handler'}>
@@ -88,7 +95,9 @@ export default function EquipmentAndPerksPage() {
           w.isAdvancedItem ? <WeaponComponent key={`advanced-melee-weapon-${i}`} weapon={w} /> : null)
         }
       </div>
+    </section>
 
+    <section id="shooting-weapons" className="scrollspy-target">
       <h3>Shooting Weapons</h3>
       <h4>Basic Shooting Weapons</h4>
       <div className={'col-handler'}>
@@ -103,7 +112,9 @@ export default function EquipmentAndPerksPage() {
           w.isAdvancedItem ? <WeaponComponent key={`advanced-shooting-weapon-${i}`} weapon={w} /> : null)
         }
       </div>
-
+    </section>
+  
+    <section id="thrown-weapons" className="scrollspy-target">
       <h3>Thrown Weapons</h3>
       <h4>Basic Thrown Weapons</h4>
       <div className={'col-handler'}>
@@ -116,28 +127,6 @@ export default function EquipmentAndPerksPage() {
       <div className={'col-handler'}>
         {sortedThrownWeapons.map((w, i) =>
           w.isAdvancedItem ? <WeaponComponent key={`advanced-thrown-weapon-${i}`} weapon={w} /> : null)
-        }
-      </div>
-
-      <h3>Spells</h3>
-      <p>
-        Spells have a list of optional tags (typically damage type).
-        When a player first learns a spell, typically they can choose which
-        tag they'd like the spell to be, though sometimes the GM may
-        have specific tags in mind for a spell. The chosen tag cannot be changed,
-        and affects the spell's effects.
-      </p>
-      <h4>Basic Arcane Weapons</h4>
-      <div className={'col-handler'}>
-        {sortedArcaneWeapons.map((w, i) =>
-          w.isAdvancedItem ? null : <WeaponComponent key={`basic-spell-${i}`} weapon={w} />)
-        }
-      </div>
-
-      <h4>Advanced Arcane Weapons</h4>
-      <div className={'col-handler'}>
-        {sortedArcaneWeapons.map((w, i) =>
-          w.isAdvancedItem ? <WeaponComponent key={`advanced-spell-${i}`} weapon={w} /> : null)
         }
       </div>
     </section>
@@ -165,6 +154,30 @@ export default function EquipmentAndPerksPage() {
       <div className={'col-handler'}>
         {sortedWandsAndStaves.map((w, i) =>
           <ItemComponent key={`wand-${i}`} item={w} />)
+        }
+      </div>
+    </section>
+
+    <section id="spells" className="scrollspy-target">
+      <h3>Spells</h3>
+      <p>
+        Spells have a list of optional tags (typically damage type).
+        When a player first learns a spell, typically they can choose which
+        tag they'd like the spell to be, though sometimes the GM may
+        have specific tags in mind for a spell. The chosen tag cannot be changed,
+        and affects the spell's effects.
+      </p>
+      <h4>Basic Arcane Weapons</h4>
+      <div className={'col-handler'}>
+        {sortedArcaneWeapons.map((w, i) =>
+          w.isAdvancedItem ? null : <WeaponComponent key={`basic-spell-${i}`} weapon={w} />)
+        }
+      </div>
+
+      <h4>Advanced Arcane Weapons</h4>
+      <div className={'col-handler'}>
+        {sortedArcaneWeapons.map((w, i) =>
+          w.isAdvancedItem ? <WeaponComponent key={`advanced-spell-${i}`} weapon={w} /> : null)
         }
       </div>
     </section>

@@ -1,4 +1,4 @@
-import { AllValidTags } from "../../../ts-types/tag-types";
+import { AllValidTags, SPECIAL_RULE_TAG_NAMES } from "../../../ts-types/tag-types";
 import './Tags.css';
 
 type Props = {
@@ -6,6 +6,8 @@ type Props = {
   onTagClick?: (tag: AllValidTags) => void;
   selectedTags?: AllValidTags[];
   selectedOnly?: boolean;
+  /** Overrides the default tag label; only sensible with a single tag. */
+  children?: React.ReactNode;
 };
 
 function tagsEqual(a: AllValidTags, b: AllValidTags): boolean {
@@ -24,7 +26,12 @@ function rangeLabel(t: AllValidTags): string {
   return `${t.value}`;
 }
 
-export default function Tags({ tags, onTagClick, selectedTags, selectedOnly }: Props) {
+function isSpecialTag(t: AllValidTags): boolean {
+  const name = typeof t === 'string' ? t : t.tag;
+  return (SPECIAL_RULE_TAG_NAMES as readonly string[]).includes(name);
+}
+
+export default function Tags({ tags, onTagClick, selectedTags, selectedOnly, children }: Props) {
   const rangeTags = tags.filter(isRangeTag);
   const otherTags = tags.filter(t => !isRangeTag(t));
 
@@ -54,13 +61,13 @@ export default function Tags({ tags, onTagClick, selectedTags, selectedOnly }: P
     )}
     {otherTags.map((t, ti) => {
       const isSelected = isTagSelected(t);
-      const className = `tag ${isSelected ? ' selected-choice' : ''}${onTagClick ? ' clickable' : ''}`;
+      const className = `tag ${isSpecialTag(t) ? ' special' : ''}${isSelected ? ' selected-choice' : ''}${onTagClick ? ' clickable' : ''}`;
 
       if (selectedOnly && !isSelected) { return null; }
 
       return (
         <span key={`tag-${ti}`} className={className} onClick={() => { if(onTagClick) { onTagClick(t) } }}>
-          {(typeof t === 'string') ? t : `${t.tag}: ${t.value}`}
+          {children ?? ((typeof t === 'string') ? t : `${t.tag}: ${t.value}`)}
         </span>
       );
     })}

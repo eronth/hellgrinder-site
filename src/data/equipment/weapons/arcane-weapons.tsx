@@ -53,6 +53,18 @@ const exObj: { [key: string]: Weapon } = {
         h: { value: DiceTools.get2d8(-1), type: 'Chosen Type' },
       },
       effects: ['When you hit an enemy that has Resist against your chosen element, you can forgo damage to instead reduce their Resist value against that element by 1 for the rest of the encounter.'],
+    },
+    {
+      name: 'Ruin Blast',
+      tags: ['Attack', 'Arcane', 'Short Range', { tag: 'Cursed', value: 2 }],
+      damage: {
+        l: { value: DiceTools.get2d4(1), type: 'Chosen Type' },
+        m: { value: DiceTools.get2d6(1), type: 'Chosen Type' },
+        h: { value: DiceTools.get2d8(1), type: 'Chosen Type' },  
+      },
+      effects: [
+        'When you hit an enemy that has Resist against your chosen element, you can forgo damage to instead completely reduce their Resist value against that element.',
+      ]
     }],
   },
   reboundingBolt: {
@@ -103,7 +115,7 @@ const exObj: { [key: string]: Weapon } = {
       count: 1,
     },
     attackModes: [{
-      tags: ['Attack', 'Arcane', 'Short Range', 'Medium Range'],
+      tags: ['Attack', 'Arcane', 'Short Range', 'Medium Range', { tag: 'Cursed', value: 1 }],
       damage: {
         l: { value: DiceTools.get1d4(), type: 'Chosen Type' },
         m: { value: DiceTools.get1d6(), type: 'Chosen Type' },

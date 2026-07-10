@@ -97,7 +97,7 @@ const exObj: { [key: string]: Kit } = {
       description: 'A flashlight that helps you see in the dark. You never know when you might need it.',
       effects: ['Produce bright light in your front arc out to [Medium Range] and dim light in your front arc out to [Long Range]. Cannot penetrate arcane abyssal or voidyr darkness.' ],
       isAdvancedItem: false,
-    }],
+    },],
     trainings: [{
       name: 'Rounded',
       tags: [],
@@ -342,7 +342,7 @@ const exObj: { [key: string]: Kit } = {
       + "Safelight research technology.",
     weapons: [{
       name: 'Prototype Safelight Beam Rifle',
-      tags: ['Heavy', 'Two-Handed'],
+      tags: ['Heavy', 'Two-Handed', 'Safelight'],
       effects: ['Can be recharged with Safelight Gemstones or Safelight Geodes. A Safelight Shard is not enough.'],
       isAdvancedItem: true,
       attackModes: [
@@ -386,7 +386,7 @@ const exObj: { [key: string]: Kit } = {
     {...Tools.deepCopyWeapon(ShootingWeapons.pistol)}],
     items: [{
       name: 'Prototype Teleporter',
-      tags: ['Maneuver'],
+      tags: ['Maneuver', 'Safelight'],
       description: 'A small, safelight powered device that can connect pieces of the eternal Hells.',
       charges: 2,
       effects: [`As a 2${movementIcon} Maneuver, you can teleport to any hex within [Medium Range] of you, `

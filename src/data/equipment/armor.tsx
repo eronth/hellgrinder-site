@@ -39,12 +39,13 @@ const exObj: { [key: string]: Item } = {
   },
   reactiveArmor: {
     name: 'Reactive Armor',
-    tags: ['Armor'],
+    tags: ['Armor', { tag: 'Cursed', value: 1 }],
     isAdvancedItem: true,
     description: 'Armor that reacts to incoming attacks.',
     effects: [
-      'Each time you take damage from an attack, you gain 1 stack of [Resist 1] against that attack type. ' +
-      ' Stacks reset at the end of your turn.'
+      'Each time you take damage from an attack, you gain may gain 1 stack of [Resist 2] against that attack type. ' +
+      ' Stacks reset at the end of your turn.',
+      'Cursed triggers each time you gain a stack.'
     ],
   },
   slickSuit: {

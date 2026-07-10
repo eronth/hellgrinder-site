@@ -124,6 +124,8 @@ export default function BasicRules() {
         The lenght of a cone is assumed to be Short Range unless the effect lists
         a different range.
         <br />
+        <b>Cursed X</b>: Take X Corruption when using this attack or ability.
+        <br />
         <b>Scatter X</b>: Targets of attacks or abilities with this tag
         are shifted by X hexes in a random direction on a Rank 1 Success,
         and up to twice X in the direction of the GM's choice on a Failure.

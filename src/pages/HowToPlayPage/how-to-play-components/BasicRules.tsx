@@ -121,9 +121,10 @@ export default function BasicRules() {
         Some tags have special rules automatically applied:
         {SPECIAL_RULE_TAGS.map((t) => (<>
           <br />
-          <Tags key={t.tag.short} tags={[
-            {tag: t.tag.short, value: 'X'}
-            ]}>
+          <Tags key={t.tag.short} tags={[{
+            tag: t.tag.short,
+            value: 'X'
+          }]}>
             {t.tag.full}
           </Tags>: {t.rule}
         </>))}

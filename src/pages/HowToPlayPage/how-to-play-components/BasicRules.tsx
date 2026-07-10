@@ -109,8 +109,25 @@ export default function BasicRules() {
         seem suitable. However, here is a list of common check tags already supported by the game's rules.
       </p>
       <p>Various Attack Checks: Melee, Shooting, Arcane, Thrown</p>
-      <p>Various Skill Checks: Might, Endurance, Agility, Stealth, Observation, Communication, Stoic, Recovery,
-        Corruption</p>
+      <p>
+        Various Skill Checks: Might, Endurance, Agility, Stealth,
+        Observation, Communication, Stoic, Recovery,
+        Corruption
+      </p>
+      <p>
+        Tags with Special Rules:<br />
+        <b>Area: X</b>: Attacks and effects with this tag target a hex and each
+        hex within X hexes of your target.
+        <br />
+        <b>Cone: X</b>: Attacks and effects with this tag target a cone of size X.
+        To determine the shape of a cone, look at the pictures that aren't here yet.
+        The lenght of a cone is assumed to be Short Range unless the effect lists
+        a different range.
+        <br />
+        <b>Scatter X</b>: Targets of attacks or abilities with this tag
+        are shifted by X hexes in a random direction on a Rank 1 Success,
+        and up to twice X in the direction of the GM's choice on a Failure.
+      </p>
       <Hx hx={3}>Corruption</Hx>
       <p>
         Corruption is a measure of how much the demonic forces

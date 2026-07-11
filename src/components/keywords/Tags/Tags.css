@@ -10,6 +10,11 @@
   .tag {
     display: inline-flex;
     align-items: center;
+    /* Baseline alignment leaves the pill's bottom padding hanging below the
+       surrounding text's baseline, so the pill reads as sitting low; `middle`
+       (half the parent's x-height) is still a touch low for this font, so
+       raise the pill's baseline until the box centers on the neighbor text. */
+    vertical-align: .3em;
     gap: .4em;
     margin: .15em .3em;
     padding: .34em .62em;

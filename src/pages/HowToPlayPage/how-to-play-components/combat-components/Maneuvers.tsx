@@ -106,7 +106,7 @@ export default function Maneuvers() {
         </p>
       </IndividualManeuver>
 
-      <IndividualManeuver title='Leap' cost={<>1{movementIcon} per hex moved</>}>
+      <IndividualManeuver title='Leap' cost={<>1{movementIcon} + 1{movementIcon} per hex moved</>}>
         <p>
           Make an <SkillCheck tags={['Agility', 'Might']} />. You 
           move a number of hexes up to your Success Rank, jumping over all hexes

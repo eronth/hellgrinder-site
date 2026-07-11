@@ -3,6 +3,7 @@ import { movementIcon } from '../utils/commonIcons';
 import Arc from '../components/keywords/Arc/Arc';
 import HitCheck from '../components/keywords/HitCheck/HitCheck';
 import SkillCheck from '../components/keywords/SkillCheck/SkillCheck';
+import Tags from '../components/keywords/Tags/Tags';
 
 export type StatusEffectsReturn = {
   blinded: StatusEffect;
@@ -243,16 +244,20 @@ const exObj: StatusEffectsReturn = {
     description: 'You become beguiled, losing track of your own abilities.',
     effects: [
       <>
-        Your [Shooting] Checks now have the [Melee] tag instead.
+        <br />Your <SkillCheck tags={['Shooting']} plural /> now 
+        use your <Tags tags={['Melee']} /> instead.
       </>,
       <>
-        Your [Melee] Checks now have the [Thrown] tag instead.
+        <br />Your <SkillCheck tags={['Melee']} plural /> now 
+        use your <Tags tags={['Thrown']} /> instead.
       </>,
       <>
-        Your [Thrown] Checks now have the [Arcane] tag instead.
+        <br />Your <SkillCheck tags={['Thrown']} plural /> now 
+        use your <Tags tags={['Arcane']} /> instead.
       </>,
       <>
-        Your [Arcane] Checks now have the [Shooting] tag instead.
+        <br />Your <SkillCheck tags={['Arcane']} plural /> now 
+        use your <Tags tags={['Shooting']} /> instead.
       </>
     ],
   },

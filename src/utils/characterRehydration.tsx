@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { CharacterDesign } from '../ts-types/player-character-types';
-import { Item, Kit, Perk, Weapon } from '../ts-types/types';
+import { DamageElement, GrantedBonus, Item, Kit, Perk, Weapon } from '../ts-types/types';
 import Perks from '../data/equipment/perks';
 import CombatKits from '../data/equipment/combat-kits';
 import SupportKits from '../data/equipment/support-kits';
@@ -20,8 +20,10 @@ import Gear from '../data/equipment/gear';
 // customized at generation time, like Hellspawn's rolled description — survive
 // JSON intact and are kept as-is.
 //
-// Rehydration also backfills `bonuses` from the canonical definitions for
-// saves created before that field existed.
+// Rehydration also refreshes `bonuses` from the canonical definitions so that
+// text/value edits (a bonus's condition, label, amount) propagate to existing
+// saves. The only per-character state a bonus carries is the `chosenElement`
+// pick on 'Chosen Type' defenses; those picks are carried over by position.
 
 const canonicalKits = new Map<string, Kit>(
   [...Object.values(CombatKits), ...Object.values(SupportKits), ...Object.values(SupplyKits)]
@@ -51,6 +53,23 @@ const survivesJson = (node: ReactNode): boolean =>
 const repairNode = (stored: ReactNode, canonical: ReactNode): ReactNode =>
   survivesJson(stored) ? stored : canonical;
 
+const storedChoice = (bonus: GrantedBonus | undefined): DamageElement | undefined =>
+  bonus && 'chosenElement' in bonus ? bonus.chosenElement : undefined;
+
+// Prefer canonical bonuses (fresh text/values) but carry over each stored
+// 'Chosen Type' pick by position. Falls back to stored when there is no
+// canonical definition (unmatched name, or a save predating a data change).
+const rehydrateBonuses = (
+  stored: GrantedBonus[] | undefined,
+  canonical: GrantedBonus[] | undefined,
+): GrantedBonus[] | undefined => {
+  if (!canonical) { return stored; }
+  return canonical.map((bonus, i) => {
+    const chosen = storedChoice(stored?.[i]);
+    return chosen && 'element' in bonus ? { ...bonus, chosenElement: chosen } : bonus;
+  });
+};
+
 const repairNodeArray = (
   stored: ReactNode[] | undefined,
   canonical: ReactNode[] | undefined,
@@ -62,7 +81,7 @@ const repairNodeArray = (
 const rehydrateWeapon = (weapon: Weapon, canonical = canonicalWeapons.get(weapon.name)): Weapon => ({
   ...weapon,
   description: repairNode(weapon.description, canonical?.description),
-  bonuses: weapon.bonuses ?? canonical?.bonuses,
+  bonuses: rehydrateBonuses(weapon.bonuses, canonical?.bonuses),
   attackModes: weapon.attackModes.map((mode, i) => ({
     ...mode,
     effects: repairNodeArray(mode.effects, canonical?.attackModes[i]?.effects),
@@ -72,7 +91,7 @@ const rehydrateWeapon = (weapon: Weapon, canonical = canonicalWeapons.get(weapon
 const rehydrateItem = (item: Item, canonical = canonicalItems.get(item.name)): Item => ({
   ...item,
   description: repairNode(item.description, canonical?.description),
-  bonuses: item.bonuses ?? canonical?.bonuses,
+  bonuses: rehydrateBonuses(item.bonuses, canonical?.bonuses),
   effects: repairNodeArray(item.effects, canonical?.effects) ?? [],
 });
 
@@ -86,7 +105,7 @@ const rehydrateKit = (kit: Kit): Kit => {
       rehydrateItem(i, canonical?.items.find(ci => ci.name === i.name) ?? canonicalItems.get(i.name))),
     trainings: kit.trainings.map(t => ({
       ...t,
-      bonuses: t.bonuses ?? canonical?.trainings.find(ct => ct.name === t.name)?.bonuses,
+      bonuses: rehydrateBonuses(t.bonuses, canonical?.trainings.find(ct => ct.name === t.name)?.bonuses),
     })),
   };
 };
@@ -94,7 +113,7 @@ const rehydrateKit = (kit: Kit): Kit => {
 const rehydratePerk = (perk: Perk): Perk => ({
   ...perk,
   description: repairNode(perk.description, canonicalPerks.get(perk.name)?.description),
-  bonuses: perk.bonuses ?? canonicalPerks.get(perk.name)?.bonuses,
+  bonuses: rehydrateBonuses(perk.bonuses, canonicalPerks.get(perk.name)?.bonuses),
 });
 
 export const rehydrateCharacter = (character: CharacterDesign): CharacterDesign => ({

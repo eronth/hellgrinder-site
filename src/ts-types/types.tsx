@@ -24,6 +24,35 @@ type DamageElement =
 
 type ChoiceTagOption = AllValidTags | DamageElement;
 
+/**
+ * A passive, always-on (or conditionally-on) numeric bonus an object grants
+ * its owner, in a machine-readable form so character sheets can total them.
+ * The `effects`/`description` text remains the source of truth for rules;
+ * this only mirrors the summable part.
+ */
+type GrantedBonus = {
+  /** Resist/Absorb/Weak <element> N. */
+  defense: 'Resist' | 'Absorb' | 'Weak';
+  element: DamageElement;
+  value: number;
+  /** Qualifier such as 'Front Arc' — kept apart from unconditional totals. */
+  condition?: string;
+  /** For element 'Chosen Type': the pick made on this character's copy. */
+  chosenElement?: DamageElement;
+  /** For element 'Chosen Type': allowed picks (defaults to every element). */
+  options?: DamageElement[];
+} | {
+  /** +N tied to a tag (Stealth, Long Range, Melee, ...). */
+  tag: AllValidTags;
+  value: number;
+  condition?: string;
+} | {
+  /** +N to anything else (Move Speed, Hit Checks, ...). */
+  label: string;
+  value: number;
+  condition?: string;
+};
+
 type ItemDef = {
   name: string;
   tags: AllValidTags[];
@@ -35,6 +64,7 @@ type ItemDef = {
   charges?: number;
   isAdvancedItem?: boolean;
   isChoiceItem?: boolean;
+  bonuses?: GrantedBonus[];
 }
 
 type Kit = {
@@ -84,6 +114,7 @@ type Training = {
   name: string;
   tags: AllValidTags[];
   effects: string[];
+  bonuses?: GrantedBonus[];
 }
 
 type Perk = ItemDef & {
@@ -110,4 +141,4 @@ export type ActiveStatusEffect = {
   y?: number;
 }
 
-export type { HeaderSize, ItemDef, Kit, Training, Item, Perk, TabType, DamageElement, ChoiceTagOption };
+export type { HeaderSize, ItemDef, Kit, Training, Item, Perk, TabType, DamageElement, ChoiceTagOption, GrantedBonus };

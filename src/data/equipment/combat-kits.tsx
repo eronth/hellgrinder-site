@@ -21,6 +21,7 @@ const exObj: { [key: string]: Kit } = {
       description: 'A suit that helps you blend in with your surroundings.',
       effects: ['Gain +1 to Stealth checks'],
       isAdvancedItem: false,
+      bonuses: [{ tag: 'Stealth', value: 1 }],
     },
     {
       name:'Sniping Scope',
@@ -33,6 +34,7 @@ const exObj: { [key: string]: Kit } = {
       name: 'Long Range Training',
       tags: ['Attack'],
       effects: ['Gain +1 to [Long Range] Hit Checks.'],
+      bonuses: [{ tag: 'Long Range', value: 1 }],
     }],
   },
 
@@ -59,6 +61,7 @@ const exObj: { [key: string]: Kit } = {
       description: 'A suit that helps protect against he singe of fires.',
       effects: ['Gain [Resist Infernal 2].'],
       isAdvancedItem: false,
+      bonuses: [{ defense: 'Resist', element: 'Infernal', value: 2 }],
     }],
     trainings: [],
   },
@@ -106,7 +109,8 @@ const exObj: { [key: string]: Kit } = {
     }, {
       name: 'Move! Move!',
       tags: [],
-      effects: ['Gain +1 Move Speed.']
+      effects: ['Gain +1 Move Speed.'],
+      bonuses: [{ label: 'Move Speed', value: 1 }],
     }],
     extraPerkPoints: 1,
     extraSupportKits: 1,
@@ -150,6 +154,10 @@ const exObj: { [key: string]: Kit } = {
       description: 'A simple to use kit for making coffee. A great way to keep the great taste of home with you on the battlefield.',
       effects: ['If you spend 10 minute, you can make a nice cup of coffee for yourself. You can give the cup to someone else, but they only gain half the benefits. Only one person can benefit from your cup of coffee at a time.', 'Coffee Bonus: Gain +2 to Recovery Checks.', 'Coffee Bonus: Gain +2 to Observation Checks.'],
       isAdvancedItem: false,
+      bonuses: [
+        { tag: 'Recovery', value: 2, condition: 'coffee bonus' },
+        { tag: 'Observation', value: 2, condition: 'coffee bonus' },
+      ],
     }],
     trainings: [{
       name: 'Perked Up',
@@ -181,6 +189,7 @@ const exObj: { [key: string]: Kit } = {
       name: 'Inhuman Speed',
       tags: ['Arcane', 'Movement'],
       effects: ['Gain +1 Move Speed. Gain an additional +1 Move Speed if you have been hit by you chosen element since the end of your last turn.'],
+      bonuses: [{ label: 'Move Speed', value: 1 }],
     },
     {
       name: 'Power Infusion',
@@ -236,6 +245,7 @@ const exObj: { [key: string]: Kit } = {
           'in [Short Range] of you gain [Resist Soulrend 1].'],
         isAdvancedItem: false,
         isChoiceItem: true,
+        bonuses: [{ label: 'Resist Soulrend', value: 1, condition: 'you and nearby allies' }],
       }, {
         name: 'Soulbinder Darts',
         tags: ['Arcane', 'Relic', 'One-Handed', 'Action', 'Maneuver', { Cursed: 1 }],
@@ -310,6 +320,7 @@ const exObj: { [key: string]: Kit } = {
       name: 'Primal Fury',
       tags: ['Melee'],
       effects: ['Gain +2 to Hit Checks on [Melee Attacks].'],
+      bonuses: [{ tag: 'Melee', value: 2, condition: 'Hit Checks' }],
     },
     {
       name: 'Feral Cry',

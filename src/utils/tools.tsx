@@ -34,6 +34,7 @@ const cloneItemDef = <T extends ItemDef>(item: T): T => ({
     ...item.choiceTags,
     tags: [...item.choiceTags.tags],
   },
+  bonuses: item.bonuses && item.bonuses.map(b => ({ ...b })),
 });
 
 const deepCopyPerk = (perk: Perk): Perk => cloneItemDef(perk);
@@ -47,6 +48,7 @@ const deepCopyTraining = (training: Training): Training => ({
   ...training,
   tags: [...training.tags],
   effects: [...training.effects],
+  bonuses: training.bonuses && training.bonuses.map(b => ({ ...b })),
 });
 
 const deepCopyKit = (kit: Kit): Kit => ({

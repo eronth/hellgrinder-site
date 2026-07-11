@@ -145,6 +145,10 @@ function specialPerkLogic(perk: Perk) {
       + `You are aligned with ${damageTypes[rand]}. `
       + `Your melee attacks can deal ${damageTypes[rand]} instead of their default type. `
       + `You also gain Absorb ${damageTypes[rand]} 1.`;
+    perk.bonuses = perk.bonuses?.map(b =>
+      'defense' in b && b.element === 'Chosen Type'
+        ? { ...b, chosenElement: damageTypes[rand] }
+        : b);
   }
 }
 

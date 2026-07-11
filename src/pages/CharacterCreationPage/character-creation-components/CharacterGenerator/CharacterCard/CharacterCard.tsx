@@ -8,6 +8,7 @@ import EditableCharacterName from "./EditableCharacterName/EditableCharacterName
 import CharacterInventoryDisplay from "./CharacterInventoryDisplay/CharacterInventoryDisplay.tsx";
 import DeleteCharacterButton from "./DeleteCharacterButton/DeleteCharacterButton.tsx";
 import SpecializationSection from "./SpecializationSection/SpecializationSection.tsx";
+import BonusTotals from "./BonusTotals/BonusTotals.tsx";
 import KitSlot from "./KitSlot/KitSlot.tsx";
 import PerksSection from "./PerksSection/PerksSection.tsx";
 import "./CharacterCard.css";
@@ -195,15 +196,18 @@ export default function CharacterCard({
         />
       </div>
 
-      {/* Column 2: Combat kit slot */}
-      <KitSlot
-        kitType="combat"
-        kit={combatKit}
-        character={character}
-        onSetKit={handleSetCombatKit}
-        kitLocks={character.locks?.kits?.[0] ?? DEFAULT_KIT_LOCKS}
-        onKitLocksChange={(updates) => updateKitLocks(0, updates)}
-      />
+      {/* Column 2: Bonus totals + combat kit slot */}
+      <div>
+        <BonusTotals character={character} onUpdateCharacter={updateCharacter} />
+        <KitSlot
+          kitType="combat"
+          kit={combatKit}
+          character={character}
+          onSetKit={handleSetCombatKit}
+          kitLocks={character.locks?.kits?.[0] ?? DEFAULT_KIT_LOCKS}
+          onKitLocksChange={(updates) => updateKitLocks(0, updates)}
+        />
+      </div>
 
       {/* Column 3+: Support kit slots */}
       {Array.from({ length: character.startingSupportKits }, (_, i) => (

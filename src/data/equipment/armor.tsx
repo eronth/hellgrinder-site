@@ -6,12 +6,14 @@ const exObj: { [key: string]: Item } = {
     tags: ['Armor'],
     isAdvancedItem: false,
     effects: ['You gain [Resist Metal 1].'],
+    bonuses: [{ defense: 'Resist', element: 'Metal', value: 1 }],
   },
   backplate: {
     name: 'Backplate',
     tags: ['Armor'],
     isAdvancedItem: false,
     effects: ['You gain [Resist Metal 3] against attacks in your Rear Arc.'],
+    bonuses: [{ defense: 'Resist', element: 'Metal', value: 3, condition: 'Rear Arc' }],
   },
   shield: {
     name: 'Shield',
@@ -20,6 +22,7 @@ const exObj: { [key: string]: Item } = {
     effects: ['You gain [Resist Metal 3] against attacks in your Front Arc.',
       'As a maneuver, you can give up above effect for the following:',
       'You gain [Resist Metal 1] against attacks in your Left and Right Arcs.'],
+    bonuses: [{ defense: 'Resist', element: 'Metal', value: 3, condition: 'Front Arc' }],
   },
   deployableShield: {
     name: 'Deployable Shield',
@@ -29,6 +32,7 @@ const exObj: { [key: string]: Item } = {
     effects: ['Maneuver to deploy or retract the shield.',
       'While held, gain [Resist All 1].',
       'When you deploy the shield, pick two edges or your hex that share a corner. Those edges now have heavy cover.',],
+    bonuses: [{ defense: 'Resist', element: 'All', value: 1, condition: 'deployable shield, while held' }],
   },
   underbarkArmor: {
     name: 'Underbark Armor',
@@ -36,6 +40,10 @@ const exObj: { [key: string]: Item } = {
     isAdvancedItem: false,
     description: 'Armor made from the bark of the nethertrees.',
     effects: ['Gain [Resist Chthonic 2] and [Absorb Abyssal 2].'],
+    bonuses: [
+      { defense: 'Resist', element: 'Chthonic', value: 2 },
+      { defense: 'Absorb', element: 'Abyssal', value: 2 },
+    ],
   },
   heavyArmor: {
     name: 'Heavy Armor',
@@ -43,6 +51,10 @@ const exObj: { [key: string]: Item } = {
     isAdvancedItem: true,
     description: 'Extra plating to protect yourself on the battlefield.',
     effects: ['Gain [Resist Any (Except Metal) 1]', 'Gain [Resist Metal 3]'],
+    bonuses: [
+      { defense: 'Resist', element: 'All', value: 1, condition: 'except Metal' },
+      { defense: 'Resist', element: 'Metal', value: 3 },
+    ],
   },
   forceField: {
     name: 'Force Field',
@@ -52,6 +64,7 @@ const exObj: { [key: string]: Item } = {
     effects: [
       'You and allies within 1 hex of you gain [Resist All 1] against Attacks that are not [Adjacent Range].'
     ],
+    bonuses: [{ defense: 'Resist', element: 'All', value: 1, condition: 'non-adjacent attacks' }],
   },
   reactiveArmor: {
     name: 'Reactive Armor',
@@ -72,6 +85,7 @@ const exObj: { [key: string]: Item } = {
     effects: [
       'Attacks against you have -1 to their Hit Checks.'
     ],
+    bonuses: [{ label: 'Enemy Hit Checks', value: -1 }],
   },
   quickstrideSuit: {
     name: 'Quickstride Suit',
@@ -79,6 +93,7 @@ const exObj: { [key: string]: Item } = {
     isAdvancedItem: true,
     description: 'A suit that makes you faster.',
     effects: ['Gain +1 to your Move Speed.'],
+    bonuses: [{ label: 'Move Speed', value: 1 }],
   },
   shadowCloak: {
     name: 'Shadow Cloak',
@@ -86,6 +101,7 @@ const exObj: { [key: string]: Item } = {
     isAdvancedItem: true,
     description: 'A cloak that makes you harder to see.',
     effects: ['Gain +3 to Stealth Checks.'],
+    bonuses: [{ tag: 'Stealth', value: 3 }],
   }
 
 }

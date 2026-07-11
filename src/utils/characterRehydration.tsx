@@ -19,6 +19,9 @@ import Gear from '../data/equipment/gear';
 // name), or dropped when no match exists. Plain-string values — including ones
 // customized at generation time, like Hellspawn's rolled description — survive
 // JSON intact and are kept as-is.
+//
+// Rehydration also backfills `bonuses` from the canonical definitions for
+// saves created before that field existed.
 
 const canonicalKits = new Map<string, Kit>(
   [...Object.values(CombatKits), ...Object.values(SupportKits), ...Object.values(SupplyKits)]
@@ -59,6 +62,7 @@ const repairNodeArray = (
 const rehydrateWeapon = (weapon: Weapon, canonical = canonicalWeapons.get(weapon.name)): Weapon => ({
   ...weapon,
   description: repairNode(weapon.description, canonical?.description),
+  bonuses: weapon.bonuses ?? canonical?.bonuses,
   attackModes: weapon.attackModes.map((mode, i) => ({
     ...mode,
     effects: repairNodeArray(mode.effects, canonical?.attackModes[i]?.effects),
@@ -68,6 +72,7 @@ const rehydrateWeapon = (weapon: Weapon, canonical = canonicalWeapons.get(weapon
 const rehydrateItem = (item: Item, canonical = canonicalItems.get(item.name)): Item => ({
   ...item,
   description: repairNode(item.description, canonical?.description),
+  bonuses: item.bonuses ?? canonical?.bonuses,
   effects: repairNodeArray(item.effects, canonical?.effects) ?? [],
 });
 
@@ -79,12 +84,17 @@ const rehydrateKit = (kit: Kit): Kit => {
       rehydrateWeapon(w, canonical?.weapons.find(cw => cw.name === w.name) ?? canonicalWeapons.get(w.name))),
     items: kit.items.map(i =>
       rehydrateItem(i, canonical?.items.find(ci => ci.name === i.name) ?? canonicalItems.get(i.name))),
+    trainings: kit.trainings.map(t => ({
+      ...t,
+      bonuses: t.bonuses ?? canonical?.trainings.find(ct => ct.name === t.name)?.bonuses,
+    })),
   };
 };
 
 const rehydratePerk = (perk: Perk): Perk => ({
   ...perk,
   description: repairNode(perk.description, canonicalPerks.get(perk.name)?.description),
+  bonuses: perk.bonuses ?? canonicalPerks.get(perk.name)?.bonuses,
 });
 
 export const rehydrateCharacter = (character: CharacterDesign): CharacterDesign => ({

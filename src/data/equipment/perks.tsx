@@ -9,6 +9,7 @@ const exObj: { [key: string]: Perk } =
     isAdvancedItem: false,
     description: 'You have a mark of the nether realms on you. The GM chooses a Damage Type. You have Weak 3 to that type.',
     startingCorruption: 2,
+    bonuses: [{ defense: 'Weak', element: 'Chosen Type', value: 3 }],
   },
   durable: {
     name: 'Durable', cost: 1,
@@ -16,6 +17,7 @@ const exObj: { [key: string]: Perk } =
     isAdvancedItem: false,
     description: 'You have always been a bit more sturdy. You have +1 Max Health and Resist 1 to your choice of Damage Type.',
     healthModifier: 1,
+    bonuses: [{ defense: 'Resist', element: 'Chosen Type', value: 1 }],
   },
   evil: {
     name: 'Evil', cost: -1,
@@ -32,12 +34,17 @@ const exObj: { [key: string]: Perk } =
       + 'Choose a Damage Type from Infernal, Abyssal, Verdant, Chthonic, Nethercurrent, and Voidyr. '
       + 'Your melee attacks can deal damage of the Chosen Type instead of their default type. '
       + 'You also gain Absorb 1 of the Chosen Type.',
+    bonuses: [{
+      defense: 'Absorb', element: 'Chosen Type', value: 1,
+      options: ['Infernal', 'Abyssal', 'Verdant', 'Chthonic', 'Nethercurrent', 'Voidyr'],
+    }],
   },
   mindful: {
     name: 'Mindful', cost: 1,
     tags: [],
     isAdvancedItem: false,
     description: 'You make Corruption Tests with a +2 bonus.',
+    bonuses: [{ tag: 'Corruption', value: 2 }],
   },
   nimble: {
     name: 'Nimble', cost: 1,
@@ -45,6 +52,7 @@ const exObj: { [key: string]: Perk } =
     isAdvancedItem: false,
     description: 'You are quick on your feet. You gain +1 [Agility Skill Checks].',
     speedModifier: 1,
+    bonuses: [{ tag: 'Agility', value: 1 }],
   },
   sinister: {
     name: 'Sinister', cost: 2,
@@ -57,6 +65,7 @@ const exObj: { [key: string]: Perk } =
     tags: [],
     isAdvancedItem: false,
     description: 'You stand firm in the face of danger. You regain +1 Health on a Recovery Check. When terrified, make a [Stoic Skill Check] to end the status early.',
+    bonuses: [{ label: 'Health from Recovery Checks', value: 1 }],
   },
   veteran: {
     name: 'Veteran', cost: 2,
@@ -71,6 +80,7 @@ const exObj: { [key: string]: Perk } =
       or <Tags tags={['Thrown']} /> Hit Checks.
     </>,
     injuriesModifier: 1,
+    bonuses: [{ label: 'Hit Checks', value: 3 }],
   },
   lucky: {
     name: 'Lucky', cost: 2,

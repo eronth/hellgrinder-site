@@ -30,7 +30,11 @@ const exObj: { [key: string]: Kit } = {
       tags: [],
       effects: ['You and allies get +1 to all Recovery Skill Checks.',
         'You and all allies get +1 to health restored from Recovery Skill Checks.'
-      ], 
+      ],
+      bonuses: [
+        { tag: 'Recovery', value: 1 },
+        { label: 'Health from Recovery Checks', value: 1 },
+      ],
     }, {
       name: 'Medical Miracle',
       tags: [],
@@ -64,7 +68,8 @@ const exObj: { [key: string]: Kit } = {
     trainings: [{
       name: 'Instrument Analyst',
       tags: [],
-      effects: ['You get +2 to all Observation Skill Checks.', ''], 
+      effects: ['You get +2 to all Observation Skill Checks.', ''],
+      bonuses: [{ tag: 'Observation', value: 2 }],
     }, {
       name: 'Communicator',
       tags: ['Maneuver'],
@@ -83,11 +88,13 @@ const exObj: { [key: string]: Kit } = {
     trainings: [{
       name: 'Stealth Training',
       tags: [],
-      effects: ['You get +2 to all Stealth Skill Checks.'], 
+      effects: ['You get +2 to all Stealth Skill Checks.'],
+      bonuses: [{ tag: 'Stealth', value: 2 }],
     }, {
       name: 'Assassin',
       tags: ['Attack'],
-      effects: ['Rear Arc attacks made with your Knife get and +5 to damage.'], 
+      effects: ['Rear Arc attacks made with your Knife get and +5 to damage.'],
+      bonuses: [{ label: 'Damage', value: 5, condition: 'Knife, Rear Arc' }],
     }],
   },
 
@@ -123,6 +130,7 @@ const exObj: { [key: string]: Kit } = {
       tags: ['Arcane'],
       description: 'Your tarot deck is a powerful tool for divination.',
       effects: ['You get +1 to all [Observation Skill Checks].'],
+      bonuses: [{ tag: 'Observation', value: 1 }],
     }],
     trainings: [{
       name: 'Tarot Reader',

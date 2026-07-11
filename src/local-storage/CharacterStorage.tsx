@@ -1,5 +1,6 @@
 import { CharacterDesign, DEFAULT_CHARACTER_LOCKS } from "../ts-types/player-character-types";
 import { ActiveStatusEffect } from "../ts-types/types";
+import { rehydrateCharacter } from "../utils/characterRehydration";
 
 const STORAGE_KEY = 'hellgrinder_characters';
 const STORAGE_VERSION = '1.0.0';
@@ -63,7 +64,7 @@ export class CharacterStorage {
       }
 
       // Strip serialized React nodes from status effects — effects[] is not storable in JSON
-      const cleanedCharacters = data.characters.map(char => ({
+      const cleanedCharacters = data.characters.map(char => rehydrateCharacter({
         ...char,
         statusEffects: char.statusEffects.map(statusEffect => {
           if (!statusEffect || typeof statusEffect !== 'object') return statusEffect;
@@ -166,7 +167,7 @@ export class CharacterStorage {
           }
 
           // Extract characters and validate each one
-          const characters = data.characters.map((char: CharacterDesign) => CharacterStorage.validateCharacter(char));
+          const characters = data.characters.map((char: CharacterDesign) => rehydrateCharacter(CharacterStorage.validateCharacter(char)));
 
           console.log(`Successfully imported ${characters.length} characters`);
           resolve({ 

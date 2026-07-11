@@ -78,7 +78,7 @@ function generateRandomCharacter({
 
   // Determine starting combat kit
   rand = Math.floor(Math.random() * combatKitsArr.length);
-  const chosenCombatKit = structuredClone(combatKitsArr[rand]);
+  const chosenCombatKit = Tools.deepCopyKit(combatKitsArr[rand]);
   newChar.startingSupportKits += chosenCombatKit.extraSupportKits ?? 0;
   newChar.stats.perkPoints += chosenCombatKit.extraPerkPoints ?? 0;
   specialKitLogic(chosenCombatKit);
@@ -89,7 +89,7 @@ function generateRandomCharacter({
     while (newChar.kits.includes(supportKitsArr[rand])) {
       rand = Math.floor(Math.random() * supportKitsArr.length);
     }
-    const chosenSupportKit = structuredClone(supportKitsArr[rand]);
+    const chosenSupportKit = Tools.deepCopyKit(supportKitsArr[rand]);
     specialKitLogic(chosenSupportKit);
     newChar.kits.push(chosenSupportKit);
   }
@@ -113,7 +113,7 @@ function getPerks(perkPoints: number) {
     }
     
     if (retries <= 0) { break; }
-    const chosenPerk = structuredClone(perksArr[rand]);
+    const chosenPerk = Tools.deepCopyPerk(perksArr[rand]);
 
     spentPoints += chosenPerk.cost;
     perks.push(chosenPerk);
@@ -167,7 +167,7 @@ function randomizeSpecialization(): { bonus: string; penalty: string } {
 function selectKit(kitName: string, kitList: Kit[]): Kit | null {
   const found = kitList.find(k => k.name === kitName);
   if (!found) return null;
-  const clone = structuredClone(found);
+  const clone = Tools.deepCopyKit(found);
   specialKitLogic(clone);
   return clone;
 }
@@ -176,7 +176,7 @@ function randomizeCombatKit(usedKitNames: string[] = []): { kit: Kit; extraSuppo
   const arr = Tools.sortKits(CombatKits);
   const available = arr.filter(k => !usedKitNames.includes(k.name));
   const pool = available.length > 0 ? available : arr;
-  const kit = structuredClone(pool[Math.floor(Math.random() * pool.length)]);
+  const kit = Tools.deepCopyKit(pool[Math.floor(Math.random() * pool.length)]);
   specialKitLogic(kit);
   return { kit, extraSupportKits: kit.extraSupportKits ?? 0, extraPerkPoints: kit.extraPerkPoints ?? 0 };
 }
@@ -185,7 +185,7 @@ function randomizeSupportKit(usedKitNames: string[] = []): Kit {
   const arr = Tools.sortKits(SupportKits);
   const available = arr.filter(k => !usedKitNames.includes(k.name));
   const pool = available.length > 0 ? available : arr;
-  const kit = structuredClone(pool[Math.floor(Math.random() * pool.length)]);
+  const kit = Tools.deepCopyKit(pool[Math.floor(Math.random() * pool.length)]);
   specialKitLogic(kit);
   return kit;
 }
@@ -198,7 +198,7 @@ function randomizePerks(totalPerkPoints: number): { perks: Perk[]; remainingPoin
 }
 
 function selectPerk(perk: Perk): Perk {
-  const clone = structuredClone(perk);
+  const clone = Tools.deepCopyPerk(perk);
   specialPerkLogic(clone);
   return clone;
 }

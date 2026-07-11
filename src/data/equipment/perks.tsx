@@ -1,3 +1,4 @@
+import Tags from '../../components/keywords/Tags/Tags';
 import type { Perk } from '../../ts-types/types';
 
 const exObj: { [key: string]: Perk } =
@@ -61,7 +62,14 @@ const exObj: { [key: string]: Perk } =
     name: 'Veteran', cost: 2,
     tags: [],
     isAdvancedItem: false,
-    description: 'You have seen many battles. Start with a random Light Injury, this counts as a Perminant Injury instead, and cannot be removed by normal means. You gain +3 to all [Shooting], [Melee], [Arcane], or [Thrown] Hit Checks.',
+    description: <>
+      You have seen many battles. Start with a random
+      Light Injury – this counts as a Perminant Injury
+      instead, and cannot be removed by normal means.
+      You gain +3 to all <Tags tags={['Shooting']} />,
+      {' '}<Tags tags={['Melee']} />, <Tags tags={['Arcane']} />,
+      or <Tags tags={['Thrown']} /> Hit Checks.
+    </>,
     injuriesModifier: 1,
   },
   lucky: {

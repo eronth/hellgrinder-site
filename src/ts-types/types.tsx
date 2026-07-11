@@ -31,7 +31,7 @@ type ItemDef = {
     tags: ChoiceTagOption[];
     count: number;
   };
-  description?: string;
+  description?: React.ReactNode;
   charges?: number;
   isAdvancedItem?: boolean;
   isChoiceItem?: boolean;
@@ -110,4 +110,4 @@ export type ActiveStatusEffect = {
   y?: number;
 }
 
-export type { HeaderSize, Kit, Training, Item, Perk, TabType, DamageElement, ChoiceTagOption };
+export type { HeaderSize, ItemDef, Kit, Training, Item, Perk, TabType, DamageElement, ChoiceTagOption };

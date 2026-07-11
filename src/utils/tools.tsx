@@ -1,5 +1,5 @@
 import { Creature, CreatureTier, CreatureTierList } from '../ts-types/creature-types.tsx';
-import { Damage, DamageElement, Weapon, AttackMode, Dice, Item } from '../ts-types/types.tsx';
+import { Damage, DamageElement, Weapon, AttackMode, Dice, Item, ItemDef, Training } from '../ts-types/types.tsx';
 import { Kit, Perk, StatusEffect } from '../ts-types/types.tsx';
 import { AllValidTags } from "../ts-types/tag-types.tsx";
 import { FactionExampleCreature } from '../data/creatures/faction-examples.tsx';
@@ -27,13 +27,33 @@ const cloneAttackMode = (attackMode: AttackMode): AttackMode => ({
   effects: attackMode.effects && [...attackMode.effects],
 });
 
-const cloneItemDef = <T extends Weapon | Item>(item: T): T => ({
+const cloneItemDef = <T extends ItemDef>(item: T): T => ({
   ...item,
   tags: [...item.tags],
   choiceTags: item.choiceTags && {
     ...item.choiceTags,
     tags: [...item.choiceTags.tags],
   },
+});
+
+const deepCopyPerk = (perk: Perk): Perk => cloneItemDef(perk);
+
+const deepCopyWeaponOrItem = <T extends Weapon | Item>(entry: T): T =>
+  ('attackModes' in entry
+    ? deepCopyWeapon(entry)
+    : deepCopyItem(entry)) as T;
+
+const deepCopyTraining = (training: Training): Training => ({
+  ...training,
+  tags: [...training.tags],
+  effects: [...training.effects],
+});
+
+const deepCopyKit = (kit: Kit): Kit => ({
+  ...kit,
+  weapons: kit.weapons.map(w => deepCopyWeapon(w)),
+  items: kit.items.map(i => deepCopyItem(i)),
+  trainings: kit.trainings.map(deepCopyTraining),
 });
 
 type deepCopyWeaponOptions = {
@@ -366,6 +386,9 @@ export default {
   deepCopyWeapon,
   deepCopyAttackMode,
   deepCopyItem,
+  deepCopyPerk,
+  deepCopyKit,
+  deepCopyWeaponOrItem,
   creatureTiers,
   getCreatureTiersRange,
 };

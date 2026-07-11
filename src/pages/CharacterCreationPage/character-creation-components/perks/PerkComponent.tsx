@@ -10,11 +10,9 @@ type Props = {
 
 export default function PerkComponent({ perk, count = 1 }: Props) {
   // Helper function to generate enhanced description with combined bonuses
-  const getEnhancedDescription = () => {
-    if (count <= 1) return perk.description;
-    
-    let enhancedDescription = perk.description;
-    
+  const getEnhancedDescription = (): React.ReactNode => {
+    if (count <= 1) { return perk.description; }
+
     // Add combined bonus information
     const bonuses: string[] = [];
     
@@ -38,11 +36,12 @@ export default function PerkComponent({ perk, count = 1 }: Props) {
       bonuses.push(`${perk.safelightShardsModifier > 0 ? '+' : ''}${perk.safelightShardsModifier * count} Safelight Shards`);
     }
     
-    if (bonuses.length > 0) {
-      enhancedDescription += `\n\nCombined Bonuses (x${count}): ${bonuses.join(', ')}.`;
-    }
-    
-    return enhancedDescription;
+    if (bonuses.length === 0) { return perk.description; }
+
+    return (<>
+      {perk.description}
+      {`\n\nCombined Bonuses (x${count}): ${bonuses.join(', ')}.`}
+    </>);
   };
 
   return (<>

@@ -94,7 +94,7 @@ export default function InventoryManager({
     if (!selectedCharacter) return;
     const newInventory = {
       ...selectedCharacter.inventory,
-      [type]: [...selectedCharacter.inventory[type], structuredClone(item)]
+      [type]: [...selectedCharacter.inventory[type], Tools.deepCopyWeaponOrItem(item)]
     };
     onUpdateCharacter(selectedCharacterId, { inventory: newInventory });
   }, [selectedCharacter, selectedCharacterId, onUpdateCharacter]);
@@ -137,7 +137,7 @@ export default function InventoryManager({
     };
     const newToInventory = {
       ...toCharacter.inventory,
-      [itemType]: [...toCharacter.inventory[itemType], structuredClone(item)]
+      [itemType]: [...toCharacter.inventory[itemType], Tools.deepCopyWeaponOrItem(item)]
     };
 
     onUpdateCharacter(fromCharacterId, { inventory: newFromInventory });
@@ -177,8 +177,8 @@ export default function InventoryManager({
       onUpdateCharacter(fromCharacterId, { inventory: { weapons: [] as Weapon[], items: [] as Item[] } });
       onUpdateCharacter(toCharacterId, {
         inventory: {
-          weapons: [...toCharacter.inventory.weapons, ...fromCharacter.inventory.weapons.map((w: Weapon) => structuredClone(w))],
-          items: [...toCharacter.inventory.items, ...fromCharacter.inventory.items.map((i: Item) => structuredClone(i))]
+          weapons: [...toCharacter.inventory.weapons, ...fromCharacter.inventory.weapons.map((w: Weapon) => Tools.deepCopyWeapon(w))],
+          items: [...toCharacter.inventory.items, ...fromCharacter.inventory.items.map((i: Item) => Tools.deepCopyItem(i))]
         }
       });
     } else {
@@ -187,7 +187,7 @@ export default function InventoryManager({
       onUpdateCharacter(toCharacterId, {
         inventory: {
           ...toCharacter.inventory,
-          [itemType]: [...toCharacter.inventory[itemType], ...allItems.map((item: Weapon | Item) => structuredClone(item))]
+          [itemType]: [...toCharacter.inventory[itemType], ...allItems.map((item: Weapon | Item) => Tools.deepCopyWeaponOrItem(item))]
         }
       });
     }

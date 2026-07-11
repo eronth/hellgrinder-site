@@ -5,6 +5,7 @@ import { Kit, ChoiceTagOption, DamageElement } from '../../../../../../ts-types/
 import { CharacterDesign, CharacterKitLocks } from '../../../../../../ts-types/player-character-types';
 import KitComponent, { WeaponChoiceInteractions, ItemChoiceInteraction } from '../../../kits/Kit';
 import CharacterGeneratorTools from '../../../../../../utils/characterGeneratorTools';
+import Tools from '../../../../../../utils/tools';
 import KitSelectModal from './KitSelectModal';
 import SimpleLockButton from '../../../../../../components/common/SimpleLockButton/SimpleLockButton';
 import './KitSlot.css';
@@ -53,7 +54,7 @@ export default function KitSlot({ kitType, kit, character, onSetKit, kitLocks, o
   // Apply a damage-element choice to all 'Chosen Type' damage fields in a weapon.
   function applyWeaponChoice(weaponName: string, chosenTag: ChoiceTagOption) {
     if (!kit) return;
-    const updatedKit = structuredClone(kit);
+    const updatedKit = Tools.deepCopyKit(kit);
     const weapon = updatedKit.weapons.find(w => w.name === weaponName);
     if (!weapon) return;
     weapon.attackModes.forEach(mode => {
@@ -73,7 +74,7 @@ export default function KitSlot({ kitType, kit, character, onSetKit, kitLocks, o
 
   function resetWeaponChoice(weaponName: string) {
     if (!kit) return;
-    const updatedKit = structuredClone(kit);
+    const updatedKit = Tools.deepCopyKit(kit);
     const weapon = updatedKit.weapons.find(w => w.name === weaponName);
     if (!weapon) return;
     weapon.attackModes.forEach(mode => {

@@ -76,7 +76,7 @@ export default function PerkManager({
       });
       return;
     }
-    const newPerks = [...selectedCharacter.perks, structuredClone(perk)];
+    const newPerks = [...selectedCharacter.perks, Tools.deepCopyPerk(perk)];
     const newStats = {
       ...selectedCharacter.stats,
       perkPoints: selectedCharacter.stats.perkPoints - perk.cost,
@@ -142,7 +142,7 @@ export default function PerkManager({
     if (fromIndex === -1) return;
 
     onUpdateCharacter(fromCharacterId, { perks: fromCharacter.perks.filter((_, i) => i !== fromIndex) });
-    onUpdateCharacter(toCharacterId, { perks: [...toCharacter.perks, structuredClone(perk)] });
+    onUpdateCharacter(toCharacterId, { perks: [...toCharacter.perks, Tools.deepCopyPerk(perk)] });
     setTransferDialog({ isOpen: false, perk: null, fromCharacterId: '', toCharacterId: '' });
   };
 
@@ -169,7 +169,7 @@ export default function PerkManager({
 
     onUpdateCharacter(fromCharacterId, { perks: [] });
     onUpdateCharacter(toCharacterId, {
-      perks: [...toCharacter.perks, ...fromCharacter.perks.map(p => structuredClone(p))]
+      perks: [...toCharacter.perks, ...fromCharacter.perks.map(p => Tools.deepCopyPerk(p))]
     });
     setBulkTransferDialog({ isOpen: false, fromCharacterId: '', toCharacterId: '', itemCount: 0 });
   };

@@ -1,4 +1,5 @@
 import type { Item } from '../../ts-types/types';
+import { movementIcon } from '../../utils/commonIcons';
 
 const exObj: { [key: string]: Item } = {
   slickShades: {
@@ -18,7 +19,9 @@ const exObj: { [key: string]: Item } = {
     name: 'Hover Boots',
     tags: ['Footwear'],
     isAdvancedItem: true,
-    effects: ['You can spend one Movement Point to ignore difficult and hazardous terrain for that turn.'],
+    effects: [<>
+      You can spend one <b>Maneuver Point</b>{movementIcon} to ignore difficult and hazardous terrain for that turn.
+    </>],
   },
   sinnersCompass: {
     name: 'Sinner\'s Compass',

@@ -1,4 +1,5 @@
 import { Weapon } from '../../../ts-types/types';
+import { movementIcon } from '../../../utils/commonIcons';
 import DiceTools from '../../../utils/dice-handling';
 
 const exObj: { [key: string]: Weapon } = {
@@ -26,7 +27,9 @@ const exObj: { [key: string]: Weapon } = {
         m: { value: DiceTools.get1d4(1), type: 'Metal' },
         h: { value: DiceTools.get2d6(1), type: 'Metal' },
       },
-      effects: ['If you move adjacent to an enemy before making this attack, you gain 1 Movement Point.'],
+      effects: [<>
+        If you move adjacent to an enemy before making this attack, you gain 1 <b>Maneuver Point</b>{movementIcon}.
+      </>],
     }],
   },
   zweihander: {

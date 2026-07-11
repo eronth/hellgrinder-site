@@ -1,4 +1,4 @@
-import { AllValidTags, SPECIAL_RULE_TAG_NAMES } from "../../../ts-types/tag-types";
+import { AllValidTags, SPECIAL_RULE_TAG_NAMES, tagName, tagValue } from "../../../ts-types/tag-types";
 import { getSpecialTagRule } from "../../../data/rules/tag-rules";
 import RulePopup from "../../common/RulePopup/RulePopup";
 import './Tags.css';
@@ -14,22 +14,22 @@ type Props = {
 
 function tagsEqual(a: AllValidTags, b: AllValidTags): boolean {
   if (typeof a === 'string' && typeof b === 'string') { return a === b; }
-  if (typeof a === 'object' && typeof b === 'object') { return a.tag === b.tag && a.value === b.value; }
+  if (typeof a === 'object' && typeof b === 'object') { return tagName(a) === tagName(b) && tagValue(a) === tagValue(b); }
   return false;
 }
 
 function isRangeTag(t: AllValidTags): boolean {
   if (typeof t === 'string') return t.endsWith(' Range');
-  return t.tag === 'Range';
+  return tagName(t) === 'Range';
 }
 
 function rangeLabel(t: AllValidTags): string {
   if (typeof t === 'string') return t.replace(/ Range$/, '');
-  return `${t.value}`;
+  return `${tagValue(t)}`;
 }
 
 function isSpecialTag(t: AllValidTags): boolean {
-  const name = typeof t === 'string' ? t : t.tag;
+  const name = typeof t === 'string' ? t : tagName(t);
   return (SPECIAL_RULE_TAG_NAMES as readonly string[]).includes(name);
 }
 
@@ -69,12 +69,12 @@ export default function Tags({ tags, onTagClick, selectedTags, selectedOnly, chi
 
       const tagSpan = (
         <span className={className} onClick={() => { if(onTagClick) { onTagClick(t) } }}>
-          {children ?? ((typeof t === 'string') ? t : `${t.tag}: ${t.value}`)}
+          {children ?? ((typeof t === 'string') ? t : `${tagName(t)}: ${tagValue(t)}`)}
         </span>
       );
 
       const specialRule = isSpecialTag(t)
-        ? getSpecialTagRule(typeof t === 'string' ? t : t.tag)
+        ? getSpecialTagRule(typeof t === 'string' ? t : tagName(t))
         : undefined;
 
       if (specialRule) {
@@ -87,7 +87,7 @@ export default function Tags({ tags, onTagClick, selectedTags, selectedOnly, chi
               summary: specialRule.rule,
               popupClassName: 'special-tag-rule',
             }}
-            statusEffectX={typeof t === 'object' ? t.value : undefined}
+            statusEffectX={typeof t === 'object' ? tagValue(t) : undefined}
             className='special-tag-trigger'
           >
             {tagSpan}

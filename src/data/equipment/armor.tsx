@@ -55,7 +55,7 @@ const exObj: { [key: string]: Item } = {
   },
   reactiveArmor: {
     name: 'Reactive Armor',
-    tags: ['Armor', { tag: 'Cursed', value: 1 }],
+    tags: ['Armor', { Cursed: 1 }],
     isAdvancedItem: true,
     description: 'Armor that reacts to incoming attacks.',
     effects: [

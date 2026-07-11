@@ -32,7 +32,7 @@ export default function GenericToNongenericTable() {
           special: <>
             Gain Resist Nethercurrent for each listed Resist as well.
             <br />Stoneveined gets extra health based on type (Familiar: +1, Minion +2, Spawn +3, Elite +4, Tormentor +5, Archfiend +6, Lord +7, Overlord +8).
-            <br />Stoneveined can add <Tags tags={[{tag: 'Knockback', value: 1}]} /> to any attack they make and reduces knockback by -1 for any attack they take..
+            <br />Stoneveined can add <Tags tags={[{ Knockback: 1 }]} /> to any attack they make and reduces knockback by -1 for any attack they take..
           </>,
         }} />
         <GenericToNongenericRow data={{

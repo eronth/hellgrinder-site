@@ -7,7 +7,7 @@ const exObj: { [key: string]: Item } = {
     tags: ['Arcane', 'One-Handed'],
     isAdvancedItem: true,
     effects: [<>
-        Spells with a <Tags tags={[{tag: 'Cone', value: 3}]} /> tag
+        Spells with a <Tags tags={[{ Cone: 3 }]} /> tag
         cast using this wand get +1 (+3) to their Arc size.
       </>
     ],
@@ -18,8 +18,8 @@ const exObj: { [key: string]: Item } = {
     isAdvancedItem: true,
     effects: [<>
       Spells that don\'t have the
-      {' '}<Tags tags={[{tag: 'Area', value: 'X'}]} />
-      {' '}or <Tags tags={[{tag: 'Cone', value: 'X'}]} /> tags cast using
+      {' '}<Tags tags={[{ Area: 'X' }]} />
+      {' '}or <Tags tags={[{ Cone: 'X' }]} /> tags cast using
       this wand gain a range increment of 1 (2)
       size further than their current furthest increment.'
     </>],
@@ -29,7 +29,7 @@ const exObj: { [key: string]: Item } = {
     tags: ['Arcane', 'One-Handed'],
     isAdvancedItem: true,
     effects: [<>
-      Spells cast using this wand that have the <Tags tags={[{tag: 'Area', value: 3}]} /> tag get +1 (+3) to their area size.
+      Spells cast using this wand that have the <Tags tags={[{ Area: 3 }]} /> tag get +1 (+3) to their area size.
     </>],
   },
   crystalTippedWand: {

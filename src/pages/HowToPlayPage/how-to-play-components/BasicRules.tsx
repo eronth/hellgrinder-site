@@ -6,6 +6,7 @@ import BasicCheckResultsTable from "./BasicCheckResultsTable";
 import Tags from "../../../components/keywords/Tags/Tags";
 import SPECIAL_RULE_TAGS from "../../../data/rules/tag-rules";
 import { formatReactNode } from "../../../utils/statusEffectUtils";
+import { SpecialRuleTagWithValue } from "../../../ts-types/tag-types";
 
 export default function BasicRules() {
   const innerHx = 'h3';
@@ -123,10 +124,7 @@ export default function BasicRules() {
         Some tags have special rules automatically applied:
         {SPECIAL_RULE_TAGS.map((t) => (<Fragment key={t.id}>
           <br />
-          <Tags tags={[{
-            tag: t.tag.short,
-            value: 'X'
-          }]}>
+          <Tags tags={[{ [t.tag.short]: 'X' } as SpecialRuleTagWithValue]}>
             {formatReactNode(t.tag.full, { x: 'X' })}
           </Tags>: <span className='special-tag-rule'>
             {formatReactNode(t.rule, { x: 'X' })}

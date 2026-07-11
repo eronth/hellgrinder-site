@@ -109,7 +109,7 @@ const exObj: { [key: string]: Kit } = {
     }],
     trainings: [{
       name: 'Sigil Scribe',
-      tags: ['Arcane', { tag: 'Cursed', value: 4 }],
+      tags: ['Arcane', { Cursed: 4 }],
       effects: ['Any time you get a new weapon, you can add a sigil to it. This sigil modifies the weapon\'s damage type to the type of your choice.'],
     }],
   },
@@ -130,7 +130,7 @@ const exObj: { [key: string]: Kit } = {
       effects: ['When you perform the [Study Creature] Maneuver, as long as you don\'t get a Failure, you treat your Success Rank as once Rank higher.'],
     }, {
       name: 'Fate Shaper',
-      tags: ['Arcane', 'Reaction', { tag: 'Cursed', value: 2 }],
+      tags: ['Arcane', 'Reaction', { Cursed: 2 }],
       effects: ['Once per combat, you can set the result of a dice on any roll that is not made by you and does not target/affect you.'],
     }],
   },

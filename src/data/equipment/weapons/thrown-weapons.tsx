@@ -20,7 +20,7 @@ const exObj: { [key: string]: Weapon } = {
     tags: ['Grenade', 'One-Handed'],
     isAdvancedItem: false,
     attackModes: [{
-      tags: ['Attack', 'Thrown', 'Short Range', 'Medium Range', { tag: 'Area', value: 1 }, { tag: 'Scatter', value: 2 }],
+      tags: ['Attack', 'Thrown', 'Short Range', 'Medium Range', { Area: 1 }, { Scatter: 2 }],
       damage: {
         l: { value: DiceTools.get2d4(4), type: 'Metal' },
         m: { value: DiceTools.get2d4(4), type: 'Metal' },
@@ -33,7 +33,7 @@ const exObj: { [key: string]: Weapon } = {
     tags: ['Grenade', 'One-Handed'],
     isAdvancedItem: false,
     attackModes: [{
-      tags: ['Attack', 'Thrown', 'Short Range', 'Medium Range', { tag: 'Area', value: 2 }, { tag: 'Scatter', value: 3 }],
+      tags: ['Attack', 'Thrown', 'Short Range', 'Medium Range', { Area: 2 }, { Scatter: 3 }],
       damage: {
         l: { value: 0, type: 'Metal' },
         m: { value: 0, type: 'Metal' },
@@ -48,7 +48,7 @@ const exObj: { [key: string]: Weapon } = {
     tags: ['Grenade', 'One-Handed'],
     isAdvancedItem: true,
     attackModes: [{
-      tags: ['Attack', 'Thrown', 'Short Range', 'Medium Range', { tag: 'Area', value: 1 }, { tag: 'Scatter', value: 1 }],
+      tags: ['Attack', 'Thrown', 'Short Range', 'Medium Range', { Area: 1 }, { Scatter: 1 }],
       damage: {
         l: { value: DiceTools.get1d4(3), type: 'Infernal' },
         m: { value: DiceTools.get1d4(3), type: 'Infernal' },

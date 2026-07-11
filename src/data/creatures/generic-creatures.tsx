@@ -124,7 +124,7 @@ const exObj: { [key: string]: Creature } = {
       tags: ['Attack', 'Shooting', 'Medium Range'],
       effects: [<>
         On a Rank 3 Success, the attack gains
-        the <Tags tags={[{tag: 'Area', value: 1}]} />  tag,
+        the <Tags tags={[{ Area: 1 }]} />  tag,
         this deals only 1 damage to creatures other than the target.
       </>],
     }],
@@ -317,7 +317,7 @@ const exObj: { [key: string]: Creature } = {
         m: { value: 4, type: 'Core' },
         h: { value: 6, type: 'Core' },
       },
-      tags: ['Attack', 'Melee', {tag: 'Range', value: 2}],
+      tags: ['Attack', 'Melee', { Range: 2 }],
       effects: ['Aggressor Hellspwan heals for the amount of damage dealt.'],
     },
     {

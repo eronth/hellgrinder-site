@@ -101,7 +101,7 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
       {
         name: 'Impactful',
         description: <>
-          Stoneveined can add <Tags tags={[{tag: 'Knockback', value: 1}]} /> to
+          Stoneveined can add <Tags tags={[{ Knockback: 1 }]} /> to
           any attack they make and reduces knockback by -1 for any
           attack they take.
         </>,
@@ -112,7 +112,7 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
       {
         name: 'Super Impactful',
         description: <>
-          Stoneveined can add <Tags tags={[{tag: 'Knockback', value: 2}]} /> to
+          Stoneveined can add <Tags tags={[{ Knockback: 2 }]} /> to
           any attack they make and reduces knockback by -2 for any
           attack they take.
         </>,

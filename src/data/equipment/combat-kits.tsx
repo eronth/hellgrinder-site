@@ -213,7 +213,7 @@ const exObj: { [key: string]: Kit } = {
         isChoiceItem: true,
       }, {
         name: 'Drowner Discus',
-        tags: ['Arcane', 'Relic', 'Medium Range', 'Thrown', {tag: 'Area', value: 1}],
+        tags: ['Arcane', 'Relic', 'Medium Range', 'Thrown', { Area: 1 }],
         description: '',
         effects: ['Create a Drownpit Pool in the affected area.'],
         isAdvancedItem: false,
@@ -238,7 +238,7 @@ const exObj: { [key: string]: Kit } = {
         isChoiceItem: true,
       }, {
         name: 'Soulbinder Darts',
-        tags: ['Arcane', 'Relic', 'One-Handed', 'Action', 'Maneuver', {tag: 'Cursed', value: 1}],
+        tags: ['Arcane', 'Relic', 'One-Handed', 'Action', 'Maneuver', { Cursed: 1 }],
         description: 'You have 2 Soulbinder Darts.',
         effects: [
           'As an Action or Maneuver, you can stick a Soulbinder Dart in a target within [Medium Range].',
@@ -345,7 +345,7 @@ const exObj: { [key: string]: Kit } = {
         },
         {
           name: 'Erupt',
-          tags: ['Attack', 'Shooting', 'Short Range', { tag: 'Cone', value: 3 }],
+          tags: ['Attack', 'Shooting', 'Short Range', { Cone: 3 }],
           charges: 4,
           damage: {
             l: { value: 1, type: 'Infernal' },

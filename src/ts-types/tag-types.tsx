@@ -2,16 +2,22 @@ import { DamageElement } from "./types";
 
 export type TagValue = number | 'X';
 
-type TagWithValue = {
-  tag: string;
-  value: TagValue;
-};
+/** A tag whose name is the key and whose value is the entry, e.g. `{ Knockback: 2 }`. */
+type TagWithValue = { [tag: string]: TagValue };
+
+export function tagName(t: TagWithValue): string {
+  return Object.keys(t)[0];
+}
+
+export function tagValue(t: TagWithValue): TagValue {
+  return Object.values(t)[0];
+}
 
 type AttackTypes = 'Attack' | 'Melee' | 'Shooting'
 | 'Arcane' | 'Thrown' | 'Special';
 
 type Range = 'Adjacent Range' | 'Short Range' | 'Medium Range' | 'Long Range' | 'Extreme Range'
-  | {tag: 'Range', value: number};
+  | { Range: number };
 
 type EquipmentTags = 'One-Handed' | 'Grenade' | 'Two-Handed' | 'Armor' | 'Gadget'
 | 'Lightweight' | 'Heavy' | 'Illuminate' | 'Concealable' | 'Consumable'
@@ -35,9 +41,8 @@ export const SPECIAL_RULE_TAG_NAMES = [
 export type SpecialRuleTag = typeof SPECIAL_RULE_TAG_NAMES[number];
 
 export type SpecialRuleTagWithValue = {
-  tag: SpecialRuleTag;
-  value: TagValue;
-};
+  [K in SpecialRuleTag]: { [P in K]: TagValue };
+}[SpecialRuleTag];
 
 type SkillChecks = 
   | 'Might' | 'Endurance' // brutal status effects

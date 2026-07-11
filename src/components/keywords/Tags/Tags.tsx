@@ -85,6 +85,7 @@ export default function Tags({ tags, onTagClick, selectedTags, selectedOnly, chi
               title: specialRule.tag.full,
               category: 'tag',
               summary: specialRule.rule,
+              popupClassName: 'special-tag-rule',
             }}
             statusEffectX={typeof t === 'object' ? t.value : undefined}
             className='special-tag-trigger'

@@ -4,6 +4,7 @@ import Tools from '../../utils/tools';
 import RuleKeyword from '../../components/keywords/RuleKeyword';
 import SkillCheck from '../../components/keywords/SkillCheck/SkillCheck';
 import { movementIcon } from '../../utils/commonIcons';
+import Tags from '../../components/keywords/Tags/Tags';
 
 const coreResist: DamageTakenMod = {
   modification: 'Resist',
@@ -121,7 +122,11 @@ const exObj: { [key: string]: Creature } = {
         h: { value: 3, type: 'Core' },
       },
       tags: ['Attack', 'Shooting', 'Medium Range'],
-      effects: ['On a Rank 3 Success, the attack gains the [Area: 1] tag, this deals only 1 damage to creatures other than the target.'],
+      effects: [<>
+        On a Rank 3 Success, the attack gains
+        the <Tags tags={[{tag: 'Area', value: 1}]} />  tag,
+        this deals only 1 damage to creatures other than the target.
+      </>],
     }],
     abilities: [],
     description: 'A small, weak demon. They can spit their core type at you from a range away.',

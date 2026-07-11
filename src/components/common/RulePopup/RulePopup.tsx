@@ -11,6 +11,8 @@ interface DirectRule {
   title: React.ReactNode;
   category: string;
   summary: React.ReactNode;
+  /** Extra class on the popup itself, for scoping content styles. */
+  popupClassName?: string;
 }
 
 interface Props {
@@ -174,7 +176,7 @@ export default function RulePopup({
     return (
       <div
         ref={popupRef}
-        className={`rule-popup rule-popup-${position.preferredPosition} ${isStatusEffect ? ' status-effect' : ''}`}
+        className={`rule-popup rule-popup-${position.preferredPosition} ${isStatusEffect ? ' status-effect' : ''} ${directRule?.popupClassName ?? ''}`}
         style={{
           position: 'fixed',
           top: `${position.top}px`,

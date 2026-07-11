@@ -77,7 +77,7 @@ export type Dice = {
 }
 
 type Item = ItemDef & {
-  effects: string[];
+  effects: React.ReactNode[];
 }
 
 type Training = {

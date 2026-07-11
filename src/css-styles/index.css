@@ -491,6 +491,14 @@ hr {
   }
 }
 
+.special-tag-rule {
+  .rule-title,
+  .x-display {
+    font-weight: bold;
+    color: var(--special-tag-text);
+  }
+}
+
 /* General card styling for consistency across the project */
 .card {
   background-color: var(--card-background);

@@ -128,7 +128,9 @@ export default function BasicRules() {
             value: 'X'
           }]}>
             {formatReactNode(t.tag.full, { x: 'X' })}
-          </Tags>: {formatReactNode(t.rule, { x: 'X' })}
+          </Tags>: <span className='special-tag-rule'>
+            {formatReactNode(t.rule, { x: 'X' })}
+          </span>
         </Fragment>))}
       </p>
       <Hx hx={3}>Corruption</Hx>

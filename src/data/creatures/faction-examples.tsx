@@ -82,7 +82,7 @@ const exampleCreatures: { [key: string]: FactionExampleCreature } = {
     abilities: [{
       name: '',
       description: <>
-        Can add [Knockback 1] to any attack and reduces knockback by -1 for attacks taken.
+        Can add <Tags tags={[{tag: 'Knockback', value: 1}]} /> to any attack and reduces knockback by -1 for attacks taken.
       </>,
     }],
     description: 'A stalwart defender of the Stoneveined Order, their body infused with living stone.',

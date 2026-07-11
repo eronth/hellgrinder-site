@@ -1,3 +1,4 @@
+import Tags from "../../../components/keywords/Tags/Tags.tsx";
 import {Item} from "../../../ts-types/types.tsx";
 
 const exObj: { [key: string]: Item } = {
@@ -5,23 +6,31 @@ const exObj: { [key: string]: Item } = {
     name: 'Gnarlwood Wand',
     tags: ['Arcane', 'One-Handed'],
     isAdvancedItem: true,
-    effects: [
-      'Spells with a cone of effect cast using this wand get +1 (+3) to their Arc size.',
-      'Spells with a line of effect cast using this wand are treated as though they have the [Cone 3] tag.'
+    effects: [<>
+        Spells with a <Tags tags={[{tag: 'Cone', value: 3}]} /> tag
+        cast using this wand get +1 (+3) to their Arc size.
+      </>
     ],
   },
   bonecraftWand: {
     name: 'Bonecraft Wand',
     tags: ['Arcane', 'One-Handed'],
     isAdvancedItem: true,
-    effects: ['Spells that don\'t have the [Area] or [Cone] tags cast using this wand gain a range increment of 1 (2) ' +
-    'size further than their current furthest increment.'],
+    effects: [<>
+      Spells that don\'t have the
+      {' '}<Tags tags={[{tag: 'Area', value: 'X'}]} />
+      {' '}or <Tags tags={[{tag: 'Cone', value: 'X'}]} /> tags cast using
+      this wand gain a range increment of 1 (2)
+      size further than their current furthest increment.'
+    </>],
   },
   orbWand:  {
     name: 'Orb Wand',
     tags: ['Arcane', 'One-Handed'],
     isAdvancedItem: true,
-    effects: ['Spells cast using this wand that have the [Area] tag get +1 (+3) to their area size.'],
+    effects: [<>
+      Spells cast using this wand that have the <Tags tags={[{tag: 'Area', value: 3}]} /> tag get +1 (+3) to their area size.
+    </>],
   },
   crystalTippedWand: {
     name: 'Crystal-Tipped Wand',
@@ -29,7 +38,7 @@ const exObj: { [key: string]: Item } = {
     isAdvancedItem: true,
     effects: [
       'Max Charge: 2 (3)',
-      'You may use an action to cast a Charge spell, giving this wand +1 to its charges.',
+      'You may use an action to cast a Charge spell, giving this wand +1 to its charges (combat only).',
       'The next spell you cast that deals damage consumes all charges, dealing +1d6 (+1d10) for each charge consumed.'
     ],
   },

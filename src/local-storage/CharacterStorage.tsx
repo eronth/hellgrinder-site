@@ -66,6 +66,8 @@ export class CharacterStorage {
       // Strip serialized React nodes from status effects — effects[] is not storable in JSON
       const cleanedCharacters = data.characters.map(char => rehydrateCharacter({
         ...char,
+        // Older saves predate locks (or lack newer lock fields like kits)
+        locks: { ...DEFAULT_CHARACTER_LOCKS, ...char.locks },
         statusEffects: char.statusEffects.map(statusEffect => {
           if (!statusEffect || typeof statusEffect !== 'object') return statusEffect;
 
@@ -227,7 +229,7 @@ export class CharacterStorage {
       bonuses: Array.isArray(char.bonuses) ? char.bonuses : [],
       specializationBonus: char.specializationBonus || '',
       specializationPenalty: char.specializationPenalty || '',
-      locks: char.locks ?? DEFAULT_CHARACTER_LOCKS,
+      locks: { ...DEFAULT_CHARACTER_LOCKS, ...char.locks },
       inventory: {
         weapons: Array.isArray(char.inventory?.weapons) ? char.inventory.weapons : [],
         items: Array.isArray(char.inventory?.items) ? char.inventory.items : []

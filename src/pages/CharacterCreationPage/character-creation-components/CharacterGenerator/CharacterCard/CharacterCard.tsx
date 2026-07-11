@@ -1,5 +1,5 @@
 import React from "react";
-import { CharacterDesign, CharacterKitLocks, CharacterLocks, CharacterStats, DEFAULT_KIT_LOCKS } from "../../../../../ts-types/player-character-types.tsx";
+import { CharacterDesign, CharacterKitLocks, CharacterLocks, CharacterStats, DEFAULT_CHARACTER_LOCKS, DEFAULT_KIT_LOCKS } from "../../../../../ts-types/player-character-types.tsx";
 import { Kit, Perk } from "../../../../../ts-types/types.tsx";
 import CharacterStatsGrid from "../CharacterStatsGrid/CharacterStatsGrid.tsx";
 import InventoryManager from "../InventoryManager";
@@ -64,7 +64,7 @@ export default function CharacterCard({
   }
 
   function updateLocks(updates: Partial<CharacterLocks>) {
-    updateCharacter(character.id, { locks: { ...character.locks, ...updates } });
+    updateCharacter(character.id, { locks: { ...DEFAULT_CHARACTER_LOCKS, ...character.locks, ...updates } });
   }
 
   function updateKitLocks(kitIndex: number, updates: Partial<CharacterKitLocks>) {
@@ -201,7 +201,7 @@ export default function CharacterCard({
         kit={combatKit}
         character={character}
         onSetKit={handleSetCombatKit}
-        kitLocks={character.locks?.kits[0] ?? DEFAULT_KIT_LOCKS}
+        kitLocks={character.locks?.kits?.[0] ?? DEFAULT_KIT_LOCKS}
         onKitLocksChange={(updates) => updateKitLocks(0, updates)}
       />
 
@@ -213,7 +213,7 @@ export default function CharacterCard({
           kit={supportKits[i] ?? null}
           character={character}
           onSetKit={(kit) => handleSetSupportKit(kit, i)}
-          kitLocks={character.locks?.kits[1 + i] ?? DEFAULT_KIT_LOCKS}
+          kitLocks={character.locks?.kits?.[1 + i] ?? DEFAULT_KIT_LOCKS}
           onKitLocksChange={(updates) => updateKitLocks(1 + i, updates)}
         />
       ))}

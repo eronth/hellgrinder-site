@@ -2,8 +2,8 @@ import React from 'react';
 import { CharacterDesign } from '../../../../../../ts-types/player-character-types';
 import CharacterGeneratorTools, { specializationOptions } from '../../../../../../utils/characterGeneratorTools';
 import SkillCheck from '../../../../../../components/keywords/SkillCheck/SkillCheck';
-import './SpecializationSection.css';
 import SimpleLockButton from '../../../../../../components/common/SimpleLockButton/SimpleLockButton';
+import './SpecializationSection.css';
 
 type Props = {
   character: CharacterDesign;

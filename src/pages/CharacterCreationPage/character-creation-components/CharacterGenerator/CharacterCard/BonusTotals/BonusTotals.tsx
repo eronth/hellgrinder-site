@@ -71,6 +71,11 @@ function collectBonuses(character: CharacterDesign): { totals: SourcedBonus[]; c
     totals.push({ bonus: { tag: character.specializationPenalty as SkillChecks, value: -5 }, source: 'Specialization (penalty)' });
   }
 
+  const customSkill = character.stats.customSkill?.trim();
+  if (customSkill) {
+    totals.push({ bonus: { label: customSkill, value: 2 }, source: 'Custom Skill' });
+  }
+
   character.perks.forEach((p, index) =>
     add(p.bonuses, p.name, bonusIndex => ({ owner: 'perk', index, bonusIndex })));
 

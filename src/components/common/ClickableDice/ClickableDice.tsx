@@ -54,22 +54,33 @@ export default function ClickableDice({ damage, displayText, averageValue, shoul
   const handleMouseLeave = () => {
     setIsHovering(false);
   };
-  
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (!isClickable) return;
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleClick();
+    }
+  };
+
   const isClickable = typeof damage !== 'number';
-  
+
+  // The whole bloc is the click target — not just the dice text — so the
+  // padding and the average value are part of the button too.
   return (
-    <span ref={containerRef} style={{ position: 'relative', display: 'inline' }}>
-      <span 
-        className={isClickable ? 'clickable-dice' : 'dice-display'}
-        onClick={isClickable ? handleClick : undefined}
-        onMouseMove={isClickable ? handleMouseMove : undefined}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        title={isClickable ? 'Click to roll dice' : undefined}
-        style={{ display: 'inline' }} /* Ensure inline display */
-      >
-        {displayText}
-      </span>
+    <span
+      ref={containerRef}
+      className={`damage-bloc${isClickable ? ' clickable' : ''}`}
+      onClick={isClickable ? handleClick : undefined}
+      onMouseMove={isClickable ? handleMouseMove : undefined}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onKeyDown={isClickable ? handleKeyDown : undefined}
+      role={isClickable ? 'button' : undefined}
+      tabIndex={isClickable ? 0 : undefined}
+      title={isClickable ? 'Click to roll dice' : undefined}
+    >
+      {displayText}
       {shouldShowAverage && (
         <span className={`average-damage ${isRolled ? 'rolled-result' : ''}`}>
           {isRolled ? ` [${rollResult}]` : ` (${averageValue})`}

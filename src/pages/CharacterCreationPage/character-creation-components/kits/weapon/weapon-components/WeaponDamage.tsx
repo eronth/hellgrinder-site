@@ -18,42 +18,30 @@ export default function WeaponDamage({ attackMode }: Props) {
     
     if (dmg.l.type === dmg.m.type && dmg.m.type === dmg.h.type) {
       return (<>
-        <span className='damage-bloc'>
-          {IDontWantToRewriteThis10times({displayDice: displayDmg.l, avgObj: displayDmg.lav, damageValue: dmg.l.value})}
-        </span>
+        {IDontWantToRewriteThis10times({displayDice: displayDmg.l, avgObj: displayDmg.lav, damageValue: dmg.l.value})}
 
         <span className={'damage-separator'}> / </span>
 
-        <span className='damage-bloc'>
-          {IDontWantToRewriteThis10times({displayDice: displayDmg.m, avgObj: displayDmg.mav, damageValue: dmg.m.value})}
-        </span>
+        {IDontWantToRewriteThis10times({displayDice: displayDmg.m, avgObj: displayDmg.mav, damageValue: dmg.m.value})}
 
         <span className={'damage-separator'}> / </span>
 
-        <span className='damage-bloc'>
-          {IDontWantToRewriteThis10times({displayDice: displayDmg.h, avgObj: displayDmg.hav, damageValue: dmg.h.value})}
-        </span>
+        {IDontWantToRewriteThis10times({displayDice: displayDmg.h, avgObj: displayDmg.hav, damageValue: dmg.h.value})}
         <span className={'damage-type'}> {dmg.l.type} Damage</span>
       </>);
     }
     return (<>
-      <span className='damage-bloc'>
-        {IDontWantToRewriteThis10times({displayDice: displayDmg.l, avgObj: displayDmg.lav, damageValue: dmg.l.value})}
-      </span>
+      {IDontWantToRewriteThis10times({displayDice: displayDmg.l, avgObj: displayDmg.lav, damageValue: dmg.l.value})}
       <span className={'damage-type'}> {dmg.l.type} Damage</span>
-      
+
       <span className={'damage-separator'}> / </span>
-      
-      <span className='damage-bloc'>
-        {IDontWantToRewriteThis10times({displayDice: displayDmg.m, avgObj: displayDmg.mav, damageValue: dmg.m.value})}
-      </span>
+
+      {IDontWantToRewriteThis10times({displayDice: displayDmg.m, avgObj: displayDmg.mav, damageValue: dmg.m.value})}
       <span className={'damage-type'}> {dmg.l.type} Damage</span>
-      
+
       <span className={'damage-separator'}> / </span>
-      
-      <span className='damage-bloc'>
-        {IDontWantToRewriteThis10times({displayDice: displayDmg.h, avgObj: displayDmg.hav, damageValue: dmg.h.value})}
-      </span>
+
+      {IDontWantToRewriteThis10times({displayDice: displayDmg.h, avgObj: displayDmg.hav, damageValue: dmg.h.value})}
       <span className={'damage-type'}> {dmg.l.type} Damage</span>
     </>);
   }

@@ -31,9 +31,31 @@ span {
   font-size: .9em;
 
   .damage-bloc {
+    position: relative;
     background-color: var(--card-background);
     border: 1px solid var(--dice-border-color);
     padding-inline: .5em;
     border-radius: .25em;
+
+    /* The whole bloc is the roll target, not just the dice text. */
+    &.clickable {
+      cursor: pointer;
+      transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+
+      &:hover {
+        color: var(--clickable-dice-hover-color);
+        border-color: var(--clickable-dice-hover-color);
+        background-color: color-mix(in srgb, var(--clickable-dice-hover-color) 12%, var(--card-background));
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--clickable-dice-hover-color);
+        outline-offset: 1px;
+      }
+    }
   }
 }

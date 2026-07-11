@@ -214,31 +214,6 @@
   color: inherit;
 }
 
-/* Clickable dice styles - subtle and seamless */
-.clickable-dice {
-  color: inherit;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.15s ease;
-  display: inline;
-  padding: 0;
-  margin: 0;
-  border: none;
-  background: none;
-  font: inherit;
-
-  &:hover {
-    color: var(--clickable-dice-hover-color);
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-shadow: var(--dice-hover-shadow, 0 0 4px rgb(79 168 212 / 0.3));
-  }
-  
-  &:active {
-    transform: scale(0.98);
-  }
-}
-
 @keyframes pulse-roll {
   0% {
     transform: scale(1);

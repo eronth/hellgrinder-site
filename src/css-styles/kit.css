@@ -180,8 +180,12 @@
   margin-left: 1em;
 }
 
-.tags {
-  margin-left: 1.5em;
+.weapon,
+.item,
+.training {
+  .name {
+    margin-right: 1.3rem;
+  }
 }
 
 .description {

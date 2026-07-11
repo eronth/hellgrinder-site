@@ -1,9 +1,20 @@
 .tags {
   font-size: .8em;
 
+  /* Special tags wrap themselves in a RulePopup trigger; the tag pill
+     already signals interactivity, so drop the keyword underline. */
+  .special-tag-trigger {
+    border-bottom: none;
+  }
+
   .tag {
     display: inline-flex;
     align-items: center;
+    /* Baseline alignment leaves the pill's bottom padding hanging below the
+       surrounding text's baseline, so the pill reads as sitting low; `middle`
+       (half the parent's x-height) is still a touch low for this font, so
+       raise the pill's baseline until the box centers on the neighbor text. */
+    vertical-align: .3em;
     gap: .4em;
     margin: .15em .3em;
     padding: .34em .62em;
@@ -20,6 +31,11 @@
     background: var(--tag-fill);
     border: 1px solid var(--tag-line);
     color: var(--tag-text);
+
+    &.special {
+      border-color: var(--special-tag-line);
+      color: var(--special-tag-text);
+    }
 
     &.clickable {
       cursor: pointer;

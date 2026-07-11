@@ -1,7 +1,12 @@
+import { Fragment } from "react";
 import Hx from "../../../components/common/generic/Hx/Hx";
 import RuleKeyword from "../../../components/keywords/RuleKeyword";
 import SkillCheck from "../../../components/keywords/SkillCheck/SkillCheck";
 import BasicCheckResultsTable from "./BasicCheckResultsTable";
+import Tags from "../../../components/keywords/Tags/Tags";
+import SPECIAL_RULE_TAGS from "../../../data/rules/tag-rules";
+import { formatReactNode } from "../../../utils/statusEffectUtils";
+import { SpecialRuleTagWithValue } from "../../../ts-types/tag-types";
 
 export default function BasicRules() {
   const innerHx = 'h3';
@@ -109,8 +114,23 @@ export default function BasicRules() {
         seem suitable. However, here is a list of common check tags already supported by the game's rules.
       </p>
       <p>Various Attack Checks: Melee, Shooting, Arcane, Thrown</p>
-      <p>Various Skill Checks: Might, Endurance, Agility, Stealth, Observation, Communication, Stoic, Recovery,
-        Corruption</p>
+      <p>
+        Various Skill Checks: Might, Endurance, Agility, Stealth,
+        Observation, Communication, Stoic, Recovery,
+        Corruption
+      </p>
+      <Hx>Special Tags</Hx>
+      <p>
+        Some tags have special rules automatically applied:
+        {SPECIAL_RULE_TAGS.map((t) => (<Fragment key={t.id}>
+          <br />
+          <Tags tags={[{ [t.tag.short]: 'X' } as SpecialRuleTagWithValue]}>
+            {formatReactNode(t.tag.full, { x: 'X' })}
+          </Tags>: <span className='special-tag-rule'>
+            {formatReactNode(t.rule, { x: 'X' })}
+          </span>
+        </Fragment>))}
+      </p>
       <Hx hx={3}>Corruption</Hx>
       <p>
         Corruption is a measure of how much the demonic forces

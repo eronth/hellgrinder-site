@@ -1,3 +1,4 @@
+import Tags from '../../../components/keywords/Tags/Tags';
 import { DamageElement, Weapon } from '../../../ts-types/types';
 import DiceTools from '../../../utils/dice-handling';
 
@@ -18,7 +19,34 @@ const chthonic: DamageElement = 'Chthonic';
 const nethercurrent: DamageElement = 'Nethercurrent';
 const voidyr: DamageElement = 'Voidyr';
 
+const sevenDeadlySinSpells: { [key: string]: Weapon } = {
+  wrath: {
+    name: 'Wrath',
+    tags: ['One-Handed', { Cursed: 1 }],
+    isAdvancedItem: false,
+    choiceTags: {
+      tags: [infernal, verdant, chthonic],
+      count: 1,
+    },
+    attackModes: [{
+      tags: ['Attack', 'Arcane', 'Adjacent Range', 'Short Range'],
+      damage: {
+        l: { value: DiceTools.get2d4(), type: 'Chosen Type' },
+        m: { value: DiceTools.get2d6(), type: 'Chosen Type' },
+        h: { value: DiceTools.get2d8(), type: 'Chosen Type' },
+      },
+      effects: [<>
+        You take 1d4 damage of the Chosen Type.
+      </>, <>
+        When you hit with this attack, you may take 1d4 damage of
+        the Chosen Type to increase the damage of this attack by one Dice.
+      </>],
+    }],
+  },
+};
+
 const exObj: { [key: string]: Weapon } = {
+  ...sevenDeadlySinSpells,
   brandedGrasp: {
     name: 'Branded Grasp',
     tags: ['One-Handed'],
@@ -53,6 +81,18 @@ const exObj: { [key: string]: Weapon } = {
         h: { value: DiceTools.get2d8(-1), type: 'Chosen Type' },
       },
       effects: ['When you hit an enemy that has Resist against your chosen element, you can forgo damage to instead reduce their Resist value against that element by 1 for the rest of the encounter.'],
+    },
+    {
+      name: 'Ruin Blast',
+      tags: ['Attack', 'Arcane', 'Short Range', { Cursed: 2 }],
+      damage: {
+        l: { value: DiceTools.get2d4(1), type: 'Chosen Type' },
+        m: { value: DiceTools.get2d6(1), type: 'Chosen Type' },
+        h: { value: DiceTools.get2d8(1), type: 'Chosen Type' },  
+      },
+      effects: [
+        'When you hit an enemy that has Resist against your chosen element, you can forgo damage to instead completely reduce their Resist value against that element.',
+      ]
     }],
   },
   reboundingBolt: {
@@ -94,6 +134,28 @@ const exObj: { [key: string]: Weapon } = {
       ]
     }],
   },
+  soulBurst: {
+    name: 'Soul Burst',
+    tags: ['One-Handed'],
+    isAdvancedItem: true,
+    choiceTags: {
+      tags: [infernal, nethercurrent, voidyr],
+      count: 1,
+    },
+    attackModes: [{
+      tags: ['Attack', 'Arcane', 'Short Range', { Cursed: 2 }, { Cone: 4 }],
+      damage: {
+        l: { value: DiceTools.get2d4(), type: 'Chosen Type' },
+        m: { value: DiceTools.get2d6(), type: 'Chosen Type' },
+        h: { value: DiceTools.get2d8(), type: 'Chosen Type' },
+      },
+      effects: [
+        <>You can increase the cursed value by X to 
+        add <Tags tags={[{ Knockback: 'X' }]} /> to
+        the attack.</>
+      ]
+    }],
+  },
   hellishBeam: {
     name: 'Hellish Beam',
     tags: ['Two-Handed'],
@@ -103,14 +165,15 @@ const exObj: { [key: string]: Weapon } = {
       count: 1,
     },
     attackModes: [{
-      tags: ['Attack', 'Arcane', 'Short Range', 'Medium Range'],
+      tags: ['Attack', 'Arcane', 'Short Range', 'Medium Range', { Cursed: 1 }],
       damage: {
         l: { value: DiceTools.get1d4(), type: 'Chosen Type' },
         m: { value: DiceTools.get1d6(), type: 'Chosen Type' },
         h: { value: DiceTools.get1d8(), type: 'Chosen Type' },
       },
       effects: [
-        <>This attack targets all creatures in a line up to Long Range.</>
+        <>This attack targets all creatures in a line up to Long Range. Targetting
+        beyond Medium range still suffers the range penalty.</>
       ]
     }],
   },
@@ -152,28 +215,6 @@ const exObj: { [key: string]: Weapon } = {
       </>],
     }],
   },
-  wrath: {
-    name: 'Wrath',
-    tags: ['One-Handed'],
-    isAdvancedItem: false,
-    choiceTags: {
-      tags: [infernal, verdant, chthonic],
-      count: 1,
-    },
-    attackModes: [{
-      tags: ['Attack', 'Arcane', 'Adjacent Range', 'Short Range'],
-      damage: {
-        l: { value: DiceTools.get2d4(), type: 'Chosen Type' },
-        m: { value: DiceTools.get2d6(), type: 'Chosen Type' },
-        h: { value: DiceTools.get2d8(), type: 'Chosen Type' },
-      },
-      effects: [<>
-        You take 1d4 damage of the Chosen Type.
-      </>, <>
-        When you hit with this attack, you may take 1d4 damage of the Chosen Type to increase the damage of this attack by one Dice.
-      </>],
-    }],
-  },
   wildlash: {
     name: 'Wildlash',
     tags: ['One-Handed'],
@@ -190,7 +231,9 @@ const exObj: { [key: string]: Weapon } = {
         h: { value: DiceTools.get1d8(), type: 'Chosen Type' },
       },
       effects: [<>
-        This attack also targets all creatures within [Adjacent Range] of your target with a -2 penalty to their Hit Check.        
+        This attack has the <Tags tags={[{ Area: 1 }]} /> tag but with the following special rules:
+      </>,<>
+        This attack also targets all creatures within [Adjacent Range] of your target with a -2 penalty to the Hit Check.     
       </>, <>
         You can target yourself with this attack. If you do, you take half damage and ignore the -2 penalty for all creatures in [Adjacent Range] of you.
       </>],
@@ -266,15 +309,13 @@ const exObj: { [key: string]: Weapon } = {
       count: 1,
     },
     attackModes: [{
-      tags: ['Attack', 'Arcane', 'Short Range'],
+      tags: ['Attack', 'Arcane', 'Short Range', { Cone: 3 }],
       damage: {
         l: { value: DiceTools.get1d4(), type: 'Chosen Type' },
         m: { value: DiceTools.get1d6(), type: 'Chosen Type' },
         h: { value: DiceTools.get1d8(), type: 'Chosen Type' },
       },
-      effects: [<>
-        This attack targets all creatures within [Short Range] within your front arc.
-      </>],
+      effects: [<> </>],
     }],
   },
   arcaneLance: {
@@ -282,7 +323,7 @@ const exObj: { [key: string]: Weapon } = {
     tags: ['Two-Handed'],
     isAdvancedItem: true,
     attackModes: [{
-      tags: ['Attack', 'Arcane', 'Melee', 'Adjacent Range','Short Range'],
+      tags: ['Attack', 'Arcane', 'Adjacent Range', 'Short Range'],
       damage: {
         l: { value: DiceTools.get1d6(), type: 'Chosen Type' },
         m: { value: DiceTools.get1d12(), type: 'Chosen Type' },

@@ -1,4 +1,4 @@
-import { RulesManager } from '../../../data/rules-database';
+import { RulesManager } from '../../../data/retire-me-rules-database';
 import { RuleDisplayProps } from '../../../ts-types/rule-types';
 import RuleKeyword from '../../keywords/RuleKeyword';
 

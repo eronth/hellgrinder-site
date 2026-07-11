@@ -16,7 +16,14 @@ const exObj: { [key: string]: Kit } = {
       name: 'Medkit',
       tags: [],
       description: 'Your medkit has 3 uses.',
-      effects: ['You may spend a use of your medkit to heal an ally who has a Critical Injury. Remove the Critical Injury and restore max health.'],
+      effects: [
+        'You may spend a use of your medkit to heal an ally who has a Critical Injury. '
+        + 'Roll a [Medical] skill check. '
+        + 'Rank 3: Spend 1 use of the medkit to remove the Critical Injury.'
+        + 'Rank 2: Spend 2 uses of the medkit to remove the Critical Injury.'
+        + 'Rank 1: Spend 2 uses of the medkit to remove the Critical Injury, but deal 3 damage to the ally.'
+        + 'Failure: Spend 1 use of the medkit, but gain no other benefit.'
+      ],
     }],
     trainings: [{
       name: 'Medical Expertise',
@@ -27,7 +34,10 @@ const exObj: { [key: string]: Kit } = {
     }, {
       name: 'Medical Miracle',
       tags: [],
-      effects: ['Allies within [Long Range] of you do not die when they take a Critical Injury. Instead, they fall prone and unconscous.'], 
+      effects: [
+        'Allies within [Long Range] of you do not die when they take a Critical Injury. '
+        + 'Instead, they fall prone and unconscous.'
+      ], 
     }],
   },
 
@@ -99,7 +109,7 @@ const exObj: { [key: string]: Kit } = {
     }],
     trainings: [{
       name: 'Sigil Scribe',
-      tags: ['Arcane'],
+      tags: ['Arcane', { Cursed: 4 }],
       effects: ['Any time you get a new weapon, you can add a sigil to it. This sigil modifies the weapon\'s damage type to the type of your choice.'],
     }],
   },
@@ -120,7 +130,7 @@ const exObj: { [key: string]: Kit } = {
       effects: ['When you perform the [Study Creature] Maneuver, as long as you don\'t get a Failure, you treat your Success Rank as once Rank higher.'],
     }, {
       name: 'Fate Shaper',
-      tags: ['Arcane', 'Reaction'],
+      tags: ['Arcane', 'Reaction', { Cursed: 2 }],
       effects: ['Once per combat, you can set the result of a dice on any roll that is not made by you and does not target/affect you.'],
     }],
   },

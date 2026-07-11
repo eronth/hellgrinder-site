@@ -1,13 +1,24 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { RuleDefinition } from '../../../ts-types/rule-types';
-import { RulesManager } from '../../../data/rules-database';
+import { RulesManager } from '../../../data/retire-me-rules-database';
 import { formatReactNode } from '../../../utils/statusEffectUtils';
 import './RulePopup.css';
+
+/** Content passed straight to the popup, bypassing the rules database.
+ *  [[X]]/[[Y]] placeholders are replaced with statusEffectX/statusEffectY. */
+interface DirectRule {
+  title: React.ReactNode;
+  category: string;
+  summary: React.ReactNode;
+  /** Extra class on the popup itself, for scoping content styles. */
+  popupClassName?: string;
+}
 
 interface Props {
   ruleId?: string;
   keyword?: string;
+  directRule?: DirectRule;
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
@@ -22,10 +33,11 @@ interface PopupPosition {
   preferredPosition: 'top' | 'bottom' | 'left' | 'right';
 }
 
-export default function RulePopup({ 
-  ruleId, 
-  keyword, 
-  children, 
+export default function RulePopup({
+  ruleId,
+  keyword,
+  directRule,
+  children,
   className = '',
   disabled = false,
   statusEffectX,
@@ -45,9 +57,10 @@ export default function RulePopup({
     ? RulesManager.getRuleByKeyword(keyword)
     : undefined;
   
+  const hasDirectRule = !!directRule;
   useEffect(() => {
-    setNeedRuleDisplay(!(!rule || disabled));
-  }, [ruleId, keyword, disabled, rule]);
+    setNeedRuleDisplay(!disabled && (!!rule || hasDirectRule));
+  }, [ruleId, keyword, disabled, rule, hasDirectRule]);
 
   const calculatePosition = (): PopupPosition => {
     if (!triggerRef.current) {
@@ -140,17 +153,30 @@ export default function RulePopup({
     return () => window.removeEventListener('scroll', handleScroll, true);
   }, [isVisible]);
 
-  const relatedRules = needRuleDisplay ? RulesManager.getRelatedRules(rule!.id) : [];
+  const relatedRules = needRuleDisplay && rule ? RulesManager.getRelatedRules(rule.id) : [];
 
-  const isStatusEffect = needRuleDisplay ? rule!.category === 'status-effects' : false;
+  const isStatusEffect = rule?.category === 'status-effects';
+  // directRule content always supports [[X]]/[[Y]] substitution
+  const useFormatting = isStatusEffect || !!directRule;
   const xVal = statusEffectX ?? 'X';
   const yVal = statusEffectY ?? 'Y';
 
-  const createDisplay = (rule: RuleDefinition) => {
+  const maybeFormat = (node: React.ReactNode) =>
+    useFormatting ? formatReactNode(node, { x: xVal, y: yVal }) : node;
+
+  const title = directRule
+    ? maybeFormat(directRule.title)
+    : rule?.fullname
+    ? maybeFormat(rule.fullname)
+    : rule?.keyword;
+  const category = directRule ? directRule.category : rule?.category;
+  const summary = maybeFormat(directRule ? directRule.summary : rule?.summary);
+
+  const createDisplay = () => {
     return (
       <div
         ref={popupRef}
-        className={`rule-popup rule-popup-${position.preferredPosition} ${isStatusEffect ? ' status-effect' : ''}`}
+        className={`rule-popup rule-popup-${position.preferredPosition} ${isStatusEffect ? ' status-effect' : ''} ${directRule?.popupClassName ?? ''}`}
         style={{
           position: 'fixed',
           top: `${position.top}px`,
@@ -161,29 +187,21 @@ export default function RulePopup({
         onMouseLeave={handleMouseLeave}
       >
         <div className="rule-popup-header">
-          <h4 className="rule-title">{
-            rule.fullname
-            ? formatReactNode(rule.fullname, { x: xVal, y: yVal })
-            : rule.keyword
-          }</h4>
-          <span className="rule-category">{rule.category}</span>
+          <h4 className="rule-title">{title}</h4>
+          <span className="rule-category">{category}</span>
         </div>
-        
+
         <div className="rule-summary">
-          {isStatusEffect
-          ? formatReactNode(rule.summary, { x: xVal, y: yVal })
-          : rule.summary}
+          {summary}
         </div>
 
         {rule?.details && (
           <div className="rule-details">
-            {isStatusEffect
-            ? formatReactNode(rule.details, { x: xVal, y: yVal })
-            : rule.details}
+            {maybeFormat(rule.details)}
           </div>
         )}
 
-        {rule.examples && rule.examples.length > 0 && (
+        {rule?.examples && rule.examples.length > 0 && (
           <div className="rule-examples">
             <strong>
               {rule.exampleNameOverride || 'Examples:'}
@@ -195,7 +213,7 @@ export default function RulePopup({
             </ul>
           </div>
         )}
-        
+
         {relatedRules.length > 0 && (
           <div className="rule-related">
             <strong>Related:</strong>
@@ -217,7 +235,7 @@ export default function RulePopup({
 
   const ruleElement = (
     needRuleDisplay
-    ? createDisplay(rule!)
+    ? createDisplay()
     : null
   );
 
@@ -229,7 +247,7 @@ export default function RulePopup({
         className={`rule-keyword ${className} ${isStatusEffect ? 'status-effect' : ''}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        title={rule!.summary} // Fallback for accessibility
+        title={rule?.summary} // Fallback for accessibility
       >
         {children}
       </span>

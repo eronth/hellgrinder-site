@@ -62,6 +62,42 @@ const deepCopyWeapon = (weapon: Weapon, options?: deepCopyWeaponOptions): Weapon
   return weaponCopy;
 }
 
+type deepCopyItemOptions = {
+  name?: string,
+  tags?: AllValidTags[],
+  replaceTags?: boolean,
+  effects?: string[],
+  replaceEffects?: boolean,
+  isAdvancedItem?: boolean,
+};
+const deepCopyItem = (item: Item, options?: deepCopyItemOptions): Item => {
+  const itemCopy = structuredClone(item);
+
+  if (!options) { return itemCopy; }
+
+  itemCopy.name = options.name ?? itemCopy.name;
+
+  if (options.tags) {
+    if (options.replaceTags) {
+      itemCopy.tags = options.tags;
+    } else {
+      itemCopy.tags = [...itemCopy.tags, ...options.tags];
+    }
+  }
+
+  if (options.effects) {
+    if (options.replaceEffects) {
+      itemCopy.effects = options.effects;
+    } else {
+      itemCopy.effects = [...itemCopy.effects, ...options.effects];
+    }
+  }
+
+  itemCopy.isAdvancedItem = options.isAdvancedItem ?? itemCopy.isAdvancedItem;
+
+  return itemCopy;
+}
+
 type deepCopyAttackModeOptions = {
   name?: string,
   tags?: AllValidTags[],
@@ -290,6 +326,7 @@ export default {
   sortStatusEffects,
   deepCopyWeapon,
   deepCopyAttackMode,
+  deepCopyItem,
   creatureTiers,
   getCreatureTiersRange,
 };

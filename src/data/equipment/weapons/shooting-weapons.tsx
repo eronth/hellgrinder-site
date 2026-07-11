@@ -57,13 +57,13 @@ const exObj: { [key: string]: Weapon } = {
     tags: ['Heavy', 'Two-Handed'],
     isAdvancedItem: true,
     attackModes: [{
-      tags: ['Attack', 'Shooting', 'Short Range'],
+      tags: ['Attack', 'Shooting', 'Short Range', { Cone: 3 }],
       damage: {
         l: { value: 1, type: 'Infernal' },
         m: { value: DiceTools.get1d2(2), type: 'Infernal' },
         h: { value: DiceTools.get1d2(4), type: 'Infernal' },
       },
-      effects: ['This attack targets all creatures in [Short Range] of your front arc.', 'This attack cannot be used beyond [Short Range].'],
+      effects: [],
     }],
   },
   grenadeLauncher: {

@@ -2,6 +2,7 @@ import { Creature } from "../../ts-types/creature-types";
 import { FactionTag } from "../../ts-types/tag-types";
 import StatusKeyword from "../../components/keywords/StatusKeyword";
 import Tools from "../../utils/tools";
+import Tags from "../../components/keywords/Tags/Tags";
 
 export type FactionExampleCreature = Creature & {
   factionKey: FactionTag;
@@ -75,13 +76,13 @@ const exampleCreatures: { [key: string]: FactionExampleCreature } = {
         m: { value: 4, type: 'Chthonic' },
         h: { value: 6, type: 'Chthonic' },
       },
-      tags: ['Attack', 'Melee', 'Adjacent Range', {tag: 'Knockback', value: 2}],
+      tags: ['Attack', 'Melee', 'Adjacent Range', { Knockback: 2 }],
       effects: ['On Rank 3+, target is [Prone].'],
     }],
     abilities: [{
       name: '',
       description: <>
-        Can add [Knockback 1] to any attack and reduces knockback by -1 for attacks taken.
+        Can add <Tags tags={[{ Knockback: 1 }]} /> to any attack and reduces knockback by -1 for attacks taken.
       </>,
     }],
     description: 'A stalwart defender of the Stoneveined Order, their body infused with living stone.',
@@ -149,7 +150,7 @@ const exampleCreatures: { [key: string]: FactionExampleCreature } = {
         m: { value: 3, type: 'Verdant' },
         h: { value: 4, type: 'Verdant' },
       },
-      tags: ['Attack', 'Melee', {tag: 'Range', value: 2}],
+      tags: ['Attack', 'Melee', { Range: 2 }],
       effects: [
         <>
         AAAH ADD ENTANGLED
@@ -272,7 +273,9 @@ const exampleCreatures: { [key: string]: FactionExampleCreature } = {
         h: { value: 6, type: 'Metal' },
       },
       tags: ['Attack', 'Shooting', 'Long Range'],
-      effects: ['On Rank 2+, gains [Area: 1] dealing 2 damage to adjacent targets.'],
+      effects: [<>
+        On Rank 2+, gains <Tags tags={[{ Area: 1 }]} />, dealing 2 damage to adjacent targets.
+      </>],
     }],
     abilities: [
       {

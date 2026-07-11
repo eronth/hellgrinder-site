@@ -7,6 +7,7 @@ import _ from "lodash";
 import SkillCheck from "../../../../components/keywords/SkillCheck/SkillCheck";
 import { giftOfPlague } from "../../../../data/creatures/test-creatures";
 import { arc } from "../../../../data/creatures/zephpter-creatures";
+import Tags from "../../../../components/keywords/Tags/Tags";
 
 type PrimaryDamageAndGeneric = DamageElement | 'Core Type';
 type AbsorbDamageAndGeneric = DamageElement | 'PROMOTE';
@@ -100,8 +101,8 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
       {
         name: 'Impactful',
         description: <>
-          Stoneveined can add [Knockback 1] to any
-          attack they make and reduces knockback by -1 for any
+          Stoneveined can add <Tags tags={[{ Knockback: 1 }]} /> to
+          any attack they make and reduces knockback by -1 for any
           attack they take.
         </>,
         permittedTiers: [
@@ -111,8 +112,8 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
       {
         name: 'Super Impactful',
         description: <>
-          Stoneveined can add [Knockback 2] to any
-          attack they make and reduces knockback by -2 for any
+          Stoneveined can add <Tags tags={[{ Knockback: 2 }]} /> to
+          any attack they make and reduces knockback by -2 for any
           attack they take.
         </>,
         permittedTiers: [

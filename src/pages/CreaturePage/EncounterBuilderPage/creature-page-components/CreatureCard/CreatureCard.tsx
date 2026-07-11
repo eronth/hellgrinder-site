@@ -16,7 +16,7 @@ import './CreatureCard.css';
 import './CreatureCardExample.css';
 import './CreatureTooltip.css';
 import './CreatureCardFaction.css';
-import { FactionTag } from '../../../../../ts-types/tag-types';
+import { AllValidTags, FactionTag, tagName, tagValue } from '../../../../../ts-types/tag-types';
 
 type Props = {
   data: Creature;
@@ -76,8 +76,8 @@ export default function CreatureCard({
   };
 
   // Determine faction class based on creature tags
-  const getFactionClass = (tags: (string | { tag: string; value: number })[]) => {
-    const tagStrings = tags.map(tag => typeof tag === 'string' ? tag : tag.tag);
+  const getFactionClass = (tags: AllValidTags[]) => {
+    const tagStrings = tags.map(tag => typeof tag === 'string' ? tag : tagName(tag));
     
     // Define faction mappings
     const factionMap: { [key: string]: string } = {
@@ -113,8 +113,8 @@ export default function CreatureCard({
   };
 
   // Check if a tag is a faction tag
-  const isFactionTag = (tag: string | { tag: string; value: number }) => {
-    const tagString = typeof tag === 'string' ? tag : tag.tag;
+  const isFactionTag = (tag: AllValidTags) => {
+    const tagString = typeof tag === 'string' ? tag : tagName(tag);
     const factionTags = [
       'Ashborn Legion',
       'Stoneveined Order', 'Stoneveined Choir',
@@ -252,7 +252,7 @@ export default function CreatureCard({
         {nonFactionTags.map((tag, i) => <span 
           key={`creature-${data.name}-tag-${i}`}
         >
-          {(typeof tag === 'string') ? tag : `${tag.tag}: ${tag.value}`}
+          {(typeof tag === 'string') ? tag : `${tagName(tag)}: ${tagValue(tag)}`}
         </span>)}
       </div>
     {/* </TooltipWrapper> */}
@@ -328,7 +328,7 @@ export default function CreatureCard({
             >
                 {(typeof tag === 'string')
                   ? tag
-                  : `${tag.tag}: ${tag.value}`
+                  : `${tagName(tag)}: ${tagValue(tag)}`
                 }
             </span>
           </TooltipWrapper>

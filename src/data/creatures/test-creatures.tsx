@@ -197,7 +197,7 @@ const exObj: { [key: string]: Creature } = {
       {
         name: 'Dire Puke',
         damage: damage(2, 4, 7, 'Abyssal'),
-        tags: ['Attack', 'Shooting', 'Adjacent Range', { tag: 'Area', value: 1 }],
+        tags: ['Attack', 'Shooting', 'Adjacent Range', { Area: 1 }],
         effects:[
           <>
             This attack targets all creatures Adjacent to the Stench Bloater.
@@ -425,7 +425,7 @@ const exObj: { [key: string]: Creature } = {
       {
         name: 'Poisonthorn Spine Blast',
         damage: damage(3, 6, 10, 'Verdant'),
-        tags: ['Attack', 'Arcane', 'Short Range', { tag: 'Area', value: 3 }],
+        tags: ['Attack', 'Arcane', 'Short Range', { Area: 3 }],
         effects: [<>
           Target all creatures within Short Range of the Final Horror.
         </>
@@ -434,7 +434,7 @@ const exObj: { [key: string]: Creature } = {
       {
         name: 'Anointing of Decay',
         damage: damage(6, 12, 18, 'Chthonic'),
-        tags: ['Attack', 'Melee', 'Adjacent Range', { tag: 'Area', value: 1 }],
+        tags: ['Attack', 'Melee', 'Adjacent Range', { Area: 1 }],
         effects: [
           <>
             The target is afflicted with Apathathy.

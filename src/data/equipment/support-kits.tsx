@@ -77,7 +77,7 @@ const exObj: { [key: string]: Kit } = {
     description: "The Shadow Op kit is for the soldier who prefers to strike from the shadows.",
     weapons: [
       { ...Tools.deepCopyWeapon(ShootingWeapons.pistol) },
-      { ...Tools.deepCopyWeapon(MeleeWeapons.knife) }
+      { ...Tools.deepCopyWeapon(MeleeWeapons.knife) },
     ],
     items: [],
     trainings: [{

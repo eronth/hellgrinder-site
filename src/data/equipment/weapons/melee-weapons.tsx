@@ -28,8 +28,7 @@ const exObj: { [key: string]: Weapon } = {
         h: { value: DiceTools.get2d6(1), type: 'Metal' },
       },
       effects: [<>
-        If you move adjacent to an enemy before making this attack, you gain 1 <b>Maneuver Point</b>.
-        {/* movementIcon - this causes a bug for some reason.*/}
+        If you move adjacent to an enemy before making this attack, you gain 1 <b>Maneuver Point</b>{movementIcon}.
       </>],
     }],
   },

@@ -1,8 +1,40 @@
 import { Creature, CreatureTier, CreatureTierList } from '../ts-types/creature-types.tsx';
-import { DamageElement, Weapon, AttackMode, Dice, Item } from '../ts-types/types.tsx';
+import { Damage, DamageElement, Weapon, AttackMode, Dice, Item } from '../ts-types/types.tsx';
 import { Kit, Perk, StatusEffect } from '../ts-types/types.tsx';
 import { AllValidTags } from "../ts-types/tag-types.tsx";
 import { FactionExampleCreature } from '../data/creatures/faction-examples.tsx';
+
+// `effects` can hold JSX, and React elements contain Symbols that structuredClone
+// rejects (DataCloneError) — so cloning is done manually, with effects entries
+// copied by reference (React elements are immutable, so sharing them is safe).
+const cloneDamage = (damage: Damage): Damage => ({
+  value: typeof damage.value === 'number'
+    ? damage.value
+    : Array.isArray(damage.value)
+      ? damage.value.map(d => ({ ...d }))
+      : { ...damage.value },
+  type: damage.type,
+});
+
+const cloneAttackMode = (attackMode: AttackMode): AttackMode => ({
+  ...attackMode,
+  tags: [...attackMode.tags],
+  damage: {
+    l: cloneDamage(attackMode.damage.l),
+    m: cloneDamage(attackMode.damage.m),
+    h: cloneDamage(attackMode.damage.h),
+  },
+  effects: attackMode.effects && [...attackMode.effects],
+});
+
+const cloneItemDef = <T extends Weapon | Item>(item: T): T => ({
+  ...item,
+  tags: [...item.tags],
+  choiceTags: item.choiceTags && {
+    ...item.choiceTags,
+    tags: [...item.choiceTags.tags],
+  },
+});
 
 type deepCopyWeaponOptions = {
   name?: string,
@@ -15,8 +47,12 @@ type deepCopyWeaponOptions = {
   }
 };
 const deepCopyWeapon = (weapon: Weapon, options?: deepCopyWeaponOptions): Weapon => {
-  const weaponCopy = structuredClone(weapon);
-  
+  const weaponCopy: Weapon = {
+    ...cloneItemDef(weapon),
+    effects: weapon.effects && [...weapon.effects],
+    attackModes: weapon.attackModes.map(cloneAttackMode),
+  };
+
   if (!options) { return weaponCopy; }
   
   weaponCopy.name = options.name ?? weaponCopy.name;
@@ -71,7 +107,10 @@ type deepCopyItemOptions = {
   isAdvancedItem?: boolean,
 };
 const deepCopyItem = (item: Item, options?: deepCopyItemOptions): Item => {
-  const itemCopy = structuredClone(item);
+  const itemCopy: Item = {
+    ...cloneItemDef(item),
+    effects: [...item.effects],
+  };
 
   if (!options) { return itemCopy; }
 
@@ -124,7 +163,7 @@ type deepCopyAttackModeOptions = {
   },
 };
 const deepCopyAttackMode = (attackMode: AttackMode, options?: deepCopyAttackModeOptions): AttackMode => {
-  const attackModeCopy = structuredClone(attackMode);
+  const attackModeCopy = cloneAttackMode(attackMode);
   
   if (!options) { return attackModeCopy; }
   

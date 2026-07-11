@@ -241,7 +241,8 @@ const exObj: StatusEffectsReturn = {
   },
   beguiled: {
     name: 'Beguiled',
-    description: 'You become beguiled, losing track of your own abilities.',
+    description: 'You become beguiled, losing track of your own abilities. Tag swaps happen once for each relevant tag.'
+      + 'For instance, an Arcane Melee weapon would become a Shooting Thrown weapon.',
     effects: [
       <>
         <br />Your <SkillCheck tags={['Shooting']} plural /> now 

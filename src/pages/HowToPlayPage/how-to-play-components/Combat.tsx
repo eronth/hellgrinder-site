@@ -7,6 +7,7 @@ import StatusEffects from "../../../data/status-effects.tsx"
 import Actions from "./combat-components/Actions";
 import Maneuvers from "./combat-components/Maneuvers";
 import Spellcasting from "./combat-components/Spellcasting.tsx";
+import HitCheck from "../../../components/keywords/HitCheck/HitCheck.tsx";
 
 export default function Combat() {
   const sortedStatusEffects = Tools.sortStatusEffects(StatusEffects);
@@ -47,8 +48,14 @@ export default function Combat() {
         <li><Arc type="rear">Rear Flank Arc</Arc> - The hex directly behind you is your Rear Arc.</li>
       </ul>
       <ul>
-        <li>[Range Attacks] that pass through your <Arc type="peripheral" /> and [Melee Attacks] that originate from your <Arc type="peripheral" /> get +1 on Hit Checks and Damage against you.</li>
-        <li>[Range Attacks] that pass through your <Arc type="rear" /> and [Melee Attacks] that originate from your <Arc type="rear" /> get +3 on Hit Checks and +1 to Damage against you.</li>
+        <li>
+          <HitCheck tags={['Shooting']} plural /> and <HitCheck tags={['Melee']} plural />
+          {' '}that pass through your <Arc type="peripheral" /> get 
+          +1 to the <HitCheck tags={[]} /> and Damage against you.</li>
+        <li>
+          <HitCheck tags={['Shooting']} plural /> and <HitCheck tags={['Melee']} plural /> 
+          {' '}that pass through your <Arc type="rear" /> get
+          +3 to the <HitCheck tags={[]} /> and +1 to Damage against you.</li>
       </ul>
 
       <Hx hx={innerHx}>Opportunity Strikes</Hx>

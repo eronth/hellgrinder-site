@@ -1,5 +1,6 @@
 import { StatusEffect } from '../ts-types/types';
 import { movementIcon } from '../utils/commonIcons';
+import Arc from '../components/keywords/Arc/Arc';
 import HitCheck from '../components/keywords/HitCheck/HitCheck';
 import SkillCheck from '../components/keywords/SkillCheck/SkillCheck';
 
@@ -523,7 +524,8 @@ const exObj: StatusEffectsReturn = {
     description: 'It seems as though the world around you reveals more and more of the building blocks of reality — you have seen The Ẓ̷̎à̷̠l̵̳͑g̵͕͊ŏ̷̩r̶͙̓i̶̜͝t̴̮̾ḧ̶̡m̸͈͂',
     effects: [
       <>
-        At the start of your turn, choose Front, Peripheral Flank, or Rear Flank Arc. All of your Arcs are treated as
+        At the start of your turn, choose <Arc type="front">Front</Arc>, <Arc type="peripheral">Peripheral Flank</Arc>,
+        or <Arc type="rear">Rear Flank Arc</Arc>. All of your Arcs are treated as
         that Arc until the start of your next turn.
       </>,
       <>

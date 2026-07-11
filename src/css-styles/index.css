@@ -249,6 +249,16 @@
   --training-tag-text: light-dark(oklch(50% 0.16 253),         oklch(83% 0.14 253));
 }
 
+/* Facing-arc keyword accents — threat-coded: attacks from your Front Arc are
+   baseline, Peripheral gets +1 to hit/damage, Rear +3; Flank spans both. */
+:root {
+  --arc-ring-color:       light-dark(oklch(45% 0.02 250 / 0.35), oklch(85% 0.02 250 / 0.30));
+  --arc-front-color:      light-dark(oklch(48% 0.10 165),        oklch(78% 0.11 165));
+  --arc-peripheral-color: light-dark(oklch(55% 0.12  80),        oklch(80% 0.12  85));
+  --arc-rear-color:       light-dark(oklch(52% 0.17  25),        oklch(72% 0.15  25));
+  --arc-flank-color:      light-dark(oklch(53% 0.14  50),        oklch(76% 0.13  50));
+}
+
 #root {
   width: 100%;
 }

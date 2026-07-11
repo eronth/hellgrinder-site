@@ -1,6 +1,7 @@
 import { Creature } from '../../ts-types/creature-types';
 import { DamageTakenMod } from '../../ts-types/creature-types';
 import Tools from '../../utils/tools';
+import Arc from '../../components/keywords/Arc/Arc';
 import RuleKeyword from '../../components/keywords/RuleKeyword';
 import SkillCheck from '../../components/keywords/SkillCheck/SkillCheck';
 import { movementIcon } from '../../utils/commonIcons';
@@ -387,11 +388,9 @@ const exObj: { [key: string]: Creature } = {
       {
         name: '',
         description: <>
-          All-Seeing Eyespawn has 2 two-hex <RuleKeyword keyword='Front Arc'>
-            Front Arcs
-          </RuleKeyword>, all other
-          areas are considered <RuleKeyword keyword='Flank Arc' />.
-          (This creature has no <RuleKeyword keyword='Rear Arc' />.)
+          All-Seeing Eyespawn has 2 two-hex <Arc type='front' plural />, all other
+          areas are considered <Arc type='flank' />.
+          (This creature has no <Arc type='rear' />.)
         </>
       }
     ],

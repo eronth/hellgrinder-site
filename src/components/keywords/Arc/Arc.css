@@ -1,0 +1,58 @@
+/* Facing-arc keyword: a small "facing rose" glyph — a faint ring with the
+   arc's angular coverage highlighted and a pointer for the character —
+   followed by the arc name in matching accented text. The accent is
+   threat-coded per arc (see --arc-*-color in index.css). */
+.arc-keyword {
+  --arc-accent: var(--arc-front-color);
+  white-space: nowrap;
+  font-weight: 600;
+  color: var(--arc-accent);
+
+  &.peripheral { --arc-accent: var(--arc-peripheral-color); }
+  &.rear { --arc-accent: var(--arc-rear-color); }
+  &.flank { --arc-accent: var(--arc-flank-color); }
+
+  .arc-glyph {
+    width: 1em;
+    height: 1em;
+    vertical-align: -.12em;
+    margin-right: .25em;
+    overflow: visible;
+  }
+
+  .arc-ring {
+    fill: none;
+    stroke: var(--arc-ring-color);
+    stroke-width: 1.4;
+  }
+
+  .arc-highlight {
+    fill: none;
+    stroke: var(--arc-accent);
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+
+  .arc-pointer {
+    fill: currentColor;
+    opacity: .55;
+  }
+}
+
+/* The rule popup trigger paints its own color and dotted underline over the
+   whole span; keep the arc accent and move the underline to just the label
+   so the glyph stays clean. (Same trick as .special-tag-trigger.) */
+.rule-keyword.arc-trigger {
+  color: inherit;
+  border-bottom: none;
+
+  .arc-label {
+    text-decoration: underline dotted;
+    text-decoration-thickness: 1px;
+    text-underline-offset: .2em;
+  }
+
+  &:hover .arc-keyword {
+    filter: brightness(1.15);
+  }
+}

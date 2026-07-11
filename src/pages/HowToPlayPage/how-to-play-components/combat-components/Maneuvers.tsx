@@ -1,4 +1,5 @@
 import { movementIcon } from "../../../../utils/commonIcons";
+import Arc from "../../../../components/keywords/Arc/Arc";
 import HitCheck from "../../../../components/keywords/HitCheck/HitCheck";
 import Hx from "../../../../components/common/generic/Hx/Hx";
 import RuleKeyword from "../../../../components/keywords/RuleKeyword";
@@ -54,7 +55,7 @@ export default function Maneuvers() {
           next <HitCheck tags={['Medium Range']} /> or <HitCheck tags={['Long Range']} /> they
           make against foes 
           within <RuleKeyword keyword="Long Range" /> of
-          your <RuleKeyword keyword="Front Arc" />.
+          your <Arc type="front" />.
         </p>
       </IndividualManeuver>
 
@@ -100,7 +101,7 @@ export default function Maneuvers() {
       <IndividualManeuver title='Guard' cost={4}>
         <p>
           Attacks against
-          your <RuleKeyword keyword="Front Arc" /> get
+          your <Arc type="front" /> get
           -2 to their Hit Check and Damage.
         </p>
       </IndividualManeuver>

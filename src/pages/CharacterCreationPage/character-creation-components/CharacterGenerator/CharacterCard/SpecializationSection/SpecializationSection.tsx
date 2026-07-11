@@ -70,8 +70,7 @@ export default function SpecializationSection({ character, onSetSpecialization, 
             <select value={bonus} onChange={handleBonusChange}>
               <option value="">-- Select Bonus --</option>
               {specializationOptions
-                .filter(o => o !== penalty)
-                .map(o => <option key={o} value={o}>{o}</option>)
+                .map(o => <option key={o} value={o} disabled={o === penalty}>{o}</option>)
               }
             </select>
           </div>
@@ -80,8 +79,7 @@ export default function SpecializationSection({ character, onSetSpecialization, 
             <select value={penalty} onChange={handlePenaltyChange}>
               <option value="">-- Select Penalty --</option>
               {specializationOptions
-                .filter(o => o !== bonus)
-                .map(o => <option key={o} value={o}>{o}</option>)
+                .map(o => <option key={o} value={o} disabled={o === bonus}>{o}</option>)
               }
             </select>
           </div>

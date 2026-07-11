@@ -1,4 +1,6 @@
 import { AllValidTags, SPECIAL_RULE_TAG_NAMES } from "../../../ts-types/tag-types";
+import { getSpecialTagRule } from "../../../data/rules/tag-rules";
+import RulePopup from "../../common/RulePopup/RulePopup";
 import './Tags.css';
 
 type Props = {
@@ -65,11 +67,34 @@ export default function Tags({ tags, onTagClick, selectedTags, selectedOnly, chi
 
       if (selectedOnly && !isSelected) { return null; }
 
-      return (
-        <span key={`tag-${ti}`} className={className} onClick={() => { if(onTagClick) { onTagClick(t) } }}>
+      const tagSpan = (
+        <span className={className} onClick={() => { if(onTagClick) { onTagClick(t) } }}>
           {children ?? ((typeof t === 'string') ? t : `${t.tag}: ${t.value}`)}
         </span>
       );
+
+      const specialRule = isSpecialTag(t)
+        ? getSpecialTagRule(typeof t === 'string' ? t : t.tag)
+        : undefined;
+
+      if (specialRule) {
+        return (
+          <RulePopup
+            key={`tag-${ti}`}
+            directRule={{
+              title: specialRule.tag.full,
+              category: 'tag',
+              summary: specialRule.rule,
+            }}
+            statusEffectX={typeof t === 'object' ? t.value : undefined}
+            className='special-tag-trigger'
+          >
+            {tagSpan}
+          </RulePopup>
+        );
+      }
+
+      return <span key={`tag-${ti}`}>{tagSpan}</span>;
     })}
   </span>);
 }

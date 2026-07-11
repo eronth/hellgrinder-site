@@ -120,11 +120,6 @@
   --delete-button-color: hsl(354 70% 54%);
   --delete-button-hover-color: #C71585; /* was: hsl(354, 70%, 46%) */
   --delete-button-active-color: #8B008B; /* was: hsl(354, 70%, 44%) */
-
-  --tags-list-background: light-dark(
-    hsl(196 49% 71%),
-    hsl(196 49% 31%)
-  );
 }
 
 /* Specifically a bunch of button stuff just for skill check section. */

@@ -1,6 +1,35 @@
+/* Subtle inline treatment: the skill tags render as one small tinted pill
+   (shared tag palette --tag-fill/line/text, kin to the Tags component) and
+   the check name is just accented text. Only the short pill is atomic —
+   the listing itself stays inline so prose can word-wrap around and inside
+   it without leaving gaps in narrow columns. */
 .skill-check-listing {
-  .tags-list {
-    padding-inline: 1px;
-    background-color: var(--tags-list-background);
+  color: var(--tag-text);
+
+  .check-tags {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: .1em;
+    margin-right: .35em;
+    padding: .3em .5em;
+    line-height: 1;
+    border-radius: 4px;
+    background: hsl(from var(--tag-fill) h s l / .1);
+    border: 1px solid hsl(from var(--tag-line) h s l / .1);
+
+    /* micro-label character, matching .tags .tag */
+    font-size: .72em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+
+  .check-tag-separator {
+    padding-inline: .3em;
+    opacity: .55;
+  }
+
+  .check-label {
+    font-weight: 600;
   }
 }

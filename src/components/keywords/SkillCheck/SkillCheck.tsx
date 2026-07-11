@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import './SkillCheck.css';
 
 type Props = {
@@ -8,23 +7,20 @@ type Props = {
 };
 
 export default function SkillCheck({ text, tags, plural }: Props) {
-
-  const formatTagsToDisplay = useCallback((tags: string[]) => {
-    if ((tags?.length ?? 0) == 0) { return null; }
-
-    return <span className={'tags-list'}>
-      [{tags.join(' ')}]
-    </span>;
-  }, []);
-
-  const displayCheck = (<span>
-    {text
-      ? <>{text}</>
-      : <>Skill Check</>
-    }{plural ? 's' : ''}
-  </span>);
+  const label = `${text || 'Skill Check'}${plural ? 's' : ''}`;
+  const hasTags = (tags?.length ?? 0) > 0;
 
   return (<span className="skill-check-listing">
-    {formatTagsToDisplay(tags)} {displayCheck}
+    {hasTags && (
+      <span className="check-tags">
+        {tags.map((tag, ti) => (
+          <span key={`check-tag-${ti}`}>
+            {ti > 0 && <span className="check-tag-separator">·</span>}
+            {tag}
+          </span>
+        ))}
+      </span>
+    )}
+    <span className="check-label">{label}</span>
   </span>);
 };

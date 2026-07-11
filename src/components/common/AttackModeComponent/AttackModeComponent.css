@@ -11,12 +11,9 @@ span {
         .name {
           font-weight: bold;
           font-size: 1.1em;
+          margin-right: 1.3rem;
         }
       }
-    }
-
-    .tags {
-      margin-left: 1.5em;
     }
 
     .details-indentation {

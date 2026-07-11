@@ -2,6 +2,7 @@ import { Creature } from "../../ts-types/creature-types";
 import { FactionTag } from "../../ts-types/tag-types";
 import StatusKeyword from "../../components/keywords/StatusKeyword";
 import Tools from "../../utils/tools";
+import Tags from "../../components/keywords/Tags/Tags";
 
 export type FactionExampleCreature = Creature & {
   factionKey: FactionTag;
@@ -272,7 +273,9 @@ const exampleCreatures: { [key: string]: FactionExampleCreature } = {
         h: { value: 6, type: 'Metal' },
       },
       tags: ['Attack', 'Shooting', 'Long Range'],
-      effects: ['On Rank 2+, gains [Area: 1] dealing 2 damage to adjacent targets.'],
+      effects: [<>
+        On Rank 2+, gains <Tags tags={[{ tag: 'Area', value: 1 }]} />, dealing 2 damage to adjacent targets.
+      </>],
     }],
     abilities: [
       {

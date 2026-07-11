@@ -1,6 +1,12 @@
 .tags {
   font-size: .8em;
 
+  /* Special tags wrap themselves in a RulePopup trigger; the tag pill
+     already signals interactivity, so drop the keyword underline. */
+  .special-tag-trigger {
+    border-bottom: none;
+  }
+
   .tag {
     display: inline-flex;
     align-items: center;

@@ -183,8 +183,8 @@
 .weapon,
 .item,
 .training {
-  .tags {
-    margin-left: 1.5em;
+  .name {
+    margin-right: 1.3rem;
   }
 }
 

@@ -5,6 +5,7 @@ import SkillCheck from "../../../components/keywords/SkillCheck/SkillCheck";
 import BasicCheckResultsTable from "./BasicCheckResultsTable";
 import Tags from "../../../components/keywords/Tags/Tags";
 import SPECIAL_RULE_TAGS from "../../../data/rules/tag-rules";
+import { formatReactNode } from "../../../utils/statusEffectUtils";
 
 export default function BasicRules() {
   const innerHx = 'h3';
@@ -126,8 +127,8 @@ export default function BasicRules() {
             tag: t.tag.short,
             value: 'X'
           }]}>
-            {t.tag.full}
-          </Tags>: {t.rule}
+            {formatReactNode(t.tag.full, { x: 'X' })}
+          </Tags>: {formatReactNode(t.rule, { x: 'X' })}
         </Fragment>))}
       </p>
       <Hx hx={3}>Corruption</Hx>

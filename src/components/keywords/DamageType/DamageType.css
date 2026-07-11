@@ -1,0 +1,38 @@
+/* Damage type keyword: a small elemental glyph plus the type name in the
+   element's accent color (see --damage-*-color in index.css). Plain inline
+   text apart from the glyph, so it flows and wraps with prose. */
+.damage-type-keyword {
+  --damage-accent: var(--damage-neutral-color);
+  white-space: nowrap;
+  font-weight: 600;
+  color: var(--damage-accent);
+
+  &.metal { --damage-accent: var(--damage-metal-color); }
+  &.infernal { --damage-accent: var(--damage-infernal-color); }
+  &.abyssal { --damage-accent: var(--damage-abyssal-color); }
+  &.verdant { --damage-accent: var(--damage-verdant-color); }
+  &.chthonic { --damage-accent: var(--damage-chthonic-color); }
+  &.nethercurrent { --damage-accent: var(--damage-nethercurrent-color); }
+  &.voidyr { --damage-accent: var(--damage-voidyr-color); }
+  &.core { --damage-accent: var(--damage-core-color); }
+
+  .damage-glyph {
+    width: 1em;
+    height: 1em;
+    vertical-align: -.12em;
+    overflow: visible;
+  }
+
+  .glyph-fill {
+    fill: var(--damage-accent);
+    stroke: none;
+  }
+
+  .glyph-stroke {
+    fill: none;
+    stroke: var(--damage-accent);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}

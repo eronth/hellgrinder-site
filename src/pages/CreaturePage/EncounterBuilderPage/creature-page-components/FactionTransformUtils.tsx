@@ -3,6 +3,7 @@ import RuleKeyword from '../../../../components/keywords/RuleKeyword';
 import { Creature, CreatureAbility, CreatureTier, DamageTakenMod } from '../../../../ts-types/creature-types';
 import { AttackMode, DamageElement } from '../../../../ts-types/types';
 import StatusKeyword from '../../../../components/keywords/StatusKeyword';
+import DamageType from '../../../../components/keywords/DamageType/DamageType';
 import _ from "lodash";
 import SkillCheck from "../../../../components/keywords/SkillCheck/SkillCheck";
 import { giftOfPlague } from "../../../../data/creatures/test-creatures";
@@ -168,7 +169,7 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
         name: 'Heat-Death',
         description: <>
           When Ashborn Legion dies, it explodes in a burst of Infernal energy,
-          dealing Infernal damage equal to Tier+1 to all adjacent creatures.
+          dealing <DamageType type="Infernal" withWord /> equal to Tier+1 to all adjacent creatures.
           <br />
           All non-Ashborn Legion creatures hit by this must get
           Rank 2 or higher
@@ -180,7 +181,7 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
       {
         name: 'Incinerators',
         description: <>
-          When hitting a creature with an attack that deals Infernal damage,
+          When hitting a creature with an attack that deals <DamageType type="Infernal" withWord />,
           if that creature is adjacent to two other Ashborn Legion creatures,
           that creature must get a Rank 2 Success on
           a <SkillCheck tags={['Stoic', 'Agility']}/>.

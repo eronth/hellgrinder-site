@@ -1,6 +1,7 @@
 import { Creature, CreatureAbility, DamageTakenMod } from "../../ts-types/creature-types";
 import { DamageElement } from "../../ts-types/types";
 import { movementIcon } from "../../utils/commonIcons";
+import DamageType from "../../components/keywords/DamageType/DamageType";
 import SkillCheck from "../../components/keywords/SkillCheck/SkillCheck";
 import Tools from "../../utils/tools";
 
@@ -60,7 +61,7 @@ const exObj: { [key: string]: Creature } = {
         effects:[
           <>
             Each time a creature is hit by this attack, they rot.
-            Get Rank 2 on a <SkillCheck tags={["Stoic"]} /> check, or take 1 Voidyr damage.
+            Get Rank 2 on a <SkillCheck tags={["Stoic"]} /> check, or take <DamageType type="Voidyr" value={1} withWord />.
             A character gets a -1 penalty to this check for each time they've rotted (including
             the triggering attack).
           </>,
@@ -88,7 +89,7 @@ const exObj: { [key: string]: Creature } = {
         damage: damage(1, 2, 3, 'Verdant'),
         effects:[
           <>
-            If the Decayed One has been hit by Verdant damage this combat,
+            If the Decayed One has been hit by <DamageType type="Verdant" withWord /> this combat,
             the attack deals double damage.
           </>
         ],
@@ -132,7 +133,7 @@ const exObj: { [key: string]: Creature } = {
           blighted ground in spaces it moves through. Characters
           crossing through this ground must make
           a <SkillCheck tags={['Endurance']} />.
-          On a Failure, they take 1 Abyssal damage and immediately make a
+          On a Failure, they take <DamageType type="Abyssal" value={1} withWord /> and immediately make a
           Corruption Test. Creatures damaged by this ability treat it as
           though they were hit by an attack for the purposes of determining
           the Gift of Plague ability.
@@ -229,8 +230,8 @@ const exObj: { [key: string]: Creature } = {
         description: <>
           When the Stench Bloater is reduced to 0 Health, it explodes.
           Each creature within Short Range must make a
-          <SkillCheck tags={['Agility']} />. On a Failure, they take 3
-          Nethercurrent damage.
+          <SkillCheck tags={['Agility']} />. On a Failure, they take
+          {' '}<DamageType type="Nethercurrent" value={3} withWord />.
         </>
       }
     ],

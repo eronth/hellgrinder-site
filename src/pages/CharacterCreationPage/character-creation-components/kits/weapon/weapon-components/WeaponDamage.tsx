@@ -1,5 +1,6 @@
 import {AttackMode, Dice} from "../../../../../../ts-types/types.tsx";
 import ClickableDice from "../../../../../../components/common/ClickableDice/ClickableDice.tsx";
+import DamageType from "../../../../../../components/keywords/DamageType/DamageType.tsx";
 
 type Props = {
   attackMode: AttackMode;
@@ -27,22 +28,22 @@ export default function WeaponDamage({ attackMode }: Props) {
         <span className={'damage-separator'}> / </span>
 
         {IDontWantToRewriteThis10times({displayDice: displayDmg.h, avgObj: displayDmg.hav, damageValue: dmg.h.value})}
-        <span className={'damage-type'}> {dmg.l.type} Damage</span>
+        <span className={'damage-type'}> <DamageType type={dmg.l.type} withWord /></span>
       </>);
     }
     return (<>
       {IDontWantToRewriteThis10times({displayDice: displayDmg.l, avgObj: displayDmg.lav, damageValue: dmg.l.value})}
-      <span className={'damage-type'}> {dmg.l.type} Damage</span>
+      <span className={'damage-type'}> <DamageType type={dmg.l.type} withWord /></span>
 
       <span className={'damage-separator'}> / </span>
 
       {IDontWantToRewriteThis10times({displayDice: displayDmg.m, avgObj: displayDmg.mav, damageValue: dmg.m.value})}
-      <span className={'damage-type'}> {dmg.l.type} Damage</span>
+      <span className={'damage-type'}> <DamageType type={dmg.m.type} withWord /></span>
 
       <span className={'damage-separator'}> / </span>
 
       {IDontWantToRewriteThis10times({displayDice: displayDmg.h, avgObj: displayDmg.hav, damageValue: dmg.h.value})}
-      <span className={'damage-type'}> {dmg.l.type} Damage</span>
+      <span className={'damage-type'}> <DamageType type={dmg.h.type} withWord /></span>
     </>);
   }
   

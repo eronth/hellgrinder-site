@@ -1,3 +1,4 @@
+import DamageType from "../../../../components/keywords/DamageType/DamageType";
 import Hx from "../../../../components/common/generic/Hx/Hx";
 import InjuryTable from "./InjuryTable/InjuryTable";
 
@@ -21,13 +22,13 @@ export default function Damage() {
       </p>
       <div>The standard damage types are as follows:</div>
       <ol className="roman" start={0}>
-        <li>Metal</li>
-        <li>Infernal</li>
-        <li>Abyssal</li>
-        <li>Verdant</li>
-        <li>Chthonic</li>
-        <li>Nethercurrent</li>
-        <li>Voidyr</li>
+        <li><DamageType type="Metal" /></li>
+        <li><DamageType type="Infernal" /></li>
+        <li><DamageType type="Abyssal" /></li>
+        <li><DamageType type="Verdant" /></li>
+        <li><DamageType type="Chthonic" /></li>
+        <li><DamageType type="Nethercurrent" /></li>
+        <li><DamageType type="Voidyr" /></li>
       </ol>
       
       <Hx hx={innerHx}>Weakness, Resistance, and Absorbance</Hx>

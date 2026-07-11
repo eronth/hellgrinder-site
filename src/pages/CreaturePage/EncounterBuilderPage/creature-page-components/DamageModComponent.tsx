@@ -1,4 +1,5 @@
 import { DamageTakenMod } from '../../../../ts-types/creature-types';
+import DamageType from '../../../../components/keywords/DamageType/DamageType';
 
 
 type Props = {
@@ -8,7 +9,6 @@ type Props = {
 export default function DamageModComponent({ mod }: Props) {
   return (<span className='damage-modifier'>
     <span className='modifier-type'>{mod.modification}</span>
-    <span className='damage-type'>{mod.type}</span>
-    <span className='modifier-amount'>{mod.mod}</span>
+    <span className='damage-type'><DamageType type={mod.type} value={mod.mod} valueAfter /></span>
   </span>);
 }

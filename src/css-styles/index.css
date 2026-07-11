@@ -249,6 +249,21 @@
   --training-tag-text: light-dark(oklch(50% 0.16 253),         oklch(83% 0.14 253));
 }
 
+/* Damage type accents — one elemental hue per type, used by the DamageType
+   keyword glyph and label. Neutral covers meta types (Chosen Type, All) and
+   the CORE/PROMOTE-style faction placeholders. */
+:root {
+  --damage-neutral-color:       light-dark(oklch(45% 0     0),   oklch(80% 0     0));
+  --damage-metal-color:         light-dark(oklch(48% 0.03 255),  oklch(80% 0.03 255));
+  --damage-infernal-color:      light-dark(oklch(55% 0.17  40),  oklch(74% 0.16  40));
+  --damage-abyssal-color:       light-dark(oklch(48% 0.13 255),  oklch(75% 0.12 255));
+  --damage-verdant-color:       light-dark(oklch(50% 0.13 145),  oklch(78% 0.14 145));
+  --damage-chthonic-color:      light-dark(oklch(48% 0.07  65),  oklch(75% 0.07  65));
+  --damage-nethercurrent-color: light-dark(oklch(52% 0.16 300),  oklch(78% 0.13 300));
+  --damage-voidyr-color:        light-dark(oklch(45% 0.14 325),  oklch(76% 0.13 325));
+  --damage-core-color:          light-dark(oklch(50% 0.15  15),  oklch(75% 0.14  15));
+}
+
 /* Facing-arc keyword accents — threat-coded: attacks from your Front Arc are
    baseline, Peripheral gets +1 to hit/damage, Rear +3; Flank spans both. */
 :root {

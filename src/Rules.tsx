@@ -12,6 +12,7 @@ import EquipmentAndPerksPage from "./pages/EquipmentAndPerksPage";
 import MagicPage from "./pages/MagicPage";
 import CreaturesPage from "./pages/CreaturePage/CreaturesPage";
 import MagicSpellPage from "./pages/MagicSpellPage";
+import ReferencePage from "./pages/ReferencePage/ReferencePage";
 
 export default function Rules() {
   return (
@@ -27,6 +28,7 @@ export default function Rules() {
         <Route path="/character-creation/rules" element={<CharacterCreationRulesPage />} />
         <Route path="/character-creation/generator" element={<CharacterGeneratorPage />} />
         <Route path="/equipment-and-perks" element={<EquipmentAndPerksPage />} />
+        <Route path="/reference" element={<ReferencePage />} />
         {/* Legacy routes kept so existing links/bookmarks still resolve. */}
         <Route path="/additional-equipment" element={<EquipmentAndPerksPage />} />
         <Route path="/perks" element={<EquipmentAndPerksPage />} />

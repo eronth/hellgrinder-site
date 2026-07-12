@@ -34,6 +34,7 @@ const NavTabs = ({selectedTab}: Props) => {
     { to: "/creatures", tab: "creatures" as TabType, label: "Creatures", icon: faBookSkull },
     { to: "/lore", tab: "lore" as TabType, label: "Lore" },
     { to: "/equipment-and-perks", tab: "equipment-and-perks" as TabType, label: "Perks & Equipment" },
+    { to: "/reference", tab: "reference" as TabType, label: "Reference" },
   ];
 
   return (

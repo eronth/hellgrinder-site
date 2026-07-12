@@ -1,0 +1,48 @@
+/* Inline defense chip (Resist/Absorb/Weak + element + amount). Sits inside
+   running prose, so it stays close to 1em and never breaks across lines. */
+.defense-mod {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3em;
+  padding: 0 0.4em;
+  border: 1px solid    light-dark(#00000033, #ffffff44);
+  background-color:    light-dark(#0000000d, #ffffff14);
+  border-radius: 4px;
+  white-space: nowrap;
+  line-height: 1.4;
+
+  &.defense-weak {
+    border-color:     light-dark(#c98484, #7a4444);
+    background-color: light-dark(#c9848422, #7a444444);
+  }
+
+  &.defense-absorb {
+    border-color:     light-dark(#84b6c9, #3f647a);
+    background-color: light-dark(#84b6c922, #3f647a44);
+  }
+}
+
+.defense-mod-kind {
+  font-size: 0.8em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.defense-mod-qualifier {
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.defense-mod-label {
+  font-weight: 600;
+}
+
+.defense-mod-note {
+  font-size: 0.85em;
+  opacity: 0.65;
+
+  &::before { content: '('; }
+  &::after { content: ')'; }
+}

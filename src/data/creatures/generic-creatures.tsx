@@ -6,6 +6,7 @@ import RuleKeyword from '../../components/keywords/RuleKeyword';
 import SkillCheck from '../../components/keywords/SkillCheck/SkillCheck';
 import { movementIcon } from '../../utils/commonIcons';
 import Tags from '../../components/keywords/Tags/Tags';
+import DefenseMod from '../../components/keywords/DefenseMod/DefenseMod';
 
 const coreResist: DamageTakenMod = {
   modification: 'Resist',
@@ -285,7 +286,7 @@ const exObj: { [key: string]: Creature } = {
       {
         name: '',
         description: <>
-          Wreislanders [Resist All 5] until they take either
+          Wreislanders have <DefenseMod mod='Resist' type='All' value={5} /> until they take either
           DISRUPT or REJECT damage.
         </>
       }

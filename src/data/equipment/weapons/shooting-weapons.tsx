@@ -1,3 +1,5 @@
+import Arc from '../../../components/keywords/Arc/Arc';
+import Tags from '../../../components/keywords/Tags/Tags';
 import { Weapon } from '../../../ts-types/types';
 import DiceTools from '../../../utils/dice-handling';
 
@@ -13,7 +15,10 @@ const exObj: { [key: string]: Weapon } = {
         m: { value: DiceTools.get2d6(), type: 'Metal' },
         h: { value: [DiceTools.get2d6(), DiceTools.get2d4()], type: 'Metal' },
       },
-      effects: ['You can make an attack with this weapon targeting an enemy in your [Peripheral Arc] with a -3 penalty to the Hit Check.'],
+      effects: [<>
+        You can make an attack with this weapon targeting an
+        enemy in your <Arc type="peripheral" /> with a -3 penalty to the Hit Check.
+      </>],
     }],
   },
   combatRifle: {
@@ -77,9 +82,15 @@ const exObj: { [key: string]: Weapon } = {
         m: { value: 1, type: 'Metal' },
         h: { value: 3, type: 'Metal' },
       },
-      effects: ['Launch a Grenade by making a shooting attack instead of a Thrown Attack. After the attack hits, the grenade detonates on your target\'s hex dealing any damage or effects of the grenade in addition to this attack\'s damage. The attack loses the [Thrown] property.',
-        'Grenades launched by this weapon get +1 to their Area.'
-      ],
+      effects: [<>
+          Launch a Grenade by making a shooting attack instead of a 
+          Thrown Attack. After the attack hits, the grenade detonates
+          on your target\'s hex dealing any damage or effects of the
+          grenade in addition to this attack\'s damage. The attack loses
+          the <Tags tags={['Thrown']} /> property.
+      </>, <>
+        Grenades launched by this weapon get +1 to their Area.
+      </>],
     }],
   },
   sniper: {

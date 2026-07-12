@@ -5,6 +5,7 @@ import ArcaneWeapons from "./weapons/arcane-weapons.tsx";
 import Armor from "./armor.tsx";
 import Tools from '../../utils/tools.tsx';
 import { movementIcon } from '../../utils/commonIcons.tsx';
+import DefenseMod from '../../components/keywords/DefenseMod/DefenseMod.tsx';
 
 // Todo - Add descriptions to all kits.
 
@@ -59,7 +60,7 @@ const exObj: { [key: string]: Kit } = {
       name: 'Heat Resistance Suit',
       tags: [],
       description: 'A suit that helps protect against he singe of fires.',
-      effects: ['Gain [Resist Infernal 2].'],
+      effects: [<>Gain <DefenseMod mod='Resist' type='Infernal' value={2} />.</>],
       isAdvancedItem: false,
       bonuses: [{ defense: 'Resist', element: 'Infernal', value: 2 }],
     }],
@@ -188,13 +189,13 @@ const exObj: { [key: string]: Kit } = {
     trainings: [{
       name: 'Inhuman Speed',
       tags: ['Arcane', 'Movement'],
-      effects: ['Gain +1 Move Speed. Gain an additional +1 Move Speed if you have been hit by you chosen element since the end of your last turn.'],
+      effects: ['Gain +1 Move Speed. Gain an additional +1 Move Speed if you have been hit by your chosen element since the end of your last turn.'],
       bonuses: [{ label: 'Move Speed', value: 1 }],
     },
     {
       name: 'Power Infusion',
       tags: ['Arcane'],
-      effects: ['Gain +1 Damage for every 6 Corruption you have.'],
+      effects: ['Gain +2 Damage for every 6 Corruption you have.'],
     }],
   },
 
@@ -241,8 +242,8 @@ const exObj: { [key: string]: Kit } = {
         name: 'Innersoul Stabilizing Field Generator',
         tags: ['Arcane', 'Relic'],
         description: '',
-        effects: ['At the start of your turn, you and allies in [Short Range] of you gain +1 Health.', 'You and allies ' +
-          'in [Short Range] of you gain [Resist Soulrend 1].'],
+        effects: ['At the start of your turn, you and allies in [Short Range] of you gain +1 Health.',
+          <>You and allies in [Short Range] of you gain <DefenseMod mod='Resist' label='Soulrend' value={1} />.</>],
         isAdvancedItem: false,
         isChoiceItem: true,
         bonuses: [{ label: 'Resist Soulrend', value: 1, condition: 'you and nearby allies' }],

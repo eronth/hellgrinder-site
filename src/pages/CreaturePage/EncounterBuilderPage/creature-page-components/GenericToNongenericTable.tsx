@@ -1,4 +1,5 @@
 import Tags from "../../../../components/keywords/Tags/Tags";
+import DefenseMod from "../../../../components/keywords/DefenseMod/DefenseMod";
 import GenericToNongenericRow from "./GenericToNongenericRow";
 
 export default function GenericToNongenericTable() {
@@ -21,7 +22,7 @@ export default function GenericToNongenericTable() {
           special: <>
             The first time a Thornwraith is hit with Nethercurrent, they take 4 Infernal Damage (ignores resistances).
             <br />Thornwraith has a 50% chance to resist any status effect.
-            <br />Thornwraith has [Resist Infernal 2].
+            <br />Thornwraith has <DefenseMod mod='Resist' type='Infernal' value={2} />.
           </>
         }} />
         <GenericToNongenericRow data={{
@@ -80,8 +81,9 @@ export default function GenericToNongenericTable() {
           absorb: "Nethercurrent",
           weaknesses: ["Abyssal", "Infernal"],
           special: <>
-            Gain [Resist Metal 5] against non-blessed metals.
-            <br />Gain [Weak Blessed Metal 5] and [Weak Blessed Fire 5].
+            Gain <DefenseMod mod='Resist' type='Metal' value={5} /> against non-blessed metals.
+            <br />Gain <DefenseMod mod='Weak' qualifier='Blessed' type='Metal' value={5} /> and{' '}
+            <DefenseMod mod='Weak' qualifier='Blessed' type='Infernal' value={5} />.
           </>,
         }} />
       </tbody>

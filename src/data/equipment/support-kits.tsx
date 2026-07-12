@@ -1,9 +1,14 @@
 import type { Kit } from '../../ts-types/types.tsx';
+// Data
 import MeleeWeapons from './weapons/melee-weapons.tsx';
 import ShootingWeapons from './weapons/shooting-weapons.tsx';
 import ThrownWeapons from './weapons/thrown-weapons.tsx';
-
+// Components
+import SkillCheck from '../../components/keywords/SkillCheck/SkillCheck.tsx';
+import CheckResultsGrid from '../../pages/HowToPlayPage/how-to-play-components/CheckResultsGrid/CheckResultsGrid.tsx';
+// Functions
 import Tools from '../../utils/tools.tsx';
+
 
 // Todo - Add descriptions to all kits.
 
@@ -16,14 +21,16 @@ const exObj: { [key: string]: Kit } = {
       name: 'Medkit',
       tags: [],
       description: 'Your medkit has 3 uses.',
-      effects: [
-        'You may spend a use of your medkit to heal an ally who has a Critical Injury. '
-        + 'Roll a [Medical] skill check. '
-        + 'Rank 3: Spend 1 use of the medkit to remove the Critical Injury.'
-        + 'Rank 2: Spend 2 uses of the medkit to remove the Critical Injury.'
-        + 'Rank 1: Spend 2 uses of the medkit to remove the Critical Injury, but deal 3 damage to the ally.'
-        + 'Failure: Spend 1 use of the medkit, but gain no other benefit.'
-      ],
+      effects: [<>
+        You may spend a use of your medkit to heal an ally who has a Critical Injury.
+        Roll a <SkillCheck tags={['Medical']} />.
+        <CheckResultsGrid className="swap-equipment-grid" results={{
+          r2: <>Spend 2 uses of the medkit to remove the Critical Injury.</>,
+          r1: <>Spend 2 uses of the medkit to remove the Critical Injury, but deal 3 damage to the ally.</>,
+          r0: <>Spend 1 use of the medkit, but gain no other benefit.</>,
+          r3: <>Spend 1 use of the medkit to remove the Critical Injury.</>,
+        }} />
+      </>],
     }],
     trainings: [{
       name: 'Medical Expertise',
@@ -68,7 +75,7 @@ const exObj: { [key: string]: Kit } = {
     trainings: [{
       name: 'Instrument Analyst',
       tags: [],
-      effects: ['You get +2 to all Observation Skill Checks.', ''],
+      effects: ['You get +2 to all [Observation Skill Checks].', ''],
       bonuses: [{ tag: 'Observation', value: 2 }],
     }, {
       name: 'Communicator',
@@ -129,7 +136,7 @@ const exObj: { [key: string]: Kit } = {
       name: 'Mystic Deck',
       tags: ['Arcane'],
       description: 'Your tarot deck is a powerful tool for divination.',
-      effects: ['You get +1 to all [Observation Skill Checks].'],
+      effects: [<>You get +1 to all <SkillCheck tags={['Observation']} plural />.</>],
       bonuses: [{ tag: 'Observation', value: 1 }],
     }],
     trainings: [{

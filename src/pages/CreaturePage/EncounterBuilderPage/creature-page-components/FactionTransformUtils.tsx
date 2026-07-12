@@ -4,6 +4,7 @@ import { Creature, CreatureAbility, CreatureTier, DamageTakenMod } from '../../.
 import { AttackMode, DamageElement } from '../../../../ts-types/types';
 import StatusKeyword from '../../../../components/keywords/StatusKeyword';
 import DamageType from '../../../../components/keywords/DamageType/DamageType';
+import DefenseMod from '../../../../components/keywords/DefenseMod/DefenseMod';
 import _ from "lodash";
 import SkillCheck from "../../../../components/keywords/SkillCheck/SkillCheck";
 import { giftOfPlague } from "../../../../data/creatures/test-creatures";
@@ -59,7 +60,7 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
       {
         name: 'Infernal Resiliency',
         description: <>
-          Thornwraith has [Resist Infernal 2].
+          Thornwraith has <DefenseMod mod='Resist' type='Infernal' value={2} />.
         </>,
         permittedTiers: 'all'
       },
@@ -249,14 +250,15 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
       {
         name: 'Uncanny Durability',
         description: <>
-        Gain [Resist Metal 5] against non-blessed metals.
+        Gain <DefenseMod mod='Resist' type='Metal' value={5} /> against non-blessed metals.
         </>,
         permittedTiers: 'all'
       },
       {
         name: 'Blessed Aversions',
         description: <>
-          Gain [Weak Blessed Metal 5] and [Weak Blessed Fire 5].
+          Gain <DefenseMod mod='Weak' qualifier='Blessed' type='Metal' value={5} /> and{' '}
+          <DefenseMod mod='Weak' qualifier='Blessed' type='Infernal' value={5} />.
         </>,
         permittedTiers: 'all'
       }

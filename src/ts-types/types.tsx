@@ -7,9 +7,12 @@ import { AllValidTags } from "./tag-types";
 // Status rework for duration/stack info.
 // Maybe lock status name to status types
 
-type TabType = "home" | "lore" | "how-to-play" | "character-creation" 
+type TabType = 
+  "home" | "lore" | "how-to-play"
+  | "character-creation" 
   | "character-generator" | "creatures"
-  | "equipment-and-perks" | "items" | "magic";
+  | "equipment-and-perks" | "items" | "magic"
+  | "reference";
 
 type HeaderSize = 
   'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'

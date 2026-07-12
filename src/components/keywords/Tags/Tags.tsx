@@ -48,7 +48,7 @@ export default function Tags({ tags, onTagClick, selectedTags, selectedOnly, chi
         <span className='range-values'>
           {visibleRangeTags.map((t, ri) => {
             const isSelected = isTagSelected(t);
-            const className = `range-value${isSelected ? ' selected-choice' : ''}${onTagClick ? ' clickable' : ''}`;
+            const className = `range-value${(isSelected && !selectedOnly) ? ' selected-choice' : ''}${onTagClick ? ' clickable' : ''}`;
             return (
               <span key={`range-${ri}`}>
                 {ri > 0 && ', '}
@@ -63,7 +63,7 @@ export default function Tags({ tags, onTagClick, selectedTags, selectedOnly, chi
     )}
     {otherTags.map((t, ti) => {
       const isSelected = isTagSelected(t);
-      const className = `tag ${isSpecialTag(t) ? ' special' : ''}${isSelected ? ' selected-choice' : ''}${onTagClick ? ' clickable' : ''}`;
+      const className = `tag ${isSpecialTag(t) ? ' special' : ''}${(isSelected && !selectedOnly) ? ' selected-choice' : ''}${onTagClick ? ' clickable' : ''}`;
 
       if (selectedOnly && !isSelected) { return null; }
 

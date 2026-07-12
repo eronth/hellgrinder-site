@@ -40,6 +40,8 @@ export default function SelectableTags({
         }
         selectedOnly={choiceInteraction?.locked}
       />
+
+      {/* Choice controls */}
       {choiceInteraction && (
         <span className="choice-controls">
           {!choiceInteraction.locked && choiceTags.count > 0 && (

@@ -104,6 +104,7 @@ const exObj: { [key: string]: Weapon } = {
       count: 1,
     },
     attackModes: [{
+      name: 'Rune Blast',
       tags: ['Attack', 'Arcane', 'Short Range', 'Medium Range'],
       damage: {
         l: { value: DiceTools.get2d4(-2), type: 'Chosen Type' },

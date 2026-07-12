@@ -6,8 +6,9 @@ nav.navcluster {
   justify-content: center;
   margin: 1em 0;
   
+  /* Spacing comes from the anchor's `gap` now that it's a flex container. */
   .icon {
-    margin-inline-end: 0.25em;
+    flex: 0 0 auto;
   }
 
   a {
@@ -18,7 +19,15 @@ nav.navcluster {
     color: var(--text-color);
     text-decoration: none;
     transition: background-color 0.25s;
-    display: inline-block;
+
+    /* These are grid items, so the grid stretches every tile to the tallest in
+       the row. With inline-block, a one-line label ("Lore") sat flush against
+       the top of a box stretched by a two-line neighbour ("Perks & Equipment")
+       rather than centred in it. Centre the content explicitly. */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25em;
   }
 }
 
@@ -31,10 +40,13 @@ nav.navcluster {
   }
   
   nav.navcluster a {
-    width: auto; /* Remove fixed width */
+    width: auto;
     min-width: 0;
     padding: 0.75em 0.5em;
     font-size: 0.9em;
+    /* px, not em: :root shrinks to 12-14px at these widths, so an em-based
+       floor would shrink right along with it. */
+    min-height: 44px;
   }
 }
 

@@ -8,12 +8,17 @@
 /* Put on each section the nav scrolls to, so its heading isn't hidden
    under the sticky bar when jumped to or scrolled past. */
 .scrollspy-target {
-  scroll-margin-top: 4.5rem;
+  scroll-margin-top: calc(4.5rem + env(safe-area-inset-top, 0px));
 }
 
+/* Installed as a standalone PWA (see site.webmanifest), the page renders
+   edge-to-edge: the viewport starts at y=0, *behind* the status bar. Sticking
+   at top:0 would park the bar under the clock and notification icons, so we
+   stick below the safe-area inset instead. Requires viewport-fit=cover in the
+   viewport meta, without which env() resolves to 0 and this is a no-op. */
 .scrollspy-nav {
   position: sticky;
-  top: 0;
+  top: env(safe-area-inset-top, 0px);
   z-index: 50;
   background: var(--background-color);
   border-bottom: 1px solid light-dark(
@@ -24,7 +29,20 @@
     rgb(0 0 0 / 0.06),
     rgb(0 0 0 / 0.3)
   );
+
+  /* Extends the bar's background up through the safe-area strip, so page content
+     doesn't scroll visibly behind the status bar in the gap above the bar. */
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: env(safe-area-inset-top, 0px);
+    background: var(--background-color);
+  }
 }
+
 
 .scrollspy-nav-inner {
   position: relative;
@@ -35,52 +53,62 @@
   overflow-x: auto;
   scrollbar-width: thin;
   -webkit-overflow-scrolling: touch;
+  --indicator-radius: 5px;
+  
+  /* The single pill that slides between items to mark the active section. */
+  .scrollspy-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: var(--indicator-radius);
+    background-color: var(--accent-color);
+    pointer-events: none;
+    z-index: 0;
+    transition:
+      transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      width 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      height 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .scrollspy-link {
+    position: relative;
+    z-index: 1;
+    flex: 0 0 auto;
+    /* Flex-centered rather than relying on line-height, so the label sits dead
+       centre regardless of the font's own metrics. */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--indicator-radius);
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    color: var(--text-offset-color);
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: color 0.2s ease, background-color 0.2s ease;
+  
+    &:hover {
+      color: var(--text-color);
+    }
+  
+    /* "Heading here" hint painted immediately on click, cleared once the scroll
+       lands (the sliding pill then takes over as the solid active background). */
+    &.pending {
+      color: var(--text-color);
+      background-color: color-mix(in srgb, var(--accent-color) 32%, transparent);
+    }
+    
+    &.active {
+      color: white;
+    }
+  }
 }
 
-/* The single pill that slides between items to mark the active section. */
-.scrollspy-indicator {
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 999px;
-  background-color: var(--accent-color);
-  pointer-events: none;
-  z-index: 0;
-  transition:
-    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-    width 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-    height 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-.scrollspy-link {
-  position: relative;
-  z-index: 1;
-  flex: 0 0 auto;
-  padding: 0.35rem 0.85rem;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  white-space: nowrap;
-  color: var(--text-offset-color);
-  text-decoration: none;
-  border: 1px solid transparent;
-  transition: color 0.2s ease, background-color 0.2s ease;
-}
 
-.scrollspy-link:hover {
-  color: var(--text-color);
-}
-
-/* "Heading here" hint painted immediately on click, cleared once the scroll
-   lands (the sliding pill then takes over as the solid active background). */
-.scrollspy-link.pending {
-  color: var(--text-color);
-  background-color: color-mix(in srgb, var(--accent-color) 32%, transparent);
-}
-
-.scrollspy-link.active {
-  color: white;
-}
 
 /* Respect reduced-motion: no slide, just snap. */
 @media (prefers-reduced-motion: reduce) {
@@ -93,10 +121,21 @@
   .scrollspy-nav-inner {
     padding: 0.4rem 1rem;
     gap: 0.25rem;
+    --indicator-radius: 3px;
+
+    .scrollspy-indicator {
+      height: 2px;
+    }
+  
+    .scrollspy-link {
+      font-size: 0.85rem;
+      padding: 0.3rem 0.7rem;
+      /* :root drops to 12-14px here, so the padding alone leaves a pill far
+         below a usable tap target. Set an explicit floor in px, not em, so it
+         can't shrink with the root. The sliding indicator measures offsetHeight,
+         so it picks this up on its own. */
+      min-height: 36px;
+    }
   }
 
-  .scrollspy-link {
-    font-size: 0.85rem;
-    padding: 0.3rem 0.7rem;
-  }
 }

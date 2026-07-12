@@ -43,7 +43,15 @@ export default function ScrollspyNav({ sections }: Props) {
 
   // Scrollspy: track which section's top has passed under the sticky bar.
   useEffect(() => {
-    const getOffset = () => (navRef.current?.offsetHeight ?? 0) + 16 + 16;
+    // The bar parks at `top: env(safe-area-inset-top)`, not at 0, so its resting
+    // bottom edge is inset + height. getComputedStyle resolves the env() to px
+    // for us (0 outside a standalone PWA), keeping this in step with the CSS.
+    const getOffset = () => {
+      const nav = navRef.current;
+      if (!nav) return 16 + 16;
+      const stickyTop = parseFloat(getComputedStyle(nav).top) || 0;
+      return stickyTop + nav.offsetHeight + 16 + 16;
+    };
 
     let frame = 0;
     const update = () => {

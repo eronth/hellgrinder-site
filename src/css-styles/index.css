@@ -299,6 +299,18 @@ a:hover {
   color: var(--accent-color);
 }
 
+/* Mobile browsers (iOS Safari, Chrome Android) run a text autosizer that
+   inflates text they judge "too small", using a per-block multiplier derived
+   from each block's width. Because the mobile breakpoints below take :root down
+   to 14px/12px, most of our text falls under that threshold and gets boosted by
+   differing amounts, which bloats line boxes and breaks alignment. Desktop
+   DevTools device emulation does NOT run the autosizer, so this only ever
+   reproduced on real hardware. Pin it off and honor the authored sizes. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
   display: flex;

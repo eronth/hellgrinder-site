@@ -266,7 +266,7 @@ export default function CreatureCard({
       </TooltipWrapper>
       <TooltipWrapper explanation={cce.speed}>
         <span>Speed: {data.speed}{hexIcon}
-          {data.dash ? ` (${data.dash >= 0 ? '+' : ''}${data.dash}${hexIcon})` : null}
+          {data.dash ? <>&nbsp;({`${data.dash >= 0 ? '+' : ''}${data.dash}${hexIcon}`})</> : null}
         </span>
       </TooltipWrapper>
       <TooltipWrapper explanation={cce.size}>

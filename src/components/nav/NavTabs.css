@@ -185,8 +185,10 @@ nav.navtabs.desktop-nav {
   .mobile-menu-toggle {
     display: flex;
     position: fixed;
-    top: 1rem;
-    right: 1rem;
+    /* Standalone PWAs render edge-to-edge, so a bare 1rem would tuck this
+       under the status bar. Offset by the safe-area inset (0 elsewhere). */
+    top: calc(1rem + env(safe-area-inset-top, 0px));
+    right: calc(1rem + env(safe-area-inset-right, 0px));
     z-index: 1001;
     background-color: var(--primary-color, #646cff);
     color: white;
@@ -237,6 +239,12 @@ nav.navtabs.desktop-nav {
     z-index: 1000;
     transition: right 0.3s ease-in-out;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+
+    /* Panel spans the full edge-to-edge viewport, so keep its contents clear of
+       the status bar at the top and the gesture bar at the bottom. */
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    box-sizing: border-box;
 
     &.open { right: 0; }
 

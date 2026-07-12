@@ -6,7 +6,6 @@ import { AttackMode, DamageElement } from '../../../../ts-types/types';
 import StatusKeyword from '../../../../components/keywords/StatusKeyword';
 import DamageType from '../../../../components/keywords/DamageType/DamageType';
 import DefenseMod from '../../../../components/keywords/DefenseMod/DefenseMod';
-import _ from "lodash";
 import SkillCheck from "../../../../components/keywords/SkillCheck/SkillCheck";
 import { giftOfPlague } from "../../../../data/creatures/test-creatures";
 import { arc } from "../../../../data/creatures/zephpter-creatures";
@@ -305,8 +304,10 @@ export function transformCreatureToFaction(creature: Creature, factionKey: strin
   const faction = FACTION_DATA[factionKey];
   if (!faction) { return creature; }
 
-  // Create a deep copy of the creature
-  const transformedCreature: Creature = _.cloneDeep(creature);
+  // Shallow copy only: `attacks[].effects` and `abilities[].description` hold JSX, and
+  // deep-cloning a React element strips its non-enumerable internals (see tools.tsx).
+  // Every field mutated below is reassigned wholesale, so the original is never touched.
+  const transformedCreature: Creature = { ...creature };
   transformedCreature.abilities = creature.abilities || [];
 
 

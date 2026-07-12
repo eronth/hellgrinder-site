@@ -236,6 +236,7 @@ export default function CreatureCard({
   return (<div
     className={`creature-card faction ${factionClass} ${isEncounterMode ? 'encounter-card' : ''} ${isExample ? 'example-card' : ''}`}
   >
+    {/* Creature Name and rank */}
     <div className='title-row'>
       <TooltipWrapper explanation={cce.name}>
         <span className='name'>{data.name}</span>
@@ -247,6 +248,7 @@ export default function CreatureCard({
         {isEncounterMode ? (removeFromEncounterButton) : (addToEncounterButton)}
       </div>
     </div>
+
     {/* <TooltipWrapper explanation="Tags describe special characteristics, creature types, and mechanical properties. Some abilities or spells may interact specifically with certain tags."> */}
       <div className='tags'>
         {nonFactionTags.map((tag, i) => <span 
@@ -256,6 +258,8 @@ export default function CreatureCard({
         </span>)}
       </div>
     {/* </TooltipWrapper> */}
+
+    {/* Stats */}
     <div className='stats'>
       <TooltipWrapper explanation={cce.health}>
         <span>Health: {healthDisplay}</span>
@@ -279,6 +283,7 @@ export default function CreatureCard({
       </TooltipWrapper>
     </div>
 
+    {/* Damage modifiers */}
     <div className='damage-modifiers'>
       <TooltipWrapper 
         className='damage-modifiers-tooltip' 
@@ -288,7 +293,8 @@ export default function CreatureCard({
           <DamageModComponent key={`creature-${data.name}-damage-taken-mod-${i}`} mod={mod} />)}
       </TooltipWrapper>
     </div>
-
+    
+    {/* Attacks */}
     <TooltipWrapper explanation={cce.attacks} isDiv>
       <div>
         {data.attacks.map((attack, i) => <div key={`creature-${data.name}-attack-${i}`}>

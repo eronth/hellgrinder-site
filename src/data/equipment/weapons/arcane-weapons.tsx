@@ -20,9 +20,9 @@ const nethercurrent: DamageElement = 'Nethercurrent';
 const voidyr: DamageElement = 'Voidyr';
 
 const sevenDeadlySinSpells: { [key: string]: Weapon } = {
-  wrath: {
-    name: 'Wrath',
-    tags: ['One-Handed', { Cursed: 1 }],
+  greed: {
+    name: 'Greed',
+    tags: ['One-Handed', { Cursed: 2 }],
     isAdvancedItem: false,
     choiceTags: {
       tags: [infernal, verdant, chthonic],
@@ -43,6 +43,36 @@ const sevenDeadlySinSpells: { [key: string]: Weapon } = {
       </>],
     }],
   },
+  wrath: {
+    name: 'Wrath',
+    tags: ['One-Handed', { Cursed: 2 }],
+    isAdvancedItem: false,
+    choiceTags: {
+      tags: [infernal, verdant, chthonic],
+      count: 1,
+    },
+    attackModes: [{
+      tags: ['Attack', 'Arcane', 'Adjacent Range', 'Short Range'],
+      damage: {
+        l: { value: DiceTools.get1d4(-1), type: 'Chosen Type' },
+        m: { value: DiceTools.get1d4(), type: 'Chosen Type' },
+        h: { value: DiceTools.get1d6(), type: 'Chosen Type' },
+      },
+      effects: [<>
+        When you hit with this attack, mark the target with Your Wrath at level 1.
+        Only one creature can be marked with Your Wrath at a time.
+      </>, <>
+        Attacks with Wrath against a target marked with Your Wrath deal an additional
+        1d6 damage plus the level of Your Wrath. Then, increase the level of
+        Your Wrath on that target 1.
+      </>],
+    }],
+  }
+  // todo gluttony
+  // todo lust
+  // todo envy/jealousy
+  // todo apathy/sloth
+  // pride/boasting
 };
 
 const exObj: { [key: string]: Weapon } = {

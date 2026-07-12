@@ -1,3 +1,4 @@
+import Range from '../../../components/keywords/Range/Range';
 import Tags from '../../../components/keywords/Tags/Tags';
 import { DamageElement, Weapon } from '../../../ts-types/types';
 import DiceTools from '../../../utils/dice-handling';
@@ -241,7 +242,7 @@ const exObj: { [key: string]: Weapon } = {
         h: { value: DiceTools.get1d8(), type: 'Chosen Type' },
       },
       effects: [<>
-        When you hit a creature with this attack, you can move them to an unoccupied hex within [Short Range] of their current location.
+        When you hit a creature with this attack, you can move them to an unoccupied hex within <Range type='short' /> of their current location.
         This movement does not need to be in a straight line, and does not provoke opportunity attacks.
       </>],
     }],
@@ -264,9 +265,9 @@ const exObj: { [key: string]: Weapon } = {
       effects: [<>
         This attack has the <Tags tags={[{ Area: 1 }]} /> tag but with the following special rules:
       </>,<>
-        This attack also targets all creatures within [Adjacent Range] of your target with a -2 penalty to the Hit Check.     
+        This attack also targets all creatures within <Range type='adjacent' /> of your target with a -2 penalty to the Hit Check.     
       </>, <>
-        You can target yourself with this attack. If you do, you take half damage and ignore the -2 penalty for all creatures in [Adjacent Range] of you.
+        You can target yourself with this attack. If you do, you take half damage and ignore the -2 penalty for all creatures in <Range type='adjacent' /> of you.
       </>],
     }],
   },

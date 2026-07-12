@@ -1,0 +1,67 @@
+/* Range keyword: a small "distance ruler" glyph — the character as a dot at
+   zero, then five bands climbing away from them, with the named band picked
+   out in the accent. Reads as a distance out from you rather than a signal
+   strength, which is why the nearer bands stay visible instead of unfilled.
+   The accent ramps with distance (see --range-*-color in index.css); it stays
+   one hue so a Short and a Medium don't look like different kinds of rule. */
+.range-keyword {
+  --range-accent: var(--range-adjacent-color);
+  white-space: nowrap;
+  font-weight: 600;
+  color: var(--range-accent);
+
+  &.short { --range-accent: var(--range-short-color); }
+  &.medium { --range-accent: var(--range-medium-color); }
+  &.long { --range-accent: var(--range-long-color); }
+  &.extreme { --range-accent: var(--range-extreme-color); }
+
+  .range-glyph {
+    width: 1.3em;
+    height: 1em;
+    vertical-align: -.12em;
+    margin-right: .25em;
+    overflow: visible;
+  }
+
+  .range-track {
+    stroke: var(--range-track-color);
+    stroke-width: 1.2;
+    stroke-linecap: round;
+  }
+
+  .range-origin {
+    fill: currentColor;
+    opacity: .55;
+  }
+
+  .range-bar {
+    fill: var(--range-track-color);
+
+    &.near {
+      fill: var(--range-accent);
+      opacity: .3;
+    }
+
+    &.active {
+      fill: var(--range-accent);
+    }
+  }
+}
+
+/* The rule popup trigger paints its own color and dotted underline over the
+   whole span; keep the range accent and move the underline to just the label
+   so the glyph stays clean. (Same trick as .arc-trigger.) */
+.rule-keyword.range-trigger {
+  color: inherit;
+  border-bottom: none;
+
+  .range-label {
+    text-decoration: underline dotted;
+    text-decoration-thickness: 1px;
+    text-underline-offset: .2em;
+  }
+
+  &:hover .range-keyword {
+    filter: brightness(1.15);
+  }
+}

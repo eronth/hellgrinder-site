@@ -1,3 +1,4 @@
+import Range from "../../../../components/keywords/Range/Range";
 import { DealWithTheDevilRow } from "../../../../ts-types/table-types";
 import DevilDealTableRow from "./DevilDealTableRow";
 
@@ -37,7 +38,7 @@ export default function DevilDealTable() {
     }, {
       result: 7,
       name: "Unholy Lifeforce",
-      boon: "Gain any amount of health back, up to your max health. Remove any number of Injuries. You may transfer Injuries removed this way to another creature within [Long Range].",
+      boon: <>Gain any amount of health back, up to your max health. Remove any number of Injuries. You may transfer Injuries removed this way to another creature within <Range type="long" />.</>,
       cost: "Gain 1 Corruption per health point healed. Gain 5 corruption per Injury removed."
     }, {
       result: 8,

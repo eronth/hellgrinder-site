@@ -113,7 +113,7 @@ type Item = ItemDef & {
 type Training = {
   name: string;
   tags: AllValidTags[];
-  effects: string[];
+  effects: React.ReactNode[];
   bonuses?: GrantedBonus[];
 }
 

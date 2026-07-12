@@ -103,10 +103,14 @@ const rehydrateKit = (kit: Kit): Kit => {
       rehydrateWeapon(w, canonical?.weapons.find(cw => cw.name === w.name) ?? canonicalWeapons.get(w.name))),
     items: kit.items.map(i =>
       rehydrateItem(i, canonical?.items.find(ci => ci.name === i.name) ?? canonicalItems.get(i.name))),
-    trainings: kit.trainings.map(t => ({
-      ...t,
-      bonuses: rehydrateBonuses(t.bonuses, canonical?.trainings.find(ct => ct.name === t.name)?.bonuses),
-    })),
+    trainings: kit.trainings.map(t => {
+      const canonicalTraining = canonical?.trainings.find(ct => ct.name === t.name);
+      return {
+        ...t,
+        effects: repairNodeArray(t.effects, canonicalTraining?.effects) ?? [],
+        bonuses: rehydrateBonuses(t.bonuses, canonicalTraining?.bonuses),
+      };
+    }),
   };
 };
 

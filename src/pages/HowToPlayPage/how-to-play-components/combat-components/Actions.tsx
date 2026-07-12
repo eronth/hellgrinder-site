@@ -4,6 +4,8 @@ import Hx from "../../../../components/common/generic/Hx/Hx";
 import RuleKeyword from "../../../../components/keywords/RuleKeyword";
 import SkillCheck from "../../../../components/keywords/SkillCheck/SkillCheck";
 import { HeaderSize } from "../../../../ts-types/types";
+import HitCheck from "../../../../components/keywords/HitCheck/HitCheck";
+import Range from "../../../../components/keywords/Range/Range";
 
 export default function Actions() {
   const innerHx: HeaderSize = 4;
@@ -35,20 +37,20 @@ export default function Actions() {
         </p>
         <ul>
           <li>
-            Adjacent Range is 1 hex.
+            <Range type='adjacent' /> is 1 hex.
           </li>
           <li>
-            Short Range is 1-3 hexes.
+            <Range type='short' /> is 1-3 hexes.
           </li>
           <li>
-            Medium Range is 4-8 hexes.
+            <Range type='medium' /> is 4-8 hexes.
           </li>
           <li>
-            Long Range is 9-12.
+            <Range type='long' /> is 9-12.
           </li>
           <li>
-            Beyond 12 Hexes, you are firing in Extreme Ranges, which increase
-            for every 3 Hexes beyond Long Range maximum.
+            Beyond 12 Hexes, you are firing in <Range type='extreme' />, which increase
+            for every 3 Hexes beyond Long Range's maximum distance.
             <br />
             For example, First Extreme Range is 13-15, Second Extreme Range is 16-18, and so on.
           </li>
@@ -72,8 +74,9 @@ export default function Actions() {
       <p>
         Choose a 2 hex cone in your front arc of a range listed on your weapon.
         Make a <SkillCheck tags={['Shooting']} />, <SkillCheck tags={['Arcane']} />,
-        or <SkillCheck tags={['Throwing']} />, so long as you have an equipped weapon with the same tag. Rank 2+ Success
-        grants -2 to Hit Checks for the attacks made by creatures in that cone until the start of your next turn.
+        or <SkillCheck tags={['Throwing']} />, so long as you have an equipped weapon
+        with the same tag. Rank 2+ Success grants -2 to <HitCheck tags={[]} plural /> for
+        the attacks made by creatures in that cone until the start of your next turn.
       </p>
       
       <Hx hx={innerHx}>Hunker Down</Hx>

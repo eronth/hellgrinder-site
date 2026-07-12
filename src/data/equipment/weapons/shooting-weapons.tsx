@@ -1,4 +1,5 @@
 import Arc from '../../../components/keywords/Arc/Arc';
+import Range from '../../../components/keywords/Range/Range';
 import Tags from '../../../components/keywords/Tags/Tags';
 import { Weapon } from '../../../ts-types/types';
 import DiceTools from '../../../utils/dice-handling';
@@ -54,7 +55,7 @@ const exObj: { [key: string]: Weapon } = {
         m: { value: DiceTools.get1d4(1), type: 'Metal' },
         h: { value: DiceTools.get1d4(3), type: 'Metal' },
       },
-      effects: ['This attack can target up to 3 enemies in your front arc within, so long as all targets are within [Short Range] of each other.'],
+      effects: [<>This attack can target up to 3 enemies in your front arc within, so long as all targets are within <Range type='short' /> of each other.</>],
     }],
   },
   flameThrower: {

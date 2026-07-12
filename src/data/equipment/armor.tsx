@@ -1,5 +1,6 @@
 import type { Item } from '../../ts-types/types';
 import DefenseMod from '../../components/keywords/DefenseMod/DefenseMod';
+import Range from '../../components/keywords/Range/Range';
 
 const exObj: { [key: string]: Item } = {
   bulletProofVest: {
@@ -64,7 +65,7 @@ const exObj: { [key: string]: Item } = {
     isAdvancedItem: true,
     description: 'A shield of energy that protects you from harm.',
     effects: [
-      <>You and allies within 1 hex of you gain <DefenseMod mod='Resist' type='All' value={1} /> against Attacks that are not [Adjacent Range].</>
+      <>You and allies within 1 hex of you gain <DefenseMod mod='Resist' type='All' value={1} /> against Attacks that are not <Range type='adjacent' />.</>
     ],
     bonuses: [{ defense: 'Resist', element: 'All', value: 1, condition: 'non-adjacent attacks' }],
   },

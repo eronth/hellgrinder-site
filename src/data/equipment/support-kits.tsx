@@ -5,6 +5,7 @@ import ShootingWeapons from './weapons/shooting-weapons.tsx';
 import ThrownWeapons from './weapons/thrown-weapons.tsx';
 // Components
 import SkillCheck from '../../components/keywords/SkillCheck/SkillCheck.tsx';
+import Range from '../../components/keywords/Range/Range.tsx';
 import CheckResultsGrid from '../../pages/HowToPlayPage/how-to-play-components/CheckResultsGrid/CheckResultsGrid.tsx';
 // Functions
 import Tools from '../../utils/tools.tsx';
@@ -46,8 +47,8 @@ const exObj: { [key: string]: Kit } = {
       name: 'Medical Miracle',
       tags: [],
       effects: [
-        'Allies within [Long Range] of you do not die when they take a Critical Injury. '
-        + 'Instead, they fall prone and unconscous.'
+        <>Allies within <Range type='long' /> of you do not die when they take a Critical Injury.
+        Instead, they fall prone and unconscous.</>
       ], 
     }],
   },

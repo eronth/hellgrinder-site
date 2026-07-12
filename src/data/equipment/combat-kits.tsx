@@ -6,6 +6,7 @@ import Armor from "./armor.tsx";
 import Tools from '../../utils/tools.tsx';
 import { movementIcon } from '../../utils/commonIcons.tsx';
 import DefenseMod from '../../components/keywords/DefenseMod/DefenseMod.tsx';
+import Range from '../../components/keywords/Range/Range.tsx';
 
 // Todo - Add descriptions to all kits.
 
@@ -34,7 +35,7 @@ const exObj: { [key: string]: Kit } = {
     trainings: [{
       name: 'Long Range Training',
       tags: ['Attack'],
-      effects: ['Gain +1 to [Long Range] Hit Checks.'],
+      effects: [<>Gain +1 to <Range type='long' /> Hit Checks.</>],
       bonuses: [{ tag: 'Long Range', value: 1 }],
     }],
   },
@@ -100,7 +101,7 @@ const exObj: { [key: string]: Kit } = {
       name: 'Flashlight',
       tags: ['Illuminate'],
       description: 'A flashlight that helps you see in the dark. You never know when you might need it.',
-      effects: ['Produce bright light in your front arc out to [Medium Range] and dim light in your front arc out to [Long Range]. Cannot penetrate arcane abyssal or voidyr darkness.' ],
+      effects: [<>Produce bright light in your front arc out to <Range type='medium' /> and dim light in your front arc out to <Range type='long' />. Cannot penetrate arcane abyssal or voidyr darkness.</>],
       isAdvancedItem: false,
     }, {...Tools.deepCopyItem(Armor.bulletProofVest)}],
     trainings: [{
@@ -216,9 +217,9 @@ const exObj: { [key: string]: Kit } = {
         name: 'Dual Scorchsashes',
         tags: ['Arcane', 'Relic'],
         description: '',
-        effects: ['At the start of your turn, creatures in [Melee Range] of you take 2'
-          + ' Infernal Damage and creatures'
-          + ' in [Short Range] of you take 1 Infernal Damage.'],
+        effects: [<>At the start of your turn, creatures in <Range type='adjacent' /> of 
+          you take 2 Infernal Damage and creatures
+          in <Range type='short' /> of you take 1 Infernal Damage.</>],
         isAdvancedItem: false,
         isChoiceItem: true,
       }, {
@@ -232,9 +233,9 @@ const exObj: { [key: string]: Kit } = {
         name: 'Slowing Viewfinder',
         tags: ['Arcane', 'Relic'],
         description: '',
-        effects: ['Creatures in your front arc at [Medium Range] make an [Endurance] Skill Check when they attempt to ' +
-          'move. On a Rank 1 Success or less, they are [Slowed 1].',
-          'Creatures in your front arc at [Short Range] are [Slowed 1].'
+        effects: [<>Creatures in your front arc at <Range type='medium' /> make an [Endurance] Skill Check when they attempt to
+          move. On a Rank 1 Success or less, they are [Slowed 1].</>,
+          <>Creatures in your front arc at <Range type='short' /> are [Slowed 1].</>
         ],
         isAdvancedItem: false,
         isChoiceItem: true,
@@ -242,8 +243,8 @@ const exObj: { [key: string]: Kit } = {
         name: 'Innersoul Stabilizing Field Generator',
         tags: ['Arcane', 'Relic'],
         description: '',
-        effects: ['At the start of your turn, you and allies in [Short Range] of you gain +1 Health.',
-          <>You and allies in [Short Range] of you gain <DefenseMod mod='Resist' label='Soulrend' value={1} />.</>],
+        effects: [<>At the start of your turn, you and allies in <Range type='short' /> of you gain +1 Health.</>,
+          <>You and allies in <Range type='short' /> of you gain <DefenseMod mod='Resist' label='Soulrend' value={1} />.</>],
         isAdvancedItem: false,
         isChoiceItem: true,
         bonuses: [{ label: 'Resist Soulrend', value: 1, condition: 'you and nearby allies' }],
@@ -252,10 +253,10 @@ const exObj: { [key: string]: Kit } = {
         tags: ['Arcane', 'Relic', 'One-Handed', 'Action', 'Maneuver', { Cursed: 1 }],
         description: 'You have 2 Soulbinder Darts.',
         effects: [
-          'As an Action or Maneuver, you can stick a Soulbinder Dart in a target within [Medium Range].',
-          'As a Free Interaction, you may retrieve a Soulbinder Dart within [Medium Range].',
-          'Whenever a creature stuck with one Soulbinder Dart takes damage, another creature within [Short Range] of ' +
-            'them takes half (rounded up) of the damage as Nethercurrent Damage.',
+          <>As an Action or Maneuver, you can stick a Soulbinder Dart in a target within <Range type='medium' />.</>,
+          <>As a Free Interaction, you may retrieve a Soulbinder Dart within <Range type='medium' />.</>,
+          <>Whenever a creature stuck with one Soulbinder Dart takes damage, another creature within <Range type='short' /> of
+            them takes half (rounded up) of the damage as Nethercurrent Damage.</>,
         ],
         isAdvancedItem: false,
         isChoiceItem: true,
@@ -264,11 +265,13 @@ const exObj: { [key: string]: Kit } = {
         tags: ['Arcane', 'Relic', 'Action'],
         description: '',
         effects: [
-          'As an action, mark a target in Short Range. You may only have one target marked this way. At the start of ' +
-            'each of your turns, the target gains one stack of Quickrot and loses 1 health. If the target becomes ' +
-            'un-marked, it instantly cures all stacks of Quickrot.',
-          'For each stack of Quickrot: Target gets -1 to Attack Rolls at [Medium Range] or [Long Range].',
-          'For every 2 Stacks of Quickrot: Target gets -1 to Attack Rolls at [Short Range].',
+          <>
+            As an action, mark a target in <Range type='short' />. You may only have one target marked this way. At the start of 
+            each of your turns, the target gains one stack of Quickrot and loses 1 health. If the target becomes 
+            un-marked, it instantly cures all stacks of Quickrot.
+          </>,
+          <>For each stack of Quickrot: Target gets -1 to Attack Rolls at <Range type='medium' /> or <Range type='long' />.</>,
+          <>For every 2 Stacks of Quickrot: Target gets -1 to Attack Rolls at <Range type='short' />.</>,
           'For every 2 Stacks of Quickrot: Target gets a stack of [Slow 1].',
           'Target Gains “Weak Metal X”, where X is the number of stacks of Quickrot divided by 4.',
         ],
@@ -279,8 +282,10 @@ const exObj: { [key: string]: Kit } = {
         tags: ['Arcane', 'Relic', 'One-Handed', 'Maneuver'],
         description: '',
         effects: [
-          'As a Maneuver, you may attach the Lifesap Coil to a creature within [Melee Range].',
-          'You may retrieve the Lifesap Coil within [Short Range] as a Free Interaction.',
+          <>
+          As a Maneuver, you may attach the Lifesap Coil to a creature within <Range type='adjacent' />.
+          </>,
+          <>You may retrieve the Lifesap Coil within <Range type='short' /> as a Free Interaction.</>,
           'Whenever a creature with the Lifesap Coil is dealt damage, you heal half of that damage unless it is Soulrend ' +
             'Damage. You then gain Corruption equal to half of the healing.',
         ],
@@ -326,9 +331,9 @@ const exObj: { [key: string]: Kit } = {
     {
       name: 'Feral Cry',
       tags: [],
-      effects: ['As an Action, you let out a feral cry. All enemies in your front arc at [Short Range] must make an ' +
-      '[Endurance] Skill Check. On a Rank 2 Success or less, they begin to focus you instead of your allies. Each target ' +
-      'moves 2 hexes away from you or 2 hexes towards you, your choice.'],
+      effects: [<>As an Action, you let out a feral cry. All enemies in your front arc at <Range type='short' /> must make an
+      [Endurance] Skill Check. On a Rank 2 Success or less, they begin to focus you instead of your allies. Each target
+      moves 2 hexes away from you or 2 hexes towards you, your choice.</>],
     }],
   },
   
@@ -385,8 +390,8 @@ const exObj: { [key: string]: Kit } = {
       tags: ['Maneuver', 'Safelight'],
       description: 'A small, safelight powered device that can connect pieces of the eternal Hells.',
       charges: 2,
-      effects: [`As a 2${movementIcon} Maneuver, you can teleport to any hex within [Medium Range] of you, `
-        + 'even if it is not in line of sight.',
+      effects: [<>As a 2{movementIcon} Maneuver, you can teleport to any hex within <Range type='medium' /> of you,
+        even if it is not in line of sight.</>,
         'Can be recharged with Safelight Gemstones or Safelight Geodes. A Safelight Shard is not enough.'
       ],
       isAdvancedItem: false,

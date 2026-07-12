@@ -1,4 +1,5 @@
 import Arc from "../../../components/keywords/Arc/Arc";
+import Range from "../../../components/keywords/Range/Range";
 import Hx from "../../../components/common/generic/Hx/Hx";
 import Tools from "../../../utils/tools.tsx";
 import StatusEffectComponent from "../../../components/common/StatusEffectComponent/StatusEffectComponent.tsx";
@@ -59,7 +60,7 @@ export default function Combat() {
       </ul>
 
       <Hx hx={innerHx}>Opportunity Strikes</Hx>
-      <p>When you move within [Adjacent Range] of a creature's <Arc type="front" /> or <Arc type="peripheral" />,
+      <p>When you move within <Range type="adjacent" /> of a creature's <Arc type="front" /> or <Arc type="peripheral" />,
         they can make a free attack against you. Demons are quick, and typically have an infinite number of these attacks. Humans, however, can't make another Opportunity Strike until the start of their turn.</p>
     </div>
 

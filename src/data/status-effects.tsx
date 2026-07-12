@@ -2,6 +2,7 @@ import { StatusEffect } from '../ts-types/types';
 import { movementIcon } from '../utils/commonIcons';
 import Arc from '../components/keywords/Arc/Arc';
 import HitCheck from '../components/keywords/HitCheck/HitCheck';
+import Range from '../components/keywords/Range/Range';
 import SkillCheck from '../components/keywords/SkillCheck/SkillCheck';
 import Tags from '../components/keywords/Tags/Tags';
 
@@ -268,7 +269,7 @@ const exObj: StatusEffectsReturn = {
     effects: [
       <>
         Any attack you make deals [[X]] damage to a random ally
-        within [Short Range] of your target or yourself (GM's choice).
+        within <Range type='short' /> of your target or yourself (GM's choice).
       </>
     ],
     x: 'X',
@@ -335,16 +336,16 @@ const exObj: StatusEffectsReturn = {
       </>,
       <>
         You gain an Egregore Strength equal to the number of other members of 
-        the [[Type]] Egregore within [Long Range] of you.
+        the [[Type]] Egregore within <Range type='long' /> of you.
       </>,
       <>
         You can use an Action to give all creatures with [[Type]] Egregor
-        within [Short Range] of you a bonus to all Skill
+        within <Range type='short' /> of you a bonus to all Skill
         Checks and Hit Checks until the start of your next turn equal to your
         Egregore Strength. 
       </>,
       <>
-        Whenever you take damage, other [[Type]] Egregor creatures in [Short Range] of you
+        Whenever you take damage, other [[Type]] Egregor creatures in <Range type='short' /> of you
         take the same amount of damage, up to your Egregore Strength.
       </>
     ],
@@ -415,7 +416,7 @@ const exObj: StatusEffectsReturn = {
     description: 'Your disgusting insides are now on your outside.',
     effects: [
       <>
-        Allies within [Short Range] that witness this transformation gain Dread.
+        Allies within <Range type='short' /> that witness this transformation gain Dread.
       </>,
       <>
         You take +1 damage from all attacks, and you take 1 at the start of your turn.

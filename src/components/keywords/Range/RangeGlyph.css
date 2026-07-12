@@ -1,0 +1,79 @@
+/* Inline glyph for the Range keyword. Five interchangeable drawings share one
+   colour language, set by --range-accent on the parent .range-keyword:
+     .far    — band beyond the named one; inert, drawn in the track colour
+     .near   — band you already cover on the way out; dim accent
+     .active — the named band itself; full accent
+   Swap drawings with RANGE_GLYPH_VARIANT in RangeGlyph.tsx. */
+
+.range-glyph {
+  height: 1em;
+  vertical-align: -.12em;
+  margin-right: .25em;
+  overflow: visible;
+
+  /* Each drawing has its own aspect ratio; the ones centred on the character
+     are square, the ones measured along a line are ruler-shaped. */
+  &.bars, &.reach, &.pips { width: 1.3em; }
+  &.ripples, &.hexrings { width: 1em; }
+}
+
+/* The line a distance is measured along, and the character standing at zero. */
+.range-track {
+  stroke: var(--range-track-color);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+
+.range-origin {
+  fill: currentColor;
+  opacity: .55;
+}
+
+/* Filled band marks — bars, hexes, pips. */
+.range-mark {
+  fill: var(--range-track-color);
+
+  &.near {
+    fill: var(--range-accent);
+    opacity: .3;
+  }
+
+  &.active {
+    fill: var(--range-accent);
+  }
+}
+
+/* Stroked band marks — the ripple arcs. */
+.range-arc {
+  fill: none;
+  stroke: var(--range-track-color);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+
+  &.near {
+    stroke: var(--range-accent);
+    opacity: .3;
+  }
+
+  &.active {
+    stroke: var(--range-accent);
+    stroke-width: 2.4;
+  }
+}
+
+/* The measuring arrow, for the 'reach' variant. */
+.range-tick {
+  stroke: var(--range-track-color);
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+
+.range-reach {
+  stroke: var(--range-accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.range-arrow {
+  fill: var(--range-accent);
+}

@@ -2,7 +2,7 @@ import { Creature } from '../../ts-types/creature-types';
 import { DamageTakenMod } from '../../ts-types/creature-types';
 import Tools from '../../utils/tools';
 import Arc from '../../components/keywords/Arc/Arc';
-import RuleKeyword from '../../components/keywords/RuleKeyword';
+import Range from '../../components/keywords/Range/Range';
 import SkillCheck from '../../components/keywords/SkillCheck/SkillCheck';
 import { movementIcon } from '../../utils/commonIcons';
 import Tags from '../../components/keywords/Tags/Tags';
@@ -359,7 +359,7 @@ const exObj: { [key: string]: Creature } = {
         name: '',
         description: <>
           Maneuver: Deal 2 Core Damage against all creatures
-          within <RuleKeyword keyword="Melee Range" /> and knock them 2 hex away.
+          within <Range type='adjacent' /> and knock them 2 hex away.
         </>
       }
     ],

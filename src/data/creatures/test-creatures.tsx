@@ -2,6 +2,7 @@ import { Creature, CreatureAbility, DamageTakenMod } from "../../ts-types/creatu
 import { DamageElement } from "../../ts-types/types";
 import { movementIcon } from "../../utils/commonIcons";
 import DamageType from "../../components/keywords/DamageType/DamageType";
+import Range from "../../components/keywords/Range/Range";
 import SkillCheck from "../../components/keywords/SkillCheck/SkillCheck";
 import Tools from "../../utils/tools";
 
@@ -229,7 +230,7 @@ const exObj: { [key: string]: Creature } = {
         name: 'Explosive Demise',
         description: <>
           When the Stench Bloater is reduced to 0 Health, it explodes.
-          Each creature within Short Range must make a
+          Each creature within <Range type='short' /> must make a
           <SkillCheck tags={['Agility']} />. On a Failure, they take
           {' '}<DamageType type="Nethercurrent" value={3} withWord />.
         </>
@@ -367,9 +368,9 @@ const exObj: { [key: string]: Creature } = {
         tags: ['Attack', 'Arcane', 'Medium Range'],
         effects:[
           <>
-            On a Rank 2+ Success, targets within Short Range are pulled
-            1{movementIcon} towards the Enplagued. Targets within Medium Range
-            are pulled 2{movementIcon} instead.
+            On a Rank 2+ Success, targets within <Range type='short' /> are pulled
+            1{movementIcon} towards the Enplagued. Targets within <Range type='medium' />
+            {' '}are pulled 2{movementIcon} instead.
           </>
         ],
       }
@@ -428,7 +429,7 @@ const exObj: { [key: string]: Creature } = {
         damage: damage(3, 6, 10, 'Verdant'),
         tags: ['Attack', 'Arcane', 'Short Range', { Area: 3 }],
         effects: [<>
-          Target all creatures within Short Range of the Final Horror.
+          Target all creatures within <Range type='short' /> of the Final Horror.
         </>
         ],
       },
@@ -451,7 +452,7 @@ const exObj: { [key: string]: Creature } = {
         name: 'Dreadful Visage',
         description: <>
           At the start of each of the Final Horror's turns,
-          each character within Short Range must make a
+          each character within <Range type='short' /> must make a
           <SkillCheck tags={['Stoic', 'Fear']} />.
           On a Failure, they gain Dread.
         </>

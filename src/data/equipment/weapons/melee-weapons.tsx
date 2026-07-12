@@ -1,3 +1,4 @@
+import Range from '../../../components/keywords/Range/Range';
 import { Weapon } from '../../../ts-types/types';
 import { movementIcon } from '../../../utils/commonIcons';
 import DiceTools from '../../../utils/dice-handling';
@@ -56,8 +57,10 @@ const exObj: { [key: string]: Weapon } = {
         m: { value: DiceTools.get2d4(1), type: 'Metal' },
         h: { value: DiceTools.get2d4(4), type: 'Metal' },
       },
-      effects: [
-        'This attack treats Range 2 as if it was Adjacent Range.',
+      effects: [<>
+          This attack treats <Range type='adjacent' />
+          {' '} as if it was 2 hexes.
+        </>,
         'You can wield a shield in your off-hand with this weapon with no penalty.',
       ],
     }],

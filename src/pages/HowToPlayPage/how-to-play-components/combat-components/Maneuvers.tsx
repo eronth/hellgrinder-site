@@ -2,7 +2,7 @@ import { movementIcon } from "../../../../utils/commonIcons";
 import Arc from "../../../../components/keywords/Arc/Arc";
 import HitCheck from "../../../../components/keywords/HitCheck/HitCheck";
 import Hx from "../../../../components/common/generic/Hx/Hx";
-import RuleKeyword from "../../../../components/keywords/RuleKeyword";
+import Range from "../../../../components/keywords/Range/Range";
 import SkillCheck from "../../../../components/keywords/SkillCheck/SkillCheck";
 import StatusKeyword from "../../../../components/keywords/StatusKeyword";
 import CheckResultsGrid from "../CheckResultsGrid/CheckResultsGrid";
@@ -54,7 +54,7 @@ export default function Maneuvers() {
           Grants all valid allies +1 to the 
           next <HitCheck tags={['Medium Range']} /> or <HitCheck tags={['Long Range']} /> they
           make against foes 
-          within <RuleKeyword keyword="Long Range" /> of
+          within <Range type='long' /> of
           your <Arc type="front" />.
         </p>
       </IndividualManeuver>

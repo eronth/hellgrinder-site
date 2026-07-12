@@ -1,3 +1,4 @@
+import Range from "../../components/keywords/Range/Range";
 import { SpecialRuleTag } from "../../ts-types/tag-types";
 import { movementIcon } from "../../utils/commonIcons";
 
@@ -33,8 +34,9 @@ const UNSORTED_SPECIAL_TAGS: TagDefinition[] = [
       size [[X]].
       To determine the shape of a cone, look at the pictures
       that aren't here yet. The length of a cone is assumed
-      to be Short Range unless the effect lists a different range.
-      Attacks and abilities with this tag cannot be used beyond the listed range.
+      to be <Range type='short' /> unless the effect lists
+      a different range. Attacks and abilities with this tag
+      cannot be used beyond the listed range.
     </>
   },
   {

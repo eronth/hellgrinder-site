@@ -142,8 +142,12 @@ const exObj: { [key: string]: Weapon } = {
         m: { value: DiceTools.get1d6(), type: 'Chosen Type' },
         h: { value: DiceTools.get1d10(), type: 'Chosen Type' },
       },
-      effects: ['After you hit an enemy with this attack, you can make a free attack against another enemy within Short Range' +
-      ' of your initial target. Once per attack.'],
+      effects: [<>
+        After you hit an enemy with this attack, you can
+        make a free attack against another enemy within 
+        {' '}<Range type='short' />{' '}of your initial
+        target. Once per attack.
+      </>],
     }],
   },
   spellPop: {
@@ -203,10 +207,12 @@ const exObj: { [key: string]: Weapon } = {
         m: { value: DiceTools.get1d6(), type: 'Chosen Type' },
         h: { value: DiceTools.get1d8(), type: 'Chosen Type' },
       },
-      effects: [
-        <>This attack targets all creatures in a line up to Long Range. Targetting
-        beyond Medium range still suffers the range penalty.</>
-      ]
+      effects: [<>
+        This attack targets all creatures in a line
+        up to <Range type='long' />. Targetting
+        beyond <Range type='medium' /> still suffers
+        the range penalty.
+      </>]
     }],
   },
   spellSnipe: {

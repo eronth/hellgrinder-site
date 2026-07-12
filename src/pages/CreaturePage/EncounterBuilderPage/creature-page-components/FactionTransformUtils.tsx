@@ -1,4 +1,5 @@
 import Tools from "../../../../utils/tools";
+import Range from '../../../../components/keywords/Range/Range';
 import RuleKeyword from '../../../../components/keywords/RuleKeyword';
 import { Creature, CreatureAbility, CreatureTier, DamageTakenMod } from '../../../../ts-types/creature-types';
 import { AttackMode, DamageElement } from '../../../../ts-types/types';
@@ -149,10 +150,11 @@ export const FACTION_DATA: { [key: string]: FactionData } = {
       {
         name: 'The Depths of Uncertainty',
         description: <>
-          This creature can make a +2 Skill Check. On a Rank 1 Success, it can
-          grant a creature in Immediate Range <RuleKeyword keyword="Grim Uncertainty" />.
+          This creature can make a +2 Skill Check. On a Rank 1
+          Success, it can grant <RuleKeyword keyword="Grim Uncertainty" />
+          {' '}to  a creature in <Range type='adjacent' /> .
           On a Rank 2 Success, it can target a creature 
-          within <RuleKeyword keyword="Medium Range" /> instead.
+          within <Range type='medium' /> instead.
           On Rank 3 Success, add <StatusKeyword effect="enslumbered" x={1} /> to the effect.
         </>,
         permittedTiers: 'all'

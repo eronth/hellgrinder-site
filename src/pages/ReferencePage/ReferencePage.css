@@ -1,0 +1,113 @@
+.reference-wip-banner {
+  position: relative;
+  margin: 1rem 0 2rem;
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  border: 1px solid var(--card-border-color);
+  border-radius: 12px;
+  background: var(--card-background);
+  overflow: hidden;
+
+  /* Hazard stripe down the leading edge. */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 8px;
+    background: repeating-linear-gradient(
+      45deg,
+      var(--accent-color) 0 8px,
+      transparent 8px 16px
+    );
+  }
+
+  h2 {
+    margin: 0.5rem 0 0.5rem;
+  }
+
+  p {
+    margin: 0;
+    max-width: 60ch;
+    color: var(--text-secondary-color);
+  }
+}
+
+.reference-wip-badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border: 1px solid var(--accent-color);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-color) 12%, transparent);
+  color: var(--header-tertiary-color);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reference-planned-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.reference-planned-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 1px dashed var(--card-border-color);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--card-background) 50%, transparent);
+
+  header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  p {
+    margin: 0;
+    color: var(--text-secondary-color);
+    font-size: 0.9rem;
+  }
+
+  /* Sections already being written read as live; the rest stay muted. */
+  &.drafting {
+    border-style: solid;
+    background: var(--card-background);
+  }
+
+  &.planned {
+    opacity: 0.75;
+  }
+}
+
+.reference-status-chip {
+  flex: none;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: var(--card-tag-background);
+  color: var(--text-offset-color);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.reference-planned-card.drafting .reference-status-chip {
+  background: color-mix(in srgb, var(--primary-color) 22%, transparent);
+  color: var(--header-tertiary-color);
+}
+
+.reference-footnote {
+  margin: 2rem 0 1rem;
+  color: var(--text-secondary-color);
+  font-size: 0.9rem;
+  font-style: italic;
+}

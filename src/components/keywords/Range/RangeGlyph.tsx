@@ -89,13 +89,19 @@ function HexRings({ active }: { active: number }) {
 
 /* --- reach: a measuring tape. An arrow runs from you out to the named band's
    tick. The band is read from how far the arrow travels, so Adjacent and
-   Extreme are told apart by length alone — the loudest variant at small sizes. */
-const REACH_TICKS = [8, 12.2, 16.4, 20.6, 24.8];
+   Extreme are told apart by length alone — the loudest variant at small sizes.
+
+   Only the four normal bands get a tick. Extreme is off the ruler by
+   definition, so its arrow overshoots the last tick and runs past the edge of
+   the viewBox (which is why the glyph doesn't clip); it bleeds a little into
+   the label, and that's the point. */
+const REACH_TICKS = [8, 12.2, 16.4, 20.6];
+const REACH_OFF_SCALE = 30;
 function Reach({ active }: { active: number }) {
-  const tip = REACH_TICKS[active];
+  const tip = active >= REACH_TICKS.length ? REACH_OFF_SCALE : REACH_TICKS[active];
   return (
     <svg className="range-glyph reach" viewBox="0 0 26 20" aria-hidden="true">
-      <line className="range-track" x1="2" y1="10" x2="25" y2="10" />
+      <line className="range-track" x1="2" y1="10" x2="22.4" y2="10" />
       {REACH_TICKS.map((x, i) => (
         <line key={RANGE_BANDS[i]} className="range-tick" x1={x} y1="6.8" x2={x} y2="13.2" />
       ))}

@@ -274,16 +274,20 @@
   --arc-flank-color:      light-dark(oklch(53% 0.14  50),        oklch(76% 0.13  50));
 }
 
-/* Range keyword accents — ordinal, not threat-coded: one hue that gains
-   chroma as the band gets further out, so the five ranges stay tellable
-   apart inline while still reading as a single family. */
+/* Range keyword accents — ordinal, not threat-coded: the four normal bands are
+   one hue that gains chroma as the band gets further out, so they stay tellable
+   apart inline while still reading as a single family.
+
+   Extreme breaks the family on purpose. It is the rare "off the ruler" case, so
+   it steps to a warm gold — exceptional rather than dangerous, which is why it
+   is not the red used for the Rear Arc. */
 :root {
   --range-track-color:   light-dark(oklch(45% 0.02 250 / 0.35), oklch(85% 0.02 250 / 0.30));
   --range-adjacent-color: light-dark(oklch(52% 0.05 245),       oklch(82% 0.05 245));
   --range-short-color:    light-dark(oklch(51% 0.08 245),       oklch(80% 0.08 245));
   --range-medium-color:   light-dark(oklch(50% 0.11 245),       oklch(78% 0.11 245));
   --range-long-color:     light-dark(oklch(49% 0.14 245),       oklch(76% 0.14 245));
-  --range-extreme-color:  light-dark(oklch(48% 0.17 245),       oklch(74% 0.16 245));
+  --range-extreme-color:  light-dark(oklch(56% 0.13  78),       oklch(81% 0.13  82));
 }
 
 #root {

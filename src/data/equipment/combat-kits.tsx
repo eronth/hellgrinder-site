@@ -7,6 +7,7 @@ import Tools from '../../utils/tools.tsx';
 import { movementIcon } from '../../utils/commonIcons.tsx';
 import DefenseMod from '../../components/keywords/DefenseMod/DefenseMod.tsx';
 import Range from '../../components/keywords/Range/Range.tsx';
+import SkillCheck from '../../components/keywords/SkillCheck/SkillCheck.tsx';
 
 // Todo - Add descriptions to all kits.
 
@@ -233,7 +234,8 @@ const exObj: { [key: string]: Kit } = {
         name: 'Slowing Viewfinder',
         tags: ['Arcane', 'Relic'],
         description: '',
-        effects: [<>Creatures in your front arc at <Range type='medium' /> make an [Endurance] Skill Check when they attempt to
+        effects: [<>Creatures in your front arc at <Range type='medium' /> make an
+          {' '}<SkillCheck tags={['Endurance']} /> when they attempt to
           move. On a Rank 1 Success or less, they are [Slowed 1].</>,
           <>Creatures in your front arc at <Range type='short' /> are [Slowed 1].</>
         ],
@@ -332,7 +334,7 @@ const exObj: { [key: string]: Kit } = {
       name: 'Feral Cry',
       tags: [],
       effects: [<>As an Action, you let out a feral cry. All enemies in your front arc at <Range type='short' /> must make an
-      [Endurance] Skill Check. On a Rank 2 Success or less, they begin to focus you instead of your allies. Each target
+      {' '}<SkillCheck tags={['Endurance']} />. On a Rank 2 Success or less, they begin to focus you instead of your allies. Each target
       moves 2 hexes away from you or 2 hexes towards you, your choice.</>],
     }],
   },

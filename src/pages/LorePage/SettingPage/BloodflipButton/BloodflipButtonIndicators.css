@@ -1,0 +1,83 @@
+/* Shared base for the fixed dev overlays */
+.bloodflip-dev-indicator {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 5px 8px;
+  border-radius: 3px;
+  font-size: 10px;
+  z-index: 9999;
+}
+
+/* Development reset hint */
+.bloodflip-dev-reset-hint {
+  top: 50px;
+  right: 10px;
+  color: #888;
+  opacity: 0.6;
+}
+
+/* Development status indicator */
+.bloodflip-dev-status {
+  top: 10px;
+  left: 10px;
+  color: #ff6600;
+  opacity: 0.7;
+}
+
+.bloodflip-dev-status.revealed {
+  color: #00ff00;
+}
+
+/* Debug display - shows typing progress */
+.bloodflip-dev-sequence {
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #8b0000;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-family: monospace;
+}
+
+.bloodflip-dev-sequence-char {
+  color: #ff0000;
+  opacity: 0.7;
+}
+
+.bloodflip-dev-sequence-char.correct {
+  color: #00ff00;
+}
+
+/* Subtle hint for users - only shows after some interaction */
+.bloodflip-hint {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.5);
+  color: rgba(139, 0, 0, 0.8);
+  font-size: 10px;
+  font-style: italic;
+  opacity: 0.9;
+  animation: fadeInOut 3s ease-in-out;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Development: subtle indicator on the tabs that reset the secret */
+body.bloodflip-dev .selected-tab,
+body.bloodflip-dev .sub-page-nav-tab.active {
+  position: relative;
+}
+
+body.bloodflip-dev .selected-tab:hover::after,
+body.bloodflip-dev .sub-page-nav-tab.active:hover::after {
+  content: '👆👆';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  opacity: 0.3;
+  pointer-events: none;
+}

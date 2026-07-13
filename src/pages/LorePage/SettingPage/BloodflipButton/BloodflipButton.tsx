@@ -86,8 +86,9 @@ export default function BloodflipButton() {
     if (import.meta.env.DEV) {
       const handleNavTabDoubleClick = (event: MouseEvent) => {
         const target = event.target as HTMLElement;
-        // Check if we double-clicked on the Settings nav tab
-        if (target.closest('.selected-tab') && target.textContent?.includes('Setting')) {
+        // The selected top-level tab is "Lore"; "Setting" is a sub-page tab under it.
+        const tab = target.closest('.selected-tab, .sub-page-nav-tab.active');
+        if (tab) {
           event.preventDefault();
           resetSecret();
         }

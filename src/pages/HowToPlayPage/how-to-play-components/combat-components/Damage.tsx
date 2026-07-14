@@ -62,17 +62,21 @@ export default function Damage() {
 
       <Hx hx={innerHx}>Injuries</Hx>
       <p>
-        If your health reaches 0, you take an Injury. Roll 2d6 and add excess damage taken to the
-        result. Determine your Injury from the table below. If your result exceeds the max value
-        on the table and it is not a Permanent Injury, subtract 20 from the result and treat the
-        new result as a Permanent Injury. If your result still endes up higher than the max, treat
-        it as the max value instead.
+        If your health reaches 0, you take an Injury. Roll 1d6 and add
+        any relevant Brutality modifier (such as from a creature's Brutality level)
+        to the result. Determine your Injury from the table below.
       </p>
       <p>
-        Then, restore your health back to max.
+        Then, restore your health back to max. Immediately apply half
+        of the excess damage (rounded)
+        down to yourself. If this would reduce your health to 0 or
+        lower, repeat the process.
+        You then take half damage, applied after modifiers, (minimum 1) 
+        until the start of your next turn.
       </p>
       <p>
-        Each time you take an Injury, take an injury of a type you do not have, starting with a Light Injury.
+        Each time you take an Injury, take an injury of a type you do not have, 
+        starting with a Light Injury.
         If you would take an Injury but already have one of each type, you instead die.
       </p>
       <ul>

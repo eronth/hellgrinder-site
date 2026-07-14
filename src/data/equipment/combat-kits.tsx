@@ -8,6 +8,7 @@ import { movementIcon } from '../../utils/commonIcons.tsx';
 import DefenseMod from '../../components/keywords/DefenseMod/DefenseMod.tsx';
 import Range from '../../components/keywords/Range/Range.tsx';
 import SkillCheck from '../../components/keywords/SkillCheck/SkillCheck.tsx';
+import DamageType from '../../components/keywords/DamageType/DamageType.tsx';
 
 // Todo - Add descriptions to all kits.
 
@@ -258,7 +259,7 @@ const exObj: { [key: string]: Kit } = {
           <>As an Action or Maneuver, you can stick a Soulbinder Dart in a target within <Range type='medium' />.</>,
           <>As a Free Interaction, you may retrieve a Soulbinder Dart within <Range type='medium' />.</>,
           <>Whenever a creature stuck with one Soulbinder Dart takes damage, another creature within <Range type='short' /> of
-            them takes half (rounded up) of the damage as Nethercurrent Damage.</>,
+            them takes half (rounded up) of the damage as <DamageType type='Nethercurrent' />.</>,
         ],
         isAdvancedItem: false,
         isChoiceItem: true,
@@ -338,6 +339,14 @@ const exObj: { [key: string]: Kit } = {
       moves 2 hexes away from you or 2 hexes towards you, your choice.</>],
     }],
   },
+
+  // uh: {
+  //   name: 'Uh',
+  //   description: "Description for the Uh kit.",
+  //   weapons: [],
+  //   items: [],
+  //   trainings: [],
+  // },
   
   prototype: {
     name: 'Prototype Test',

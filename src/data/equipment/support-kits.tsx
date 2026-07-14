@@ -76,7 +76,9 @@ const exObj: { [key: string]: Kit } = {
     trainings: [{
       name: 'Instrument Analyst',
       tags: [],
-      effects: ['You get +2 to all [Observation Skill Checks].', ''],
+      effects: [<>
+        You get +2 to all <SkillCheck tags={['Observation']} plural />.
+      </>],
       bonuses: [{ tag: 'Observation', value: 2 }],
     }, {
       name: 'Communicator',

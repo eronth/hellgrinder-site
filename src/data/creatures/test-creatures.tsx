@@ -8,6 +8,7 @@ import Tools from "../../utils/tools";
 
 
 const factionTag = 'Rot Host';
+const factId = 'rot-host';
 const resist = (type: DamageElement, amount?: number): DamageTakenMod => ({
   modification: 'Resist',
   type: type,
@@ -41,23 +42,23 @@ export const giftOfPlague: CreatureAbility = {
 };
 
 const exObj: { [key: string]: Creature } = {
-  /* T1 Test Creatures */
+  /* T1 Rot Host Creatures */
   rotMind: {
-    id: 'rot-host/rotMind',
+    id: `${factId}/rotMind`,
     name: 'Rot Mind',
     tier: Tools.creatureTiers.t1,
     tags: [factionTag],
-    health: 6, size: 1,
-    speed: 4, dash: 1,
+    health: 9, size: 1,
+    speed: 6, dash: -2,
     damageTakenMods: [
-      resist('Metal', 1),
-      resist('Voidyr', 1),
-      weak('Chthonic', 1),
+      resist('Metal'),
+      resist('Voidyr'),
+      weak('Chthonic'),
     ],
     attacks: [
       {
         name: 'Clobber',
-        damage: damage(2, 3, 4, 'Voidyr'),
+        damage: damage(3, 4, 5, 'Voidyr'),
         tags: ['Attack', 'Melee', 'Adjacent Range'],
         effects:[
           <>
@@ -73,11 +74,11 @@ const exObj: { [key: string]: Creature } = {
     description: '',
   },
   decayedOne: {
-    id: 'rot-host/decayedOne',
+    id: `${factId}/decayedOne`,
     name: 'Decayed One',
     tier: Tools.creatureTiers.t1,
     tags: [factionTag],
-    health: 4, size: 1,
+    health: 7, size: 1,
     speed: 5, dash: 3,
     damageTakenMods: [
       weak('Infernal'),
@@ -87,7 +88,7 @@ const exObj: { [key: string]: Creature } = {
     attacks: [
       {
         name: 'Rotspittle',
-        damage: damage(1, 2, 3, 'Verdant'),
+        damage: damage(2, 3, 4, 'Verdant'),
         effects:[
           <>
             If the Decayed One has been hit by <DamageType type="Verdant" withWord /> this combat,
@@ -101,21 +102,21 @@ const exObj: { [key: string]: Creature } = {
     description: '',
   },
   festerling: {
-    id: 'rot-host/festerling',
+    id: `${factId}/festerling`,
     name: 'Festerling',
     tier: Tools.creatureTiers.t1,
     tags: [factionTag],
-    health: 5, size: 1,
-    speed: 4, dash: 4,
+    health: 9, size: 1,
+    speed: 5, dash: 4,
     damageTakenMods: [
-      resist('Verdant', 1),
-      resist('Chthonic', 1),
+      resist('Verdant'),
+      resist('Chthonic'),
       weak('Infernal', 2),
     ],
     attacks: [
       {
         name: 'Scraping Bite',
-        damage: damage(0, 0, 2, 'Chthonic'),
+        damage: damage(0, 1, 3, 'Chthonic'),
         effects:[
           <>
             This attack deals bonus Cthonic damage equal to the number of
@@ -145,9 +146,9 @@ const exObj: { [key: string]: Creature } = {
 
   },
 
-  /* T2 Zephpter Creatures */
+  /* T2 Rot Host Creatures */
   putridAmalgam: {
-    id: 'rot-host/putridAmalgam',
+    id: `${factId}/putridAmalgam`,
     name: 'Putrid Amalgam',
     tier: Tools.creatureTiers.t2,
     tags: [factionTag],
@@ -163,7 +164,7 @@ const exObj: { [key: string]: Creature } = {
     attacks: [
       {
         name: 'Crushing Claws',
-        damage: damage(3, 6, 9, 'Metal'),
+        damage: damage(4, 7, 10, 'Metal'),
         tags: ['Attack', 'Melee', 'Adjacent Range'],
         effects:[
           <>
@@ -173,12 +174,12 @@ const exObj: { [key: string]: Creature } = {
       },
       {
         name: 'Whiplash Tendril',
-        damage: damage(3, 6, 9, 'Chthonic'),
+        damage: damage(4, 7, 10, 'Chthonic'),
         tags: ['Attack', 'Melee', 'Short Range'],
       },
       {
         name: 'Jolt of Life',
-        damage: damage(2, 4, 6, 'Nethercurrent'),
+        damage: damage(3, 5, 7, 'Nethercurrent'),
         tags: ['Attack', 'Arcane', 'Medium Range'],
       }
     ],
@@ -186,19 +187,21 @@ const exObj: { [key: string]: Creature } = {
     description: '',
   },
   stenchBloater: {
-    id: 'rot-host/stenchBloater',
+    id: `${factId}/stenchBloater`,
     name: 'Stench Bloater',
     tier: Tools.creatureTiers.t2,
     tags: [factionTag],
     health: 12, size: 1,
-    speed: 4, dash: 1,
+    speed: 4, dash: -1,
     damageTakenMods: [
-      resist('All', 3)
+      resist('Metal', 3), resist('Chthonic', 3), resist('Abyssal', 3),
+      resist('Voidyr', 3), resist('Verdant', 3),
+      weak('Nethercurrent', 2),
     ],
     attacks: [
       {
         name: 'Dire Puke',
-        damage: damage(2, 4, 7, 'Abyssal'),
+        damage: damage(5, 7, 10, 'Abyssal'),
         tags: ['Attack', 'Shooting', 'Adjacent Range', { Area: 1 }],
         effects:[
           <>
@@ -214,7 +217,7 @@ const exObj: { [key: string]: Creature } = {
       },
       {
         name: 'Projectile Vomit',
-        damage: damage(1, 3, 6, 'Infernal'),
+        damage: damage(3, 5, 8, 'Infernal'),
         tags: ['Attack', 'Shooting', 'Medium Range'],
         effects:[
           <>
@@ -239,11 +242,11 @@ const exObj: { [key: string]: Creature } = {
     description: '',
   },
   blightbringerShaman: {
-    id: 'rot-host/blightbringerShaman',
+    id: `${factId}/blightbringerShaman`,
     name: 'Blightbringer Shaman',
     tier: Tools.creatureTiers.t2,
     tags: [factionTag],
-    health: 7, size: 1,
+    health: 9, size: 1,
     speed: 5, dash: 1,
     damageTakenMods: [
       resist('Nethercurrent', 2),
@@ -254,7 +257,7 @@ const exObj: { [key: string]: Creature } = {
     attacks: [
       {
         name: 'Plague Bolt',
-        damage: damage(3, 8, 12, 'Abyssal'),
+        damage: damage(5, 8, 12, 'Abyssal'),
         tags: ['Attack', 'Arcane', 'Long Range'],
         effects:[
           <>
@@ -266,8 +269,8 @@ const exObj: { [key: string]: Creature } = {
       },
       {
         name: 'Autopical Examination',
-        damage: damage(0, 0, 3, 'Abyssal'),
-        tags: ['Attack', 'Arcane', 'Medium Range'],
+        damage: damage(1, 1, 5, 'Abyssal'),
+        tags: ['Attack', 'Arcane', 'Long Range'],
         effects:[
           <>
             The target gains the Inside Out condition. This attack counts for
@@ -280,14 +283,14 @@ const exObj: { [key: string]: Creature } = {
     description: '',
   },
 
-  /* T3 Zephpter Creatures */
+  /* T3 Rot Host Creatures */
   decayedPile: {
-    id: 'rot-host/decayedPile',
+    id: `${factId}/decayedPile`,
     name: 'Decayed Pile',
     tier: Tools.creatureTiers.t3,
     tags: [factionTag],
-    health: 15, size: 2,
-    speed: 4, dash: 2,
+    health: 18, size: 2,
+    speed: 6, dash: -2,
     damageTakenMods: [
       absorb('Verdant', 3),
       resist('Voidyr', 5),
@@ -297,7 +300,7 @@ const exObj: { [key: string]: Creature } = {
     attacks: [
       {
         name: 'Enlurchant Scour',
-        damage: damage(3, 6, 9, 'Verdant'),
+        damage: damage(4, 7, 10, 'Verdant'),
         tags: ['Attack', 'Arcane', 'Adjacent Range'],
         effects:[
           <>
@@ -308,11 +311,11 @@ const exObj: { [key: string]: Creature } = {
       },
       {
         name: 'Devour',
-        damage: damage(3, 6, 9, 'Chthonic'),
+        damage: damage(4, 7, 10, 'Chthonic'),
         tags: ['Attack', 'Melee', 'Adjacent Range'],
         effects:[
           <>
-            The Decayed Pile can only use this attack against corpses.
+            The Decayed Pile can choose to use this attack against corpses.
           </>,
           <>
             If the target dies from this attack or is a corpse, the Decayed Pile
@@ -337,11 +340,11 @@ const exObj: { [key: string]: Creature } = {
     description: '',
   },
   enplagued: {
-    id: 'rot-host/enplagued',
+    id: `${factId}/enplagued`,
     name: 'Enplagued',
     tier: Tools.creatureTiers.t3,
     tags: [factionTag],
-    health: 15, size: 1,
+    health: 18, size: 1,
     speed: 4, dash: 2,
     damageTakenMods: [
       absorb('Voidyr', 3),
@@ -399,12 +402,12 @@ const exObj: { [key: string]: Creature } = {
 
   /* T4 Zephpter Creatures */
   finalHorror: {
-    id: 'rot-host/finalHorror',
+    id: `${factId}/finalHorror`,
     name: 'Final Horror',
     tier: Tools.creatureTiers.t4,
     tags: [factionTag],
     health: 26, size: 2,
-    speed: 5, dash: 5,
+    speed: 7, dash: 5,
     damageTakenMods: [
       resist('Metal', 7),
       absorb('Voidyr', 5),
@@ -414,7 +417,7 @@ const exObj: { [key: string]: Creature } = {
     attacks: [
       {
         name: 'Threat of Unmaking',
-        damage: damage(4, 8, 12, 'Voidyr'),
+        damage: damage(6, 8, 12, 'Voidyr'),
         tags: ['Attack', 'Arcane', 'Long Range'],
         effects: [
           <>
@@ -426,7 +429,7 @@ const exObj: { [key: string]: Creature } = {
       },
       {
         name: 'Poisonthorn Spine Blast',
-        damage: damage(3, 6, 10, 'Verdant'),
+        damage: damage(4, 6, 10, 'Verdant'),
         tags: ['Attack', 'Arcane', 'Short Range', { Area: 3 }],
         effects: [<>
           Target all creatures within <Range type='short' /> of the Final Horror.
@@ -452,10 +455,17 @@ const exObj: { [key: string]: Creature } = {
         name: 'Dreadful Visage',
         description: <>
           At the start of each of the Final Horror's turns,
-          each character within <Range type='short' /> must make a
+          each character within <Range type='medium' /> must make a
           <SkillCheck tags={['Stoic', 'Fear']} />.
           On a Failure, they gain Dread.
         </>
+      },
+      {
+         name: 'Chasedown',
+         description: <>
+           Once per encounter, the Final Horror can add its dash bonus
+           to its movement for that turn without using a dash action.
+         </>
       },
       {
         name: 'Resolution of Annotation',

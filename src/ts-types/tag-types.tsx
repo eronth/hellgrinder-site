@@ -21,7 +21,7 @@ type Range = 'Adjacent Range' | 'Short Range' | 'Medium Range' | 'Long Range' | 
 
 type EquipmentTags = 'One-Handed' | 'Grenade' | 'Two-Handed' | 'Armor' | 'Gadget'
 | 'Lightweight' | 'Heavy' | 'Illuminate' | 'Concealable' | 'Consumable'
-| 'Breach' | 'Shield' | 'Relic';
+| 'Breach' | 'Shield' | 'Relic' | 'Trap';
 type LocationTags = 'Head' | 'Torso' | 'Armor' | 'Legs' | 'Footwear';
 
 type ActionTags = 'Attack' | 'Defend' | 'Movement' 

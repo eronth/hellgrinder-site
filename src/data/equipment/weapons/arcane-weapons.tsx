@@ -1,4 +1,5 @@
 import Range from '../../../components/keywords/Range/Range';
+import StatusKeyword from '../../../components/keywords/StatusKeyword';
 import Tags from '../../../components/keywords/Tags/Tags';
 import { DamageElement, Weapon } from '../../../ts-types/types';
 import DiceTools from '../../../utils/dice-handling';
@@ -65,10 +66,35 @@ const sevenDeadlySinSpells: { [key: string]: Weapon } = {
       </>, <>
         Attacks with Wrath against a target marked with Your Wrath deal an additional
         1d6 damage plus the level of Your Wrath. Then, increase the level of
-        Your Wrath on that target 1.
+        Your Wrath on that target by 1.
       </>],
     }],
-  }
+  },
+  gluttony: {
+    name: 'Gluttony',
+    tags: ['One-Handed'],
+    isAdvancedItem: false,
+    choiceTags: {
+      tags: [verdant, chthonic, abyssal, voidyr],
+      count: 1,
+    },
+    attackModes: [{
+      tags: ['Attack', 'Arcane', 'Adjacent Range', 'Short Range'],
+      damage: {
+        l: { value: DiceTools.get1d6(), type: 'Chosen Type' },
+        m: { value: DiceTools.get1d8(), type: 'Chosen Type' },
+        h: { value: DiceTools.get1d10(), type: 'Chosen Type' },
+      },
+      effects: [
+        <>
+          When you hit with this attack, you may choose to heal
+          yourself by 1d6. If this healing is more than your missing Health,
+          you become <StatusKeyword effect="frenzied" x={4} y={3} />. While
+          you have this Frenzy, you also have <StatusKeyword effect="hostile" x={3} />.
+        </>
+      ],
+    }],
+  },
   // todo gluttony
   // todo lust
   // todo envy/jealousy

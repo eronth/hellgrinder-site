@@ -9,6 +9,7 @@ import DefenseMod from '../../components/keywords/DefenseMod/DefenseMod.tsx';
 import Range from '../../components/keywords/Range/Range.tsx';
 import SkillCheck from '../../components/keywords/SkillCheck/SkillCheck.tsx';
 import DamageType from '../../components/keywords/DamageType/DamageType.tsx';
+import DiceTools from '../../utils/dice-handling';
 
 // Todo - Add descriptions to all kits.
 
@@ -340,13 +341,53 @@ const exObj: { [key: string]: Kit } = {
     }],
   },
 
-  // uh: {
-  //   name: 'Uh',
-  //   description: "Description for the Uh kit.",
-  //   weapons: [],
-  //   items: [],
-  //   trainings: [],
-  // },
+  volter: {
+    name: 'Volter',
+    description: "The volter kit is meant for those with electrifying personalities.",
+    weapons: [{
+      name: 'Arc Jolter',
+      tags: ['Heavy', 'Two-Handed'],
+      effects: [],
+      isAdvancedItem: true,
+      attackModes: [
+        {
+          tags: ['Attack', 'Shooting', 'Short Range'],
+          damage: {
+            l: { value: DiceTools.get1d2(), type: 'Nethercurrent'},
+            m: { value: DiceTools.get1d4(), type: 'Nethercurrent'},
+            h: { value: DiceTools.get1d6(), type: 'Nethercurrent'},
+          },
+          effects: [<>
+            You may target a second target within <Range type='short' /> of
+            your first target, and a third target within <Range type='short' />
+            {' '}of the second. Roll separate attacks for each.
+          </>, <>
+            Allies struck by this weapon take 3 / 1 / 0 damage instead.
+          </>]
+        }
+      ]
+    }],
+    items: [
+      { ...Tools.deepCopyItem(Armor.antistaticGear) },
+      {
+        name: 'Personal Bubble Enforcement',
+        charges: 1,
+        tags: [],
+        effects: [<>
+          Creates an electrostatic personal bubble that deals
+          {' '}<DamageType type='Nethercurrent' value={3} /> to
+          any creature that gets within <Range type='adjacent' />
+          {' '}of you. The bubble lasts until the end of your
+          3rd turn after activation.
+        </>, <>
+          At the end of your turn, creatures within 
+          {' '}<Range type='adjacent' /> of them take
+          {' '}<DamageType type='Nethercurrent' value={1} />.
+        </>],
+      },
+    ],
+    trainings: [],
+  },
   
   prototype: {
     name: 'Prototype Test',

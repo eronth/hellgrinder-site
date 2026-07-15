@@ -105,8 +105,14 @@ const exObj: { [key: string]: Item } = {
     description: 'A cloak that makes you harder to see.',
     effects: ['Gain +3 to Stealth Checks.'],
     bonuses: [{ tag: 'Stealth', value: 3 }],
-  }
-
+  },
+  antistaticGear: {
+    name: 'Antistatic Gear',
+    tags: ['Armor'],
+    isAdvancedItem: false,
+    effects: [<>You gain <DefenseMod mod='Resist' type='Nethercurrent' value={1} />.</>],
+    bonuses: [{ defense: 'Resist', element: 'Nethercurrent', value: 1 }],
+  },
 }
 
 export default exObj;

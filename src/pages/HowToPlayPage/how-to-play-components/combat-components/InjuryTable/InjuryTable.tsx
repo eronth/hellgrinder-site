@@ -26,7 +26,7 @@ export default function InjuryTable() {
           When you take damage from Push It, you take double instead.
         </> },
         critical: { name: 'Internal Bleeding', description: <>
-          At the start and end of your turn, take 1 damage.
+          At the start of your turn, take 1 damage.
         </> }
       }
     }, {// Lingering Curse
@@ -39,7 +39,8 @@ export default function InjuryTable() {
           a Corruption Test, you make two tests back-to-back instead.
         </> },
         critical: { name: 'Lingering Curse', description: <>
-          You are <StatusKeyword effect="cursed" />. You cannot remove this status while this injury remains.
+          You are <StatusKeyword effect="cursed" />. You cannot remove this
+          status while this injury remains.
         </> }
       }
     }, {// Throat Rupture
@@ -60,14 +61,18 @@ export default function InjuryTable() {
         serious: { name: 'Bruised Organs', description: <>-2 to all Skill Checks.</> },
         critical: { name: 'Mangled', description: <>You are now <StatusKeyword effect="insideOut" />.</> }
       }
-    }, {// Dreadful Existence
+    }, {// Unendting Empathy
       injury: {
         light: { name: 'Shaken', description: <>-2 to <SkillCheck tags={["Stoic"]} plural />.</> },
         serious: { name: 'Indifferent', description: <>
           Gain <StatusKeyword effect="apathy" />.
         </> },
-        critical: { name: 'Dreadful Existence',
-          description: <>You have one stack of <StatusKeyword effect="dread" />. You can never reduce your Dread below 1.</> }
+        critical: { name: 'Unending Empathy',
+          description: <>
+          Gain a Light Injury and a Serious Injury in addition to this.
+          You gain <StatusKeyword effect="doomed" x={3} />. Every time you
+          can see an ally take damage, you take 1 damage of the same type.
+          </> }
       }
     }, {// Soul Rend
       injury: {

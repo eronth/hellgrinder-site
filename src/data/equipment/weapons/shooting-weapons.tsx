@@ -13,8 +13,8 @@ const exObj: { [key: string]: Weapon } = {
       tags: ['Attack', 'Shooting', 'Short Range'],
       damage: {
         l: { value: DiceTools.get2d2(), type: 'Metal' },
-        m: { value: DiceTools.get2d6(), type: 'Metal' },
-        h: { value: [DiceTools.get2d6(), DiceTools.get2d4()], type: 'Metal' },
+        m: { value: DiceTools.get2d4(), type: 'Metal' },
+        h: { value: DiceTools.get4d4(), type: 'Metal' },
       },
       effects: [<>
         You can make an attack with this weapon targeting an

@@ -3,12 +3,17 @@ import type { Kit } from '../../ts-types/types.tsx';
 import MeleeWeapons from './weapons/melee-weapons.tsx';
 import ShootingWeapons from './weapons/shooting-weapons.tsx';
 import ThrownWeapons from './weapons/thrown-weapons.tsx';
+import armor from './armor.tsx';
 // Components
 import SkillCheck from '../../components/keywords/SkillCheck/SkillCheck.tsx';
 import Range from '../../components/keywords/Range/Range.tsx';
 import CheckResultsGrid from '../../pages/HowToPlayPage/how-to-play-components/CheckResultsGrid/CheckResultsGrid.tsx';
 // Functions
 import Tools from '../../utils/tools.tsx';
+import DamageType from '../../components/keywords/DamageType/DamageType.tsx';
+import { movementIcon } from '../../utils/commonIcons.tsx';
+import DefenseMod from '../../components/keywords/DefenseMod/DefenseMod.tsx';
+import StatusKeyword from '../../components/keywords/StatusKeyword.tsx';
 
 
 // Todo - Add descriptions to all kits.
@@ -152,6 +157,169 @@ const exObj: { [key: string]: Kit } = {
       effects: ['Once per combat, you can set the result of a dice on any roll that is not made by you and does not target/affect you.'],
     }],
   },
+
+  gadgeteer: {
+    name: 'Gadgeteer',
+    description: "The gadgeteer is a master of mechanical devices and"
+      + " inventions, using their gadgets to gain an edge in combat and problem-solving.",
+    weapons: [],
+    items: [
+      { ...Tools.deepCopyItem(armor.antistaticGear) },
+      {
+        name: 'Tesla Coil',
+        tags: ['Maneuver'],
+        description: 'A set of three of small, portable Tesla Coils that can be used to shock enemies.',
+        effects: [<>
+          As a 2{movementIcon} maneuver, you may deploy a Tesla Coil within
+          {' '}<Range type='short' /> of yourself. A Tesla Coil
+          has 8 health and <DefenseMod mod='Resist' type='All' value={1} />.
+          You can use a 2{movementIcon} maneuver to pack up an adjacent
+          Tesla Coil.
+        </>, <>
+          Any Tesla Coils within <Range type='short' /> of each other
+          that have line-of-sight to each other create an arc fence in a 
+          straight line between them. Creatures that pass through the arc fence
+          take <DamageType type='Nethercurrent' value={1} />.
+          you deal <DamageType type='Nethercurrent' /> damage to all adjacent enemies.
+        </>, <>
+          As an Action, you can perform a <SkillCheck tags={['Electronics']} />
+          {' '}to deal 1/2/3 <DamageType type='Nethercurrent' /> to all creatures
+          within <Range type='adjacent' /> of your Tesla Coils.
+        </>, <>
+          When you resupply, you regain all Tesla Coils.
+          Any deployed ones are destroyed or otherwise rendered
+          non-functional.
+        </>],
+      },
+    ],
+    trainings: [{
+      name: 'Mechanical Savant',
+      tags: [],
+      effects: [<>
+        You gain a +2 bonus to all <SkillCheck tags={['Electronics']} plural /> and
+        all <SkillCheck tags={['wiring']} plural />.
+      </>],
+    }, {
+      name: 'Tinkerer',
+      tags: ['Arcane'],
+      effects: [<>
+        Each weapon you own can be outfitted with an self-made enhancement.
+        At will, you can activate this enhancement to have your weapon deal
+        <DamageType type='Nethercurrent' /> instead of its normal damage type.
+      </>]
+    }],
+  },
+
+  trapper: {
+    name: 'Trapper',
+    description: "The trapper is skilled in setting and disarming traps.",
+    weapons: [],
+    items: [{
+      name: 'Traps',
+      tags: [],
+      effects: [<>
+        You have a small collection of traps to deploy. You can use a 
+        2{movementIcon} Maneuver to set a trap within <Range type='short' />,
+        or a 3{movementIcon} Maneuver to set a trap within <Range type='medium' />.
+        You must be able to see where you are placing your traps, though you need
+        not be able to physically reach it. Make a <SkillCheck tags={['Trap', 'Stealth']} />,
+        on a Rank 2 success or higher, enemies did not see the trap placed and will
+        move and act as if it wasn't there. Otherwise enemies know where you placed a trap.
+      </>, <>
+        When an enemy steps on a hex with a trap on it, it triggers. A trap details what happens
+        when it is triggered in it's description. Some traps list a range, which increases
+        the triggering range.
+      </>, <>
+        You have x, y, z traps. Traps are restored on a resupply. When you resupply, any
+        deployed traps are destoryed or otherwise rendered non-functional.
+      </>]
+    }, {
+      name: 'Azoid Trap', tags: ['Trap', 'Adjacent Range'],
+      charges: 4,
+      effects: [<>
+        When this trap triggers, trap spews darts in all directions. The
+        triggering creature loses 2{movementIcon}. All creatures in
+        {' '}<Range type='short' /> take <DamageType type='Verdant' value={1} />
+        {' '}and are <StatusKeyword effect='poisoned' x={1} y={3} />.
+      </>]
+    }, {
+      name: 'Fire-spire Trap', tags: ['Trap'],
+      charges: 3,
+      effects: [<>
+        When this trap triggers, it spews fire directly upward, dealing
+        {' '}<DamageType type='Infernal' value={4} /> and granting
+        {' '}<StatusKeyword effect='immolated' x={2} y={2} />. Creatures in
+        {' '}<Range type='adjacent' /> are singed for
+        {' '}<DamageType type='Infernal' value={1} />. The fire spews upward
+        until the start of your next turn. Creatures that enter the spewing flames
+        take <DamageType type='Infernal' value={8} />.
+      </>]
+    }, {
+      name: 'Tangle-wire Trap', tags: ['Trap', 'Adjacent Range'],
+      charges: 2,
+      effects: [<>
+        When this trap triggers, it covers itself and all hexes in
+        {' '}<Range type='adjacent' /> with razor-wire. The triggering
+        takes <DamageType type='Metal' value={4} />. Creatures who enter
+        a razor-wire hex lose 1{movementIcon} and take{' '}
+        <DamageType type='Metal' value={1} />.
+      </>, <>
+        You can use a Set Trap Maneuver to enhance a triggered 
+        Tangle-wire Trap without spending a trap charge. When
+        a creature moves within the triggering range of{' '}
+        <i>any</i> of the enhanced trap's razor-wire, the trap
+        can trigger from that part's hex location, spreading further.
+        Afterward, make a <SkillCheck tags={['Trap']} /> check with
+        a -2 penalty for each time the trap has been enhanced. On a Failure,
+        the trap breaks down and all razor-wire is removed.
+      </>]
+    }, {
+      name: 'Tripper Trap', tags: ['Trap'],
+      charges: 6,
+      effects: [<>
+        When this trap triggers, the triggering creature loses 
+        3{movementIcon} and falls prone.
+      </>]
+    }, {
+      name: 'Pushback Trap', tags: ['Trap'],
+      charges: 3,
+      effects: [<>
+        When this trap triggers, it creates an impassable wall with
+        8 health and <DefenseMod mod='Resist' type='All' value={4} />. The
+        triggering creature is pushed 2{movementIcon} in the direction you
+        choose, and takes <DamageType type='Chthonic' value={2} />.
+      </>, <>
+        If you are within <Range type='medium' />, you can spend
+        1{movementIcon} to trigger this trap early. If you have
+        Pre-prepared, you can trigger this trap at-will by taking
+        a stack of Pre-action.
+      </>]
+    }],
+    trainings: [{
+      name: 'Trap Specialist',
+      tags: [],
+      effects: [<>You gain a +2 bonus to all <SkillCheck tags={['Trap']} plural />
+      {' '}(including setting and detecting traps).</>],
+    }, {
+      name: 'Pre-prepared',
+      tags: [],
+      effects: [<> 
+        You are an expert at preparation. So good that you've prepared some
+        traps when nobody is looking.
+        When a creature is moving within line-of-sight of you, you may interrupt them to
+        declare a pre-placed trap directly under them (causing it to immediately trigger).
+        Doing so
+        gives you 1 stacks of "Pre-action" per range increment, starting with
+        {' '}<Range type='adjacent' />. On our turn, you can spend 2{movementIcon} to
+        remove a stack of Pre-action. You cannot take any actions if you have any stacks
+        of Pre-action, but you can still perform Maneuvers.
+        <br />
+        When combat ends,
+        immediately remove 2 stack of Pre-action for free,
+        then take 1 damage per remaining stack and remove the rest.
+      </>],
+    }],
+  }
 };
 
 export default exObj;

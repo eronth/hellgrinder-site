@@ -6,6 +6,7 @@ import WeaponComponent from './weapon/WeaponComponent';
 import ItemComponent from './item/ItemComponent.tsx';
 import Training from './training/TrainingComponent';
 import { ChoiceInteraction } from './weapon/weapon-components/SelectableTags.tsx';
+import './Kit.css';
 
 export type WeaponChoiceInteractions = Record<string, ChoiceInteraction>;
 
@@ -108,8 +109,8 @@ export default function Kit({ needsCols, kit, weaponChoiceInteractions, hideChoi
   }
 
   return (<div className='kit'>
-    <div className='name'>{kit.name}</div>
-    <div className='description'>{kit.description}</div>
+    <div className='kit-name'>{kit.name}</div>
+    <div className='kit-description'>{kit.description}</div>
     <div className='benefits-label'>Kit Benefits:</div>
     <div className="benefits">
       {getKitBenefitsLayedOut()}

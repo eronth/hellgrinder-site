@@ -14,7 +14,7 @@ export default function KitsListDisplayComponent() {
     </p>
 
     <Hx hx={innerHx}>Combat Kits</Hx>
-    <div className='col-handler'>
+    <div className='masonry-handler'>
       {Object.entries(CombatKits).map(([kitName, kit]) => {
         if (kitName === 'relicworker') { return null; }
         return <Kit key={kitName} kit={kit} />
@@ -25,7 +25,7 @@ export default function KitsListDisplayComponent() {
     <hr />
 
     <Hx hx={innerHx}>Support Kits</Hx>
-    <div className='col-handler'>
+    <div className='masonry-handler'>
       {Object.entries(SupportKits).map(([kitName, kit]) => {
         if (kitName === 'trapper') { return null; }
         return <Kit key={kitName} kit={kit} />

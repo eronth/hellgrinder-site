@@ -79,3 +79,25 @@ ol.roman {
     grid-template-columns: repeat(1, 1fr);
   }
 }
+
+/* Masonry-style layout: cards flow into columns and fill vertical gaps
+   automatically (like an online photo album), instead of a rigid grid
+   whose rows align to the tallest card. */
+.masonry-handler {
+  column-count: 3;
+  column-gap: 1em;
+}
+.masonry-handler > * {
+  break-inside: avoid;
+  margin-bottom: 1em;
+}
+@media(max-width: 1140px) {
+  .masonry-handler {
+    column-count: 2;
+  }
+}
+@media(max-width: 850px) {
+  .masonry-handler {
+    column-count: 1;
+  }
+}

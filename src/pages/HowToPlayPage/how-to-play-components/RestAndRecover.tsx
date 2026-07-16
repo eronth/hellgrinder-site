@@ -42,16 +42,21 @@ export default function RestAndRecover() {
 
       <Hx>Safelight Shard</Hx>
       <p>
-        These shards are small enough to be carried by individual soldiers. Unfortunately, breaking chunks
-        from a Safelight Geode or Gemstone is not possible without proper equipment, so soldiers are assigned a
-        limited number while scientists work on further advancements in SafeLiteTM technology. With just a moment of meditation,
-        a character can grant themselves a few minutes of safety. When they do so,
-        they roll a Recovery Test with +2.
+        These shards are small enough to be carried by individual
+        soldiers. Unfortunately, breaking chunks
+        from a Safelight Geode or Gemstone is not possible
+        without proper equipment, so soldiers are assigned a
+        limited number while scientists work on further
+        advancements in SafeLiteTM technology. With just a 
+        moment of meditation, a character can grant themselves
+        a few minutes of safety. When they do so,
+        they roll a <SkillCheck tags={['Recovery']} /> with +2.
       </p>
       <p>
         Safelight Shards often bind themselves to their
         owner in mysterious ways. They tend to be non-transferrable,
-        and break upon the owner's death.
+        and break upon the owner's death. All Safelight Shards
+        owned by player characters start this way.
       </p>
 
       <Hx hx={innerHx}>Recovery Test</Hx>

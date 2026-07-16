@@ -1,4 +1,5 @@
 import Arc from '../../../components/keywords/Arc/Arc';
+import HitCheck from '../../../components/keywords/HitCheck/HitCheck';
 import Range from '../../../components/keywords/Range/Range';
 import Tags from '../../../components/keywords/Tags/Tags';
 import { Weapon } from '../../../ts-types/types';
@@ -18,7 +19,8 @@ const exObj: { [key: string]: Weapon } = {
       },
       effects: [<>
         You can make an attack with this weapon targeting an
-        enemy in your <Arc type="peripheral" /> with a -3 penalty to the Hit Check.
+        enemy in your <Arc type="peripheral" /> with a -3 penalty
+        to the <HitCheck tags={[]} />.
       </>],
     }],
   },

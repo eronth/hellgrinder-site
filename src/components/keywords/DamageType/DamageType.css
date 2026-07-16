@@ -23,6 +23,15 @@
     overflow: visible;
   }
 
+  /* Voidyr: hovering the keyword fades just the glyph, leaving the text as-is. */
+  &.voidyr:hover .damage-glyph {
+    opacity: 0;
+  }
+
+  &.voidyr .damage-glyph {
+    transition: opacity 0.25s ease;
+  }
+
   .glyph-fill {
     fill: var(--damage-accent);
     stroke: none;

@@ -9,6 +9,7 @@ import DefenseMod from '../../components/keywords/DefenseMod/DefenseMod.tsx';
 import Range from '../../components/keywords/Range/Range.tsx';
 import SkillCheck from '../../components/keywords/SkillCheck/SkillCheck.tsx';
 import DamageType from '../../components/keywords/DamageType/DamageType.tsx';
+import Safelight from '../../components/keywords/Safelight/Safelight.tsx';
 import DiceTools from '../../utils/dice-handling';
 import HitCheck from '../../components/keywords/HitCheck/HitCheck.tsx';
 
@@ -404,7 +405,11 @@ const exObj: { [key: string]: Kit } = {
     weapons: [{
       name: 'Prototype Safelight Beam Rifle',
       tags: ['Heavy', 'Two-Handed', 'Safelight'],
-      effects: ['Can be recharged with Safelight Gemstones or Safelight Geodes. A Safelight Shard is not enough.'],
+      effects: [<>
+        Can be recharged 
+        with <Safelight tier={2} plural /> or
+        {' '}<Safelight tier={3} plural />. 
+        A <Safelight tier={1} /> is not enough.</>],
       isAdvancedItem: true,
       attackModes: [
         {
@@ -450,7 +455,11 @@ const exObj: { [key: string]: Kit } = {
       charges: 2,
       effects: [<>As a 2{movementIcon} Maneuver, you can teleport to any hex within <Range type='medium' /> of you,
         even if it is not in line of sight.</>,
-        'Can be recharged with Safelight Gemstones or Safelight Geodes. A Safelight Shard is not enough.'
+        <>
+        Can be recharged 
+        with <Safelight tier={2} plural /> or
+        {' '}<Safelight tier={3} plural />. 
+        A <Safelight tier={1} /> is not enough.</>
       ],
       isAdvancedItem: false,
     }],

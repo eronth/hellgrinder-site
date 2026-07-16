@@ -1,0 +1,24 @@
+/* Safelight keyword: a small gem image plus the tier name. Coloring of the
+   text stays as quiet as the rule-keyword offset text, nudged the faintest bit
+   toward a cool arcane tint. Each tier gets its own gem, sized up the scale.
+   Flows inline with prose and never breaks across lines. */
+.safelight-keyword {
+  --safelight-accent: light-dark(hsl(195 20% 30%), hsl(195 16% 70%));
+  white-space: nowrap;
+  font-weight: 500;
+  color: var(--safelight-accent);
+
+  .safelight-glyph {
+    height: 0.9em;
+    width: auto;
+    vertical-align: -0.1em;
+    margin-right: 0.18em;
+  }
+
+  /* Gems grow up the tier scale. */
+  &.safelight-chip     .safelight-glyph { height: 0.85em; }
+  &.safelight-shard    .safelight-glyph { height: 0.95em; }
+  &.safelight-gemstone .safelight-glyph { height: 1.05em; }
+  &.safelight-geode    .safelight-glyph { height: 1.15em; }
+  &.safelight-cluster  .safelight-glyph { height: 1.25em; }
+}

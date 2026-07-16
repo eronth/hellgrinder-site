@@ -11,6 +11,7 @@ import CheckResultsGrid from '../../pages/HowToPlayPage/how-to-play-components/C
 // Functions
 import Tools from '../../utils/tools.tsx';
 import DamageType from '../../components/keywords/DamageType/DamageType.tsx';
+import Safelight from '../../components/keywords/Safelight/Safelight.tsx';
 import { movementIcon } from '../../utils/commonIcons.tsx';
 import DefenseMod from '../../components/keywords/DefenseMod/DefenseMod.tsx';
 import StatusKeyword from '../../components/keywords/StatusKeyword.tsx';
@@ -136,7 +137,7 @@ const exObj: { [key: string]: Kit } = {
       charges: 1,
       effects: [<>
         You can call in an emergency run to have supplies delivered to your squad.
-        Your squad reacharges all Safelight shards and performs a resupply.
+        Your squad reacharges all <Safelight plural /> and performs a resupply.
       </>]
     }, {
       name: 'Grind-Bomb', tags: ['Attack'],

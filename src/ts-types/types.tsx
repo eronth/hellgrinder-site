@@ -82,7 +82,7 @@ type Kit = {
 }
 
 export type Weapon = ItemDef & {
-  effects?: string[];
+  effects?: React.ReactNode[];
   attackModes: AttackMode[];
 }
 

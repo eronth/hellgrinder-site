@@ -463,4 +463,8 @@ exObj.warrior.weapons[0].attackModes[0].effects = [
   '?????'
 ];
 
-export default exObj;
+
+const sortedExObj: { [key: string]: Kit } = Object.entries(exObj)
+  .sort((a, b) => a[1].name.localeCompare(b[1].name))
+  .reduce((obj, [key, value]) => ({ ...obj, [key]: value }), {});
+export default sortedExObj;

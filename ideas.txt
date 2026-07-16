@@ -1,15 +1,11 @@
-[08:25]Saturday 27 June 2026 at 08:25
-Smacktastic: I didn't go through the list you already have so keep that in mind:
-landmine/trap kit for immobilizing/delaying
+suggestions!!!
+
 breaching charge kit to ignore obstacles/walls
 radio operator kit to get some kind of
   recall knowledge ability coupled with a limited airstrike request maneuver 
 propaganda news kit where you have a live
   feed camera and some sort of maneuvers that let allies ignore
   wounds/death temporarily while in the spotlight and maybe some other buff option
-clown kit that can absorb attacks (limited) with pratfalls,
-  has unlimited rope, maybe a 1 damage pie short ranged attack of a
-  unique damage type (pie) to ensure no weakness
 
 
 logos for factions
@@ -32,6 +28,6 @@ twist and warp spires. crackling lightning spires.
 
 
 decide on kitz/item visual redo
-add electrical engineer kit
-add arc weapon
-jon's suggestions!!!
+-give charges to trainings.
+-special logic for trapper
+-more mystic cards

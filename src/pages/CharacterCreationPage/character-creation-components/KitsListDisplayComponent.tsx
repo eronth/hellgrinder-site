@@ -15,30 +15,22 @@ export default function KitsListDisplayComponent() {
 
     <Hx hx={innerHx}>Combat Kits</Hx>
     <div className='col-handler'>
-      <Kit kit={CombatKits.breachAndClear}></Kit>
-      <Kit kit={CombatKits.demonHunter}></Kit>
-      <Kit kit={CombatKits.flamethrower}></Kit>
-      <Kit kit={CombatKits.grenadier}></Kit>
-      <Kit kit={CombatKits.helltouched}></Kit>
-      <Kit kit={CombatKits.perky}></Kit>
-      <Kit kit={CombatKits.prototype}></Kit>
-      <Kit kit={CombatKits.riot}></Kit>
-      <Kit kit={CombatKits.sniper}></Kit>
-      <Kit kit={CombatKits.soldier}></Kit>
-      <Kit kit={CombatKits.warrior}></Kit>
+      {Object.entries(CombatKits).map(([kitName, kit]) => {
+        if (kitName === 'relicworker') { return null; }
+        return <Kit key={kitName} kit={kit} />
+      })}
     </div>
-    <Kit needsCols={true} kit={CombatKits.relicworker}></Kit>
+    <Kit kit={CombatKits.relicworker} needsCols />
 
     <hr />
 
     <Hx hx={innerHx}>Support Kits</Hx>
     <div className='col-handler'>
-      <Kit kit={SupportKits.cardMystic}></Kit>
-      <Kit kit={SupportKits.grenadeStash}></Kit>
-      <Kit kit={SupportKits.medic}></Kit>
-      <Kit kit={SupportKits.recon}></Kit>
-      <Kit kit={SupportKits.shadowOp}></Kit>
-      <Kit kit={SupportKits.sigilBearer}></Kit>
+      {Object.entries(SupportKits).map(([kitName, kit]) => {
+        if (kitName === 'trapper') { return null; }
+        return <Kit key={kitName} kit={kit} />
+      })}
     </div>
+    <Kit kit={SupportKits.trapper} needsCols />
   </>);
 }

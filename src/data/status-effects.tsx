@@ -53,11 +53,15 @@ const exObj: StatusEffectsReturn = {
     effects: [
       <>
         You have -[[X]] to <SkillCheck tags={['Observation']} plural/> and 
-        -[[X]] to <HitCheck tags={['Shooting', 'Attack']} plural/>.
+        -[[X]] to <HitCheck tags={['Shooting', 'Attack']} plural/> and
+        {' '} <HitCheck tags={['Arcane', 'Attack']} plural/>.
       </>,
       <>
         For every 3 levels of Blinded you have, 
         your ranges get reduced by 1 step.
+      </>,
+      <>
+        You perform any opportunity attacks at -[[X]].
       </>
     ],
     x: 'X',

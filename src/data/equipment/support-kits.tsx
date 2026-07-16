@@ -14,6 +14,7 @@ import DamageType from '../../components/keywords/DamageType/DamageType.tsx';
 import { movementIcon } from '../../utils/commonIcons.tsx';
 import DefenseMod from '../../components/keywords/DefenseMod/DefenseMod.tsx';
 import StatusKeyword from '../../components/keywords/StatusKeyword.tsx';
+import DiceTools from '../../utils/dice-handling';
 
 
 // Todo - Add descriptions to all kits.
@@ -210,12 +211,64 @@ const exObj: { [key: string]: Kit } = {
     }],
   },
 
+  coulron: {
+    name: 'Coulron',
+    description: 'You are trained in the art of diversion and misdirection.',
+    weapons: [{
+      name: 'Payload-Interchange Emitter Disc',
+      tags: ['One-Handed'],
+      isAdvancedItem: true,
+      attackModes: [{
+        tags: ['Attack', 'Thrown', 'Adjacent Range', 'Short Range'],
+        damage: {
+          l: { value: 1, type: 'Chosen Type' },
+          m: { value: 2, type: 'Chosen Type' },
+          h: { value: DiceTools.get2d4(), type: 'Chosen Type' },
+        },
+        effects: [<>
+          You may choose any damage type when making an attack with this weapon.
+        </>, <>
+          On a Rank 2 Success or higher, this weapon ignores up to 3 resistance of
+          all types. Also, the attack causes <StatusKeyword effect="blinded" x={3} />
+          {' '} until the end of your next turn.
+        </>]
+      }]
+
+    }],
+    items: [{
+      name: 'Auto-grapple Rope',
+      tags: [],
+      description: 'A device that can be deployed to extend a rope to hard-to-reach locations.',
+      effects: [<>
+        When you place this item on the ground, it starts extending a rope towards any target within
+        {' '}<Range type='extreme' />, including upward against gravity. If deployed in combat, it
+        extends one range segment per turn. When climbing the rope, you get +3 to any 
+        <SkillCheck tags={[]} plural />.
+      </>]
+    }],
+    trainings: [{
+      name: 'Sleight of Hand',
+      tags: [],
+      effects: [<>
+        You gain a +2 bonus to all <SkillCheck tags={['Stealth']} plural />.
+      </>],
+    }, {
+      name: 'Defensive Fall',
+      tags: [],
+      charges: 2,
+      effects: [<>
+        When hit with an attack, after hearing the damage but before suffering it,
+        you can choose to fall prone to avoid the damage.
+      </>]
+    }],
+  },
+
   trapper: {
     name: 'Trapper',
     description: "The trapper is skilled in setting and disarming traps.",
     weapons: [],
     items: [{
-      name: 'Traps',
+      name: 'Trap Placer',
       tags: [],
       effects: [<>
         You have a small collection of traps to deploy. You can use a 
@@ -225,12 +278,16 @@ const exObj: { [key: string]: Kit } = {
         not be able to physically reach it. Make a <SkillCheck tags={['Trap', 'Stealth']} />,
         on a Rank 2 success or higher, enemies did not see the trap placed and will
         move and act as if it wasn't there. Otherwise enemies know where you placed a trap.
-      </>, <>
+      </>]
+    }, {
+      name: 'Traps',
+      tags: [],
+      effects: [<>
         When an enemy steps on a hex with a trap on it, it triggers. A trap details what happens
         when it is triggered in it's description. Some traps list a range, which increases
         the triggering range.
       </>, <>
-        You have x, y, z traps. Traps are restored on a resupply. When you resupply, any
+        Traps are restored on a resupply. When you resupply, any
         deployed traps are destoryed or otherwise rendered non-functional.
       </>]
     }, {
@@ -274,13 +331,6 @@ const exObj: { [key: string]: Kit } = {
         the trap breaks down and all razor-wire is removed.
       </>]
     }, {
-      name: 'Tripper Trap', tags: ['Trap'],
-      charges: 6,
-      effects: [<>
-        When this trap triggers, the triggering creature loses 
-        3{movementIcon} and falls prone.
-      </>]
-    }, {
       name: 'Pushback Trap', tags: ['Trap'],
       charges: 3,
       effects: [<>
@@ -294,7 +344,16 @@ const exObj: { [key: string]: Kit } = {
         Pre-prepared, you can trigger this trap at-will by taking
         a stack of Pre-action.
       </>]
-    }],
+    }, {
+      name: 'Tripper Trap', tags: ['Trap'],
+      charges: 6,
+      effects: [<>
+        When this trap triggers, the triggering creature loses 
+        3{movementIcon} and falls prone.
+      </>]
+    }, 
+    
+  ],
     trainings: [{
       name: 'Trap Specialist',
       tags: [],
@@ -322,4 +381,8 @@ const exObj: { [key: string]: Kit } = {
   }
 };
 
-export default exObj;
+const sortedExObj: { [key: string]: Kit } = Object.entries(exObj)
+  .sort((a, b) => a[1].name.localeCompare(b[1].name))
+  .reduce((obj, [key, value]) => ({ ...obj, [key]: value }), {});
+
+export default sortedExObj;

@@ -1,5 +1,4 @@
 import Hx from "../../../../components/common/generic/Hx/Hx";
-import Tools from "../../../../utils/tools";
 import { HeaderSize } from "../../../../ts-types/types";
 
 type Props = {
@@ -33,5 +32,5 @@ export default function ZephyrianSpires ({ hx }: Props) {
       Travelers must take care when traversing these platforms to 
       reduce or prevent risk of Nethercurrent jolts.
     </p>
-  </>)
+  </>);
 }

@@ -116,6 +116,7 @@ type Item = ItemDef & {
 type Training = {
   name: string;
   tags: AllValidTags[];
+  charges?: number;
   effects: React.ReactNode[];
   bonuses?: GrantedBonus[];
 }

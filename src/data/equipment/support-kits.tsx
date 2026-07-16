@@ -78,7 +78,16 @@ const exObj: { [key: string]: Kit } = {
     name: 'Recon',
     description: "",
     weapons: [],
-    items: [],
+    items: [{
+      name: 'Sighting Scope',
+      tags: [],
+      description: 'This scope can be used to help hone in on targets.',
+      charges: 3,
+      effects: [<>
+        Using this scope, you can treat a target as if it's
+        one Range Increment closer.
+      </>],
+    }],
     trainings: [{
       name: 'Instrument Analyst',
       tags: [],
@@ -90,6 +99,46 @@ const exObj: { [key: string]: Kit } = {
       name: 'Communicator',
       tags: ['Maneuver'],
       effects: ['Whenever you use the [Call Out] Maneuver, allies get a +4 bonus instead of +1. Additionally, allies get +2 to damage dealt by the attack.'], 
+    }],
+  },
+
+  comms: {
+    name: 'Comms',
+    description: "Carry a comms unit to keep in contact with the greater hellbound forces.",
+    weapons: [],
+    items: [{
+      name: 'Comms Radio Unit (CRU)',
+      tags: [],
+      description: 'A comms unit useful for calling central command for special intel and support.',
+      effects: [<>
+      </>],
+    }],
+    trainings: [{
+      name: 'Intel Check', tags: ['Intel'],
+      effects: [<>
+        As an action using your CRU, you can call in to central command to get an intel check
+        on a target. Make a <SkillCheck tags={['Observation', 'Intel']} />. On success,
+        learn the information at the rank you rolled and lower.
+        <CheckResultsGrid className="swap-equipment-grid" results={{
+          r1: <>Learn all weak, resist, and absorb types, but not values for the target.</>,
+          r2: <>Learn the values for week, resist, and absorb, and learn all damage types dealt by attacks.</>,
+          r3: <>Choose a damage type you learned from intel,
+                you and your squad gain <DefenseMod mod={'Resist'} type='Chosen Type' value={3} />.</>,
+        }} />
+      </>],
+    }, {
+      name: 'Supply Run', tags: [],
+      charges: 1,
+      effects: [<>
+        You can call in an emergency run to have supplies delivered to your squad.
+        Your squad reacharges all Safelight shards and performs a resupply.
+      </>]
+    }, {
+      name: 'Grind-Bomb', tags: ['Attack'],
+      charges: 2,
+      effects: [<>
+          Call a run of Grind-Bombs. They totall blow up and explode and regular bomb stuff.
+      </>]
     }],
   },
 
@@ -156,6 +205,21 @@ const exObj: { [key: string]: Kit } = {
       name: 'Fate Shaper',
       tags: ['Arcane', 'Reaction', { Cursed: 2 }],
       effects: ['Once per combat, you can set the result of a dice on any roll that is not made by you and does not target/affect you.'],
+    }, {
+      name: 'Diviner',
+      tags: ['Arcane'],
+      effects: [<>
+        Once per combat, for free, you can learn the
+        absorb, weak, and resist stats of a creature.
+      </>]
+    }, {
+      name: 'Ereht',
+      tags: ['Arcane'],
+      effects: [<>
+        Draw and toss a card to a hex within <Range type='short' />. You teleport
+        to that hex. Probably should have an effect for the card you drew, ask
+        your GM or something.
+      </>]
     }],
   },
 
@@ -243,7 +307,7 @@ const exObj: { [key: string]: Kit } = {
         When you place this item on the ground, it starts extending a rope towards any target within
         {' '}<Range type='extreme' />, including upward against gravity. If deployed in combat, it
         extends one range segment per turn. When climbing the rope, you get +3 to any 
-        <SkillCheck tags={[]} plural />.
+        {' '}<SkillCheck tags={[]} plural />.
       </>]
     }],
     trainings: [{

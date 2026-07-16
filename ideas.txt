@@ -1,15 +1,13 @@
 suggestions!!!
 
-breaching charge kit to ignore obstacles/walls
-radio operator kit to get some kind of
-  recall knowledge ability coupled with a limited airstrike request maneuver 
 propaganda news kit where you have a live
-  feed camera and some sort of maneuvers that let allies ignore
-  wounds/death temporarily while in the spotlight and maybe some other buff option
+  feed camera and some sort of maneuvers
+  that let allies ignore
+  wounds/death temporarily while in the
+  spotlight and maybe some other buff option
 
 
 logos for factions
-gluttony
 
 zepheryian location?
 zepher creatures?
@@ -28,6 +26,5 @@ twist and warp spires. crackling lightning spires.
 
 
 decide on kitz/item visual redo
--give charges to trainings.
--special logic for trapper
 -more mystic cards
+-photo style grid thingo

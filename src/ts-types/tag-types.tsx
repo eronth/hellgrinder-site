@@ -52,6 +52,7 @@ type SkillChecks =
   | 'Stoic' // fear
   | 'Recovery' 
   | 'Corruption'
+  | 'Intel';
 
 export type DemonFactionTag
   = 'Ashborn Legion' 

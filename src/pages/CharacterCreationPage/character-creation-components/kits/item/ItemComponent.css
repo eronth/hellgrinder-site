@@ -1,0 +1,9 @@
+.item {
+
+  .effect {
+    /* only after the first effect */
+    .effect-bit:not(:first-child) {
+      margin-top: .4em;
+    }
+  }
+}

@@ -26,10 +26,11 @@
 .weapon,
 .item,
 .training {
-  margin-bottom: .5em;
-  padding: .5em;
-  border-radius: 5px;
+  margin-bottom: .6em;
+  padding: .5em .7em .6em;
+  border-radius: 8px;
   border: 1px solid var(--card-border-color);
+  border-left: 4px solid var(--kit-rail, var(--card-border-color));
 
   .choice-tags {
     font-size: .9em;
@@ -147,7 +148,8 @@
 
 .weapon {
   background-color: var(--table-body-background-color);
-  border-color: var(--weapon-card-border-color);
+  --kit-rail: var(--weapon-card-border-color);
+  --kit-eyebrow: var(--weapon-tag-text);
 
   --tag-fill: var(--weapon-tag-fill);
   --tag-line: var(--weapon-tag-line);
@@ -155,7 +157,8 @@
 }
 .item {
   background-color: var(--table-body-background-color);
-  border-color: var(--item-card-border-color);
+  --kit-rail: var(--item-card-border-color);
+  --kit-eyebrow: var(--item-tag-text);
 
   --tag-fill: var(--item-tag-fill);
   --tag-line: var(--item-tag-line);
@@ -163,7 +166,8 @@
 }
 .training {
   background-color: var(--table-body-background-color);
-  border-color: var(--training-card-border-color);
+  --kit-rail: var(--training-card-border-color);
+  --kit-eyebrow: var(--training-tag-text);
 
   --tag-fill: var(--training-tag-fill);
   --tag-line: var(--training-tag-line);
@@ -174,6 +178,37 @@
 
 .weapon .weapon-name {
   text-decoration: underline;
+}
+
+/* Accent-rail card header: a small category eyebrow above the name, with the
+   name and its tags sharing a row. */
+.kit-eyebrow {
+  font-size: .6rem;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: .13em;
+  color: var(--kit-eyebrow, var(--text-secondary-color));
+  margin-bottom: .25em;
+}
+
+.kit-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .3em .75em;
+  flex-wrap: wrap;
+
+  .tags {
+    margin-left: 0;
+  }
+}
+
+/* Attack modes read as stacked stat rows, separated by hairlines. */
+.kit-mode {
+  border-top: 1px solid var(--card-border-color);
+  margin-top: .45em;
+  padding-top: .15em;
 }
 
 .details-indent {
@@ -196,8 +231,9 @@
 .weapon .name,
 .item .name,
 .training .name {
-  font-size: 1em;
+  font-size: 1.08em;
   font-weight: bold;
+  letter-spacing: -0.01em;
 }
 
 .kit ul,

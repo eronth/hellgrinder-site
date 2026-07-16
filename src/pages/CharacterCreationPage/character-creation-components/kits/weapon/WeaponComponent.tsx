@@ -17,7 +17,10 @@ export default function WeaponComponent({ weapon, choiceInteraction }: Props) {
   }
 
   return (<div className='weapon'>
-    <WeaponName weapon={w} />
+    <div className='kit-eyebrow'>Weapon</div>
+    <div className='kit-title-row'>
+      <WeaponName weapon={w} />
+    </div>
     {w.choiceTags && (
       <SelectableTags
         choiceTags={w.choiceTags}
@@ -28,7 +31,7 @@ export default function WeaponComponent({ weapon, choiceInteraction }: Props) {
     {w.charges && <div className='details-indent'><b>Charges</b>: {w.charges}</div>}
     {
       w.attackModes.map((a, ai) => (
-      <div key={`attack-mode-${ai}`}>
+      <div key={`attack-mode-${ai}`} className='kit-mode'>
         <AttackModeComponent attackMode={a} showTags={hasMultipleAttackModes(weapon)} />
       </div>
     ))}

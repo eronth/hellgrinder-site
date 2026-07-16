@@ -8,7 +8,8 @@ type Props = {
 
 export default function ItemComponent({ item }: Props) {
   return (<div className='item'>
-    <div><span className='name'>{item.name}</span><Tags tags={item.tags} /></div>
+    <div className='kit-eyebrow'>Item</div>
+    <div className='kit-title-row'><span className='name'>{item.name}</span><Tags tags={item.tags} /></div>
     <div className='description details-indent'>{item.description}</div>
     {item.charges != null && <div className='details-indent'><b>Charges</b>: {item.charges}</div>}
     <div className='effect details-indent'>

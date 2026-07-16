@@ -1,11 +1,5 @@
 suggestions!!!
 
-propaganda news kit where you have a live
-  feed camera and some sort of maneuvers
-  that let allies ignore
-  wounds/death temporarily while in the
-  spotlight and maybe some other buff option
-
 
 logos for factions
 
@@ -21,10 +15,21 @@ to strike swift.
 
 The spires come in two flavors:
 Shifting Spires warp and twist as though the stone that makes them is
-not solid.
-twist and warp spires. crackling lightning spires.
+not solid. The sheets of stone constantly grind and twist against
+each-other, though unyielding to other forces.
+When moving through the tunnels and caverns of one of these
+spires, move quickly. Linger too long, and your way back
+out may simply melt away.
+
+Enormous stalactite and stalagmite spires reaching from the vast
+emptiness, with floating platforms between. 
+Occasionally a powerful
+jolt of Nethercurrent will course between the spires,
+coursing through several of the floating platforms along the way.
+Travelers must take care when traversing these platforms to 
+reduce or prevent risk of Nethercurrent jolts.
+
 
 
 decide on kitz/item visual redo
--more mystic cards
 -photo style grid thingo

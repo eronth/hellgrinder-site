@@ -15,6 +15,7 @@ import { movementIcon } from '../../utils/commonIcons.tsx';
 import DefenseMod from '../../components/keywords/DefenseMod/DefenseMod.tsx';
 import StatusKeyword from '../../components/keywords/StatusKeyword.tsx';
 import DiceTools from '../../utils/dice-handling';
+import HitCheck from '../../components/keywords/HitCheck/HitCheck.tsx';
 
 
 // Todo - Add descriptions to all kits.
@@ -153,12 +154,14 @@ const exObj: { [key: string]: Kit } = {
     trainings: [{
       name: 'Stealth Training',
       tags: [],
-      effects: ['You get +2 to all Stealth Skill Checks.'],
+      effects: [<>
+        You get +2 to all <SkillCheck tags={['Stealth']} plural />.
+      </>],
       bonuses: [{ tag: 'Stealth', value: 2 }],
     }, {
       name: 'Assassin',
       tags: ['Attack'],
-      effects: ['Rear Arc attacks made with your Knife get and +5 to damage.'],
+      effects: ['Rear Arc attacks made with your Knife get +5 to damage.'],
       bonuses: [{ label: 'Damage', value: 5, condition: 'Knife, Rear Arc' }],
     }],
   },
@@ -219,6 +222,55 @@ const exObj: { [key: string]: Kit } = {
         Draw and toss a card to a hex within <Range type='short' />. You teleport
         to that hex. Probably should have an effect for the card you drew, ask
         your GM or something.
+      </>]
+    }],
+  },
+
+  propagandizer: {
+    name: 'Propagandizer',
+    description: "The propagandizer is a master of propaganda and propaganda.",
+    weapons: [],
+    items: [{
+      name: 'Press Kit',
+      tags: ['Arcane', 'Intel'],
+      description: '',
+      effects: [<>
+        You have a kit full of propaganda equipment including 
+        cameras, mics, arial drone views, ready made lines and posters,
+        and other materials.
+      </>],
+    }],
+    trainings: [{
+      name: 'Hero Spotlight',
+      tags: ['Arcane', 'Intel', 'Maneuver'],
+      effects: [<>
+        As a <b>2{movementIcon} Maneuver</b>, you choose an ally to
+        be the hero for this Spotlight Hour for the rest of combat.
+        While that ally is in your <Range type='medium' /> and
+        in your line-of-sight, that ally gains +2 to all
+        {' '}<HitCheck tags={[]} plural />.
+      </>, <>
+        If the ally makes an Injury Roll, they add -2
+        to the result. If the result is less than the
+        minimum on the Injury Table, they had a miraculous
+        escape and suffer no Injury.
+      </>]
+    }, {
+      name: 'Spotting',
+      tags: ['Intel', 'Maneuver'],
+      effects: [<>
+        As a <b>2{movementIcon} Maneuver</b>, you can send a drone
+        into the air in a <Range type='adjacent' />. For each
+        <b>1{movementIcon}</b> you spend, you can move the drone 2 hexes.
+        If the drone is more further than <Range type='long' /> from
+        you, you lose contact and the drone automatically tries to return
+        to you.
+      </>],
+    }, {
+      name: 'Rousing Combat Cry',
+      tags: ['Action'],
+      effects: [<>
+        All allies immediately gain 2{movementIcon} to use for movement.
       </>]
     }],
   },

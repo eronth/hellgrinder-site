@@ -13,7 +13,9 @@ export default function InjuryTableRow({ data }: Props) {
   return (<>
     <tr>
       <td className="roll-column">
-        {data.result.min}&nbsp;-&nbsp;{data.result.max}
+        {data.result.min !== data.result.max
+        ? <>{data.result.min}&nbsp;-&nbsp;{data.result.max}</>
+        : <>{data.result.min}</>}
       </td>
       <td colSpan={3}>
         <b>{lightInjury.name}</b>: {lightInjury.description}

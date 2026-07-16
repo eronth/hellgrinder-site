@@ -122,7 +122,7 @@ export default function InjuryTable() {
   <table className="injuries-table">
     <thead>
       <tr>
-        <th className="roll-column">Roll 2d6</th>
+        <th className="roll-column">Roll 1d6</th>
         <th colSpan={3}>Light Injury</th>
         <th colSpan={3}>Serious Injury</th>
         <th colSpan={3}>Critical Injury</th>
@@ -133,7 +133,8 @@ export default function InjuryTable() {
         rowData.map((row, i) => 
           <InjuryTableRow key={`injury-table-row-${i}`} data={{
             ...row,
-            result: {min: (i+1)*2-1, max: (i+1)*2},
+            // result: {min: (i+1)*2-1, max: (i+1)*2},
+            result: {min: (i+1), max: (i+1)},
           }} />)
       }
     </tbody>

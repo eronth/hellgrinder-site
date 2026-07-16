@@ -21,5 +21,10 @@ export default function DeepblindCaverns ({ hx }: Props) {
       becomes, eventually blotting out the strongest of lights.
       The only light left to penetrate darkness this deep is Safelight.
     </p>
+    <p>
+      Should you reach such darkened depths, you need not worry. For
+      there is a song to guide you. Listen to it's grinding
+      melody! You're not lost, child. You're finally found.
+    </p>
   </>)
 }

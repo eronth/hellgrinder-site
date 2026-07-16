@@ -47,7 +47,7 @@ export default function RestAndRecover() {
         from a Safelight Geode or Gemstone is not possible
         without proper equipment, so soldiers are assigned a
         limited number while scientists work on further
-        advancements in SafeLiteTM technology. With just a 
+        advancements in SafeLite™ technology. With just a 
         moment of meditation, a character can grant themselves
         a few minutes of safety. When they do so,
         they roll a <SkillCheck tags={['Recovery']} /> with +2.

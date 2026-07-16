@@ -1,4 +1,6 @@
+import HitCheck from "../../../../components/keywords/HitCheck/HitCheck";
 import Range from "../../../../components/keywords/Range/Range";
+import SkillCheck from "../../../../components/keywords/SkillCheck/SkillCheck";
 import { DealWithTheDevilRow } from "../../../../ts-types/table-types";
 import DevilDealTableRow from "./DevilDealTableRow";
 
@@ -33,7 +35,11 @@ export default function DevilDealTable() {
     }, {
       result: 6,
       name: "Cult Mask",
-      boon: "Choose one demonic faction. You gain +2 to [Communicate] Skill Checks with that faction. Creatures of that faction get -1 to Hit Checks against you.",
+      boon: <>
+        Choose one demonic faction. You gain +2 to
+        {' '}<SkillCheck tags={["Communicate"]} plural /> with that faction.
+        Creatures of that faction get -1 to <HitCheck tags={[]} plural /> against you.
+      </>,
       cost: "Madness creeps ever closer. "
     }, {
       result: 7,

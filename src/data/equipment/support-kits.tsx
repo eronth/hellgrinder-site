@@ -99,7 +99,11 @@ const exObj: { [key: string]: Kit } = {
     }, {
       name: 'Communicator',
       tags: ['Maneuver'],
-      effects: ['Whenever you use the [Call Out] Maneuver, allies get a +4 bonus instead of +1. Additionally, allies get +2 to damage dealt by the attack.'], 
+      effects: [<>
+      Whenever you use the [Call Out] Maneuver, allies
+      get a +4 bonus instead of +1. Additionally, allies get +2 to 
+      damage dealt by the attack.
+      </>], 
     }],
   },
 

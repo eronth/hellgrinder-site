@@ -10,6 +10,7 @@ import Range from '../../components/keywords/Range/Range.tsx';
 import SkillCheck from '../../components/keywords/SkillCheck/SkillCheck.tsx';
 import DamageType from '../../components/keywords/DamageType/DamageType.tsx';
 import DiceTools from '../../utils/dice-handling';
+import HitCheck from '../../components/keywords/HitCheck/HitCheck.tsx';
 
 // Todo - Add descriptions to all kits.
 
@@ -157,7 +158,10 @@ const exObj: { [key: string]: Kit } = {
       name: 'Coffee Kit',
       tags: [],
       description: 'A simple to use kit for making coffee. A great way to keep the great taste of home with you on the battlefield.',
-      effects: ['If you spend 10 minute, you can make a nice cup of coffee for yourself. You can give the cup to someone else, but they only gain half the benefits. Only one person can benefit from your cup of coffee at a time.', 'Coffee Bonus: Gain +2 to Recovery Checks.', 'Coffee Bonus: Gain +2 to Observation Checks.'],
+      effects: ['If you spend 10 minute, you can make a nice cup of coffee for yourself. You can give the cup to someone else, but they only gain half the benefits. Only one person can benefit from your cup of coffee at a time.',
+        <>Coffee Bonus: Gain +2 to <SkillCheck tags={['Recovery']} plural />.</>,
+        <>Coffee Bonus: Gain +2 to <SkillCheck tags={['Observation']} plural />.</>,
+      ],
       isAdvancedItem: false,
       bonuses: [
         { tag: 'Recovery', value: 2, condition: 'coffee bonus' },
@@ -329,7 +333,9 @@ const exObj: { [key: string]: Kit } = {
     trainings: [{
       name: 'Primal Fury',
       tags: ['Melee'],
-      effects: ['Gain +2 to Hit Checks on [Melee Attacks].'],
+      effects: [<>
+        Gain +2 to <HitCheck tags={['Melee', 'Attack']} plural />.
+      </>],
       bonuses: [{ tag: 'Melee', value: 2, condition: 'Hit Checks' }],
     },
     {

@@ -86,8 +86,10 @@ export default function Actions() {
       
       <Hx hx={innerHx}>Overwatch</Hx>
       <p>
-        Select a 2-hex arc cone in your <Arc type="front" /> to "Watch" until the start of your next turn. When a creature
-        first enters the Watched Area, you can make an Attack against them with +2 to the Hit Check. Once you make an
+        Select a 2-hex arc cone in your <Arc type="front" /> to 
+        "Watch" until the start of your next turn. When a creature
+        first enters the Watched Area, you can make an Attack
+        against them with +2 to the <HitCheck tags={[]} />. Once you make an
         attack, Overwatch ends.
       </p>
       

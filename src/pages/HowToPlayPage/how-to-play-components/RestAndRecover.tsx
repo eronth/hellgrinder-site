@@ -37,7 +37,7 @@ export default function RestAndRecover() {
       <p>
         These gemstones are extremely large and dense, making them impossible to move
         without the assistance of heavy machinery. Spending a charge on 
-        a <Safelight tier={2} />
+        a <Safelight tier={2} /> {}
         recharges all <Safelight plural /> and grants enough safety for sleep and recovery. Players
         can attempt a Recovery Check with a bonus of +5.
       </p>
@@ -57,16 +57,15 @@ export default function RestAndRecover() {
       <p>
         <Safelight plural /> often bind themselves to their
         owner in mysterious ways. They tend to be non-transferrable,
-        and break upon the owner's death. All <Safelight plural />
+        and break upon the owner's death. All <Safelight plural />{' '}
         owned by player characters start this way.
       </p>
-      <p>
+      {/* <p>
         <Safelight tier={0} /><br />
         <Safelight tier={1} /><br />
         <Safelight tier={2} /><br />
         <Safelight tier={3} /><br />
-
-      </p>
+      </p> */}
 
       <Hx hx={innerHx}>Recovery Test</Hx>
       <p>

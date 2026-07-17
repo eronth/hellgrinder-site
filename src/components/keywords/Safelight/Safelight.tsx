@@ -4,8 +4,8 @@ import shardImg from '../../../assets/safelight/shard.png';
 import gemstoneImg from '../../../assets/safelight/gemstone.png';
 import geodeImg from '../../../assets/safelight/geode.png';
 import clusterImg from '../../../assets/safelight/cluster.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGem } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faGem } from '@fortawesome/free-solid-svg-icons';
 
 /* The five graded forms of Safelight, smallest to largest. Each carries its
    own gem image; per-tier render sizes live in Safelight.css. */
@@ -24,11 +24,12 @@ type Props = {
 };
 
 export default function Safelight({ tier = 1, plural }: Props) {
-  const { name, img } = SAFELIGHT_TIERS[tier];
+  const { name, /*img*/ } = SAFELIGHT_TIERS[tier];
   return (
     <span className={`safelight-keyword safelight-${name.toLowerCase()}`}>
-      <FontAwesomeIcon icon={faGem} className="safelight-icon" />
-      <img className="safelight-glyph" src={img} alt="" aria-hidden="true" />
+      {/* TODO: Add a gem icon. */}
+      {/* <FontAwesomeIcon icon={faGem} className="safelight-icon" /> */}
+      {/* <img className="safelight-glyph" src={img} alt="" aria-hidden="true" /> */}
       <span className="safelight-label">Safelight {name}{plural ? 's' : ''}</span>
     </span>
   );

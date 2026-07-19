@@ -5,6 +5,7 @@ import DamageType from "../../components/keywords/DamageType/DamageType";
 import Range from "../../components/keywords/Range/Range";
 import SkillCheck from "../../components/keywords/SkillCheck/SkillCheck";
 import Tools from "../../utils/tools";
+import StatusKeyword from "../../components/keywords/StatusKeyword";
 
 
 const factionTag = 'Rot Host';
@@ -58,7 +59,7 @@ const exObj: { [key: string]: Creature } = {
     attacks: [
       {
         name: 'Clobber',
-        damage: damage(3, 4, 5, 'Voidyr'),
+        damage: damage(2, 3, 4, 'Voidyr'),
         tags: ['Attack', 'Melee', 'Adjacent Range'],
         effects:[
           <>
@@ -88,7 +89,7 @@ const exObj: { [key: string]: Creature } = {
     attacks: [
       {
         name: 'Rotspittle',
-        damage: damage(2, 3, 4, 'Verdant'),
+        damage: damage(1, 2, 3, 'Verdant'),
         effects:[
           <>
             If the Decayed One has been hit by <DamageType type="Verdant" withWord /> this combat,
@@ -164,7 +165,7 @@ const exObj: { [key: string]: Creature } = {
     attacks: [
       {
         name: 'Crushing Claws',
-        damage: damage(4, 7, 10, 'Metal'),
+        damage: damage(3, 6, 9, 'Metal'),
         tags: ['Attack', 'Melee', 'Adjacent Range'],
         effects:[
           <>
@@ -174,12 +175,12 @@ const exObj: { [key: string]: Creature } = {
       },
       {
         name: 'Whiplash Tendril',
-        damage: damage(4, 7, 10, 'Chthonic'),
+        damage: damage(3, 6, 9, 'Chthonic'),
         tags: ['Attack', 'Melee', 'Short Range'],
       },
       {
         name: 'Jolt of Life',
-        damage: damage(3, 5, 7, 'Nethercurrent'),
+        damage: damage(2, 4, 6, 'Nethercurrent'),
         tags: ['Attack', 'Arcane', 'Medium Range'],
       }
     ],
@@ -201,7 +202,7 @@ const exObj: { [key: string]: Creature } = {
     attacks: [
       {
         name: 'Dire Puke',
-        damage: damage(5, 7, 10, 'Abyssal'),
+        damage: damage(4, 6, 9, 'Abyssal'),
         tags: ['Attack', 'Shooting', 'Adjacent Range', { Area: 1 }],
         effects:[
           <>
@@ -217,7 +218,7 @@ const exObj: { [key: string]: Creature } = {
       },
       {
         name: 'Projectile Vomit',
-        damage: damage(3, 5, 8, 'Infernal'),
+        damage: damage(3, 4, 7, 'Infernal'),
         tags: ['Attack', 'Shooting', 'Medium Range'],
         effects:[
           <>
@@ -257,12 +258,13 @@ const exObj: { [key: string]: Creature } = {
     attacks: [
       {
         name: 'Plague Bolt',
-        damage: damage(5, 8, 12, 'Abyssal'),
+        damage: damage(4, 5, 7, 'Abyssal'),
         tags: ['Attack', 'Arcane', 'Long Range'],
         effects:[
           <>
             On a Rank 2+ Success against a target with Rot,
-            the target gains Enfeebled 1. Otherwise the
+            the target gains
+            {}<StatusKeyword effect="enfeebled" x={1} />. Otherwise the
             target is marked with Rot.
           </>,
         ],
@@ -273,7 +275,8 @@ const exObj: { [key: string]: Creature } = {
         tags: ['Attack', 'Arcane', 'Long Range'],
         effects:[
           <>
-            The target gains the Inside Out condition. This attack counts for
+            The target gains the <StatusKeyword effect="insideOut" />
+            {}condition. This attack counts for
             the purposes of determining the Gift of Plague ability.
           </>,
         ],
